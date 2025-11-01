@@ -15,13 +15,22 @@ description file and create a quality score (1-100) on how well the course descr
 
 ## Generating a learning graph
 
-See [](./learning-graph-generator.md)
+See [Learning Graph Generator](./learning-graph-generator.md)
+
 ## Generating chapter content
+
 ## Generating tables, charts, maps and timelines
+
 ## Generating interactive info-graphics
+
 ## Generating MicroSims
+
 ## Generating a Glossary of Terms
+
 ## Generating FAQs
+
 ## Generating Quizzes and Assessments
+
 ## Adding experience API (xAPI) to your interactive elements
+
 ## Send out announcements when your book is ready
