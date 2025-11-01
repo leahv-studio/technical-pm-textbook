@@ -137,3 +137,37 @@ locations for a command that matches what you type.
 
 Next, you can install a custom shell script that is called when you type the /skills command.
 
+You can find a UNIX script in the `scripts/list-skills.sh`.  To bind this to the skills slash
+command you must copy the file 'commands/skills.md' into your .claude/skills area.
+
+## Sample Skill Slash Command Execution
+
+I just type '/skills` into Claude Code:
+
+**Result:**
+
+```
+Available Claude Skills (8 total)
+
+  Educational Content Creation:
+  - faq-generator (user) - Generates FAQs from course content
+  - glossary-generator (user) - Creates ISO 11179-compliant glossaries
+  - quiz-generator (user) - Creates Bloom's Taxonomy-aligned quizzes
+
+  Intelligent Textbook Development:
+  - intelligent-textbook (user) - Complete workflow for AI-generated textbooks
+  - intelligent-textbook-creator (user) - Creates MkDocs Material textbooks (Level 2-5)
+  - learning-graph-generator (user) - Generates 200-concept learning graphs
+
+  Interactive Simulations:
+  - microsim-p5 (user) - Creates p5.js educational MicroSims
+
+  Hardware Projects:
+  - moving-rainbow (user) - MicroPython for Raspberry Pi Pico NeoPixels
+
+  All 8 skills are from your user directory (~/.claude/skills/). No project-specific skills found in .claude/skills/.
+
+```
+
+
+
