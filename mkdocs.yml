@@ -10,7 +10,13 @@ nav:
   - Home: index.md
   - About: about.md
   - Getting Started: getting-started.md
-  - List of Skills: list-of-skills.md
+  - List of Skills: 
+    - Overview: list-of-skills.md
+    - skill-descriptions/faq-generator.md
+    - skill-descriptions/glossary-generator.md
+    - skill-descriptions/learning-graph-generator.md
+    - skill-descriptions/microsim-p5.md
+    - skill-descriptions/quiz-generator.md
   - Glossary: glossary.md
   - References: references.md
   - License: license.md
