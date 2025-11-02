@@ -153,7 +153,10 @@ command you must copy the file 'commands/skills.md' into your .claude/skills are
 
 You will find a UNIX shell command that will install the Skills Command here:
 
-[]()
+[https://github.com/dmccreary/claude-skills/blob/main/scripts/install-skills-command.sh](https://github.com/dmccreary/claude-skills/blob/main/scripts/install-skills-command.sh)
+
+This script puts the list-skills.sh in your $HOME bin (~/bin).  You will then need to make
+sure that this is in your $PATH so that Claude Code can find the script.
 
 ## Sample Skill Slash Command Execution
 
