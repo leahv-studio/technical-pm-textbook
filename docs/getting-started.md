@@ -5,9 +5,12 @@
 The best way to download the skills is to use the git clone command:
 
 ```sh
-cd proojects
+cd projects
 git clone https://github.com/dmccreary/claude-skills.git
 ```
+
+This assumes that `projects` is the directory that you check out
+your GitHub repositories.  This is also sometimes called your `workspace` or just `ws` for shorthand.
 
 After you have downloaded the skills you have two options:
 

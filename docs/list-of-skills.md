@@ -16,6 +16,10 @@ description file and create a quality score (1-100) on how well the course descr
 **Location:** [https://github.com/dmccreary/claude-skills/tree/main/skills/course-description-analyzer](https://github.com/dmccreary/claude-skills/tree/main/skills/course-description-analyzer)
 **Status:** Done
 
+[Detailed Description](./skill-descriptions/couse-description-analizer.md)
+
+[Sample Skill Execution Log](./prompts/course-description-skill.md)
+
 ## Generating a Learning Graph
 
 This skill generates a learning graph which is the foundational data structure used by intelligent textbooks.

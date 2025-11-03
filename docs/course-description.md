@@ -64,6 +64,7 @@ After completing this course, students will be able to:
 *Retrieving, recognizing, and recalling relevant knowledge from long-term memory.*
 
 - Remember the steps in creating an intelligent textbook
+- Remember what a learning graph is
 - Remember what a Claude skill is
 - Remember the steps to install a Claude skill
 - Remember the steps to install a Claude command
@@ -75,6 +76,7 @@ After completing this course, students will be able to:
 - Understand how skills are used
 - Understand how skills are created
 - Understand what skills intelligent textbooks need
+- Understand how a learning graph is used as a roadmap for guiding students on their learning journey
 - Understand the order skills should be run
 
 ### Apply
