@@ -9,6 +9,7 @@ You are tasked with generating a comprehensive high-quality learning graph from 
 A learning graph is the foundational data structure for intelligent textbooks that can recommend learning paths.
 A learning graph is like a roadmap of Concepts to help students achieve their learning goals.
 A learning graph is an DAG Concept graph.  Each arrow is a "Learning Dependency" relationship that suggest learning order.
+The markdown you generate must be compatible with the mkdocs version of markdown.  Make sure you put a blank line before any lists.
 
 Follow these steps carefully:
 

@@ -5,6 +5,7 @@
 **Target Audience:** Professional development
 
 **Prerequisites:**
+
 - Basic understanding of programming
 - Basics of prompt engineering
 - Anthropic Claude access

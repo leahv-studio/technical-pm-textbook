@@ -36,7 +36,7 @@ def csv_to_json(csv_path: str, json_path: str, color_config: dict = None, metada
         'SPEC': 'indigo',
         'PROJ': 'violet',
         'CAP': 'gray',
-        'MISC': 'indigo',
+        'MISC': 'brown',
         # Numeric IDs (same mapping)
         '1': 'red',
         '2': 'orange',
