@@ -126,7 +126,8 @@ function generateLegend(groups) {
     checkbox.checked = true;
     checkbox.onchange = function() { toggleGroup(groupName); };
 
-    const label = document.createTextNode(' ' + groupName);
+    // Get the label from the classifierName in the groups of the learning-graph.json file
+    const label = document.createTextNode(' ' + (groupStyle.classifierName || groupName));
     checkboxCell.appendChild(checkbox);
     checkboxCell.appendChild(label);
 
