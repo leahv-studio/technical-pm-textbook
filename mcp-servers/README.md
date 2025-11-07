@@ -2,6 +2,11 @@
 
 This directory contains Model Context Protocol (MCP) servers that extend Claude's capabilities with zero-token operations.
 
+!!! Warning
+  Claude has been unable to create a MCP that calls a UNIX shell script called list-skills.sh.
+  Although it has generate a LOT of code in the skills-lister, it does not work.
+  Our goal is to have the /skills command just list the skills installed in the $HOME/.claude/skills and $PROJECT/.claude/skills
+
 ## What is MCP?
 
 The Model Context Protocol (MCP) allows Claude to interact with external tools and data sources without using tokens for data processing. MCP servers handle data operations directly and return only results to Claude.
