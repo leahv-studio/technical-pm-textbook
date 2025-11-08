@@ -1,3 +1,12 @@
+---
+title: Claude Skills for Intelligent Textbooks
+description: A course on using Claude Skills to create intelligent textbooks
+image: img/cover.png
+og-image: img/cover.png
+---
+<style>
+.md-content__inner h1 {display: none !important;}
+</style>
 # Claude Skills for Intelligent Textbooks
 
 Welcome to our website for Anthropic Claude Skills for Intelligent Textbooks.
