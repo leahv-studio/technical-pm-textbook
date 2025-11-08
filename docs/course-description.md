@@ -1,3 +1,8 @@
+---
+title: Course Description for Using Claude Skills to Create Intelligent Textbooks
+description: A detailed course description 
+quality_score: 95
+---
 # Using Claude Skills to Create Intelligent Textbooks
 
 **Title:** Using Claude Skills to Create Intelligent Textbooks

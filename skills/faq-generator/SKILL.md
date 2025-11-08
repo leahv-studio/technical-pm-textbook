@@ -1,6 +1,6 @@
 ---
 name: faq-generator
-description: This skill generates a comprehensive set of Frequently Asked Questions (FAQs) from course content, learning graphs, and glossary terms to help students understand common questions and prepare content for chatbot integration. Use this skill after course description, learning graph, glossary, and at least 30% of chapter content exist.
+description: This skill generates a comprehensive set of Frequently Asked Questions (FAQs) from the course description, course content, learning graphs, concept lists, MicroSims, and glossary terms to help students understand common questions and prepare content for chatbot integration. Use this skill after course description, learning graph, glossary, and at least 30% of chapter content exist.
 license: MIT
 ---
 
@@ -16,7 +16,7 @@ This skill automates FAQ creation for intelligent textbooks by analyzing course 
 
 Use this skill after the following artifacts exist:
 
-1. Course description has been finalized
+1. Course description has been finalized with a quality score above 70
 2. Learning graph has been created
 3. Glossary has been generated
 4. At least 30% of chapter content has been written
@@ -27,6 +27,15 @@ Having these prerequisites ensures the FAQ generator has sufficient context to c
 - Updating FAQ after significant content additions
 - Preparing content for chatbot or AI assistant integration
 - Identifying knowledge gaps in existing content
+
+## Markdown Formatting
+
+1. Use markdown header level one (#) for the FAQ title
+2. Use markdown header level two (##) for each category
+3. Use markdown header level three (###) for each individual question
+4. Place the answer in the body text
+
+Use the faq-template.md in the skill references section as your template.
 
 ## Workflow
 
@@ -116,7 +125,7 @@ Read and analyze all content sources to identify common question patterns:
 
 Create 6 standard categories aligned with learning progression:
 
-**1. Getting Started (10-15 questions)**
+**1. Getting Started Questions (10-15 questions)**
 
 Target Bloom's levels: 60% Remember, 40% Understand
 
@@ -126,7 +135,7 @@ Target Bloom's levels: 60% Remember, 40% Understand
 - Navigation and structure
 - Time commitment and difficulty
 
-**2. Core Concepts (20-30 questions)**
+**2. Core Concept Questions (20-30 questions)**
 
 Target Bloom's levels: 20% Remember, 40% Understand, 30% Apply, 10% Analyze
 
@@ -135,7 +144,7 @@ Target Bloom's levels: 20% Remember, 40% Understand, 30% Apply, 10% Analyze
 - Concept relationships and dependencies
 - How concepts build on each other
 
-**3. Technical Details (15-25 questions)**
+**3. Technical Detail Questions (15-25 questions)**
 
 Target Bloom's levels: 30% Remember, 40% Understand, 20% Apply, 10% Analyze
 
@@ -153,7 +162,7 @@ Target Bloom's levels: 10% Remember, 30% Understand, 40% Apply, 20% Analyze
 - Troubleshooting scenarios
 - Error resolution
 
-**5. Best Practices (10-15 questions)**
+**5. Best Practice Questions (10-15 questions)**
 
 Target Bloom's levels: 10% Understand, 40% Apply, 30% Analyze, 15% Evaluate, 5% Create
 
@@ -185,6 +194,7 @@ For each category, generate questions following these guidelines:
 
 **Answer Format:**
 
+- Use a level 3 markdown header (###) for each question
 - Write complete, standalone answers
 - Include examples for 40% of answers
 - Link to relevant sections (target: 60%+ linked)
@@ -232,6 +242,7 @@ For each category, generate questions following these guidelines:
 
 **Answer Quality Checklist:**
 
+- [ ] Use correct markdown headers for title, categories and questions
 - [ ] Directly answers the question
 - [ ] Uses terminology from glossary consistently
 - [ ] Includes example if concept is abstract (40% target)
@@ -248,13 +259,13 @@ Generate `docs/faq.md` with proper structure:
 ```markdown
 # [Course Name] FAQ
 
-## Getting Started
+## Getting Started Questions
 
-## What is this course about?
+### What is this course about?
 
 [Answer with overview, linking to course description]
 
-## Who is this course for?
+### Who is this course for?
 
 [Answer describing target audience]
 
@@ -262,25 +273,25 @@ Generate `docs/faq.md` with proper structure:
 
 ## Core Concepts
 
-## What is a [Key Concept]?
+### What is a [Key Concept]?
 
 [Answer with definition and example, linking to chapter]
 
 [Continue with 20-30 Core Concepts questions...]
 
-## Technical Details
+## Technical Detail Questions
 
 [Continue with terminology and technical questions...]
 
-## Common Challenges
+## Common Challenge Questions
 
 [Continue with troubleshooting questions...]
 
-## Best Practices
+## Best Practice Questions
 
 [Continue with application questions...]
 
-## Advanced Topics
+## Advanced Topic Questions
 
 [Continue with advanced questions...]
 ```
@@ -289,7 +300,7 @@ Generate `docs/faq.md` with proper structure:
 
 - Use level-1 header for title
 - Use level-2 headers for category names
-- Use level-2 headers for questions
+- Use level-3 headers for questions
 - Use body text for answers
 - Use markdown links: `[text](path.md#section)`
 - Use bold for emphasis: `**important term**`

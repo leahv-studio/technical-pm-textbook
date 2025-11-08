@@ -1,6 +1,30 @@
-# Skills Scripts
+# Shell Script to support Claude Skills for Intelligent Textbooks
 
-Utility scripts for working with Claude skills in this repository.
+Utility shell scripts for working with Claude skills in this repository.
+These scripts should be installed in your path.  We recommend the following path:
+
+`$HOME/.local/bin`
+
+or alternatively:
+
+`~/.local/bin`
+
+Note that these scripts are not specific to any specific intelligent book type.
+If you have scripts that are specific to your book type, they will be located in the book repo scripts file.
+
+## Metadata
+
+We use metadata fields in the book markdown files to get status.  For example, to get the quality score
+of the course description quality score you can look in the docs/source-description.md file and see the following
+
+```markdown
+---
+title: Course Description for Using Claude Skills to Create Intelligent Textbooks
+description: A detailed course description 
+quality_score: 95
+---
+```
+
 
 ## Available Scripts
 
