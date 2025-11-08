@@ -2,7 +2,7 @@
 
 # List all Claude skills with their descriptions
 # Extracts name and description from YAML frontmatter in SKILL.md files
-# Usage: list-skills.sh [--json|--names-only]
+# Usage: list-skills.sh [--json|--names-only|--full]
 
 USER_SKILLS_DIR="$HOME/.claude/skills"
 PROJECT_SKILLS_DIR=".claude/skills"
@@ -10,14 +10,17 @@ PROJECT_SKILLS_DIR=".claude/skills"
 # Check for output mode flags
 JSON_OUTPUT=0
 NAMES_ONLY=0
+FULL_OUTPUT=0
 
 if [ "$1" == "--json" ]; then
     JSON_OUTPUT=1
 elif [ "$1" == "--names-only" ]; then
     NAMES_ONLY=1
+elif [ "$1" == "--full" ]; then
+    FULL_OUTPUT=1
 fi
 
-if [ $JSON_OUTPUT -eq 0 ] && [ $NAMES_ONLY -eq 0 ]; then
+if [ $FULL_OUTPUT -eq 1 ]; then
     echo "Available Claude Skills"
     echo "======================="
     echo ""
@@ -27,6 +30,8 @@ fi
 declare -a SKILLS_JSON=()
 # Array to store skill names for names-only output
 declare -a SKILLS_NAMES=()
+# Array to store "name|||location" pairs for tracking
+declare -a SKILLS_WITH_LOCATION=()
 
 # Function to process skills in a directory
 process_skills_dir() {
@@ -105,11 +110,14 @@ process_skills_dir() {
         elif [ $NAMES_ONLY -eq 1 ]; then
             # Add to names array
             SKILLS_NAMES+=("$name")
-        else
-            # Display the skill information (original format)
+        elif [ $FULL_OUTPUT -eq 1 ]; then
+            # Display the skill information (detailed format)
             echo "📘 Skill: $name ($location)"
             echo "   Description: $description"
             echo ""
+        else
+            # Default: Store name and location together
+            SKILLS_WITH_LOCATION+=("$name|||$location")
         fi
     done
 }
@@ -117,8 +125,54 @@ process_skills_dir() {
 # Process user skills directory
 process_skills_dir "$USER_SKILLS_DIR" "user"
 
-# Process project skills directory
-process_skills_dir "$PROJECT_SKILLS_DIR" "project"
+# Check if project skills directory exists
+PROJECT_SKILLS_EXISTS=0
+if [ -d "$PROJECT_SKILLS_DIR" ]; then
+    PROJECT_SKILLS_EXISTS=1
+    # Process project skills directory
+    process_skills_dir "$PROJECT_SKILLS_DIR" "project"
+fi
+
+# For default output, process the SKILLS_WITH_LOCATION array
+if [ ${#SKILLS_WITH_LOCATION[@]} -gt 0 ]; then
+    # Sort by name (before the |||)
+    IFS=$'\n' SORTED_SKILLS=($(printf '%s\n' "${SKILLS_WITH_LOCATION[@]}" | sort))
+    unset IFS
+
+    # Build unique skills with combined locations
+    declare -a UNIQUE_SKILLS=()
+    prev_name=""
+    locations=""
+
+    for entry in "${SORTED_SKILLS[@]}"; do
+        name="${entry%%|||*}"
+        location="${entry##*|||}"
+
+        if [ "$name" != "$prev_name" ]; then
+            # New skill name found
+            if [ -n "$prev_name" ]; then
+                # Save previous skill
+                UNIQUE_SKILLS+=("$prev_name|||$locations")
+            fi
+            prev_name="$name"
+            locations="$location"
+        else
+            # Same skill, append location if not duplicate
+            if [[ ! "$locations" =~ $location ]]; then
+                locations="$locations, $location"
+            fi
+        fi
+    done
+
+    # Don't forget the last skill
+    if [ -n "$prev_name" ]; then
+        UNIQUE_SKILLS+=("$prev_name|||$locations")
+    fi
+fi
+
+# Sort the skills names alphabetically and remove duplicates
+IFS=$'\n' SKILLS_NAMES=($(sort -u <<<"${SKILLS_NAMES[*]}"))
+unset IFS
 
 # Count total skills from both directories
 # Note: Use -type d,l to count both directories and symlinks
@@ -155,8 +209,27 @@ elif [ $NAMES_ONLY -eq 1 ]; then
     for name in "${SKILLS_NAMES[@]}"; do
         echo "$name"
     done
-else
-    # Output human-readable format
+elif [ $FULL_OUTPUT -eq 1 ]; then
+    # Output human-readable format with totals
     echo "======================="
     echo "Total skills: $total_count (user: $user_count, project: $project_count)"
+else
+    # Default: Output names one per line with location
+    for entry in "${UNIQUE_SKILLS[@]}"; do
+        name="${entry%%|||*}"
+        location="${entry##*|||}"
+        # Replace "user" with "global" in location
+        location="${location//user/global}"
+        echo "$name ($location)"
+    done
+
+    # Add message about project skills directory
+    if [ $PROJECT_SKILLS_EXISTS -eq 0 ]; then
+        echo ""
+        echo "Note: No project skills directory (.claude/skills) found in current directory."
+        echo "Showing global skills only from ~/.claude/skills"
+        echo ""
+    fi
+
+    echo "use --full to get a detailed description of all the skills"
 fi

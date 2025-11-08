@@ -1,5 +1,5 @@
 ---
-name: "intelligent-textbook-creator"
+name: intelligent-textbook-creator
 description: "This skill should be used when someone wants to create an intelligent, interactive textbook using MkDocs Material theme with learning graphs, MicroSims (p5.js simulations), and AI-assisted content generation. Supports creating Level 2-5 intelligent textbooks following the five-level intelligence framework."
 ---
 

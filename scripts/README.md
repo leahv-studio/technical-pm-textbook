@@ -1,7 +1,12 @@
 # Shell Script to support Claude Skills for Intelligent Textbooks
 
-Utility shell scripts for working with Claude skills in this repository.
-These scripts should be installed in your path.  We recommend the following path:
+
+## Personal Binary Location
+
+Utility shell scripts for working with Claude skills are by default installed
+to each users personal binary directory.  This means that each user
+has complete control over what binaries are installed for their personal use.
+The personal binaries should be installed in your path.  We recommend the following path:
 
 `$HOME/.local/bin`
 
@@ -11,6 +16,16 @@ or alternatively:
 
 Note that these scripts are not specific to any specific intelligent book type.
 If you have scripts that are specific to your book type, they will be located in the book repo scripts file.
+
+The following should then be added to your UNIX shell startup file:
+
+```sh
+```
+
+## Symbolic Linking Strategy
+
+In order to create a high probability that your scripts are current, we suggest that you only
+place symbolic links into your personal binary 
 
 ## Metadata
 
@@ -25,6 +40,62 @@ quality_score: 95
 ---
 ```
 
+
+## Installation
+
+### install-scripts
+
+**NEW!** Automatically creates symbolic links for all scripts in this directory to `$HOME/.local/bin`, making them available as commands from anywhere in your terminal.
+
+**Usage:**
+```bash
+cd scripts
+./install-scripts
+```
+
+**What it does:**
+1. Creates `$HOME/.local/bin` directory if it doesn't exist
+2. Creates symbolic links for all executable scripts (removes `.sh` extension)
+3. Checks if `$HOME/.local/bin` is in your PATH
+4. Provides shell-specific instructions to add it to PATH if needed
+
+**After installation, you can run scripts from anywhere:**
+```bash
+# Instead of:
+./scripts/list-skills.sh
+
+# You can now run:
+list-skills
+```
+
+**Adding to PATH:**
+
+If the script detects that `$HOME/.local/bin` is not in your PATH, it will suggest adding one of these lines to your shell startup file:
+
+For **Bash** (add to `~/.bashrc` or `~/.bash_profile`):
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+For **Zsh** (add to `~/.zshrc`):
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+For **Fish** (add to `~/.config/fish/config.fish`):
+```fish
+set -gx PATH $HOME/.local/bin $PATH
+```
+
+After adding the line, run `source ~/.bashrc` (or the appropriate file) or restart your terminal.
+
+**Installed scripts:**
+- `book-status` - Check metadata status of book files
+- `install-claude-skills` - Install skills to `~/.claude/skills/`
+- `install-scripts` - This installation script (installs itself!)
+- `install-skills-command` - Install skills command
+- `list-skills` - List all available skills (text format)
+- `list-skills-format` - List skills in various formats
 
 ## Available Scripts
 
