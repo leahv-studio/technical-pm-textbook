@@ -877,3 +877,9 @@ You learned practical techniques for installing skills globally or project-local
 Finally, we addressed token management strategies essential for sustained productivity within Claude Pro's 4-hour usage windows and explored iterative prompt refinement techniques for systematically improving educational content generation quality. These capabilities form the foundation for the educational framework and learning graph concepts introduced in subsequent chapters.
 
 **Concepts covered:** Claude Skill ✓, Skill Definition File Structure ✓, YAML Frontmatter in Skills ✓, Skill Name and Description ✓, Skill License Information ✓, Allowed Tools in Skills ✓, Skill Workflow Instructions ✓, Installing a Claude Skill ✓, Listing Available Skills ✓, Invoking Skills with Slash Commands ✓, Skill Execution Context ✓, Claude Command ✓, Command Definition Files ✓, Installing Claude Commands ✓, Difference Between Skills & Commands ✓, Iterative Prompt Refinement ✓, Claude Token Limits ✓, Token Management Strategies ✓
+
+## References
+
+1. [Prompt Engineering in 2025: The Latest Best Practices](https://www.news.aakashg.com/p/prompt-engineering) - 2025 - Aakash Gupta - Comprehensive guide covering modern prompt engineering techniques including specificity, context provision, iterative refinement, and breaking down complex tasks, directly applicable to creating effective Claude Skills for educational content generation.
+
+2. [10 Best Practices for Production-Grade LLM Prompt Engineering](https://latitude-blog.ghost.io/blog/10-best-practices-for-production-grade-llm-prompt-engineering/) - 2024 - Latitude - Professional guide to treating prompts like software artifacts with version control and systematic testing, essential for maintaining high-quality skill definitions in intelligent textbook workflows.

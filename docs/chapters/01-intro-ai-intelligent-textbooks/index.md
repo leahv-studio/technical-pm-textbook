@@ -516,3 +516,11 @@ You learned about Anthropic's approach to AI development through constitutional 
 Finally, we examined prompt engineering fundamentals, exploring how explicit learning objectives, comprehensive context, structural specifications, and iterative refinement enable effective educational content generation. The principles and frameworks introduced here form the foundation for all subsequent chapters as you learn to leverage Claude Skills for creating comprehensive, interactive intelligent textbooks.
 
 **Concepts covered:** Artificial Intelligence ✓, Claude AI ✓, Large Language Models Overview ✓, Anthropic Claude Pro Account ✓, Claude Code Interface ✓, Intelligent Textbook ✓, Five Levels of Textbook Intelligence ✓, Level 1: Static Content ✓, Level 2: Hyperlinked Navigation ✓, Level 3: Interactive Elements ✓, Level 4: Adaptive Content ✓, Level 5: AI Personalization ✓, Prompt Engineering ✓, Prompt Design Principles ✓, Educational Content Prompts ✓
+
+## References
+
+1. [Models overview](https://docs.claude.com/en/docs/about-claude/models) - 2024 - Anthropic - Official documentation covering the Claude model family, including specifications for Claude Sonnet 4.5, Haiku 4.5, and Opus 4.1, with guidance on selecting the best model for different use cases and pricing information relevant to intelligent textbook creation workflows.
+
+2. [Constitutional AI: Harmlessness from AI Feedback](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback) - 2022-12-15 - Anthropic - Seminal research paper introducing Constitutional AI methodology for training AI systems through self-improvement using principles rather than extensive human feedback, foundational to understanding how Claude generates pedagogically appropriate educational content.
+
+3. [Prompt Engineering Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) - 2024 - DAIR.AI - Comprehensive open-source repository containing guides, papers, lessons, and resources for prompt engineering with large language models, essential reading for crafting effective educational content generation prompts and understanding LLM capabilities.

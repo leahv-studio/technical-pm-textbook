@@ -579,3 +579,11 @@ Key takeaways include:
 - GitHub Pages deploys MkDocs sites automatically with CDN-backed global hosting
 
 These tools form the foundation for all subsequent intelligent textbook development activities. The next chapter will introduce learning graphs and concept mapping, building on this platform to create structured knowledge representations that guide both content creation and student learning pathways.
+
+## References
+
+1. [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) - 2024 - Martin Donath - Official documentation for Material for MkDocs theme, enabling creation of professional static documentation sites in minutes with built-in search, social integration, support for 10,000+ icons, and customization options without requiring HTML, CSS, or JavaScript knowledge.
+
+2. [Markdown and Visual Studio Code](https://code.visualstudio.com/docs/languages/markdown) - 2024 - Microsoft - Official VS Code documentation covering markdown editing features including document outlines, real-time preview, math formula support, drag-and-drop image insertion, and extensions for enhanced markdown authoring workflows.
+
+3. [How do I use GitHub Pages?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Using_Github_pages) - 2024 - MDN Web Docs - Comprehensive tutorial on deploying websites to GitHub Pages, covering repository configuration, branch selection, and automated deployment workflows essential for publishing MkDocs-based intelligent textbooks.

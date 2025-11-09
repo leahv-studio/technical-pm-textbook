@@ -709,9 +709,8 @@ By applying these architectural principles and development practices, you can cr
 4. **Install skills both globally and project-specifically** and test execution from different directories
 5. **Debug a failing skill** by analyzing error messages and adding validation checks
 
-## Additional Resources
+## References
 
-- [GitHub Git Handbook](https://guides.github.com/introduction/git-handbook/)
-- [pip Documentation](https://pip.pypa.io/)
-- [Python Virtual Environments Guide](https://docs.python.org/3/tutorial/venv.html)
-- [Claude Code Documentation](https://docs.claude.com/claude-code)
+1. [Intro to Github for version control](https://ourcodingclub.github.io/tutorials/git/) - 2024 - Coding Club - Comprehensive tutorial covering Git fundamentals for version control, explaining how to track changes, collaborate on projects, and manage repositories, with practical examples for scientific and educational content development workflows.
+
+2. [pip Documentation](https://pip.pypa.io/) - 2024 - Python Packaging Authority - Official documentation for pip, Python's package installer, covering installation, dependency management, requirements files, and virtual environment integration essential for managing Python scripts used in Claude Skills.

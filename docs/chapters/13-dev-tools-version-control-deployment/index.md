@@ -1646,3 +1646,9 @@ By completing this chapter and capstone project, you have demonstrated proficien
 - Publishing educational content to production web platforms
 
 You are now equipped to independently create intelligent, AI-enhanced textbooks that advance educational outcomes through structured knowledge graphs, interactive simulations, and adaptive learning resources.
+
+## References
+
+1. [Bash Scripting Tutorial – Linux Shell Script and Command Line for Beginners](https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/) - 2024 - freeCodeCamp - Comprehensive tutorial covering Bash scripting fundamentals including variables, command execution, input/output handling, and debugging techniques, essential for automating intelligent textbook build and deployment workflows.
+
+2. [Automating Tasks With Bash Scripts](https://linuxhandbook.com/bash-automation/) - 2024 - Linux Handbook - Practical guide to creating Bash automation scripts with real-world examples including user management, backup automation, and system administration tasks, demonstrating automation principles applicable to textbook development workflows and skill installation.

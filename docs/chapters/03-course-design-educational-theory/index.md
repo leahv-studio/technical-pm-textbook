@@ -674,3 +674,9 @@ We explored the six cognitive levels—Remember, Understand, Apply, Analyze, Eva
 These educational frameworks provide the foundation for learning graph generation in subsequent chapters, ensuring AI-assisted content creation produces pedagogically sound, well-structured intelligent textbooks aligned with established instructional design principles.
 
 **Concepts covered:** Course Description ✓, Target Audience Definition ✓, Course Prerequisites ✓, Main Topics Covered ✓, Topics Excluded from Course ✓, Learning Outcomes ✓, Bloom's Taxonomy ✓, Bloom's 2001 Revision ✓, Remember (Cognitive Level 1) ✓, Understand (Cognitive Level 2) ✓, Apply (Cognitive Level 3) ✓, Analyze (Cognitive Level 4) ✓, Evaluate (Cognitive Level 5) ✓, Create (Cognitive Level 6) ✓, Action Verbs for Learning Outcomes ✓, Course Description Quality Score ✓, Assessing Course Descriptions ✓
+
+## References
+
+1. [Bloom's Taxonomy Revised](https://thesecondprinciple.com/essential-teaching-skills/blooms-taxonomy-revised/) - 2024 - The Second Principle - Comprehensive educational resource examining the 2001 Anderson and Krathwohl revision of Bloom's Taxonomy, comparing classic and revised frameworks with detailed definitions and performance verbs for each cognitive level, essential for writing measurable learning outcomes.
+
+2. [The ADDIE Model Explained: Evolution, Steps, and Applications for 2025](https://research.com/education/the-addie-model) - 2025 - Research.com - Detailed analysis of the ADDIE instructional design framework (Analyze, Design, Develop, Implement, Evaluate) with historical context and modern applications, providing systematic course development methodology that complements the intelligent textbook creation workflow.

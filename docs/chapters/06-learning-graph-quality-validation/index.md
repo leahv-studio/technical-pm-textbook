@@ -657,3 +657,9 @@ Key takeaways for maintaining high-quality learning graphs:
 Learning graph validation is iterative. Your first quality score may be low, but systematic application of the techniques in this chapter will guide improvements. Track your quality scores over time, targeting incremental increases until you achieve publication-ready scores above 85.
 
 With a validated, high-quality learning graph in hand, you're ready to proceed to the next phase: converting your graph data to visualization formats and generating the rich content that will bring your intelligent textbook to life.
+
+## References
+
+1. [Topological Sorting](https://www.geeksforgeeks.org/dsa/topological-sorting/) - 2024 - GeeksforGeeks - Comprehensive tutorial on topological sorting algorithms including both DFS and BFS (Kahn's Algorithm) approaches for ordering DAG vertices, essential for understanding how to validate learning graph structure and generate valid prerequisite-respecting learning sequences.
+
+2. [Introduction to Directed Acyclic Graph](https://www.geeksforgeeks.org/dsa/introduction-to-directed-acyclic-graph/) - 2024 - GeeksforGeeks - Educational resource explaining DAG properties, cycle detection algorithms, and common applications in scheduling and prerequisite management, providing theoretical foundation for learning graph quality validation techniques.

@@ -824,3 +824,7 @@ We examined the CSV file format specification encoding learning graphs with Conc
 Finally, we explored how concepts stratify into foundational, prerequisite, and advanced tiers based on dependency depth, and introduced taxonomy categorization for quality analysis and chapter organization. These concept enumeration and dependency mapping skills provide the foundation for the quality validation and learning graph generation workflows in subsequent chapters.
 
 **Concepts covered:** Concept Enumeration Process ✓, Generating 200 Concepts ✓, Concept Label Requirements ✓, Title Case Convention ✓, Maximum Character Length ✓, Concept Granularity ✓, Atomic Concepts ✓, Dependency Mapping Process ✓, CSV File Format for Graphs ✓, Pipe-Delimited Dependencies ✓, ConceptID Field ✓, ConceptLabel Field ✓, Dependencies Field ✓, Foundational Concepts ✓, Prerequisite Concepts ✓, Advanced Concepts ✓, Taxonomy ✓, Concept Categorization ✓
+
+## References
+
+1. [Path-Based Recommender System for Learning Activities Using Knowledge Graphs](https://www.mdpi.com/2078-2489/14/1/9) - 2023-01-09 - MDPI Information - Research paper presenting a novel path-based recommendation system using knowledge graphs to suggest adequate learning activities through concept dependency relationships, demonstrating practical applications of prerequisite-aware learning pathway generation in educational systems.

@@ -805,3 +805,9 @@ Key concepts covered in this chapter:
 - **Interactive controls (buttons)** trigger discrete actions and state transitions
 - **MicroSim metadata** follows Dublin Core standards for discovery, cataloging, and LMS integration
 - **Educational simulation design principles** guide creation of pedagogically effective interactive elements
+
+## References
+
+1. [p5.js](https://p5js.org/) - 2024 - Processing Foundation - Official website for p5.js JavaScript library for creative coding, providing comprehensive documentation, tutorials, examples, and educational resources for building interactive visualizations and simulations accessible in web browsers, foundational to MicroSim development.
+
+2. [Improving Science and Math Education Using p5.js](https://medium.com/processing-foundation/improving-science-and-math-education-using-p5-js-d434beea465c) - 2024 - Processing Foundation - Article exploring p5.js potential for creating interactive educational visualizations and simulations with embedded iframe exports, demonstrating practical applications for enhancing STEM education through explorable explanations and visual learning tools.

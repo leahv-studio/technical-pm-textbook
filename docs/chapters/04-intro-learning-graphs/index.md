@@ -491,3 +491,9 @@ We explored concept nodes with their atomic granularity principles and dependenc
 Finally, we addressed practical Claude usage optimization for learning graph generation, exploring how 4-hour usage windows, token budgeting across project phases, and chapter sizing decisions impact sustainable textbook development workflows. These foundations prepare you for Chapter 5's deep dive into the mechanics of concept enumeration and dependency mapping.
 
 **Concepts covered:** Learning Graph ✓, Concept Nodes in Learning Graphs ✓, Dependency Edges in Learning Graphs ✓, Directed Acyclic Graph (DAG) ✓, Prerequisite Relationships ✓, Concept Dependencies ✓, Learning Pathways ✓, 4-Hour Usage Windows ✓, Claude Pro Limitations ✓, Optimizing Claude Usage ✓, Content Generation Process ✓, Chapter Structure ✓
+
+## References
+
+1. [The Theory Underlying Concept Maps and How to Construct Them](https://cmap.ihmc.us/docs/theory-of-concept-maps) - 2008 - Joseph D. Novak & Alberto J. Cañas - Foundational paper explaining the theoretical basis for concept mapping rooted in Ausubel's learning psychology, detailing how hierarchical concept structures facilitate meaningful learning, directly applicable to understanding learning graph design principles.
+
+2. [A systematic literature review of knowledge graph construction and application in education](https://pmc.ncbi.nlm.nih.gov/articles/PMC10847940/) - 2024 - PMC - Comprehensive review examining knowledge graph methodologies and applications in personalized learning, curriculum design, concept mapping, and educational content recommendation systems, providing research-based validation for learning graph approaches in intelligent textbooks.

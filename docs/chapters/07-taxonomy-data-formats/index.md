@@ -1084,3 +1084,11 @@ Key takeaways:
 - **Data flows CSV → validation → JSON → visualization**: Each stage builds on the previous
 
 With validated learning graphs converted to visualization-ready JSON format, you're prepared to deploy interactive graph viewers that enable students and instructors to explore concept dependencies visually. The next chapters will cover visualization implementation, chapter structure generation, and content creation workflows that transform your learning graph into a complete intelligent textbook.
+
+## References
+
+1. [vis-network documentation](https://visjs.github.io/vis-network/docs/) - 2024 - vis.js - Official documentation for the vis-network JavaScript library used to create interactive, customizable network visualizations in browsers, supporting thousands of nodes with clustering for larger datasets, essential for implementing learning graph viewers.
+
+2. [DCMI: Using Dublin Core](https://www.dublincore.org/specifications/dublin-core/usageguide/) - 2024 - Dublin Core Metadata Initiative - Official usage guide for Dublin Core metadata standards, explaining how to create descriptive records for information resources with the fifteen core metadata elements, ensuring professional metadata quality in learning graph JSON files.
+
+3. [Working with CSV and JSON Files in Python](https://dev.to/devasservice/working-with-csv-json-and-binary-files-in-python-2bge) - 2024-10-15 - DEV Community - Tutorial covering CSV and JSON file handling in Python using built-in libraries and pandas, with practical examples for data conversion workflows directly applicable to learning graph processing scripts.
