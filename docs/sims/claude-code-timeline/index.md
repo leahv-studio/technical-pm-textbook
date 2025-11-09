@@ -1,6 +1,6 @@
 # Evolution of AI: From Neural Networks to Claude Code
 
-An interactive timeline visualization chronicling 50 pivotal moments in artificial intelligence history, from the invention of the Perceptron in 1957 to the development of Claude Code Skills in 2025.
+An interactive timeline visualization chronicling 52 pivotal moments in artificial intelligence history, from the invention of the Perceptron in 1957 to the official announcement of Claude Skills in 2025.
 
 [Run the Claude Code Timeline](./main.html){ .md-button .md-button--primary }
 
@@ -12,7 +12,7 @@ This timeline MicroSim traces the remarkable journey of artificial intelligence 
 
 ### Timeline Scope
 
-The timeline covers **50 critical events** from 1957 to 2025, including:
+The timeline covers **52 critical events** from 1957 to 2025, including:
 
 - **Foundational Research**: Early neural networks, backpropagation, and deep learning revival
 - **Computer Vision Breakthroughs**: AlexNet, ResNet, and the ImageNet revolution
@@ -322,11 +322,15 @@ This timeline is particularly valuable for:
 
 49. [Timeline Generator Skill](https://dmccreary.github.io/claude-skills/skills/timeline-generator/) - 2025 - Claude Skills Docs - This skill for creating interactive historical timelines using vis-timeline.js with category filtering and rich context.
 
+50. [Claude Code 1.0 Released](https://www.anthropic.com/news/claude-code) - February 24, 2025 - Anthropic - Official production release of Claude Code, bringing AI pair programming with terminal integration, MCP support, and autonomous coding to developers worldwide.
+
+51. [Claude Skills Announcement](https://www.claude.com/blog/skills) - October 16, 2025 - Claude Blog - Official announcement of Claude Skills, formalizing the extension framework for custom autonomous agents and specialized workflows across domains.
+
 ### Additional Resources
 
-50. [The State of AI Report 2024](https://www.stateof.ai/) - 2024 - State of AI - Comprehensive annual report covering AI research, industry, politics, safety, and predictions for future developments.
+52. [The State of AI Report 2024](https://www.stateof.ai/) - 2024 - State of AI - Comprehensive annual report covering AI research, industry, politics, safety, and predictions for future developments.
 
-51. [AI Index Report 2024](https://aiindex.stanford.edu/report/) - 2024 - Stanford HAI - Detailed analysis of AI progress across technical performance, economic impact, policy, and ethical considerations.
+53. [AI Index Report 2024](https://aiindex.stanford.edu/report/) - 2024 - Stanford HAI - Detailed analysis of AI progress across technical performance, economic impact, policy, and ethical considerations.
 
 ## Related Timelines
 
