@@ -1,67 +1,169 @@
-# List of Skills for Generating Intelligent Books
+# Skill Descriptions
 
-## Setting up a book structure on GitHub
+This page provides an overview of all available Claude skills for generating intelligent, interactive educational textbooks.
 
-TODO - create a new skill that will generate high-quality textbook structure including:
+## Complete Workflow Skills
 
-1. Files for front and back matter (about, faq, glossary, referenced, license etc.)
-2. A folder for each chapter in /docs/chapters/01-NAME/index.md
+### Intelligent Textbook
+A comprehensive 12-step workflow for generating complete intelligent, interactive textbooks from course description through concept mapping, dependency graphs, taxonomies, and interactive content creation.
+[Read full description](./intelligent-textbook.md)
 
-## Generating a high-quality course descriptions
+### Intelligent Textbook Creator
+Guide the creation of intelligent textbooks using MkDocs with Material theme, learning graphs, MicroSims, and AI-assisted content generation workflows supporting Level 2-5 intelligence frameworks.
+[Read full description](./intelligent-textbook-creator.md)
 
-Create a high-quality course description tha follows the 2001 Bloom Taxonomy guidelines.
-This skill can create a new course-description.md file, suggest changes to an existing course
-description file and create a quality score (1-100) on how well the course description conforms to the intelligent book guidelines.
+## Course Foundation Skills
 
-**Location:** [https://github.com/dmccreary/claude-skills/tree/main/skills/course-description-analyzer](https://github.com/dmccreary/claude-skills/tree/main/skills/course-description-analyzer)
-**Status:** Done
+### Course Description Analyzer
+Create, validate, and score course descriptions following the 2001 Bloom's Taxonomy guidelines with quality assessment (1-100) and improvement suggestions.
+[Read full description](./course-description-analyzer.md)
 
-[Detailed Description](./couse-description-analizer.md)
+### Learning Graph Generator
+Generate comprehensive learning graphs with 200 concepts showing prerequisite dependencies as directed acyclic graphs (DAGs) with taxonomy categorization and quality validation.
+[Read full description](./learning-graph-generator.md)
 
-[Sample Skill Execution Log](./prompts/course-description-skill.md)
+## Content Generation Skills
 
-## Generating a Learning Graph
+### Book Chapter Generator
+Design optimal chapter structures for intelligent textbooks by analyzing course descriptions, learning graphs, and concept dependencies to distribute content evenly across 6-20 chapters.
+[Read full description](./book-chapter-generator.md)
 
-This skill generates a learning graph which is the foundational data structure used by intelligent textbooks.
+### Chapter Content Generator
+Generate comprehensive chapter content for intelligent textbooks at appropriate reading levels with rich non-text elements including diagrams, infographics, and MicroSims.
+[Read full description](./chapter-content-generator.md)
 
-See [Read about the Learning Graph Generator](./learning-graph-generator.md)
+### Glossary Generator
+Automatically generate comprehensive glossaries from learning graph concept lists with ISO 11179-compliant definitions that are precise, concise, distinct, non-circular, and free of business rules.
+[Read full description](./glossary-generator.md)
 
-## Generating Chapter Content
+### FAQ Generator
+Generate comprehensive Frequently Asked Questions from course content, learning graphs, concept lists, MicroSims, and glossary terms to prepare content for chatbot integration.
+[Read full description](./faq-generator.md)
 
-TODO
+### Reference Generator
+Generate curated, verified reference lists for textbooks with level-appropriate resources (10 for junior-high, 20 for senior-high, 30 for college, 40 for graduate) formatted with links and relevance descriptions.
+[Read full description](./reference-generator.md)
 
-## Generating tables, charts, maps and timelines
+## Assessment Skills
 
-TODO
+### Quiz Generator
+Generate interactive multiple-choice quizzes aligned to learning graph concepts and distributed across Bloom's Taxonomy cognitive levels with quality distractors and comprehensive explanations.
+[Read full description](./quiz-generator.md)
 
-## Generating interactive info-graphics
+## Visualization Skills
 
-TODO
+### MicroSim P5
+Create interactive educational MicroSims using the p5.js JavaScript library with distinct drawing and control regions for browser-based learning simulations.
+[Read full description](./microsim-p5.md)
 
-## Generating MicroSims
+### Mermaid Diagram Generator
+Generate interactive workflow diagrams using Mermaid.js for flowcharts, process diagrams, decision trees, and algorithm visualizations with colorful backgrounds and 16-point fonts.
+[Read full description](./mermaid-generator.md)
 
-This simulation creates an interactive simulation using the powerful p5.js JavaScript library.
+### Bubble Chart Generator
+Create interactive bubble chart visualizations using Chart.js for priority matrices (Impact vs Effort, Risk vs Value) and multi-dimensional data analysis.
+[Read full description](./bubble-chart-generator.md)
 
-[Read about the P5 MicroSim Generator](./microsim-p5.md)
+### Timeline Generator
+Generate interactive timeline visualizations using vis-timeline.js for historical timelines, project schedules, event sequences, and chronological data with category filtering.
+[Read full description](./timeline-generator.md)
 
-## Generating a Glossary of Terms
+### Venn Diagram Generator
+Create interactive Venn diagram visualizations using venn.js with educational tooltips (not size values) that integrate with glossary definitions for consistent learning experiences.
+[Read full description](./venn-diagram-generator.md)
 
-Having a detailed glossary of terms is critical for high-quality textbooks.
+### Vis-Network MicroSim Generator
+Create educational MicroSims using vis-network.js for interactive network and graph visualizations including learning graphs, concept dependencies, and relationship-based data.
+[Read full description](./vis-network.md)
 
-[Read about the Glossary Generator](./glossary-generator.md)
+## Utility Skills
 
-## Generating FAQs
+### Install Learning Graph Viewer
+Install an interactive learning graph viewer application into intelligent textbook projects with search, filtering, and statistics capabilities for exploring concept dependencies.
+[Read full description](./install-learning-graph-viewer.md)
 
-[FAQ Generator](./faq-generator.md)
+## Hardware/Physical Computing Skills
 
-## Generating Quizzes and Assessments
+### Moving Rainbow
+Generate MicroPython programs for the Moving Rainbow educational project using Raspberry Pi Pico with NeoPixel LED strips and button controls for hands-on learning.
+[Read full description](./moving-rainbow.md)
 
-[Quiz Generator](./quiz-generator.md)
+## Educational Framework
 
-## Adding experience API (xAPI) to your interactive elements
+All skills follow these educational principles:
 
-TODO
+- **Bloom's Taxonomy (2001)**: Six cognitive levels (Remember, Understand, Apply, Analyze, Evaluate, Create)
+- **ISO 11179 Standards**: Metadata registry standards for glossary definitions
+- **Learning Graphs**: Directed acyclic graphs (DAGs) showing concept prerequisites
+- **Five Intelligence Levels**: From static text (L1) to AI-powered personalization (L5)
+- **MicroSim Pattern**: Standardized interactive simulations for educational content
+- **Accessibility**: WCAG-compliant design with keyboard navigation and screen reader support
 
-## Send out announcements when your book is ready
+## Technology Stack
 
-TODO
+These skills leverage modern web technologies:
+
+- **MkDocs with Material Theme**: Static site generation and documentation
+- **p5.js**: Interactive educational simulations
+- **vis-network.js, vis-timeline.js**: Network and timeline visualizations
+- **Chart.js**: Data visualization and charts
+- **Mermaid.js**: Workflow and process diagrams
+- **venn.js & D3.js**: Set theory visualizations
+- **Python**: Data processing and validation scripts
+- **GitHub Pages**: Free hosting and deployment
+
+## Getting Started
+
+To use these skills with Claude Code:
+
+1. Install skills globally or per-project using `/scripts/install-claude-skills.sh`
+2. View available skills with `/skills` command
+3. Invoke skills by name when working on educational content
+4. Skills coordinate automatically - e.g., glossary-generator creates definitions that venn-diagram-generator uses
+
+## Skill Dependencies
+
+Some skills build on others:
+
+```
+intelligent-textbook (orchestrator)
+  ├─ course-description-analyzer
+  ├─ learning-graph-generator
+  │    ├─ glossary-generator
+  │    └─ install-learning-graph-viewer
+  ├─ book-chapter-generator
+  ├─ chapter-content-generator
+  │    ├─ microsim-p5
+  │    ├─ mermaid-generator
+  │    ├─ bubble-chart-generator
+  │    ├─ timeline-generator
+  │    ├─ venn-diagram-generator
+  │    └─ vis-network
+  ├─ quiz-generator
+  ├─ faq-generator
+  └─ reference-generator
+```
+
+## Quality Standards
+
+All content generated by these skills follows:
+
+- **Comprehensive Coverage**: All enumerated concepts explained
+- **Logical Progression**: Content follows dependency graph
+- **Multiple Bloom's Levels**: All cognitive levels addressed
+- **Interactive Elements**: Includes MicroSims and activities
+- **Clear Objectives**: Measurable goals for every section
+- **Scaffolded Learning**: Builds from simple to complex
+- **Visual Richness**: Diagrams, charts, visualizations
+- **Practice Opportunities**: Exercises at different levels
+- **Assessment Alignment**: Tests match objectives
+- **Professional Presentation**: Clean, consistent formatting
+
+## Contributing
+
+Skills are defined in `/skills/[skill-name]/SKILL.md` with:
+- YAML frontmatter (name, description, license)
+- Workflow steps and instructions
+- Supporting assets (templates, scripts, references)
+
+See the [Skill Creator Guide](https://github.com/dmccreary/claude-skills) for details on creating new skills.
