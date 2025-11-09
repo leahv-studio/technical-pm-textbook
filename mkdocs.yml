@@ -50,6 +50,8 @@ nav:
     - Concept Taxonomy: learning-graph/concept-taxonomy.md
     - Taxonomy Distribution Report: learning-graph/taxonomy-distribution.md
     - Glossary Quality Report: learning-graph/glossary-quality-report.md
+    - FAQ Quality Report: learning-graph/faq-quality-report.md
+    - FAQ Coverage Gaps: learning-graph/faq-coverage-gaps.md
     - Progress Report: learning-graph/progress.md
     - Usage Limits: claude-usage-limits.md
 
@@ -78,6 +80,7 @@ nav:
     - prompts/generate-content-for-chapters-1-5.md
 
   - Glossary: glossary.md
+  - FAQ: faq.md
   - References: references.md
   - License: license.md
   - Contact: contact.md
