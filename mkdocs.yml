@@ -108,6 +108,12 @@ nav:
     - prompts/generate-content-for-6-7.md
     - prompts/generate-content-for-chapters-1-5.md
     - prompts/quiz-generation.md
+    - prompts/add-events-to-timeline.md
+    - prompts/generate-chapter-12-content-log.md
+    - prompts/generate-claude-skill-timeline.md
+    - prompts/generate-references.md
+    - prompts/generate-timeline-skill.md
+    - prompts/suggest-timeline-placement.md
   - Glossary: glossary.md
   - FAQ: faq.md
   - References: references.md
