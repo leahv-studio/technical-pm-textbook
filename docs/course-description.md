@@ -6,10 +6,10 @@ quality_score: 95
 # Using Claude Skills to Create Intelligent Textbooks
 
 **Title:** Using Claude Skills to Create Intelligent Textbooks
-
 **Target Audience:** Professional development
+**Reading Level:** undergrad college student
 
-**Prerequisites:**
+## Prerequisites:
 
 - Basic understanding of programming
 - Basics of prompt engineering
