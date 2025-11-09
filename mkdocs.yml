@@ -105,7 +105,7 @@ nav:
     - prompts/generate-chapter-structure.md
     - prompts/generate-content-for-6-7.md
     - prompts/generate-content-for-chapters-1-5.md
-
+    - prompts/quiz-generation.md
   - Glossary: glossary.md
   - FAQ: faq.md
   - References: references.md
