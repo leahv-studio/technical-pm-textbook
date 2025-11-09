@@ -124,6 +124,11 @@ nav:
     - prompts/generate-references.md
     - prompts/generate-timeline-skill.md
     - prompts/suggest-timeline-placement.md
+    - prompts/course-description-quality-infographic.md
+    - prompts/create-infographic-generator-pi-skill.md
+    - prompts/generate-diagram-skill-priorities.md
+    - prompts/infographic-candidates-list.md
+    - prompts/update-skill-descriptions.md
   - Details Analysis: details-analysis.md
   - Glossary: glossary.md
   - FAQ: faq.md
