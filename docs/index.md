@@ -8,14 +8,15 @@ og-image: img/cover.png
 .md-content__inner h1 {display: none !important;}
 </style>
 # Claude Skills for Intelligent Textbooks
-
+![Cover](./img/cover.png)
 Welcome to our website for Anthropic Claude Skills for Intelligent Textbooks.
 
 These skills are designed to help teachers and textbook authors generate high-quality content including MicroSims for Intelligent Textbooks.
 
-There are two key resources.
+There are three key section.
 
 1. [Getting Started](./getting-started.md) - This section describes how to install these skills on a Mac, Windows or UNIX system including how to install a skill for all your projects or just a single project.
+2. [Chapters](./chapters/index.md) - 13 chapters about using skills to create intelligent textbooks
 2. [List of Skills](./list-of-skills.md) - This is a list of the skills we have created to support
 intelligent textbooks.  It includes skills for things such as:
 
