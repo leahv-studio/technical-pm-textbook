@@ -79,7 +79,7 @@
            + (**bold**)
         46 +  - **Lists**: Unordered lists use dashes, asterisks, or plus signs, while
            +  ordered lists use numbers followed by periods
-        47 +  - **Links**: Created with bracket syntax [link text](URL) for inline 
+        47 +  - **Links**: Created with bracket syntax `[link text](URL)` for inline 
            + links
         48 +  - **Code**: Inline code uses backticks (`code`) while code blocks use 
            + triple backticks with optional language specification

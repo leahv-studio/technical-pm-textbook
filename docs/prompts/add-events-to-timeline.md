@@ -93,7 +93,7 @@
          +   pivotal moments in artificial intelligence history, from the invention of
          +   the Perceptron in 1957 to the official release of Claude Code in 2025.
        4    
-       5    `[Run the Claude Code Timeline](./main.html){ .md-button 
+       5    `[Run the Claude Code Timeline](../sims/claude-code-timeline/main.html){ .md-button
            .md-button--primary }
        6    
 
@@ -272,7 +272,7 @@
          +   the Perceptron in 1957 to the official announcement of Claude Skills
          +   in 2025.
        4    
-       5    `[Run the Claude Code Timeline](./main.html){ .md-button 
+       5    `[Run the Claude Code Timeline](../sims/claude-code-timeline/main.html){ .md-button
            .md-button--primary }
        6    
 

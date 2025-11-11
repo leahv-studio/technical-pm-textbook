@@ -186,11 +186,11 @@
      Claude Skills.
      ## Chapter Overview
      1. `[Introduction to AI and Intelligent 
-     Textbooks](01-intro-ai-intelligent-textbooks/index.md)` - This chapter introduces
+     Textbooks](../chapters/01-intro-ai-intelligent-textbooks/index.md)` - This chapter introduces
      artificial intelligence fundamentals, Claude AI, and the concept of intelligent
      textbooks with their five levels of intelligence.
      2. `[Getting Started with Claude and 
-     Skills](02-getting-started-claude-skills/index.md)` - This chapter covers Claude Pro
+     Skills](../chapters/02-getting-started-claude-skills/index.md)` - This chapter covers Claude Pro
      accounts, the Claude Code interface, and introduces the Claude Skills system
      including skill definition, installation, and basic usage.
      … +32 lines (ctrl+o to expand)
