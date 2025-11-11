@@ -114,9 +114,11 @@ Generate comprehensive educational content based on the chapter outline, concept
    - Build on previously explained concepts
 
 3. **Non-text elements:**
-   - Goal: No more than 3 paragraphs of pure text without a non-text element
-   - Use diverse element types (don't repeat the same type)
-   - Place special focus on interactive elements (infographics, MicroSims)
+   - Goal: No more than 3 paragraphs of pure text without a non-text element.
+   - Use diverse element types (don't repeat the same type).
+   - Place special focus on interactive elements (infographics, MicroSims).
+   - We appropriate, render equations in LaTeX surrounded by single dollar signs.
+   - See the math-equations.md file in the references for proper formatting of equations.
 
 **Non-text element types:**
 
@@ -126,13 +128,14 @@ Elements embedded directly in markdown (no `<details markdown="1">` block):
 
 Elements requiring `<details markdown="1">` specification blocks:
 3. **Diagrams/drawings** - System architectures, relationships, data flows
-4. **Interactive infographics** - Clickable concept maps, progressive disclosure
+4. **Interactive infographics** - Clickable concept maps, progressive disclosure, hovers with definitions appearing in tooltips consistent with the glossary
 5. **MicroSims** - p5.js simulations with interactive controls
 6. **Charts** - Bar, line, pie charts with quantitative data
 7. **Timelines** - Historical progression, sequential events
 8. **Maps** - Geographic distribution with movement arrows
 9. **Workflow diagrams** - Business processes with hover text
 10. **Graph data models** - Entity relationships using vis-network
+11. **Causal Loop Diagrams** - used in systems thinking and explaining causality
 
 For each `<details markdown="1">` block element, use this structure:
 
@@ -181,6 +184,7 @@ After generating chapter content, verify all concepts have been covered.
    - Add content covering those concepts
    - Integrate them naturally into existing structure
 5. Update the chapter index.md file with the complete generated content
+6. Make **Absolutely Sure** that the content has been written to the chapter index.md file.  Do a word count to make sure that **ALL* the content is present and that the TODO has been removed.
 
 **Actions:**
 - Replace the "TODO: Generate Chapter Content" placeholder with generated content
