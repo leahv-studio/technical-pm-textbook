@@ -22,16 +22,34 @@ Use this skill when:
 
 ## Workflow
 
-### Step 1: Verify Project Structure
+### Step 1: Install the Diagram Report Generator Script
+
+If the project does not already have the diagram report generator script, install it from the skill's bundled resources:
+
+1. Check if `src/diagram-reports/diagram-report.py` exists in the project
+2. If it doesn't exist:
+   - Create the directory: `mkdir -p src/diagram-reports`
+   - Copy the script from this skill's `scripts/diagram-report.py` to `src/diagram-reports/diagram-report.py`
+3. If it already exists, verify it's up to date (optionally show the user a diff if there are differences)
+
+Example installation:
+```bash
+# Create directory if needed
+mkdir -p src/diagram-reports
+
+# Copy script from skill (use Read tool to get script content, then Write tool to create file)
+# The script is located in this skill's scripts/diagram-report.py
+```
+
+### Step 2: Verify Project Structure
 
 Before running the report generator, verify the project structure:
 
-1. Confirm the current working directory is the geometry-course root
-2. Check that `src/diagram-reports/diagram-report.py` exists
-3. Verify `docs/chapters/` contains chapter directories (format: `01-chapter-name`, `02-chapter-name`, etc.)
-4. Ensure `docs/learning-graph/` directory exists for output
+1. Confirm the current working directory is the geometry-course root (or any intelligent textbook project)
+2. Verify `docs/chapters/` contains chapter directories (format: `01-chapter-name`, `02-chapter-name`, etc.)
+3. Ensure `docs/learning-graph/` directory exists for output
 
-### Step 2: Run the Report Generator
+### Step 3: Run the Report Generator
 
 Execute the Python script to generate the reports:
 
@@ -52,7 +70,7 @@ The script will:
   - Estimated difficulty (Easy, Medium, Hard, Very Hard)
   - Learning objectives
 
-### Step 3: Verify Generated Reports
+### Step 4: Verify Generated Reports
 
 After running the script, verify two files were created in `docs/learning-graph/`:
 
@@ -71,7 +89,7 @@ After running the script, verify two files were created in `docs/learning-graph/
    - Learning objectives
    - Linked titles to source chapter sections
 
-### Step 4: Review Navigation Configuration
+### Step 5: Review Navigation Configuration
 
 The generated reports should already be linked in the MkDocs navigation. Verify the `mkdocs.yml` file contains these entries under the "Learning Graph" section:
 
@@ -83,7 +101,7 @@ The generated reports should already be linked in the MkDocs navigation. Verify 
 
 If these entries are missing, add them to the navigation structure.
 
-### Step 5: Preview the Reports
+### Step 6: Preview the Reports
 
 To view the generated reports:
 
@@ -188,3 +206,17 @@ This skill integrates with the broader intelligent textbook creation workflow:
 2. **Before review sessions**: Generate reports to identify gaps or inconsistencies
 3. **During planning**: Use difficulty distribution to balance implementation effort
 4. **For documentation**: Include reports in instructor guides or project documentation
+
+## Bundled Resources
+
+### scripts/diagram-report.py
+
+This skill includes the complete Python script for generating diagram and MicroSim reports. The script will be installed into the user's project at `src/diagram-reports/diagram-report.py` when the skill is first used.
+
+The script:
+- Analyzes all chapter markdown files in `docs/chapters/`
+- Extracts diagram and MicroSim specifications from `<details>` blocks
+- Calculates difficulty estimates based on UI complexity and features
+- Detects Bloom's Taxonomy levels from specification text
+- Generates both table and detailed report formats
+- Supports multiple output formats (markdown, CSV, HTML)
