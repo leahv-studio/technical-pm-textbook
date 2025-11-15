@@ -7,6 +7,9 @@ description: This skill analyzes or creates course descriptions for intelligent 
 
 ## Overview
 
+This Anthropic Claude Skill is the first step in the process of generating an intelligent textbook.
+The next Skill is the 'learning-graph-generator` Skill.
+
 Analyze or create high-quality course descriptions that contain all necessary elements for generating comprehensive learning graphs with 200+ concepts. Check the `/docs/course-description.md` file for completeness, quality, and alignment with 2001 Bloom's Taxonomy learning outcomes.
 
 ## Workflow Decision Tree
@@ -63,7 +66,7 @@ After creating the file, automatically proceed to **Step 2 (Analysis Workflow)**
 
 ## Step 2: Course Description Analysis
 
-Use this workflow when `/docs/course-description.md` exists.
+Use this workflow when `/docs/course-description.md` already exists.
 
 ### 2.1 Read the Course Description
 
@@ -110,9 +113,11 @@ Provide specific, actionable recommendations:
 - For Bloom's Taxonomy outcomes: Recommend specific verbs and topics
 - Prioritize suggestions that will have the most impact on reaching the goal of generating 200 concepts
 
-### 2.5 Assessment Report
+### 2.5 Course Description Assessment Report
 
-Generate a comprehensive report with:
+Use `mkdir -p docs/learning-graph` to create a `learning-graph` directory in the docs directory.
+
+Generate a comprehensive quality report on the course description and write it to `docs/learning-graph/course-description-assessment.md`
 
 1. **Overall Score**: X/100
 2. **Quality Rating**:
@@ -126,10 +131,25 @@ Generate a comprehensive report with:
 4. **Gap Analysis**: List of missing or weak elements
 5. **Improvement Suggestions**: Prioritized recommendations
 6. **Next Steps**:
-   - If score ≥ 75: Ready to proceed with learning graph generation
-   - If score < 75: Recommend addressing specific gaps before generating learning graph
+   - If score ≥ 85: Ready to proceed with learning graph generation
+   - If score < 85: Recommend addressing specific gaps before generating learning graph
 
-### 2.6 Concept Generation Readiness
+### 2.6 Update Course Description Metadata
+
+In this section NAME is the name of the course taken from the course description.
+QUALITY_SCORE is the score you computed for the course description.
+
+If it does not exist, add the following yml metadata at the top of the docs/course-description.md file:
+
+```yml
+---
+title: Course Description for Course NAME
+description: A detailed course description for NAME including overview, topics covered and learning objectives in the format of the 2001 Bloom Taxonomy
+quality_score: QUALITY_SCORE
+---
+```
+
+### 2.7 Concept Generation Readiness
 
 Assess whether the course description contains sufficient detail to generate 200 concepts:
 - Evaluate topic breadth and depth
@@ -137,11 +157,25 @@ Assess whether the course description contains sufficient detail to generate 200
 - Estimate potential concept count based on current content
 - Recommend additions if concept generation may fall short
 
-### Add course-description.md to mkdocs.yml Navigation
+### Add course-description.md and and the course-description-assessment.md to mkdocs.yml Navigation
 
 After the course-description.md file has been added to the /docs direction,
 ask the user if the new file should be added to the mkdocs.yml file.
 If the answer is yes, place the new file after the about.md file.
+
+```yml
+nav:
+   ...
+   About: about.md
+   Course Description: course-description.md
+   ...
+   Learning Graph:
+      Course Description Assessment: learning-graph/course-description-assessment.md
+```
+
+## Next Step
+
+For all users with a score over 85, ask if the `learning-graph-generator` skill should be run next.
 
 ## Best Practices
 
