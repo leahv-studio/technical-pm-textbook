@@ -225,12 +225,12 @@ def create_taxonomy_legend(color_config: dict = None, taxonomy_names: dict = Non
     names = taxonomy_names if taxonomy_names is not None else default_names
 
     print("\n## Taxonomy Color Legend\n")
-    print("| TaxonomyID | Category | Color |")
-    print("|------------|----------|-------|")
+    print("| Category | TaxonomyID | Color |")
+    print("|----------|------------|-------|")
     for tax_id in sorted(colors.keys()):
         name = names.get(tax_id, tax_id)
         color = colors[tax_id]
-        print(f"| {tax_id} | {name} | {color} |")
+        print(f"| {name} | {tax_id} | {color} |")
 
 
 if __name__ == "__main__":
