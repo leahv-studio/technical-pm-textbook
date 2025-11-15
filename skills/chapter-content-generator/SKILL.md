@@ -143,6 +143,7 @@ For each `<details markdown="1">` block element, use this structure:
 
 ```markdown
 #### Diagram: [Brief descriptive title]
+
 <details markdown="1">
     <summary>[Brief descriptive title]</summary>
     Type: [element-type]
@@ -152,6 +153,8 @@ For each `<details markdown="1">` block element, use this structure:
     Implementation: [Technology/approach]
 </details>
 ```
+
+Make SURE to put the level 4 header with the prefix `#### Diagram:` before the details.  This is REQUIRED!
 
 **Specification requirements:**
 - Detailed enough that another skill or developer can implement without additional context
