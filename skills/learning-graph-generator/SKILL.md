@@ -5,6 +5,8 @@ description: Generates a comprehensive learning graph from a course description,
 
 # Learning Graph Generator
 
+**Version:** 0.02
+
 You are tasked with generating a comprehensive high-quality learning graph from a course description.
 A learning graph is the foundational data structure for intelligent textbooks that can recommend learning paths.
 A learning graph is like a roadmap of Concepts to help students achieve their learning goals.
@@ -34,6 +36,8 @@ for the learning graph section:
 ```
 
 ## Step 0: Setup
+
+Tell the user that they are running the version graph generator and the version number above.
 
 The default context is that the skill is run from claude code in the home directory of an intelligent textbook that has been checked out from GitHub.
 There should be a docs directory with a standard mkdocs.yml file in the home git directory.
@@ -112,7 +116,7 @@ Evaluate the course description using this 100-point scoring system:
 - Award 0 points if element is missing
 - For Bloom's Taxonomy levels, require at least 3 specific, actionable outcomes for full points
 
-Tell user what their score was and suggest they improve the course description until the score goes above 70.
+Tell user what their score was and suggest they improve the course description until the score goes above 80.
 
 Save this report to [course-description-assessment.md](./course-description-assessment.md)
 
@@ -120,7 +124,7 @@ Save this report to [course-description-assessment.md](./course-description-asse
 
 ## Step 2: Generate Concept Labels
 
-Once approved, generate 200 concept labels from the course content:
+Once the course-description has been approved, generate 200 concept labels from the course content:
 
 **Requirements:**
 - Each Concept label must be in Title Case
@@ -141,6 +145,13 @@ Once approved, generate 200 concept labels from the course content:
 - Inform the user the file has been created
 - Tell the user they should view the list and add and remove concepts now
 - Tell the user it is best review the concept list before the next steps
+
+Now ask the user to take some time to manually review the entire list of concept labels.
+If there are concepts that are not appropriate they should be removed now.
+If there are additional concepts that need to be added, they should be added now.
+It will require a lot of extra tokens later to change the content later.
+This is an important review step to ensure the quality of the textbook.
+Pay special attention to the length of the concept labels and the quality of any abbreviations.
 
 ## Step 3: Generate Dependency Graph
 
@@ -390,9 +401,23 @@ Create a new `index.md` file in the learning-graph directory from the file index
 Customize the new index.md file to reflect the name of this intelligent book.  Look for values in all uppercase (TEXTBOOK_NAME)
 and replace them with the appropriate values.
 
-## Step 12: Completion
+## Step 12: Write session log
 
-Inform the user that the learning graph generation is complete! Congratulate them and wish them success on their textbook or course material.
+Export the session log to logs/learning-graph-generator-VERSION-DATE.md
+
+Where:
+
+1. VERSION is the version of this skill.
+2. DATE is today's date in ISO format yyyy-mm-dd.
+
+Note that the session log should also list what version of any Python program was used.
+For example, not what version of the csv-to-json.py Python program was used in the session log.
+This is important for debugging.
+
+## Step 13: Completion
+
+Inform the user that the learning graph generation is complete! Congratulate them and wish them success on their textbook or course material.  Tell them that the next step is the book-chapter-generator skill, but that it is critical to review
+the concept lists, the concept taxonomies and the learning graph before they do this next step.
 
 **Files created:**
 - [course-description-assessment.md](./course-description-assessment.md) - quality assessment of the course description
@@ -405,7 +430,6 @@ Inform the user that the learning graph generation is complete! Congratulate the
 - [taxonomy-distribution.md](./taxonomy-distribution.md) - Category distribution analysis
 - [index.md](./index.md) - Introduction page for the learning graph section
 
----
 
 ## Important Notes
 
