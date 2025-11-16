@@ -87,6 +87,8 @@ Here's the fundamental structure every p5.js sketch follows:
 - Global variables store state that persists across draw cycles
 - Event handlers respond to user interactions (mousePressed, keyPressed, etc.)
 
+#### Diagram: p5.js Architecture and Execution Model
+
 <details markdown="1">
     <summary>p5.js Architecture and Execution Model</summary>
     Type: diagram
@@ -149,6 +151,8 @@ The following shows a typical MicroSim file structure:
 
 Additional files may be present depending on the complexity of the simulation. Some MicroSims include separate CSS files for sophisticated styling, JSON data files for configuration, or supporting image assets. However, the three core files listed above are mandatory for all MicroSims in the intelligent textbook framework.
 
+#### Diagram: MicroSim File Relationship Diagram
+
 <details markdown="1">
     <summary>MicroSim File Relationship Diagram</summary>
     Type: diagram
@@ -209,6 +213,8 @@ Key requirements for the `main.html` structure:
 - Add comments explaining the simulation logic and algorithms
 - Set default parameter values that produce interesting behavior
 - Ensure the simulation starts in a meaningful state
+
+#### Diagram: Basic MicroSim Template Structure
 
 <details markdown="1">
     <summary>Basic MicroSim Template Structure</summary>
@@ -330,6 +336,8 @@ For responsive designs that adapt to different screen sizes, consider using CSS 
 ```
 
 This wrapper uses the "padding-bottom percentage trick" where the percentage is calculated as (height/width) × 100%. For a 1000×600 simulation, that's (600/1000) × 100% = 60%. The absolutely positioned iframe then fills this responsive container.
+
+#### Diagram: Responsive Iframe Embedding MicroSim
 
 <details markdown="1">
     <summary>Responsive Iframe Embedding MicroSim</summary>
@@ -503,6 +511,8 @@ function draw() {
 ```
 
 Effective button design for educational purposes requires attention to labeling, feedback, and state management. Button labels should use action verbs that clearly communicate what will happen ("Start Traversal" rather than "Go"). Visual feedback such as color changes, disabled states, or confirmation messages helps students understand the effects of their actions. For toggleable buttons, the label or appearance should reflect the current state, making it clear whether clicking will enable or disable a feature.
+
+#### Diagram: Algorithm Visualization with Step Controls MicroSim
 
 <details markdown="1">
     <summary>Algorithm Visualization with Step Controls MicroSim</summary>
@@ -741,6 +751,8 @@ Designing effective educational simulations requires balancing technical capabil
 **Encourage exploration through seeded randomness.** As discussed earlier, use seeded randomness to create variety while maintaining reproducibility. Provide a "Randomize" button that generates new scenarios with different seeds. Document interesting seed values that demonstrate specific concepts. This approach balances the engagement value of novelty with the pedagogical value of shared reference points.
 
 **Align with learning objectives.** Every MicroSim should map clearly to specific learning objectives from your course or chapter. The simulation should help students achieve outcomes like "explain the difference between X and Y," "predict the behavior of system Z under different conditions," or "analyze the trade-offs between approaches A and B." If you cannot articulate what learning objective a simulation addresses, reconsider whether it belongs in your textbook.
+
+#### Diagram: MicroSim Design Quality Checklist
 
 <details markdown="1">
     <summary>MicroSim Design Quality Checklist</summary>

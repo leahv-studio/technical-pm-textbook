@@ -98,6 +98,8 @@ python add-taxonomy.py learning-graph.csv learning-graph-with-taxonomy.csv
 
 The script prompts for taxonomy rules (keyword → TaxonomyID mappings) and applies them systematically, flagging ambiguous cases for manual review.
 
+#### Diagram: Adding Taxonomy to CSV Workflow Diagram
+
 <details markdown="1">
     <summary>Adding Taxonomy to CSV Workflow Diagram</summary>
     Type: workflow
@@ -196,6 +198,8 @@ The learning graph JSON schema specifies:
 - Metadata fields should follow Dublin Core standards (covered in next section)
 
 The `csv-to-json.py` script implements this schema validation automatically, rejecting CSV data that would produce invalid JSON and providing detailed error messages for corrections.
+
+#### Diagram: Learning Graph JSON Schema Diagram
 
 <details markdown="1">
     <summary>Learning Graph JSON Schema Diagram</summary>
@@ -376,6 +380,8 @@ Example edges section:
 The edges array defines the directed acyclic graph structure. vis-network renders these as arrows pointing from prerequisite to dependent concepts, creating the visual flow of the learning progression.
 
 For a 200-concept learning graph with an average of 3 dependencies per concept, expect approximately 600 edge objects in this array.
+
+#### Diagram: CSV to JSON Conversion Mapping Diagram
 
 <details markdown="1">
     <summary>CSV to JSON Conversion Mapping Diagram</summary>
@@ -594,6 +600,8 @@ Clear licensing enables:
 - Inclusion in open educational resource repositories
 - Compliance with institutional policies
 
+#### Diagram: Dublin Core Metadata Field Reference Card
+
 <details markdown="1">
     <summary>Dublin Core Metadata Field Reference Card</summary>
     Type: infographic
@@ -730,6 +738,8 @@ Relative Luminance = 0.2126 * R + 0.7152 * G + 0.0722 * B
 ```
 
 If luminance > 0.5, use black text; otherwise, use white text.
+
+#### Diagram: Color Accessibility Checker MicroSim
 
 <details markdown="1">
     <summary>Color Accessibility Checker MicroSim</summary>
@@ -1009,6 +1019,8 @@ output = {
 with open(output_file, 'w') as f:
     json.dump(output, f, indent=2)
 ```
+
+#### Diagram: Python Learning Graph Processing Pipeline
 
 <details markdown="1">
     <summary>Python Learning Graph Processing Pipeline</summary>

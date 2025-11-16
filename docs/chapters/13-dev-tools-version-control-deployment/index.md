@@ -68,6 +68,8 @@ The following features are particularly valuable for intelligent textbook develo
 - **Integrated terminal:** Run `mkdocs serve`, execute Python scripts, and manage dependencies
 - **Command palette (Cmd/Ctrl+Shift+P):** Quick access to all VS Code functionality
 
+#### Diagram: VS Code Interface Layout for Textbook Development
+
 <details markdown="1">
     <summary>VS Code Interface Layout for Textbook Development</summary>
     Type: diagram
@@ -229,6 +231,8 @@ A typical intelligent textbook development session might maintain three terminal
 1. **Development server terminal:** Running `mkdocs serve` continuously
 2. **Script execution terminal:** For running Python analysis scripts and skill invocations
 3. **Git operations terminal:** For staging commits and pushing changes
+
+#### Diagram: Terminal Workflow for Textbook Development
 
 <details markdown="1">
     <summary>Terminal Workflow for Textbook Development</summary>
@@ -510,6 +514,8 @@ Efficient navigation requires understanding project structure and using shortcut
   python analyze-graph.py learning-graph.csv quality-metrics.md
   popd                         # Return to previous location
   ```
+
+#### Diagram: Interactive Directory Navigation Practice MicroSim
 
 <details markdown="1">
     <summary>Interactive Directory Navigation Practice MicroSim</summary>
@@ -957,6 +963,8 @@ cd scripts
 install-claude-skills.sh
 ```
 
+#### Diagram: Permission Bits Visual Infographic
+
 <details markdown="1">
     <summary>Permission Bits Visual Infographic</summary>
     Type: infographic
@@ -1196,6 +1204,8 @@ ln -sf ~/Documents/textbook-project/skills/glossary-generator ~/.claude/skills/g
 # Ensure original skill directory has correct permissions
 chmod -R 755 ~/Documents/textbook-project/skills/
 ```
+
+#### Diagram: Skill Installation Workflow Diagram
 
 <details markdown="1">
     <summary>Skill Installation Workflow Diagram</summary>

@@ -61,6 +61,8 @@ A skill directory contains:
 
 The SKILL.md file serves as both the entry point for Claude and documentation for developers. Its YAML frontmatter defines metadata including name, description, and optionally allowed-tools to restrict which capabilities the skill can access. The markdown body contains the detailed workflow instructions that Claude executes when the skill is invoked.
 
+#### Diagram: Skill Directory Structure Diagram
+
 <details markdown="1">
     <summary>Skill Directory Structure Diagram</summary>
     Type: diagram
@@ -160,6 +162,8 @@ Reference files should be comprehensive enough to enable implementation without 
 ## Skill Testing and Debugging
 
 Effective testing and debugging practices are essential for developing reliable skills that handle edge cases, provide meaningful error messages, and produce consistent results across different contexts.
+
+#### Diagram: Skill Testing Workflow Diagram
 
 <details markdown="1">
     <summary>Skill Testing Workflow Diagram</summary>
@@ -279,6 +283,8 @@ File access permissions follow a least-privilege model where skills have:
 - **No access** to system directories, user home directory outside workspace, or sensitive file locations
 
 Skills should explicitly specify output directories and validate file paths before operations. When skills require access to directories outside default scopes, they should clearly document these requirements and explain why access is necessary.
+
+#### Diagram: Security Zones Diagram
 
 <details markdown="1">
     <summary>Security Zones Diagram</summary>
@@ -413,6 +419,8 @@ Professional skill packaging ensures users can install, understand, and use skil
 5. **License specification** - Clearly state usage rights and restrictions
 6. **Example data** - Provide sample inputs and expected outputs
 7. **Installation automation** - Include scripts for common installation scenarios
+
+#### Diagram: Skill Package Contents Checklist
 
 <details markdown="1">
     <summary>Skill Package Contents Checklist</summary>
@@ -569,6 +577,8 @@ Before pushing, ensure:
 - Code is tested and functional
 - No sensitive information (credentials, API keys) is included
 - `.gitignore` excludes temporary or generated files
+
+#### Diagram: Git Workflow for Skill Development
 
 <details markdown="1">
     <summary>Git Workflow for Skill Development</summary>

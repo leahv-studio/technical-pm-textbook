@@ -53,6 +53,7 @@ Explore the complete interactive timeline chronicling 52 pivotal moments in AI h
 
 **[View the Evolution of AI MicroSim: From Neural Networks to Claude Code Timeline](../../sims/claude-code-timeline/index.md)**
 
+#### Diagram: Evolution of AI Approaches Timeline
 
 <details markdown="1">
     <summary>Evolution of AI Approaches Timeline</summary>
@@ -92,6 +93,8 @@ Key characteristics of modern LLMs include:
 - **Few-shot learning:** Ability to adapt to new tasks with minimal examples
 - **Contextual understanding:** Processing contexts spanning thousands of tokens
 - **Emergent capabilities:** Behaviors not explicitly programmed, arising from scale and training
+
+#### Diagram: Transformer Architecture Diagram
 
 <details markdown="1">
     <summary>Transformer Architecture Diagram</summary>
@@ -161,6 +164,8 @@ The Claude Code interface provides several capabilities critical for intelligent
 - **Multi-step workflows:** Execute complex sequences of operations autonomously
 
 To access Claude Code, users require an **Anthropic Claude Pro account**, which provides enhanced usage limits, priority access during high-demand periods, and access to the latest model versions. The Pro subscription operates on a usage-based model with 4-hour windows, a concept we'll explore in depth in Chapter 4.
+
+#### Diagram: Claude Code Workflow Diagram
 
 <details markdown="1">
     <summary>Claude Code Workflow Diagram</summary>
@@ -281,6 +286,8 @@ Interactive elements at Level 3 include:
 
 This course emphasizes creating Level 3 textbooks through skills like `microsim-p5`, `quiz-generator`, and specifications for interactive infographics in chapter content.
 
+#### Diagram: Interactive Learning Element Types Comparison
+
 <details markdown="1">
     <summary>Interactive Learning Element Types Comparison</summary>
     Type: chart
@@ -341,6 +348,8 @@ AI personalization capabilities include:
 - **Predictive intervention:** Identifying learners at risk of falling behind and proactively offering support
 
 While Level 5 systems remain largely experimental in 2025, the skills framework in this course positions learners to integrate AI capabilities as they mature. The FAQ generator skill, for instance, creates question-answer pairs that can seed AI tutoring agents, bridging toward Level 5 functionality.
+
+#### Diagram: Five Levels of Textbook Intelligence Visual Model
 
 <details markdown="1">
     <summary>Five Levels of Textbook Intelligence Visual Model</summary>
@@ -429,6 +438,8 @@ Initial prompts rarely achieve optimal results. Expert prompt engineers treat pr
 **Principle 5: Separate generation from evaluation**
 
 Rather than attempting to generate perfect content in a single step, sophisticated workflows separate content generation from quality assessment. Generate draft content, run quality checks (completeness, concept coverage, reading level), and refine based on evaluation results.
+
+#### Diagram: Prompt Engineering Iterative Refinement Workflow
 
 <details markdown="1">
     <summary>Prompt Engineering Iterative Refinement Workflow</summary>

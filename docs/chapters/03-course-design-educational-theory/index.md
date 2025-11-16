@@ -52,6 +52,8 @@ Well-crafted course descriptions exhibit several key characteristics that enable
 
 For intelligent textbook projects, the course description quality directly impacts downstream artifacts. A comprehensive, well-structured course description enables the learning-graph-generator skill to produce 200+ relevant concepts with accurate dependencies, while an underspecified description yields generic or off-target concept graphs requiring extensive manual correction.
 
+#### Diagram: Course Description Quality Impact on Workflow
+
 <details markdown="1">
     <summary>Course Description Quality Impact on Workflow</summary>
     Type: workflow
@@ -148,6 +150,8 @@ Effective topic listings exhibit:
 **Technical precision:** Use domain-standard terminology. In a graph database course, "Cypher query language" rather than "graph querying"; in this course, "Bloom's Taxonomy 2001 revision" rather than "learning objectives."
 
 The course description for this intelligent textbooks course provides an exemplar with 25+ main topics ranging from foundational (Claude Skills architecture) through intermediate (learning graphs) to advanced (MicroSim development), demonstrating appropriate scope and progression.
+
+#### Diagram: Topic-to-Concept Expansion Example
 
 <details markdown="1">
     <summary>Topic-to-Concept Expansion Example</summary>
@@ -249,6 +253,8 @@ The original 1956 Bloom's Taxonomy categorized learning into six noun-based leve
 The verb-based framework better aligns with outcome statements: "Students will analyze dependency graphs" (2001) versus "Students will demonstrate analysis of dependency graphs" (1956 phrasing). The active voice clarifies what learners do to demonstrate competency.
 
 For AI-assisted content generation, the verb-based taxonomy enables more precise prompt engineering. Skills can be instructed to "generate examples requiring learners to evaluate trade-offs" rather than the less actionable "create evaluation content."
+
+#### Diagram: Bloom's Taxonomy 1956 vs 2001 Comparison
 
 <details markdown="1">
     <summary>Bloom's Taxonomy 1956 vs 2001 Comparison</summary>
@@ -379,6 +385,8 @@ Apply, execute, implement, use, carry out, solve, demonstrate, operate, employ, 
 **Content generation implications:**
 Apply-level content includes worked examples with step-by-step execution, practice opportunities with varied scenarios, procedural guidance adaptable to contexts, and scaffolded problem-solving transitioning from guided to independent application.
 
+#### Diagram: Lower-Order vs Higher-Order Thinking Skills
+
 <details markdown="1">
     <summary>Lower-Order vs Higher-Order Thinking Skills</summary>
     Type: diagram
@@ -490,6 +498,8 @@ Create, design, construct, develop, formulate, author, generate, plan, produce, 
 **Content generation implications:**
 Create-level content provides open-ended challenges, offers frameworks and constraints fostering structured creativity, showcases examples of creative work highlighting key features, and scaffolds complex production through phase-wise guidance.
 
+#### Diagram: Bloom's Taxonomy Application Distribution in Quality Courses
+
 <details markdown="1">
     <summary>Bloom's Taxonomy Application Distribution in Quality Courses</summary>
     Type: chart
@@ -597,6 +607,8 @@ Assessing course description quality systematically ensures sufficient detail an
 - <50: Insufficient - major revision required before proceeding
 
 Courses scoring below 70 should be revised before invoking learning-graph-generator, as quality deficiencies in the course description propagate through all downstream artifacts.
+
+#### Diagram: Course Description Quality Rubric Visualization
 
 <details markdown="1">
     <summary>Course Description Quality Rubric Visualization</summary>

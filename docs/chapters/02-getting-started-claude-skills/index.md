@@ -108,6 +108,8 @@ References to supporting files, templates, or documentation.
 
 The separation of metadata (YAML frontmatter) from workflow instructions (markdown body) enables both machine parsing for skill discovery and human readability for understanding and customization. Claude Code processes the YAML to determine skill identity and tool permissions, then executes the markdown workflow instructions sequentially.
 
+#### Diagram: Skill File Anatomy Diagram
+
 <details markdown="1">
     <summary>Skill File Anatomy Diagram</summary>
     Type: diagram
@@ -251,6 +253,8 @@ allowed-tools: [Read, Write, Edit, Grep, Glob]
 
 When developing skills, follow the principle of least privilege: grant only the tools necessary for the skill's function. This reduces risk of unintended modifications and makes skill behavior more predictable.
 
+#### Diagram: Skill Permission Matrix
+
 <details markdown="1">
     <summary>Skill Permission Matrix</summary>
     Type: markdown-table
@@ -378,6 +382,8 @@ ls -la .claude/skills/
 
 Project-local skills take precedence over global skills with the same name, enabling project-specific customization of standard workflows.
 
+#### Diagram: Skill Installation Locations and Priority
+
 <details markdown="1">
     <summary>Skill Installation Locations and Priority</summary>
     Type: diagram
@@ -495,6 +501,8 @@ Generate chapter content for junior-high reading level with emphasis on concrete
 ```
 
 The skill receives both the general instruction and executes its standard workflow, incorporating the contextual guidance where applicable.
+
+#### Diagram: Skill Invocation and Execution Lifecycle
 
 <details markdown="1">
     <summary>Skill Invocation and Execution Lifecycle</summary>
@@ -641,6 +649,8 @@ The fundamental distinction between skills and commands lies in autonomy and com
 
 In this course, the intelligent textbook workflow relies primarily on skills due to the complexity and multi-step nature of content generation. Commands might be used for auxiliary tasks like "check-concept-coverage" or "validate-markdown-format."
 
+#### Diagram: Skills vs Commands Decision Tree
+
 <details markdown="1">
     <summary>Skills vs Commands Decision Tree</summary>
     Type: workflow
@@ -720,6 +730,8 @@ How it works:
 Example: If you consume 50,000 tokens at 9:00 AM, those tokens remain unavailable until 1:00 PM (4 hours later), when they're restored to your budget.
 
 This model rewards distributed work patterns over concentrated bursts. For textbook creation workflows that may involve generating content for 13 chapters, spreading skill invocations across several sessions prevents exhausting your token budget.
+
+#### Diagram: 4-Hour Token Window Visualization
 
 <details markdown="1">
     <summary>4-Hour Token Window Visualization</summary>
@@ -846,6 +858,8 @@ Over 3-5 iterations, prompts typically converge to consistent, high-quality outp
 - Generated content requires minimal post-processing
 
 Converged prompts can be captured as skills or commands for reuse across projects, sharing expertise and accelerating future textbook development.
+
+#### Diagram: Iterative Prompt Refinement Metrics
 
 <details markdown="1">
     <summary>Iterative Prompt Refinement Metrics</summary>

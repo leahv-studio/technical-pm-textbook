@@ -51,6 +51,8 @@ For intelligent textbook creation, the learning graph serves multiple critical f
 
 The graph structure provides computational tractability—algorithms can verify the graph is a valid DAG (Directed Acyclic Graph), compute topological orderings for valid learning sequences, identify strongly connected components indicating circular dependencies that must be resolved, and calculate concept depth as a proxy for difficulty.
 
+#### Diagram: Learning Graph Structure Visualization
+
 <details markdown="1">
     <summary>Learning Graph Structure Visualization</summary>
     Type: graph-model
@@ -159,6 +161,8 @@ If A → B and B → C, then A is transitively prerequisite to C even without a 
 
 **Fan-out (divergence):** Foundational concept enabling multiple dependent concepts (e.g., "Claude Code Interface" → "File System Access," "Command Execution," "Context Management")
 
+#### Diagram: Dependency Pattern Examples
+
 <details markdown="1">
     <summary>Dependency Pattern Examples</summary>
     Type: diagram
@@ -231,6 +235,8 @@ If cycles are detected, the validation report identifies the concepts involved, 
 A DAG admits at least one topological ordering—a linear sequence of concepts such that for every edge A → B, A appears before B in the sequence. This ordering provides one valid teaching sequence, though multiple valid orderings typically exist.
 
 Chapter generation leverages topological ordering to group concepts into sequential chapters while respecting dependencies. Concepts with no incoming edges (foundational) appear in early chapters; concepts with many incoming edges (advanced, integrative) appear in later chapters.
+
+#### Diagram: DAG vs Cyclic Graph Comparison
 
 <details markdown="1">
     <summary>DAG vs Cyclic Graph Comparison</summary>
@@ -320,6 +326,8 @@ Mapping concept dependencies is the most cognitively demanding aspect of learnin
 | Granularity mismatch | Concepts at wrong abstraction level | "All of Programming" → specific concept | Refactor to atomic concepts |
 
 The learning-graph-generator skill uses the course description's topic list and learning outcomes to infer likely dependencies, but manual review and refinement typically improves accuracy. Chapter 6 discusses quality validation metrics that identify potential dependency errors.
+
+#### Diagram: Dependency Mapping Decision Tree
 
 <details markdown="1">
     <summary>Dependency Mapping Decision Tree</summary>
@@ -438,6 +446,8 @@ For a 13-chapter textbook, total chapter content generation consumes ~325,000-45
 **Parallelization considerations:**
 
 While Claude Code itself operates sequentially within a session, you can run multiple independent Claude Code sessions across different projects or chapter generation tasks. This "poor man's parallelization" enables working on Chapter 1 content while Chapter 2 quiz generation runs in a separate session, effectively doubling throughput within token budget constraints.
+
+#### Diagram: Token Consumption Timeline for Complete Textbook Project
 
 <details markdown="1">
     <summary>Token Consumption Timeline for Complete Textbook Project</summary>
