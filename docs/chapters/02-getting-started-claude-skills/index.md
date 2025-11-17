@@ -144,6 +144,13 @@ The separation of metadata (YAML frontmatter) from workflow instructions (markdo
     Color scheme: Yellow background for YAML section, white for markdown body, blue annotations
 
     Implementation: SVG diagram with code-style formatting
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (Score: 90/100) - Excellent for custom document mockup with syntax highlighting, colored regions for YAML vs markdown sections, and visual annotations
+2. mermaid-generator (Score: 45/100) - Could use block diagram but lacks code-style formatting and syntax highlighting capabilities
+3. chartjs-generator (Score: 10/100) - Not a data visualization, cannot effectively represent document structure
 </details>
 
 ### YAML Frontmatter in Skills
@@ -270,6 +277,13 @@ When developing skills, follow the principle of least privilege: grant only the 
     | Script Executor | ✓ | | | ✓ | | ✓ | |
 
     Note: ✓ indicates typically required tool
+
+---
+**MicroSim Generator Recommendations:**
+
+1. chartjs-generator (Score: 25/100) - This is actually a markdown table, not a chart - better implemented directly in markdown
+2. microsim-p5 (Score: 60/100) - Could create interactive table with checkmarks but markdown tables work well for static permission matrices
+3. mermaid-generator (Score: 15/100) - Not designed for table/matrix representations
 </details>
 
 ### Skill Workflow Instructions
@@ -410,6 +424,13 @@ Project-local skills take precedence over global skills with the same name, enab
     Color scheme: Blue for global location, green for project-local, orange for priority indicator
 
     Implementation: SVG diagram with tree structure
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (Score: 85/100) - Perfect for hierarchical tree structures showing directory relationships and priority rules
+2. microsim-p5 (Score: 70/100) - Could create custom directory tree with folder icons and priority indicators
+3. vis-network (Score: 55/100) - Could show as network graph but hierarchical tree is more natural for directory structures
 </details>
 
 ## Listing Available Skills
@@ -565,6 +586,13 @@ The skill receives both the general instruction and executes its standard workfl
     - Orange: File operations
 
     Implementation: SVG flowchart with decision diamonds and process rectangles
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (Score: 95/100) - Ideal for flowchart with swimlanes, decision diamonds, process rectangles, and sequential steps
+2. microsim-p5 (Score: 65/100) - Could build custom flowchart with interactivity but Mermaid provides standard flowchart patterns
+3. vis-network (Score: 30/100) - Could show as network but lacks flowchart-specific shapes and swimlane organization
 </details>
 
 ### Skill Execution Context
@@ -688,6 +716,13 @@ In this course, the intelligent textbook workflow relies primarily on skills due
     - Orange: Indicates borderline case
 
     Implementation: SVG decision tree with diamond decision nodes
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (Score: 92/100) - Perfect for decision tree with yes/no branches, diamond decision nodes, and terminal outcomes
+2. microsim-p5 (Score: 70/100) - Could create custom interactive decision tree with color-coded paths
+3. vis-network (Score: 40/100) - Could show as network but decision trees need specific branching layout
 </details>
 
 ## Token Management Strategies
@@ -769,6 +804,13 @@ This model rewards distributed work patterns over concentrated bursts. For textb
     - Hover over bars to see total available vs used
 
     Implementation: HTML/CSS/JavaScript with Chart.js timeline
+
+---
+**MicroSim Generator Recommendations:**
+
+1. timeline-generator (Score: 92/100) - Excellent for temporal events with specific times showing token consumption/restoration over 12-hour period
+2. chartjs-generator (Score: 85/100) - Good for stacked bar chart showing available vs consumed tokens over time, Chart.js explicitly mentioned
+3. microsim-p5 (Score: 65/100) - Could create custom timeline with animated token restoration
 </details>
 
 ### Optimizing Claude Usage
@@ -894,6 +936,13 @@ Converged prompts can be captured as skills or commands for reuse across project
     Color scheme: Blue line for quality score, green shaded region for acceptable zone, red dashed line for threshold
 
     Implementation: Chart.js line chart with annotations plugin
+
+---
+**MicroSim Generator Recommendations:**
+
+1. chartjs-generator (Score: 98/100) - Perfect for line chart showing progression across iterations with threshold line and annotations - Chart.js explicitly mentioned
+2. math-function-plotter-plotly (Score: 50/100) - Could plot discrete data points but not optimized for iteration-based metric tracking
+3. microsim-p5 (Score: 55/100) - Could create custom line chart but Chart.js provides professional charting
 </details>
 
 ## Summary

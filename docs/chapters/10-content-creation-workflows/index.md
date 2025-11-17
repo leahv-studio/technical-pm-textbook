@@ -114,6 +114,14 @@ The essential components of every chapter include:
     - Orange: Verification and finalization
 
     Implementation: Mermaid.js flowchart with interactive hover states
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (94/100) - Content generation workflow with sequential steps is perfect flowchart
+2. microsim-p5 (73/100) - Custom workflow visualization with interactive hover states
+3. vis-network (55/100) - Can model workflow as graph but less intuitive than flowchart
+
 </details>
 
 ### Section Organization Principles
@@ -185,6 +193,14 @@ When working with concept lists, keep several important considerations in mind. 
     - Gray for optional/generated elements
 
     Implementation: SVG diagram with clean technical documentation style
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (92/100) - Chapter structure tree diagram with parent-child relationships
+2. microsim-p5 (75/100) - Custom tree layout with interactive expansion possible
+3. vis-network (50/100) - Hierarchical graph layout but less clear than tree diagram
+
 </details>
 
 ## Content Generation Process
@@ -266,6 +282,14 @@ Several key parameters influence how content is generated, ensuring it aligns wi
     - Progress bar showing relative time distribution
 
     Implementation: CSS/JavaScript timeline with SVG elements
+
+---
+**MicroSim Generator Recommendations:**
+
+1. timeline-generator (98/100) - Iterative content refinement timeline is perfect vis-timeline use case
+2. chartjs-generator (70/100) - Timeline can be shown as horizontal bar chart with phases
+3. microsim-p5 (75/100) - Custom timeline rendering with manual event positioning
+
 </details>
 
 ## Reading Level Appropriateness
@@ -357,6 +381,14 @@ Effective examples also include progressive complexity, starting with straightfo
 
     Implementation: HTML/CSS/JavaScript with smooth animations and transitions
     Canvas size: 800px wide × 1000px tall (scrollable)
+
+---
+**MicroSim Generator Recommendations:**
+
+1. markdown (best) - Non-text element examples don't require interactivity, markdown table clearest
+2. microsim-p5 (90/100) - If interactive gallery/preview needed, p5.js with image display works
+3. chartjs-generator (20/100) - Not designed for element type galleries or examples
+
 </details>
 
 ### Integrating Examples into Content Flow
@@ -461,6 +493,14 @@ For a chapter on content creation workflows, appropriate exercises might include
     - Ensure mobile-responsive layout
 
     Implementation: p5.js with HTML DOM elements for text display and buttons
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (96/100) - Interactive concept map explorer with zoom/pan is core p5.js strength
+2. chartjs-generator (25/100) - Not designed for interactive concept map exploration
+3. vis-network (15/100) - Could show concepts as graph but not designed for map exploration
+
 </details>
 
 ### Exercise Scaffolding and Feedback
@@ -557,6 +597,14 @@ This definition is precise (specifies DAG structure), concise (minimal words), d
 
     Implementation: HTML/CSS/JavaScript with interactive hover states and click handlers
     Canvas size: 1200px wide × 700px tall
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (94/100) - Interactive admonition style selector with live preview is p5.js + DOM strength
+2. chartjs-generator (30/100) - Not designed for style selector or preview interfaces
+3. vis-network (15/100) - Not applicable to style selection tools
+
 </details>
 
 ### Glossary Generation Workflow

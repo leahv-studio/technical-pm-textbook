@@ -96,6 +96,13 @@ For intelligent textbook projects, the course description quality directly impac
     - Blue: Assessment and decision points
 
     Implementation: SVG flowchart with parallel quality paths
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (Score: 95/100) - Perfect for workflow/flowchart showing branching quality paths with decision points and parallel outcomes
+2. microsim-p5 (Score: 65/100) - Could create custom flowchart with color-coded paths but Mermaid excels at this
+3. vis-network (Score: 35/100) - Could show as network but flowchart structure is more appropriate
 </details>
 
 ### Target Audience Definition
@@ -193,6 +200,13 @@ The course description for this intelligent textbooks course provides an exempla
     Color scheme: Purple for main topic, blue for foundational concepts, green for intermediate, gold for advanced
 
     Implementation: SVG mind map diagram
+
+---
+**MicroSim Generator Recommendations:**
+
+1. vis-network (Score: 90/100) - Excellent for concept maps showing topic expansion into concepts with dependencies and hierarchical relationships
+2. microsim-p5 (Score: 80/100) - Could create custom radial mind map with interactive expansion and color coding
+3. mermaid-generator (Score: 65/100) - Could use graph diagram but less optimized for radial mind map layout
 </details>
 
 ### Topics Excluded from Course
@@ -296,6 +310,13 @@ For AI-assisted content generation, the verb-based taxonomy enables more precise
     Color scheme: Red gradient for 1956, rainbow gradient (red to purple) for 2001
 
     Implementation: SVG diagram with pyramid shapes
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (Score: 88/100) - Best for side-by-side pyramid comparison with transformation arrows and gradient coloring
+2. chartjs-generator (Score: 50/100) - Could use stacked bar charts but pyramids better convey hierarchical metaphor
+3. mermaid-generator (Score: 45/100) - Could show as diagrams but lacks pyramid-specific styling
 </details>
 
 ## The Six Cognitive Levels
@@ -413,6 +434,13 @@ Apply-level content includes worked examples with step-by-step execution, practi
     Color scheme: Blue for LOTS, gold for HOTS, gradient transition at boundary
 
     Implementation: SVG pyramid diagram with annotation boxes
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (Score: 85/100) - Excellent for pyramid with horizontal division, gradient coloring, and annotation boxes for LOTS/HOTS
+2. chartjs-generator (Score: 55/100) - Could use stacked bar but pyramid metaphor is more appropriate
+3. mermaid-generator (Score: 40/100) - Could create diagram but lacks pyramid-specific layout
 </details>
 
 ### Analyze (Cognitive Level 4)
@@ -531,6 +559,13 @@ Create-level content provides open-ended challenges, offers frameworks and const
     Color scheme: Rainbow gradient from red (Remember) to purple (Create)
 
     Implementation: Chart.js horizontal stacked bar chart
+
+---
+**MicroSim Generator Recommendations:**
+
+1. chartjs-generator (Score: 98/100) - Perfect for horizontal stacked bar chart showing percentage distribution across taxonomy levels - Chart.js explicitly mentioned
+2. microsim-p5 (Score: 55/100) - Could create custom stacked bar but Chart.js already provides this
+3. bubble-chart-generator (Score: 15/100) - Not comparing across two dimensions, just showing distribution
 </details>
 
 ## Action Verbs for Learning Outcomes
@@ -643,6 +678,13 @@ Courses scoring below 70 should be revised before invoking learning-graph-genera
     - <50: Insufficient (red background)
 
     Implementation: HTML/CSS/JavaScript with SVG circular dashboard
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (Score: 92/100) - Excellent for custom circular dashboard with radial segments, interactive hover, and dynamic scoring visualization
+2. chartjs-generator (Score: 75/100) - Could use radar/polar chart for quality dimensions but circular dashboard is more custom
+3. mermaid-generator (Score: 25/100) - Not designed for circular dashboards or interactive scoring visualizations
 </details>
 
 ### Assessing Course Descriptions

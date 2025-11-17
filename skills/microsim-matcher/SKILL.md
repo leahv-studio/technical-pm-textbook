@@ -48,7 +48,71 @@ Detailed capabilities for each generator are documented in `references/matching-
 
 ## Workflow
 
-Follow these 6 steps to match a specification to the best MicroSim generator(s):
+Follow these 7 steps to match a specification to the best MicroSim generator(s):
+
+### Step 0: Check for Reference File Updates (Version Check)
+
+**IMPORTANT**: Before analyzing the specification, verify that the local `matching-criteria.md` file is up-to-date with the latest version on GitHub. An outdated reference file will lead to poor recommendations.
+
+**Version Check Process:**
+
+1. **Get local file timestamp**:
+   ```bash
+   stat -f "%Sm" -t "%Y-%m-%d %H:%M:%S" skills/microsim-matcher/references/matching-criteria.md
+   # On Linux: stat -c "%y" skills/microsim-matcher/references/matching-criteria.md
+   ```
+
+2. **Check GitHub version** using the GitHub API:
+   ```bash
+   curl -s https://api.github.com/repos/dmccreary/claude-skills/commits?path=skills/microsim-matcher/references/matching-criteria.md&page=1&per_page=1 | grep -o '"date": "[^"]*"' | head -1
+   ```
+
+3. **Compare timestamps**:
+   - If GitHub version is newer → **WARNING: Reference file may be outdated**
+   - If local version is current → Proceed with confidence
+
+**Automated Check (Optional):**
+
+A Python script is available in `skills/microsim-matcher/scripts/check-version.py` to automate this check.
+
+**If Reference File is Outdated:**
+
+Display a prominent warning to the user:
+
+```
+⚠️  WARNING: Reference File May Be Outdated
+
+Your local matching-criteria.md file was last modified on [LOCAL_DATE].
+The GitHub repository has a newer version from [GITHUB_DATE].
+
+This may result in:
+- Missing information about new MicroSim generators
+- Outdated scoring guidelines
+- Incorrect recommendations
+
+Recommended actions:
+1. Update your local copy:
+   git pull origin main
+
+2. Or download the latest version:
+   https://github.com/dmccreary/claude-skills/blob/main/skills/microsim-matcher/references/matching-criteria.md
+
+3. Or continue with potentially outdated information (not recommended)
+
+Continue anyway? [Proceed if user confirms]
+```
+
+**When to Skip Version Check:**
+
+- No internet connection available
+- User explicitly requests to skip (with understanding of risks)
+- Working in an isolated/offline environment
+
+**Version Check Frequency:**
+
+- Always check when skill is invoked
+- Cache result for 24 hours to avoid repeated API calls
+- Re-check if more than 24 hours since last check
 
 ### Step 1: Read and Parse the Diagram Specification
 
@@ -420,16 +484,143 @@ The term "graph" is ambiguous. Please clarify:
 ## References
 
 - **Matching Criteria**: `skills/microsim-matcher/references/matching-criteria.md`
+- **Version Check Script**: `skills/microsim-matcher/scripts/check-version.py`
+- **GitHub Repository**: https://github.com/dmccreary/claude-skills
+- **Reference File on GitHub**: https://github.com/dmccreary/claude-skills/blob/main/skills/microsim-matcher/references/matching-criteria.md
 - **MicroSim Overview**: `/docs/skill-descriptions/microsims/index.md`
 - **Individual Skill Descriptions**: `/docs/skill-descriptions/microsims/[generator-name].md`
 - **Full Skill Workflows**: `/skills/[generator-name]/SKILL.md`
 
+## Version Check Script Usage
+
+The `check-version.py` script provides automated version checking:
+
+**Basic check (with output):**
+```bash
+python skills/microsim-matcher/scripts/check-version.py
+```
+
+**Quiet mode (exit code only):**
+```bash
+python skills/microsim-matcher/scripts/check-version.py --quiet
+echo $?  # 0=up-to-date, 1=outdated, 2=error
+```
+
+**Auto-update mode (downloads latest if outdated):**
+```bash
+python skills/microsim-matcher/scripts/check-version.py --update
+```
+
+**Exit codes:**
+- `0` - Local file is up-to-date
+- `1` - GitHub version is newer (outdated)
+- `2` - Error occurred (network, file not found, etc.)
+
+**Integration with CI/CD:**
+```bash
+# In a pre-commit hook or CI pipeline
+if python skills/microsim-matcher/scripts/check-version.py --quiet; then
+    echo "✅ Reference file is up-to-date"
+else
+    echo "⚠️  Reference file is outdated - consider updating"
+fi
+```
+
 ## Skill Maintenance
+
+### When New MicroSim Generators Are Added
 
 When new MicroSim generators are added to the repository:
 
-1. Update `references/matching-criteria.md` with the new generator profile
-2. Add scoring guidelines for the new generator
-3. Update the "Available MicroSim Generators" section in this SKILL.md
-4. Add examples of when the new generator should be recommended
-5. Test matching with specifications that should trigger the new generator
+1. **Update `references/matching-criteria.md`** with the new generator profile:
+   - Add a new numbered section for the generator
+   - Include primary use cases and strengths
+   - Document data types and interactivity capabilities
+   - List trigger words and scoring guidelines
+   - Note any limitations or caveats
+
+2. **Update this SKILL.md file**:
+   - Add generator to "Available MicroSim Generators" list
+   - Update generator count (currently 9)
+   - Add examples of when to recommend the new generator
+   - Update scoring reference table
+
+3. **Test matching**:
+   - Create test specifications that should trigger the new generator
+   - Verify scoring logic produces expected results
+   - Ensure reasoning is clear and accurate
+
+4. **Commit changes**:
+   - Commit updated files to GitHub
+   - GitHub API will automatically track the new timestamp
+   - Users will be notified on next version check
+
+### When Existing Generators Are Updated
+
+When existing generators gain new features or capabilities:
+
+1. **Update matching criteria** for that generator in `references/matching-criteria.md`
+2. **Revise scoring guidelines** if new features significantly change match quality
+3. **Update examples** to showcase new capabilities
+4. **Test edge cases** where new features might change recommendations
+
+### Keeping Reference Files Current
+
+**For Repository Maintainers:**
+
+After making changes to `matching-criteria.md`:
+```bash
+# 1. Make your changes
+vim skills/microsim-matcher/references/matching-criteria.md
+
+# 2. Commit and push
+git add skills/microsim-matcher/references/matching-criteria.md
+git commit -m "Update matching criteria: [description of changes]"
+git push origin main
+
+# GitHub will automatically update the file timestamp
+# Users will be notified via version check on next use
+```
+
+**For Skill Users:**
+
+Check for updates regularly:
+```bash
+# Option 1: Run version check manually
+python skills/microsim-matcher/scripts/check-version.py
+
+# Option 2: Auto-update if outdated
+python skills/microsim-matcher/scripts/check-version.py --update
+
+# Option 3: Pull latest from GitHub
+git pull origin main
+```
+
+**Recommended Update Schedule:**
+- Before starting a new project: Always check for updates
+- Monthly: Run version check even if not actively using
+- After seeing announcement of new generators: Immediately update
+
+### Version History Best Practices
+
+To help users understand changes:
+
+1. **Document changes** in commit messages:
+   ```bash
+   git commit -m "Add support for new scatter-plot-generator (10th generator)"
+   ```
+
+2. **Include change summary** at the top of `matching-criteria.md`:
+   ```markdown
+   ## Recent Updates
+
+   - 2025-11-17: Added math-function-plotter-plotly (9th generator)
+   - 2025-11-10: Updated vis-network scoring for large graphs
+   - 2025-11-01: Initial release with 8 generators
+   ```
+
+3. **Tag major updates** in GitHub:
+   ```bash
+   git tag -a v1.1 -m "Added 10th generator, updated scoring"
+   git push origin v1.1
+   ```

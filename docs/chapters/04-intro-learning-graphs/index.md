@@ -105,6 +105,13 @@ The graph structure provides computational tractability—algorithms can verify 
 
     Implementation: vis-network JavaScript library
     Canvas size: 800x600px
+
+---
+**MicroSim Generator Recommendations:**
+
+1. vis-network (Score: 98/100) - Perfect for interactive network graph with nodes/edges, physics layout, hierarchical positioning, and hover tooltips - vis-network explicitly mentioned
+2. microsim-p5 (Score: 70/100) - Could create custom network visualization but vis-network already optimized for this
+3. mermaid-generator (Score: 50/100) - Could show flowchart but lacks physics-based layout and interactive graph features
 </details>
 
 ## Concept Nodes in Learning Graphs
@@ -200,6 +207,13 @@ If A → B and B → C, then A is transitively prerequisite to C even without a 
     - "Fan-out: Foundational concepts are highly leveraged"
 
     Implementation: SVG diagram with clear geometric layout
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (Score: 88/100) - Excellent for showing three common dependency patterns with clean arrow diagrams
+2. microsim-p5 (Score: 75/100) - Could create custom diagrams for each pattern with geometric layouts
+3. vis-network (Score: 60/100) - Could show as networks but simple pattern diagrams better served by Mermaid
 </details>
 
 ## Directed Acyclic Graph (DAG) Requirement
@@ -264,6 +278,13 @@ Chapter generation leverages topological ordering to group concepts into sequent
     Color scheme: Green for valid DAG, red for invalid cycle
 
     Implementation: SVG diagram showing both structures
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (Score: 90/100) - Great for side-by-side graph comparison showing valid DAG vs cyclic structure with clear annotations
+2. vis-network (Score: 80/100) - Could show both graphs interactively with cycle highlighted, good for demonstrating invalid structure
+3. microsim-p5 (Score: 70/100) - Could create custom comparison with animated cycle detection
 </details>
 
 ## Prerequisite Relationships and Learning Pathways
@@ -371,6 +392,13 @@ The learning-graph-generator skill uses the course description's topic list and 
     - Gray: No relationship
 
     Implementation: SVG decision tree with diamond decision nodes
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (Score: 95/100) - Perfect for decision tree with yes/no branches, terminal nodes, and color-coded outcomes
+2. microsim-p5 (Score: 70/100) - Could create custom interactive decision tree with color-coded paths
+3. vis-network (Score: 35/100) - Could show as network but decision tree needs specific branching structure
 </details>
 
 ## Optimizing Claude Usage for Learning Graph Generation
@@ -490,6 +518,13 @@ While Claude Code itself operates sequentially within a session, you can run mul
     - Hover over area chart to see cumulative consumption
 
     Implementation: HTML/CSS/JavaScript with Chart.js timeline and area chart
+
+---
+**MicroSim Generator Recommendations:**
+
+1. timeline-generator (Score: 95/100) - Perfect for project timeline with events over 20 days, includes timeline visualization with phase tracking
+2. chartjs-generator (Score: 90/100) - Excellent for area chart showing cumulative token consumption over time - Chart.js explicitly mentioned
+3. microsim-p5 (Score: 65/100) - Could create custom timeline with area chart but standard libraries already provide this
 </details>
 
 ## Summary

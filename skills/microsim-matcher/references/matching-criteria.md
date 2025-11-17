@@ -2,6 +2,17 @@
 
 This reference document provides detailed matching criteria for all available MicroSim generator skills. Use this to score and rank which generator best matches a given diagram specification.
 
+## Recent Updates
+
+**Version Check:** This file is version-controlled on GitHub. Use `scripts/check-version.py` to verify you have the latest version.
+
+- **2025-11-17**: Initial release with 9 MicroSim generators
+  - Added: microsim-p5, chartjs-generator, math-function-plotter-plotly
+  - Added: mermaid-generator, vis-network, timeline-generator
+  - Added: map-generator, venn-diagram-generator, bubble-chart-generator
+  - Included comprehensive scoring guidelines for each generator
+  - Added decision tree and matching strategy sections
+
 ## Scoring Scale
 
 - **90-100**: Perfect match - Primary use case for this generator

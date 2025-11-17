@@ -171,6 +171,14 @@ The following table summarizes the question categories and their pedagogical fun
     - Note attached to "Update FAQ Index": "Searchable database enables chatbot integration"
 
     Implementation: Mermaid.js flowchart rendered in MicroSim with interactive hover states
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (95/100) - Glossary generation workflow with decision points is ideal flowchart
+2. vis-network (65/100) - Can model workflow as directed graph but less intuitive
+3. microsim-p5 (70/100) - Custom flowchart with interactivity requires manual layout
+
 </details>
 
 ### The FAQ Generation Process
@@ -385,6 +393,14 @@ The following table illustrates distractor categories and their diagnostic funct
     - Store learning graph concepts in JavaScript array
     - Use Levenshtein distance algorithm for answer similarity
     - Export format compatible with quiz-generator skill JSON schema
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (97/100) - Interactive quiz question constructor with real-time feedback is ideal p5.js use case
+2. chartjs-generator (20/100) - Not designed for question construction or interactive form interfaces
+3. vis-network (15/100) - Not applicable to quiz question builder tools
+
 </details>
 
 ### Aligning Quizzes with Learning Graph Concepts
@@ -527,6 +543,14 @@ The following table maps Bloom's levels to characteristic question stems and exa
 
     Implementation: Chart.js with custom stacking plugin and interactive tooltips
     Canvas size: 1000x600px
+
+---
+**MicroSim Generator Recommendations:**
+
+1. chartjs-generator (96/100) - Stacked bar chart showing Bloom's distribution is native Chart.js capability
+2. microsim-p5 (75/100) - Custom stacked bar rendering possible but Chart.js provides better features
+3. venn-diagram-generator (25/100) - Not designed for showing distribution across taxonomy levels
+
 </details>
 
 ### Distributing Questions Across Cognitive Levels
@@ -748,6 +772,14 @@ A critical distinction between GUI and CLI workflows involves the visibility of 
 
     Implementation: HTML/CSS/JavaScript with SVG graphics and interactive hover states
     Responsive design: Scales down to 800px width minimum, stacks vertically on mobile
+
+---
+**MicroSim Generator Recommendations:**
+
+1. chartjs-generator (94/100) - Radar chart for quiz difficulty profile is supported Chart.js type
+2. microsim-p5 (88/100) - Custom radar/spider chart rendering with manual axis calculations
+3. vis-network (30/100) - Not designed for radar or difficulty profile visualizations
+
 </details>
 
 ### Essential Terminal Commands for Textbook Workflows

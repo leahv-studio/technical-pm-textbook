@@ -120,6 +120,13 @@ For AI-assisted enumeration via the learning-graph-generator skill, the course d
     - Gold: Standard/convention concepts
 
     Implementation: SVG hierarchical tree diagram
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (Score: 92/100) - Excellent for hierarchical tree showing topic expansion with branches for components, relationships, procedures
+2. vis-network (Score: 85/100) - Good for interactive tree with color-coded concept types and hierarchical layout
+3. microsim-p5 (Score: 75/100) - Could create custom tree visualization with color-coded branches
 </details>
 
 ## Generating 200 Concepts
@@ -175,6 +182,13 @@ The learning-graph-generator skill defaults to 200 concepts but accepts guidance
     Color scheme: Blue bars, green shaded optimal region
 
     Implementation: Chart.js bar chart with range indicators
+
+---
+**MicroSim Generator Recommendations:**
+
+1. chartjs-generator (Score: 98/100) - Perfect for bar chart showing concept count by duration with range error bars - Chart.js explicitly mentioned
+2. microsim-p5 (Score: 55/100) - Could create custom bar chart but Chart.js already provides this well
+3. math-function-plotter-plotly (Score: 35/100) - Not plotting functions, this is discrete data
 </details>
 
 ## Concept Label Requirements
@@ -243,6 +257,13 @@ Concept labels serve as human-readable identifiers appearing in learning graphs,
     - Hover for explanation of why criterion matters
 
     Implementation: HTML/CSS with interactive JavaScript
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (Score: 90/100) - Excellent for interactive checklist with click/hover functionality and visual examples with checkmarks/X marks
+2. chartjs-generator (Score: 20/100) - Not a chart, this is an interactive checklist/infographic
+3. mermaid-generator (Score: 30/100) - Could show as diagram but lacks interactive checklist features
 </details>
 
 ### Title Case Convention
@@ -310,6 +331,13 @@ The character count includes all letters, spaces, punctuation, and symbols. "Blo
     | Interactive Element Types and Specifications | 49 | Interactive Element Types | 29 |
 
     Note: Optimization preserves meaning while meeting length constraint
+
+---
+**MicroSim Generator Recommendations:**
+
+1. chartjs-generator (Score: 20/100) - This is a markdown table, not a chart - better as plain markdown
+2. microsim-p5 (Score: 50/100) - Could create interactive table showing before/after optimization but markdown suffices
+3. mermaid-generator (Score: 10/100) - Not designed for table representations
 </details>
 
 ## Concept Granularity
@@ -386,6 +414,13 @@ Achieving consistent granularity across 200 concepts requires iterative refineme
     - Note: "Granularity consistency more important than perfection"
 
     Implementation: SVG diagram with spectrum bar
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (Score: 88/100) - Excellent for custom spectrum visualization with positioned examples and color-coded zones
+2. chartjs-generator (Score: 45/100) - Could use horizontal bar but spectrum metaphor needs custom visualization
+3. mermaid-generator (Score: 40/100) - Could show as diagram but lacks spectrum-specific styling
 </details>
 
 ## Atomic Concepts
@@ -507,6 +542,13 @@ The learning-graph-generator skill automates much of this process using LLM reas
     - Purple: Cycle resolution (if needed)
 
     Implementation: SVG flowchart
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (Score: 95/100) - Perfect for sequential workflow with decision points, loops, and color-coded phases
+2. microsim-p5 (Score: 65/100) - Could create custom flowchart but Mermaid already provides workflow patterns
+3. vis-network (Score: 30/100) - Could show as network but workflow needs sequential structure
 </details>
 
 ## CSV File Format for Learning Graphs
@@ -629,6 +671,13 @@ When manually editing CSV files to add or modify dependencies:
     ✗ Row 1: TaxonomyID not uppercase ("found" should be "FOUND")
     ✗ Missing ConceptID 2 (gap in sequence)
     ✗ Row 4: Dependency on non-existent concept 5 when only 1-4 exist
+
+---
+**MicroSim Generator Recommendations:**
+
+1. chartjs-generator (Score: 15/100) - This is a markdown table with validation examples, not a chart
+2. microsim-p5 (Score: 55/100) - Could create interactive table highlighting errors but markdown tables work well
+3. mermaid-generator (Score: 10/100) - Not designed for table representations
 </details>
 
 ## Understanding ConceptID, ConceptLabel, and Dependencies Fields
@@ -717,6 +766,13 @@ The Dependencies field encodes prerequisite relationships as pipe-delimited Conc
     | **Example** | 42 | "Directed Acyclic Graph (DAG)" |
 
     Note: ConceptID enables robust dependency tracking; ConceptLabel provides clarity for human readers
+
+---
+**MicroSim Generator Recommendations:**
+
+1. chartjs-generator (Score: 15/100) - This is a comparison table, not a chart - better as markdown table
+2. microsim-p5 (Score: 50/100) - Could create interactive comparison table but markdown suffices
+3. mermaid-generator (Score: 10/100) - Not designed for comparison tables
 </details>
 
 ## Taxonomy and Concept Categorization
@@ -831,6 +887,13 @@ The analyze-graph.py script in the learning-graph-generator skill computes these
     Color scheme: Heat map from red (foundational) through orange (prerequisite) to yellow (advanced)
 
     Implementation: Chart.js stacked area chart with topological ordering on X-axis
+
+---
+**MicroSim Generator Recommendations:**
+
+1. chartjs-generator (Score: 95/100) - Perfect for stacked area chart showing concept depth progression - Chart.js explicitly mentioned
+2. microsim-p5 (Score: 70/100) - Could create custom area chart with heat map coloring but Chart.js already provides this
+3. math-function-plotter-plotly (Score: 40/100) - Not plotting functions, this is stacked categorical data
 </details>
 
 ## Summary

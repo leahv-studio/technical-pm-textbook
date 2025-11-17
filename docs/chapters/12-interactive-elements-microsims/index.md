@@ -124,6 +124,14 @@ Here's the fundamental structure every p5.js sketch follows:
     Color scheme: Blue for initialization, orange for main loop, purple for events, gray for output
 
     Implementation: Flowchart diagram using Mermaid or similar tool
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (94/100) - p5.js execution model flowchart with loops is classic Mermaid use case
+2. microsim-p5 (85/100) - Interactive flowchart with highlighted current execution step possible
+3. vis-network (70/100) - Can show execution flow as directed graph but less clear
+
 </details>
 
 ## MicroSim Directory Structure
@@ -191,6 +199,14 @@ Additional files may be present depending on the complexity of the simulation. S
     Color scheme: Blue for documentation, green for code, purple for metadata, orange for integration
 
     Implementation: Block diagram with icons
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (93/100) - File relationship diagram with connections is Mermaid strength
+2. vis-network (75/100) - Can show files as network nodes with relationship edges
+3. microsim-p5 (72/100) - Custom block diagram with icons requires manual layout
+
 </details>
 
 ## Creating the main.html File
@@ -272,6 +288,14 @@ Key requirements for the `main.html` structure:
     - Orange: JavaScript code
 
     Implementation: Tree diagram or hierarchical block diagram
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (95/100) - HTML structure tree with nested elements is perfect Mermaid tree
+2. vis-network (65/100) - Hierarchical graph layout possible but less clear than tree
+3. microsim-p5 (68/100) - Custom tree rendering with recursive layout algorithms needed
+
 </details>
 
 ## Writing the index.md Documentation
@@ -389,6 +413,15 @@ This wrapper uses the "padding-bottom percentage trick" where the percentage is 
     - Demonstrate actual scaling calculations
     - Show overflow scenarios when responsive wrapper disabled
     - Include visual indicators for aspect ratio preservation
+
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (96/100) - Interactive iframe embedding demo with resize controls is p5.js + DOM strength
+2. chartjs-generator (15/100) - Not designed for iframe embedding demonstrations
+3. vis-network (15/100) - Not applicable to responsive iframe simulations
+
 </details>
 
 ## Interactive Controls: Sliders
@@ -571,6 +604,15 @@ Effective button design for educational purposes requires attention to labeling,
     - Implement bubble sort with step-by-step state capture
     - Use seeded randomness for reproducible arrays
     - Include visual transitions for swaps (smooth animation)
+
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (95/100) - Interactive algorithm stepping with button controls is core p5.js use case
+2. chartjs-generator (25/100) - Not designed for algorithm visualization or step controls
+3. vis-network (15/100) - Not applicable to sorting algorithm visualizations
+
 </details>
 
 ## Ensuring Reproducibility with Seeded Randomness
@@ -816,6 +858,14 @@ Designing effective educational simulations requires balancing technical capabil
     Visual style: Modern checklist interface with expandable sections
     Color scheme: Blue headers, green checkmarks, amber warnings
     Implementation: HTML/CSS/JavaScript with localStorage for persistence
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (96/100) - Interactive iframe embedding demo with resize controls is p5.js + DOM strength
+2. chartjs-generator (15/100) - Not designed for iframe embedding demonstrations
+3. vis-network (15/100) - Not applicable to responsive iframe simulations
+
 </details>
 
 ## Summary and Key Takeaways

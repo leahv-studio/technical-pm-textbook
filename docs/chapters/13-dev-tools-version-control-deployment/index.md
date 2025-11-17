@@ -103,6 +103,14 @@ The following features are particularly valuable for intelligent textbook develo
     Color scheme: VS Code Dark+ theme colors (dark gray background, syntax highlighting)
 
     Implementation: SVG diagram or annotated screenshot
+
+---
+**MicroSim Generator Recommendations:**
+
+1. markdown/screenshot (best) - VS Code interface doesn't benefit from interactivity, annotated image clearest
+2. microsim-p5 (80/100) - If interactive tour/highlighting needed, p5.js with hover zones works
+3. mermaid-generator (50/100) - Not designed for UI interface mockups or screenshots
+
 </details>
 
 ### Installation and Setup
@@ -299,6 +307,14 @@ A typical intelligent textbook development session might maintain three terminal
     - Terminal 3 (Git Operations)
 
     Implementation: SVG flowchart with interactive hover states (HTML/CSS/JavaScript)
+
+---
+**MicroSim Generator Recommendations:**
+
+1. mermaid-generator (95/100) - Terminal command workflow with sequential steps is ideal flowchart
+2. microsim-p5 (73/100) - Custom workflow with interactive command highlighting possible
+3. vis-network (55/100) - Can model workflow as graph but less intuitive than flowchart
+
 </details>
 
 ## Bash
@@ -627,6 +643,15 @@ Efficient navigation requires understanding project structure and using shortcut
     - Parse commands using string splitting and regex
     - Implement basic tab completion (suggest directory names)
     - Save progress to localStorage for session persistence
+
+
+---
+**MicroSim Generator Recommendations:**
+
+1. microsim-p5 (94/100) - Interactive directory navigation simulator with terminal emulation is p5.js strength
+2. vis-network (85/100) - Can show filesystem as interactive tree graph with navigation
+3. mermaid-generator (78/100) - Tree diagram for filesystem but limited interactivity
+
 </details>
 
 ## File Creation and Editing
@@ -1037,6 +1062,14 @@ install-claude-skills.sh
     - Background: White with subtle shadows for cards
 
     Implementation: HTML/CSS/JavaScript with interactive permission builder
+
+---
+**MicroSim Generator Recommendations:**
+
+1. markdown table (best) - Permission notation reference doesn't require interactivity, table clearest
+2. microsim-p5 (85/100) - If interactive permission calculator needed, p5.js with inputs works well
+3. chartjs-generator (15/100) - Not designed for permission reference or calculators
+
 </details>
 
 ### Security Considerations
@@ -1261,6 +1294,14 @@ chmod -R 755 ~/Documents/textbook-project/skills/
     - Claude Code: Purple
 
     Implementation: SVG diagram with labeled components and directional arrows
+
+---
+**MicroSim Generator Recommendations:**
+
+1. timeline-generator (97/100) - Project timeline showing phase progression is perfect vis-timeline use
+2. mermaid-generator (85/100) - Workflow flowchart showing capstone phases with decision points
+3. chartjs-generator (75/100) - Gantt-style timeline chart showing project phases and milestones
+
 </details>
 
 ## Capstone: Complete Textbook Project
