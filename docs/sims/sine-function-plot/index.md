@@ -10,16 +10,16 @@ og:image: sims/sine-function-plot/sine-function-plot.png
 
 ## Interactive Visualization
 
-<iframe src="main.html" width="100%" height="500" frameborder="0"></iframe>
+<iframe src="main.html" width="100%" height="430"></iframe>
 
-[View Fullscreen](main.html){:target="_blank" .md-button}
+[View the Sine Function Visualization with Plotly.js Fullscreen](main.html){:target="_blank" .md-button}
 
 ## Copy-Paste Embed Code
 
 To embed this visualization in your own page, use the following HTML code:
 
 ```html
-<iframe src="https://dmccreary.github.io/claude-skills/sims/sine-function-plot/main.html" width="100%" height="500" frameborder="0"></iframe>
+<iframe src="https://dmccreary.github.io/claude-skills/sims/sine-function-plot/main.html" width="100%" height="430"></iframe>
 ```
 
 ## Overview
