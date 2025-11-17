@@ -149,6 +149,7 @@ nav:
     - prompts/book-metrics-skill-creation.md
     - prompts/create-microsim-type-selector-skill.md
     - prompts/microsim-matcher-skill-creation.md
+    - prompts/missing-microsim-generators.md
 
   
   - Details Analysis: details-analysis.md
