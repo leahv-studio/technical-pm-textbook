@@ -177,9 +177,11 @@ def csv_to_json(csv_path: str, json_path: str, color_config: dict = None, metada
             classifier_name = taxonomy_names.get(tax_id, tax_id)
 
             # Determine font color based on background color
-            # Dark colors need white text
-            dark_colors = ['red', 'blue', 'indigo', 'violet', 'cyan']
-            font_color = 'white' if color in dark_colors else 'black'
+            # Dark colors need white text (named colors)
+            dark_colors = ['red', 'blue', 'indigo', 'violet', 'cyan', 'brown']
+            # Hex codes that need white text (dark backgrounds)
+            dark_hex_colors = ['#FF6B6B', '#9B59B6', '#E17055', '#BC6C25']
+            font_color = 'white' if (color in dark_colors or color in dark_hex_colors) else 'black'
 
             groups[tax_id] = {
                 'classifierName': classifier_name,

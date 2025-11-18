@@ -97,16 +97,34 @@ function getColorName(color) {
     'violet': 'Violet',
     'gray': 'Gray',
     'brown': 'Brown',
-    'teal': 'Teal'
+    'teal': 'Teal',
+    'cyan': 'Cyan',
+    // Hex code mappings for custom taxonomies
+    '#FF6B6B': 'Coral Red',
+    '#4ECDC4': 'Turquoise',
+    '#45B7D1': 'Sky Blue',
+    '#96CEB4': 'Sage Green',
+    '#FFEAA7': 'Soft Yellow',
+    '#DDA15E': 'Bronze',
+    '#BC6C25': 'Brown',
+    '#9B59B6': 'Purple',
+    '#E17055': 'Terracotta',
+    '#74B9FF': 'Light Blue',
+    '#A29BFE': 'Periwinkle',
+    '#FD79A8': 'Pink'
   };
-  return colorNames[color.toLowerCase()] || color;
+  return colorNames[color.toLowerCase()] || colorNames[color] || color;
 }
 
 // Helper function to determine if text should be white or black
 function getTextColorForBackground(backgroundColor) {
-  // Colors that need white text
-  const darkColors = ['red', 'green', 'blue', 'indigo', 'violet', 'gray', 'brown'];
-  return darkColors.includes(backgroundColor.toLowerCase()) ? 'white' : 'black';
+  // Colors that need white text (named colors)
+  const darkColors = ['red', 'green', 'blue', 'indigo', 'violet', 'gray', 'brown', 'cyan'];
+
+  // Hex codes that need white text (dark backgrounds)
+  const darkHexColors = ['#FF6B6B', '#9B59B6', '#E17055', '#BC6C25'];
+
+  return darkColors.includes(backgroundColor.toLowerCase()) || darkHexColors.includes(backgroundColor) ? 'white' : 'black';
 }
 
 // Function to generate legend table from groups data
