@@ -780,6 +780,14 @@ nav:
     Quiz Generation Report: learning-graph/quiz-generation-report.md
 ```
 
+### Step 15: Write Session Log File
+
+Export the session information to `logs/quiz-generator-YYYY-MM-DD.md`
+where YYYY-MM-DD is the current date.
+
+### Step 15: Write Session Log File
+
 Notify the user that the site navigation section of the `mkdocs.yml` file has 
 been updated to include both the links to the new quizzes as well
-as the quiz reports in the learning-graph.
+as the quiz reports in the learning-graph.  Tell them that the session
+has been logged to `logs/quiz-generator-YYYY-MM-DD.md`
