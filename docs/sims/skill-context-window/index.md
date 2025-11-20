@@ -1,8 +1,8 @@
 ---
 title: Skill Context Window
 description: A MicroSim demonstrating the progressive disclosure principle for Claude Skills, showing how different components are loaded into context at different times.
-image: skill-context-window.png
-og:image: skill-context-window.png
+image: /sims/skill-context-window/skill-context-window.png
+og:image: /sims/skill-context-window/skill-context-window.png
 ---
 
 # Skill Context Window
