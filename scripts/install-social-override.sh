@@ -88,3 +88,62 @@ echo "  - social"
 echo "  - social_override"
 echo ""
 echo "Installation complete!"
+# List of repositories to update
+REPOS=(
+  "https://github.com/dmccreary/intro-to-physics-course.git"
+)
+
+# Path to the installation script
+INSTALL_SCRIPT="install_social_override.sh"
+
+# Create the installation script
+cat > $INSTALL_SCRIPT << 'EOL'
+#!/bin/bash
+# (Copy the entire install script from above here)
+EOL
+chmod +x $INSTALL_SCRIPT
+
+# Process each repository
+for repo in "${REPOS[@]}"; do
+  repo_name=$(basename $repo .git)
+  echo "Processing repository: $repo_name"
+  
+  # Clone or update the repository
+  if [ -d "$repo_name" ]; then
+    echo "Repository already exists, updating..."
+    cd $repo_name
+    git pull
+  else
+    echo "Cloning repository..."
+    git clone $repo
+    cd $repo_name
+  fi
+  
+  # Run the installation script
+  ../$INSTALL_SCRIPT
+  
+  # Update the mkdocs.yml file automatically
+  if grep -q "plugins:" mkdocs.yml; then
+    if ! grep -q "social_override" mkdocs.yml; then
+      # Assumes a simple plugins format without complex indentation
+      sed -i '/plugins:/,/^[a-z]/ s/^  - social$/  - social\n  - social_override/' mkdocs.yml
+      echo "Updated mkdocs.yml to include social_override plugin"
+    else
+      echo "social_override plugin already in mkdocs.yml"
+    fi
+  else
+    echo "WARNING: Couldn't find plugins section in mkdocs.yml - please update manually"
+  fi
+  
+  # Commit and push changes
+  git add plugins/ setup.py mkdocs.yml
+  git commit -m "Add social_override plugin for custom social card images"
+  git push
+  
+  # Return to parent directory
+  cd ..
+  echo "Done with $repo_name"
+  echo ""
+done
+
+echo "All repositories updated!"
