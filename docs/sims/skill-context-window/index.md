@@ -28,22 +28,25 @@ This MicroSim visualizes the **progressive disclosure** design principle used in
 **Hover over each layer** to see detailed information about when and how it's loaded:
 
 1. **SKILL.md Frontmatter** (Top - Always Loaded ~100 words)
-   - Contains skill name and description
-   - Always in context when Claude starts
-   - Allows Claude to decide when to invoke the skill
-   - Minimal token usage
+
+- Contains skill name and description
+- Always in context when Claude starts
+- Allows Claude to decide when to invoke the skill
+- Minimal token usage
 
 2. **SKILL.md File** (Middle - When Triggered <5k words)
-   - Complete skill instructions and workflows
-   - Loaded when the skill is triggered/invoked
-   - Contains procedural knowledge and examples
-   - Moderate token usage
+
+- Complete skill instructions and workflows
+- Loaded when the skill is triggered/invoked
+- Contains procedural knowledge and examples
+- Moderate token usage
 
 3. **Assets, References, Templates & Scripts** (Base - As Needed, Unlimited)
-   - Scripts can be executed without loading into context
-   - References loaded when Claude determines they're needed
-   - Templates and assets used in output
-   - Provides unlimited extensibility
+
+- Scripts can be executed without loading into context
+- References loaded when Claude determines they're needed
+- Templates and assets used in output
+- Provides unlimited extensibility
 
 ### Progressive Disclosure Benefits
 
