@@ -147,11 +147,36 @@ def find_large_images(root_dir, min_size_kb=500):
     return sorted(large_images, key=lambda x: x[1], reverse=True)
 
 def main():
+    # Determine starting directory
+    if len(sys.argv) > 1:
+        # Use command line argument if provided
+        docs_dir = Path(sys.argv[1])
+        print(f"📂 Using directory from command line: {docs_dir.absolute()}")
+    else:
+        # Check current working directory for 'docs' subdirectory
+        current_dir = Path.cwd()
+        docs_dir = current_dir / "docs"
+
+        if docs_dir.exists() and docs_dir.is_dir():
+            print(f"📂 Starting from: {docs_dir.absolute()}")
+        else:
+            print(f"⚠️  WARNING: 'docs' subdirectory not found in {current_dir.absolute()}")
+            print(f"⚠️  Please run this script from a directory containing a 'docs' folder,")
+            print(f"⚠️  or provide a starting directory as a command line argument:")
+            print(f"⚠️  Example: python compress-images.py /path/to/docs")
+            sys.exit(1)
+
+    # Verify the directory exists
+    if not docs_dir.exists():
+        print(f"❌ ERROR: Directory does not exist: {docs_dir.absolute()}")
+        sys.exit(1)
+
+    if not docs_dir.is_dir():
+        print(f"❌ ERROR: Path is not a directory: {docs_dir.absolute()}")
+        sys.exit(1)
+
     # Find all large images
     print("🔍 Scanning for large images...")
-    # Navigate to repo root from src/resize-images/
-    repo_root = Path(__file__).parent.parent.parent
-    docs_dir = repo_root / "docs"
     large_images = find_large_images(docs_dir, min_size_kb=500)
     
     if not large_images:

@@ -174,8 +174,11 @@ class BookMetricsGenerator:
         try:
             with open(quiz_file, 'r', encoding='utf-8') as f:
                 content = f.read()
-                # Count H2 headers as questions
-                return len(re.findall(r'^##\s+', content, re.MULTILINE))
+                # Count H4 headers with numbered questions (e.g., "#### 1.")
+                h4_pattern = len(re.findall(r'^####\s+\d+\.', content, re.MULTILINE))
+                # Also count H2 headers as questions (legacy format)
+                h2_pattern = len(re.findall(r'^##\s+', content, re.MULTILINE))
+                return h4_pattern + h2_pattern
         except Exception as e:
             print(f"Warning: Could not read {quiz_file}: {e}")
             return 0
@@ -448,7 +451,7 @@ class BookMetricsGenerator:
         md += "- **Concepts**: Number of rows in learning-graph.csv\n"
         md += "- **Glossary Terms**: H4 headers in glossary.md\n"
         md += "- **FAQs**: H2 headers in faq.md\n"
-        md += "- **Quiz Questions**: H2 headers in all quiz.md files\n"
+        md += "- **Quiz Questions**: H4 headers with numbered questions (e.g., '#### 1.') or H2 headers in quiz.md files\n"
         md += "- **Diagrams**: H4 headers starting with '#### Diagram:'\n"
         md += "- **Equations**: LaTeX expressions using $ and $$ delimiters\n"
         md += "- **MicroSims**: Directories in docs/sims/ with index.md files\n"
@@ -536,7 +539,7 @@ def main():
     generator = BookMetricsGenerator(docs_dir)
     generator.generate_metrics()
 
-    print("\n✅ Book metrics generation version 0.01 complete!")
+    print("\n✅ Book metrics generation version 0.02 complete!")
     print("\nhttp://localhost:8000/conversational-ai/learning-graph/book-metrics/")
     print("http://localhost:8000/conversational-ai/learning-graph/chapter-metrics/")
 
