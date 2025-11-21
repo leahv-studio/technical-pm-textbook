@@ -1,13 +1,14 @@
 ---
 name: chartjs-generator
-description: This skill generates interactive Chart.js visualizations for any chart type supported by the library (line, bar, pie, doughnut, radar, polar area, bubble, scatter). Use this skill when users need to create data visualizations for educational content, reports, or dashboards. The skill creates complete MicroSim packages with HTML, CSS, and documentation.
+description: This skill generates interactive Chart.js visualizations for use in iframes using any chart type supported by the library (line, bar, pie, doughnut, radar, polar area, bubble, scatter). Use this skill when users need to create data visualizations for educational content, reports, or dashboards. The skill creates complete MicroSim packages with HTML, CSS, and documentation.
 ---
 
 # Chart.js Generator
 
 ## Overview
 
-This skill generates professional, interactive charts using Chart.js, supporting all major chart types. Chart.js is a powerful, flexible JavaScript library for creating responsive data visualizations. The skill creates a complete MicroSim package suitable for embedding in educational content or documentation sites built with MkDocs.
+This skill generates professional, interactive charts using Chart.js, supporting all major chart types. Chart.js is a powerful, flexible JavaScript library for creating responsive data visualizations. The skill creates a complete MicroSim package suitable for embedding in educational content or documentation sites built with MkDocs.  The default placement in a intelligent book uses an iframe with minimal padding and margins.
+Do not add any analysis or supporting documentation above or below the chart region.
 
 ## Supported Chart Types
 
@@ -104,13 +105,14 @@ Generate the main HTML file with the following structure:
 1. **HTML boilerplate** with proper meta tags
 2. **Chart.js CDN import**: `https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js`
 3. **Canvas element** for the chart
-4. **Optional analysis/legend section** (depends on chart type)
+4. **Optional analysis/legend section** do not any analysis or documentation unless requested 
 5. **JavaScript implementation**:
    - Data array/object
    - Color scheme configuration
    - Chart.js configuration for the selected chart type
    - Custom plugins (if needed)
    - Interactive features (tooltips, legends, animations)
+   - Tooltips should always be used
 
 **Key Chart.js configuration by type**:
 
@@ -276,10 +278,11 @@ Generate CSS with professional styling:
 3. **Legend/analysis container**: Styling for supplementary information
 4. **Interactive elements**: Hover effects, transitions
 5. **Responsive design**: Media queries for mobile/tablet
-6. **Print styles**: Print-friendly adjustments
+6. **Print styles**: Do not add additional CSS for printing
 
 **Key design principles**:
 - Use clean, modern aesthetics
+- Assume placement of the chart in a book with narrow margins using a iframe
 - Provide clear visual hierarchy
 - Add subtle shadows and borders
 - Include smooth transitions
@@ -290,9 +293,10 @@ Generate CSS with professional styling:
 
 If the chart is part of a MkDocs site, create comprehensive documentation:
 
+1. **YML Metadata**: Add title, and description
 1. **Title and overview**: Brief description of the visualization
 2. **Embedded iframe**: Display the chart inline
-3. **Link to fullscreen**: Markdown link to main.html
+3. **Link to fullscreen**: Markdown link to main.html with button "View MicroSim Fullscreen"
 4. **Interpretation guide**: Explain how to read the chart
 5. **Features section**: List interactive elements
 6. **Customization guide**: Detailed instructions for modifying:
@@ -308,15 +312,20 @@ If the chart is part of a MkDocs site, create comprehensive documentation:
 **Documentation structure template**:
 
 ```markdown
+---
+title: [Chart Title]
+description: [brief description of chart]
+---
+
 # [Chart Title]
 
 [Brief description]
 
 ## Interactive Chart
 
-<iframe src="main.html" width="100%" height="700" frameborder="0"></iframe>
+<iframe src="main.html" width="100%" height="500" scrolling="no"></iframe>
 
-[View Fullscreen](main.html){:target="_blank"}
+[View Fullscreen](main.html){ .md-button .md-button--primary }
 
 ## Overview
 
@@ -399,7 +408,7 @@ This chart type is useful for:
 
 ### Step 7: Integrate into Navigation (MkDocs)
 
-If using MkDocs, add the chart to the navigation in `mkdocs.yml`:
+Always add the chart to the navigation in `mkdocs.yml`:
 
 ```yaml
 - MicroSims:
@@ -408,10 +417,7 @@ If using MkDocs, add the chart to the navigation in `mkdocs.yml`:
     - [Other sims...]: ...
 ```
 
-Place the entry in a logical position based on:
-- Related content (group similar visualizations)
-- Alphabetical order
-- Creation order
+Place the entry in a alphabetical order.
 
 ### Step 8: Test and Validate
 

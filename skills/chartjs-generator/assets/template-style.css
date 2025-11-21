@@ -1,3 +1,4 @@
+/* This CSS has been modified to fit in an iframe with minimal margins and padding
 /* Reset and base styles */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -10,16 +11,15 @@ body {
 .chart-container {
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 500px;
     background: aliceblue;
 }
 
+/* Do not put any analysis in the iframe version */
 /* Optional analysis/legend container */
 .analysis-container {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: aliceblue;
+    padding: 0px;
 }
 
 .analysis-container h3 {
