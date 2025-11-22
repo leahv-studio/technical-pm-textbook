@@ -4,19 +4,19 @@ This file contains chapter-by-chapter metrics.
 
 | Chapter | Name | Sections | Diagrams | Words |
 |---------|------|----------|----------|-------|
-| 1 | Introduction to AI and Intelligent Textbooks | 20 | 0 | 5,541 |
-| 2 | Getting Started with Claude and Skills | 48 | 0 | 6,387 |
-| 3 | Course Design and Educational Theory | 23 | 0 | 6,237 |
-| 4 | Introduction to Learning Graphs | 16 | 0 | 5,400 |
-| 5 | Concept Enumeration and Dependencies | 21 | 0 | 6,528 |
-| 6 | Learning Graph Quality and Validation | 28 | 0 | 5,477 |
-| 7 | Taxonomy and Data Formats | 29 | 0 | 5,533 |
-| 8 | MkDocs Platform and Documentation | 17 | 0 | 2,840 |
-| 9 | Claude Skills Architecture and Development | 32 | 0 | 5,101 |
-| 10 | Content Creation Workflows | 27 | 0 | 6,667 |
-| 11 | Educational Resources and Assessment | 23 | 0 | 11,192 |
-| 12 | Interactive Elements and MicroSims | 17 | 0 | 8,040 |
-| 13 | Development Tools, Version Control, and Deployment | 72 | 0 | 6,705 |
+| 1 | [Introduction to AI and Intelligent Textbooks](../chapters/01-intro-ai-intelligent-textbooks/index.md) | 20 | 6 | 5,966 |
+| 2 | [Getting Started with Claude and Skills](../chapters/02-getting-started-claude-skills/index.md) | 48 | 7 | 6,836 |
+| 3 | [Course Design and Educational Theory](../chapters/03-course-design-educational-theory/index.md) | 23 | 6 | 6,620 |
+| 4 | [Introduction to Learning Graphs](../chapters/04-intro-learning-graphs/index.md) | 16 | 5 | 5,723 |
+| 5 | [Concept Enumeration and Dependencies](../chapters/05-concept-enumeration-dependencies/index.md) | 21 | 9 | 7,050 |
+| 6 | [Learning Graph Quality and Validation](../chapters/06-learning-graph-quality-validation/index.md) | 28 | 6 | 5,803 |
+| 7 | [Taxonomy and Data Formats](../chapters/07-taxonomy-data-formats/index.md) | 29 | 6 | 5,846 |
+| 8 | [MkDocs Platform and Documentation](../chapters/08-mkdocs-platform-documentation/index.md) | 17 | 5 | 2,896 |
+| 9 | [Claude Skills Architecture and Development](../chapters/09-claude-skills-architecture-development/index.md) | 32 | 5 | 5,400 |
+| 10 | [Content Creation Workflows](../chapters/10-content-creation-workflows/index.md) | 27 | 6 | 6,973 |
+| 11 | [Educational Resources and Assessment](../chapters/11-educational-resources-assessment/index.md) | 23 | 4 | 11,405 |
+| 12 | [Interactive Elements and MicroSims](../chapters/12-interactive-elements-microsims/index.md) | 17 | 6 | 8,338 |
+| 13 | [Development Tools, Version Control, and Deployment](../chapters/13-dev-tools-version-control-deployment/index.md) | 72 | 5 | 6,954 |
 
 ## Metrics Explanation
 

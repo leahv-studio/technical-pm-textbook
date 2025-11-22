@@ -13,7 +13,7 @@ mkdir -p "$LOG_DIR"
 
 # Log prompt with session ID for correlation
 LOG_FILE="$LOG_DIR/prompts.jsonl"
-jq -n \
+jq -nc \
   --arg ts "$TIMESTAMP" \
   --arg epoch "$EPOCH" \
   --arg sid "$SESSION_ID" \

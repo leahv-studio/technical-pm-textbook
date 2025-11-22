@@ -24,7 +24,7 @@ fi
 
 # Log skill completion with duration
 LOG_FILE="$LOG_DIR/skill-usage.jsonl"
-jq -n \
+jq -nc \
   --arg ts "$TIMESTAMP" \
   --arg epoch "$EPOCH" \
   --arg sid "$SESSION_ID" \

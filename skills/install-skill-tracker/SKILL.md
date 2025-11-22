@@ -195,6 +195,21 @@ rm -rf .claude/activity-logs
 
 ## Troubleshooting
 
+### JSON Parsing Errors
+
+**IMPORTANT FIX (v1.1):** The hook scripts now use `jq -nc` instead of `jq -n` to generate compact JSON output. This is **critical** for proper JSONL format.
+
+If you encounter errors like:
+```
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes
+```
+
+Your existing log files may have pretty-printed JSON. Fix with:
+```bash
+jq -c '.' .claude/activity-logs/prompts.jsonl > temp && mv temp .claude/activity-logs/prompts.jsonl
+jq -c '.' .claude/activity-logs/skill-usage.jsonl > temp && mv temp .claude/activity-logs/skill-usage.jsonl
+```
+
 ### Hooks Not Executing
 
 Verify hook configuration:
@@ -222,6 +237,14 @@ ls -la .claude/activity-logs/
 ### Analysis Shows No Data
 
 Logs are created only after skill usage. Run any skill first, then execute the analysis script.
+
+### Detailed Troubleshooting
+
+For comprehensive troubleshooting, see the [README.md](./README.md) in this skill directory, which includes:
+- JSONL format requirements and the `-c` flag fix
+- Common issues and solutions
+- Hook debugging techniques
+- Custom analysis queries
 
 ## Resources
 
