@@ -9,33 +9,33 @@
 
  ## 1. Hook Configuration
 
-  Create .claude/settings.json in your project (or ~/.claude/settings.json for global tracking):
+Create .claude/settings.json in your project (or ~/.claude/settings.json for global tracking):
 
 ```json
-  {
-    "hooks": {
-      "PostToolUse": [
-        {
-          "hooks": [
-            {
-              "type": "command",
-              "command": ".claude/hooks/track-activity.sh",
-              "description": "Log all tool usage for pattern analysis"
-            }
-          ]
-        }
-      ],
-      "UserPromptSubmit": [
-        {
-          "hooks": [
-            {
-              "type": "command",
-              "command": ".claude/hooks/track-prompts.sh",
-              "description": "Log user prompts for task analysis"
-            }
-          ]
-        }
-      ],
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/track-activity.sh",
+            "description": "Log all tool usage for pattern analysis"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/track-prompts.sh",
+            "description": "Log user prompts for task analysis"
+          }
+        ]
+      }
+    ],
       "SessionStart": [
         {
           "hooks": [
@@ -55,24 +55,24 @@
 
   .claude/hooks/track-activity.sh (logs tool usage):
 
-```sg
-  #!/bin/bash
-  HOOK_INPUT=$(cat)
-  TOOL_NAME=$(echo "$HOOK_INPUT" | jq -r '.tool_name')
-  SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id')
-  CWD=$(echo "$HOOK_INPUT" | jq -r '.cwd')
-  TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+```sh
+#!/bin/bash
+HOOK_INPUT=$(cat)
+TOOL_NAME=$(echo "$HOOK_INPUT" | jq -r '.tool_name')
+SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id')
+CWD=$(echo "$HOOK_INPUT" | jq -r '.cwd')
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
-  # Create log directory
-  mkdir -p ~/.claude/activity-logs
+# Create log directory
+mkdir -p ~/.claude/activity-logs
 
-  # Log as JSONL for easy processing
-  LOG_FILE=~/.claude/activity-logs/tool-usage.jsonl
-  echo
-  "{\"timestamp\":\"$TIMESTAMP\",\"tool\":\"$TOOL_NAME\",\"session\":\"$SESSION_ID\",\"project\":\"$CWD\"}" >>
-  "$LOG_FILE"
+# Log as JSONL for easy processing
+LOG_FILE=~/.claude/activity-logs/tool-usage.jsonl
+echo
+"{\"timestamp\":\"$TIMESTAMP\",\"tool\":\"$TOOL_NAME\",\"session\":\"$SESSION_ID\",\"project\":\"$CWD\"}" >>
+"$LOG_FILE"
 
-  exit 0
+exit 0
 ```
 
   .claude/hooks/track-prompts.sh (logs user requests):
@@ -80,41 +80,41 @@
 ```sh
 #!/bin/bash
 
-  HOOK_INPUT=$(cat)
-  PROMPT=$(echo "$HOOK_INPUT" | jq -r '.prompt')
-  SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id')
-  TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+HOOK_INPUT=$(cat)
+PROMPT=$(echo "$HOOK_INPUT" | jq -r '.prompt')
+SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id')
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
-  # Create log directory
-  mkdir -p ~/.claude/activity-logs
+# Create log directory
+mkdir -p ~/.claude/activity-logs
 
-  # Log prompt with metadata
-  LOG_FILE=~/.claude/activity-logs/prompts.jsonl
-  jq -n \
-    --arg ts "$TIMESTAMP" \
-    --arg sid "$SESSION_ID" \
-    --arg p "$PROMPT" \
-    '{timestamp: $ts, session: $sid, prompt: $p}' >> "$LOG_FILE"
+# Log prompt with metadata
+LOG_FILE=~/.claude/activity-logs/prompts.jsonl
+jq -n \
+  --arg ts "$TIMESTAMP" \
+  --arg sid "$SESSION_ID" \
+  --arg p "$PROMPT" \
+  '{timestamp: $ts, session: $sid, prompt: $p}' >> "$LOG_FILE"
 
-  # Allow the prompt to continue
-  exit 0
+# Allow the prompt to continue
+exit 0
 ```
 
   .claude/hooks/session-start.sh (session initialization):
 
 ```sh
-  #!/bin/bash
+#!/bin/bash
 
-  HOOK_INPUT=$(cat)
-  SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id')
-  TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+HOOK_INPUT=$(cat)
+SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id')
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
-  # Log session start
-  mkdir -p ~/.claude/activity-logs
-  LOG_FILE=~/.claude/activity-logs/sessions.jsonl
-  echo "{\"timestamp\":\"$TIMESTAMP\",\"session\":\"$SESSION_ID\",\"event\":\"start\"}" >> "$LOG_FILE"
+# Log session start
+mkdir -p ~/.claude/activity-logs
+LOG_FILE=~/.claude/activity-logs/sessions.jsonl
+echo "{\"timestamp\":\"$TIMESTAMP\",\"session\":\"$SESSION_ID\",\"event\":\"start\"}" >> "$LOG_FILE"
 
-  exit 0
+exit 0
 ```
 
 ### 3. Analysis Script
