@@ -4,14 +4,19 @@ description: Interactive process timeline visualization showing the 8 sequential
 image: /sims/chapter-content-generation-timeline/chapter-content-generation-timeline.png
 og:image: /sims/chapter-content-generation-timeline/chapter-content-generation-timeline.png
 ---
-
 # Chapter Content Generation Workflow Timeline
+
+<iframe src="main.html" width="100%" height="720px" scrolling="no"></iframe>
 
 An interactive process timeline visualization showing the 8 sequential stages of the chapter-content-generator skill workflow, from initial file validation through final reporting.
 
-[Run the Chapter Content Generation Timeline](./main.html){ .md-button .md-button--primary }
+[Run the Chapter Content Generation Timeline Fullscreen](./main.html){ .md-button .md-button--primary }
 
 [View the Timeline Data](timeline.json){ .md-button }
+
+```html
+<iframe src="main.html" width="100%" height="720px" scrolling="no"></iframe>
+```
 
 ## Overview
 
