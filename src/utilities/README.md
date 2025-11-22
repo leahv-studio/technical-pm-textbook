@@ -287,3 +287,38 @@ Example output:
 ## License
 
 All scripts are part of the claude-skills repository and follow the same license.
+
+## Iframe Cleanup Boarder
+
+A Python script that automatically cleans up CSS files for iframe embedding.
+It removes all the extra margin and padding and makes the background aliceblue.
+
+  Created:
+
+  1. src/utilities/iframe-border-cleanup.py - A comprehensive Python script that:
+    - Removes all padding and margins from body, .container, and .diagram-container
+    - Sets aliceblue backgrounds for all three selectors
+    - Removes decorative border-radius and box-shadow properties
+    - Preserves all other CSS styling
+  2. Updated src/utilities/README.md - Added complete documentation
+
+  Usage examples:
+
+  # Process a single CSS file
+  python src/utilities/iframe-border-cleanup.py docs/sims/my-sim/style.css
+
+  # Process all MicroSim CSS files at once
+  python src/utilities/iframe-border-cleanup.py --all
+
+  # Preview changes without modifying files
+  python src/utilities/iframe-border-cleanup.py --dry-run docs/sims/my-sim/style.css
+
+  Features:
+  - Safe and idempotent (can run multiple times)
+  - Uses regex to precisely target CSS selectors
+  - Provides clear feedback on what was changed
+  - Includes dry-run mode for previewing changes
+  - Can batch process all MicroSims in the repository
+
+  The script is ready to use!
+
