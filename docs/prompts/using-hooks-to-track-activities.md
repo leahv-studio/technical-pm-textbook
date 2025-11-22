@@ -3,8 +3,8 @@
  How can we use Claude Hooks to efficiently log our activities to allow it to recommend new skills
  to help with the most time consuming tasks.
 
- ``` prompt
-    How can I use claude hooks to track my activity within Claude to help it suggest new skills? 
+ !!! prompt
+  How can I use claude hooks to track my activity within Claude to help it suggest new skills? 
 
 
  ## 1. Hook Configuration
