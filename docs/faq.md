@@ -610,7 +610,7 @@ Claude Code has strict default permissions that prompt for approval on every fil
 - **Bash(*:*)**: Allow all bash commands
 - **FileSystem(read:./**/*.*,write:./**/*.***: Allow reading/writing all files in project directory
 
-Only use permissive settings in Git-tracked projects where changes can be reverted. See the [getting started guide](getting-started.md#permissions) for security considerations.
+Only use permissive settings in Git-tracked projects where changes can be reverted. See the [getting started guide](getting-started.md) for GitHub setup.
 
 ### How do I deploy my textbook to GitHub Pages?
 
