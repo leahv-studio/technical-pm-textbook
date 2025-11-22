@@ -176,6 +176,7 @@ nav:
     - prompts/create-microsim-type-selector-skill.md
     - prompts/microsim-matcher-skill-creation.md
     - prompts/missing-microsim-generators.md
+    - Using Hooks to Track Activities: prompts/using-hooks-to-track-activities.md
 
   - Workshops:
     - List of Workshops: workshops/index.md
