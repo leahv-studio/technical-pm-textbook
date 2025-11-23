@@ -27,31 +27,9 @@ def csv_to_json(csv_path: str, json_path: str, color_config: dict = None, metada
     """
     # Default taxonomy group colors for visualization
     # Uses web-safe pastel color names (no hex codes)
-    # Supports both text codes (FOUND, DEF, etc.) and numeric IDs (1, 2, etc.)
+    # This is designed to work with up to 17 classifiers in a taxonomy
+    # The goal is to make the colors distinct
     default_colors = {
-        # Custom taxonomies for intelligent textbook skills course
-        'AIFND': 'MistyRose',        # AI Foundations
-        'SKILL': 'PeachPuff',        # Claude Skills
-        'IBOOK': 'LightYellow',      # Intelligent Textbooks
-        'MKDOC': 'Honeydew',         # MkDocs
-        'GRAPH': 'PaleTurquoise',    # Learning Graphs
-        'EDTHY': 'AliceBlue',        # Educational Theory
-        'CONTE': 'Lavender',         # Content Creation
-        'RSRCE': 'LavenderBlush',    # Resources
-        'INTER': 'BlanchedAlmond',   # Interactive
-        'VERCT': 'MintCream',        # Version Control
-        'TOOLS': 'LightCoral',       # Tools
-        'DATAS': 'Plum',             # Data & Scripting
-        # Standard/default text codes
-        'FOUND': 'MistyRose',
-        'DEF': 'PeachPuff',
-        'CORE': 'LightYellow',
-        'ADV': 'Honeydew',
-        'APPL': 'PaleTurquoise',
-        'SPEC': 'AliceBlue',
-        'PROJ': 'Lavender',
-        'CAP': 'Gainsboro',
-        'MISC': 'BlanchedAlmond',
         # Numeric IDs (same mapping)
         '1': 'MistyRose',
         '2': 'PeachPuff',
@@ -61,8 +39,15 @@ def csv_to_json(csv_path: str, json_path: str, color_config: dict = None, metada
         '6': 'AliceBlue',
         '7': 'Lavender',
         '8': 'LavenderBlush',
-        '9': 'BlanchedAlmond',
+        '9': 'Thistle',
         '10': 'MintCream',
+        '11': 'LightCoral',
+        '12': 'Plum',
+        '13': 'Gainsboro',
+        '14': 'PowderBlue',
+        '15': 'PaleGreen',
+        '16': 'Aquamarine',
+        '17': 'LightPink'
     }
 
     taxonomy_colors = color_config if color_config is not None else default_colors
