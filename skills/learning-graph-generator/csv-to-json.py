@@ -26,42 +26,43 @@ def csv_to_json(csv_path: str, json_path: str, color_config: dict = None, metada
                  If not provided, creates minimal metadata.
     """
     # Default taxonomy group colors for visualization
+    # Uses web-safe pastel color names (no hex codes)
     # Supports both text codes (FOUND, DEF, etc.) and numeric IDs (1, 2, etc.)
     default_colors = {
         # Custom taxonomies for intelligent textbook skills course
-        'AIFND': '#FF6B6B',    # Coral red - AI Foundations
-        'SKILL': '#4ECDC4',    # Turquoise - Claude Skills
-        'IBOOK': '#45B7D1',    # Sky blue - Intelligent Textbooks
-        'MKDOC': '#96CEB4',    # Sage green - MkDocs
-        'GRAPH': '#FFEAA7',    # Soft yellow - Learning Graphs
-        'EDTHY': '#DDA15E',    # Bronze - Educational Theory
-        'CONTE': '#BC6C25',    # Brown - Content Creation
-        'RSRCE': '#9B59B6',    # Purple - Resources
-        'INTER': '#E17055',    # Terracotta - Interactive
-        'VERCT': '#74B9FF',    # Light blue - Version Control
-        'TOOLS': '#A29BFE',    # Periwinkle - Tools
-        'DATAS': '#FD79A8',    # Pink - Data & Scripting
+        'AIFND': 'MistyRose',        # AI Foundations
+        'SKILL': 'PeachPuff',        # Claude Skills
+        'IBOOK': 'LightYellow',      # Intelligent Textbooks
+        'MKDOC': 'Honeydew',         # MkDocs
+        'GRAPH': 'PaleTurquoise',    # Learning Graphs
+        'EDTHY': 'AliceBlue',        # Educational Theory
+        'CONTE': 'Lavender',         # Content Creation
+        'RSRCE': 'LavenderBlush',    # Resources
+        'INTER': 'BlanchedAlmond',   # Interactive
+        'VERCT': 'MintCream',        # Version Control
+        'TOOLS': 'LightCoral',       # Tools
+        'DATAS': 'Plum',             # Data & Scripting
         # Standard/default text codes
-        'FOUND': 'red',
-        'DEF': 'orange',
-        'CORE': 'gold',
-        'ADV': 'blue',
-        'APPL': 'cyan',
-        'SPEC': 'indigo',
-        'PROJ': 'violet',
-        'CAP': 'gray',
-        'MISC': 'brown',
+        'FOUND': 'MistyRose',
+        'DEF': 'PeachPuff',
+        'CORE': 'LightYellow',
+        'ADV': 'Honeydew',
+        'APPL': 'PaleTurquoise',
+        'SPEC': 'AliceBlue',
+        'PROJ': 'Lavender',
+        'CAP': 'Gainsboro',
+        'MISC': 'BlanchedAlmond',
         # Numeric IDs (same mapping)
-        '1': 'red',
-        '2': 'orange',
-        '3': 'gold',
-        '4': 'green',
-        '5': 'blue',
-        '6': 'cyan',
-        '7': 'indigo',
-        '8': 'violet',
-        '9': 'gray',
-        '10': 'brown',
+        '1': 'MistyRose',
+        '2': 'PeachPuff',
+        '3': 'LightYellow',
+        '4': 'Honeydew',
+        '5': 'PaleTurquoise',
+        '6': 'AliceBlue',
+        '7': 'Lavender',
+        '8': 'LavenderBlush',
+        '9': 'BlanchedAlmond',
+        '10': 'MintCream',
     }
 
     taxonomy_colors = color_config if color_config is not None else default_colors
@@ -177,11 +178,10 @@ def csv_to_json(csv_path: str, json_path: str, color_config: dict = None, metada
             classifier_name = taxonomy_names.get(tax_id, tax_id)
 
             # Determine font color based on background color
-            # Dark colors need white text (named colors)
-            dark_colors = ['red', 'blue', 'indigo', 'violet', 'cyan', 'brown']
-            # Hex codes that need white text (dark backgrounds)
-            dark_hex_colors = ['#FF6B6B', '#9B59B6', '#E17055', '#BC6C25']
-            font_color = 'white' if (color in dark_colors or color in dark_hex_colors) else 'black'
+            # All pastel colors are light backgrounds, so use black text
+            # Only Plum and LightCoral might benefit from white text
+            dark_pastel_colors = ['Plum', 'LightCoral']
+            font_color = 'white' if color in dark_pastel_colors else 'black'
 
             groups[tax_id] = {
                 'classifierName': classifier_name,
