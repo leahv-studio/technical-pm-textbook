@@ -99,7 +99,7 @@ Extract the grade reading level from the `/docs/course-description.md` file.
 
 See `references/reading-levels.md` for detailed guidelines on adapting content for each level.
 
-### Step 4a: Generate Detailed Chapter Content
+### Step 4: Generate Detailed Chapter Content
 
 Add metadata to the top of the index file that indicates that a DRAFT of this
 chapter was created by this skill, the name of the skill, the date it was generated and the version of this skill.
@@ -114,7 +114,7 @@ version: 0.03
 ---
 ```
 
-### Step 4b: Generate Detailed Chapter Content
+### Step 5: Generate Detailed Chapter Content
 
 Generate comprehensive educational content based on the chapter outline, concept list, and reading level.
 
@@ -205,7 +205,7 @@ Make SURE to put the level 4 header with the prefix `#### Diagram:` before the d
    - **Evaluating:** Making judgments about information based on set criteria or standards, requiring critical thinking and justification.
    - **Creating:** Producing new or original work by combining elements to form a novel whole or solution. 
 
-### Step 5: Verify Completeness
+### Step 6: Verify Completeness
 
 After generating chapter content, verify all concepts have been covered.
 
@@ -224,17 +224,18 @@ After generating chapter content, verify all concepts have been covered.
 - Keep the existing title, summary, concepts list, and prerequisites sections
 - Add the new detailed content after the prerequisites section
 
-### Step 6: Report Summary to User
+### Step 7: Report Summary to User
 
 Provide a concise summary of the content generation results.
 
 **Report should include:**
-1. Confirmation that chapter content has been generated
+1. Confirmation that chapter content has been generated and the version of the skill
 2. Reading level used
 3. Word count or approximate length
 4. Count of non-text elements by type:
    - Markdown lists: X
    - Markdown tables: X
+   - Admonitions
    - Diagrams: X
    - Infographics: X
    - MicroSims: X
@@ -245,6 +246,9 @@ Provide a concise summary of the content generation results.
    - Graph models: X
 5. Number of interactive elements requiring skill execution
 6. Confirmation that all concepts were covered
+
+!!! Note
+   For admonitions to work, your mkdocs.yml must have admonition and pymdownx.details enabled.
 
 **Example report:**
 
