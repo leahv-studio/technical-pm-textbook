@@ -1,10 +1,40 @@
 # Content Element Types for Textbook Chapters
 
 This reference describes the various non-pure-text content elements that can be used to break up textbook content and enhance learning. Each element type should be specified in `<details markdown="1">` blocks when generating chapter content.
+The content of the details blocks should be to describe what the learning objective is and
+how a non-pure-text element can be used to promote learning.
+
+## Driven By An Learning Objective
+
+Behind the strategy for every diagram is to help the student learn.   A unit of learning
+is called a Learning Objective and diagrams are a wonderful way to teach visually.
+
+By understanding the TYPE of learning objective we encounter, we can map the objective
+to a specific type of interactive diagram, chart, infographic or even a MicroSim.
+
+Here are the six types of learning 
+
+1. Remember (L1) - Recall facts and basic concepts
+2. Understand (L2) - Explain ideas or concepts
+3. Apply (L3) - Use knowledge to solve problems
+4. Analyze (L4) - Examine relationships, connect concepts
+5. Evaluate (L5) - Judge value, make decisions
+6. Create (L6) - Design new solutions, produce original work
+
+For example:
+
+- Remember → Flash card MicroSims, Sorter MicroSims that focus on memorization of concepts and definitions
+- Understand → Test understanding by matching concepts and their explanations
+- Apply → Solve a problem by using a fact they know to complete a puzzle
+- Analyze → Show the student network graphs and have them make connections between items
+- Evaluate - Show the student examples and have them classify items
+- Create → Model Editor MicroSims where users construct their own models
 
 ## Element Types Overview
 
-The goal is to have no more than three paragraphs of pure text without incorporating one of these elements.
+The goal is to have not have more than three paragraphs of pure text without incorporating one of these elements.
+Students don't like to see large blocks of pure text scrolling in their intelligent textbook.  They
+want to interact with the content.
 
 ## 1. Markdown Lists
 
@@ -59,7 +89,88 @@ Here is a comparison of database types:
 | Query Speed (multi-hop) | Slow | Fast |
 ```
 
-## 3. Diagrams and Drawings
+## 3. Admonitions
+
+An admonition is another way to break up a wall of text.
+They should be used only occasionally.  Try to not have
+more than one per page.
+
+Our intelligent textbooks use the MkDocs Material theme
+which supports admonitions.
+
+Here are the admonition types supported by MkDocs Material:
+
+```markdown
+!!! note
+   This is a note admonition.
+
+!!! abstract
+   This is an abstract/summary/tldr admonition.
+
+!!! info
+   This is an info/todo admonition.
+
+!!! tip
+   This is a tip/hint/important admonition.
+
+!!! success
+   This is a success/check/done admonition.
+
+!!! question
+   This is a question/help/faq admonition.
+
+!!! warning
+   This is a warning/caution/attention admonition.
+
+!!! failure
+   This is a failure/fail/missing admonition.
+
+!!! danger
+   This is a danger/error admonition.
+
+!!! bug
+   This is a bug admonition.
+
+!!! example
+   This is an example admonition.
+
+!!! quote
+   This is a quote/cite admonition.
+
+With custom titles:
+
+!!! note "Custom Title Here"
+   Content with a custom title.
+
+Collapsible (requires pymdownx.details):
+
+??? note "Click to expand"
+   This content is hidden by default.
+
+???+ note "Expanded by default"
+   This content is visible but can be collapsed.
+
+Inline admonitions (Material theme):
+
+!!! info inline
+   Inline left admonition.
+
+!!! info inline end
+   Inline right admonition.
+```
+
+The Collapsible admonition that uses `???` is a fun way to challenge students
+test their knowledge.  It can be used at the end of a chapter to present
+a question and then reveal an answer.
+
+```markdown
+??? note "What are the first six digits of Pi? - Click to expand"
+   3.14159
+```
+
+## 4. Diagrams and Drawings
+In this section, you will create a detailed specification
+for a diagram, drawing, chart, flowchart, workflow, infographic or interactive MicroSim.
 
 **Type identifier:** `diagram`
 
@@ -69,10 +180,20 @@ Here is a comparison of database types:
 - Explaining abstract concepts visually
 - Depicting data flows or processes
 
-**Implementation:** Use `<details markdown="1">` block with specification
+**Implementation:** 
+
+Add a level 4 header that indicates we are placing a diagram in the content
+
+```markdown
+#### Diagram: {{DIAGRAM_NAME}}
+```
+
+Use `<details markdown="1">` block with specification
 
 **Required information in description:**
-- Purpose of the diagram
+- Diagram Name - A title-case name of the diagram that is unique in the chapter
+- Bloom Taxonomy - one of six levels of the 2001 Bloom Taxonomy: Remember, Understand, Analyze, Create
+- Learning Objective - what concepts are we trying to teach
 - What components/elements should be shown
 - How elements are connected or related
 - Suggested visual style (flowchart, network diagram, block diagram, etc.)
@@ -81,6 +202,7 @@ Here is a comparison of database types:
 
 **Example specification:**
 ```xml
+#### Diagram: CMDB Architecture Diagram
 <details markdown="1">
     <summary>CMDB Architecture Diagram</summary>
     Type: diagram
@@ -109,7 +231,12 @@ Here is a comparison of database types:
 </details>
 ```
 
-## 4. Interactive Infographics
+!!! Note
+   Do not over specify the positioning of items using absolute (x,y) coordinates.
+   MicroSims are all width responsive and must adapt to windows that are resized.
+
+
+## 5. Interactive Infographics
 
 **Type identifier:** `infographic`
 
@@ -158,7 +285,7 @@ Here is a comparison of database types:
 </details>
 ```
 
-## 5. MicroSims (p5.js Simulations)
+## 6. MicroSims (p5.js Simulations)
 
 **Type identifier:** `microsim`
 
@@ -226,7 +353,7 @@ Here is a comparison of database types:
 </details>
 ```
 
-## 6. Charts (Bar, Line, Pie)
+## 7. Charts (Bar, Line, Pie)
 
 **Type identifier:** `chart`
 
@@ -285,7 +412,7 @@ Here is a comparison of database types:
 </details>
 ```
 
-## 7. Timeline
+## 8. Timeline
 
 **Type identifier:** `timeline`
 
@@ -294,6 +421,10 @@ Here is a comparison of database types:
 - Illustrating project phases
 - Demonstrating evolution of concepts
 - Presenting sequential events
+
+Timelines are ideal for putting current events into context.
+Timelines can be used at the begging of a textbook to show
+the historical events that triggered an important based of knowledge.
 
 **Implementation:** Use `<details markdown="1">` block with specification
 
@@ -342,7 +473,7 @@ Here is a comparison of database types:
 </details>
 ```
 
-## 8. Maps with Movement Arrows
+## 9. Maps with Movement Arrows
 
 **Type identifier:** `map`
 
@@ -400,7 +531,7 @@ Here is a comparison of database types:
 </details>
 ```
 
-## 9. Workflow Diagrams with Hover Text
+## 10. Workflow Diagrams with Hover Text
 
 **Type identifier:** `workflow`
 
@@ -473,7 +604,7 @@ Here is a comparison of database types:
 </details>
 ```
 
-## 10. Graph Data Models (vis-network)
+## 11. Graph Data Models (vis-network)
 
 **Type identifier:** `graph-model`
 
