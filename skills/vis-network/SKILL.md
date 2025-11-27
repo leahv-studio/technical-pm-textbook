@@ -41,7 +41,92 @@ Each Vis-Network MicroSim is contained in a folder within the /docs/sims directo
 ```
 /docs/sims/$MICROSIM_NAME
 /docs/sims/$MICROSIM_NAME/index.md # main index markdown for each MicroSim containing the iframe and documentation
-/docs/sims/$MICROSIM_NAME/main.html # main HTML5 file containing the p5.js CDN link and importing the p5.js JavaScript
-/docs/sims/$MICROSIM_NAME/$MICROSIM_NAME.js # All the p5.js JavaScript
+/docs/sims/$MICROSIM_NAME/main.html # main HTML5 file containing the vis-network CDN link and importing the JavaScript
+/docs/sims/$MICROSIM_NAME/$MICROSIM_NAME.js # All the vis-network JavaScript
 /docs/sims/$MICROSIM_NAME/metadata.json # JSON file with Dublin core metadata and description of controls
+```
+
+### Step 3: Default Interaction Settings
+
+**IMPORTANT**: All vis-network MicroSims embedded in textbooks via iframe MUST disable mouse-based zoom and pan, and enable navigation buttons instead.
+
+#### Required Interaction Options
+
+```javascript
+const options = {
+    // ... other options ...
+    interaction: {
+        zoomView: false,        // Disable mouse wheel zoom
+        dragView: false,        // Disable mouse drag to pan
+        navigationButtons: true // Enable built-in navigation buttons
+    }
+};
+```
+
+#### Rationale
+
+These settings are mandatory for textbook embedding because:
+
+1. **Scroll Interference**: When a vis-network diagram is embedded in a textbook page via iframe, mouse wheel zoom captures scroll events. This prevents users from scrolling through the textbook content, creating a frustrating user experience.
+
+2. **Touch Device Conflicts**: On tablets and phones, pinch-to-zoom and drag gestures conflict with page navigation and scrolling.
+
+3. **Accessibility**: Navigation buttons provide a consistent, discoverable interface for all users, including those using assistive technologies.
+
+4. **Predictable Behavior**: Students expect scrolling to move through content, not zoom into diagrams.
+
+#### Exception: Fullscreen Mode
+
+The ONLY exception to this rule is when a diagram is displayed in fullscreen mode (not embedded in an iframe). In fullscreen mode, mouse zoom and pan may be enabled since there is no surrounding content to scroll:
+
+```javascript
+// Only for fullscreen standalone pages
+const fullscreenOptions = {
+    interaction: {
+        zoomView: true,
+        dragView: true,
+        navigationButtons: true
+    }
+};
+```
+
+### Step 4: Standard vis-network Options Template
+
+Use this template for all new vis-network MicroSims:
+
+```javascript
+const options = {
+    layout: {
+        improvedLayout: false
+    },
+    physics: {
+        enabled: false  // Use fixed positions for educational clarity
+    },
+    interaction: {
+        selectConnectedEdges: false,
+        zoomView: false,
+        dragView: false,
+        navigationButtons: true
+    },
+    nodes: {
+        shape: 'box',
+        margin: 10,
+        font: {
+            size: 20,
+            face: 'Arial'
+        },
+        borderWidth: 2,
+        shadow: true
+    },
+    edges: {
+        arrows: {
+            to: { enabled: true, scaleFactor: 1.2 }
+        },
+        width: 2,
+        smooth: {
+            type: 'curvedCW',
+            roundness: 0.4
+        }
+    }
+};
 ```
