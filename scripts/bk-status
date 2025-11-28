@@ -1,0 +1,152 @@
+#!/bin/bash
+#
+# bk-status - Check the status of an intelligent textbook project
+#
+# This script wraps the book-status.py Python program and performs
+# environment validation before running.
+#
+# Usage:
+#   bk-status              # Run from current directory
+#   bk-status /path/to/book # Run for specific book directory
+#
+# Environment Variables:
+#   BK_HOME - Path to the intelligent textbook tools directory
+#            (contains src/book-status/book-status.py)
+#
+# Installation:
+#   1. Set BK_HOME in your shell profile (~/.bashrc or ~/.zshrc):
+#      export BK_HOME="/path/to/claude-skills"
+#
+#   2. Add scripts to PATH:
+#      export PATH="$BK_HOME/scripts:$PATH"
+#
+#   3. Reload your shell or run: source ~/.zshrc
+#
+
+# ANSI color codes
+RED='\033[91m'
+GREEN='\033[92m'
+YELLOW='\033[93m'
+BLUE='\033[94m'
+BOLD='\033[1m'
+RESET='\033[0m'
+
+# Function to print error messages
+error() {
+    echo -e "${RED}${BOLD}Error:${RESET} $1" >&2
+}
+
+# Function to print warning messages
+warning() {
+    echo -e "${YELLOW}${BOLD}Warning:${RESET} $1"
+}
+
+# Function to print info messages
+info() {
+    echo -e "${BLUE}${BOLD}Info:${RESET} $1"
+}
+
+# Function to print success messages
+success() {
+    echo -e "${GREEN}${BOLD}✓${RESET} $1"
+}
+
+# ─────────────────────────────────────────────────────────────
+# Check 1: Verify BK_HOME is set
+# ─────────────────────────────────────────────────────────────
+if [ -z "$BK_HOME" ]; then
+    error "BK_HOME environment variable is not set."
+    echo ""
+    echo "The BK_HOME variable should point to your claude-skills directory."
+    echo ""
+    echo "${BOLD}To fix this, add the following to your shell profile:${RESET}"
+    echo ""
+    echo "  For bash (~/.bashrc):"
+    echo "    export BK_HOME=\"/path/to/claude-skills\""
+    echo "    export PATH=\"\$BK_HOME/scripts:\$PATH\""
+    echo ""
+    echo "  For zsh (~/.zshrc):"
+    echo "    export BK_HOME=\"/path/to/claude-skills\""
+    echo "    export PATH=\"\$BK_HOME/scripts:\$PATH\""
+    echo ""
+    echo "Then reload your shell: source ~/.zshrc (or ~/.bashrc)"
+    echo ""
+    exit 1
+fi
+
+# ─────────────────────────────────────────────────────────────
+# Check 2: Verify BK_HOME directory exists
+# ─────────────────────────────────────────────────────────────
+if [ ! -d "$BK_HOME" ]; then
+    error "BK_HOME directory does not exist: $BK_HOME"
+    echo ""
+    echo "Please verify that BK_HOME points to a valid directory."
+    echo "Current value: $BK_HOME"
+    exit 1
+fi
+
+# ─────────────────────────────────────────────────────────────
+# Check 3: Verify book-status.py exists
+# ─────────────────────────────────────────────────────────────
+BOOK_STATUS_PY="$BK_HOME/src/book-status/book-status.py"
+
+if [ ! -f "$BOOK_STATUS_PY" ]; then
+    error "book-status.py not found at: $BOOK_STATUS_PY"
+    echo ""
+    echo "Expected file structure:"
+    echo "  \$BK_HOME/"
+    echo "  └── src/"
+    echo "      └── book-status/"
+    echo "          └── book-status.py"
+    echo ""
+    echo "Please verify your claude-skills installation."
+    exit 1
+fi
+
+# ─────────────────────────────────────────────────────────────
+# Check 4: Verify Python is available
+# ─────────────────────────────────────────────────────────────
+if ! command -v python3 &> /dev/null; then
+    error "Python 3 is not installed or not in PATH."
+    echo ""
+    echo "Please install Python 3:"
+    echo "  macOS:   brew install python3"
+    echo "  Ubuntu:  sudo apt install python3"
+    echo "  Windows: Download from https://python.org"
+    exit 1
+fi
+
+# ─────────────────────────────────────────────────────────────
+# Check 5: Verify scripts directory is in PATH (optional warning)
+# ─────────────────────────────────────────────────────────────
+SCRIPTS_DIR="$BK_HOME/scripts"
+
+if [[ ":$PATH:" != *":$SCRIPTS_DIR:"* ]]; then
+    warning "Scripts directory is not in PATH."
+    echo "  Current PATH does not include: $SCRIPTS_DIR"
+    echo ""
+    echo "  To add it, update your shell profile:"
+    echo "    export PATH=\"\$BK_HOME/scripts:\$PATH\""
+    echo ""
+fi
+
+# ─────────────────────────────────────────────────────────────
+# Check 6: Display environment status
+# ─────────────────────────────────────────────────────────────
+echo ""
+echo -e "${BOLD}Environment Check${RESET}"
+echo "─────────────────────────────────────"
+success "BK_HOME is set: $BK_HOME"
+success "book-status.py found"
+success "Python 3 available: $(python3 --version 2>&1)"
+
+# ─────────────────────────────────────────────────────────────
+# Run the Python script
+# ─────────────────────────────────────────────────────────────
+echo ""
+
+# Pass through any command line arguments (like path to book)
+python3 "$BOOK_STATUS_PY" "$@"
+exit_code=$?
+
+exit $exit_code
