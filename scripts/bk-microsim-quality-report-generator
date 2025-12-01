@@ -1,5 +1,6 @@
 #!/bin/bash
-# MicroSim Quality Report Generator
+# bk-microsim-quality-report-generator - Generate quality reports for MicroSims
+#
 # Generates a comprehensive quality report for all MicroSims in the repository
 
 set -e  # Exit on error

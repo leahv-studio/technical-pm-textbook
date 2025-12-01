@@ -33,17 +33,42 @@ NC='\033[0m' # No Color
 
 # Function to extract description from a script file
 # Looks for a comment line starting with # followed by description text
+# Handles formats: "# script-name - Description" or "# Description" on separate line
 get_description() {
     local file="$1"
+    local script_name=$(basename "$file")
     local desc=""
 
-    # Try to find a description comment (typically on line 3 or 4)
-    # Look for lines that start with # followed by text (but not #!)
-    desc=$(grep -E "^#[^!]" "$file" | grep -v "^#!/" | grep -v "^#$" | head -1 | sed 's/^# *//')
+    # Check lines 2-5 for format "# script-name - Description"
+    for linenum in 2 3 4 5; do
+        local line=$(sed -n "${linenum}p" "$file")
+        if [[ "$line" =~ ^#\ *$script_name\ *-\ *(.+)$ ]]; then
+            desc="${BASH_REMATCH[1]}"
+            break
+        fi
+    done
+
+    # If no "name - description" format found, look for standalone description
+    if [ -z "$desc" ]; then
+        desc=$(sed -n '2,10p' "$file" | \
+               grep -E "^#" | \
+               grep -v "^#!/" | \
+               grep -v "^#$" | \
+               grep -v "^# *$script_name" | \
+               grep -vi "^# *Usage:" | \
+               grep -vi "^# *This script" | \
+               head -1 | \
+               sed 's/^# *//')
+    fi
 
     # If no description found, use a default
     if [ -z "$desc" ]; then
         desc="No description available"
+    fi
+
+    # Truncate long descriptions to 50 chars
+    if [ ${#desc} -gt 50 ]; then
+        desc="${desc:0:47}..."
     fi
 
     echo "$desc"
