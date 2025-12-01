@@ -57,18 +57,18 @@ nav:
   - Skill Descriptions:
     - Overview of Skills: skill-descriptions/index.md
 
-    - Book Generation Skills: 
+    - Book Generation Skills:
       - Overview: skill-descriptions/book/index.md
-      - 1 Course Description Generator and Analyzer: skill-descriptions/book/course-description-analyzer.md
-      - 2 Learning Graph Generator: skill-descriptions/book/learning-graph-generator.md
-      - 3 Install Learning Graph Viewer: skill-descriptions/book/install-learning-graph-viewer.md
-      - 4 Book Chapter Structure Generator: skill-descriptions/book/book-chapter-generator.md
-      - 5 Chapter Content Generator: skill-descriptions/book/chapter-content-generator.md
-      - 6 Glossary Generator: skill-descriptions/book/glossary-generator.md
-      - 7 FAQ Generator: skill-descriptions/book/faq-generator.md
-      - 8 Quiz Generator: skill-descriptions/book/quiz-generator.md
-      - 9 Reference Generator: skill-descriptions/book/reference-generator.md
-      - 10 Add Glossary Links: skill-descriptions/book/add-glossary-links.md
+      - 1 Install MkDocs Template: skill-descriptions/book/install-mkdocs-template.md
+      - 2 Course Description Generator and Analyzer: skill-descriptions/book/course-description-analyzer.md
+      - 3 Learning Graph Generator: skill-descriptions/book/learning-graph-generator.md
+      - 4 Install Learning Graph Viewer: skill-descriptions/book/install-learning-graph-viewer.md
+      - 5 Book Chapter Structure Generator: skill-descriptions/book/book-chapter-generator.md
+      - 6 Chapter Content Generator: skill-descriptions/book/chapter-content-generator.md
+      - 7 Glossary Generator: skill-descriptions/book/glossary-generator.md
+      - 8 FAQ Generator: skill-descriptions/book/faq-generator.md
+      - 9 Quiz Generator: skill-descriptions/book/quiz-generator.md
+      - 10 Reference Generator: skill-descriptions/book/reference-generator.md
     
     - MicroSim Generation Skills:
       - Bubble Chart: skill-descriptions/microsims/bubble-chart-generator.md
