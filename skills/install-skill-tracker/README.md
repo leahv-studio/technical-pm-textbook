@@ -1,6 +1,6 @@
-# Claude Code Skill Tracker
+# Claude Code Skill Tracker (Global)
 
-A complete activity tracking system for Claude Code that automatically logs skill usage, execution duration, and user prompts to help identify patterns and opportunities for automation.
+A complete activity tracking system for Claude Code that automatically logs skill usage, execution duration, and user prompts **across all projects** to help identify patterns and opportunities for automation.
 
 ## Table of Contents
 
@@ -16,31 +16,34 @@ A complete activity tracking system for Claude Code that automatically logs skil
 
 ## Overview
 
-The Skill Tracker system uses Claude Code's hooks mechanism to automatically collect telemetry data about skill usage without requiring any manual intervention. This data enables:
+The Skill Tracker system uses Claude Code's hooks mechanism to automatically collect telemetry data about skill usage **globally across all your projects** without requiring any manual intervention. This data enables:
 
 - **Pattern Discovery** - Identify frequently repeated workflows that could become new skills
 - **Performance Analysis** - Track which skills take the most time and may need optimization
 - **Productivity Metrics** - Quantify time saved through skill automation
-- **Usage Insights** - Understand which skills provide the most value
+- **Usage Insights** - Understand which skills provide the most value across all projects
+- **Cost Tracking** - Monitor API costs and token usage across your entire workflow
 
 ### Key Features
 
+- **Global tracking** - Single centralized log for all projects in `~/.claude/activity-logs/`
 - **Zero-overhead tracking** - Uses lightweight hooks that don't impact performance
 - **Automatic correlation** - Links prompts to skill invocations via session IDs
 - **Duration measurement** - Calculates precise execution time for each skill
 - **Token usage tracking** - Captures input, output, and cache token metrics for cost analysis
+- **Project identification** - Each log entry includes the project directory for filtering
 - **Rich analytics** - Generates comprehensive reports with insights and suggestions
 - **Privacy-first** - All data stored locally, never transmitted externally
 - **JSONL format** - Industry-standard format for easy parsing and analysis
 
 ## Architecture
 
-The tracking system consists of three components:
+The tracking system consists of three components installed globally in `~/.claude/`:
 
 ```
 ┌─────────────────┐
 │  Claude Code    │
-│                 │
+│  (Any Project)  │
 │  User Prompts   │
 └────────┬────────┘
          │
@@ -60,13 +63,14 @@ The tracking system consists of three components:
          │                        │               │
          ↓                        ↓               ↓
     prompts.jsonl          track-skill-    track-skill-
-                           start.sh        end.sh
+    (global)               start.sh        end.sh
                                 │               │
                                 ↓               ↓
-                           skill-usage.jsonl
+                           skill-usage.jsonl (global)
 
          ┌──────────────────────┴──────────────────────┐
          ↓                                              ↓
+    ~/.claude/activity-logs/                   ~/.claude/activity-logs/
     prompts.jsonl                               skill-usage.jsonl
          │                                              │
          └──────────────────┬───────────────────────────┘
@@ -79,17 +83,18 @@ The tracking system consists of three components:
 
 ### Component Breakdown
 
-1. **Hook Scripts** (`.claude/hooks/`)
+1. **Hook Scripts** (`~/.claude/hooks/`)
    - `track-prompts.sh` - Captures user prompts via UserPromptSubmit hook
    - `track-skill-start.sh` - Logs skill start time via PreToolUse hook
    - `track-skill-end.sh` - Logs skill completion and calculates duration via PostToolUse hook
 
-2. **Log Files** (`.claude/activity-logs/`)
-   - `prompts.jsonl` - One JSON object per line, each containing a user prompt with timestamp
-   - `skill-usage.jsonl` - One JSON object per line, each containing a skill event (start/end)
+2. **Log Files** (`~/.claude/activity-logs/`)
+   - `prompts.jsonl` - One JSON object per line, each containing a user prompt with timestamp and project
+   - `skill-usage.jsonl` - One JSON object per line, each containing a skill event (start/end) with project
 
-3. **Analysis Script** (`.claude/scripts/`)
+3. **Analysis Scripts** (`~/.claude/scripts/`)
    - `analyze-skills.py` - Python script that processes logs and generates reports
+   - `show-skill-tokens.sh` - Bash script to display token usage and cost metrics
 
 ## How It Works
 
@@ -123,30 +128,44 @@ The tracking system consists of three components:
 
 ### Hook Configuration
 
-Hooks are configured in `.claude/settings.json`:
+Hooks are configured globally in `~/.claude/settings.json`:
 
 ```json
 {
   "hooks": {
     "UserPromptSubmit": [
       {
-        "command": "bash .claude/hooks/track-prompts.sh"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/track-prompts.sh",
+            "description": "Log user prompts to correlate with skill usage (global)"
+          }
+        ]
       }
     ],
     "PreToolUse": [
       {
-        "command": "bash .claude/hooks/track-skill-start.sh",
-        "matcher": {
-          "tool_name": "Skill"
-        }
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/track-skill-start.sh",
+            "description": "Log skill invocation start time and parameters (global)"
+          }
+        ]
       }
     ],
     "PostToolUse": [
       {
-        "command": "bash .claude/hooks/track-skill-end.sh",
-        "matcher": {
-          "tool_name": "Skill"
-        }
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/track-skill-end.sh",
+            "description": "Log skill completion time and calculate duration (global)"
+          }
+        ]
       }
     ]
   }
@@ -167,22 +186,20 @@ Use the `install-skill-tracker` skill to automate setup:
 Or install manually:
 
 ```bash
-# Create directories
-mkdir -p .claude/hooks .claude/scripts .claude/activity-logs
+# Create global directories
+mkdir -p ~/.claude/hooks ~/.claude/scripts ~/.claude/activity-logs
 
 # Copy hook scripts
-cp skills/install-skill-tracker/scripts/track-*.sh .claude/hooks/
-chmod +x .claude/hooks/*.sh
+cp skills/install-skill-tracker/scripts/track-*.sh ~/.claude/hooks/
+chmod +x ~/.claude/hooks/*.sh
 
-# Copy analysis script
-cp skills/install-skill-tracker/scripts/analyze-skills.py .claude/scripts/
-chmod +x .claude/scripts/analyze-skills.py
+# Copy analysis scripts
+cp skills/install-skill-tracker/scripts/analyze-skills.py ~/.claude/scripts/
+cp skills/install-skill-tracker/scripts/show-skill-tokens.sh ~/.claude/scripts/
+chmod +x ~/.claude/scripts/*
 
-# Copy configuration
-cp skills/install-skill-tracker/assets/settings.json .claude/settings.json
-
-# Add to .gitignore
-echo ".claude/activity-logs/" >> .gitignore
+# Copy configuration (merge if ~/.claude/settings.json already exists)
+cp skills/install-skill-tracker/assets/settings.json ~/.claude/settings.json
 ```
 
 ## Data Format
@@ -238,6 +255,7 @@ jq -nc \
   "timestamp": "2025-11-22 07:04:33",  // Human-readable timestamp
   "epoch": "1763816673",                // Unix epoch for sorting/calculations
   "session": "9ff87af7-...",            // Session ID for correlation
+  "project": "/path/to/project",        // Project directory (for filtering)
   "prompt": "run the skill"             // User's prompt text
 }
 ```
@@ -250,6 +268,7 @@ jq -nc \
   "timestamp": "2025-11-22 07:04:42",
   "epoch": "1763816682",
   "session": "9ff87af7-...",
+  "project": "/path/to/project",
   "skill": "book-metrics-generator",
   "event": "start"
 }
@@ -261,6 +280,7 @@ jq -nc \
   "timestamp": "2025-11-22 07:04:51",
   "epoch": "1763816691",
   "session": "9ff87af7-...",
+  "project": "/path/to/project",
   "skill": "book-metrics-generator",
   "event": "end",
   "duration_seconds": "9",
@@ -284,11 +304,11 @@ jq -nc \
 ### Running the Analysis Script
 
 ```bash
-# Analyze current project logs
-python .claude/scripts/analyze-skills.py
+# Analyze global logs (default)
+~/.claude/scripts/analyze-skills.py
 
 # Analyze logs from a different directory
-python .claude/scripts/analyze-skills.py /path/to/logs
+~/.claude/scripts/analyze-skills.py /path/to/logs
 ```
 
 ### Token Usage Analysis (NEW in v1.2)
@@ -297,11 +317,7 @@ View token usage for all skill executions:
 
 ```bash
 # Display recent skill token usage
-bash .claude/scripts/show-skill-tokens.sh
-
-# Or make it executable and run directly
-chmod +x .claude/scripts/show-skill-tokens.sh
-.claude/scripts/show-skill-tokens.sh
+~/.claude/scripts/show-skill-tokens.sh
 ```
 
 **Sample Output:**
@@ -344,7 +360,7 @@ Cache tokens significantly reduce costs:
 ```markdown
 # Skill Usage Analysis Report
 
-**Log directory:** `$HOME/project/.claude/activity-logs`
+**Log directory:** `~/.claude/activity-logs`
 **Total skill invocations:** 15
 **Analysis date:** 2025-11-22 14:30:00
 
@@ -422,11 +438,11 @@ Update all hook scripts to use `jq -nc`:
 
 ```bash
 # Fix existing hooks
-sed -i '' 's/jq -n \\/jq -nc \\/' .claude/hooks/track-*.sh
+sed -i '' 's/jq -n \\/jq -nc \\/' ~/.claude/hooks/track-*.sh
 
 # Fix existing log files
-jq -c '.' .claude/activity-logs/prompts.jsonl > temp && mv temp .claude/activity-logs/prompts.jsonl
-jq -c '.' .claude/activity-logs/skill-usage.jsonl > temp && mv temp .claude/activity-logs/skill-usage.jsonl
+jq -c '.' ~/.claude/activity-logs/prompts.jsonl > temp && mv temp ~/.claude/activity-logs/prompts.jsonl
+jq -c '.' ~/.claude/activity-logs/skill-usage.jsonl > temp && mv temp ~/.claude/activity-logs/skill-usage.jsonl
 ```
 
 ### Issue: No Data Logged
@@ -437,28 +453,28 @@ Running analysis shows "No skill usage data found yet."
 **Diagnosis:**
 ```bash
 # Check if directories exist
-ls -la .claude/activity-logs/
+ls -la ~/.claude/activity-logs/
 
 # Check hook configuration
-cat .claude/settings.json
+cat ~/.claude/settings.json
 
 # Check hook permissions
-ls -l .claude/hooks/*.sh
+ls -l ~/.claude/hooks/*.sh
 
 # Verify hooks are executable
-file .claude/hooks/*.sh
+file ~/.claude/hooks/*.sh
 ```
 
 **Solution:**
 ```bash
 # Ensure directories exist
-mkdir -p .claude/activity-logs
+mkdir -p ~/.claude/activity-logs
 
 # Make hooks executable
-chmod +x .claude/hooks/*.sh
+chmod +x ~/.claude/hooks/*.sh
 
 # Verify settings.json exists
-test -f .claude/settings.json && echo "Settings found" || echo "Settings missing"
+test -f ~/.claude/settings.json && echo "Settings found" || echo "Settings missing"
 ```
 
 ### Issue: Duration Shows "unknown"
@@ -474,14 +490,14 @@ Analysis report shows `Duration: unknown` for skills
 **Diagnosis:**
 ```bash
 # Check for orphaned temp files
-ls .claude/activity-logs/*.tmp
+ls ~/.claude/activity-logs/*.tmp
 
 # Check permissions
-ls -la .claude/activity-logs/
+ls -la ~/.claude/activity-logs/
 ```
 
 **Solution:**
-- Ensure `.claude/activity-logs/` is writable
+- Ensure `~/.claude/activity-logs/` is writable
 - Check that skill names don't contain special characters that break filenames
 - Verify both PreToolUse and PostToolUse hooks are configured
 
@@ -493,49 +509,43 @@ Log files not created when using skills
 **Diagnosis:**
 ```bash
 # Test hook manually
-echo '{"prompt":"test","session_id":"test123"}' | bash .claude/hooks/track-prompts.sh
+echo '{"prompt":"test","session_id":"test123"}' | bash ~/.claude/hooks/track-prompts.sh
 
 # Check for errors
-echo '{"prompt":"test","session_id":"test123"}' | bash -x .claude/hooks/track-prompts.sh
+echo '{"prompt":"test","session_id":"test123"}' | bash -x ~/.claude/hooks/track-prompts.sh
 ```
 
 **Solution:**
 - Verify `jq` is installed: `which jq`
-- Check hook script syntax: `bash -n .claude/hooks/track-prompts.sh`
-- Ensure hooks are in `.claude/settings.json`
+- Check hook script syntax: `bash -n ~/.claude/hooks/track-prompts.sh`
+- Ensure hooks are in `~/.claude/settings.json`
 - Restart Claude Code to reload settings
 
 ## Privacy & Security
 
 ### Local Storage Only
 
-All tracking data is stored locally in `.claude/activity-logs/`:
+All tracking data is stored locally in `~/.claude/activity-logs/`:
 - No data transmission to external services
 - No cloud sync or remote logging
 - Complete control over your data
-
-### Excluding from Git
-
-The installation process adds `.claude/activity-logs/` to `.gitignore` to prevent:
-- Committing sensitive prompt data
-- Exposing project patterns
-- Repository bloat from log files
+- Stored in your home directory, not in project repositories
 
 ### Deleting Logs
 
 Remove all tracking data:
 ```bash
 # Delete all logs
-rm -rf .claude/activity-logs
+rm -rf ~/.claude/activity-logs
 
 # Delete specific log files
-rm .claude/activity-logs/prompts.jsonl
-rm .claude/activity-logs/skill-usage.jsonl
+rm ~/.claude/activity-logs/prompts.jsonl
+rm ~/.claude/activity-logs/skill-usage.jsonl
 ```
 
 ### Selective Logging
 
-Disable specific hooks by commenting them out in `.claude/settings.json`:
+Disable specific hooks by commenting them out in `~/.claude/settings.json`:
 
 ```json
 {
@@ -552,29 +562,16 @@ Disable specific hooks by commenting them out in `.claude/settings.json`:
 
 ## Customization
 
-### Global vs Project-Specific Tracking
+### Filtering by Project
 
-**Current Setup:** Project-specific (logs in `.claude/activity-logs/`)
+Since all logs include the project directory, you can filter analysis by project:
 
-**For Global Tracking:**
-
-1. Move settings to user-level config:
 ```bash
-mv .claude/settings.json ~/.claude/settings.json
-```
+# View skills used in a specific project
+jq 'select(.project | contains("my-project"))' ~/.claude/activity-logs/skill-usage.jsonl
 
-2. Update `LOG_DIR` in all hook scripts:
-```bash
-# Change from:
-LOG_DIR="${CLAUDE_PROJECT_DIR:-.}/.claude/activity-logs"
-
-# To:
-LOG_DIR="$HOME/.claude/activity-logs"
-```
-
-3. Analysis script automatically finds global logs:
-```bash
-python ~/.claude/scripts/analyze-skills.py
+# Count skills by project
+jq -s 'group_by(.project) | map({project: .[0].project, count: length})' ~/.claude/activity-logs/skill-usage.jsonl
 ```
 
 ### Tracking Additional Tools
@@ -618,17 +615,28 @@ Query logs directly with `jq`:
 ```bash
 # Count skills by name
 jq -s 'group_by(.skill) | map({skill: .[0].skill, count: length})' \
-  .claude/activity-logs/skill-usage.jsonl
+  ~/.claude/activity-logs/skill-usage.jsonl
 
 # Find long-running skills (>60 seconds)
 jq 'select(.event == "end" and (.duration_seconds | tonumber) > 60)' \
-  .claude/activity-logs/skill-usage.jsonl
+  ~/.claude/activity-logs/skill-usage.jsonl
 
 # Get unique prompts
-jq -r '.prompt' .claude/activity-logs/prompts.jsonl | sort -u
+jq -r '.prompt' ~/.claude/activity-logs/prompts.jsonl | sort -u
+
+# Skills by project
+jq -s 'group_by(.project) | map({project: .[0].project, skills: (group_by(.skill) | map({skill: .[0].skill, count: length}))})' \
+  ~/.claude/activity-logs/skill-usage.jsonl
 ```
 
 ## Version History
+
+**v2.0** (2025-12-02)
+- **BREAKING:** Changed to global-only installation in `~/.claude/`
+- All hooks, scripts, and logs now stored in `~/.claude/` directory
+- Added `project` field to all log entries for filtering by project
+- Removed project-specific installation option (use global tracking for all projects)
+- Updated all documentation and scripts for global paths
 
 **v1.2** (2025-11-22)
 - **NEW:** Added token usage tracking (input, output, cache metrics)
@@ -655,14 +663,14 @@ install-skill-tracker/
 ├── README.md                    # This file
 ├── SKILL.md                     # Skill definition and installation workflow
 ├── scripts/
-│   ├── track-prompts.sh        # Hook: Capture user prompts
-│   ├── track-skill-start.sh    # Hook: Log skill start times
-│   ├── track-skill-end.sh      # Hook: Log skill completion, duration, and tokens (v1.2)
+│   ├── track-prompts.sh        # Hook: Capture user prompts (global)
+│   ├── track-skill-start.sh    # Hook: Log skill start times (global)
+│   ├── track-skill-end.sh      # Hook: Log skill completion, duration, and tokens (global)
 │   ├── analyze-skills.py       # Analysis script for patterns and insights
-│   └── show-skill-tokens.sh    # NEW v1.2: Display token usage and cost metrics
+│   └── show-skill-tokens.sh    # Display token usage and cost metrics
 └── assets/
-    ├── settings.json            # Template for .claude/settings.json
-    └── README.md                # Documentation to copy to .claude/README.md
+    ├── settings.json            # Template for ~/.claude/settings.json
+    └── README.md                # Documentation to copy to ~/.claude/README.md
 ```
 
 ### External References

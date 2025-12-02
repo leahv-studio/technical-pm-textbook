@@ -260,8 +260,8 @@ def analyze_skill_usage(log_dir):
 
 def main():
     """Main entry point."""
-    # Default log directory - use current working directory
-    log_dir = Path.cwd() / ".claude" / "activity-logs"
+    # Default log directory - use global ~/.claude/activity-logs
+    log_dir = Path.home() / ".claude" / "activity-logs"
 
     # Allow override from command line
     if len(sys.argv) > 1:

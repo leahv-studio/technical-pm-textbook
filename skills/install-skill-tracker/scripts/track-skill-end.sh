@@ -1,16 +1,18 @@
 #!/bin/bash
 # Track skill completion and calculate duration
+# Logs are stored globally in ~/.claude/activity-logs/
 
 HOOK_INPUT=$(cat)
 TOOL_NAME=$(echo "$HOOK_INPUT" | jq -r '.tool_name')
 SKILL_NAME=$(echo "$HOOK_INPUT" | jq -r '.tool_input.skill')
 SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id')
 TRANSCRIPT_PATH=$(echo "$HOOK_INPUT" | jq -r '.transcript_path')
+PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$(pwd)}"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 EPOCH=$(date '+%s')
 
-# Create log directory if it doesn't exist
-LOG_DIR="${CLAUDE_PROJECT_DIR:-.}/.claude/activity-logs"
+# Create global log directory if it doesn't exist
+LOG_DIR="$HOME/.claude/activity-logs"
 mkdir -p "$LOG_DIR"
 
 # Calculate duration if start time exists
@@ -56,12 +58,13 @@ if [ -f "$TRANSCRIPT_PATH" ]; then
   fi
 fi
 
-# Log skill completion with duration and token usage
+# Log skill completion with duration, project, and token usage
 LOG_FILE="$LOG_DIR/skill-usage.jsonl"
 jq -nc \
   --arg ts "$TIMESTAMP" \
   --arg epoch "$EPOCH" \
   --arg sid "$SESSION_ID" \
+  --arg proj "$PROJECT_DIR" \
   --arg skill "$SKILL_NAME" \
   --arg event "end" \
   --arg dur "$DURATION" \
@@ -70,7 +73,7 @@ jq -nc \
   --argjson tot_tok "${TOTAL_TOKENS:-null}" \
   --argjson cache_read "${CACHE_READ_TOKENS:-null}" \
   --argjson cache_create "${CACHE_CREATION_TOKENS:-null}" \
-  '{timestamp: $ts, epoch: $epoch, session: $sid, skill: $skill, event: $event, duration_seconds: $dur, input_tokens: $in_tok, output_tokens: $out_tok, total_tokens: $tot_tok, cache_read_tokens: $cache_read, cache_creation_tokens: $cache_create}' >> "$LOG_FILE"
+  '{timestamp: $ts, epoch: $epoch, session: $sid, project: $proj, skill: $skill, event: $event, duration_seconds: $dur, input_tokens: $in_tok, output_tokens: $out_tok, total_tokens: $tot_tok, cache_read_tokens: $cache_read, cache_creation_tokens: $cache_create}' >> "$LOG_FILE"
 
 # Allow normal completion (exit 0 = success)
 exit 0

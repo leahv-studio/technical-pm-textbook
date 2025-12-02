@@ -1,7 +1,8 @@
 #!/bin/bash
 # Display skill usage with token information
+# Uses global log directory ~/.claude/activity-logs/
 
-LOG_FILE="${CLAUDE_PROJECT_DIR:-.}/.claude/activity-logs/skill-usage.jsonl"
+LOG_FILE="$HOME/.claude/activity-logs/skill-usage.jsonl"
 
 if [ ! -f "$LOG_FILE" ]; then
   echo "No skill usage log found at: $LOG_FILE"
