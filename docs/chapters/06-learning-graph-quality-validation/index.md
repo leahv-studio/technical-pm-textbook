@@ -67,6 +67,9 @@ If the algorithm encounters a gray node during traversal, it has detected a back
 
 #### Diagram: DAG Validation Algorithm Visualization
 
+<iframe src="../../sims/three-color-dfs/main.html" width="100%" height="700px" scrolling="no"></iframe>
+[Run the Three Color DFS Fullscreen](../../sims/three-color-dfs/main.html)
+
 <details markdown="1">
     <summary>DAG Validation Algorithm Visualization</summary>
     Type: diagram
