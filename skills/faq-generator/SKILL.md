@@ -7,7 +7,7 @@ license: MIT
 # FAQ Generator
 
 Generate comprehensive, categorized FAQs from textbook content and chatbot-ready JSON exports.  Place the
-faqs into the file docs/faqs.md.  Log the results of the session to `logs/faqs.md`.
+FAQs into the file docs/faq.md.  Log the results of the session to `logs/faq.md`.
 
 ## Purpose
 
@@ -568,7 +568,7 @@ If FAQ not in `mkdocs.yml`:
 ```yml
 nav:
 ...
-  - FAQs: faq.md
+  - FAQ: faq.md
   - Glossary: glossary.md
   - License: license.md
   - References: references.md
