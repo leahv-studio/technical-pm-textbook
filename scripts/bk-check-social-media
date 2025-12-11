@@ -1,0 +1,329 @@
+#!/bin/bash
+# bk-check-social-media
+#
+# Verify Open Graph social media tags in a MicroSim's main.html file
+# Checks for presence and proper lengths of og:title, og:description, og:image
+# Also validates image dimensions (recommends 1200x630 with 1.91:1 ratio)
+#
+# Usage:
+#   cd /path/to/microsim && bk-check-social-media
+#   bk-check-social-media /path/to/microsim
+
+# Colors for output
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+# Open Graph recommended lengths
+# Title: 40-60 characters optimal, max 90
+OG_TITLE_MIN=10
+OG_TITLE_OPTIMAL_MIN=40
+OG_TITLE_OPTIMAL_MAX=60
+OG_TITLE_MAX=90
+
+# Description: 55-200 characters optimal, max 300
+OG_DESC_MIN=30
+OG_DESC_OPTIMAL_MIN=55
+OG_DESC_OPTIMAL_MAX=200
+OG_DESC_MAX=300
+
+# Image dimensions: recommended 1200x630 (ratio 1.91:1)
+OG_IMAGE_WIDTH=1200
+OG_IMAGE_HEIGHT=630
+OG_IMAGE_RATIO=1.91
+
+# Track overall status
+ERRORS=0
+WARNINGS=0
+
+# Parse arguments
+if [ $# -eq 0 ]; then
+    MICROSIM_DIR="$(pwd)"
+else
+    MICROSIM_DIR="$1"
+fi
+
+# Validate directory exists
+if [ ! -d "$MICROSIM_DIR" ]; then
+    echo -e "${RED}Error: Directory does not exist: $MICROSIM_DIR${NC}"
+    exit 1
+fi
+
+# Validate main.html exists
+if [ ! -f "$MICROSIM_DIR/main.html" ]; then
+    echo -e "${RED}Error: main.html not found in $MICROSIM_DIR${NC}"
+    echo -e "${YELLOW}This script must be run from a MicroSim directory or provided a path to one.${NC}"
+    exit 1
+fi
+
+# Extract MicroSim name from directory path
+MICROSIM_NAME=$(basename "$MICROSIM_DIR")
+MAIN_HTML="$MICROSIM_DIR/main.html"
+
+echo -e "${BLUE}================================================================${NC}"
+echo -e "${GREEN}Open Graph Social Media Tag Checker${NC}"
+echo -e "${BLUE}================================================================${NC}"
+echo ""
+echo -e "Checking MicroSim: ${YELLOW}$MICROSIM_NAME${NC}"
+echo -e "File: ${CYAN}$MAIN_HTML${NC}"
+echo ""
+
+# Function to extract meta content
+# Handles both formats:
+#   <meta property="og:title" content="...">
+#   <meta content="..." property="og:title">
+extract_meta() {
+    local property="$1"
+    local file="$2"
+    local result=""
+
+    # Try format: property="..." content="..."
+    result=$(sed -n "s/.*<meta[^>]*property=\"$property\"[^>]*content=\"\([^\"]*\)\".*/\1/p" "$file" 2>/dev/null | head -1)
+
+    # If not found, try format: content="..." property="..."
+    if [ -z "$result" ]; then
+        result=$(sed -n "s/.*<meta[^>]*content=\"\([^\"]*\)\"[^>]*property=\"$property\".*/\1/p" "$file" 2>/dev/null | head -1)
+    fi
+
+    # Also check name="" attribute (used by some tags like twitter:card)
+    if [ -z "$result" ]; then
+        result=$(sed -n "s/.*<meta[^>]*name=\"$property\"[^>]*content=\"\([^\"]*\)\".*/\1/p" "$file" 2>/dev/null | head -1)
+    fi
+
+    if [ -z "$result" ]; then
+        result=$(sed -n "s/.*<meta[^>]*content=\"\([^\"]*\)\"[^>]*name=\"$property\".*/\1/p" "$file" 2>/dev/null | head -1)
+    fi
+
+    echo "$result"
+}
+
+# Function to check length with color coding
+check_length() {
+    local name="$1"
+    local value="$2"
+    local min="$3"
+    local opt_min="$4"
+    local opt_max="$5"
+    local max="$6"
+    local len=${#value}
+
+    if [ $len -eq 0 ]; then
+        echo -e "  ${RED}MISSING${NC}"
+        return 1
+    elif [ $len -lt $min ]; then
+        echo -e "  ${RED}TOO SHORT${NC} ($len chars, minimum $min)"
+        return 1
+    elif [ $len -gt $max ]; then
+        echo -e "  ${RED}TOO LONG${NC} ($len chars, maximum $max)"
+        return 1
+    elif [ $len -lt $opt_min ]; then
+        echo -e "  ${YELLOW}SHORT${NC} ($len chars, optimal $opt_min-$opt_max)"
+        return 2
+    elif [ $len -gt $opt_max ]; then
+        echo -e "  ${YELLOW}LONG${NC} ($len chars, optimal $opt_min-$opt_max)"
+        return 2
+    else
+        echo -e "  ${GREEN}OK${NC} ($len chars)"
+        return 0
+    fi
+}
+
+# ============================================================
+# Check og:title
+# ============================================================
+echo -e "${BLUE}--- og:title ---${NC}"
+OG_TITLE=$(extract_meta "og:title" "$MAIN_HTML")
+
+if [ -z "$OG_TITLE" ]; then
+    echo -e "  ${RED}MISSING: og:title meta tag not found${NC}"
+    echo -e "  ${CYAN}Add: <meta property=\"og:title\" content=\"Your Title Here\">${NC}"
+    ((ERRORS++))
+else
+    echo -e "  Content: \"$OG_TITLE\""
+    echo -n "  Length: "
+    check_length "og:title" "$OG_TITLE" $OG_TITLE_MIN $OG_TITLE_OPTIMAL_MIN $OG_TITLE_OPTIMAL_MAX $OG_TITLE_MAX
+    result=$?
+    if [ $result -eq 1 ]; then ((ERRORS++)); fi
+    if [ $result -eq 2 ]; then ((WARNINGS++)); fi
+fi
+echo ""
+
+# ============================================================
+# Check og:description
+# ============================================================
+echo -e "${BLUE}--- og:description ---${NC}"
+OG_DESC=$(extract_meta "og:description" "$MAIN_HTML")
+
+if [ -z "$OG_DESC" ]; then
+    echo -e "  ${RED}MISSING: og:description meta tag not found${NC}"
+    echo -e "  ${CYAN}Add: <meta property=\"og:description\" content=\"Your description here\">${NC}"
+    ((ERRORS++))
+else
+    echo -e "  Content: \"$OG_DESC\""
+    echo -n "  Length: "
+    check_length "og:description" "$OG_DESC" $OG_DESC_MIN $OG_DESC_OPTIMAL_MIN $OG_DESC_OPTIMAL_MAX $OG_DESC_MAX
+    result=$?
+    if [ $result -eq 1 ]; then ((ERRORS++)); fi
+    if [ $result -eq 2 ]; then ((WARNINGS++)); fi
+fi
+echo ""
+
+# ============================================================
+# Check og:image
+# ============================================================
+echo -e "${BLUE}--- og:image ---${NC}"
+OG_IMAGE=$(extract_meta "og:image" "$MAIN_HTML")
+
+if [ -z "$OG_IMAGE" ]; then
+    echo -e "  ${RED}MISSING: og:image meta tag not found${NC}"
+    echo -e "  ${CYAN}Add: <meta property=\"og:image\" content=\"https://example.com/image.png\">${NC}"
+    ((ERRORS++))
+else
+    echo -e "  URL: \"$OG_IMAGE\""
+
+    # Determine image path
+    IMAGE_PATH=""
+    if [[ "$OG_IMAGE" == http* ]]; then
+        echo -e "  ${YELLOW}Note: Image is a remote URL, cannot verify dimensions locally${NC}"
+    elif [[ "$OG_IMAGE" == /* ]]; then
+        # Absolute path from site root
+        IMAGE_PATH="$OG_IMAGE"
+        echo -e "  ${YELLOW}Note: Absolute path - checking relative to MicroSim directory${NC}"
+        IMAGE_PATH="$MICROSIM_DIR/$(basename "$OG_IMAGE")"
+    else
+        # Relative path
+        IMAGE_PATH="$MICROSIM_DIR/$OG_IMAGE"
+    fi
+
+    if [ -n "$IMAGE_PATH" ] && [ -f "$IMAGE_PATH" ]; then
+        echo -e "  Local file: ${GREEN}Found${NC} at $IMAGE_PATH"
+
+        # Check image dimensions using file/sips (macOS) or identify (ImageMagick)
+        if command -v sips &> /dev/null; then
+            # macOS - use sips
+            WIDTH=$(sips -g pixelWidth "$IMAGE_PATH" 2>/dev/null | grep pixelWidth | awk '{print $2}')
+            HEIGHT=$(sips -g pixelHeight "$IMAGE_PATH" 2>/dev/null | grep pixelHeight | awk '{print $2}')
+        elif command -v identify &> /dev/null; then
+            # ImageMagick
+            DIMS=$(identify -format "%w %h" "$IMAGE_PATH" 2>/dev/null)
+            WIDTH=$(echo "$DIMS" | awk '{print $1}')
+            HEIGHT=$(echo "$DIMS" | awk '{print $2}')
+        elif command -v file &> /dev/null; then
+            # Fallback to file command (limited)
+            DIMS=$(file "$IMAGE_PATH" | grep -oP '\d+ x \d+' | head -1)
+            WIDTH=$(echo "$DIMS" | awk -Fx '{print $1}' | tr -d ' ')
+            HEIGHT=$(echo "$DIMS" | awk -Fx '{print $2}' | tr -d ' ')
+        fi
+
+        if [ -n "$WIDTH" ] && [ -n "$HEIGHT" ] && [ "$WIDTH" -gt 0 ] && [ "$HEIGHT" -gt 0 ]; then
+            echo -e "  Dimensions: ${CYAN}${WIDTH}x${HEIGHT}${NC}"
+
+            # Calculate ratio
+            RATIO=$(echo "scale=2; $WIDTH / $HEIGHT" | bc)
+            echo -e "  Aspect ratio: ${CYAN}${RATIO}:1${NC} (recommended: ${OG_IMAGE_RATIO}:1)"
+
+            # Check dimensions
+            if [ "$WIDTH" -eq $OG_IMAGE_WIDTH ] && [ "$HEIGHT" -eq $OG_IMAGE_HEIGHT ]; then
+                echo -e "  Size: ${GREEN}PERFECT${NC} (1200x630 recommended)"
+            elif [ "$WIDTH" -ge 600 ] && [ "$HEIGHT" -ge 315 ]; then
+                # Minimum acceptable size
+                if [ "$WIDTH" -lt $OG_IMAGE_WIDTH ] || [ "$HEIGHT" -lt $OG_IMAGE_HEIGHT ]; then
+                    echo -e "  Size: ${YELLOW}ACCEPTABLE${NC} (1200x630 recommended for best quality)"
+                    ((WARNINGS++))
+                else
+                    echo -e "  Size: ${GREEN}OK${NC} (larger than minimum)"
+                fi
+            else
+                echo -e "  Size: ${RED}TOO SMALL${NC} (minimum 600x315, recommended 1200x630)"
+                ((ERRORS++))
+            fi
+
+            # Check ratio (allow 5% tolerance)
+            RATIO_DIFF=$(echo "scale=3; ($RATIO - $OG_IMAGE_RATIO) * 100 / $OG_IMAGE_RATIO" | bc)
+            RATIO_DIFF_ABS=${RATIO_DIFF#-}  # Remove negative sign
+
+            if (( $(echo "$RATIO_DIFF_ABS < 5" | bc -l) )); then
+                echo -e "  Ratio: ${GREEN}OK${NC} (within 5% of 1.91:1)"
+            elif (( $(echo "$RATIO_DIFF_ABS < 15" | bc -l) )); then
+                echo -e "  Ratio: ${YELLOW}ACCEPTABLE${NC} (within 15% of 1.91:1, may be cropped)"
+                ((WARNINGS++))
+            else
+                echo -e "  Ratio: ${RED}POOR${NC} (image may be significantly cropped on social media)"
+                ((ERRORS++))
+            fi
+        else
+            echo -e "  ${YELLOW}Could not determine image dimensions${NC}"
+            ((WARNINGS++))
+        fi
+    elif [ -n "$IMAGE_PATH" ]; then
+        echo -e "  Local file: ${RED}NOT FOUND${NC} at $IMAGE_PATH"
+        ((ERRORS++))
+    fi
+fi
+echo ""
+
+# ============================================================
+# Check other recommended tags
+# ============================================================
+echo -e "${BLUE}--- Additional Recommended Tags ---${NC}"
+
+# og:type
+OG_TYPE=$(extract_meta "og:type" "$MAIN_HTML")
+if [ -z "$OG_TYPE" ]; then
+    echo -e "  og:type: ${YELLOW}MISSING${NC} (recommended: \"website\")"
+    ((WARNINGS++))
+else
+    echo -e "  og:type: ${GREEN}$OG_TYPE${NC}"
+fi
+
+# og:url
+OG_URL=$(extract_meta "og:url" "$MAIN_HTML")
+if [ -z "$OG_URL" ]; then
+    echo -e "  og:url: ${YELLOW}MISSING${NC} (recommended for canonical URL)"
+    ((WARNINGS++))
+else
+    echo -e "  og:url: ${GREEN}$OG_URL${NC}"
+fi
+
+# twitter:card
+TWITTER_CARD=$(extract_meta "twitter:card" "$MAIN_HTML")
+if [ -z "$TWITTER_CARD" ]; then
+    echo -e "  twitter:card: ${YELLOW}MISSING${NC} (recommended: \"summary_large_image\")"
+    ((WARNINGS++))
+else
+    echo -e "  twitter:card: ${GREEN}$TWITTER_CARD${NC}"
+fi
+
+echo ""
+
+# ============================================================
+# Summary
+# ============================================================
+echo -e "${BLUE}================================================================${NC}"
+echo -e "${GREEN}Summary${NC}"
+echo -e "${BLUE}================================================================${NC}"
+
+if [ $ERRORS -eq 0 ] && [ $WARNINGS -eq 0 ]; then
+    echo -e "${GREEN}All Open Graph tags are present and properly configured!${NC}"
+    exit 0
+elif [ $ERRORS -eq 0 ]; then
+    echo -e "${YELLOW}$WARNINGS warning(s) found${NC}"
+    echo -e "Social media sharing will work, but could be optimized."
+    exit 0
+else
+    echo -e "${RED}$ERRORS error(s)${NC} and ${YELLOW}$WARNINGS warning(s)${NC} found"
+    echo ""
+    echo -e "${CYAN}Example Open Graph tags to add to <head>:${NC}"
+    echo ""
+    echo '    <meta property="og:title" content="Your MicroSim Title">'
+    echo '    <meta property="og:description" content="A brief description of what this MicroSim demonstrates, around 100-200 characters.">'
+    echo '    <meta property="og:image" content="https://yourdomain.com/sims/microsim-name/social-image.png">'
+    echo '    <meta property="og:type" content="website">'
+    echo '    <meta property="og:url" content="https://yourdomain.com/sims/microsim-name/">'
+    echo '    <meta name="twitter:card" content="summary_large_image">'
+    echo ""
+    exit 1
+fi
