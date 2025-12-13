@@ -52,6 +52,17 @@ Mem:           4.0Gi       2.2Gi       323Mi       222Mi       1.8Gi       1.7Gi
 Swap:          511Mi       424Mi        87Mi
 ```
 
+### WebGL Aquarium (GPU Benchmark)
+
+**URL:** https://webglsamples.org/aquarium/aquarium.html
+
+| Fish Count | Browser | FPS | Notes |
+|------------|---------|-----|-------|
+| 100 | Chromium | 60 | Steady, no dropouts |
+| 500 (default) | Chromium | 60 | Some dropouts |
+| 1000 | Chromium | 40-60 | Variable depending on other activity |
+| 5000 | Chromium | ~20 | Average |
+
 ## Expected Pi 500 Improvements
 
 | Metric | Pi 5 (SD) | Pi 500 (NVMe) | Expected Improvement |
