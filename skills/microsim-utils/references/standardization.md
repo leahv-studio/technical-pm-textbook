@@ -61,6 +61,12 @@ MicroSim directory.
   - `description:` - Brief description for SEO and social previews
   - `quality_score:` - Integer 1-100 indicating completeness/quality
   - `image:` and `og:image` - Social media preview image path (optional but recommended)
+    - **IMPORTANT**: Image paths must use the format `/sims/NAME/NAME.png` where NAME is the kebab-case MicroSim name
+    - Example for a MicroSim named "bouncing-ball":
+      ```yaml
+      image: /sims/bouncing-ball/bouncing-ball.png
+      og:image: /sims/bouncing-ball/bouncing-ball.png
+      ```
 - If missing or incomplete: Add TODO to add/fix YAML frontmatter
 
 #### 3. Level 1 Header After Frontmatter

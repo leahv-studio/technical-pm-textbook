@@ -105,6 +105,8 @@ Create the index page at `/docs/sims/index.md` using mkdocs-material grid cards 
 
 #### Required YAML Frontmatter
 
+**IMPORTANT**: Image paths must use the format `/sims/NAME/NAME.png` where NAME is the kebab-case name. For the index page itself, use `/sims/index-screen-image.png` or similar.
+
 ```yaml
 ---
 title: List of MicroSims for [Course Name]
@@ -113,6 +115,16 @@ image: /sims/index-screen-image.png
 og:image: /sims/index-screen-image.png
 hide:
     toc
+---
+```
+
+For individual MicroSim index.md files, the image paths should follow this format:
+```yaml
+---
+title: Bouncing Ball
+description: A MicroSim of a ball bouncing...
+image: /sims/bouncing-ball/bouncing-ball.png
+og:image: /sims/bouncing-ball/bouncing-ball.png
 ---
 ```
 
