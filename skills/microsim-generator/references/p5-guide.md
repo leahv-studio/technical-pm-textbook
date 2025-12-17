@@ -308,6 +308,59 @@ showGridCheckbox = createCheckbox('Show Grid', false);
 showGridCheckbox.position(10, drawHeight + 15);
 ```
 
+### Animation Control for Iframe Embedding (REQUIRED for Animated MicroSims)
+
+When MicroSims are embedded in iframes, animations should **only run when the mouse is over the canvas**. This is important because:
+
+1. **Saves CPU/battery** when user isn't interacting with the simulation
+2. **Reduces distraction** while users read surrounding content on the page
+3. **Feels responsive** - the simulation "wakes up" when the user hovers over it
+
+**Implementation Pattern:**
+
+Add a state variable to track mouse presence:
+```javascript
+// In global variables section
+let mouseOverCanvas = false;
+```
+
+Set up mouse enter/leave event listeners in `setup()`:
+```javascript
+function setup() {
+  updateCanvasSize();
+  const canvas = createCanvas(canvasWidth, canvasHeight);
+  canvas.parent(document.querySelector('main'));
+
+  // Track mouse enter/leave for animation control
+  canvas.mouseOver(() => mouseOverCanvas = true);
+  canvas.mouseOut(() => mouseOverCanvas = false);
+
+  // ... rest of setup
+}
+```
+
+Only update animation phases when mouse is over canvas:
+```javascript
+function draw() {
+  // ... background drawing code ...
+
+  // Update animation phases only when mouse is over canvas
+  if (mouseOverCanvas) {
+    pulsePhase += 0.03;
+    rotationAngle += 0.02;
+    // ... other animation updates
+  }
+
+  // ... rest of drawing code (always draws current state)
+}
+```
+
+**Key Points:**
+- The canvas still redraws every frame (showing current state)
+- Only the animation *progress* is paused when mouse leaves
+- Animation resumes smoothly from where it left off when mouse returns
+- This pattern applies to any continuous animation (pulsing, rotating, moving particles, etc.)
+
 ## main.html
 
 Our goal is to maintain full compatibility with the p5.js editor.  JavaScript code generated should
