@@ -258,6 +258,9 @@ def main():
     print(f"  • Failed: {failed}")
     print(f"  • Original total: {total_original_size:.1f}KB ({total_original_size/1024:.1f}MB)")
     print(f"  • Final total: {total_final_size:.1f}KB ({total_final_size/1024:.1f}MB)")
+    if len(large_images) > 0:
+        avg_size = total_final_size / len(large_images)
+        print(f"  • Average image size: {avg_size:.1f}KB ({avg_size/1024:.2f}MB)")
     
     if total_original_size > 0:
         savings = total_original_size - total_final_size
