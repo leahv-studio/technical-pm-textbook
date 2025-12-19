@@ -758,16 +758,18 @@ nav:
   ...
   - Chapters:
     - Overview: chapters/index.md
-    - Chapter 1 - Introduction to AI and Intelligent Textbooks:
+    - 1. Introduction to AI and Intelligent Textbooks:
       - Content: chapters/01-intro-ai-intelligent-textbooks/index.md
       - Quiz: chapters/01-intro-ai-intelligent-textbooks/quiz.md
-    - Chapter 2 - Getting Started with Claude and Skills:
+    - 2. Getting Started with Claude and Skills:
       - Content: chapters/02-getting-started-claude-skills/index.md
       - Quiz: chapters/02-getting-started-claude-skills/quiz.md
-    - Chapter 3 - Course Design and Educational Theory:
+    - 3. Course Design and Educational Theory:
       - Content: chapters/03-course-design-educational-theory/index.md
       - Quiz: chapters/03-course-design-educational-theory/quiz.md
 ```
+
+Note that the string "Chapter" should **not** be placed in the main chapter content label that points to the index.md file.
 
 Next, update the `mkdocs.yml` to include the quiz quality reports that
 have been placed in the learning-graph directory.
