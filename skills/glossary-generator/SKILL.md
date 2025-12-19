@@ -142,6 +142,8 @@ Generate `docs/glossary.md` with the following structure:
 [Continue alphabetically...]
 ```
 
+Note: Do not put any `---` strings in the glossary.  They are not needed.
+
 **Important formatting rules:**
 
 - Sort all terms alphabetically (case-insensitive)

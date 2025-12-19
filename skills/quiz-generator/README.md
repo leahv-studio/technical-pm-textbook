@@ -77,7 +77,7 @@ All questions use the mkdocs-material question admonition format:
 **1. Quiz Markdown File**
 
 Location options:
-- Separate: `docs/[section]/[chapter-name]-quiz.md`
+- Separate Quiz Per Chapter: `docs/chapters/[chapter-name]/quiz.md`
 - Embedded: Appended to chapter file
 
 Content:
@@ -132,7 +132,7 @@ Contains:
 
 **6. Study Guide**
 
-Location: `docs/[section]/[chapter-name]-study-guide.md`
+Location: `docs/chapters/[chapter-name]/study-guide.md`
 
 Contains:
 - Key concepts to review
@@ -236,8 +236,6 @@ Test your understanding of learning graphs with these questions.
     **Concept Tested:** Directed Acyclic Graph
 
     **See:** [Learning Graph Structure](../concepts/learning-graph.md#structure)
-
----
 
 [Continue with remaining questions...]
 ```
@@ -379,15 +377,11 @@ Claude will reference this document when creating answer options.
   - LMS-ready JSON export
   - Comprehensive quality scoring
 
-## License
-
-MIT License - See LICENSE file for details
-
 ## Support
 
 For issues, questions, or improvements:
 
-1. Review detailed specification in `/docs/skills/quiz-generator.md`
+1. Review detailed specification in the [Claude Skills GitHub Repo](https://github.com/dmccreary/claude-skills/tree/main/skills/quiz-generator)
 2. Check distractor writing guide for answer option help
 3. Examine quality reports for specific guidance
 4. Test question rendering in mkdocs preview
