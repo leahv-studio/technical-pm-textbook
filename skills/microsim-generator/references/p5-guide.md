@@ -855,6 +855,22 @@ mkdocs gh-deploy
 
 Then make sure that the site navigation (mkdocs.yml) file includes the link to this new MicroSim.
 
+## Auto-Standardization (REQUIRED)
+
+**After creating the MicroSim files, you MUST run standardization automatically.**
+
+This step is defined in the parent `SKILL.md` (Step 4: Auto-Standardization). It ensures:
+
+1. **metadata.json** is complete and valid
+2. **index.md** has proper YAML frontmatter with quality_score
+3. **Lesson Plan** section is generated
+4. **References** section is added
+5. All documentation meets quality standards
+
+**Do not skip this step.** It eliminates the need for manual follow-up with `microsim-utils standardization`.
+
+Read `../microsim-utils/references/standardization.md` and implement all fixes automatically since this is a newly created MicroSim.
+
 ## Conclusion
 
 Educational MicroSims represent a powerful convergence of pedagogical effectiveness, technical accessibility, and AI-generation capability. By following these standards, any educational concept that benefits from interactive exploration can be transformed into a high-quality, embeddable, reusable learning tool.

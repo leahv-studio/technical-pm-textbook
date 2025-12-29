@@ -202,9 +202,53 @@ For detailed information, consult:
 - `references/<generator>-guide.md` - Specific implementation guide for each generator
 - `assets/templates/` - Shared templates and patterns
 
+## Step 4: Auto-Standardization
+
+**IMPORTANT**: After creating the MicroSim files, automatically run standardization to ensure quality and documentation standards are met.
+
+### Why Auto-Standardize?
+
+- Eliminates manual follow-up work
+- Ensures consistent quality across all MicroSims
+- Adds metadata.json, lesson plans, and references automatically
+- Calculates and records quality_score in index.md
+
+### Standardization Process
+
+After the generator guide workflow completes (files created in `docs/sims/<microsim-name>/`):
+
+1. **Read the standardization guide**: Load `../microsim-utils/references/standardization.md`
+2. **Run the standardization checklist** on the newly created MicroSim directory
+3. **Implement all fixes automatically** (skip user confirmation since this is a new MicroSim)
+4. **Generate quality_score** and add to index.md frontmatter
+
+### What Standardization Adds
+
+The standardization process will add these elements if missing:
+
+- **metadata.json** - Dublin Core metadata for discoverability
+- **YAML frontmatter** - title, description, quality_score, image paths
+- **Iframe examples** - Copy-paste code for embedding
+- **Fullscreen button** - Link to view MicroSim fullscreen
+- **Lesson Plan section** - Learning objectives, activities, assessment
+- **References section** - Related resources and documentation
+
+### Workflow Integration
+
+```
+[User Request]
+    → [Route to Guide]
+    → [Generate MicroSim Files]
+    → [Auto-Standardize] ← NEW STEP
+    → [Update mkdocs.yml]
+    → [Done]
+```
+
+This eliminates the need to manually run `microsim-utils standardization` after every MicroSim creation.
+
 ## mkdocs.yml Integration
 
-After creating a MicroSim, add it to the site navigation:
+After creating and standardizing a MicroSim, add it to the site navigation:
 
 ```yaml
 nav:
