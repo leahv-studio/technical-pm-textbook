@@ -13,7 +13,7 @@ import shutil
 from pathlib import Path
 
 # Minimum width in pixels - images should fill the column width
-MIN_WIDTH = 670
+MIN_WIDTH = 800
 
 def get_file_size_kb(filepath):
     """Get file size in KB"""
