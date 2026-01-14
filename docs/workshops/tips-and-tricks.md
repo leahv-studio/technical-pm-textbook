@@ -61,3 +61,20 @@ After you change a microsim and you want to view it you can run `mkdocs serve` o
 A better option is to have the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension installed.  This only triggers a server for the single document you are working on, so it renders in just a fraction of a second.  To trigger it just right click over the `main.html` file in the MicroSim and click on the `Open With Live Server` option.
 
 ![](./LiveServer.png)
+
+## README.md Generator
+
+Although you are limited to about 30 skills, you can also run the following skill
+that will create a high-quality README.md file.
+
+`> Please generate a new README.md file by using the readme-generator skill.`
+
+You can also explicitly add the following path if you don't install this skill.
+
+[https://github.com/dmccreary/claude-skills/tree/main/skills/readme-generator](https://github.com/dmccreary/claude-skills/tree/main/skills/readme-generator)
+
+## Windows Arrangement
+
+When I am debugging MicroSims I like to have my Claude shell window on the left, my browser on the right and a small shell window running below Claude running `mkdocs serve`.  That way when I talk to claude and he make changes, I can quickly see the changes on the right side of the screen.  This arrangement also works if I use the Live Server extension, but in that case I have to open VSCode to see the MicroSim quickly.
+
+![](./window-arrangement.png)
