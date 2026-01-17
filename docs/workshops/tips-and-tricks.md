@@ -62,6 +62,23 @@ A better option is to have the [Live Server](https://marketplace.visualstudio.co
 
 ![](./LiveServer.png)
 
+## Customizing p5.js Autocomplete with VSCode
+
+Most code editors can be configured to know the rules of specific libraries.
+In VSCode you can configure it to use the rules for editing p5.js code.  There are two steps:
+
+### Load the p5.js Type Library
+
+```sh
+npm install --save-dev @types/p5
+```
+
+### Add the following to your p5.js code
+
+```js
+/// <reference types="p5/global" />
+```
+
 ## README.md Generator
 
 Although you are limited to about 30 skills, you can also run the following skill
