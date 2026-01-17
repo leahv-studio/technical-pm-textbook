@@ -73,7 +73,7 @@ body {
 
 .sidebar-content {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: hidden;
     padding: 15px;
 }
 
@@ -181,8 +181,6 @@ body {
 }
 
 #legend {
-    max-height: 300px;
-    overflow-y: auto;
 }
 
 .legend-item {
