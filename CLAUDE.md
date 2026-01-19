@@ -108,12 +108,106 @@ course-description.md
 
 ### MicroSim Pattern
 
-MicroSims are interactive p5.js simulations stored in `docs/sims/[sim-name]/`:
-- `main.html` - Standalone p5.js simulation
-- `index.md` - Documentation page with iframe embed
+MicroSims are interactive simulations stored in `docs/sims/[sim-name]/`. They support multiple JavaScript libraries (p5.js, Chart.js, vis-network, Mermaid, Leaflet, etc.).
+
+#### Standard MicroSim File Structure
+
+Each MicroSim directory should contain separate files for maintainability:
+
+```
+docs/sims/[sim-name]/
+├── main.html          # HTML structure (loads CSS, JS, and data)
+├── style.css          # All styling (layout, colors, responsive design)
+├── script.js          # Application logic and interactivity
+├── data.json          # Data separate from code (optional, for data-driven MicroSims)
+├── metadata.json      # MicroSim metadata (title, description, keywords, license)
+└── index.md           # MkDocs documentation page with iframe embed
+```
+
+#### File Separation Rules
+
+**Why separate files?**
+
+1. **Maintainability**: Easier to update styles, logic, or data independently
+2. **Reusability**: CSS and JS patterns can be shared across MicroSims
+3. **Collaboration**: Different team members can work on different files
+4. **Debugging**: Isolate issues to specific files
+5. **Caching**: Browsers can cache static CSS/JS files
+
+**`main.html`** - Structure only:
+
+- Contains HTML markup and element structure
+- Loads external libraries via CDN
+- Links to `style.css` and `script.js`
+- Should NOT contain inline `<style>` or `<script>` blocks (except for data initialization)
+- Use semantic HTML elements
+
+**`style.css`** - Presentation only:
+
+- All CSS rules for layout, colors, typography
+- Responsive design with `@media` queries
+- Use CSS custom properties (variables) for theming
+- No JavaScript or logic
+
+**`script.js`** - Behavior only:
+
+- All JavaScript for interactivity
+- Event handlers, chart initialization, animations
+- Configuration objects for libraries (Chart.js, vis-network, etc.)
+- Should reference a `chartData` or similar config object for data
+
+**`data.json`** - Data only (when applicable):
+
+- Raw data separate from visualization logic
+- Makes it easy to update data without touching code
+- Useful for: chart data, graph nodes/edges, map markers, timeline events
+- Load via `fetch('data.json')` in script.js
+
+**`metadata.json`** - MicroSim metadata (validated by schema):
+
+- Must conform to the schema at `skills/microsim-generator/assets/templates/shared/microsim-metadata-schema.json`
+- **Required sections**: dublinCore, search, educational, technical, userInterface
+- **Dublin Core**: title, creator, subject, description, date, type, format, rights
+- **Search**: tags, visualizationType, keywords for discoverability
+- **Educational**: gradeLevel, subjectArea, topic, learningObjectives, Bloom's taxonomy levels
+- **Technical**: framework, canvasDimensions, dependencies, accessibility
+- **User Interface**: controls, visual elements, layout pattern
+- Enables automated indexing, catalog generation, and quality validation
+
+#### Example: ChartJS MicroSim Structure
+
+```html
+<!-- main.html -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<!-- ... HTML structure ... -->
+<script src="script.js"></script>
+```
+
+```javascript
+// script.js - define data object at top, then visualization logic
+const chartData = {
+    labels: ['Category A', 'Category B'],
+    values: [60, 40],
+    colors: ['rgba(74, 144, 226, 0.85)', 'rgba(80, 200, 120, 0.85)'],
+    // ... configuration
+};
+// Chart initialization and event handlers follow
+```
+
+#### When Inline Code is Acceptable
+
+- **Prototyping**: Quick experiments before refactoring
+- **Single-use data**: Small datasets specific to one visualization
+- **Legacy MicroSims**: Existing inline code doesn't need refactoring unless being updated
+
+#### MicroSim Design Principles
+
 - Each simulation focuses on one educational concept
 - Uses seeded randomness for reproducibility
-- Includes interactive controls (sliders, buttons)
+- Includes interactive controls (sliders, buttons, tabs)
+- Responsive design that works in iframes
+- Accessible color schemes and font sizes
 
 ### Intelligent Textbook Workflow
 
@@ -311,7 +405,10 @@ Generated content should:
 
 - **MkDocs** with **Material for MkDocs** theme - static site generation
 - **p5.js** - interactive simulations (MicroSims)
+- **Chart.js** - data visualization charts (pie, bar, line, etc.)
 - **vis-network.js** - learning graph visualization
+- **Mermaid** - diagrams from text (flowcharts, sequence diagrams)
+- **Leaflet** - interactive maps
 - **Python** - data processing scripts
 - **GitHub Pages** - hosting
 - **Bash** - utility scripts
