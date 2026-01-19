@@ -14,6 +14,61 @@ Because this skill is part of the workflow for creation of textbooks using mkdoc
 is to create simple unadorned diagrams without any complex padding, borders or decoration.  This is
 because our focus is to educate, not entertain and show off our ability to do rounded corners and gradient shading.
 
+## Working Templates (REQUIRED REFERENCE)
+
+Before generating any Mermaid MicroSim, **you MUST read the template files** in `assets/templates/mermaid/`:
+
+| File | Purpose |
+|------|---------|
+| `main-template.html` | HTML shell with 2/3 + 1/3 layout, references external CSS/JS |
+| `style.css` | All styling for layout, panels, and hover effects |
+| `script.js` | Hover interaction logic for info panel |
+| `software-lifecycle-example.html` | Complete working example demonstrating all patterns |
+| `index-template.md` | Documentation template with proper YAML frontmatter |
+| `metadata-template.json` | Dublin Core metadata structure |
+
+**File Structure for Each MicroSim:**
+```
+docs/sims/[diagram-name]/
+├── main.html          # HTML with mermaid code and nodeInfo data
+├── style.css          # Copy from template (customize if needed)
+├── script.js          # Copy from template (rarely needs changes)
+├── index.md           # Documentation page
+└── metadata.json      # Dublin Core metadata
+```
+
+**CRITICAL**: Copy the structural patterns exactly. The default layout uses:
+- **Left 2/3 (66.67%)**: Diagram panel with vertical flowchart
+- **Right 1/3 (33.33%)**: Fixed info panel for hover descriptions
+- **Zero margin/padding**: Designed for iframe embedding without wasted space
+
+## Default Layout: 2/3 Diagram + 1/3 Info Panel
+
+The standard Mermaid MicroSim layout reserves the right third of the canvas for a persistent info panel:
+
+```
++----------------------------------+----------------+
+|                                  |                |
+|        DIAGRAM PANEL             |   INFO PANEL   |
+|           (66.67%)               |    (33.33%)    |
+|                                  |                |
+|     flowchart TD                 |   Details      |
+|         |                        |   --------     |
+|         v                        |                |
+|       [Node]                     |   Hover over   |
+|         |                        |   a node to    |
+|         v                        |   see details  |
+|       [Node]                     |                |
+|                                  |                |
++----------------------------------+----------------+
+```
+
+**Benefits of this layout:**
+- Info panel doesn't obscure the diagram (unlike floating tooltips)
+- Users can read descriptions while viewing the full flowchart
+- Works well in narrow iframes embedded in textbook pages
+- Hover interactions feel responsive and educational
+
 ## When to Use This Skill
 
 Use the mermaid-generator skill when users request:
@@ -135,11 +190,13 @@ mkdir -p /docs/sims/[diagram-name]
 
 ### Step 4: Generate Files from Templates
 
-Use the template files in `assets/template/` as a starting point. Replace placeholders with actual content:
+Use the template files in `assets/templates/mermaid/` as a starting point. Replace placeholders with actual content.
+
+**IMPORTANT**: Read `software-lifecycle-example.html` first to see a complete working implementation.
 
 #### 4.1 Create main.html
 
-Copy `assets/template/main.html` and replace these placeholders:
+Copy `assets/templates/mermaid/main-template.html` and replace these placeholders:
 
 - `{{TITLE}}`: Diagram title (e.g., "Software Development Lifecycle")
 - `{{SUBTITLE}}`: Brief subtitle (e.g., "Interactive Workflow Diagram")
@@ -155,25 +212,33 @@ Every Mermaid diagram MUST include interactive hover tooltips for all nodes. Thi
 
 #### 4.2 Create style.css
 
-Copy `assets/template/style.css` directly - no modifications needed unless custom styling is requested.
+Copy `assets/templates/mermaid/style.css` directly. No modifications needed unless custom styling is requested.
 
-The default stylesheet ensures:
-- 16px font size for diagram elements
-- Responsive design for mobile devices
-- Clean, professional appearance
-- Print-friendly styling
+The default stylesheet provides:
+- 2/3 + 1/3 flexbox layout
+- Zero margin/padding for iframe embedding
+- Info panel styling with header and content areas
+- Node hover brightness effect
+
+**Common customizations:**
+- Change `.diagram-panel` background color (default: `aliceblue`)
+- Adjust `.info-panel` width for different layouts
+- Modify `.info-title` color to match diagram theme
 
 #### 4.3 Create script.js
 
-Copy `assets/template/script.js` directly. This provides:
-- Zoom controls for large diagrams
-- Export to SVG functionality
-- Node interaction tracking
-- Accessibility features
+Copy `assets/templates/mermaid/script.js` directly. This file rarely needs modification.
+
+The script provides:
+- Robust polling to wait for Mermaid rendering
+- Mouse event handlers for node hover
+- Info panel content updates
+
+**Note:** The `nodeInfo` object must be defined in main.html BEFORE script.js is loaded.
 
 #### 4.4 Create index.md
 
-Copy `assets/template/index.md` and replace placeholders:
+Copy `assets/templates/mermaid/index-template.md` and replace placeholders:
 
 - `{{TITLE}}`: Same as main.html title
 - `{{OVERVIEW}}`: 1-paragraph overview of the workflow
@@ -189,7 +254,7 @@ Copy `assets/template/index.md` and replace placeholders:
 
 #### 4.5 Create metadata.json
 
-Copy `assets/template/metadata.json` and replace placeholders:
+Copy `assets/templates/mermaid/metadata-template.json` and replace placeholders:
 
 - `{{TITLE}}`: Diagram title
 - `{{DESCRIPTION}}`: Brief description
@@ -258,7 +323,7 @@ nav:
 Perform quality checks:
 
 1. **Syntax validation**: Ensure Mermaid code renders without errors
-2. **File structure**: Verify all 5 files are present (index.md, metadata.json, style.css, main.html, script.js)
+2. **File structure**: Verify all 5 files are present (main.html, style.css, script.js, index.md, metadata.json)
 3. **Placeholder replacement**: Check that no `{{PLACEHOLDERS}}` remain
 4. **Font size verification**: Confirm 16px fonts in Mermaid code and CSS
 5. **Color contrast**: Ensure text is readable on colored backgrounds
@@ -287,19 +352,20 @@ Created interactive Mermaid workflow diagram: [Diagram Name]
 Location: /docs/sims/[diagram-name]/
 
 Files generated:
-✓ main.html - Standalone interactive diagram
+✓ main.html - Standalone interactive diagram with 2/3 + 1/3 layout
+✓ style.css - Layout and styling (customizable)
+✓ script.js - Hover interaction logic
 ✓ index.md - MkDocs integration page
-✓ style.css - Responsive styling
-✓ script.js - Interactive features (zoom, export)
 ✓ metadata.json - Dublin Core metadata
 
 Features:
-• Top-down flowchart layout
+• 2/3 diagram panel + 1/3 info panel layout
+• Top-down flowchart with vertical columns
 • Colorful node backgrounds for visual clarity
 • 16-point fonts for optimal readability
-• Interactive hover tooltips on all nodes
+• Hover info panel (no floating tooltips)
+• Minimal padding for iframe embedding
 • [X] nodes and [Y] edges
-• Zoom controls and SVG export
 
 The diagram illustrates: [brief description]
 
@@ -673,11 +739,14 @@ Start → Try Action → Success?
 
 ### Bundled Templates
 
-- **`assets/template/main.html`**: Standalone HTML diagram template
-- **`assets/template/style.css`**: Responsive stylesheet with 16px fonts
-- **`assets/template/script.js`**: Interactive features (zoom, export, tracking)
-- **`assets/template/index.md`**: MkDocs integration template
-- **`assets/template/metadata.json`**: Dublin Core metadata template
+Located in `assets/templates/mermaid/`:
+
+- **`main-template.html`**: HTML shell with 2/3 + 1/3 layout, references external CSS/JS
+- **`style.css`**: All styling for layout, info panel, and hover effects (easily customizable)
+- **`script.js`**: Hover interaction logic with robust Mermaid polling
+- **`software-lifecycle-example.html`**: Complete working example with all patterns implemented
+- **`index-template.md`**: MkDocs integration template with YAML frontmatter
+- **`metadata-template.json`**: Dublin Core metadata template
 
 ### External Resources
 

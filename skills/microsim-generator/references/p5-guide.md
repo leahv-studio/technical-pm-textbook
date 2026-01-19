@@ -8,6 +8,23 @@ description: Create an interactive educational MicroSim using the p5.js JavaScri
 
 This skill guides the creation of Educational MicroSims using the p5.js JavaScript library.  MicroSims are lightweight, interactive educational simulations designed for browser-based learning. MicroSims occupy a unique position at the intersection of **Simplicity** (focused scope, transparent code), **Accessibility** (browser-native, universal embedding), and **AI Generation** (standardized patterns, prompt-compatible design).
 
+## Working Templates (REQUIRED REFERENCE)
+
+Before generating any p5.js MicroSim, **you MUST read the template files** in `assets/templates/p5/`:
+
+| File | Purpose |
+|------|---------|
+| `bouncing-ball.js` | Reference implementation showing correct structure, responsive design, and control placement |
+| `main-template.html` | Standard HTML shell with correct p5.js CDN and structure |
+| `index-template.md` | Documentation template with proper YAML frontmatter and sections |
+| `metadata-template.json` | Dublin Core metadata structure |
+
+**CRITICAL**: Copy the structural patterns from `bouncing-ball.js` exactly. Do not deviate from:
+- Variable naming conventions (`canvasWidth`, `drawHeight`, `controlHeight`, `sliderLeftMargin`)
+- The `updateCanvasSize()` pattern and its placement
+- Control positioning relative to `drawHeight`
+- The `windowResized()` function structure
+
 ## Standard Context
 
 This MicroSim Skill is designed to create all the required files for running your MicroSim on your website.
@@ -46,6 +63,43 @@ Before generating code, articulate the educational purpose:
 This information will be documented at the end of the index.md file and also stored in a file called metadata.json that is
 validated by a JSON Schema at https://github.com/dmccreary/microsims/blob/main/src/microsim-schema/microsim-schema.json
 
+### Step 1.5: Instructional Design Review (MANDATORY)
+
+Before implementation, verify the MicroSim design follows sound pedagogical principles. Document your answers:
+
+#### 1. Single Learning Objective Check
+Can you state the learning objective in ONE sentence?
+- Write it explicitly: "Students will be able to [verb] [concept] by [interaction]"
+- If you cannot state it in one sentence, the scope is too broad—narrow the focus
+
+#### 2. Appropriate Complexity Assessment
+| Question | Target | Your Answer |
+|----------|--------|-------------|
+| How many sliders? | 1-3 | ___ |
+| How many buttons? | 0-2 | ___ |
+| How many checkboxes? | 0-2 | ___ |
+| Total controls | 1-5 | ___ |
+
+If total controls > 5, ask: Is each control essential to the learning objective? Remove non-essential controls.
+
+#### 3. Progressive Disclosure Design
+- **Default state**: What does the student see immediately on load? (Should demonstrate the concept without interaction)
+- **Exploration path**: What do sliders let students discover? (Each slider should reveal something meaningful)
+- **Edge cases**: What happens at slider min/max values? (Should remain educationally meaningful)
+
+#### 4. Cognitive Load Checklist
+- [ ] Can a student understand what to do within 5 seconds of seeing it?
+- [ ] Are all labels descriptive? (Use "Gravity (m/s²)" not "g")
+- [ ] Is the title clear about what concept is being demonstrated?
+- [ ] Are value displays formatted with appropriate precision? (2 decimal places max for most values)
+
+#### 5. Accessibility Considerations
+- [ ] Will the `describe()` function text make sense to a screen reader user?
+- [ ] Are colors distinguishable? (Don't rely solely on red/green)
+- [ ] Is text size ≥ 16px for readability from back of classroom?
+
+**If any checkbox is unchecked, address it in the implementation.**
+
 ### Step 2: MicroSim Implementation with p5.js
 
 Generate a self-contained, interactive p5.js simulation following the standardized MicroSim architecture.  
@@ -77,6 +131,60 @@ This skill contains templates for the `index.md`, `main.html`, `metadata.json` a
 3. A small `main.html` file will contain the title, link to the p5.js library from the CDN and include the MICROSIM_NAME.js file.  The `main.html` file must contain a `main` HTML element within the body.
 4. A file called `metadata.json` will be created that conforms to the schema at /src/microsim-schema/microsim-schema.json.  This will contain the Dublin core elements such as title, subject, author, publication date etc.  This file is use so that
 faceted search engines can find this MicroSim
+
+### Step 2.5: Pre-Generation Layout Planning (MANDATORY)
+
+**Before writing ANY code**, explicitly calculate and document all layout values. This prevents overlap bugs.
+
+#### Control Inventory
+List every control the MicroSim will have:
+
+| # | Control Type | Label Text | Value Format | Row |
+|---|--------------|------------|--------------|-----|
+| 1 | Button | "Start/Pause" | - | 1 |
+| 2 | Slider | "Speed" | integer 0-20 | 1 |
+| 3 | Checkbox | "Show Grid" | - | 2 |
+
+#### Layout Calculations
+Fill in these values based on your control inventory:
+
+```
+Number of control rows: ___
+controlHeight = (___ × 35) + 10 = ___
+
+drawHeight: ___ (typically 400)
+canvasHeight = drawHeight + controlHeight = ___ + ___ = ___
+iframeHeight = canvasHeight + 2 = ___
+
+Buttons in row 1: ___ (list them)
+sliderLeftMargin = ___ (calculate using formula above)
+margin = 25 (standard)
+```
+
+#### Position Assignments
+For each control, write the exact position call:
+
+```javascript
+// Row 1
+// [control1].position(___, drawHeight + 5);
+// [control2].position(___, drawHeight + 5);
+
+// Row 2 (if applicable)
+// [control3].position(___, drawHeight + 40);
+```
+
+#### Label Position Assignments
+For each label, write the exact text call:
+
+```javascript
+// Row 1 labels
+// text('[Label]: ' + [value], ___, drawHeight + 15);
+
+// Row 2 labels (if applicable)
+// text('[Label]: ' + [value], ___, drawHeight + 50);
+```
+
+**You MUST complete this planning before proceeding to code generation.**
 
 ## Technical Architecture Standards
 
@@ -198,6 +306,78 @@ function updateCanvasSize() {
     }
   }
 }
+```
+
+### Control Region Layout Formulas (MANDATORY)
+
+Use these explicit formulas to prevent control overlap. **Calculate these values BEFORE writing any code.**
+
+#### Control Height Calculation
+```
+controlHeight = (numberOfControlRows × 35) + 10
+```
+
+Examples:
+- 1 row of controls: `controlHeight = (1 × 35) + 10 = 45` (use 50 for safety)
+- 2 rows of controls: `controlHeight = (2 × 35) + 10 = 80`
+- 3 rows of controls: `controlHeight = (3 × 35) + 10 = 115` (use 120)
+
+#### Canvas Height Calculation
+```
+canvasHeight = drawHeight + controlHeight
+iframeHeight = canvasHeight + 2  // Add 2px for border
+```
+
+#### Slider Left Margin Calculation
+```
+sliderLeftMargin = buttonWidths + labelWidth + valueWidth + gaps
+```
+
+| Layout Type | Formula | Typical Value |
+|-------------|---------|---------------|
+| Slider only (no button) | `labelWidth + valueWidth + 20` | 140px |
+| Button + Slider | `buttonWidth + 10 + labelWidth + valueWidth + 20` | 200-240px |
+| Two buttons + Slider | `(buttonWidth × 2) + 20 + labelWidth + valueWidth + 20` | 280-320px |
+
+#### Control Y-Position Formulas
+```javascript
+// First row of controls
+row1Y = drawHeight + 5;    // Button y-position
+row1Y = drawHeight + 15;   // Text label y-position (vertically centered with slider)
+
+// Second row of controls
+row2Y = drawHeight + 40;   // Button y-position
+row2Y = drawHeight + 50;   // Text label y-position
+
+// General formula for row N (0-indexed)
+rowNButtonY = drawHeight + 5 + (N × 35);
+rowNLabelY = drawHeight + 15 + (N × 35);
+```
+
+#### Slider Width Calculation
+```javascript
+sliderWidth = canvasWidth - sliderLeftMargin - margin;
+// This MUST be recalculated in windowResized()
+```
+
+#### Example: Two-Row Control Layout
+```javascript
+// Layout calculation for: [Start/Pause] [Reset] ... Speed: ## [====slider====]
+//                         Show Grid [checkbox] ... Elasticity: ## [====slider====]
+
+let controlHeight = 80;  // 2 rows × 35 + 10
+let sliderLeftMargin = 240;  // Two buttons (140px) + label/value space (100px)
+
+// Row 1
+startButton.position(10, drawHeight + 5);
+resetButton.position(80, drawHeight + 5);
+speedSlider.position(sliderLeftMargin, drawHeight + 5);
+text('Speed: ' + speed, 150, drawHeight + 15);
+
+// Row 2
+showGridCheckbox.position(10, drawHeight + 40);
+elasticitySlider.position(sliderLeftMargin, drawHeight + 40);
+text('Elasticity: ' + elasticity, 150, drawHeight + 50);
 ```
 
 ### Drawing Order (IMPORTANT)
@@ -476,6 +656,144 @@ Add are reminder to do this to the user.
 
 The MicroSim metadata is stored within the MicroSim folder in a file called `metadata.json`.  The
 structure of this file is governed by a JSON schema file located at /src/microsim-schema/microsim-schema.json.
+
+## Step 3.5: Post-Generation Validation (MANDATORY)
+
+**Before presenting code to the user**, verify all of the following. If ANY check fails, fix the code before presenting.
+
+### Structural Validation Checklist
+
+| Check | How to Verify | Pass? |
+|-------|---------------|-------|
+| Canvas height math | `canvasHeight === drawHeight + controlHeight` | ☐ |
+| Iframe height | `index.md iframe height === canvasHeight + 2` | ☐ |
+| updateCanvasSize() first | First line in `setup()` is `updateCanvasSize()` | ☐ |
+| windowResized() exists | Function exists and calls `resizeCanvas()` | ☐ |
+| describe() called | Accessibility description present in `setup()` | ☐ |
+| main element target | Canvas parented to `document.querySelector('main')` | ☐ |
+
+### Control Placement Validation
+
+| Check | How to Verify | Pass? |
+|-------|---------------|-------|
+| All controls below drawHeight | Every `.position(x, y)` has `y >= drawHeight` | ☐ |
+| No control exceeds canvas | Every control `y < canvasHeight - 20` | ☐ |
+| Labels don't overlap sliders | Label `x < sliderLeftMargin - 10` | ☐ |
+| Sliders resize correctly | `slider.size()` in `windowResized()` for each slider | ☐ |
+
+### Code Quality Validation
+
+| Check | How to Verify | Pass? |
+|-------|---------------|-------|
+| No hard-coded canvas width | Width comes from `updateCanvasSize()`, not a constant | ☐ |
+| noStroke() before text | Every `text()` call preceded by `noStroke()` | ☐ |
+| Drawing order correct | Background → Grid → Axes → Title → Content → Controls | ☐ |
+| Variable naming | Uses standard names: `canvasWidth`, `drawHeight`, `controlHeight`, `sliderLeftMargin` | ☐ |
+
+### Quick Mental Test
+
+Imagine the canvas at these widths and verify nothing breaks:
+- **400px** (narrow mobile)
+- **800px** (tablet)
+- **1200px** (desktop)
+
+Ask yourself:
+- Do sliders resize proportionally?
+- Do labels stay readable?
+- Does the drawing area scale correctly?
+
+**If any validation fails, fix the issue before presenting the code to the user.**
+
+## Common Bug Patterns (REFERENCE)
+
+Avoid these frequent mistakes:
+
+### ❌ Overlapping Controls
+```javascript
+// WRONG: Hard-coded y position ignores controlHeight
+speedSlider.position(100, 420);
+
+// RIGHT: Position relative to drawHeight
+speedSlider.position(sliderLeftMargin, drawHeight + 5);
+```
+
+### ❌ Labels Covering Sliders
+```javascript
+// WRONG: Label x overlaps with slider starting position
+text('Speed:', 150, drawHeight+15);
+speedSlider.position(150, drawHeight + 5);
+
+// RIGHT: Label before slider, value included in label
+text('Speed: ' + speed, 70, drawHeight+15);
+speedSlider.position(sliderLeftMargin, drawHeight + 5);  // sliderLeftMargin > 70
+```
+
+### ❌ Canvas Not Responsive
+```javascript
+// WRONG: Missing updateCanvasSize() in setup
+function setup() {
+  const canvas = createCanvas(800, 450);  // Hard-coded width!
+  ...
+}
+
+// RIGHT: Get container width first
+function setup() {
+  updateCanvasSize();  // MUST be first line
+  const canvas = createCanvas(canvasWidth, canvasHeight);
+  ...
+}
+```
+
+### ❌ Slider Width Not Updating on Resize
+```javascript
+// WRONG: Only set slider size once in setup
+function windowResized() {
+  updateCanvasSize();
+  resizeCanvas(canvasWidth, canvasHeight);
+  // Missing slider resize!
+}
+
+// RIGHT: Resize all sliders
+function windowResized() {
+  updateCanvasSize();
+  resizeCanvas(canvasWidth, canvasHeight);
+  speedSlider.size(canvasWidth - sliderLeftMargin - margin);
+  // Resize ALL other sliders too
+}
+```
+
+### ❌ Text Rendered with Stroke
+```javascript
+// WRONG: stroke still active from previous drawing
+stroke('black');
+rect(0, 0, 100, 100);
+text('Label', 10, 50);  // Text will have ugly outline!
+
+// RIGHT: Always noStroke before text
+stroke('black');
+rect(0, 0, 100, 100);
+noStroke();  // Clear stroke before text
+text('Label', 10, 50);
+```
+
+### ❌ Incorrect iframe Height
+```markdown
+<!-- WRONG: Height doesn't match canvas -->
+<iframe src="main.html" height="400px"></iframe>
+<!-- But canvasHeight = 400 + 80 = 480 -->
+
+<!-- RIGHT: Height = drawHeight + controlHeight + 2 -->
+<iframe src="main.html" height="482px"></iframe>
+```
+
+### ❌ Control in Drawing Area
+```javascript
+// WRONG: Button placed in drawing region
+startButton.position(10, 50);  // y=50 is inside drawing area!
+
+// RIGHT: All controls below drawHeight
+startButton.position(10, drawHeight + 5);
+```
 
 ## Educational Design Principles
 
