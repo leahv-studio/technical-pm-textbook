@@ -1,36 +1,46 @@
 # Educational MicroSim Skills
 
-Educational MicroSims are lightweight, interactive educational simulations designed for browser-based learning. 
-MicroSims are designed to run in a rectangular `iframe` placed within the a page of a textbook.
+Educational MicroSims are lightweight, interactive educational simulations designed for browser-based learning.
+MicroSims are designed to run in a rectangular `iframe` placed within a page of a textbook.
 The default height of a MicroSim is 500px and they are designed to be width-responsive so they
 will adapt to various screen sizes and window resize events.
 
+## Meta-Skill Architecture
+
+MicroSim creation is organized into two meta-skills that consolidate related functionality:
+
+| Meta-Skill | Purpose | Sub-Skills |
+|------------|---------|------------|
+| **microsim-generator** | Creates MicroSims using various JS libraries | 12 generator guides |
+| **microsim-utils** | Utilities for MicroSim maintenance | 4 utility guides |
+
+This architecture allows Claude Code to stay under the 30-skill limit while providing comprehensive MicroSim support. When you invoke a MicroSim skill, the meta-skill routes to the appropriate specialized guide.
+
 ## MicroSim Generator List
 
-This list is ordered based on the most general purpose tools to the most case specific tool.
+The **microsim-generator** meta-skill routes to the appropriate generator based on your request. Listed from most general to most specialized:
 
-1. **General MicroSim with p5** - use for most general MicroSim used for interactive animations and simulations
-2. **General Chart Generation with ChartJS** - used for generating charts
-3. **Comparison Table Generator** - creates interactive comparison tables with star ratings, badges, and tooltips
-4. **Concept Classifier Quiz** - interactive classification quizzes where students identify categories from scenarios
-5. **Mermaid Generator** - used for static workflow and flow chart diagrams
-6. **Vis Network Graph Generator** - used to generate interactive network graph diagrams
-7. **Causal Loop Diagram Generator** - creates interactive causal loop diagrams for systems thinking education
-8. **Math Function Plot Generator** - uses the powerful Plotly.js library for plotting math functions
-9. **Timeline Generator** - used to generate timelines from a list of events
-10. **Map Generator** - generates maps using the Leaflet library
-11. **Venn Diagram Generator** - generates Venn Diagrams
-12. **Bubble Chart Generator** - specialized to only generate bubble charts
-13. **MicroSim Matcher** - helps select the right generator for a specification
-14. **MicroSim Screen Capture** - captures screenshots using Chrome headless
-15. **MicroSim Add Icons** - adds CC and fullscreen icons to MicroSims
-16. **MicroSim Standardization** - validates MicroSim quality and structure
+| # | Generator | Library | Best For |
+|---|-----------|---------|----------|
+| 1 | [MicroSim P5](./microsim-p5.md) | p5.js | Custom simulations, physics, animations |
+| 2 | [Chart Generator](./chartjs-generator.md) | Chart.js | Bar, line, pie, doughnut, radar charts |
+| 3 | [Comparison Table](./comparison-table-generator.md) | Custom | Side-by-side comparisons with ratings |
+| 4 | [Concept Classifier](./concept-classifier.md) | p5.js | Classification quizzes with scenarios |
+| 5 | [Mermaid Generator](./mermaid-generator.md) | Mermaid.js | Flowcharts, workflows, UML diagrams |
+| 6 | [Vis-Network](./vis-network.md) | vis-network | Network graphs, concept maps |
+| 7 | [Causal Loop](./causal-loop-microsim-generator.md) | vis-network | Systems thinking, feedback loops |
+| 8 | [Math Function Plotter](./math-function-plotter-plotly.md) | Plotly.js | Mathematical function plots |
+| 9 | [Timeline Generator](./timeline-generator.md) | vis-timeline | Chronological events, history |
+| 10 | [Map Generator](./map-generator.md) | Leaflet.js | Geographic data, locations |
+| 11 | [Venn Diagram](./venn-diagram-generator.md) | Custom | Set relationships (2-4 sets) |
+| 12 | [Bubble Chart](./bubble-chart-generator.md) | Chart.js | Priority matrices, quadrants |
+| 13 | [Celebration Animation](./celebration-generator.md) | p5.js | Particle effects, visual feedback |
 
 ## Common Elements to All MicroSims
 
 All MicroSims are designed to run in a non-scrolling iframe that contains width-responsive drawing elements.
 
-Sample `iframe` 
+Sample `iframe`:
 
 ```html
 <iframe src="http://example.com/microsims/my-microsim/main.html" height="500px" width="100%" scrolling="no">
@@ -38,196 +48,156 @@ Sample `iframe`
 
 MicroSims are packaged in a directory with the following files:
 
-1. main.html - holds the main HTML code with possible inline CSS, JavaScript and data
-2. index.md - documentation and `iframe` reference to a local `main.html`
-3. style.css - optional CSS file
-4. script.js - optional JavaScript file
-5. data.json - optional JSON data file
+1. **main.html** - holds the main HTML code with possible inline CSS, JavaScript and data
+2. **index.md** - documentation and `iframe` reference to a local `main.html`
+3. **style.css** - optional CSS file
+4. **script.js** - optional JavaScript file
+5. **data.json** - optional JSON data file
+6. **metadata.json** - optional Dublin Core metadata
 
-Each of the skills below contains an assets directory that has these files with the string `template-` before the file names above.
+Each generator follows templates located in `skills/microsim-generator/assets/templates/`.
 
 All MicroSims should be designed to be width-responsive meaning that the components recenter and stretch if the containing window is resized.
 
-## MicroSim P5 Generator
+---
 
-**Name:** microsim-pg<br/>
-**Width Responsive:** Yes
-This is a general skill that generates any p5.js application that can be tested in the p5.js editor.
-It is ideal for simulations and animations where the user control the behavior through a set of
-controls at the bottom of the drawing area.
+## Generator Descriptions
 
-See the [Microsim-p5 Description](./microsim-p5.md)
+### MicroSim P5 Generator
 
-## Chart Generator
+**Route Trigger:** simulation, animation, physics, bouncing, interactive, custom, p5.js
 
-**Name:** chartjs-generator<br/>
-This generator creates general charts such as:
+This is the most general-purpose skill that generates any p5.js application. It is ideal for simulations and animations where the user controls behavior through a set of controls at the bottom of the drawing area.
 
-1. bar charts
-2. bubble charts
-3. doughnut charts
-4. line charts
-5. pie charts
-6. polar plot charts
-7. radar charts
-8. scatter charts
+See the [MicroSim P5 Description](./microsim-p5.md)
 
-The default is 500px high and a width that fills 100% of the enclosing container.
-If the user does not provide the title, chart type and data, the skill will prompt
-them for the appropriate information.
+### Chart Generator (ChartJS)
+
+**Route Trigger:** chart, bar, line, pie, doughnut, radar, statistics, data
+
+Creates general charts including bar, bubble, doughnut, line, pie, polar plot, radar, and scatter charts. The default is 500px high and fills 100% of the enclosing container width.
 
 See the [ChartJS Generator](./chartjs-generator.md) skill description.
 
-## Comparison Table Generator
+### Comparison Table Generator
 
-**Name:** comparison-table-generator<br/>
-**Width Responsive:** Yes
+**Route Trigger:** comparison, table, ratings, stars, side-by-side, features
 
-This skill creates interactive comparison tables with color-coded star ratings (1-5 scale), difficulty badges (Easy/Medium/Hard), logos, and hover tooltips. Ideal for side-by-side comparisons of technologies, tools, frameworks, or any items with multiple evaluation criteria.
-
-Key features:
-
-- Star ratings with semantic colors (green=excellent, red=poor)
-- Pill-shaped difficulty/category badges
-- Pure CSS hover tooltips with descriptions
-- Logo support with consistent row heights
-- First-row tooltip fix for header overlap
-- Responsive design for mobile/tablet
+Creates interactive comparison tables with color-coded star ratings (1-5 scale), difficulty badges (Easy/Medium/Hard), logos, and hover tooltips. Ideal for side-by-side comparisons of technologies, tools, frameworks, or any items with multiple evaluation criteria.
 
 See the [Comparison Table Generator](./comparison-table-generator.md) skill description.
 
-## Concept Classifier Quiz
+### Concept Classifier Quiz
 
-**Name:** concept-classifier<br/>
-**Width Responsive:** Yes
+**Route Trigger:** classify, quiz, categories, scenarios, identification
 
-This skill creates interactive classification quiz MicroSims where students read scenarios and must identify the correct category from multiple choice options. All quiz content is stored in a separate `data.json` file, making it easy to create new quizzes without modifying code.
+Creates interactive classification quiz MicroSims where students read scenarios and must identify the correct category from multiple choice options. All quiz content is stored in a separate `data.json` file.
 
-Ideal for:
-
-- Identifying cognitive biases, logical fallacies, or literary devices
-- Classifying examples into taxonomic groups or categories
-- Recognizing patterns (design patterns, musical forms, art movements)
-- Matching scenarios to concepts or theories
-
-Features include hint system, automatic explanations, score tracking, animated mascot, and customizable feedback messages.
+Ideal for: identifying cognitive biases, logical fallacies, literary devices, taxonomic groups, design patterns, or matching scenarios to concepts.
 
 See the [Concept Classifier](./concept-classifier.md) skill description.
 
-## Mermaid
-**Name:** timeline-generator<br/>
-**Width Responsive:** Yes (with limitations in that the size of the shapes may not change, but they are re-centered)
+### Mermaid Generator
 
-The Mermaid.js library is ideal for allowing the user to specify the content of a drawing and a layout st
+**Route Trigger:** flowchart, workflow, process, state machine, UML, sequence diagram
 
-## 1. Process & Flow Diagrams
-These diagrams illustrate workflows, processes, and sequential operations.
+The Mermaid.js library is ideal for specifying diagram content through text-based syntax. Supports:
 
-1. Flowchart/Graph - General-purpose flowcharts showing decision points, processes, and flow direction
-1. State Diagram - Models state transitions and lifecycle of systems or objects
-1. Sequence Diagram - Shows interactions between entities over time in a sequential order
-1. User Journey - Maps user experiences and touchpoints across different stages
-
-## 2. Structural & Relationship Diagrams
-These diagrams model the structure and relationships between components or entities.
-
-1. Class Diagram - Object-oriented design showing classes, attributes, methods, and relationships
-1. Entity Relationship (ER) Diagram - Database schemas showing entities, attributes, and relationships
-1. C4 Diagram - Software architecture context, containers, components, and code views
-1. Block Diagram - High-level system component diagrams showing functional blocks
+- **Flowchart/Graph** - General-purpose flowcharts with decision points
+- **State Diagram** - Models state transitions and lifecycles
+- **Sequence Diagram** - Shows interactions between entities over time
+- **User Journey** - Maps user experiences across stages
+- **Class Diagram** - Object-oriented design showing classes and relationships
+- **Entity Relationship (ER) Diagram** - Database schemas
+- **C4 Diagram** - Software architecture views
+- **Block Diagram** - High-level system components
 
 See the [Mermaid Generator](./mermaid-generator.md)
 
-## Vis-Network MicroSim
+### Vis-Network Generator
 
-**Name:** vis-network
-This skill will create a graph network diagram using the vis-network JavaScript library.
-The user should provide a list of nodes and edges as well as an optional list of groups.
+**Route Trigger:** network, nodes, edges, graph, dependencies, concept map, knowledge graph
+
+Creates graph network diagrams using the vis-network JavaScript library. The user provides a list of nodes and edges as well as an optional list of groups.
 
 See the [Vis Network](./vis-network.md) skill description.
 
-## Causal Loop Diagram Generator
+### Causal Loop Diagram Generator
 
-**Name:** causal-loop-microsim-generator<br/>
-**Width Responsive:** Yes
+**Route Trigger:** causal, feedback, loop, systems thinking, reinforcing, balancing
 
-This skill creates interactive Causal Loop Diagram (CLD) MicroSims for systems thinking education using vis-network. CLDs visualize cause-and-effect relationships, feedback loops (reinforcing and balancing), and system dynamics. Key features include:
+Creates interactive Causal Loop Diagram (CLD) MicroSims for systems thinking education. Visualizes cause-and-effect relationships, feedback loops (reinforcing and balancing), and system dynamics.
 
-- **Polarity indicators**: Green (+) for positive relationships, Red (-) for negative relationships
-- **Loop markers**: R (reinforcing) and B (balancing) loop indicators with automatic placement
-- **Interactive details**: Click nodes, edges, or loops to see descriptions
-- **Systems archetypes**: Built-in support for common patterns (limits to growth, fixes that fail, tragedy of the commons)
-- **Educational content**: Discussion questions, key insights, and learning objectives
+Key features:
 
-Causal loop diagrams are ideal for teaching systems thinking concepts like feedback dynamics, exponential growth/decay, goal-seeking behavior, and intervention leverage points.
+- **Polarity indicators**: Green (+) for positive, Red (-) for negative relationships
+- **Loop markers**: R (reinforcing) and B (balancing) loop indicators
+- **Interactive details**: Click nodes, edges, or loops for descriptions
+- **Systems archetypes**: Support for common patterns (limits to growth, tragedy of the commons)
 
 See the [Causal Loop MicroSim Generator](./causal-loop-microsim-generator.md) skill description.
 
-## Math Function Plotter
+### Math Function Plotter (Plotly)
+
+**Route Trigger:** function, f(x), equation, plot, calculus, sine, cosine, polynomial
+
+Creates professional, interactive mathematical function plots using Plotly.js. Features hover tooltips with precise coordinates, interactive sliders for exploring points along curves, and responsive design optimized for narrow textbook layouts.
 
 See the [Math Function Plotter Plotly](./math-function-plotter-plotly.md) skill description.
 
+### Timeline Generator
 
-## Timeline Generator
+**Route Trigger:** timeline, dates, chronological, events, history, schedule, milestones
 
-**Name:** timeline-generator<br/>
-**Width Responsive:** Yes
-This skill will take an input of events and generate a timeline using the vis-timeline JavaScript library.
-The user must specify the following information and JSON is a good format:
-
-```json
-{
-  "title": "Sample Timeline",
-  "events": [
-    {
-        "start_date": {
-        "year": "2025",
-        "month": "11",
-        "day": "16"
-        },
-        "text": {
-        "headline": "Project Initiated",
-        "text": "The project was formally initiated with stakeholder approval and budget allocation."
-        },
-        "group": "Planning",
-        "notes": "This milestone marked the official start of the project after months of preparation and proposal development."
-    }
-  ]
-}
-```
+Takes an input of events and generates a timeline using the vis-timeline JavaScript library. Events should specify start dates, headlines, and optional descriptions.
 
 See the [Timeline Generator](./timeline-generator.md) skill description.
 
-## Venn Diagram
+### Map Generator
 
-This uses the Venn.js library which has not been maintained for several years.  Use with caution.
+**Route Trigger:** map, geographic, coordinates, latitude, longitude, locations, markers
 
-See the [Venn Diagram Generator ](./venn-diagram-generator.md) skill description.
-
-## Bubble Chart
-
-This is a specialization of the ChartJS skill.
-
-See the [Bubble Chart](./bubble-chart-generator.md) skill description.
-
-## Map Generator
-
-**Name:** map-generator<br/>
-**Width Responsive:** Yes
-
-This skill generates interactive maps using the Leaflet JavaScript library. It creates geographic visualizations with markers, popups, and various map layers.
+Generates interactive maps using the Leaflet JavaScript library. Creates geographic visualizations with markers, popups, and various map layers.
 
 See the [Map Generator](./map-generator.md) skill description.
 
+### Venn Diagram Generator
+
+**Route Trigger:** venn, sets, overlap, intersection, union, categories
+
+Creates Venn diagrams showing set relationships and overlaps (2-4 sets).
+
+**Note:** Uses a custom implementation as Venn.js has not been maintained for several years.
+
+See the [Venn Diagram Generator](./venn-diagram-generator.md) skill description.
+
+### Bubble Chart Generator
+
+**Route Trigger:** bubble, priority, matrix, quadrant, impact vs effort, risk vs value
+
+A specialization of ChartJS for creating priority matrices, 2x2 quadrant visualizations, and multi-dimensional data displays where bubble size represents a third variable.
+
+See the [Bubble Chart](./bubble-chart-generator.md) skill description.
+
+### Celebration Animation Generator
+
+**Route Trigger:** animation, celebration, particles, confetti, effects, reward
+
+Creates self-contained p5.js celebration animation modules for visual feedback when students complete tasks correctly. Supports various motion patterns (burst, float, fall, explode, zoom, bounce) with a consistent API.
+
+See the [Celebration Generator](./celebration-generator.md) skill description.
+
+---
+
 ## MicroSim Utility Skills
 
-The following skills help with MicroSim development and maintenance:
+The **microsim-utils** meta-skill provides maintenance and quality utilities:
 
-### MicroSim Matcher
+### MicroSim Standardization
 
-Analyzes diagram, chart, or simulation specifications and returns a ranked list of the most suitable MicroSim generator skills to use. Provides match scores (0-100) with detailed reasoning.
+Validates MicroSim directories against a comprehensive quality checklist including structure, metadata, documentation, and required components. Generates quality scores and ensures consistency.
 
-See the [MicroSim Matcher](./microsim-matcher.md) skill description.
+See the [MicroSim Standardization](./microsim-standardization.md) skill description.
 
 ### MicroSim Screen Capture
 
@@ -241,8 +211,60 @@ Adds clickable Creative Commons license and fullscreen navigation icons to the c
 
 See the [MicroSim Add Icons](./microsim-add-icons.md) skill description.
 
-### MicroSim Standardization
+### MicroSim Index Generator
 
-Validates MicroSim directories against a comprehensive quality checklist including structure, metadata, documentation, and required components.
+Generates index pages that list all MicroSims in a directory with thumbnails, descriptions, and links.
 
-See the [MicroSim Standardization](./microsim-standardization.md) skill description.
+---
+
+## Routing Logic
+
+When you request a MicroSim, the **microsim-generator** meta-skill analyzes your request using keyword matching:
+
+```
+Has dates/timeline/chronological events?
+  → timeline-guide.md
+
+Has geographic coordinates/locations?
+  → map-guide.md
+
+Mathematical function f(x) or equation?
+  → plotly-guide.md
+
+Nodes and edges/network relationships?
+  → vis-network-guide.md (or causal-loop-guide.md if systems thinking)
+
+Flowchart/workflow/process diagram?
+  → mermaid-guide.md
+
+Sets with overlaps (2-4 categories)?
+  → venn-guide.md
+
+Priority matrix/2x2 quadrant?
+  → bubble-guide.md
+
+Standard chart (bar/line/pie/radar)?
+  → chartjs-guide.md
+
+Comparison table with ratings?
+  → comparison-table-guide.md
+
+Celebration/particles/visual feedback?
+  → celebration-guide.md
+
+Custom simulation/animation/physics?
+  → p5-guide.md
+```
+
+For ambiguous requests, the skill presents options with scores and reasoning.
+
+## Quality Standards
+
+All MicroSims follow these standards:
+
+- **Width-responsive** design (320px-1200px)
+- **Non-scrolling** iframe container
+- **Standard height**: 500px (adjustable)
+- **Accessible** color schemes
+- **Documentation** with lesson plans
+- **Dublin Core** metadata for discoverability
