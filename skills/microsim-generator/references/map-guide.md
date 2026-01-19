@@ -7,6 +7,37 @@ description: This skill generates interactive maps using the Leaflet JavaScript 
 
 This skill creates interactive Leaflet maps as MicroSims for intelligent textbooks built with MkDocs Material theme.
 
+## Working Templates (REQUIRED REFERENCE)
+
+Before generating any map MicroSim, you MUST reference the working templates in:
+
+```
+skills/microsim-generator/assets/templates/map/
+├── main-template.html      # HTML shell with Leaflet CDN links
+├── style.css               # Complete styling for info panel, legend, responsive
+├── script.js               # Core Leaflet logic with choropleth/marker support
+├── data-template.json      # Sample data structure for map features
+├── index-template.md       # MkDocs documentation page template
+├── metadata-template.json  # Dublin Core metadata template
+└── choropleth-example.html # Complete working example (US state quality map)
+```
+
+**CRITICAL**: Use these templates as your starting point. The `choropleth-example.html` demonstrates the complete working pattern with inline styles for quick reference.
+
+### Template File Structure for Generated MicroSims
+
+Each map MicroSim should produce these 6 files:
+
+```
+docs/sims/[map-name]/
+├── main.html       # Uses separate CSS/JS files
+├── style.css       # Based on templates/map/style.css
+├── script.js       # Based on templates/map/script.js
+├── data.json       # Map data (features, markers, config)
+├── index.md        # MkDocs documentation
+└── metadata.json   # Dublin Core metadata
+```
+
 ## When to Use This Skill
 
 Use this skill when users request:
@@ -74,58 +105,73 @@ If the map includes markers or GeoJSON data, create a `map-data.json` file:
 
 ### Step 4: Create main.html
 
-Create `main.html` using the template from `assets/template-iframe-main.html`:
+Create `main.html` based on the template from `assets/templates/map/main-template.html`:
 
 **Key elements**:
 
 - Leaflet CDN links (CSS and JS)
 - Map container div with id="map"
-- Optional controls section for layer toggles
-- Script reference to script.js
+- Info panel (top-right overlay for hover details)
+- Legend container (below map)
+- External style.css and script.js references
 - Minimal padding/margins for iframe embedding
 
 **Replace placeholders**:
 
 - `{{TITLE}}` - Map title
 - `{{SUBTITLE}}` - Map subtitle
-- `{{MAP_HEIGHT}}` - Map container height (default: 400px)
+- `{{LEGEND_TITLE}}` - Legend title text
+- `{{LEGEND_ITEMS}}` - Legend color swatches HTML
 
 ### Step 5: Create style.css
 
-Create `style.css` using the template from `assets/template-iframe-style.css`:
+Copy and customize `style.css` from `assets/templates/map/style.css`:
 
 **Critical requirements for iframe embedding**:
 
 - `body { margin: 0; padding: 0; }` - No body margins
 - Minimal margins throughout (2px max for headings)
-- Fixed height for #map container
+- Fixed height for #map container (default: 420px)
 - Responsive breakpoints for mobile
 - aliceblue background (repository standard)
 
+**Included styles**:
+
+- `.info` - Floating info panel for hover details
+- `.legend-container` - Legend below the map
+- `.metric-row` - Data display rows in info panel
+- `.better`/`.worse` - Status indicators with colors
+- Responsive styles for mobile (max-width: 600px)
+
 **Customization options**:
 
-- Map height (adjust based on content needs)
-- Control button styling
+- Map height (adjust in `#map` and responsive section)
+- Info panel max-width and font sizes
+- Legend layout and colors
 - Marker popup styling
 
 ### Step 6: Create script.js
 
-Create `script.js` using the template from `assets/template-script.js`:
+Copy and customize `script.js` from `assets/templates/map/script.js`:
 
 **Core functionality**:
 
-1. Initialize Leaflet map with center coordinates and zoom level
-2. Add tile layer (OpenStreetMap default, or custom)
-3. Add markers with popups
-4. Optional: Add GeoJSON layers for borders/regions
-5. Optional: Add layer controls for toggling map types
+1. Load data from data.json (map data and feature values)
+2. Initialize Leaflet map with configurable center and zoom
+3. Add tile layer (OpenStreetMap default)
+4. Create info control panel with hover updates
+5. Load GeoJSON for choropleth maps (optional)
+6. Style features based on data values with color scale
+7. Handle hover highlight and click-to-zoom interactions
+8. Add markers with popups (optional)
 
-**Replace placeholders**:
+**Configuration constants to modify**:
 
-- `{{CENTER_LAT}}`, `{{CENTER_LNG}}` - Map center coordinates
-- `{{ZOOM}}` - Initial zoom level
-- `{{MARKERS}}` - Marker data array
-- `{{TILE_LAYER}}` - Tile layer URL (OpenStreetMap, satellite, etc.)
+- `MAP_CONFIG` - Center coordinates, zoom levels
+- `GEOJSON_URL` - GeoJSON boundary source (null for marker-only maps)
+- `DATA_URL` - Local data file path
+- `colorScale` - Color definitions for value ranges
+- `getColor()` - Threshold values for color assignment
 
 **Common tile layers**:
 
@@ -135,18 +181,19 @@ Create `script.js` using the template from `assets/template-script.js`:
 
 ### Step 7: Create index.md
 
-Create `index.md` using the template from `assets/template-index.md`:
+Create `index.md` based on the template from `assets/templates/map/index-template.md`:
 
 **Structure**:
 
 - Title and overview
-- iframe embed (width="100%", height="700", frameborder="0")
+- iframe embed (width="100%", height="560px" for map + legend)
 - Link to fullscreen view
-- Features section (interactive elements)
-- Customization guide (how to modify the map)
-- Technical details (library version, dependencies)
-- Use cases
-- References
+- About This MicroSim section
+- How to Use section
+- Key Concepts Demonstrated
+- Data Sources
+- Technical Notes
+- Related Concepts
 
 **iframe embed format**:
 
@@ -158,21 +205,20 @@ Create `index.md` using the template from `assets/template-index.md`:
 
 ### Step 8: Create metadata.json
 
-Create `metadata.json` using the template from `assets/template-metadata.json`:
+Create `metadata.json` based on the template from `assets/templates/map/metadata-template.json`:
 
 **Dublin Core fields**:
 
-- title, description, subject, creator, date, type, format, language
-- coverage, rights, audience
+- title, description, subject, creator, date
+- version, format, license, language
+- audience, educationalLevel
 
 **Map-specific fields**:
 
-- `map_type`: "interactive", "choropleth", "route", etc.
-- `center_lat`, `center_lng`: Center coordinates
-- `zoom_level`: Initial zoom level
-- `marker_count`: Number of markers
-- `concepts`: Array of related concepts
-- `bloom_taxonomy`: Cognitive level (Remember, Understand, Apply, etc.)
+- `mapType`: "choropleth", "markers", "route", etc.
+- `geoJsonSource`: URL or description of GeoJSON source
+- `concepts`: Array of related educational concepts
+- `dependencies`: ["leaflet.js"]
 
 ### Step 9: Update mkdocs.yml Navigation
 
@@ -206,6 +252,41 @@ Perform these validation steps:
 3. **Browser compatibility**: Test in Chrome, Firefox, Safari
 
 4. **Mobile test**: Verify responsive behavior on mobile devices
+
+## Default Layout: Map with Info Panel
+
+The default map layout includes:
+
+1. **Title** (top center) - 18px font, 8px top margin
+2. **Subtitle** (below title) - 12px font, gray color
+3. **Map container** - 420px height, full width
+4. **Info panel** (top-right overlay) - Shows details on hover
+5. **Legend** (below map) - Horizontal color scale with labels
+6. **Hover instruction** (bottom) - Italic helper text
+
+### Info Panel Features
+
+The info panel automatically:
+
+- Appears on hover over map features
+- Displays feature name with styled header
+- Shows metric rows with value and status indicators
+- Supports grade badges with color backgrounds
+- Hides when mouse leaves feature
+
+### Choropleth Color Scale
+
+Default color scale for value-based maps:
+
+| Value Range | Color | Hex Code |
+|-------------|-------|----------|
+| > 80 | Dark Green (Best) | #1a5e1a |
+| 60-80 | Green | #4CAF50 |
+| 40-60 | Yellow (Average) | #FFC107 |
+| 20-40 | Orange | #FF9800 |
+| < 20 | Dark Red (Worst) | #8B0000 |
+
+Customize the `getColor()` function in script.js for different threshold values.
 
 ## Common Map Patterns
 
