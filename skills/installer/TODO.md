@@ -28,30 +28,24 @@ extra_javascript:
 ```javascript
 window.MathJax = {
   tex: {
-    inlineMath: [["\\(", "\\)"]],
-    displayMath: [["\\[", "\\]"]],
+    inlineMath: [["\\(", "\\)"], ["$", "$"]],
+    displayMath: [["\\[", "\\]"], ["$$", "$$"]],
     processEscapes: true,
     processEnvironments: true
-  },
-  options: {
-    ignoreHtmlClass: ".*|",
-    processHtmlClass: "arithmatex"
   }
 };
-
-document$.subscribe(() => {
-  MathJax.startup.output.clearCache()
-  MathJax.typesetClear()
-  MathJax.texReset()
-  MathJax.typesetPromise()
-})
 ```
+
+**IMPORTANT:** Do NOT include `processHtmlClass: "arithmatex"` - this restricts MathJax to only process arithmatex-wrapped content and breaks `$`/`$$` delimiter support. Without this restriction, MathJax scans the entire page for all configured delimiters.
 
 ### Usage in Markdown
 
 - Display math: `$$F = k \frac{|q_1 q_2|}{r^2}$$`
 - Inline math: `$F$`, `$k = 8.99 \times 10^9$`
+- Alternative display: `\[...\]`
+- Alternative inline: `\(...\)`
 
 ### Reference
 
-Configuration added to `intro-to-physics-course` project on 2025-12-28.
+- Configuration added to `intro-to-physics-course` project on 2025-12-28.
+- Configuration corrected based on `search-microsims` project on 2026-01-25. Key fix: removed `processHtmlClass` restriction to enable `$`/`$$` support.
