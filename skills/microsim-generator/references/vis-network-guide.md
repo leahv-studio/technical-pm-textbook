@@ -656,17 +656,20 @@ const steps = [
 let nodes, edges, network;
 
 // Position the view to show nodes on the left side of canvas
-// ADJUST THESE VALUES to control initial graph position:
-// - Lower x = moves view RIGHT (shows more of left side)
-// - Higher y = moves view UP (shows more of bottom)
-function positionView() {
-    if (network) {
+// Uses afterDrawing event to pan AFTER vis-network auto-centers
+function setupViewPosition() {
+    network.once('afterDrawing', function() {
+        const currentPosition = network.getViewPosition();
+        // Move camera right so diagram appears on left side
+        // Adjust +80/+20 values based on your right panel width
         network.moveTo({
-            position: { x: -90, y: 60 },
-            scale: 1,
+            position: {
+                x: currentPosition.x + 80,
+                y: currentPosition.y + 20
+            },
             animation: false
         });
-    }
+    });
 }
 
 function initializeNetwork() {
@@ -733,7 +736,7 @@ function initializeNetwork() {
     const data = { nodes: nodes, edges: edges };
     network = new vis.Network(container, data, options);
 
-    setTimeout(positionView, 200);
+    setupViewPosition();  // Set up pan after auto-centering
     updateUI();
 }
 
@@ -791,7 +794,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNetwork();
     document.getElementById('next-btn').addEventListener('click', executeStep);
     document.getElementById('reset-btn').addEventListener('click', reset);
-    window.addEventListener('resize', positionView);
 });
 ```
 
@@ -819,27 +821,78 @@ const nodeData = [
 - Typical x range for left-side placement: `-400` to `-50`
 - Typical y range: `-200` to `+400` depending on number of nodes
 
-### 2. Camera/View Position (positionView function)
+### 2. Camera/View Position - CRITICAL: Use afterDrawing Event
 
-The `moveTo()` function controls the initial camera position:
+**IMPORTANT**: vis-network automatically centers the graph after initialization. Calling `moveTo()` immediately or with `setTimeout()` often fails because the auto-centering happens afterwards.
+
+#### What DOESN'T Work
 
 ```javascript
-network.moveTo({
-    position: { x: -90, y: 60 },
-    scale: 1,
-    animation: false
+// WRONG - These approaches fail due to auto-centering:
+
+// 1. Immediate moveTo (runs before auto-center)
+network.moveTo({ position: { x: -90, y: 60 }, scale: 1 });
+
+// 2. setTimeout (unreliable timing)
+setTimeout(() => {
+    network.moveTo({ position: { x: -90, y: 60 }, scale: 1 });
+}, 200);
+
+// 3. fit() with asymmetric padding (doesn't reliably offset)
+network.fit({ padding: { left: 50, right: 280 } });
+
+// 4. Changing node x/y positions (vis-network re-centers anyway)
+```
+
+#### What DOES Work - Pan After Rendering
+
+Use the `afterDrawing` event to pan AFTER vis-network completes auto-centering:
+
+```javascript
+// CORRECT - Wait for render, then pan relative to auto-centered position
+network.once('afterDrawing', function() {
+    // Get current view position AFTER auto-centering
+    const currentPosition = network.getViewPosition();
+    // Move camera to offset the view
+    network.moveTo({
+        position: {
+            x: currentPosition.x + 80,  // Positive = camera RIGHT = diagram LEFT
+            y: currentPosition.y + 20   // Positive = camera DOWN = diagram UP
+        },
+        animation: false
+    });
 });
 ```
 
-**Adjustment Guide:**
-- **x value**: Lower = view shifts RIGHT (shows more of left-positioned nodes)
-- **y value**: Higher = view shifts UP (shows more of bottom nodes)
-- **scale**: `1` = default zoom, `0.8` = zoomed out, `1.2` = zoomed in
+#### Key Insight: Camera vs Diagram Movement
 
-**Common adjustments:**
-- Graph cut off on left? → Decrease x (e.g., `-120`)
-- Graph cut off on bottom? → Increase y (e.g., `100`)
-- Graph too small? → Increase scale (e.g., `1.1`)
+In vis-network, `moveTo()` moves the **CAMERA**, not the diagram:
+
+| Camera Movement | Effect on Diagram |
+|-----------------|-------------------|
+| `x + 100` (camera moves RIGHT) | Diagram appears on LEFT |
+| `x - 100` (camera moves LEFT) | Diagram appears on RIGHT |
+| `y + 50` (camera moves DOWN) | Diagram appears HIGHER |
+| `y - 50` (camera moves UP) | Diagram appears LOWER |
+
+#### Typical Values for Right-Panel Layouts
+
+When you have an info panel on the right side (~200px wide), use these offset values:
+
+```javascript
+network.once('afterDrawing', function() {
+    const pos = network.getViewPosition();
+    network.moveTo({
+        position: {
+            x: pos.x + 80,   // Push diagram left to clear right panel
+            y: pos.y + 20    // Slight vertical adjustment
+        },
+        animation: false
+    });
+});
+```
+
+Adjust the `+80` and `+20` values based on your specific layout needs.
 
 ### Testing Positioning
 
