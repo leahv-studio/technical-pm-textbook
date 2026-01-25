@@ -377,6 +377,65 @@ Implementation: HTML/CSS/JavaScript with SVG timeline
 - Canvas layout (drawing area + controls area)
 - Animation or static visualization
 
+### CRITICAL: Instructional Pattern Selection
+
+**Before specifying visual effects, determine the appropriate interaction pattern based on Bloom's level:**
+
+| Bloom Level | Recommended Pattern | Avoid |
+|-------------|---------------------|-------|
+| Remember (L1) | Flashcards, matching, labeling | Complex animations |
+| **Understand (L2)** | **Step-through with worked examples, concrete data visibility** | **Continuous animation** |
+| Apply (L3) | Parameter exploration, calculators | Passive viewing |
+| Analyze (L4) | Network explorers, pattern finders | Pre-computed results |
+| Evaluate (L5) | Classification sorters, rubric raters | No feedback |
+| Create (L6) | Model editors, builders | Rigid templates |
+
+**For UNDERSTAND level objectives:** Do NOT specify animation or particle effects. Instead, specify:
+- What DATA must be visible at each stage
+- Step-through controls (Next/Previous buttons)
+- Concrete worked examples with real values
+- Prediction opportunities before revealing answers
+
+### Data Visibility Requirements (REQUIRED for Understand/Explain objectives)
+
+When the learning objective involves "explain," "describe," or "understand," you MUST specify what data transformations the learner needs to SEE:
+
+```
+Data Visibility Requirements:
+  Stage 1: Show [raw input data]
+  Stage 2: Show [first transformation with concrete values]
+  Stage 3: Show [intermediate result]
+  ...
+  Final: Show [output with connection to input]
+```
+
+**Bad specification (visual-focused):**
+```
+Animation: Data flows between stages with particle effects
+Visual style: Smooth transitions with glowing nodes
+```
+
+**Good specification (data-focused):**
+```
+Data Visibility Requirements:
+  Stage 1: Show raw query "physics ball throwing"
+  Stage 2: Show tokenized array ["physics", "ball", "throwing"]
+  Stage 3: Show synonym expansion: throwing → [throw, projectile, launch]
+  Stage 4: Show match scores with calculation breakdown
+  Stage 5: Show ranked results with highlighted matching terms
+Interaction: Step-through with Next/Previous buttons
+```
+
+### Instructional Rationale (REQUIRED)
+
+Every MicroSim specification must include an Instructional Rationale explaining WHY the chosen interaction pattern supports the learning objective:
+
+```
+Instructional Rationale: Step-through with worked examples is appropriate
+because the Understand/explain objective requires learners to trace the
+process with concrete data. Continuous animation would prevent prediction
+and obscure the actual data transformations.
+
 **Example specification:**
 ```xml
 <iframe src="../../sims/{MICROSIM_NAME}/main.html" width="100%" height="500xp" scrolling="no"></iframe>

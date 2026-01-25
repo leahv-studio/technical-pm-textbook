@@ -83,16 +83,77 @@ Custom simulation/animation/physics?
   → YES: p5-guide.md
 ```
 
-## Step 2: Load the Matched Guide
+## Step 2: Instructional Design Checkpoint (MANDATORY)
 
-Once you identify the best generator, **read the corresponding guide file** from the `references/` directory and follow its workflow.
+**Before loading any generator guide, you MUST complete this checkpoint.**
+
+### 2.1 Identify Learning Objective Details
+
+Extract from the specification:
+- **Bloom Level**: Remember, Understand, Apply, Analyze, Evaluate, or Create
+- **Bloom Verb**: The action verb (explain, demonstrate, calculate, etc.)
+- **Learning Objective**: The full statement of what learners will be able to do
+
+### 2.2 Match Interaction Pattern to Bloom Level
+
+| Bloom Level | Appropriate Patterns | Inappropriate Patterns |
+|-------------|---------------------|------------------------|
+| Remember (L1) | Flashcards, matching, labeling | Complex simulations |
+| **Understand (L2)** | **Step-through worked examples, concrete data visibility** | **Continuous animation, particle effects** |
+| Apply (L3) | Parameter sliders, calculators, practice problems | Passive viewing only |
+| Analyze (L4) | Network explorers, comparison tools, pattern finders | Pre-computed results |
+| Evaluate (L5) | Sorting/ranking activities, rubric tools | No feedback mechanisms |
+| Create (L6) | Builders, editors, canvas tools | Rigid templates |
+
+### 2.3 Answer These Questions
+
+Before proceeding, answer these questions:
+
+1. **What specific data must the learner SEE?**
+   - Not "animated particles" but "the tokenized array ['physics', 'ball']"
+
+2. **Does the learner need to PREDICT before observing?**
+   - If YES → Use step-through with Next/Previous buttons
+   - If YES → Do NOT use continuous animation
+
+3. **What does animation add that static arrows don't?**
+   - If you can't answer this clearly → Don't use animation
+
+4. **Is continuous animation appropriate for this Bloom level?**
+   - For Understand (L2) with verb "explain" → Almost always NO
+   - For Apply (L3) with real-time feedback → Often YES
+
+### 2.4 Modify Specification If Needed
+
+If the specification requests animation/effects for an UNDERSTAND level objective:
+- **Flag this as a potential instructional design issue**
+- **Recommend step-through pattern instead**
+- **Ask user**: "The specification requests animation, but for an 'explain' objective, a step-through approach with concrete data visibility typically supports learning better. Should I proceed with step-through instead?"
+
+### 2.5 Document Your Decision
+
+Add to your response:
+```
+Instructional Design Check:
+- Bloom Level: [level]
+- Bloom Verb: [verb]
+- Recommended Pattern: [pattern]
+- Specification Alignment: [aligned/modified]
+- Rationale: [why this pattern supports the learning objective]
+```
+
+---
+
+## Step 3: Load the Matched Guide
+
+Once you complete the instructional design checkpoint, **read the corresponding guide file** from the `references/` directory and follow its workflow.
 
 Example:
 - User asks for "a timeline showing the history of Unix"
 - Match: `timeline` keyword → Load `references/timeline-guide.md`
 - Follow the timeline-guide.md workflow
 
-## Step 3: Execute Generator Workflow
+## Step 5: Execute Generator Workflow
 
 Each guide contains:
 1. Library-specific requirements
@@ -202,7 +263,7 @@ For detailed information, consult:
 - `references/<generator>-guide.md` - Specific implementation guide for each generator
 - `assets/templates/` - Shared templates and patterns
 
-## Step 4: Auto-Standardization
+## Step 6: Auto-Standardization
 
 **IMPORTANT**: After creating the MicroSim files, automatically run standardization to ensure quality and documentation standards are met.
 
