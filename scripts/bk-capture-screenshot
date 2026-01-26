@@ -111,7 +111,7 @@ echo ""
     --headless=new \
     --disable-gpu \
     --screenshot="$OUTPUT_IMAGE" \
-    --window-size=1200,800 \
+    --window-size=800,600 \
     --hide-scrollbars \
     --disable-web-security \
     --allow-file-access-from-files \
