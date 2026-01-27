@@ -1,0 +1,51 @@
+# Minimal MkDocs Material Configuration
+# This is a starter template - use book-installer to add features incrementally
+
+site_name: "{{SITE_NAME}}"
+site_description: "{{SITE_DESCRIPTION}}"
+site_author: "{{SITE_AUTHOR}}"
+site_url: "https://{{GITHUB_USERNAME}}.github.io/{{REPO_NAME}}/"
+repo_url: "https://github.com/{{GITHUB_USERNAME}}/{{REPO_NAME}}"
+repo_name: "{{GITHUB_USERNAME}}/{{REPO_NAME}}"
+
+# Theme Configuration
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - content.code.copy
+
+# Minimal Markdown Extensions
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+# Plugins
+plugins:
+  - search
+
+# Navigation Structure
+nav:
+  - Home: index.md
+  - About: about.md
+  - Course Description: course-description.md
+  - Chapters:
+    - Chapter 1 - Introduction: chapters/01-introduction/index.md
+    - Chapter 2 - Getting Started: chapters/02-getting-started/index.md
+    - Chapter 3 - Core Concepts: chapters/03-core-concepts/index.md
+  - Contact: contact.md
+  - License: license.md

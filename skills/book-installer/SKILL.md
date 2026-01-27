@@ -27,6 +27,7 @@ Match the user's request to the appropriate installation guide:
 
 | Trigger Keywords | Guide File | Purpose |
 |------------------|------------|---------|
+| help, what can you do, features, capabilities, list features, enrich | `references/mkdocs-features.md` | List all available MkDocs feature enhancements |
 | new project, mkdocs, textbook, bootstrap, setup, template, new book | `references/mkdocs-template.md` | Create new MkDocs Material project |
 | graph viewer, learning graph, visualization, interactive graph, concept viewer | `references/learning-graph-viewer.md` | Add learning graph viewer to existing project |
 | track skills, skill usage, activity tracking, hooks, usage analytics | `references/skill-tracker.md` | Set up skill tracking with hooks |
@@ -35,6 +36,9 @@ Match the user's request to the appropriate installation guide:
 ### Decision Tree
 
 ```
+Asking what book-installer can do or wanting to see available features?
+  → YES: mkdocs-features.md (show feature catalog)
+
 Creating a new project/textbook from scratch?
   → YES: mkdocs-template.md
 
@@ -46,6 +50,9 @@ Setting up skill usage tracking?
 
 Creating a cover image or setting up home page with social metadata?
   → YES: home-page-template.md
+
+Want to add a specific feature (equations, quizzes, feedback, etc.)?
+  → YES: mkdocs-features.md (then follow specific feature instructions)
 ```
 
 ## Step 2: Load the Matched Guide
@@ -62,6 +69,29 @@ Each guide contains:
 5. Troubleshooting tips
 
 ## Available Installation Guides
+
+### mkdocs-features.md
+
+**Purpose:** Show all available MkDocs feature enhancements and enrich existing mkdocs.yml files
+
+**Features Catalog:**
+- Math equations (MathJax/KaTeX)
+- Code syntax highlighting with copy button
+- Social media preview cards
+- Per-page social image overrides
+- Interactive quizzes
+- Custom admonitions with copy functionality
+- Simple feedback (thumbs up/down)
+- Detailed comment feedback (Giscus)
+- Image zoom on click (GLightbox)
+- Mermaid diagrams
+- Content tabs
+- And many more...
+
+**Use when:**
+- User asks "what can book-installer do?"
+- User wants to add a specific feature to existing project
+- User has a minimal mkdocs.yml and wants to enrich it
 
 ### mkdocs-template.md
 
@@ -126,27 +156,37 @@ Each guide contains:
 
 ## Examples
 
-### Example 1: New Textbook Project
+### Example 1: Ask What Book-Installer Can Do
+**User:** "What does the book-installer skill do?"
+**Routing:** Keywords "what", "do" → `references/mkdocs-features.md`
+**Action:** Load mkdocs-features.md and present the feature catalog to the user
+
+### Example 2: Add a Specific Feature
+**User:** "Add math equation support to my book"
+**Routing:** Keywords relating to specific feature → `references/mkdocs-features.md`
+**Action:** Load mkdocs-features.md, find the Math Equations section, and apply the configuration
+
+### Example 3: New Textbook Project
 **User:** "I want to create a new intelligent textbook about machine learning"
 **Routing:** Keywords "create", "new", "textbook" → `references/mkdocs-template.md`
 **Action:** Read mkdocs-template.md and follow its workflow
 
-### Example 2: Add Graph Viewer
+### Example 4: Add Graph Viewer
 **User:** "Add an interactive viewer for the learning graph"
 **Routing:** Keywords "viewer", "learning graph", "interactive" → `references/learning-graph-viewer.md`
 **Action:** Read learning-graph-viewer.md and follow its workflow
 
-### Example 3: Track Skill Usage
+### Example 5: Track Skill Usage
 **User:** "I want to track which skills I use most often"
 **Routing:** Keywords "track", "skills", "usage" → `references/skill-tracker.md`
 **Action:** Read skill-tracker.md and follow its workflow
 
-### Example 4: Create Cover Image
+### Example 6: Create Cover Image
 **User:** "Help me create a cover image for my textbook"
 **Routing:** Keywords "cover image", "textbook" → `references/home-page-template.md`
 **Action:** Read home-page-template.md and follow its workflow
 
-### Example 5: Set Up Home Page with Social Sharing
+### Example 7: Set Up Home Page with Social Sharing
 **User:** "I need to add og:image metadata to my home page"
 **Routing:** Keywords "og:image", "home page" → `references/home-page-template.md`
 **Action:** Read home-page-template.md and follow its workflow
