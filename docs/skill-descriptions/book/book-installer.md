@@ -2,12 +2,43 @@
 
 The book-installer skill is a meta-skill that handles installation and setup tasks for intelligent textbook projects. It consolidates multiple installation skills into a single entry point with on-demand loading of specific installation guides.
 
+## Quick Feature List
+
+Type `book-installer help` to see this list, then select by number or name:
+
+| # | Feature | Description |
+|---|---------|-------------|
+| 1 | Site logo | Add custom logo to header |
+| 2 | Favicon | Browser tab/bookmark icon |
+| 3 | Cover image & social preview | Home page image + og:image metadata |
+| 4 | Math equations | KaTeX (recommended) or MathJax |
+| 5 | Code syntax highlighting | Language-aware code blocks |
+| 6 | Code copy button | One-click copy for code blocks |
+| 7 | Mermaid diagrams | Flowcharts, sequence diagrams from text |
+| 8 | Content tabs | Tabbed sections for alternatives |
+| 9 | Image zoom (GLightbox) | Click to enlarge images |
+| 10 | Custom admonitions | Prompt boxes with copy button |
+| 11 | Interactive quizzes | Self-assessment questions |
+| 12 | Abbreviations & tooltips | Glossary hover definitions |
+| 13 | Task lists | Checkbox lists |
+| 14 | Simple feedback | Thumbs up/down per page |
+| 15 | Detailed comments (Giscus) | GitHub Discussions integration |
+| 16 | Tags & categorization | Page tagging system |
+| 17 | Search enhancements | Suggestions and highlighting |
+| 18 | Table of contents config | TOC sidebar options |
+| 19 | Blog support | Add blog section |
+| 20 | Announcement bar | Dismissible top banner |
+| 21 | Privacy & cookie consent | GDPR compliance |
+| 22 | Learning graph viewer | Interactive concept visualization |
+| 23 | Skill usage tracker | Claude Code analytics hooks |
+
 ## Key Capabilities
 
 This meta-skill routes to the appropriate installation guide based on your request:
 
 | Request Type | Guide | Purpose |
 |--------------|-------|---------|
+| Feature by number or name | mkdocs-features | Install specific MkDocs feature |
 | New textbook project | mkdocs-template | Create complete MkDocs Material project |
 | Learning graph viewer | learning-graph-viewer | Add interactive graph visualization |
 | Skill usage tracking | skill-tracker | Set up usage analytics with hooks |
@@ -17,6 +48,7 @@ This meta-skill routes to the appropriate installation guide based on your reque
 
 Use this skill when you need to:
 
+- Add a specific feature to an existing MkDocs project (math, quizzes, feedback, etc.)
 - Set up a new MkDocs Material project from scratch
 - Create a new intelligent textbook
 - Add an interactive learning graph viewer to an existing project
@@ -25,7 +57,18 @@ Use this skill when you need to:
 
 ## Available Installation Guides
 
-### 1. MkDocs Template Installation
+### 1. MkDocs Features (mkdocs-features.md)
+
+Detailed configuration for all 23 MkDocs feature enhancements. Contains:
+
+- Complete YAML snippets for mkdocs.yml
+- JavaScript files to create
+- CSS files to create
+- Usage examples for each feature
+
+**Trigger keywords:** Feature number (1-23), feature name, enrich, add feature, math, equations, quiz, feedback, logo, favicon, mermaid, admonition, code highlighting, image zoom, tabs, blog, tags
+
+### 2. MkDocs Template Installation (mkdocs-template.md)
 
 Creates a complete MkDocs Material intelligent textbook project structure:
 
@@ -41,7 +84,7 @@ Creates a complete MkDocs Material intelligent textbook project structure:
 
 [Detailed MkDocs template documentation](./install-mkdocs-template.md)
 
-### 2. Learning Graph Viewer Installation
+### 3. Learning Graph Viewer Installation (learning-graph-viewer.md)
 
 Adds interactive learning graph exploration to an existing textbook:
 
@@ -56,7 +99,7 @@ Adds interactive learning graph exploration to an existing textbook:
 
 [Detailed learning graph viewer documentation](./install-learning-graph-viewer.md)
 
-### 3. Skill Tracker Installation
+### 4. Skill Tracker Installation (skill-tracker.md)
 
 Sets up Claude Code skill usage tracking:
 
@@ -68,7 +111,7 @@ Sets up Claude Code skill usage tracking:
 
 **Trigger keywords:** track skills, skill usage, activity tracking, hooks, usage analytics
 
-### 4. Home Page Template
+### 5. Home Page Template (home-page-template.md)
 
 Creates professional home page with cover image and social media optimization:
 
@@ -80,6 +123,20 @@ Creates professional home page with cover image and social media optimization:
 **Prerequisites:** Existing MkDocs project, access to AI image generator
 
 **Trigger keywords:** cover image, home page, social media, og:image, montage, book cover, index page
+
+## Important: Navigation Tabs
+
+When working with existing projects, the book-installer will check for and remove navigation tabs from mkdocs.yml:
+
+```yaml
+# These lines will be removed if present:
+theme:
+  features:
+    - navigation.tabs        # DELETE
+    - navigation.tabs.sticky # DELETE
+```
+
+These books use **side navigation** optimized for wide landscape screens. Top navigation tabs waste vertical space and are not appropriate for this format.
 
 ## Typical Workflow
 
