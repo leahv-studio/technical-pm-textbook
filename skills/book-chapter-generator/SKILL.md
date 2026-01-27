@@ -319,7 +319,7 @@ nav:
   - Home: index.md
   - Course Description: course-description.md
   - Chapters:
-    - Overview: chapters/index.md
+    - List of Chapters: chapters/index.md
     - 1. [Chapter 1 Title]: chapters/01-[url-path-name]/index.md
     - 2. [Chapter 2 Title]: chapters/02-[url-path-name]/index.md
     - 3. [Chapter 3 Title]: chapters/03-[url-path-name]/index.md
