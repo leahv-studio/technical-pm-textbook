@@ -8,29 +8,29 @@ Type `book-installer help` to see this list, then select by number or name:
 
 | # | Feature | Description |
 |---|---------|-------------|
-| 1 | Site logo | Add custom logo to header |
-| 2 | Favicon | Browser tab/bookmark icon |
-| 3 | Cover image & social preview | Home page image + og:image metadata |
-| 4 | Math equations | KaTeX (recommended) or MathJax |
-| 5 | Code syntax highlighting | Language-aware code blocks |
-| 6 | Code copy button | One-click copy for code blocks |
-| 7 | Mermaid diagrams | Flowcharts, sequence diagrams from text |
-| 8 | Content tabs | Tabbed sections for alternatives |
-| 9 | Image zoom (GLightbox) | Click to enlarge images |
-| 10 | Custom admonitions | Prompt boxes with copy button |
-| 11 | Interactive quizzes | Self-assessment questions |
-| 12 | Abbreviations & tooltips | Glossary hover definitions |
-| 13 | Task lists | Checkbox lists |
-| 14 | Simple feedback | Thumbs up/down per page |
-| 15 | Detailed comments (Giscus) | GitHub Discussions integration |
-| 16 | Tags & categorization | Page tagging system |
-| 17 | Search enhancements | Suggestions and highlighting |
-| 18 | Table of contents config | TOC sidebar options |
-| 19 | Blog support | Add blog section |
-| 20 | Announcement bar | Dismissible top banner |
-| 21 | Privacy & cookie consent | GDPR compliance |
-| 22 | Learning graph viewer | Interactive concept visualization |
-| 23 | Skill usage tracker | Claude Code analytics hooks |
+| 1 | [Site logo](#site-logo) | Add custom logo to header |
+| 2 | [Favicon](#favicon) | Browser tab/bookmark icon |
+| 3 | [Cover image & social preview](#cover-image--social-preview) | Home page image + og:image metadata |
+| 4 | [Math equations](#math-equations) | KaTeX (recommended) or MathJax |
+| 5 | [Code syntax highlighting](#code-syntax-highlighting) | Language-aware code blocks |
+| 6 | [Code copy button](#code-copy-button) | One-click copy for code blocks |
+| 7 | [Mermaid diagrams](#mermaid-diagrams) | Flowcharts, sequence diagrams from text |
+| 8 | [Content tabs](#content-tabs) | Tabbed sections for alternatives |
+| 9 | [Image zoom (GLightbox)](#image-zoom-glightbox) | Click to enlarge images |
+| 10 | [Custom admonitions](#custom-admonitions) | Prompt boxes with copy button |
+| 11 | [Interactive quizzes](#interactive-quizzes) | Self-assessment questions |
+| 12 | [Abbreviations & tooltips](#abbreviations--tooltips) | Glossary hover definitions |
+| 13 | [Task lists](#task-lists) | Checkbox lists |
+| 14 | [Simple feedback](#simple-feedback) | Thumbs up/down per page |
+| 15 | [Detailed comments (Giscus)](#detailed-comments-giscus) | GitHub Discussions integration |
+| 16 | [Tags & categorization](#tags--categorization) | Page tagging system |
+| 17 | [Search enhancements](#search-enhancements) | Suggestions and highlighting |
+| 18 | [Table of contents config](#table-of-contents-config) | TOC sidebar options |
+| 19 | [Blog support](#blog-support) | Add blog section |
+| 20 | [Announcement bar](#announcement-bar) | Dismissible top banner |
+| 21 | [Privacy & cookie consent](#privacy--cookie-consent) | GDPR compliance |
+| 22 | [Learning graph viewer](#3-learning-graph-viewer-installation-learning-graph-viewermd) | Interactive concept visualization |
+| 23 | [Skill usage tracker](#4-skill-tracker-installation-skill-trackermd) | Claude Code analytics hooks |
 
 ## Key Capabilities
 
@@ -177,3 +177,517 @@ This skill is typically the **first step** in the intelligent textbook creation 
 2. **Learning Graph Generator** - Generate concept dependencies
 3. **Book Chapter Generator** - Design chapter structure
 4. **Chapter Content Generator** - Generate detailed content
+
+---
+
+## Feature Details
+
+### Site Logo
+
+**Location:** Upper-left corner of every page, next to the site title.
+
+**File requirements:**
+
+- Format: PNG with transparency (recommended) or SVG
+- Size: 48x48 to 64x64 pixels
+- Location: `docs/img/logo.png`
+
+**mkdocs.yml configuration:**
+
+```yaml
+theme:
+  name: material
+  logo: img/logo.png
+```
+Browse over 7,000 sample icons at: [Material Design Icons](https://pictogrammers.com/library/mdi/)
+
+**Best practices:**
+
+- Use simple geometric shapes that remain recognizable at small sizes
+- Ensure high contrast against both light and dark backgrounds
+- Avoid text in the logo (illegible at small sizes)
+- Test at 32x32 to ensure it's still recognizable
+
+**AI prompt for logo generation:**
+
+```
+Please generate a minimalist [SUBJECT] png formatted logo icon.
+Use simple geometric shapes.
+Use [PRIMARY COLOR] and [SECONDARY COLOR] on transparent background, flat design,
+suitable for small size display, professional, clean lines,
+no text, centered composition, square format.
+```
+
+Adding transparency to an existing logo can be done by Claude Code:
+
+```
+> Claude, please make the background of this logo transparent: @docs/img/logo.png
+```
+
+**Example prompts by topic:**
+
+- **Programming:** "A minimalist code brackets logo icon, angular < > symbols, indigo (#3F51B5) on transparent background, modern tech feel, clean vector style, no text"
+- **Data Science:** "A minimalist neural network logo icon, three connected nodes in triangular arrangement, purple gradient (#7C4DFF to #536DFE), transparent background, flat design, no text"
+- **Education:** "A minimalist open book logo icon, simple geometric book shape with pages fanning out, warm orange (#FF9800) on transparent background, flat design, no text"
+
+**CSS to customize logo size:**
+
+```css
+/* Add to docs/css/extra.css */
+.md-header__button.md-logo img {
+  width: 48px;
+  height: 48px;
+}
+```
+
+**Post-processing:** Generate at 512x512, resize to 64x64, ensure transparent background, save as PNG.
+
+---
+
+### Favicon
+
+**Location:** Browser tab, bookmarks bar, and mobile home screen icon.
+
+**File requirements:**
+
+- Format: `.ico` (multi-resolution) or `.png` (32x32)
+- Must be extremely simple - recognizable at 16x16 pixels
+- Location: `docs/img/favicon.ico`
+
+**mkdocs.yml configuration:**
+
+```yaml
+theme:
+  favicon: img/favicon.ico
+```
+
+**Best practices:**
+
+- Use a single bold shape or letter
+- No gradients or fine details
+- High contrast colors
+- Test at 16x16 pixels - if unrecognizable, simplify further
+
+**AI prompt for favicon generation:**
+
+```
+An extremely minimalist [SINGLE SHAPE] icon, [ONE COLOR] on white
+background, ultra-simple geometric form, must be recognizable at
+16x16 pixels, no details, no gradients, bold single element,
+favicon style, flat design
+```
+
+**Example prompts:**
+
+- **Single Letter:** "An extremely minimalist letter 'A' favicon icon, bold sans-serif, deep blue (#1A237E) on white background, ultra-simple, geometric, must be clear at 16 pixels, no decoration"
+- **Geometric Shape:** "An extremely minimalist hexagon favicon icon, solid teal (#009688), white background, simple flat shape, clear at 16x16 pixels"
+
+**Post-processing:**
+
+1. Generate at 512x512
+2. Simplify (remove any fine details)
+3. Create multi-resolution .ico with: 16x16, 32x32, 48x48
+4. Tools:
+  - [Favicon Converter](https://favicon.io/favicon-converter/) - upload the logo and it generates multiple sizes of logos and a favicon.ico - all free
+  - [RealFaviconGenerator](https://realfavicongenerator.net/) or ImageMagick
+
+---
+
+### Cover Image & Social Preview
+
+**Location:** Home page hero image and social media preview when links are shared.
+
+**File requirements:**
+
+- Aspect ratio: 1.91:1 (wide landscape)
+- Recommended size: 1200x630 pixels
+- Format: PNG (< 5MB)
+- Location: `docs/img/cover.png`
+
+**Best practices:**
+
+- Title must be readable at small preview sizes (social cards are often 400px wide)
+- Use high contrast between text and background
+- Include subtle montage of topic-related images around edges
+- Test with social preview validators before deploying
+
+**AI prompt for cover image:**
+
+```
+A professional book cover image in wide landscape format (1.91:1 aspect ratio),
+'[YOUR BOOK TITLE]' in large elegant typography centered on a [COLOR] gradient
+background, surrounded by a subtle montage collage of [TOPIC ELEMENTS] arranged
+around the edges, professional educational design, clean modern aesthetic,
+social media preview style, high contrast text, 1200x630 pixels
+```
+
+**Example prompt:**
+
+```
+A professional book cover in wide 1.91:1 landscape format,
+'Introduction to Python Programming' in bold white typography centered
+on a deep blue (#1A237E) to purple (#4A148C) gradient background,
+surrounded by a subtle montage of code snippets, terminal windows,
+Python logo elements, circuit patterns, and geometric shapes around
+the edges, modern tech aesthetic, clean professional design,
+suitable for social media preview, 1200x630 pixels
+```
+
+**CSS for cover image display:**
+
+```css
+.cover-image {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  margin: 1rem auto 2rem;
+  display: block;
+}
+```
+
+**Validation tools:**
+
+- [Twitter Card Validator](https://cards-dev.twitter.com/validator)
+- [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/)
+
+---
+
+### Math Equations
+
+**Purpose:** Render LaTeX math notation in your documentation.
+
+**Two options:**
+
+| Aspect | KaTeX (Recommended) | MathJax |
+|--------|---------------------|---------|
+| Speed | Much faster (100x+) | Slower |
+| LaTeX coverage | Most common commands | More complete |
+| File size | Smaller | Larger |
+| Best for | Most textbooks | Obscure LaTeX commands |
+
+**KaTeX configuration (recommended):**
+
+```yaml
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
+```
+
+**Usage:**
+
+```markdown
+Inline: $E = mc^2$
+
+Display:
+$$\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$$
+```
+
+---
+
+### Code Syntax Highlighting
+
+**Purpose:** Language-aware syntax coloring for code blocks.
+
+**mkdocs.yml:**
+
+```yaml
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+```
+
+---
+
+### Code Copy Button
+
+**Purpose:** One-click copy button on all code blocks.
+
+**mkdocs.yml:**
+
+```yaml
+theme:
+  features:
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+```
+
+---
+
+### Mermaid Diagrams
+
+**Purpose:** Create flowcharts, sequence diagrams, and more from text.
+
+**mkdocs.yml:**
+
+```yaml
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+```
+
+**Usage:**
+
+````markdown
+```mermaid
+graph LR
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Action 1]
+    B -->|No| D[Action 2]
+```
+````
+
+---
+
+### Content Tabs
+
+**Purpose:** Tabbed sections for showing alternatives (e.g., code in multiple languages).
+
+**mkdocs.yml:**
+
+```yaml
+markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true
+```
+
+**Usage:**
+
+```markdown
+=== "Python"
+    ```python
+    print("Hello")
+    ```
+
+=== "JavaScript"
+    ```javascript
+    console.log("Hello");
+    ```
+```
+
+---
+
+### Image Zoom (GLightbox)
+
+**Purpose:** Click any image to view it in a lightbox overlay.
+
+**Installation:** `pip install mkdocs-glightbox`
+
+**mkdocs.yml:**
+
+```yaml
+plugins:
+  - glightbox:
+      touchNavigation: true
+      effect: zoom
+      zoomable: true
+```
+
+**Exclude specific images:**
+
+```markdown
+![Image](path/to/image.png){ .off-glb }
+```
+
+---
+
+### Custom Admonitions
+
+**Purpose:** Create custom callout boxes like "Prompt" with copy buttons.
+
+See the full mkdocs-features.md reference for complete CSS and JavaScript implementation.
+
+---
+
+### Interactive Quizzes
+
+**Purpose:** Self-assessment multiple choice questions with instant feedback.
+
+Requires custom JavaScript and CSS. See mkdocs-features.md for full implementation.
+
+---
+
+### Abbreviations & Tooltips
+
+**Purpose:** Define terms that show tooltips on hover site-wide.
+
+**mkdocs.yml:**
+
+```yaml
+markdown_extensions:
+  - abbr
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+```
+
+**Create `docs/includes/abbreviations.md`:**
+
+```markdown
+*[HTML]: Hyper Text Markup Language
+*[API]: Application Programming Interface
+*[DAG]: Directed Acyclic Graph
+```
+
+---
+
+### Task Lists
+
+**Purpose:** GitHub-style checkbox lists.
+
+**mkdocs.yml:**
+
+```yaml
+markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+```
+
+**Usage:**
+
+```markdown
+- [x] Completed task
+- [ ] Incomplete task
+```
+
+---
+
+### Simple Feedback
+
+**Purpose:** Thumbs up/down widget at bottom of each page.
+
+Requires custom JavaScript. See mkdocs-features.md for implementation.
+
+---
+
+### Detailed Comments (Giscus)
+
+**Purpose:** GitHub Discussions-powered comment system.
+
+**Prerequisites:**
+
+1. Enable GitHub Discussions on your repository
+2. Install Giscus app: https://github.com/apps/giscus
+3. Configure at: https://giscus.app
+
+---
+
+### Tags & Categorization
+
+**Purpose:** Add tags to pages for filtering and organization.
+
+**mkdocs.yml:**
+
+```yaml
+plugins:
+  - tags:
+      tags_file: tags.md
+```
+
+**Usage in frontmatter:**
+
+```yaml
+---
+tags:
+  - beginner
+  - python
+---
+```
+
+---
+
+### Search Enhancements
+
+**Purpose:** Improved search with suggestions and highlighting.
+
+**mkdocs.yml:**
+
+```yaml
+theme:
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+```
+
+---
+
+### Table of Contents Config
+
+**Purpose:** Configure the right-side table of contents.
+
+**mkdocs.yml:**
+
+```yaml
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 3
+```
+
+---
+
+### Blog Support
+
+**Purpose:** Add a blog section to your documentation.
+
+**mkdocs.yml:**
+
+```yaml
+plugins:
+  - blog:
+      blog_dir: blog
+      post_date_format: long
+```
+
+---
+
+### Announcement Bar
+
+**Purpose:** Dismissible banner at top of all pages.
+
+**mkdocs.yml:**
+
+```yaml
+extra:
+  announcement: "🎉 New version released! <a href='/changelog/'>See what's new</a>"
+```
+
+Requires theme override. See mkdocs-features.md for details.
+
+---
+
+### Privacy & Cookie Consent
+
+**Purpose:** GDPR-compliant cookie consent banner.
+
+**mkdocs.yml:**
+
+```yaml
+extra:
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences.
+    actions:
+      - accept
+      - reject
+      - manage
+```
