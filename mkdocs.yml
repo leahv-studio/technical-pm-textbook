@@ -100,11 +100,13 @@ nav:
     - List of MicroSims: sims/index.md
     - Adding Taxonomy Workflow: sims/adding-taxonomy-workflow/index.md
     - Average Dependencies Distribution: sims/average-dependencies-distribution/index.md
+    - Book Build Workflow: sims/book-build-workflow/index.md
+    - Book Levels: sims/book-levels/index.md
+    - Certificate Generator: sims/certificate-generator/index.md
     - Chapter Content Generation Timeline: sims/chapter-content-generation-timeline/index.md
     - Chapter Index Structure: sims/chapter-index-structure/index.md
-    - Book Build Workflow: sims/book-build-workflow/index.md
-    - Certificate Generator: sims/certificate-generator/index.md
     - Chapter Organization Workflow: sims/chapter-organization-workflow/index.md
+    - Claude Code Memory Layers: sims/claude-code-memory-layers/index.md
     - Claude Code Timeline: sims/claude-code-timeline/index.md
     - Claude Code T-Shirt Design: sims/claude-code-tshirt-design/index.md
     - Color Wheel with Named Colors: sims/color-wheel-with-named-colors/index.md
@@ -113,11 +115,11 @@ nav:
     - FAQ Pattern Analysis: sims/faq-pattern-analysis/index.md
     - Git Workflow Skill Development: sims/git-workflow-skill-development/index.md
     - Graph Color Test: sims/graph-color-test/index.md
-    - Graph Viewer: sims/graph-viewer/index.md
-    - Install Book Enviroment: sims/install-book-env/index.md
+    - Install Book Environment: sims/install-book-env/index.md
     - Learning Graph JSON Schema: sims/learning-graph-json-schema/index.md
+    - Learning Graph Viewer: sims/graph-viewer/index.md
     - Linear Chain vs Network: sims/linear-chain-vs-network/index.md
-    - Map Test World Cities: sims/test-world-cities/index.md
+    - Major World Cities Map: sims/test-world-cities/index.md
     - MicroSim File Relationship Diagram: sims/microsim-file-relationship-diagram/index.md
     - MkDocs Build Process: sims/mkdocs-build-process/index.md
     - MkDocs GitHub Pages Deployment: sims/mkdocs-github-pages-deployment/index.md
@@ -126,13 +128,12 @@ nav:
     - Security Zones Diagram: sims/security-zones-diagram/index.md
     - Sine Function Plot: sims/sine-function-plot/index.md
     - Skill Context Window: sims/skill-context-window/index.md
+    - Skill Development Priority Matrix: sims/skill-impact-chart/index.md
     - Skill Directory Structure: sims/skill-directory-structure/index.md
-    - Skill Impact Chart: sims/skill-impact-chart/index.md
     - Skill Installation Workflow: sims/skill-installation-workflow/index.md
     - Taxonomy Distribution Pie: sims/taxonomy-distribution-pie/index.md
     - Terminal Workflow Textbook: sims/terminal-workflow-textbook/index.md
     - Three Color DFS: sims/three-color-dfs/index.md
-    - Claude Code Memory Layers: sims/claude-code-memory-layers/index.md
 
   - Learning Graph:
     - Introduction: learning-graph/index.md
