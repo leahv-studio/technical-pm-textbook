@@ -1,22 +1,50 @@
 ---
 name: reference-generator
-description: This skill generates curated, verified reference lists for textbooks with level-appropriate resources (10 for junior-high, 20 for senior-high, 30 for college, 40 for graduate). References are formatted with links, publication details, and relevance descriptions. Use this skill when working with intelligent textbooks that need academic references, either book-level or chapter-level.
+description: This skill generates curated, high-quality reference lists for textbooks with 10 references per chapter. References prioritize Wikipedia for reliability, include detailed relevance descriptions, and are stored in separate references.md files for token efficiency. Use this skill when working with intelligent textbooks that need academic references.
 ---
 
 # Reference Generator
 
 ## Overview
 
-Generate high-quality, verified reference lists for educational textbooks with level-appropriate content and quantity. The skill analyzes course descriptions to determine the target audience and creates references that match the readers' level, from fun and engaging resources for junior-high students to authoritative peer-reviewed papers for graduate students.
+Generate high-quality, curated reference lists for educational textbooks. Each chapter receives exactly 10 references, prioritizing Wikipedia articles first for reliability, followed by authoritative online resources. References are stored in separate `references.md` files for token-efficient maintenance by AI agents.
 
 ## When to Use This Skill
 
 Use this skill when:
 
-- Creating a new intelligent textbook that needs a comprehensive reference list
+- Creating a new intelligent textbook that needs chapter references
 - Adding references to an existing textbook
 - Updating or expanding references for educational content
 - A user explicitly requests reference generation
+
+## Key Principles
+
+### 10 References Per Chapter
+
+Every chapter receives exactly **10 high-quality references**:
+
+- **References 1-3**: Wikipedia articles (most reliable, always accessible)
+- **References 4-5**: Authoritative textbooks (title, author, publisher - no URLs that break)
+- **References 6-10**: Online resources (tutorials, courses, verified working links)
+
+### Wikipedia First
+
+Wikipedia links are placed first because they:
+
+- Have stable, reliable URLs that rarely break
+- Provide comprehensive, well-sourced overviews
+- Are freely accessible to all students
+- Cover most technical topics thoroughly
+- Are maintained and updated by the community
+
+### Separate Reference Files
+
+References are stored in separate `references.md` files (not inline in chapters) for:
+
+- **Token efficiency**: ~150 tokens vs ~6,000 tokens to read/update
+- **Batch processing**: Agents can glob `**/references.md` for bulk updates
+- **Separation of concerns**: Chapter edits don't risk breaking references
 
 ## Reference Generation Workflow
 
@@ -24,198 +52,226 @@ Use this skill when:
 
 Read the `/docs/course-description.md` file to determine:
 
-- **Grade level** or target audience (junior-high, senior-high, college, graduate)
-- **Prerequisites** - indicates reader sophistication
 - **Subject matter** - determines reference topics
-- **Learning objectives** - guides reference selection
+- **Target audience** - guides complexity of descriptions
+- **Learning objectives** - ensures references support goals
 
-The grade level determines:
+### Step 2: Identify Chapter Structure
 
-- **Junior-high (middle school)**: 10 references - fun, engaging, visual resources
-- **Senior-high (high school)**: 20 references - mix of accessible and academic sources
-- **College (undergraduate)**: 30 references - more academic, some peer-reviewed papers
-- **Professional Development**: 30 references - more academic, some peer-reviewed papers
-- **Graduate (masters/PhD)**: 40 references - heavily peer-reviewed, authoritative sources
-
-### Step 2: Check for Chapter-Level Content
-
-Before generating references, search for chapter content in the textbook:
+Locate all chapter directories:
 
 ```bash
-# Look for the chapters directory
-find /docs/chapters
-# Look for chapter files
-find /docs -name "chapter*.md" -o -name "*-chapter-*.md"
+# Find chapter folders
+ls docs/chapters/
 ```
 
-If chapter content exists, use the AskUserQuestion tool to ask:
-- "Would you like book-level references (in /docs/references.md) or chapter-level references (at the end of each chapter)?"
+For each chapter, read the chapter `index.md` to understand:
 
-### Step 3: Generate References with Verification
+- Chapter title and topic
+- Key concepts covered
+- Learning objectives
 
-For each reference, perform the following:
+### Step 3: Generate 10 References Per Chapter
 
-1. **Search for authoritative sources** using WebSearch tool
-2. **Verify each URL** using WebFetch to ensure the link is valid and accessible
-3. **Format according to the standard template** (see Format Specification below)
+For each chapter, create exactly 10 references following this priority:
 
-**Quality Guidelines by Level:**
+**Positions 1-3: Wikipedia Articles**
 
-**Junior-High (10 references):**
-- Educational websites with interactive content
-- Videos from reputable educational channels
-- Visual resources, infographics, and animations
-- Age-appropriate articles from educational publishers
-- Museums, science centers, and educational organizations
-
-**Senior-High (20 references):**
-- Mix of educational websites and academic sources
-- Reputable news organizations and science journalism
-- Educational videos and documentaries
-- Introduction to academic journals (more accessible papers)
-- Government and NGO educational resources
-
-**College (30 references):**
-- Peer-reviewed journal articles (50%+ of references)
-- Academic textbooks and monographs
-- University course materials and lectures
-- Research institution publications
-- Industry white papers and technical reports
-
-**Graduate (40 references):**
-- Heavily weighted toward peer-reviewed journals (70%+ of references)
-- Seminal papers in the field
-- Recent research (last 5 years) showing current state of field
-- Meta-analyses and systematic reviews
-- Academic books from university presses
-
-### Step 4: Format Each Reference
-
-Use the following format for every reference:
+Find the most relevant Wikipedia articles for the chapter's main concepts:
 
 ```markdown
-1. [Link Title](URL) - YYYY-MM-DD - Publication Name - Brief description of resource and specific relevance to the textbook topic.
+1. [Concept Name](https://en.wikipedia.org/wiki/Concept_Name) - Wikipedia - Description of article content and relevance to chapter.
 ```
 
-**Format Specifications:**
-- **Link Title**: Exact title of the article, paper, video, or resource
-- **URL**: Verified, working link (use WebFetch to confirm)
-- **Date**: Publication date in YYYY-MM-DD format (use YYYY-MM or YYYY if day/month unavailable)
-- **Publication Name**: Journal, website, organization, or publisher
-- **Description**: 1-2 sentences explaining what the resource covers and why it's relevant to this specific textbook
+**Positions 4-5: Textbooks (No URL)**
 
-**Example References:**
+Reference authoritative textbooks without URLs (which often break):
 
 ```markdown
-1. [How Neural Networks Really Work](https://distill.pub/2020/circuits/zoom-in/) - 2020-03-10 - Distill - Interactive visualization explaining the inner workings of neural networks through explorable explanations, perfect for visual learners beginning their ML journey.
-
-2. [Attention Is All You Need](https://arxiv.org/abs/1706.03762) - 2017-06-12 - arXiv - Seminal paper introducing the Transformer architecture that revolutionized natural language processing and forms the foundation for modern LLMs like GPT and BERT.
-
-3. [Khan Academy: Introduction to Algorithms](https://www.khanacademy.org/computing/computer-science/algorithms) - 2024-01-15 - Khan Academy - Free, interactive course covering fundamental algorithms including sorting and searching, with visualizations and practice exercises suitable for high school students.
+4. Textbook Title (Edition) - Author Name - Publisher - Description of relevant chapters and why this textbook is valuable.
 ```
 
-### Step 5: Write References to File
+**Positions 6-10: Online Resources**
 
-**For book-level references:**
-Create or overwrite `/docs/references.md` with:
+Verified online tutorials, courses, and educational sites:
 
 ```markdown
-# References
-
-This textbook draws upon the following high-quality resources:
-
-[Generated numbered list of references]
-
----
-*References last updated: [Current Date]*
+6. [Resource Title](https://verified-url.com/path) - Source Name - Description of content and specific relevance to chapter topics.
 ```
 
-**For chapter-level references:**
-Append to each chapter file (e.g., `/docs/chapters/01-introduction/index.md`):
+### Step 4: Verify Online URLs
 
-```markdown
-
-## References
-
-[Generated numbered list of references for this chapter]
-```
-
-### Step 6: Validation and Reporting
-
-After generating references:
-
-1. **Count the references** to ensure correct quantity for level
-2. **Verify all URLs** were checked with WebFetch
-3. **Report summary** to user:
-   - Number of references generated
-   - Target level identified
-   - File location
-   - Any URLs that failed verification (if any)
-
-## URL Verification Process
-
-**Critical**: Every URL must be verified before inclusion.
+For references 6-10, verify each URL:
 
 ```python
-# Use WebFetch for each URL
-WebFetch(url=reference_url, prompt="Is this page accessible? Provide the title and a brief description of the content.")
+WebFetch(url=reference_url, prompt="Is this page accessible? What is the main topic?")
 ```
 
-If a URL returns an error or redirect:
-- Try to find an updated or archived version
-- Use Internet Archive / Wayback Machine if appropriate
-- Skip the reference if no valid URL exists
-- Note in the report any references that couldn't be verified
-- For academic papers, the full document might be behind a paywall.  Just reference the citation for these resources.  Prefer references on reputable sites like Google Scholar.
-- For academic textbooks, prefer references that have many citations.
+**Preferred sources** (stable, educational):
+- All About Circuits (allaboutcircuits.com)
+- Electronics Tutorials (electronics-tutorials.ws)
+- ChipVerify (chipverify.com)
+- HDLBits (hdlbits.01xz.net)
+- Nandland (nandland.com)
+- MIT OpenCourseWare (ocw.mit.edu)
+- GeeksforGeeks (geeksforgeeks.org)
+- Digilent Reference (digilent.com/reference)
+
+### Step 5: Write Reference Files
+
+Create a `references.md` file in each chapter directory:
+
+**File location**: `docs/chapters/XX-chapter-name/references.md`
+
+**File format**:
+
+```markdown
+# References: [Chapter Title]
+
+1. [Wikipedia Article](https://en.wikipedia.org/wiki/Topic) - Wikipedia - Comprehensive overview of [topic] including [specific aspects relevant to chapter].
+
+2. [Wikipedia Article 2](https://en.wikipedia.org/wiki/Topic2) - Wikipedia - Detailed explanation of [concept] with [relevant details].
+
+3. [Wikipedia Article 3](https://en.wikipedia.org/wiki/Topic3) - Wikipedia - Coverage of [related topic] including [applications/examples].
+
+4. Textbook Title (Edition) - Author Name - Publisher - Chapter X covers [specific topics] with [teaching approach/examples].
+
+5. Textbook Title 2 - Author Name - Publisher - Provides [specific value] for understanding [chapter concepts].
+
+6. [Online Resource](https://verified-url.com) - Source - Tutorial on [topic] with [specific features like examples, exercises, visualizations].
+
+7. [Online Resource 2](https://verified-url.com) - Source - [Description of content and relevance].
+
+8. [Online Resource 3](https://verified-url.com) - Source - [Description of content and relevance].
+
+9. [Online Resource 4](https://verified-url.com) - Source - [Description of content and relevance].
+
+10. [Online Resource 5](https://verified-url.com) - Source - [Description of content and relevance].
+```
+
+### Step 6: Update Chapter Files
+
+Add a link at the end of each chapter's `index.md`:
+
+```markdown
+[See Annotated References](./references.md)
+```
+
+**Important**: Replace any existing `## References` section with this single link.
+
+### Step 7: Update mkdocs.yml Navigation
+
+Add references to the navigation for each chapter:
+
+```yaml
+- Chapters:
+  - 1. Chapter Name:
+    - Content: chapters/01-chapter-folder/index.md
+    - Quiz: chapters/01-chapter-folder/quiz.md
+    - Annotated References: chapters/01-chapter-folder/references.md
+```
+
+## Reference Quality Guidelines
+
+### Description Requirements
+
+Each reference description should:
+
+- Explain **what** the resource covers (1 sentence)
+- Explain **why** it's relevant to this chapter (1 sentence)
+- Mention specific features (examples, exercises, visualizations)
+- Be 20-40 words total
+
+**Good example**:
+```markdown
+1. [Karnaugh map](https://en.wikipedia.org/wiki/Karnaugh_map) - Wikipedia - Detailed explanation of K-map theory, grouping rules, and don't-care conditions. Essential foundation for the simplification techniques covered in this chapter.
+```
+
+**Bad example**:
+```markdown
+1. [Karnaugh map](https://en.wikipedia.org/wiki/Karnaugh_map) - Wikipedia - About K-maps.
+```
+
+### Wikipedia Article Selection
+
+Choose Wikipedia articles that:
+
+- Cover the chapter's primary concepts
+- Have substantial content (not stubs)
+- Include diagrams, examples, or formulas
+- Link to related topics students might explore
+
+### Textbook Selection
+
+Reference textbooks that:
+
+- Are widely used in the field
+- Have strong reputations
+- Cover the chapter's topics in depth
+- Are reasonably accessible to students
+
+### Online Resource Selection
+
+Choose online resources that:
+
+- Have verified, working URLs
+- Come from educational or reputable technical sources
+- Provide practical examples or exercises
+- Complement (not duplicate) Wikipedia content
 
 ## Reference Quality Checklist
 
 Before finalizing references, ensure:
-- [ ] Correct quantity for target level (10/20/30/40)
-- [ ] All URLs verified and accessible
-- [ ] Publication dates included
-- [ ] Mix of resource types (articles, videos, papers)
-- [ ] Descriptions explain relevance to textbook
-- [ ] Academic rigor matches target audience
-- [ ] No duplicate sources
+
+- [ ] Exactly 10 references per chapter
+- [ ] References 1-3 are Wikipedia articles
+- [ ] References 4-5 are textbooks (no URLs)
+- [ ] References 6-10 have verified working URLs
+- [ ] All descriptions are 20-40 words
+- [ ] Descriptions explain relevance to chapter
+- [ ] No duplicate sources across references
 - [ ] Proper formatting throughout
 
-## Example Usage Scenarios
-
-**Scenario 1: New textbook**
+## File Structure After Generation
 
 ```
-User: "Generate references for my textbook"
-→ Read /docs/course-description.md
-→ Identify level (e.g., college)
-→ Check for chapters (none found)
-→ Generate 30 verified references
-→ Write to /docs/references.md
+docs/chapters/
+├── 01-chapter-name/
+│   ├── index.md          # Ends with: [See Annotated References](./references.md)
+│   ├── quiz.md
+│   └── references.md     # 10 curated references
+├── 02-chapter-name/
+│   ├── index.md
+│   ├── quiz.md
+│   └── references.md
+...
 ```
 
-**Scenario 2: Existing textbook with chapters**
+## Token Efficiency Benefits
 
-```
-User: "Add references to my course"
-→ Read /docs/course-description.md
-→ Find chapter files exist
-→ Ask: "Book-level or chapter-level references?"
-→ User selects chapter-level
-→ Generate references for each chapter
-→ Append to each chapter file
-```
+| Task | Inline References | Separate Files |
+|------|------------------|----------------|
+| Read one chapter's refs | ~6,000 tokens | ~200 tokens |
+| Update all 15 chapters | ~90,000 tokens | ~3,000 tokens |
+| Batch reference check | Not feasible | Glob + process |
 
 ## Finish
 
-- Report the number of references generated and indicate the number of working links
-- Tell the user that for academic papers, a citation graph skill can be used create a list of the most highly sited papers that influence this topic
+After generating references:
+
+1. Report the number of chapters processed
+2. List any URLs that failed verification
+3. Confirm mkdocs.yml was updated
+4. Remind user to verify the site builds: `mkdocs serve`
 
 ## Resources
 
 This skill uses web-based verification tools built into Claude Code:
+
 - **WebSearch**: Find authoritative sources on topics
 - **WebFetch**: Verify URLs are accessible and extract metadata
-- **AskUserQuestion**: Clarify book-level vs chapter-level preference
+- **Glob**: Find all chapter directories and reference files
+- **Write**: Create reference files
+- **Edit**: Update chapter files and mkdocs.yml
 
-No additional scripts, references, or assets are required for this skill.
+No additional scripts or assets are required for this skill.
