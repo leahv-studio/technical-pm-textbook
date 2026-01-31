@@ -85,6 +85,10 @@ Interactive Micro Simulations to help students learn intelligent textbook develo
 
     Interactive color wheel displaying over 80 web-safe named colors positioned by hue and saturation values.
 
+-   **[Cover Image Generation Workflow](./cover-image-workflow/index.md)**
+
+    Interactive decision tree flowchart showing the workflow for generating book cover images based on available resources (API key, billing, ChatGPT Pro, OS).
+
 -   **[Concept Length Histogram](./concept-length-histogram/index.md)**
 
     ![Concept Length Histogram](./concept-length-histogram/concept-length-histogram.png)
