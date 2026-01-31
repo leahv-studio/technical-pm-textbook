@@ -195,7 +195,8 @@ nav:
     - List of Workshops: workshops/index.md
     - Two Hour Workshop: workshops/intelligent-textbook-workshop-outline.md
     - Workshop Cheat Sheet: workshops/intelligent-textbook-cheat-sheet.md
-  
+    - Tips and Tricks: workshops/tips-and-tricks.md
+    - Workshop Prework: workshops/workshop-prework.md
   - Consolidation Plan: consolidation-plan/index.md
 
   - Glossary: glossary.md
