@@ -30,6 +30,7 @@ Book Installer Features (most → least common):
  2. Site logo - Add custom logo to header
  3. Favicon - Browser tab/bookmark icon
  4. Cover image & social preview - Home page image + og:image metadata
+ 4b. Generate cover image - Auto-generate cover using AI (API or ChatGPT)
  5. Math equations - KaTeX (recommended) or MathJax
  6. Code syntax highlighting - Language-aware code blocks
  7. Code copy button - One-click copy for code blocks
@@ -95,6 +96,7 @@ Match the user's request to the appropriate installation guide:
 | new project, mkdocs, textbook, bootstrap, setup, template, new book | `references/mkdocs-template.md` | Create new MkDocs Material project |
 | graph viewer, learning graph, visualization, interactive graph, concept viewer | `references/learning-graph-viewer.md` | Add learning graph viewer to existing project |
 | track skills, skill usage, activity tracking, hooks, usage analytics | `references/skill-tracker.md` | Set up skill tracking with hooks |
+| generate cover, generate cover image, auto cover, create cover image, run cover script | `references/cover-image-generator.md` | Auto-generate cover image using AI (guides through API/ChatGPT options) |
 | cover image, home page, social media, og:image, montage, book cover, index page | `references/home-page-template.md` | Create home page with cover image and social metadata |
 | logo, site logo, branding, upper left, header icon | `references/mkdocs-features.md` | Add custom logo with AI prompt examples |
 | favicon, browser tab, bookmark icon, .ico | `references/mkdocs-features.md` | Add favicon with AI prompt examples |
@@ -122,7 +124,10 @@ Adding a learning graph viewer to existing project?
 Setting up skill usage tracking?
   → YES: skill-tracker.md
 
-Creating a cover image or setting up home page with social metadata?
+Want to GENERATE a cover image automatically using AI?
+  → YES: cover-image-generator.md (guides through API vs ChatGPT options)
+
+Creating a cover image MANUALLY or setting up home page with social metadata?
   → YES: home-page-template.md
 
 Want to add branding (logo, favicon, cover image)?
@@ -223,6 +228,26 @@ Each guide contains:
 - Existing MkDocs project
 - Access to AI image generator (DALL-E, Midjourney, etc.)
 
+### cover-image-generator.md
+
+**Purpose:** Auto-generate cover images using the generate-cover.sh script
+
+**Provides:**
+- Interactive questionnaire to determine best workflow
+- Commands for API, ChatGPT Pro, or manual generation
+- Troubleshooting for common issues
+
+**Workflows:**
+- **Full Auto**: OpenAI API with active billing (fastest)
+- **Browser Auto**: ChatGPT Pro + macOS (opens browser, pastes prompt)
+- **Local Prompt**: ChatGPT Pro, any OS (displays prompt for manual copy)
+- **Fallback**: Free tier options with manual generation
+
+**Prerequisites:**
+- Existing MkDocs project with mkdocs.yml
+- docs/course-description.md with book content description
+- One of: OpenAI API billing, ChatGPT Pro subscription, or free AI image generator
+
 ## Examples
 
 ### Example 1: Ask for Help
@@ -270,14 +295,20 @@ Each guide contains:
 **Routing:** Keywords "og:image", "home page" → `references/home-page-template.md`
 **Action:** Read home-page-template.md and follow its workflow
 
+### Example 8: Generate Cover Image Automatically
+**User:** "generate cover image" or "book-installer generate cover image"
+**Routing:** Keywords "generate cover image" → `references/cover-image-generator.md`
+**Action:** Read cover-image-generator.md, ask user about their resources (API key, ChatGPT Pro, macOS), then run the appropriate generate-cover.sh command
+
 ## Common Workflows
 
 ### Full Project Setup
 For a complete new project, users typically run these installations in order:
 1. `mkdocs-template.md` - Create the project structure
-2. `home-page-template.md` - Create cover image and configure home page
-3. `learning-graph-viewer.md` - Add graph visualization (after learning graph exists)
-4. `skill-tracker.md` - Enable usage analytics (optional)
+2. `cover-image-generator.md` - Auto-generate cover image using AI
+3. `home-page-template.md` - Configure home page with cover image metadata
+4. `learning-graph-viewer.md` - Add graph visualization (after learning graph exists)
+5. `skill-tracker.md` - Enable usage analytics (optional)
 
 ### Verification Commands
 
