@@ -555,6 +555,28 @@ function initializeNetwork() {
 
     network = new vis.Network(container, data, options);
 
+    // Turn off physics after 5 seconds to stop spinning
+    setTimeout(() => {
+        network.setOptions({ physics: { enabled: false } });
+    }, 5000);
+
+    // Re-enable physics when user starts dragging a node
+    network.on('dragStart', function(params) {
+        if (params.nodes.length > 0) {
+            network.setOptions({ physics: { enabled: true } });
+        }
+    });
+
+    // Turn off physics when user releases the node
+    network.on('dragEnd', function(params) {
+        if (params.nodes.length > 0) {
+            // Brief delay to let physics settle the dragged node
+            setTimeout(() => {
+                network.setOptions({ physics: { enabled: false } });
+            }, 1000);
+        }
+    });
+
     // Handle node selection
     network.on('selectNode', function(params) {
         if (params.nodes.length > 0) {
@@ -1122,14 +1144,22 @@ const options = {
 
 **Fix:** Use physics-based layout with `forceAtlas2Based` solver (as shown in script.js).
 
-### Issue 4: Graph takes too long to stabilize
+### Issue 4: Graph keeps spinning indefinitely
 
 **Symptom:** The graph keeps moving for a long time before settling.
 
-**Fix:** Adjust physics parameters:
-- Increase `damping` (e.g., 0.4 → 0.6) for faster settling
-- Decrease `stabilization.iterations` for quicker initial render
-- Increase `springConstant` for stiffer edges
+**Cause:** Physics simulation continues running without a timeout.
+
+**Fix:** The script automatically disables physics after 5 seconds:
+
+```javascript
+// Turn off physics after 5 seconds to stop spinning
+setTimeout(() => {
+    network.setOptions({ physics: { enabled: false } });
+}, 5000);
+```
+
+Physics is re-enabled when dragging nodes to allow repositioning, then disabled again after 1 second.
 
 ---
 
@@ -1158,11 +1188,12 @@ The installed graph viewer provides:
 
 **Interactive Visualization:**
 
-- vis-network graph with physics simulation
+- vis-network graph with physics simulation (auto-stops after 5 seconds)
 - Color-coded nodes by taxonomy category
 - Directed edges showing concept dependencies
 - Zoomable and draggable interface
 - Node highlight on selection (dims unconnected nodes)
+- Drag nodes to reposition (physics re-enables temporarily)
 
 ---
 

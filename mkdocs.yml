@@ -73,6 +73,7 @@ nav:
       - 12 Diagram Reports Generator: skill-descriptions/book/diagram-reports-generator.md
       - 13 README Generator: skill-descriptions/book/readme-generator.md
       - 14 LinkedIn Announcement Generator: skill-descriptions/book/linkedin-announcement-generator.md
+      - 15 Book Installer: skill-descriptions/book/book-installer.md
 
     - MicroSim Generation Skills:
       - Overview: skill-descriptions/microsims/index.md
@@ -90,6 +91,9 @@ nav:
       - MicroSim Screen Capture: skill-descriptions/microsims/microsim-screen-capture.md
       - MicroSim Add Icons: skill-descriptions/microsims/microsim-add-icons.md
       - MicroSim Standardization: skill-descriptions/microsims/microsim-standardization.md
+      - Celebration Generator: skill-descriptions/microsims/celebration-generator.md
+      - Comparison Table: skill-descriptions/microsims/comparison-table-generator.md
+      - Concept Classifier: skill-descriptions/microsims/concept-classifier.md
 
     - Specialized Skills:
       - Overview: skill-descriptions/specialized-skills/index.md
@@ -190,6 +194,9 @@ nav:
     - prompts/microsim-matcher-skill-creation.md
     - prompts/missing-microsim-generators.md
     - Using Hooks to Track Activities: prompts/using-hooks-to-track-activities.md
+    - prompts/fix-group-colors.md
+    - prompts/generate-microsim-index-skill.md
+    - prompts/upgrade-the-book-installer-help.md
 
   - Workshops:
     - List of Workshops: workshops/index.md

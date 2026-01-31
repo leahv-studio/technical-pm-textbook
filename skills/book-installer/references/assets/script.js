@@ -125,18 +125,26 @@ function initializeNetwork() {
 
     network = new vis.Network(container, data, options);
 
-    // Disable physics after stabilization to stop the graph from spinning
-    network.on('stabilizationIterationsDone', function() {
+    // Turn off physics after 5 seconds to stop spinning
+    setTimeout(() => {
         network.setOptions({ physics: { enabled: false } });
+    }, 5000);
+
+    // Re-enable physics when user starts dragging a node
+    network.on('dragStart', function(params) {
+        if (params.nodes.length > 0) {
+            network.setOptions({ physics: { enabled: true } });
+        }
     });
 
-    // Re-enable physics while dragging a node, disable when done
-    // This allows manual node repositioning while keeping the graph stable
-    network.on('dragStart', function() {
-        network.setOptions({ physics: { enabled: true } });
-    });
-    network.on('dragEnd', function() {
-        network.setOptions({ physics: { enabled: false } });
+    // Turn off physics when user releases the node
+    network.on('dragEnd', function(params) {
+        if (params.nodes.length > 0) {
+            // Brief delay to let physics settle the dragged node
+            setTimeout(() => {
+                network.setOptions({ physics: { enabled: false } });
+            }, 1000);
+        }
     });
 
     // Handle node selection
