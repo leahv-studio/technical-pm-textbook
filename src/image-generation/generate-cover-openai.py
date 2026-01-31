@@ -337,6 +337,9 @@ def main() -> None:
     parser.add_argument("--local-prompt", action="store_true",
                         help="Generate prompt locally without any API calls. "
                              "Use this if you don't have API billing active.")
+    parser.add_argument("--open-browser", action="store_true",
+                        help="Open ChatGPT in browser and paste the prompt automatically. "
+                             "Implies --local-prompt.")
     args = parser.parse_args()
 
     description_text = read_text_file(args.desc)
@@ -345,6 +348,10 @@ def main() -> None:
     out_path = args.out
     if not out_path:
         out_path = f"{safe_filename(title)}_og_1200x630.png"
+
+    # Handle --open-browser (implies --local-prompt)
+    if args.open_browser:
+        args.local_prompt = True
 
     # 1) Build cover plan + final image prompt
     if args.local_prompt:
@@ -387,12 +394,36 @@ def main() -> None:
         print("-" * 60)
         print(f"\n{plan.image_prompt}\n")
         print("=" * 60)
-        print("\nInstructions:")
-        print("1. Copy the IMAGE PROMPT above")
-        print("2. Paste it into ChatGPT Plus")
-        print("3. Download the generated image")
-        print(f"4. Save it to: {out_path}")
-        print("5. Recommended size: 1200x630 pixels (1.91:1 aspect ratio)")
+
+        # If --open-browser, launch ChatGPT and paste the prompt
+        if args.open_browser:
+            print("\nOpening ChatGPT and pasting prompt...")
+            import subprocess
+            import os
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            browser_script = os.path.join(script_dir, "open-chatgpt.py")
+
+            try:
+                subprocess.run(
+                    ["python", browser_script, plan.image_prompt],
+                    check=True
+                )
+                print(f"\nAfter generating the image:")
+                print(f"1. Download the image from ChatGPT")
+                print(f"2. Save it to: {out_path}")
+            except subprocess.CalledProcessError as e:
+                print(f"\nFailed to open browser: {e}")
+                print("The prompt is displayed above - copy it manually.")
+            except FileNotFoundError:
+                print(f"\nBrowser script not found: {browser_script}")
+                print("The prompt is displayed above - copy it manually.")
+        else:
+            print("\nInstructions:")
+            print("1. Copy the IMAGE PROMPT above")
+            print("2. Paste it into ChatGPT Plus")
+            print("3. Download the generated image")
+            print(f"4. Save it to: {out_path}")
+            print("5. Recommended size: 1200x630 pixels (1.91:1 aspect ratio)")
         return
 
     # 2) Generate base landscape image (GPT Image sizes are fixed; we crop later)

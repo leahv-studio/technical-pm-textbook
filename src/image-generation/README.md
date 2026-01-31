@@ -34,6 +34,12 @@ cd /path/to/your/book-project
 /path/to/claude-skills/src/image-generation/generate-cover.sh --local-prompt
 ```
 
+**Open Browser Mode (opens ChatGPT and pastes prompt automatically):**
+```bash
+cd /path/to/your/book-project
+/path/to/claude-skills/src/image-generation/generate-cover.sh --open-browser
+```
+
 **API Prompt-Only Mode (requires API billing):**
 ```bash
 cd /path/to/your/book-project
@@ -68,6 +74,7 @@ python generate-cover-openai.py \
 | `--out` | Output PNG path (default: derived from title) |
 | `--prompt-only` | Only generate the prompt via API, don't create image |
 | `--local-prompt` | Generate prompt locally without any API calls |
+| `--open-browser` | Open ChatGPT in browser and paste prompt (implies --local-prompt) |
 | `--text-model` | Model for prompt generation (default: gpt-4o-mini) |
 | `--image-model` | Model for image generation (default: gpt-image-1.5) |
 | `--debug-json` | Path to save the intermediate cover plan JSON |
@@ -92,6 +99,22 @@ Python version of the API key test, useful for debugging SDK-specific issues:
 ```bash
 python test-key.py
 ```
+
+### open-chatgpt.py
+
+Opens ChatGPT in your browser and automatically pastes a prompt. Used by `--open-browser` flag but can also be used standalone:
+
+```bash
+python open-chatgpt.py "Your prompt here"
+```
+
+**Options:**
+| Flag | Description |
+|------|-------------|
+| `--no-paste` | Only open browser and copy to clipboard, don't auto-paste |
+| `--delay N` | Seconds to wait before pasting (default: 4) |
+
+**Note:** macOS only. Uses AppleScript for browser automation.
 
 ## Billing Options
 

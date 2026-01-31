@@ -6,9 +6,10 @@
 # It will find files relative to the current working directory.
 #
 # Usage:
-#   generate-cover.sh                # Full generation (requires API billing)
-#   generate-cover.sh --prompt-only  # Generate prompt via API (requires billing)
-#   generate-cover.sh --local-prompt # Generate prompt locally (NO API needed)
+#   generate-cover.sh                 # Full generation (requires API billing)
+#   generate-cover.sh --prompt-only   # Generate prompt via API (requires billing)
+#   generate-cover.sh --local-prompt  # Generate prompt locally (NO API needed)
+#   generate-cover.sh --open-browser  # Generate prompt and open ChatGPT to paste it
 
 # Get the directory where this script lives (for finding the Python script)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
