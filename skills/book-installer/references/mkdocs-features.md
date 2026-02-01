@@ -321,35 +321,67 @@ Display:
 
 **Recommended for most textbooks.** Faster alternative to MathJax with smaller file size.
 
+!!! note "Currency-Safe Configuration"
+    This configuration does NOT use single `$` for inline math, allowing you to write currency values like `$20` or `$1.99` without triggering math rendering. Use `\(...\)` for inline math instead.
+
+**Syntax Summary:**
+
+| Math Type | Syntax | Example |
+|-----------|--------|---------|
+| Inline math | `\(...\)` | `\(E = mc^2\)` renders as inline equation |
+| Display math | `$$...$$` or `\[...\]` | `$$\int_0^\infty e^{-x^2} dx$$` renders as centered block |
+| Currency | `$20` | Works as-is—no escaping needed |
+
 **Add to mkdocs.yml:**
 
 ```yaml
 markdown_extensions:
+  # Enable KaTeX LaTeX equation rendering
+  # Using \(...\) for inline math to avoid conflicts with currency $
+  # Block math uses $$ or \[...\]
   - pymdownx.arithmatex:
       generic: true
+      inline_syntax: ['round']
+      block_syntax: ['dollar', 'square']
 
 extra_javascript:
-  - javascripts/katex.js
-  - https://unpkg.com/katex@0/dist/katex.min.js
-  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - js/katex.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js
 
 extra_css:
-  - https://unpkg.com/katex@0/dist/katex.min.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css
 ```
 
-**Create `docs/javascripts/katex.js`:**
+**Create `docs/js/katex.js`:**
 
 ```javascript
-document$.subscribe(({ body }) => {
-  renderMathInElement(body, {
-    delimiters: [
-      { left: "$$",  right: "$$",  display: true },
-      { left: "$",   right: "$",   display: false },
-      { left: "\\(", right: "\\)", display: false },
-      { left: "\\[", right: "\\]", display: true }
-    ],
-  })
-})
+// KaTeX auto-render configuration
+// Single $ is NOT used for math to allow currency notation like $20
+// Use \(...\) for inline math and $$...$$ or \[...\] for display math
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false}
+        ],
+        throwOnError: false
+    });
+});
+```
+
+**Usage in markdown:**
+
+```markdown
+The product costs $25.99 plus tax.
+
+The famous equation \(E = mc^2\) shows mass-energy equivalence.
+
+For the integral:
+$$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
 ```
 
 ---
