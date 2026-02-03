@@ -5,11 +5,16 @@ description: This skill generates comprehensive chapter content for intelligent 
 
 # Chapter Content Generator
 
-**Version:** 0.03
+**Version:** 0.04
 
 ## Overview
 
 This skill generates detailed educational content for individual textbook chapters, transforming chapter outlines (title, summary, concept list) into comprehensive learning material with appropriate reading level, rich visual elements, and interactive components. The skill is designed to run after the `book-chapter-generator` skill has created the chapter structure.
+
+**Version 0.04 Features:**
+- **Parallel execution** - Generate content for multiple chapters simultaneously
+- **3-4x faster** - 23 chapters in ~15-20 minutes instead of ~60+ minutes
+- **Same token usage** - Parallel doesn't increase total tokens, only reduces wall-clock time
 
 ## When to Use This Skill
 
@@ -25,11 +30,195 @@ Do NOT use this skill when:
 - Content already exists and just needs editing (use Edit tool directly)
 - Generating other types of content (prompts, glossaries, etc.)
 
+## Execution Modes
+
+### Parallel Mode (Default for 4+ chapters)
+
+When generating content for 4 or more chapters, use parallel execution:
+
+| Aspect | Sequential | Parallel |
+|--------|------------|----------|
+| Agents | 1 | 4-6 concurrent |
+| Wall-clock time | ~60+ minutes (23 chapters) | ~15-20 minutes |
+| Total tokens | Same | Same |
+
+### Sequential Mode
+
+Use for:
+- Fewer than 4 chapters
+- Debugging or troubleshooting
+- When explicit sequential processing is requested
+
+### Single Chapter Mode
+
+Use for:
+- Updating one chapter after outline revision
+- Testing content format before batch generation
+
 ## Workflow
 
-### Step 1: Verify Chapter File Exists
+### Phase 1: Setup (Sequential)
 
-Verify that the input chapter name or path to the chapter file is present.
+This phase runs once before any content generation, reading shared context that all agents will need.
+
+#### Step 1.1: Capture Start Time
+
+```bash
+date "+%Y-%m-%d %H:%M:%S"
+```
+
+Log the start time for the session report.
+
+#### Step 1.2: Indicate Skill Running
+
+Notify the user: "Chapter Content Generator Skill v0.04 running in [parallel/sequential] mode."
+
+#### Step 1.3: Read Shared Context
+
+Read and cache these files for all agents:
+
+1. **Course Description** (`docs/course-description.md`)
+   - Extract target audience and reading level
+   - Note course objectives and tone guidelines
+   - Identify any mascot or narrative elements (e.g., Delta in calculus)
+
+2. **Learning Graph** (`docs/learning-graph/learning-graph.csv` or similar)
+   - Load concept list with dependencies
+   - Understand concept relationships for pedagogical ordering
+
+3. **Glossary** (`docs/glossary.md`)
+   - Load term definitions for consistent terminology
+   - Note which concepts have glossary entries
+
+4. **Project CLAUDE.md** (if exists)
+   - Load project-specific guidelines
+   - Note any mascot specifications, tone requirements, or special formatting
+
+5. **Chapter List** (scan `docs/chapters/` directory)
+   - Enumerate all chapter directories
+   - Identify which chapters need content generation (have outline but no content)
+
+#### Step 1.4: Determine Reading Level
+
+Extract the grade reading level from the course description:
+
+**Reading level indicators:**
+- "junior-high", "junior high", "grades 7-9", "middle school" → Junior High
+- "senior-high", "senior high", "grades 10-12", "high school" → Senior High
+- "college", "undergraduate", "bachelor" → College
+- "graduate", "master", "masters", "master's", "PhD", "doctoral" → Graduate
+
+**Reading level characteristics:**
+- **Junior High (Grades 7-9):** Simple sentences (12-18 words), common vocabulary, concrete examples, frequent visual aids
+- **Senior High (Grades 10-12):** Mixed sentence complexity (15-22 words), technical vocabulary with definitions, balance of concrete and abstract
+- **College:** Academic style (18-25 words), technical terminology, case studies, research context
+- **Graduate:** Sophisticated prose (20-30+ words), full jargon, theoretical depth, research literature
+
+Default to Grade 10 (Senior High) if not specified.
+
+#### Step 1.5: Plan Chapter Batches (Parallel Mode)
+
+Divide chapters into batches for parallel processing:
+
+**Batch Size Guidelines:**
+- 4-8 chapters: 2 agents (2-4 chapters each)
+- 9-15 chapters: 3-4 agents (3-4 chapters each)
+- 16-24 chapters: 4-6 agents (4-5 chapters each)
+- 25+ chapters: 5-6 agents (5-6 chapters each)
+
+**Example for 23 chapters:**
+```
+Agent 1: Chapters 1-4 (Foundations)
+Agent 2: Chapters 5-8 (Core Concepts Part 1)
+Agent 3: Chapters 9-12 (Core Concepts Part 2)
+Agent 4: Chapters 13-16 (Applications Part 1)
+Agent 5: Chapters 17-20 (Applications Part 2)
+Agent 6: Chapters 21-23 (Advanced Topics)
+```
+
+### Phase 2: Content Generation (Parallel or Sequential)
+
+#### Parallel Execution
+
+Spawn multiple Task agents simultaneously using the Task tool. Each agent receives:
+
+1. **Shared context** (course info, reading level, glossary terms, tone guidelines)
+2. **Assigned chapters** (specific chapter directories)
+3. **Content format template** (the standard format from this skill)
+4. **Output instructions** (write content to each chapter's index.md)
+
+**Agent Prompt Template:**
+
+```
+You are generating educational content for an intelligent textbook. Generate
+detailed chapter content for the following chapters.
+
+COURSE CONTEXT:
+- Course: [course name]
+- Target audience: [audience]
+- Reading level: [level] - [characteristics]
+- Tone: [tone guidelines from course description or CLAUDE.md]
+
+CONTENT GUIDELINES:
+- No more than 3 paragraphs of pure text without a non-text element
+- Use diverse element types (lists, tables, diagrams, MicroSims)
+- Present concepts in pedagogical order (simple to complex)
+- Include LaTeX equations where appropriate (single $ delimiters)
+
+NON-TEXT ELEMENTS:
+- Markdown lists and tables: embed directly (blank line before)
+- Diagrams, MicroSims, infographics: use <details markdown="1"> blocks with #### Diagram: header
+
+CHAPTERS TO PROCESS:
+[List specific chapter directories with full paths]
+
+FOR EACH CHAPTER:
+1. Read the chapter index.md file to get title, summary, concepts covered
+2. Generate comprehensive content (3000-5000 words)
+3. Include 4-6 non-text elements per chapter
+4. Verify all concepts from "Concepts Covered" list are addressed
+5. Write the content to docs/chapters/[chapter-dir]/index.md
+
+METADATA FORMAT (add to top of each file):
+---
+title: [Chapter Title]
+description: [Short description]
+generated_by: claude skill chapter-content-generator
+date: [YYYY-MM-DD HH:MM:SS]
+version: 0.04
+---
+
+REPORT when done:
+- Chapter name
+- Word count
+- Non-text elements (lists, tables, diagrams, MicroSims)
+- Concepts covered (X of Y)
+```
+
+**Launching Parallel Agents:**
+
+Use the Task tool with multiple invocations in a SINGLE message to run agents in parallel:
+
+```markdown
+[Call Task tool for Agent 1: Chapters 1-4]
+[Call Task tool for Agent 2: Chapters 5-8]
+[Call Task tool for Agent 3: Chapters 9-12]
+[Call Task tool for Agent 4: Chapters 13-16]
+[Call Task tool for Agent 5: Chapters 17-20]
+[Call Task tool for Agent 6: Chapters 21-23]
+```
+
+**IMPORTANT:** All Task tool calls MUST be in a single message to execute in parallel. If sent in separate messages, they will run sequentially.
+
+#### Sequential Execution
+
+For sequential mode or fewer than 4 chapters, process each chapter one at a time following the per-chapter steps below.
+
+### Phase 2 Steps (Per Chapter - used by agents or sequential mode)
+
+#### Step 2.1: Verify Chapter File Exists
+
+Verify that the chapter file exists and has required elements.
 
 **Expected input format:**
 - Chapter name: "01-intro-to-itil-and-config-mgmt" or "Chapter 1"
@@ -45,13 +234,7 @@ Where:
 - `NN` = Two-digit chapter number with leading zero (e.g., "01", "07", "12")
 - `lowercase-name` = URL-friendly lowercase name with dashes, no spaces
 
-**Actions:**
-1. If chapter name is provided, search for matching directory in `/docs/chapters/`
-2. If path is provided, verify file exists at that location
-3. If file not found, ask user to specify correct chapter name or path
-4. Read the chapter index.md file
-
-### Step 2: Verify Chapter Content is Correct
+#### Step 2.2: Verify Chapter Outline
 
 Open the chapter file and check for required elements.
 
@@ -67,54 +250,24 @@ Open the chapter file and check for required elements.
    - Chapter title
    - Summary text
    - List of concepts covered (numbered list)
-3. If any element is missing, ask user to provide the content as text
-4. Store concepts list for verification in Step 5
+3. If any element is missing, skip chapter or ask user to provide content
+4. Store concepts list for verification in Step 2.5
 
-### Step 3: Get the Reading Level
+#### Step 2.3: Add Metadata
 
-Extract the grade reading level from the `/docs/course-description.md` file.
-
-**Reading level indicators in course description:**
-
-- "junior-high", "junior high", "grades 7-9", "middle school" → Junior High
-- "senior-high", "senior high", "grades 10-12", "high school" → Senior High
-- "college", "undergraduate", "bachelor" → College
-- "graduate", "master", "masters", "master's", "PhD", "doctoral" → Graduate
-
-**Actions:**
-1. Read `/docs/course-description.md`
-2. Search for reading level indicators in:
-   - Course title
-   - Target audience section
-   - Prerequisites section
-   - Course overview
-3. If not found, ask user: "What grade-level should be used to generate the content?"
-4. Default to Grade 10 (Senior High) if not specified
-
-**Reading level characteristics:**
-- **Junior High (Grades 7-9):** Simple sentences (12-18 words), common vocabulary, concrete examples, frequent visual aids
-- **Senior High (Grades 10-12):** Mixed sentence complexity (15-22 words), technical vocabulary with definitions, balance of concrete and abstract
-- **College:** Academic style (18-25 words), technical terminology, case studies, research context
-- **Graduate:** Sophisticated prose (20-30+ words), full jargon, theoretical depth, research literature
-
-See `references/reading-levels.md` for detailed guidelines on adapting content for each level.
-
-### Step 4: Generate Detailed Chapter Content
-
-Add metadata to the top of the index file that indicates that a DRAFT of this
-chapter was created by this skill, the name of the skill, the date it was generated and the version of this skill.
+Add metadata to the top of the index file:
 
 ```markdown
 ---
 title: Chapter Title
 description: Short description of title
-generated_by: claude skill generate-chapter-content
+generated_by: claude skill chapter-content-generator
 date: YYYY-MM-DD HH-MM-SS
-version: 0.03
+version: 0.04
 ---
 ```
 
-### Step 5: Generate Detailed Chapter Content
+#### Step 2.4: Generate Detailed Chapter Content
 
 Generate comprehensive educational content based on the chapter outline, concept list, and reading level.
 
@@ -134,7 +287,7 @@ Generate comprehensive educational content based on the chapter outline, concept
    - Goal: No more than 3 paragraphs of pure text without a non-text element.
    - Use diverse element types (don't repeat the same type).
    - Place special focus on interactive elements (infographics, MicroSims).
-   - We appropriate, render equations in LaTeX surrounded by single dollar signs.
+   - When appropriate, render equations in LaTeX surrounded by single dollar signs.
    - See the math-equations.md file in the references for proper formatting of equations.
 
 **Non-text element types:**
@@ -171,10 +324,9 @@ Implementation: [Technology/approach]
 </details>
 ```
 
-Do not indent any text within a `<details markdown="1">` block.  Do not put
-any leading spaces or tabs on newlines within a `<details markdown="1">` block.
+Do not indent any text within a `<details markdown="1">` block. Do not put any leading spaces or tabs on newlines within a `<details markdown="1">` block.
 
-Make SURE to put the level 4 header with the prefix `#### Diagram:` before the details.  This is REQUIRED!
+Make SURE to put the level 4 header with the prefix `#### Diagram:` before the details. This is REQUIRED!
 
 **Specification requirements:**
 - Detailed enough that another skill or developer can implement without additional context
@@ -193,7 +345,7 @@ Make SURE to put the level 4 header with the prefix `#### Diagram:` before the d
 5. Include `<details markdown="1">` blocks for complex visual/interactive elements
 6. Place a level 4 markdown header before each `details` block
    ```#### Diagram: [Diagram Name]```
-6. End with summary or key takeaways section
+7. End with summary or key takeaways section
 
 **Interactive elements emphasis:**
 - Prioritize MicroSims and infographics that enable:
@@ -207,9 +359,9 @@ Make SURE to put the level 4 header with the prefix `#### Diagram:` before the d
    - **Applying:** Using acquired knowledge to solve problems in new or unfamiliar situations.
    - **Analyzing:** Breaking down information into parts to understand its structure and relationships, and drawing comparisons.
    - **Evaluating:** Making judgments about information based on set criteria or standards, requiring critical thinking and justification.
-   - **Creating:** Producing new or original work by combining elements to form a novel whole or solution. 
+   - **Creating:** Producing new or original work by combining elements to form a novel whole or solution.
 
-### Step 6: Verify Completeness
+#### Step 2.5: Verify Completeness
 
 After generating chapter content, verify all concepts have been covered.
 
@@ -221,61 +373,124 @@ After generating chapter content, verify all concepts have been covered.
    - Add content covering those concepts
    - Integrate them naturally into existing structure
 5. Update the chapter index.md file with the complete generated content
-6. Make **Absolutely Sure** that the content has been written to the chapter index.md file.  Do a word count to make sure that **ALL* the content is present and that the TODO has been removed.
+6. Make **Absolutely Sure** that the content has been written to the chapter index.md file. Do a word count to make sure that **ALL** the content is present and that the TODO has been removed.
 
 **Actions:**
 - Replace the "TODO: Generate Chapter Content" placeholder with generated content
 - Keep the existing title, summary, concepts list, and prerequisites sections
 - Add the new detailed content after the prerequisites section
 
-### Step 7: Report Summary to User
+### Phase 3: Aggregation (Sequential, after parallel agents complete)
 
-Provide a concise summary of the content generation results.
+After all parallel agents complete, aggregate results.
 
-**Report should include:**
-1. Confirmation that chapter content has been generated and the version of the skill
-2. Reading level used
-3. Word count or approximate length
-4. Count of non-text elements by type:
-   - Markdown lists: X
-   - Markdown tables: X
-   - Admonitions
-   - Diagrams: X
-   - Infographics: X
-   - MicroSims: X
-   - Charts: X
-   - Timelines: X
-   - Maps: X
-   - Workflows: X
-   - Graph models: X
-5. Number of interactive elements requiring skill execution
-6. Confirmation that all concepts were covered
+#### Step 3.1: Collect Agent Results
 
-!!! Note
-   For admonitions to work, your mkdocs.yml must have admonition and pymdownx.details enabled.
+Wait for all Task agents to complete. Collect from each:
+- List of chapter files created/updated
+- Per-chapter statistics (word count, non-text elements, concepts covered)
+- Any errors or issues encountered
 
-**Example report:**
+#### Step 3.2: Generate Summary Report
 
+Create a summary of all content generation:
+
+```markdown
+# Chapter Content Generation Report
+
+Generated: YYYY-MM-DD
+Execution Mode: Parallel (6 agents)
+Wall-clock Time: X minutes Y seconds
+
+## Overall Statistics
+
+- **Total Chapters:** 23
+- **Total Words:** ~100,000
+- **Avg Words per Chapter:** ~4,350
+- **Total Non-text Elements:** ~115
+
+## Execution Summary (Parallel Mode)
+
+| Agent | Chapters | Words | Elements | Time |
+|-------|----------|-------|----------|------|
+| Agent 1 | 1-4 | 17,200 | 20 | 3m 15s |
+| Agent 2 | 5-8 | 18,100 | 22 | 3m 42s |
+| Agent 3 | 9-12 | 17,800 | 19 | 3m 28s |
+| Agent 4 | 13-16 | 18,500 | 21 | 3m 51s |
+| Agent 5 | 17-20 | 17,900 | 18 | 3m 33s |
+| Agent 6 | 21-23 | 13,200 | 15 | 2m 45s |
+
+## Per-Chapter Summary
+
+| Chapter | Words | Lists | Tables | Diagrams | MicroSims | Concepts |
+|---------|-------|-------|--------|----------|-----------|----------|
+| 1. Foundations | 4,200 | 6 | 3 | 2 | 1 | 15/15 ✓ |
+| 2. Limits | 4,500 | 5 | 2 | 3 | 2 | 14/14 ✓ |
+| ... | ... | ... | ... | ... | ... | ... |
 ```
-✅ Chapter content generated successfully!
 
-Chapter: 01-intro-to-itil-and-config-mgmt
-Reading level: Graduate
-Content length: ~3,500 words
+#### Step 3.3: Capture End Time and Write Session Log
 
-Non-text elements:
-- 6 markdown lists
-- 3 markdown tables
-- 2 diagrams (CMDB architecture, ITIL process flow)
-- 1 interactive timeline (ITIL evolution)
-- 1 MicroSim (Configuration drift simulator)
-- 1 workflow diagram (Change management process)
+Capture the end time:
 
-Interactive elements: 2 (timeline, MicroSim)
-Skills required: 2 (microsim-p5 for MicroSim, infographic-generator for timeline)
-
-All 20 concepts covered: ✓
+```bash
+date "+%Y-%m-%d %H:%M:%S"
 ```
+
+Export the session information to `logs/chapter-content-generator-YYYY-MM-DD.md`:
+
+```markdown
+# Chapter Content Generator Session Log
+
+**Skill Version:** 0.04
+**Date:** YYYY-MM-DD
+**Execution Mode:** Parallel (6 agents)
+
+## Timing
+
+| Metric | Value |
+|--------|-------|
+| Start Time | YYYY-MM-DD HH:MM:SS |
+| End Time | YYYY-MM-DD HH:MM:SS |
+| Elapsed Time | X minutes Y seconds |
+
+## Token Usage
+
+| Phase | Estimated Tokens |
+|-------|------------------|
+| Setup (shared context) | ~20,000 |
+| Agent 1 (Ch 1-4) | ~80,000 |
+| Agent 2 (Ch 5-8) | ~80,000 |
+| ... | ... |
+| Aggregation | ~5,000 |
+| **Total** | ~500,000 |
+
+## Results
+
+- Total chapters: N
+- Total words: ~X
+- All chapters written successfully: Yes/No
+
+## Files Created/Updated
+
+[List all chapter index.md files]
+```
+
+#### Step 3.4: Notify User
+
+Notify the user:
+
+"Chapter Content Generator v0.04 complete!
+
+- **Mode:** Parallel (6 agents)
+- **Elapsed time:** X minutes Y seconds
+- **Chapters processed:** 23
+- **Total words:** ~100,000
+- **Non-text elements:** ~115
+
+All chapter content has been written to their respective index.md files.
+
+Session logged to `logs/chapter-content-generator-YYYY-MM-DD.md`"
 
 ## Resources
 
@@ -283,7 +498,7 @@ This skill includes reference files that provide detailed guidelines for content
 
 ### references/content-element-types.md
 
-Comprehensive specifications for all non-text element types (3-10 above). Includes:
+Comprehensive specifications for all non-text element types (3-11 above). Includes:
 - When to use each element type
 - Required information for specifications
 - Implementation approaches
@@ -329,3 +544,100 @@ Load this reference when determining how to write content at the appropriate rea
 9. **Verification:** Always check that all concepts from "Concepts Covered" list appear in generated content
 
 10. **Consistent style:** Maintain consistent voice, terminology, and visual style throughout chapter
+
+11. **Parallel execution:** When processing 4+ chapters, always use parallel mode for efficiency
+
+12. **Real timestamps:** Always use actual system timestamps, never synthetic data
+
+## Common Pitfalls to Avoid
+
+**Content Quality:**
+- ❌ More than 3 paragraphs without a non-text element
+- ❌ Using the same element type repeatedly
+- ❌ Missing concepts from the "Concepts Covered" list
+- ❌ Content too advanced or too simple for reading level
+
+**Formatting:**
+- ❌ Missing blank line before lists or tables
+- ❌ Indenting content inside `<details>` blocks
+- ❌ Missing `#### Diagram:` header before details blocks
+- ❌ Missing closing `</details>` tag
+
+**Parallel Execution:**
+- ❌ Sending Task calls in separate messages (runs sequentially)
+- ❌ Not waiting for all agents before aggregation
+- ❌ Forgetting to aggregate statistics from all agents
+- ❌ Using synthetic timestamps instead of real ones
+
+## Output Files Summary
+
+**Required (Per Chapter):**
+1. Chapter content: `docs/chapters/[chapter-name]/index.md`
+
+**Recommended (Aggregate):**
+2. `logs/chapter-content-generator-YYYY-MM-DD.md` - Session log with timing
+
+**Optional:**
+3. Summary report with per-chapter statistics
+
+## Example Session
+
+### Parallel Mode (Default)
+
+**User:** "Generate content for all chapters"
+
+**Claude (using this skill):**
+
+1. Captures start time
+2. Notifies: "Chapter Content Generator Skill v0.04 running in parallel mode."
+3. Reads shared context (course description, learning graph, glossary, CLAUDE.md)
+4. Determines reading level (e.g., Senior High)
+5. Scans chapter directories, finds 23 chapters needing content
+6. Plans batches: 6 agents, ~4 chapters each
+7. Spawns 6 Task agents in a SINGLE message (parallel execution)
+8. Waits for all agents to complete
+9. Aggregates results from all agents
+10. Captures end time
+11. Writes session log
+12. Reports: "Chapter Content Generator v0.04 complete! Mode: Parallel. Time: 18m 32s. Chapters: 23. Words: ~100,000."
+
+### Sequential Mode
+
+**User:** "Generate content for Chapter 3 only"
+
+**Claude (using this skill):**
+
+1. Reads shared context
+2. Verifies Chapter 3 file exists with required elements
+3. Determines reading level
+4. Generates comprehensive content (~4,000 words)
+5. Includes 4-6 non-text elements
+6. Verifies all concepts covered
+7. Writes content to chapter index.md
+8. Reports: "Generated content for Chapter 3. Words: 4,200. Elements: 5. Concepts: 15/15."
+
+## Example Report
+
+```
+✅ Chapter content generated successfully!
+
+Chapter: 01-intro-to-itil-and-config-mgmt
+Reading level: Graduate
+Content length: ~3,500 words
+
+Non-text elements:
+- 6 markdown lists
+- 3 markdown tables
+- 2 diagrams (CMDB architecture, ITIL process flow)
+- 1 interactive timeline (ITIL evolution)
+- 1 MicroSim (Configuration drift simulator)
+- 1 workflow diagram (Change management process)
+
+Interactive elements: 2 (timeline, MicroSim)
+Skills required: 2 (microsim-p5 for MicroSim, infographic-generator for timeline)
+
+All 20 concepts covered: ✓
+```
+
+!!! Note
+   For admonitions to work, your mkdocs.yml must have admonition and pymdownx.details enabled.

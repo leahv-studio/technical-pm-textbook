@@ -6,16 +6,17 @@ license: MIT
 
 # Quiz Generator for Intelligent Textbooks
 
-**Version:** 0.2
+**Version:** 0.3
 
-## Overview 
-1. For each markdown chapter, generate interactive multiple-choice quizzes for textbook chapters with and quality distractor analysis.
+## Overview
+1. For each markdown chapter, generate interactive multiple-choice quizzes for textbook chapters with quality distractor analysis.
 2. Generate quality reports in markdown format.
-3. Updated mkdocs.yml navigation to include quizzes and reports.
+3. Update mkdocs.yml navigation to include quizzes and reports.
+4. **NEW in v0.3:** Support parallel execution for faster generation across multiple chapters.
 
 ## Purpose
 
-This skill automates quiz creation for intelligent textbooks by analyzing chapter content to generate contextually relevant multiple-choice questions. Each quiz is aligned to specific concepts from the learning graph, distributed across Bloom's Taxonomy cognitive levels, and formatted using mkdocs-material question admonitions with upper-alpha (A, B, C, D) answer choices. The skill ensures quality distractors, balanced answer distribution, and comprehensive explanations for educational value.
+This skill automates quiz creation for intelligent textbooks by analyzing chapter content to generate contextually relevant multiple-choice questions. Each quiz is aligned to specific concepts from the learning graph, distributed across Bloom's Taxonomy cognitive levels, and formatted using mkdocs-material question admonition format with upper-alpha (A, B, C, D) answer choices. The skill ensures quality distractors, balanced answer distribution, and comprehensive explanations for educational value.
 
 ## When to Use This Skill
 
@@ -32,43 +33,105 @@ Trigger this skill when:
 - Building comprehensive quiz bank for entire textbook
 - Exporting quiz data for LMS or chatbot integration
 
-The skill can run incrementally (chapter by chapter) or in batch mode (entire textbook).
+The skill can run:
+- **Parallel mode** (default): Multiple chapters processed concurrently for faster generation
+- **Sequential mode**: Chapter by chapter processing
+- **Single chapter mode**: Generate quiz for one specific chapter
+
+## Execution Modes
+
+### Parallel Mode (Default for 4+ chapters)
+
+When generating quizzes for 4 or more chapters, use parallel execution:
+
+| Aspect | Sequential | Parallel |
+|--------|------------|----------|
+| Agents | 1 | 4-6 concurrent |
+| Wall-clock time | ~10 minutes (23 chapters) | ~2-3 minutes |
+| Total tokens | Same | Same |
+
+### Sequential Mode
+
+Use for:
+- Fewer than 4 chapters
+- Debugging or troubleshooting
+- When explicit sequential processing is requested
+
+### Single Chapter Mode
+
+Use for:
+- Updating one quiz after content revision
+- Testing quiz format before batch generation
 
 ## Workflow
 
-### Step 1: Assess Content Readiness
+### Phase 1: Setup (Sequential)
 
-Indicate to the user that the Quiz Generator Skill (version) is running.
+This phase runs once before any quiz generation, reading shared context that all agents will need.
+
+#### Step 1.1: Capture Start Time
+
+```bash
+date "+%Y-%m-%d %H:%M:%S"
+```
+
+Log the start time for the session report.
+
+#### Step 1.2: Indicate Skill Running
+
+Notify the user: "Quiz Generator Skill v0.3 running in [parallel/sequential] mode."
+
+#### Step 1.3: Read Shared Context
+
+Read and cache these files for all agents:
+
+1. **Course Description** (`docs/course-description.md`)
+   - Extract target audience and reading level
+   - Note Bloom's Taxonomy learning outcomes
+
+2. **Learning Graph** (`docs/learning-graph/learning-graph.csv` or similar)
+   - Load concept list with dependencies
+   - Calculate concept centrality for prioritization
+
+3. **Glossary** (`docs/glossary.md`)
+   - Load term definitions for terminology questions
+   - Note which concepts have glossary entries
+
+4. **Chapter List** (scan `docs/chapters/` directory)
+   - Enumerate all chapter directories
+   - Count words per chapter for readiness assessment
+
+#### Step 1.4: Assess Content Readiness
 
 Calculate content readiness score (1-100) for each target chapter:
 
 **Quality Checks:**
 
-#### 1. **Chapter word count:**
+##### 1. **Chapter word count:**
    - 2000+ words = excellent (20 pts)
    - 1000-1999 words = good (15 pts)
    - 500-999 words = basic (10 pts)
    - <500 words = insufficient (5 pts)
 
-#### 2. **Example coverage:**
+##### 2. **Example coverage:**
    - 60%+ concepts with examples = excellent (20 pts)
    - 40-59% = good (15 pts)
    - 20-39% = basic (10 pts)
    - <20% = insufficient (5 pts)
 
-#### 3. **Glossary coverage:**
+##### 3. **Glossary coverage:**
    - 80%+ chapter concepts defined = excellent (20 pts)
    - 60-79% = good (15 pts)
    - 40-59% = basic (10 pts)
    - <40% = insufficient (5 pts)
 
-#### 4. **Concept clarity:**
+##### 4. **Concept clarity:**
    - Clear explanations for all concepts (20 pts)
    - Most concepts clear (15 pts)
    - Some unclear concepts (10 pts)
    - Many unclear concepts (5 pts)
 
-#### 5. **Learning graph alignment:**
+##### 5. **Learning graph alignment:**
    - All chapter concepts mapped (20 pts)
    - Most mapped (15 pts)
    - Some mapped (10 pts)
@@ -88,11 +151,123 @@ Calculate content readiness score (1-100) for each target chapter:
 - Concept gaps: Ask "[N] concepts in chapter not in learning graph. Continue with available concepts?"
 - No learning outcomes: Ask "No Bloom's Taxonomy outcomes in course description. Use default distribution?"
 
-### Step 2: Determine Target Distribution
+#### Step 1.5: Plan Chapter Batches (Parallel Mode)
+
+Divide chapters into batches for parallel processing:
+
+**Batch Size Guidelines:**
+- 4-8 chapters: 2 agents (2-4 chapters each)
+- 9-15 chapters: 3-4 agents (3-4 chapters each)
+- 16-24 chapters: 4-6 agents (4-5 chapters each)
+- 25+ chapters: 5-6 agents (5-6 chapters each)
+
+**Example for 23 chapters:**
+```
+Agent 1: Chapters 1-4 (Foundations)
+Agent 2: Chapters 5-8 (Limits & Continuity)
+Agent 3: Chapters 9-12 (Derivative Rules)
+Agent 4: Chapters 13-16 (Applications)
+Agent 5: Chapters 17-20 (Analysis)
+Agent 6: Chapters 21-23 (Integration)
+```
+
+### Phase 2: Quiz Generation (Parallel or Sequential)
+
+#### Parallel Execution
+
+Spawn multiple Task agents simultaneously using the Task tool. Each agent receives:
+
+1. **Shared context** (course info, glossary terms, Bloom's targets)
+2. **Assigned chapters** (specific chapter directories)
+3. **Quiz format template** (the standard format from this skill)
+4. **Output instructions** (write quiz.md to each chapter directory)
+
+**Agent Prompt Template:**
+
+```
+You are generating quizzes for an intelligent textbook. Generate quizzes for
+the following chapters.
+
+COURSE CONTEXT:
+- Course: [course name]
+- Target audience: [audience]
+- Reading level: [level]
+
+BLOOM'S TAXONOMY TARGETS:
+- Introductory chapters (1-3): 40% Remember, 40% Understand, 15% Apply, 5% Analyze
+- Intermediate chapters (4-N): 25% Remember, 30% Understand, 30% Apply, 15% Analyze
+- Advanced chapters: 15% Remember, 20% Understand, 25% Apply, 25% Analyze, 10% Evaluate, 5% Create
+
+CHAPTERS TO PROCESS:
+[List specific chapter directories with full paths]
+
+FOR EACH CHAPTER:
+1. Read the chapter content at the index.md file
+2. Identify the key concepts covered in that chapter
+3. Generate exactly 10 questions following the format below
+4. Ensure answer balance: A (2-3), B (2-3), C (2-3), D (2-3)
+5. Write the quiz to docs/chapters/[chapter-dir]/quiz.md
+
+QUIZ FORMAT - Each question MUST follow this exact format:
+
+#### [N]. [Question text ending with ?]
+
+<div class="upper-alpha" markdown>
+1. [Option A text]
+2. [Option B text]
+3. [Option C text]
+4. [Option D text]
+</div>
+
+??? question "Show Answer"
+    The correct answer is **[LETTER]**. [Explanation 50-100 words]
+
+    **Concept Tested:** [Concept Name]
+
+---
+
+QUIZ FILE STRUCTURE:
+# Quiz: [Chapter Title]
+
+Test your understanding of [topic] with these review questions.
+
+---
+
+[Questions 1-10 following the format above]
+
+REPORT when done:
+- Chapter name
+- Number of questions
+- Bloom's distribution (R:#, U:#, Ap:#, An:#)
+- Answer distribution (A:#, B:#, C:#, D:#)
+```
+
+**Launching Parallel Agents:**
+
+Use the Task tool with multiple invocations in a SINGLE message to run agents in parallel:
+
+```markdown
+[Call Task tool for Agent 1: Chapters 1-4]
+[Call Task tool for Agent 2: Chapters 5-8]
+[Call Task tool for Agent 3: Chapters 9-12]
+[Call Task tool for Agent 4: Chapters 13-16]
+[Call Task tool for Agent 5: Chapters 17-20]
+[Call Task tool for Agent 6: Chapters 21-23]
+```
+
+**IMPORTANT:** All Task tool calls MUST be in a single message to execute in parallel. If sent in separate messages, they will run sequentially.
+
+#### Sequential Execution
+
+For sequential mode or fewer than 4 chapters, process each chapter one at a time following Steps 2-8 below.
+
+### Phase 2 Steps (Per Chapter - used by agents or sequential mode)
+
+#### Step 2: Determine Target Distribution
 
 Based on chapter type (introductory, intermediate, advanced), set target Bloom's Taxonomy distribution:
 
-**Introductory Chapters:**
+**Introductory Chapters (typically chapters 1-3):**
 - 40% Remember
 - 40% Understand
 - 15% Apply
@@ -124,7 +299,7 @@ Determine chapter type by:
 
 Target question count: 8-12 per chapter (default: 10)
 
-### Step 3: Identify Concepts to Test
+#### Step 3: Identify Concepts to Test
 
 Analyze chapter content and learning graph to prioritize concepts:
 
@@ -147,7 +322,7 @@ Analyze chapter content and learning graph to prioritize concepts:
 
 Aim for 80%+ coverage of Priority 1 concepts.
 
-### Step 4: Generate Questions by Bloom's Level
+#### Step 4: Generate Questions by Bloom's Level
 
 For each concept selected for testing, generate question at appropriate Bloom's level following target distribution.
 
@@ -219,7 +394,7 @@ All questions MUST use the mkdocs-material question admonition format with upper
 - Test synthesis of concepts
 - Example: "How would you design a [system] that [requirements]?"
 
-### Step 5: Write Quality Distractors
+#### Step 5: Write Quality Distractors
 
 For each incorrect answer option (distractors), ensure:
 
@@ -248,7 +423,7 @@ For each incorrect answer option (distractors), ensure:
 - Grammatically inconsistent options
 - Answers that overlap or both could be correct
 
-### Step 6: Write Explanations
+#### Step 6: Write Explanations
 
 For each question, write explanation that:
 
@@ -278,7 +453,7 @@ confuses learning graphs with file systems.
 **See:** [Learning Graph Concept](../concepts/learning-graph.md#definition)
 ```
 
-### Step 7: Ensure Answer Balance
+#### Step 7: Ensure Answer Balance
 
 Check that correct answers are distributed evenly across A, B, C, D:
 
@@ -300,11 +475,11 @@ Check that correct answers are distributed evenly across A, B, C, D:
 - Verify distribution after completion
 - Adjust if imbalanced
 
-### Step 8: Create Quiz File
+#### Step 8: Create Quiz File
 
 Generate quiz file with proper structure:
 
-**Option 1: Separate Quiz File** (`docs/[section]/[chapter-name]-quiz.md`):
+**Separate Quiz File** (`docs/chapters/[chapter-name]/quiz.md`):
 
 ```markdown
 # Quiz: [Chapter Name]
@@ -327,29 +502,11 @@ Test your understanding of [chapter topic] with these questions.
 
     **Concept Tested:** [Concept Name]
 
-    **See:** [Link to chapter section]
-
 ---
 
 #### 2. [Question text]?
 
 [Continue for all questions...]
-```
-
-**Option 2: Embedded in Chapter** (append to chapter file):
-
-```markdown
-[Chapter content...]
-
----
-
-## Chapter Quiz
-
-Test your understanding with these review questions.
-
-#### 1. [Question text]?
-
-[Continue with quiz questions...]
 ```
 
 **Formatting Requirements:**
@@ -358,15 +515,26 @@ Test your understanding with these review questions.
 - Maintain consistent spacing
 - Ensure all markdown renders correctly
 
-### Step 9: Generate Metadata File
+### Phase 3: Aggregation (Sequential, after parallel agents complete)
 
-Create `docs/learning-graph/quizzes/[chapter-name]-quiz-metadata.json`:
+After all parallel agents complete, aggregate results.
+
+#### Step 9: Collect Agent Results
+
+Wait for all Task agents to complete. Collect from each:
+- List of quiz files created
+- Per-chapter statistics (questions, Bloom's distribution, answer balance)
+- Any errors or issues encountered
+
+#### Step 10: Generate Metadata Files (Optional)
+
+Create `docs/learning-graph/quizzes/[chapter-name]-quiz-metadata.json` for each chapter:
 
 ```json
 {
   "chapter": "Chapter Name",
-  "chapter_file": "docs/section/chapter-name.md",
-  "quiz_file": "docs/section/chapter-name-quiz.md",
+  "chapter_file": "docs/chapters/chapter-name/index.md",
+  "quiz_file": "docs/chapters/chapter-name/quiz.md",
   "generated_date": "YYYY-MM-DD",
   "total_questions": 10,
   "content_readiness_score": 85,
@@ -407,7 +575,7 @@ Create `docs/learning-graph/quizzes/[chapter-name]-quiz-metadata.json`:
 }
 ```
 
-### Step 10: Generate Quiz Bank (Aggregate)
+#### Step 11: Generate Quiz Bank (Aggregate)
 
 Create or update `docs/learning-graph/quiz-bank.json` with all questions:
 
@@ -448,7 +616,7 @@ Create or update `docs/learning-graph/quiz-bank.json` with all questions:
 - Chatbot integration (practice questions)
 - Study app integration
 
-### Step 11: Generate Quality Report
+#### Step 12: Generate Quality Report
 
 Create `docs/learning-graph/quiz-generation-report.md`:
 
@@ -456,6 +624,8 @@ Create `docs/learning-graph/quiz-generation-report.md`:
 # Quiz Generation Quality Report
 
 Generated: YYYY-MM-DD
+Execution Mode: Parallel (6 agents)
+Wall-clock Time: X minutes Y seconds
 
 ## Overall Statistics
 
@@ -463,6 +633,17 @@ Generated: YYYY-MM-DD
 - **Total Questions:** 187
 - **Avg Questions per Chapter:** 9.4
 - **Overall Quality Score:** 76/100
+
+## Execution Summary (Parallel Mode)
+
+| Agent | Chapters | Questions | Time |
+|-------|----------|-----------|------|
+| Agent 1 | 1-4 | 40 | 45s |
+| Agent 2 | 5-8 | 40 | 52s |
+| Agent 3 | 9-12 | 40 | 48s |
+| Agent 4 | 13-16 | 40 | 51s |
+| Agent 5 | 17-20 | 40 | 47s |
+| Agent 6 | 21-23 | 27 | 38s |
 
 ## Per-Chapter Summary
 
@@ -494,55 +675,14 @@ Generated: YYYY-MM-DD
 
 **Answer Balance Score:** 15/15 (perfect distribution)
 
-## Concept Coverage
-
-- **Total Concepts:** 198
-- **Tested Concepts:** 156
-- **Coverage:** 79%
-
-**Coverage Score:** 16/20 (good)
-
-## Question Quality Analysis
-
-- **Well-formed questions:** 92% (172/187)
-- **Quality distractors:** 88% avg
-- **Clear explanations:** 100%
-- **Valid links:** 98%
-
-**Question Quality Score:** 28/30 (excellent)
-
 ## Recommendations
 
-### High Priority
-
-1. Increase coverage for 15 untested high-centrality concepts
-2. Add 2-3 more Remember-level questions (+3%)
-3. Fix 3 questions with ambiguous phrasing
-
-### Medium Priority
-
-1. Improve distractors for 12 questions (quality < 80%)
-2. Add more Apply-level questions for Ch 5, 8, 12
-3. Verify and update any broken links
-4. Remove labels that do not point to valid document section headers
-
-### Low Priority
-
-1. Add alternative questions for popular concepts
-2. Create study guide versions
-3. Export to LMS-compatible formats
-
-## Gaps by Chapter
-
-**Chapters with low coverage (<70%):**
-
-- Ch 7: Advanced Concepts (64% coverage) - Missing questions for: [list]
-- Ch 14: Integration Patterns (58% coverage) - Missing questions for: [list]
+[Include recommendations based on aggregated data]
 ```
 
-### Step 12: Validate Quality
+#### Step 13: Validate Quality
 
-Perform comprehensive validation:
+Perform comprehensive validation across all generated quizzes:
 
 **1. No Ambiguity:**
 - Each question has exactly one defensible correct answer
@@ -609,49 +749,101 @@ Perform comprehensive validation:
 - No duplicate questions
 - All links valid
 
-### Step 13: Generate Alternative Questions (Optional)
+#### Step 14: Update Site Navigation
 
-Create `docs/learning-graph/quizzes/alternative-questions.json` with 2-3 alternative questions per concept:
+Update `mkdocs.yml` to include quizzes in each chapter directory:
 
-```json
-{
-  "alternatives": [
-    {
-      "concept": "Learning Graph",
-      "questions": [
-        {
-          "question_text": "Which data structure is used to represent a learning graph?",
-          "options": {
-            "A": "Linked list",
-            "B": "Directed acyclic graph",
-            "C": "Binary tree",
-            "D": "Hash table"
-          },
-          "correct_answer": "B",
-          "bloom_level": "Remember"
-        },
-        {
-          "question_text": "What problem does a learning graph solve?",
-          "options": {
-            "A": "Organizing files alphabetically",
-            "B": "Determining concept learning order",
-            "C": "Generating quiz questions",
-            "D": "Creating visual diagrams"
-          },
-          "correct_answer": "B",
-          "bloom_level": "Understand"
-        }
-      ]
-    }
-  ]
-}
+```yml
+nav:
+  ...
+  - Chapters:
+    - Overview: chapters/index.md
+    - 1. Introduction to AI and Intelligent Textbooks:
+      - Content: chapters/01-intro-ai-intelligent-textbooks/index.md
+      - Quiz: chapters/01-intro-ai-intelligent-textbooks/quiz.md
+    - 2. Getting Started with Claude and Skills:
+      - Content: chapters/02-getting-started-claude-skills/index.md
+      - Quiz: chapters/02-getting-started-claude-skills/quiz.md
+    - 3. Course Design and Educational Theory:
+      - Content: chapters/03-course-design-educational-theory/index.md
+      - Quiz: chapters/03-course-design-educational-theory/quiz.md
 ```
 
-Use for:
-- Quiz randomization
-- Test variations (A/B versions)
-- Practice mode (different questions each time)
-- Adaptive difficulty
+Note that the string "Chapter" should **not** be placed in the main chapter content label that points to the index.md file.
+
+Also update `mkdocs.yml` to include quiz quality reports:
+
+```yml
+nav:
+  ...
+  Learning Graph:
+    ...
+    Quiz Generation Report: learning-graph/quiz-generation-report.md
+```
+
+#### Step 15: Capture End Time and Write Session Log
+
+Capture the end time:
+
+```bash
+date "+%Y-%m-%d %H:%M:%S"
+```
+
+Export the session information to `logs/quiz-generator-YYYY-MM-DD.md`:
+
+```markdown
+# Quiz Generator Session Log
+
+**Skill Version:** 0.3
+**Date:** YYYY-MM-DD
+**Execution Mode:** Parallel (6 agents)
+
+## Timing
+
+| Metric | Value |
+|--------|-------|
+| Start Time | YYYY-MM-DD HH:MM:SS |
+| End Time | YYYY-MM-DD HH:MM:SS |
+| Elapsed Time | X minutes Y seconds |
+
+## Token Usage
+
+| Phase | Estimated Tokens |
+|-------|------------------|
+| Setup (shared context) | ~15,000 |
+| Agent 1 (Ch 1-4) | ~25,000 |
+| Agent 2 (Ch 5-8) | ~25,000 |
+| ... | ... |
+| Aggregation | ~5,000 |
+| **Total** | ~160,000 |
+
+## Results
+
+- Total chapters: N
+- Total questions: N × 10
+- Quality score: XX/100
+- All quizzes written successfully: Yes/No
+
+## Files Created
+
+[List all quiz.md files and report files]
+```
+
+#### Step 16: Notify User
+
+Notify the user:
+
+"Quiz Generator v0.3 complete!
+
+- **Mode:** Parallel (6 agents)
+- **Elapsed time:** X minutes Y seconds
+- **Chapters processed:** 23
+- **Questions generated:** 230
+- **Quality score:** 82/100
+
+The site navigation in `mkdocs.yml` has been updated to include Content/Quiz links for each chapter and the quiz generation report in the learning-graph section.
+
+Session logged to `logs/quiz-generator-YYYY-MM-DD.md`"
 
 ## Question Format Reference
 
@@ -716,24 +908,51 @@ Use for:
 - ❌ Missing or broken links
 - ❌ Too brief (< 30 words) or too long (> 150 words)
 
+**Parallel Execution:**
+- ❌ Sending Task calls in separate messages (runs sequentially)
+- ❌ Not waiting for all agents before aggregation
+- ❌ Forgetting to aggregate statistics from all agents
+
 ## Output Files Summary
 
 **Required (Per Chapter):**
-1. Quiz markdown file (separate or embedded)
-2. Quiz metadata JSON
+1. Quiz markdown file: `docs/chapters/[chapter-name]/quiz.md`
 
 **Recommended (Aggregate):**
-3. `docs/learning-graph/quiz-bank.json` - All questions database
-4. `docs/learning-graph/quiz-generation-report.md` - Quality metrics
+2. `docs/learning-graph/quiz-generation-report.md` - Quality metrics
+3. `logs/quiz-generator-YYYY-MM-DD.md` - Session log with timing
 
 **Optional:**
-5. `docs/learning-graph/quizzes/alternative-questions.json` - Alternative questions
-6. `docs/[section]/[chapter-name]-study-guide.md` - Study guide
-7. Navigation updates to link quizzes
+4. `docs/learning-graph/quiz-bank.json` - All questions database
+5. `docs/learning-graph/quizzes/[chapter-name]-quiz-metadata.json` - Per-chapter metadata
+6. Navigation updates to `mkdocs.yml`
 
 ## Example Session
 
-**User:** "Generate a quiz for Chapter 3"
+### Parallel Mode (Default)
+
+**User:** "Generate quizzes for all chapters"
+
+**Claude (using this skill):**
+
+1. Captures start time
+2. Notifies: "Quiz Generator Skill v0.3 running in parallel mode."
+3. Reads shared context (course description, learning graph, glossary)
+4. Scans chapter directories, finds 23 chapters
+5. Assesses content readiness (all chapters 2000+ words)
+6. Plans batches: 6 agents, ~4 chapters each
+7. Spawns 6 Task agents in a SINGLE message (parallel execution)
+8. Waits for all agents to complete
+9. Aggregates results from all agents
+10. Generates quality report (score: 82/100)
+11. Updates mkdocs.yml navigation
+12. Captures end time
+13. Writes session log
+14. Reports: "Quiz Generator v0.3 complete! Mode: Parallel. Time: 2m 45s. Questions: 230. Quality: 82/100."
+
+### Sequential Mode
+
+**User:** "Generate a quiz for Chapter 3 only"
 
 **Claude (using this skill):**
 
@@ -744,55 +963,6 @@ Use for:
 5. Generates 10 questions using question admonition format
 6. Creates quality distractors
 7. Ensures answer balance (A: 2, B: 3, C: 3, D: 2)
-8. Writes explanations without links unless you can verify that the file and label target exist before you create links
-9. Creates metadata JSON
-10. Updates quiz bank
-11. Reports: "Created 10-question quiz for Chapter 3. Quality score: 78/100. Bloom's distribution: 2 Remember, 3 Understand, 3 Apply, 2 Analyze. Concept coverage: 83%."
-
-### Step 14: Update Site Navigation to Include Quizzes and Reports
-
-Now update the `mkdocs.yml` file to include the quizzes in each chapter directory.
-
-Use a format similar to this: where the chapter content in the index.md and the quiz
-file each have a different line under the chapter.
-
-```yml
-nav:
-  ...
-  - Chapters:
-    - Overview: chapters/index.md
-    - 1. Introduction to AI and Intelligent Textbooks:
-      - Content: chapters/01-intro-ai-intelligent-textbooks/index.md
-      - Quiz: chapters/01-intro-ai-intelligent-textbooks/quiz.md
-    - 2. Getting Started with Claude and Skills:
-      - Content: chapters/02-getting-started-claude-skills/index.md
-      - Quiz: chapters/02-getting-started-claude-skills/quiz.md
-    - 3. Course Design and Educational Theory:
-      - Content: chapters/03-course-design-educational-theory/index.md
-      - Quiz: chapters/03-course-design-educational-theory/quiz.md
-```
-
-Note that the string "Chapter" should **not** be placed in the main chapter content label that points to the index.md file.
-
-Next, update the `mkdocs.yml` to include the quiz quality reports that
-have been placed in the learning-graph directory.
-
-```yml
-nav:
-  ...
-  Learning Graph:
-    ...
-    Quiz Generation Report: learning-graph/quiz-generation-report.md
-```
-
-### Step 15: Write Session Log File
-
-Export the session information to `logs/quiz-generator-YYYY-MM-DD.md`
-where YYYY-MM-DD is the current date.
-
-### Step 15: Write Session Log File
-
-Notify the user that the site navigation section of the `mkdocs.yml` file has 
-been updated to include both the links to the new quizzes as well
-as the quiz reports in the learning-graph.  Tell them that the session
-has been logged to `logs/quiz-generator-YYYY-MM-DD.md`
+8. Writes explanations without links unless verified
+9. Writes quiz to `docs/chapters/03-chapter-name/quiz.md`
+10. Reports: "Created 10-question quiz for Chapter 3. Quality score: 78/100."
