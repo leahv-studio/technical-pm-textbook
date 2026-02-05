@@ -23,6 +23,17 @@
 #   - Google Chrome or Chromium
 #   - Python 3 with Pillow (PIL) for image cropping
 #
+# WebGL support:
+#   This script uses --use-gl=angle --use-angle=swiftshader to enable
+#   software-based WebGL rendering in Chrome headless mode. This is
+#   required for MicroSims that use p5.js WEBGL mode (3D rendering).
+#   Without these flags (e.g., with the older --disable-gpu flag),
+#   WEBGL canvases render as blank white rectangles.
+#
+#   WEBGL MicroSims that load external fonts via loadFont() from a CDN
+#   may need a longer delay (e.g., 10 seconds) to allow the font to
+#   download before the screenshot is captured.
+#
 # Screenshot approach — "render tall, crop to fit":
 #   Chrome headless --window-size sets the browser window dimensions, but on
 #   macOS the actual viewport is smaller than specified due to internal
@@ -149,7 +160,7 @@ echo ""
 # Capture screenshot using Chrome headless mode
 # Key flags:
 #   --headless=new: Use new headless mode
-#   --disable-gpu: Disable GPU acceleration for consistency
+#   --use-gl=angle --use-angle=swiftshader: Software WebGL rendering (needed for WEBGL canvases)
 #   --screenshot: Capture screenshot
 #   --window-size: Set viewport size
 #   --hide-scrollbars: Remove scrollbars from capture
@@ -159,7 +170,8 @@ echo ""
 
 "$CHROME_BIN" \
     --headless=new \
-    --disable-gpu \
+    --use-gl=angle \
+    --use-angle=swiftshader \
     --screenshot="$OUTPUT_IMAGE" \
     --window-size=${WINDOW_WIDTH},${CAPTURE_HEIGHT} \
     --hide-scrollbars \
