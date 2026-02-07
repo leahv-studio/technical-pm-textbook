@@ -163,7 +163,7 @@ CONTENT GUIDELINES:
 - No more than 3 paragraphs of pure text without a non-text element
 - Use diverse element types (lists, tables, diagrams, MicroSims)
 - Present concepts in pedagogical order (simple to complex)
-- Include LaTeX equations where appropriate (single $ delimiters)
+- Include LaTeX equations where appropriate (backslash delimiters: `\( \)` for inline, `\[ \]` for display)
 
 NON-TEXT ELEMENTS:
 - Markdown lists and tables: embed directly (blank line before)
@@ -287,7 +287,10 @@ Generate comprehensive educational content based on the chapter outline, concept
    - Goal: No more than 3 paragraphs of pure text without a non-text element.
    - Use diverse element types (don't repeat the same type).
    - Place special focus on interactive elements (infographics, MicroSims).
-   - When appropriate, render equations in LaTeX surrounded by single dollar signs.
+   - When appropriate, render equations in LaTeX using backslash delimiters:
+     - Inline math: `\( equation \)` for equations within sentences
+     - Display math: `\[ equation \]` for standalone equations on their own line
+   - Do NOT use dollar sign delimiters (`$` or `$$`)
    - See the math-equations.md file in the references for proper formatting of equations.
 
 **Non-text element types:**
