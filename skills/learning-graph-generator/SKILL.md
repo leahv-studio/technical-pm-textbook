@@ -223,6 +223,35 @@ Develop a categorical taxonomy for organizing concepts:
   - TaxonomyID abbreviation (3-5 letters uppercase)
   - Brief description of what concepts belong in this category
 
+## Step 5b: Create Taxonomy Names JSON
+
+**CRITICAL STEP** - This prevents the common bug where taxonomy IDs appear instead of human-readable names in the graph viewer legend and reports.
+
+Extract the taxonomy ID to human-readable name mapping from concept-taxonomy.md and save it as a JSON file:
+
+**Create file:** `taxonomy-names.json`
+
+**Format:**
+```json
+{
+  "FOUND": "Foundation Concepts",
+  "EDA1": "Exploratory Data Analysis I",
+  "EDA2": "Exploratory Data Analysis II",
+  "REG": "Regression & Correlation",
+  ...
+}
+```
+
+**Rules:**
+- Keys are the TaxonomyID abbreviations (uppercase, 3-5 letters)
+- Values are human-readable category names in Title Case with spaces
+- Every taxonomy ID used in the CSV must have a corresponding name
+- Names should be descriptive and meaningful to students
+
+This file is REQUIRED for csv-to-json.py to generate correct `classifierName` values in learning-graph.json. Without it, the graph viewer legend will show cryptic IDs like "EDA1" instead of "Exploratory Data Analysis I".
+
+---
+
 ## Step 6: Add Taxonomy to CSV
 
 Update the dependencies CSV file:
@@ -355,19 +384,23 @@ Below is an example of the groups section:
 
 ## Step 9: Generate the Complete Learning Graph JSON
 
-Now that you have created the metadata.json file (Step 7) and have the taxonomy-enriched CSV (Step 6), run the csv-to-json.py program to generate the complete learning-graph.json file:
+Now that you have created the metadata.json file (Step 7), taxonomy-names.json (Step 5b), and have the taxonomy-enriched CSV (Step 6), run the csv-to-json.py program to generate the complete learning-graph.json file:
 
 ```bash
-python csv-to-json.py learning-graph.csv learning-graph.json metadata.json
+python csv-to-json.py learning-graph.csv learning-graph.json color-config.json metadata.json taxonomy-names.json
 ```
+
+**IMPORTANT:** The `taxonomy-names.json` file is strongly recommended to ensure human-readable category names appear in the graph viewer legend. Without it, taxonomy IDs (like "EDA1") will be used as display names instead of proper names (like "Exploratory Data Analysis I").
 
 This command will:
 1. Read the learning-graph.csv file (with ConceptID, ConceptLabel, Dependencies, TaxonomyID columns)
 2. Use the metadata from metadata.json
-3. Auto-generate the groups section based on the taxonomies in the CSV
-4. Create nodes with proper group references (using TaxonomyIDs)
-5. Create edges based on the dependencies
-6. Output a complete learning-graph.json file conforming to the schema
+3. Use the human-readable names from taxonomy-names.json for the `classifierName` field
+4. Auto-generate the groups section based on the taxonomies in the CSV
+5. Create nodes with proper group references (using TaxonomyIDs)
+6. Create edges based on the dependencies
+7. Output a complete learning-graph.json file conforming to the schema
+8. WARN if any taxonomy ID is missing a human-readable name
 
 Verify that the file [learning-graph.json](./learning-graph.json) is present and valid.
 
@@ -423,6 +456,7 @@ the concept lists, the concept taxonomies and the learning graph before they do 
 - [course-description-assessment.md](./course-description-assessment.md) - quality assessment of the course description
 - [concept-list.md](./concept-list.md) - Numbered list of 200 concepts
 - [learning-graph.csv](./learning-graph.csv) - Full dependency graph with taxonomy
+- [taxonomy-names.json](./taxonomy-names.json) - Mapping of taxonomy IDs to human-readable names (CRITICAL for graph viewer)
 - [metadata.json](./metadata.json) - Metadata for the learning graph (title, description, creator, etc.)
 - [learning-graph.json](./learning-graph.json) - Complete learning graph with metadata, groups, nodes, and edges in vis-network.js JSON format
 - [concept-taxonomy.md](./concept-taxonomy.md) - Category definitions

@@ -35,6 +35,55 @@ ls docs/learning-graph/learning-graph.json
 
 If the file doesn't exist, use the `learning-graph-generator` skill first to create the learning graph.
 
+### Step 1b: Validate classifierName Values (CRITICAL)
+
+**This step prevents the common bug where taxonomy IDs appear instead of human-readable names in the legend.**
+
+Run this validation to check that all `classifierName` values are human-readable:
+
+```bash
+python3 -c "
+import json
+with open('docs/learning-graph/learning-graph.json') as f:
+    data = json.load(f)
+issues = []
+for gid, ginfo in data['groups'].items():
+    name = ginfo.get('classifierName', '')
+    if name == gid:
+        issues.append(f\"❌ {gid}: classifierName equals ID - needs human-readable name\")
+    else:
+        print(f'✅ {gid}: {name}')
+if issues:
+    print()
+    for issue in issues:
+        print(issue)
+    print()
+    print('⚠️  FIX REQUIRED: Update learning-graph.json groups with proper classifierName values')
+    print('   Or regenerate with: python csv-to-json.py ... taxonomy-names.json')
+"
+```
+
+**If any `classifierName` equals its taxonomy ID:**
+
+1. Check if `docs/learning-graph/taxonomy-names.json` exists with proper mappings
+2. If it exists, regenerate learning-graph.json using:
+   ```bash
+   cd docs/learning-graph
+   python csv-to-json.py learning-graph.csv learning-graph.json color-config.json metadata.json taxonomy-names.json
+   ```
+3. If it doesn't exist, manually update learning-graph.json with human-readable names
+
+**Common fixes:**
+| Taxonomy ID | Should be classifierName |
+|-------------|--------------------------|
+| FOUND | Foundation Concepts |
+| EDA1 | Exploratory Data Analysis I |
+| REG | Regression & Correlation |
+| PROB | Probability |
+| SAMP | Sampling Distributions |
+
+**Do not proceed until all classifierName values are human-readable.**
+
 ### Step 2: Create Directory Structure
 
 Create the graph-viewer directory:
