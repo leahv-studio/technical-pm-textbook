@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical PM Growth Trajectory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Technical PM Growth Trajectory</h1>
+        <p class="subtitle">Click levels for detailed skill checklists. Hover for advancement actions.</p>
+
+        <div class="pyramid">
+            <div class="level" data-level="5" onclick="toggleLevel(5)"
+                 data-advancement="Advancement: Publish thought leadership, speak at conferences, build cross-org technical initiatives, and mentor senior PMs on technical strategy.">
+                <div class="level-bar level-5">
+                    <div class="level-content">
+                        <div class="level-badge">Level 5</div>
+                        <div class="level-info">
+                            <h3>Visionary</h3>
+                            <span class="timeframe">4+ years</span>
+                        </div>
+                        <p class="level-desc">Shapes technical strategy, mentors other PMs, influences org-wide decisions</p>
+                    </div>
+                </div>
+                <div class="level-detail" id="detail-5">
+                    <h4>Skill Checklist</h4>
+                    <ul>
+                        <li>Define multi-year technical vision aligned with business strategy</li>
+                        <li>Evaluate and recommend emerging technologies (AI/ML, blockchain, etc.)</li>
+                        <li>Build and scale technical PM practices across the organization</li>
+                        <li>Drive build vs. buy vs. partner decisions at the portfolio level</li>
+                        <li>Influence C-suite on technology investments and platform strategy</li>
+                        <li>Mentor and develop technical PM talent pipeline</li>
+                        <li>Create technical standards and best practices for the PM team</li>
+                        <li>Navigate complex vendor and partnership negotiations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="level" data-level="4" onclick="toggleLevel(4)"
+                 data-advancement="Advancement: Lead a platform initiative end-to-end, drive a major build-vs-buy decision, present technical strategy to leadership, and mentor junior PMs.">
+                <div class="level-bar level-4">
+                    <div class="level-content">
+                        <div class="level-badge">Level 4</div>
+                        <div class="level-info">
+                            <h3>Strategic</h3>
+                            <span class="timeframe">2-4 years</span>
+                        </div>
+                        <p class="level-desc">Drives technical roadmap, evaluates build-vs-buy, leads architecture reviews</p>
+                    </div>
+                </div>
+                <div class="level-detail" id="detail-4">
+                    <h4>Skill Checklist</h4>
+                    <ul>
+                        <li>Create and defend technical roadmaps with engineering leadership</li>
+                        <li>Lead architecture review meetings and provide meaningful input</li>
+                        <li>Evaluate build vs. buy tradeoffs with cost and risk analysis</li>
+                        <li>Understand security, compliance, and scalability requirements</li>
+                        <li>Drive technical debt reduction and platform modernization</li>
+                        <li>Translate business requirements into technical specifications</li>
+                        <li>Manage technical vendor relationships and evaluate solutions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="level" data-level="3" onclick="toggleLevel(3)"
+                 data-advancement="Advancement: Write a technical spec and get engineer sign-off, set up and use API testing tools, review pull requests for product implications, and propose a technical improvement.">
+                <div class="level-bar level-3">
+                    <div class="level-content">
+                        <div class="level-badge">Level 3</div>
+                        <div class="level-info">
+                            <h3>Contributory</h3>
+                            <span class="timeframe">1-2 years</span>
+                        </div>
+                        <p class="level-desc">Reviews engineering specs, writes technical requirements, uses Postman</p>
+                    </div>
+                </div>
+                <div class="level-detail" id="detail-3">
+                    <h4>Skill Checklist</h4>
+                    <ul>
+                        <li>Write technical requirements that engineers respect and implement</li>
+                        <li>Use API testing tools (Postman, curl) to validate integrations</li>
+                        <li>Review engineering design documents and provide product feedback</li>
+                        <li>Understand database schemas and data models at a working level</li>
+                        <li>Read and interpret monitoring dashboards and error logs</li>
+                        <li>Participate in incident response and post-mortems constructively</li>
+                        <li>Estimate technical complexity and identify hidden dependencies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="level" data-level="2" onclick="toggleLevel(2)"
+                 data-advancement="Advancement: Attend 10+ architecture meetings and ask questions, read 5 engineering design docs, learn to use the team's development tools, and build a personal glossary of technical terms.">
+                <div class="level-bar level-2">
+                    <div class="level-content">
+                        <div class="level-badge">Level 2</div>
+                        <div class="level-info">
+                            <h3>Conversational</h3>
+                            <span class="timeframe">6-12 months</span>
+                        </div>
+                        <p class="level-desc">Participates in architecture discussions, asks good questions</p>
+                    </div>
+                </div>
+                <div class="level-detail" id="detail-2">
+                    <h4>Skill Checklist</h4>
+                    <ul>
+                        <li>Ask clarifying technical questions in architecture discussions</li>
+                        <li>Understand the team's tech stack and why each component was chosen</li>
+                        <li>Follow along in sprint planning with technical estimation</li>
+                        <li>Explain technical concepts to non-technical stakeholders</li>
+                        <li>Read basic code diffs to understand what changed in a release</li>
+                        <li>Use developer tools (browser inspector, basic terminal commands)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="level" data-level="1" onclick="toggleLevel(1)"
+                 data-advancement="Advancement: Complete an online course on web architecture basics, read 'The Phoenix Project' or similar, shadow an engineer for a day, and learn what APIs, databases, and deployments are.">
+                <div class="level-bar level-1">
+                    <div class="level-content">
+                        <div class="level-badge">Level 1</div>
+                        <div class="level-info">
+                            <h3>Foundational</h3>
+                            <span class="timeframe">0-6 months</span>
+                        </div>
+                        <p class="level-desc">Can read technical docs, knows basic terminology</p>
+                    </div>
+                </div>
+                <div class="level-detail" id="detail-1">
+                    <h4>Skill Checklist</h4>
+                    <ul>
+                        <li>Define key terms: API, database, frontend, backend, deployment</li>
+                        <li>Understand the difference between web, mobile, and desktop apps</li>
+                        <li>Read technical documentation without getting completely lost</li>
+                        <li>Know what version control (Git) is and why it matters</li>
+                        <li>Understand basic software development lifecycle (SDLC)</li>
+                        <li>Navigate the team's project management tools (Jira, GitHub)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+    <script src="script.js"></script>
+</body>
+</html>

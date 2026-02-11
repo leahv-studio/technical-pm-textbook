@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical PM Interview Framework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Technical PM Interview Framework</h1>
+        <p class="subtitle">Click each stage for checklists and practice questions. Hover pitfalls for recovery strategies.</p>
+
+        <div class="timeline">
+            <div class="timeline-track"></div>
+
+            <div class="stage-card" data-stage="product-sense" onclick="toggleStage('product-sense')">
+                <div class="stage-header" style="--stage-color: #3b82f6">
+                    <div class="stage-number">1</div>
+                    <div class="stage-info">
+                        <h3>Product Sense</h3>
+                        <span class="duration">45 min</span>
+                    </div>
+                </div>
+                <p class="stage-desc">Define user problem, propose solution, prioritize features</p>
+                <div class="pitfall" data-recovery="Recovery: Always start by asking 'Who is the user?' and 'What problem are we solving?' Spend at least 5 minutes on problem definition before jumping to solutions.">
+                    Pitfall: Jumping to solutions without understanding the problem
+                </div>
+                <div class="stage-detail" id="detail-product-sense">
+                    <h4>Preparation Checklist</h4>
+                    <ul>
+                        <li>Practice user persona definition</li>
+                        <li>Master prioritization frameworks (RICE, MoSCoW)</li>
+                        <li>Prepare a structured problem-solving framework</li>
+                        <li>Study the company's product and competitors</li>
+                    </ul>
+                    <h4>Practice Questions</h4>
+                    <ul>
+                        <li>How would you improve [company's product] for enterprise users?</li>
+                        <li>Design a new feature for a ride-sharing app that increases driver retention.</li>
+                        <li>How would you prioritize these 5 features for next quarter?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stage-card" data-stage="system-design" onclick="toggleStage('system-design')">
+                <div class="stage-header" style="--stage-color: #22c55e">
+                    <div class="stage-number">2</div>
+                    <div class="stage-info">
+                        <h3>System Design</h3>
+                        <span class="duration">45 min</span>
+                    </div>
+                </div>
+                <p class="stage-desc">Design a system architecture for a given product</p>
+                <div class="pitfall" data-recovery="Recovery: Start with requirements and constraints. Ask about expected scale, latency needs, and budget. Design for current needs with a path to scale.">
+                    Pitfall: Over-engineering or ignoring constraints
+                </div>
+                <div class="stage-detail" id="detail-system-design">
+                    <h4>Preparation Checklist</h4>
+                    <ul>
+                        <li>Understand basic architecture patterns (microservices, monolith)</li>
+                        <li>Know common components (load balancers, caches, queues)</li>
+                        <li>Practice drawing system diagrams</li>
+                        <li>Learn to estimate scale (users, requests, storage)</li>
+                    </ul>
+                    <h4>Practice Questions</h4>
+                    <ul>
+                        <li>Design the backend for a real-time collaboration tool.</li>
+                        <li>How would you architect a notification system at scale?</li>
+                        <li>Explain the tradeoffs between SQL and NoSQL for our use case.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stage-card" data-stage="technical-deep-dive" onclick="toggleStage('technical-deep-dive')">
+                <div class="stage-header" style="--stage-color: #f59e0b">
+                    <div class="stage-number">3</div>
+                    <div class="stage-info">
+                        <h3>Technical Deep Dive</h3>
+                        <span class="duration">30 min</span>
+                    </div>
+                </div>
+                <p class="stage-desc">Explain a technical concept or debug a scenario</p>
+                <div class="pitfall" data-recovery="Recovery: It's OK to say 'I'm not sure about the details, but here's my understanding...' Interviewers respect honesty more than bluffing. Ask clarifying questions.">
+                    Pitfall: Pretending to know more than you do
+                </div>
+                <div class="stage-detail" id="detail-technical-deep-dive">
+                    <h4>Preparation Checklist</h4>
+                    <ul>
+                        <li>Review APIs, databases, and deployment basics</li>
+                        <li>Understand your past projects' technical architecture</li>
+                        <li>Practice explaining complex concepts simply</li>
+                        <li>Prepare 2-3 technical war stories</li>
+                    </ul>
+                    <h4>Practice Questions</h4>
+                    <ul>
+                        <li>Walk me through how an API request flows through a system.</li>
+                        <li>A service is returning 500 errors intermittently. How do you investigate?</li>
+                        <li>Explain the difference between REST and GraphQL to a non-technical stakeholder.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stage-card" data-stage="analytical" onclick="toggleStage('analytical')">
+                <div class="stage-header" style="--stage-color: #7c3aed">
+                    <div class="stage-number">4</div>
+                    <div class="stage-info">
+                        <h3>Analytical</h3>
+                        <span class="duration">30 min</span>
+                    </div>
+                </div>
+                <p class="stage-desc">Analyze metrics, define KPIs, investigate data anomalies</p>
+                <div class="pitfall" data-recovery="Recovery: Before analyzing data, always ask: 'What's the source?', 'How is it collected?', 'What time period?', and 'Are there any known data quality issues?'">
+                    Pitfall: Not asking clarifying questions about the data
+                </div>
+                <div class="stage-detail" id="detail-analytical">
+                    <h4>Preparation Checklist</h4>
+                    <ul>
+                        <li>Know key product metrics (DAU, retention, conversion)</li>
+                        <li>Practice interpreting charts and data tables</li>
+                        <li>Understand A/B testing fundamentals</li>
+                        <li>Learn to distinguish correlation from causation</li>
+                    </ul>
+                    <h4>Practice Questions</h4>
+                    <ul>
+                        <li>Our signup conversion dropped 15% last week. How do you investigate?</li>
+                        <li>Define the success metrics for a new onboarding flow.</li>
+                        <li>You ran an A/B test and variant B shows +5% revenue but -2% retention. What do you do?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stage-card" data-stage="behavioral" onclick="toggleStage('behavioral')">
+                <div class="stage-header" style="--stage-color: #ef4444">
+                    <div class="stage-number">5</div>
+                    <div class="stage-info">
+                        <h3>Behavioral</h3>
+                        <span class="duration">30 min</span>
+                    </div>
+                </div>
+                <p class="stage-desc">STAR-format stories about leadership, conflict, influence</p>
+                <div class="pitfall" data-recovery="Recovery: Use the STAR format rigorously. Quantify your impact (saved X hours, increased Y by Z%). Name your specific role: 'I personally did...' not 'We did...'">
+                    Pitfall: Being too vague or not showing your specific contribution
+                </div>
+                <div class="stage-detail" id="detail-behavioral">
+                    <h4>Preparation Checklist</h4>
+                    <ul>
+                        <li>Prepare 8-10 STAR stories covering different competencies</li>
+                        <li>Include metrics and outcomes in each story</li>
+                        <li>Practice stories about failure and what you learned</li>
+                        <li>Research the company's leadership principles</li>
+                    </ul>
+                    <h4>Practice Questions</h4>
+                    <ul>
+                        <li>Tell me about a time you influenced engineers to change technical direction.</li>
+                        <li>Describe a situation where you had to make a decision with incomplete data.</li>
+                        <li>How did you handle a disagreement with a senior stakeholder?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+    <script src="script.js"></script>
+</body>
+</html>
