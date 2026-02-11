@@ -212,7 +212,7 @@ theme:
 plugins:
   - search
   - social
-  - social_override
+#   - social_override
   - glightbox
 markdown_extensions:
   - md_in_html
