@@ -1,6 +1,6 @@
 ---
-title: Claude Skills for Intelligent Textbooks
-description: A course on using Claude Skills to create intelligent textbooks
+title: From Product Manager to Technical Product Manager
+description: A practitioner's guide for experienced product managers transitioning into technical PM roles
 image: /img/cover.png
 og:image: /img/cover.png
 twitter:image: /img/cover.png
@@ -10,42 +10,22 @@ hide:
 <style>
 .md-content__inner h1 {display: none !important;}
 </style>
-# Claude Skills for Intelligent Textbooks
+# From Product Manager to Technical Product Manager
 ![Cover](./img/cover.png)
 
-Welcome to our website about Anthropic Claude Skills for Intelligent Textbooks.
+Welcome to *From Product Manager to Technical Product Manager: A Practitioner's Guide*.
 
-In this course, a [Skill](./glossary.md#claude-skill) is a cleverly designed package of instructions that
-are designed to be followed by intelligent agents as they help humans
-design fun, interactive and engaging [Intelligent Textbooks](./glossary.md#intelligent-textbook).
+Not all technical product managers start as engineers. This textbook is designed for experienced product managers with 3-8 years of experience who want to transition into technical PM roles but didn't follow the traditional engineer-to-PM path. Whether your background is in art history, business, or any non-engineering field, this course proves that technical product management is accessible through deliberate learning, AI-augmented skill building, and practical application.
 
-These skills are designed to help teachers and textbook authors 
-generate high-quality content including MicroSims for Intelligent Textbooks.
+You'll learn to speak the language of engineers, understand system architecture, make data-driven decisions, and confidently navigate technical trade-offs — all while leveraging the product instincts you've already developed.
 
-There are three key section.
+**The AI Advantage:** Generative AI tools are democratizing technical knowledge, making this transition more achievable than ever. This course teaches you how to leverage AI assistants for learning technical concepts, debugging code, analyzing data, and understanding system designs.
 
-1. [Getting Started](./getting-started.md) - This section describes how to install these skills on a Mac, Windows or UNIX system including how to install a skill for all your projects or just a single project.
-2. [Chapters](./chapters/index.md) - 13 chapters about using skills to create intelligent textbooks
-2. [List of Skills](./list-of-skills.md) - This is a list of the skills we have created to support
-intelligent textbooks.  It includes skills for things such as:
+There are three key sections to get started:
 
-    1. Setting up a book structure on GitHub
-    2. Generating a high-quality course descriptions
-    3. Generating a learning graph
-    4. Generating chapter content
-    5. Generating tables, charts, maps and timelines
-    6. Generating interactive info-graphics
-    7. Generating MicroSims
-    8. Generating a Glossary of Terms
-    9. Generating FAQs
-    10. Generating Quizzes and Assessments
-    11. Adding experience API (xAPI) to your interactive elements
-    12. Send out announcements when your book is ready
-
-Many of these skill are interactive and will ask you questions before they generate content in your book.
-
-Most of the skills are currently targeting level-2 textbooks.
-Some of the skill support the creation of xAPI and LRS features in level-2 textbooks.
+1. [Course Description](./course-description.md) - A detailed overview of the course including topics covered and learning objectives aligned to Bloom's Taxonomy.
+2. [Chapters](./chapters/index.md) - 14 chapters covering the full journey from PM foundations to career transition and technical leadership.
+3. [Getting Started](./getting-started.md) - Setup instructions and prerequisites for working through the course materials.
 
 Please contact me on [LinkedIn](https://www.linkedin.com/in/danmccreary/) if you have any questions.
 
