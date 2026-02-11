@@ -27,8 +27,8 @@ There are three key sections to get started:
 2. [Chapters](./chapters/index.md) - 14 chapters covering the full journey from PM foundations to career transition and technical leadership.
 3. [Getting Started](./getting-started.md) - Setup instructions and prerequisites for working through the course materials.
 
-Please contact me on [LinkedIn](https://www.linkedin.com/in/danmccreary/) if you have any questions.
+Please contact me on [LinkedIn](https://www.linkedin.com/in/leah-vogel/) if you have any questions.
 
-Thanks! - Dan
+Thanks! - Leah
 
 
