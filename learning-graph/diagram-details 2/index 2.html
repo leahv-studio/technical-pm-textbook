@@ -1,0 +1,4489 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A practitioner's guide for experienced product managers transitioning into technical PM roles.">
+      
+      
+        <meta name="author" content="Leah Vogel">
+      
+      
+        <link rel="canonical" href="https://leahv-studio.github.io/technical-pm-textbook/learning-graph/diagram-details/">
+      
+      
+        <link rel="prev" href="../diagram-table/">
+      
+      
+        <link rel="next" href="../microsim-quality-report/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Diagram Details - From Product Manager to Technical Product Manager</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-HPLDD3D3K2"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-HPLDD3D3K2",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-HPLDD3D3K2",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#diagram-and-microsim-details" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="From Product Manager to Technical Product Manager" class="md-header__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            From Product Manager to Technical Product Manager
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Diagram Details
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/leahv-studio/technical-pm-textbook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="From Product Manager to Technical Product Manager" class="md-nav__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    From Product Manager to Technical Product Manager
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/leahv-studio/technical-pm-textbook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learning Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-description-assessment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concept-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept Enumeration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Quality Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concept-taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../taxonomy-distribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taxonomy Distribution Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary-quality-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary Quality Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq-quality-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ Quality Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq-coverage-gaps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ Coverage Gaps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quiz-generation-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quiz Generation Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../progress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Progress Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../claude-usage-limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage Limits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagram-table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagram Table
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagram Details
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagram Details
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-1-intro-ai-intelligent-textbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 1: Intro Ai Intelligent Textbooks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 1: Intro Ai Intelligent Textbooks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#claude-code-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Code Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evolution-of-ai-approaches-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evolution of AI Approaches Timeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#five-levels-of-textbook-intelligence-visual-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Five Levels of Textbook Intelligence Visual Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-learning-element-types-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Learning Element Types Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-engineering-iterative-refinement-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt Engineering Iterative Refinement Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformer-architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformer Architecture Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-2-getting-started-claude-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 2: Getting Started Claude Skills
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 2: Getting Started Claude Skills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-hour-token-window-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-Hour Token Window Visualization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterative-prompt-refinement-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iterative Prompt Refinement Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-file-anatomy-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill File Anatomy Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-installation-locations-and-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Installation Locations and Priority
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-invocation-and-execution-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Invocation and Execution Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-permission-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Permission Matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skills-vs-commands-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills vs Commands Decision Tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-3-course-design-educational-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 3: Course Design Educational Theory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 3: Course Design Educational Theory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blooms-taxonomy-1956-vs-2001-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloom's Taxonomy 1956 vs 2001 Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blooms-taxonomy-application-distribution-in-quality-courses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloom's Taxonomy Application Distribution in Quality Courses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#course-description-quality-impact-on-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Description Quality Impact on Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#course-description-quality-rubric-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Description Quality Rubric Visualization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lower-order-vs-higher-order-thinking-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lower-Order vs Higher-Order Thinking Skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-to-concept-expansion-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topic-to-Concept Expansion Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-4-intro-learning-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 4: Intro Learning Graphs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 4: Intro Learning Graphs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dag-vs-cyclic-graph-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DAG vs Cyclic Graph Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-mapping-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Mapping Decision Tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-pattern-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Pattern Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-graph-structure-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Graph Structure Visualization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-consumption-timeline-for-complete-textbook-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Token Consumption Timeline for Complete Textbook Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-5-concept-enumeration-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 5: Concept Enumeration Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 5: Concept Enumeration Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csv-file-format-example-with-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSV File Format Example with Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-count-by-course-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Count by Course Duration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-depth-distribution-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Depth Distribution Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-granularity-spectrum-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Granularity Spectrum Visualization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-label-length-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Label Length Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-label-quality-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Label Quality Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptid-vs-conceptlabel-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConceptID vs ConceptLabel Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-mapping-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Mapping Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-to-concept-expansion-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topic-to-Concept Expansion Process
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-6-learning-graph-quality-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 6: Learning Graph Quality Validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 6: Learning Graph Quality Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#average-dependencies-distribution-bar-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Average Dependencies Distribution Bar Chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dag-validation-algorithm-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DAG Validation Algorithm Visualization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-graph-quality-score-calculator-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Graph Quality Score Calculator MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-chain-vs-network-structure-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linear Chain vs Network Structure Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orphaned-nodes-identification-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orphaned Nodes Identification Chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taxonomy-distribution-pie-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Taxonomy Distribution Pie Chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-7-taxonomy-data-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 7: Taxonomy Data Formats
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 7: Taxonomy Data Formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-taxonomy-to-csv-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding Taxonomy to CSV Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csv-to-json-conversion-mapping-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSV to JSON Conversion Mapping Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-accessibility-checker-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Color Accessibility Checker MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dublin-core-metadata-field-reference-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dublin Core Metadata Field Reference Card
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-graph-json-schema-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Graph JSON Schema Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-learning-graph-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Learning Graph Processing Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-8-mkdocs-platform-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 8: Mkdocs Platform Documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 8: Mkdocs Platform Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admonition-types-interactive-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Admonition Types Interactive Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-branching-and-merging-visualization-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git Branching and Merging Visualization MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#material-theme-features-interactive-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material Theme Features Interactive Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs-build-process-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MkDocs Build Process Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs-github-pages-deployment-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MkDocs GitHub Pages Deployment Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-9-claude-skills-architecture-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 9: Claude Skills Architecture Development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 9: Claude Skills Architecture Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-workflow-for-skill-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git Workflow for Skill Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-zones-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Zones Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-directory-structure-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Directory Structure Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-package-contents-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Package Contents Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-testing-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Testing Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-10-content-creation-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 10: Content Creation Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 10: Content Creation Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-index-file-structure-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter Index File Structure Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter-organization-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter Organization Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-generation-process-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Content Generation Process Timeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iso-11179-principles-comparison-table-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ISO 11179 Principles Comparison Table Infographic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-exercise-generator-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Exercise Generator MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-determining-reading-level-from-course-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example: Determining Reading Level from Course Description
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-11-educational-resources-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 11: Educational Resources Assessment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 11: Educational Resources Assessment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blooms-taxonomy-distribution-analyzer-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloom's Taxonomy Distribution Analyzer Chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line-interface-basics-interactive-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command-Line Interface Basics Interactive Infographic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faq-question-pattern-analysis-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAQ Question Pattern Analysis Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-quiz-question-constructor-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Quiz Question Constructor MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-12-interactive-elements-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 12: Interactive Elements Microsims
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 12: Interactive Elements Microsims">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm-visualization-with-step-controls-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithm Visualization with Step Controls MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-microsim-template-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic MicroSim Template Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-design-quality-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MicroSim Design Quality Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-file-relationship-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MicroSim File Relationship Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responsive-iframe-embedding-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsive Iframe Embedding MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p5js-architecture-and-execution-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        p5.js Architecture and Execution Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-13-dev-tools-version-control-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 13: Dev Tools Version Control Deployment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 13: Dev Tools Version Control Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactive-directory-navigation-practice-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Directory Navigation Practice MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission-bits-visual-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permission Bits Visual Infographic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-installation-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Installation Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminal-workflow-for-textbook-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminal Workflow for Textbook Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-code-interface-layout-for-textbook-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VS Code Interface Layout for Textbook Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microsim-quality-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSim Quality Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-1-intro-ai-intelligent-textbooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 1: Intro Ai Intelligent Textbooks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 1: Intro Ai Intelligent Textbooks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#claude-code-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Code Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evolution-of-ai-approaches-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evolution of AI Approaches Timeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#five-levels-of-textbook-intelligence-visual-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Five Levels of Textbook Intelligence Visual Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-learning-element-types-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Learning Element Types Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-engineering-iterative-refinement-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt Engineering Iterative Refinement Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformer-architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformer Architecture Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-2-getting-started-claude-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 2: Getting Started Claude Skills
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 2: Getting Started Claude Skills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-hour-token-window-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-Hour Token Window Visualization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterative-prompt-refinement-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iterative Prompt Refinement Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-file-anatomy-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill File Anatomy Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-installation-locations-and-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Installation Locations and Priority
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-invocation-and-execution-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Invocation and Execution Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-permission-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Permission Matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skills-vs-commands-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skills vs Commands Decision Tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-3-course-design-educational-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 3: Course Design Educational Theory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 3: Course Design Educational Theory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blooms-taxonomy-1956-vs-2001-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloom's Taxonomy 1956 vs 2001 Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blooms-taxonomy-application-distribution-in-quality-courses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloom's Taxonomy Application Distribution in Quality Courses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#course-description-quality-impact-on-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Description Quality Impact on Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#course-description-quality-rubric-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Description Quality Rubric Visualization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lower-order-vs-higher-order-thinking-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lower-Order vs Higher-Order Thinking Skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-to-concept-expansion-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topic-to-Concept Expansion Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-4-intro-learning-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 4: Intro Learning Graphs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 4: Intro Learning Graphs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dag-vs-cyclic-graph-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DAG vs Cyclic Graph Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-mapping-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Mapping Decision Tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-pattern-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Pattern Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-graph-structure-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Graph Structure Visualization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-consumption-timeline-for-complete-textbook-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Token Consumption Timeline for Complete Textbook Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-5-concept-enumeration-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 5: Concept Enumeration Dependencies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 5: Concept Enumeration Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csv-file-format-example-with-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSV File Format Example with Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-count-by-course-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Count by Course Duration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-depth-distribution-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Depth Distribution Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-granularity-spectrum-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Granularity Spectrum Visualization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-label-length-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Label Length Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concept-label-quality-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept Label Quality Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptid-vs-conceptlabel-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConceptID vs ConceptLabel Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-mapping-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Mapping Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-to-concept-expansion-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topic-to-Concept Expansion Process
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-6-learning-graph-quality-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 6: Learning Graph Quality Validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 6: Learning Graph Quality Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#average-dependencies-distribution-bar-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Average Dependencies Distribution Bar Chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dag-validation-algorithm-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DAG Validation Algorithm Visualization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-graph-quality-score-calculator-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Graph Quality Score Calculator MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-chain-vs-network-structure-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linear Chain vs Network Structure Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orphaned-nodes-identification-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orphaned Nodes Identification Chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taxonomy-distribution-pie-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Taxonomy Distribution Pie Chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-7-taxonomy-data-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 7: Taxonomy Data Formats
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 7: Taxonomy Data Formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-taxonomy-to-csv-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding Taxonomy to CSV Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csv-to-json-conversion-mapping-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSV to JSON Conversion Mapping Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-accessibility-checker-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Color Accessibility Checker MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dublin-core-metadata-field-reference-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dublin Core Metadata Field Reference Card
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-graph-json-schema-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Graph JSON Schema Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-learning-graph-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Learning Graph Processing Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-8-mkdocs-platform-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 8: Mkdocs Platform Documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 8: Mkdocs Platform Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admonition-types-interactive-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Admonition Types Interactive Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-branching-and-merging-visualization-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git Branching and Merging Visualization MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#material-theme-features-interactive-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material Theme Features Interactive Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs-build-process-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MkDocs Build Process Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs-github-pages-deployment-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MkDocs GitHub Pages Deployment Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-9-claude-skills-architecture-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 9: Claude Skills Architecture Development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 9: Claude Skills Architecture Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-workflow-for-skill-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git Workflow for Skill Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-zones-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Zones Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-directory-structure-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Directory Structure Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-package-contents-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Package Contents Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-testing-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Testing Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-10-content-creation-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 10: Content Creation Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 10: Content Creation Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-index-file-structure-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter Index File Structure Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter-organization-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter Organization Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-generation-process-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Content Generation Process Timeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iso-11179-principles-comparison-table-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ISO 11179 Principles Comparison Table Infographic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-exercise-generator-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Exercise Generator MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-determining-reading-level-from-course-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked Example: Determining Reading Level from Course Description
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-11-educational-resources-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 11: Educational Resources Assessment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 11: Educational Resources Assessment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blooms-taxonomy-distribution-analyzer-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloom's Taxonomy Distribution Analyzer Chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line-interface-basics-interactive-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command-Line Interface Basics Interactive Infographic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faq-question-pattern-analysis-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FAQ Question Pattern Analysis Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactive-quiz-question-constructor-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Quiz Question Constructor MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-12-interactive-elements-microsims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 12: Interactive Elements Microsims
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 12: Interactive Elements Microsims">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm-visualization-with-step-controls-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithm Visualization with Step Controls MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-microsim-template-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic MicroSim Template Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-design-quality-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MicroSim Design Quality Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-file-relationship-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MicroSim File Relationship Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responsive-iframe-embedding-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsive Iframe Embedding MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p5js-architecture-and-execution-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        p5.js Architecture and Execution Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-13-dev-tools-version-control-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 13: Dev Tools Version Control Deployment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter 13: Dev Tools Version Control Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactive-directory-navigation-practice-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Directory Navigation Practice MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission-bits-visual-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permission Bits Visual Infographic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-installation-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Installation Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminal-workflow-for-textbook-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminal Workflow for Textbook Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-code-interface-layout-for-textbook-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VS Code Interface Layout for Textbook Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/leahv-studio/technical-pm-textbook/blob/master/docs/learning-graph/diagram-details.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="diagram-and-microsim-details">Diagram and MicroSim Details</h1>
+<p><strong>Total Visual Elements:</strong> 76
+<strong>Diagrams:</strong> 0
+<strong>MicroSims:</strong> 76</p>
+<h2 id="chapter-1-intro-ai-intelligent-textbooks">Chapter 1: Intro Ai Intelligent Textbooks</h2>
+<p><strong>Total elements:</strong> 6</p>
+<h3 id="claude-code-workflow-diagram"><a href="../../chapters/01-intro-ai-intelligent-textbooks/#diagram-claude-code-workflow-diagram">Claude Code Workflow Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 95/100) - Perfect for workflow/flowchart with swimlanes, decision points, and sequential processes - supports flowchart diagram type natively
+2. microsim-p5 (Score: 60/100) - Could build custom flowchart with interactivity but Mermaid already provides standard flowchart capabilities
+3. vis-network (Score: 30/100) - Could show workflow as network but lacks swimlane structure and workflow-specific styling</p>
+<h3 id="evolution-of-ai-approaches-timeline"><a href="../../chapters/01-intro-ai-intelligent-textbooks/#diagram-evolution-of-ai-approaches-timeline">Evolution of AI Approaches Timeline</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 2</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. timeline-generator (Score: 98/100) - Perfect match for chronological events with specific dates, includes zoom/pan, category filtering, and event detail panels - exactly what this specification requires
+2. chartjs-generator (Score: 45/100) - Could represent timeline as line chart but lacks specialized date handling, zoom controls, and temporal-specific features
+3. microsim-p5 (Score: 55/100) - Could build custom timeline but timeline-generator already provides optimized solution for this exact use case</p>
+<h3 id="five-levels-of-textbook-intelligence-visual-model"><a href="../../chapters/01-intro-ai-intelligent-textbooks/#diagram-five-levels-of-textbook-intelligence-visual-model">Five Levels of Textbook Intelligence Visual Model</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (Score: 85/100) - Best for custom pyramid/staircase visualization with cumulative capabilities shown, allows creative geometric shapes and gradients
+2. mermaid-generator (Score: 70/100) - Could use block diagram or flowchart to show hierarchical levels but lacks pyramid/staircase styling
+3. chartjs-generator (Score: 40/100) - Could use stacked bar chart but doesn't capture pyramid metaphor effectively</p>
+<h3 id="interactive-learning-element-types-comparison"><a href="../../chapters/01-intro-ai-intelligent-textbooks/#diagram-interactive-learning-element-types-comparison">Interactive Learning Element Types Comparison</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (Score: 95/100) - Perfect match for horizontal bar chart comparing categorical data with numerical engagement scores - Chart.js is explicitly mentioned
+2. bubble-chart-generator (Score: 25/100) - Not a priority matrix or multi-dimensional comparison, just single-dimension ranking
+3. microsim-p5 (Score: 50/100) - Could create custom bar chart but Chart.js already provides professional bar charts</p>
+<h3 id="prompt-engineering-iterative-refinement-workflow"><a href="../../chapters/01-intro-ai-intelligent-textbooks/#diagram-prompt-engineering-iterative-refinement-workflow">Prompt Engineering Iterative Refinement Workflow</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 90/100) - Excellent for circular workflow with feedback loops, decision gates, and iterative processes - flowchart type supports loops
+2. microsim-p5 (Score: 75/100) - Could create custom circular workflow diagram with animated iteration cycles
+3. vis-network (Score: 35/100) - Could show nodes and edges but not optimized for circular workflow pattern</p>
+<h3 id="transformer-architecture-diagram"><a href="../../chapters/01-intro-ai-intelligent-textbooks/#diagram-transformer-architecture-diagram">Transformer Architecture Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 2</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 85/100) - Excellent for layered architecture diagrams with component boxes, data flow arrows, and hierarchical structures
+2. microsim-p5 (Score: 75/100) - Could create custom layered architecture with interactive highlights for attention mechanisms and data flow visualization
+3. vis-network (Score: 40/100) - Could show components as nodes but not optimized for strict layered vertical architecture</p>
+<h2 id="chapter-2-getting-started-claude-skills">Chapter 2: Getting Started Claude Skills</h2>
+<p><strong>Total elements:</strong> 7</p>
+<h3 id="4-hour-token-window-visualization"><a href="../../chapters/02-getting-started-claude-skills/#diagram-4-hour-token-window-visualization">4-Hour Token Window Visualization</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. timeline-generator (Score: 92/100) - Excellent for temporal events with specific times showing token consumption/restoration over 12-hour period
+2. chartjs-generator (Score: 85/100) - Good for stacked bar chart showing available vs consumed tokens over time, Chart.js explicitly mentioned
+3. microsim-p5 (Score: 65/100) - Could create custom timeline with animated token restoration</p>
+<h3 id="iterative-prompt-refinement-metrics"><a href="../../chapters/02-getting-started-claude-skills/#diagram-iterative-prompt-refinement-metrics">Iterative Prompt Refinement Metrics</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (Score: 98/100) - Perfect for line chart showing progression across iterations with threshold line and annotations - Chart.js explicitly mentioned
+2. math-function-plotter-plotly (Score: 50/100) - Could plot discrete data points but not optimized for iteration-based metric tracking
+3. microsim-p5 (Score: 55/100) - Could create custom line chart but Chart.js provides professional charting</p>
+<h3 id="skill-file-anatomy-diagram"><a href="../../chapters/02-getting-started-claude-skills/#diagram-skill-file-anatomy-diagram">Skill File Anatomy Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (Score: 90/100) - Excellent for custom document mockup with syntax highlighting, colored regions for YAML vs markdown sections, and visual annotations
+2. mermaid-generator (Score: 45/100) - Could use block diagram but lacks code-style formatting and syntax highlighting capabilities
+3. chartjs-generator (Score: 10/100) - Not a data visualization, cannot effectively represent document structure</p>
+<h3 id="skill-installation-locations-and-priority"><a href="../../chapters/02-getting-started-claude-skills/#diagram-skill-installation-locations-and-priority">Skill Installation Locations and Priority</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 85/100) - Perfect for hierarchical tree structures showing directory relationships and priority rules
+2. microsim-p5 (Score: 70/100) - Could create custom directory tree with folder icons and priority indicators
+3. vis-network (Score: 55/100) - Could show as network graph but hierarchical tree is more natural for directory structures</p>
+<h3 id="skill-invocation-and-execution-lifecycle"><a href="../../chapters/02-getting-started-claude-skills/#diagram-skill-invocation-and-execution-lifecycle">Skill Invocation and Execution Lifecycle</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 95/100) - Ideal for flowchart with swimlanes, decision diamonds, process rectangles, and sequential steps
+2. microsim-p5 (Score: 65/100) - Could build custom flowchart with interactivity but Mermaid provides standard flowchart patterns
+3. vis-network (Score: 30/100) - Could show as network but lacks flowchart-specific shapes and swimlane organization</p>
+<h3 id="skill-permission-matrix"><a href="../../chapters/02-getting-started-claude-skills/#diagram-skill-permission-matrix">Skill Permission Matrix</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (Score: 25/100) - This is actually a markdown table, not a chart - better implemented directly in markdown
+2. microsim-p5 (Score: 60/100) - Could create interactive table with checkmarks but markdown tables work well for static permission matrices
+3. mermaid-generator (Score: 15/100) - Not designed for table/matrix representations</p>
+<h3 id="skills-vs-commands-decision-tree"><a href="../../chapters/02-getting-started-claude-skills/#diagram-skills-vs-commands-decision-tree">Skills vs Commands Decision Tree</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 92/100) - Perfect for decision tree with yes/no branches, diamond decision nodes, and terminal outcomes
+2. microsim-p5 (Score: 70/100) - Could create custom interactive decision tree with color-coded paths
+3. vis-network (Score: 40/100) - Could show as network but decision trees need specific branching layout</p>
+<h2 id="chapter-3-course-design-educational-theory">Chapter 3: Course Design Educational Theory</h2>
+<p><strong>Total elements:</strong> 6</p>
+<h3 id="blooms-taxonomy-1956-vs-2001-comparison"><a href="../../chapters/03-course-design-educational-theory/#diagram-blooms-taxonomy-1956-vs-2001-comparison">Bloom's Taxonomy 1956 vs 2001 Comparison</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (Score: 88/100) - Best for side-by-side pyramid comparison with transformation arrows and gradient coloring
+2. chartjs-generator (Score: 50/100) - Could use stacked bar charts but pyramids better convey hierarchical metaphor
+3. mermaid-generator (Score: 45/100) - Could show as diagrams but lacks pyramid-specific styling</p>
+<h3 id="blooms-taxonomy-application-distribution-in-quality-courses"><a href="../../chapters/03-course-design-educational-theory/#diagram-blooms-taxonomy-application-distribution-in-quality-courses">Bloom's Taxonomy Application Distribution in Quality Courses</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (Score: 98/100) - Perfect for horizontal stacked bar chart showing percentage distribution across taxonomy levels - Chart.js explicitly mentioned
+2. microsim-p5 (Score: 55/100) - Could create custom stacked bar but Chart.js already provides this
+3. bubble-chart-generator (Score: 15/100) - Not comparing across two dimensions, just showing distribution</p>
+<h3 id="course-description-quality-impact-on-workflow"><a href="../../chapters/03-course-design-educational-theory/#diagram-course-description-quality-impact-on-workflow">Course Description Quality Impact on Workflow</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 95/100) - Perfect for workflow/flowchart showing branching quality paths with decision points and parallel outcomes
+2. microsim-p5 (Score: 65/100) - Could create custom flowchart with color-coded paths but Mermaid excels at this
+3. vis-network (Score: 35/100) - Could show as network but flowchart structure is more appropriate</p>
+<h3 id="course-description-quality-rubric-visualization"><a href="../../chapters/03-course-design-educational-theory/#diagram-course-description-quality-rubric-visualization">Course Description Quality Rubric Visualization</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (Score: 92/100) - Excellent for custom circular dashboard with radial segments, interactive hover, and dynamic scoring visualization
+2. chartjs-generator (Score: 75/100) - Could use radar/polar chart for quality dimensions but circular dashboard is more custom
+3. mermaid-generator (Score: 25/100) - Not designed for circular dashboards or interactive scoring visualizations</p>
+<h3 id="lower-order-vs-higher-order-thinking-skills"><a href="../../chapters/03-course-design-educational-theory/#diagram-lower-order-vs-higher-order-thinking-skills">Lower-Order vs Higher-Order Thinking Skills</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (Score: 85/100) - Excellent for pyramid with horizontal division, gradient coloring, and annotation boxes for LOTS/HOTS
+2. chartjs-generator (Score: 55/100) - Could use stacked bar but pyramid metaphor is more appropriate
+3. mermaid-generator (Score: 40/100) - Could create diagram but lacks pyramid-specific layout</p>
+<h3 id="topic-to-concept-expansion-example"><a href="../../chapters/03-course-design-educational-theory/#diagram-topic-to-concept-expansion-example">Topic-to-Concept Expansion Example</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. vis-network (Score: 90/100) - Excellent for concept maps showing topic expansion into concepts with dependencies and hierarchical relationships
+2. microsim-p5 (Score: 80/100) - Could create custom radial mind map with interactive expansion and color coding
+3. mermaid-generator (Score: 65/100) - Could use graph diagram but less optimized for radial mind map layout</p>
+<h2 id="chapter-4-intro-learning-graphs">Chapter 4: Intro Learning Graphs</h2>
+<p><strong>Total elements:</strong> 5</p>
+<h3 id="dag-vs-cyclic-graph-comparison"><a href="../../chapters/04-intro-learning-graphs/#diagram-dag-vs-cyclic-graph-comparison">DAG vs Cyclic Graph Comparison</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 90/100) - Great for side-by-side graph comparison showing valid DAG vs cyclic structure with clear annotations
+2. vis-network (Score: 80/100) - Could show both graphs interactively with cycle highlighted, good for demonstrating invalid structure
+3. microsim-p5 (Score: 70/100) - Could create custom comparison with animated cycle detection</p>
+<h3 id="dependency-mapping-decision-tree"><a href="../../chapters/04-intro-learning-graphs/#diagram-dependency-mapping-decision-tree">Dependency Mapping Decision Tree</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 95/100) - Perfect for decision tree with yes/no branches, terminal nodes, and color-coded outcomes
+2. microsim-p5 (Score: 70/100) - Could create custom interactive decision tree with color-coded paths
+3. vis-network (Score: 35/100) - Could show as network but decision tree needs specific branching structure</p>
+<h3 id="dependency-pattern-examples"><a href="../../chapters/04-intro-learning-graphs/#diagram-dependency-pattern-examples">Dependency Pattern Examples</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 88/100) - Excellent for showing three common dependency patterns with clean arrow diagrams
+2. microsim-p5 (Score: 75/100) - Could create custom diagrams for each pattern with geometric layouts
+3. vis-network (Score: 60/100) - Could show as networks but simple pattern diagrams better served by Mermaid</p>
+<h3 id="learning-graph-structure-visualization"><a href="../../chapters/04-intro-learning-graphs/#diagram-learning-graph-structure-visualization">Learning Graph Structure Visualization</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. vis-network (Score: 98/100) - Perfect for interactive network graph with nodes/edges, physics layout, hierarchical positioning, and hover tooltips - vis-network explicitly mentioned
+2. microsim-p5 (Score: 70/100) - Could create custom network visualization but vis-network already optimized for this
+3. mermaid-generator (Score: 50/100) - Could show flowchart but lacks physics-based layout and interactive graph features</p>
+<h3 id="token-consumption-timeline-for-complete-textbook-project"><a href="../../chapters/04-intro-learning-graphs/#diagram-token-consumption-timeline-for-complete-textbook-project">Token Consumption Timeline for Complete Textbook Project</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. timeline-generator (Score: 95/100) - Perfect for project timeline with events over 20 days, includes timeline visualization with phase tracking
+2. chartjs-generator (Score: 90/100) - Excellent for area chart showing cumulative token consumption over time - Chart.js explicitly mentioned
+3. microsim-p5 (Score: 65/100) - Could create custom timeline with area chart but standard libraries already provide this</p>
+<h2 id="chapter-5-concept-enumeration-dependencies">Chapter 5: Concept Enumeration Dependencies</h2>
+<p><strong>Total elements:</strong> 9</p>
+<h3 id="csv-file-format-example-with-validation"><a href="../../chapters/05-concept-enumeration-dependencies/#diagram-csv-file-format-example-with-validation">CSV File Format Example with Validation</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (Score: 15/100) - This is a markdown table with validation examples, not a chart
+2. microsim-p5 (Score: 55/100) - Could create interactive table highlighting errors but markdown tables work well
+3. mermaid-generator (Score: 10/100) - Not designed for table representations</p>
+<h3 id="concept-count-by-course-duration"><a href="../../chapters/05-concept-enumeration-dependencies/#diagram-concept-count-by-course-duration">Concept Count by Course Duration</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (Score: 98/100) - Perfect for bar chart showing concept count by duration with range error bars - Chart.js explicitly mentioned
+2. microsim-p5 (Score: 55/100) - Could create custom bar chart but Chart.js already provides this well
+3. math-function-plotter-plotly (Score: 35/100) - Not plotting functions, this is discrete data</p>
+<h3 id="concept-depth-distribution-analysis"><a href="../../chapters/05-concept-enumeration-dependencies/#diagram-concept-depth-distribution-analysis">Concept Depth Distribution Analysis</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (Score: 95/100) - Perfect for stacked area chart showing concept depth progression - Chart.js explicitly mentioned
+2. microsim-p5 (Score: 70/100) - Could create custom area chart with heat map coloring but Chart.js already provides this
+3. math-function-plotter-plotly (Score: 40/100) - Not plotting functions, this is stacked categorical data</p>
+<h3 id="concept-granularity-spectrum-visualization"><a href="../../chapters/05-concept-enumeration-dependencies/#diagram-concept-granularity-spectrum-visualization">Concept Granularity Spectrum Visualization</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (Score: 88/100) - Excellent for custom spectrum visualization with positioned examples and color-coded zones
+2. chartjs-generator (Score: 45/100) - Could use horizontal bar but spectrum metaphor needs custom visualization
+3. mermaid-generator (Score: 40/100) - Could show as diagram but lacks spectrum-specific styling</p>
+<h3 id="concept-label-length-optimization"><a href="../../chapters/05-concept-enumeration-dependencies/#diagram-concept-label-length-optimization">Concept Label Length Optimization</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (Score: 20/100) - This is a markdown table, not a chart - better as plain markdown
+2. microsim-p5 (Score: 50/100) - Could create interactive table showing before/after optimization but markdown suffices
+3. mermaid-generator (Score: 10/100) - Not designed for table representations</p>
+<h3 id="concept-label-quality-checklist"><a href="../../chapters/05-concept-enumeration-dependencies/#diagram-concept-label-quality-checklist">Concept Label Quality Checklist</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (Score: 90/100) - Excellent for interactive checklist with click/hover functionality and visual examples with checkmarks/X marks
+2. chartjs-generator (Score: 20/100) - Not a chart, this is an interactive checklist/infographic
+3. mermaid-generator (Score: 30/100) - Could show as diagram but lacks interactive checklist features</p>
+<h3 id="conceptid-vs-conceptlabel-comparison"><a href="../../chapters/05-concept-enumeration-dependencies/#diagram-conceptid-vs-conceptlabel-comparison">ConceptID vs ConceptLabel Comparison</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (Score: 15/100) - This is a comparison table, not a chart - better as markdown table
+2. microsim-p5 (Score: 50/100) - Could create interactive comparison table but markdown suffices
+3. mermaid-generator (Score: 10/100) - Not designed for comparison tables</p>
+<h3 id="dependency-mapping-workflow"><a href="../../chapters/05-concept-enumeration-dependencies/#diagram-dependency-mapping-workflow">Dependency Mapping Workflow</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 95/100) - Perfect for sequential workflow with decision points, loops, and color-coded phases
+2. microsim-p5 (Score: 65/100) - Could create custom flowchart but Mermaid already provides workflow patterns
+3. vis-network (Score: 30/100) - Could show as network but workflow needs sequential structure</p>
+<h3 id="topic-to-concept-expansion-process"><a href="../../chapters/05-concept-enumeration-dependencies/#diagram-topic-to-concept-expansion-process">Topic-to-Concept Expansion Process</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (Score: 92/100) - Excellent for hierarchical tree showing topic expansion with branches for components, relationships, procedures
+2. vis-network (Score: 85/100) - Good for interactive tree with color-coded concept types and hierarchical layout
+3. microsim-p5 (Score: 75/100) - Could create custom tree visualization with color-coded branches</p>
+<h2 id="chapter-6-learning-graph-quality-validation">Chapter 6: Learning Graph Quality Validation</h2>
+<p><strong>Total elements:</strong> 6</p>
+<h3 id="average-dependencies-distribution-bar-chart"><a href="../../chapters/06-learning-graph-quality-validation/#diagram-average-dependencies-distribution-bar-chart">Average Dependencies Distribution Bar Chart</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (98/100) - Histogram/bar chart with annotations and shaded regions natively supported
+2. microsim-p5 (70/100) - Custom bar chart rendering with manual annotation placement required
+3. mermaid-generator (25/100) - Limited chart capabilities, not ideal for detailed histograms</p>
+<h3 id="dag-validation-algorithm-visualization"><a href="../../chapters/06-learning-graph-quality-validation/#diagram-dag-validation-algorithm-visualization">DAG Validation Algorithm Visualization</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. vis-network (98/100) - Network graph visualization ideal for displaying DAG validation algorithm with colored nodes
+2. mermaid-generator (85/100) - Flowchart capabilities support algorithm visualization with decision points
+3. microsim-p5 (75/100) - Custom interactive visualization possible but requires more development effort</p>
+<h3 id="learning-graph-quality-score-calculator-microsim"><a href="../../chapters/06-learning-graph-quality-validation/#diagram-learning-graph-quality-score-calculator-microsim">Learning Graph Quality Score Calculator MicroSim</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 21</li>
+<li><strong>Difficulty:</strong> Very Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (92/100) - Interactive gauge and sliders are core p5.js strengths with DOM controls
+2. chartjs-generator (65/100) - Can create gauge charts but limited interactivity compared to p5.js
+3. vis-network (20/100) - Not designed for gauge visualizations or quality scoring interfaces</p>
+<h3 id="linear-chain-vs-network-structure-comparison"><a href="../../chapters/06-learning-graph-quality-validation/#diagram-linear-chain-vs-network-structure-comparison">Linear Chain vs Network Structure Comparison</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. vis-network (95/100) - Network visualization perfectly suited for comparing linear vs networked graph structures
+2. mermaid-generator (82/100) - Can create side-by-side graph diagrams with different layouts
+3. microsim-p5 (78/100) - Force-directed graph layout possible but requires physics simulation coding</p>
+<h3 id="orphaned-nodes-identification-chart"><a href="../../chapters/06-learning-graph-quality-validation/#diagram-orphaned-nodes-identification-chart">Orphaned Nodes Identification Chart</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (97/100) - Scatter plot chart type directly supports indegree vs outdegree visualization
+2. bubble-chart-generator (80/100) - Could add third dimension (concept importance) via bubble size
+3. microsim-p5 (72/100) - Custom scatter plot possible with manual axis and point rendering</p>
+<h3 id="taxonomy-distribution-pie-chart"><a href="../../chapters/06-learning-graph-quality-validation/#diagram-taxonomy-distribution-pie-chart">Taxonomy Distribution Pie Chart</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (98/100) - Pie chart with percentage labels and color coding is primary Chart.js use case
+2. microsim-p5 (68/100) - Custom pie rendering possible but Chart.js provides better built-in features
+3. venn-diagram-generator (15/100) - Designed for overlapping sets, not category distribution</p>
+<h2 id="chapter-7-taxonomy-data-formats">Chapter 7: Taxonomy Data Formats</h2>
+<p><strong>Total elements:</strong> 6</p>
+<h3 id="adding-taxonomy-to-csv-workflow-diagram"><a href="../../chapters/07-taxonomy-data-formats/#diagram-adding-taxonomy-to-csv-workflow-diagram">Adding Taxonomy to CSV Workflow Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (94/100) - Flowchart with decision diamonds and process boxes is core Mermaid strength
+2. microsim-p5 (75/100) - Custom flowchart rendering possible with manual layout and interaction
+3. vis-network (45/100) - Can represent workflow as directed graph but less intuitive than flowchart</p>
+<h3 id="csv-to-json-conversion-mapping-diagram"><a href="../../chapters/07-taxonomy-data-formats/#diagram-csv-to-json-conversion-mapping-diagram">CSV to JSON Conversion Mapping Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (90/100) - Data flow diagrams with transformation steps supported via flowchart syntax
+2. microsim-p5 (78/100) - Custom visualization with tables and arrows achievable with careful layout
+3. chartjs-generator (20/100) - Not designed for data transformation diagrams</p>
+<h3 id="color-accessibility-checker-microsim"><a href="../../chapters/07-taxonomy-data-formats/#diagram-color-accessibility-checker-microsim">Color Accessibility Checker MicroSim</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 12</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (95/100) - Interactive color pickers, contrast calculation, and live preview are p5.js + DOM strengths
+2. chartjs-generator (25/100) - Not designed for color accessibility checking tools
+3. vis-network (10/100) - Not applicable to color contrast validation interfaces</p>
+<h3 id="dublin-core-metadata-field-reference-card"><a href="../../chapters/07-taxonomy-data-formats/#diagram-dublin-core-metadata-field-reference-card">Dublin Core Metadata Field Reference Card</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. markdown table (best) - Static reference card doesn't require interactivity, markdown table is simplest
+2. microsim-p5 (85/100) - If interactivity needed, p5.js with DOM elements supports card grid layout
+3. chartjs-generator (15/100) - Not designed for reference card layouts or metadata display</p>
+<h3 id="learning-graph-json-schema-diagram"><a href="../../chapters/07-taxonomy-data-formats/#diagram-learning-graph-json-schema-diagram">Learning Graph JSON Schema Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (92/100) - Tree/hierarchical diagrams with nested structures well-supported
+2. microsim-p5 (70/100) - Custom tree layout requires recursive positioning algorithms
+3. vis-network (65/100) - Can display hierarchical graphs with physics-based layouts</p>
+<h3 id="python-learning-graph-processing-pipeline"><a href="../../chapters/07-taxonomy-data-formats/#diagram-python-learning-graph-processing-pipeline">Python Learning Graph Processing Pipeline</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 4</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (93/100) - Pipeline flowcharts with sequential stages and decision points well-supported
+2. vis-network (70/100) - Can model pipeline as directed graph with custom node shapes
+3. microsim-p5 (72/100) - Custom flowchart rendering with manual stage positioning and arrows</p>
+<h2 id="chapter-8-mkdocs-platform-documentation">Chapter 8: Mkdocs Platform Documentation</h2>
+<p><strong>Total elements:</strong> 5</p>
+<h3 id="admonition-types-interactive-reference"><a href="../../chapters/08-mkdocs-platform-documentation/#diagram-admonition-types-interactive-reference">Admonition Types Interactive Reference</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 5</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. markdown (best) - Side-by-side code blocks in markdown provide clearest comparison format
+2. microsim-p5 (90/100) - If interactive highlighting/toggling needed, p5.js with code display works
+3. chartjs-generator (15/100) - Not designed for code syntax comparison interfaces</p>
+<h3 id="git-branching-and-merging-visualization-microsim"><a href="../../chapters/08-mkdocs-platform-documentation/#diagram-git-branching-and-merging-visualization-microsim">Git Branching and Merging Visualization MicroSim</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 13</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (94/100) - Interactive file tree with expand/collapse and tooltips is excellent p5.js use case
+2. vis-network (82/100) - Can display hierarchical file structure as network graph
+3. mermaid-generator (75/100) - Tree diagrams supported but limited interactivity compared to p5.js</p>
+<h3 id="material-theme-features-interactive-comparison"><a href="../../chapters/08-mkdocs-platform-documentation/#diagram-material-theme-features-interactive-comparison">Material Theme Features Interactive Comparison</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 5</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. markdown table (best) - Configuration reference doesn't require interactivity, markdown table is clearest
+2. microsim-p5 (88/100) - If searchable/filterable interface needed, p5.js with DOM controls works well
+3. chartjs-generator (30/100) - Not designed for configuration reference displays</p>
+<h3 id="mkdocs-build-process-workflow-diagram"><a href="../../chapters/08-mkdocs-platform-documentation/#diagram-mkdocs-build-process-workflow-diagram">MkDocs Build Process Workflow Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (95/100) - Build pipeline workflow with sequential stages is ideal Mermaid flowchart
+2. microsim-p5 (70/100) - Custom workflow visualization requires manual stage layout and connections
+3. vis-network (65/100) - Can model pipeline as directed graph but less intuitive than flowchart</p>
+<h3 id="mkdocs-github-pages-deployment-workflow"><a href="../../chapters/08-mkdocs-platform-documentation/#diagram-mkdocs-github-pages-deployment-workflow">MkDocs GitHub Pages Deployment Workflow</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (94/100) - Interactive file tree with expand/collapse and tooltips is excellent p5.js use case
+2. vis-network (82/100) - Can display hierarchical file structure as network graph
+3. mermaid-generator (75/100) - Tree diagrams supported but limited interactivity compared to p5.js</p>
+<h2 id="chapter-9-claude-skills-architecture-development">Chapter 9: Claude Skills Architecture Development</h2>
+<p><strong>Total elements:</strong> 5</p>
+<h3 id="git-workflow-for-skill-development"><a href="../../chapters/09-claude-skills-architecture-development/#diagram-git-workflow-for-skill-development">Git Workflow for Skill Development</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (95/100) - Skill lifecycle workflow with stages and transitions is ideal flowchart
+2. microsim-p5 (72/100) - Custom workflow visualization with stage highlighting possible
+3. vis-network (60/100) - Can model lifecycle as directed graph but less clear than flowchart</p>
+<h3 id="security-zones-diagram"><a href="../../chapters/09-claude-skills-architecture-development/#diagram-security-zones-diagram">Security Zones Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (94/100) - Flowchart showing skill workflow with decision paths well-supported
+2. microsim-p5 (75/100) - Custom flowchart with interactivity possible but more effort
+3. vis-network (55/100) - Can model workflow as directed graph but less intuitive</p>
+<h3 id="skill-directory-structure-diagram"><a href="../../chapters/09-claude-skills-architecture-development/#diagram-skill-directory-structure-diagram">Skill Directory Structure Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (93/100) - Skills structure diagram with boxes and connections is Mermaid strength
+2. vis-network (70/100) - Can display skill relationships as interactive network graph
+3. microsim-p5 (68/100) - Custom diagram layout requires manual positioning and rendering</p>
+<h3 id="skill-package-contents-checklist"><a href="../../chapters/09-claude-skills-architecture-development/#diagram-skill-package-contents-checklist">Skill Package Contents Checklist</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (88/100) - Interactive checklist with checkboxes and progress tracking is p5.js + DOM strength
+2. mermaid-generator (70/100) - Can show checklist as simple list but limited interactivity
+3. venn-diagram-generator (65/100) - Could show skill coverage overlaps if analyzing multiple skills</p>
+<ol>
+<li>microsim-p5 (88/100) - Interactive checklist with checkboxes and progress tracking is p5.js + DOM strength</li>
+<li>mermaid-generator (70/100) - Can show checklist as simple list but limited interactivity</li>
+<li>venn-diagram-generator (65/100) - Could show skill coverage overlaps if analyzing multiple skills</li>
+</ol>
+<h3 id="skill-testing-workflow-diagram"><a href="../../chapters/09-claude-skills-architecture-development/#diagram-skill-testing-workflow-diagram">Skill Testing Workflow Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 2</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. markdown (best) - Best practices list doesn't require interactivity, markdown is simplest
+2. microsim-p5 (85/100) - If interactive progress tracking needed, p5.js with checkboxes works well
+3. chartjs-generator (15/100) - Not designed for checklist or best practices displays</p>
+<h2 id="chapter-10-content-creation-workflows">Chapter 10: Content Creation Workflows</h2>
+<p><strong>Total elements:</strong> 6</p>
+<h3 id="chapter-index-file-structure-diagram"><a href="../../chapters/10-content-creation-workflows/#diagram-chapter-index-file-structure-diagram">Chapter Index File Structure Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 1</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (92/100) - Chapter structure tree diagram with parent-child relationships
+2. microsim-p5 (75/100) - Custom tree layout with interactive expansion possible
+3. vis-network (50/100) - Hierarchical graph layout but less clear than tree diagram</p>
+<h3 id="chapter-organization-workflow-diagram"><a href="../../chapters/10-content-creation-workflows/#diagram-chapter-organization-workflow-diagram">Chapter Organization Workflow Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (94/100) - Content generation workflow with sequential steps is perfect flowchart
+2. microsim-p5 (73/100) - Custom workflow visualization with interactive hover states
+3. vis-network (55/100) - Can model workflow as graph but less intuitive than flowchart</p>
+<h3 id="content-generation-process-timeline"><a href="../../chapters/10-content-creation-workflows/#diagram-content-generation-process-timeline">Content Generation Process Timeline</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. timeline-generator (98/100) - Iterative content refinement timeline is perfect vis-timeline use case
+2. chartjs-generator (70/100) - Timeline can be shown as horizontal bar chart with phases
+3. microsim-p5 (75/100) - Custom timeline rendering with manual event positioning</p>
+<h3 id="iso-11179-principles-comparison-table-infographic"><a href="../../chapters/10-content-creation-workflows/#diagram-iso-11179-principles-comparison-table-infographic">ISO 11179 Principles Comparison Table Infographic</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 5</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (94/100) - Interactive admonition style selector with live preview is p5.js + DOM strength
+2. chartjs-generator (30/100) - Not designed for style selector or preview interfaces
+3. vis-network (15/100) - Not applicable to style selection tools</p>
+<h3 id="interactive-exercise-generator-microsim"><a href="../../chapters/10-content-creation-workflows/#diagram-interactive-exercise-generator-microsim">Interactive Exercise Generator MicroSim</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 21</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (96/100) - Interactive concept map explorer with zoom/pan is core p5.js strength
+2. chartjs-generator (25/100) - Not designed for interactive concept map exploration
+3. vis-network (15/100) - Could show concepts as graph but not designed for map exploration</p>
+<h3 id="worked-example-determining-reading-level-from-course-description"><a href="../../chapters/10-content-creation-workflows/#diagram-worked-example-determining-reading-level-from-course-description">Worked Example: Determining Reading Level from Course Description</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 4</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. markdown (best) - Non-text element examples don't require interactivity, markdown table clearest
+2. microsim-p5 (90/100) - If interactive gallery/preview needed, p5.js with image display works
+3. chartjs-generator (20/100) - Not designed for element type galleries or examples</p>
+<h2 id="chapter-11-educational-resources-assessment">Chapter 11: Educational Resources Assessment</h2>
+<p><strong>Total elements:</strong> 4</p>
+<h3 id="blooms-taxonomy-distribution-analyzer-chart"><a href="../../chapters/11-educational-resources-assessment/#diagram-blooms-taxonomy-distribution-analyzer-chart">Bloom's Taxonomy Distribution Analyzer Chart</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 9</li>
+<li><strong>Difficulty:</strong> Very Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (96/100) - Stacked bar chart showing Bloom's distribution is native Chart.js capability
+2. microsim-p5 (75/100) - Custom stacked bar rendering possible but Chart.js provides better features
+3. venn-diagram-generator (25/100) - Not designed for showing distribution across taxonomy levels</p>
+<h3 id="command-line-interface-basics-interactive-infographic"><a href="../../chapters/11-educational-resources-assessment/#diagram-command-line-interface-basics-interactive-infographic">Command-Line Interface Basics Interactive Infographic</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 9</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. chartjs-generator (94/100) - Radar chart for quiz difficulty profile is supported Chart.js type
+2. microsim-p5 (88/100) - Custom radar/spider chart rendering with manual axis calculations
+3. vis-network (30/100) - Not designed for radar or difficulty profile visualizations</p>
+<h3 id="faq-question-pattern-analysis-workflow"><a href="../../chapters/11-educational-resources-assessment/#diagram-faq-question-pattern-analysis-workflow">FAQ Question Pattern Analysis Workflow</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (95/100) - Glossary generation workflow with decision points is ideal flowchart
+2. vis-network (65/100) - Can model workflow as directed graph but less intuitive
+3. microsim-p5 (70/100) - Custom flowchart with interactivity requires manual layout</p>
+<h3 id="interactive-quiz-question-constructor-microsim"><a href="../../chapters/11-educational-resources-assessment/#diagram-interactive-quiz-question-constructor-microsim">Interactive Quiz Question Constructor MicroSim</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 23</li>
+<li><strong>Difficulty:</strong> Very Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (97/100) - Interactive quiz question constructor with real-time feedback is ideal p5.js use case
+2. chartjs-generator (20/100) - Not designed for question construction or interactive form interfaces
+3. vis-network (15/100) - Not applicable to quiz question builder tools</p>
+<h2 id="chapter-12-interactive-elements-microsims">Chapter 12: Interactive Elements Microsims</h2>
+<p><strong>Total elements:</strong> 6</p>
+<h3 id="algorithm-visualization-with-step-controls-microsim"><a href="../../chapters/12-interactive-elements-microsims/#diagram-algorithm-visualization-with-step-controls-microsim">Algorithm Visualization with Step Controls MicroSim</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 24</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (95/100) - Interactive algorithm stepping with button controls is core p5.js use case
+2. chartjs-generator (25/100) - Not designed for algorithm visualization or step controls
+3. vis-network (15/100) - Not applicable to sorting algorithm visualizations</p>
+<h3 id="basic-microsim-template-structure"><a href="../../chapters/12-interactive-elements-microsims/#diagram-basic-microsim-template-structure">Basic MicroSim Template Structure</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 8</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (95/100) - HTML structure tree with nested elements is perfect Mermaid tree
+2. vis-network (65/100) - Hierarchical graph layout possible but less clear than tree
+3. microsim-p5 (68/100) - Custom tree rendering with recursive layout algorithms needed</p>
+<h3 id="microsim-design-quality-checklist"><a href="../../chapters/12-interactive-elements-microsims/#diagram-microsim-design-quality-checklist">MicroSim Design Quality Checklist</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 10</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (96/100) - Interactive iframe embedding demo with resize controls is p5.js + DOM strength
+2. chartjs-generator (15/100) - Not designed for iframe embedding demonstrations
+3. vis-network (15/100) - Not applicable to responsive iframe simulations</p>
+<h3 id="microsim-file-relationship-diagram"><a href="../../chapters/12-interactive-elements-microsims/#diagram-microsim-file-relationship-diagram">MicroSim File Relationship Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Easy</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (93/100) - File relationship diagram with connections is Mermaid strength
+2. vis-network (75/100) - Can show files as network nodes with relationship edges
+3. microsim-p5 (72/100) - Custom block diagram with icons requires manual layout</p>
+<h3 id="responsive-iframe-embedding-microsim"><a href="../../chapters/12-interactive-elements-microsims/#diagram-responsive-iframe-embedding-microsim">Responsive Iframe Embedding MicroSim</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 16</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (96/100) - Interactive iframe embedding demo with resize controls is p5.js + DOM strength
+2. chartjs-generator (15/100) - Not designed for iframe embedding demonstrations
+3. vis-network (15/100) - Not applicable to responsive iframe simulations</p>
+<h3 id="p5js-architecture-and-execution-model"><a href="../../chapters/12-interactive-elements-microsims/#diagram-p5js-architecture-and-execution-model">p5.js Architecture and Execution Model</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 5</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (94/100) - p5.js execution model flowchart with loops is classic Mermaid use case
+2. microsim-p5 (85/100) - Interactive flowchart with highlighted current execution step possible
+3. vis-network (70/100) - Can show execution flow as directed graph but less clear</p>
+<h2 id="chapter-13-dev-tools-version-control-deployment">Chapter 13: Dev Tools Version Control Deployment</h2>
+<p><strong>Total elements:</strong> 5</p>
+<h3 id="interactive-directory-navigation-practice-microsim"><a href="../../chapters/13-dev-tools-version-control-deployment/#diagram-interactive-directory-navigation-practice-microsim">Interactive Directory Navigation Practice MicroSim</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 14</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. microsim-p5 (94/100) - Interactive directory navigation simulator with terminal emulation is p5.js strength
+2. vis-network (85/100) - Can show filesystem as interactive tree graph with navigation
+3. mermaid-generator (78/100) - Tree diagram for filesystem but limited interactivity</p>
+<h3 id="permission-bits-visual-infographic"><a href="../../chapters/13-dev-tools-version-control-deployment/#diagram-permission-bits-visual-infographic">Permission Bits Visual Infographic</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 4</li>
+<li><strong>Difficulty:</strong> Hard</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. markdown table (best) - Permission notation reference doesn't require interactivity, table clearest
+2. microsim-p5 (85/100) - If interactive permission calculator needed, p5.js with inputs works well
+3. chartjs-generator (15/100) - Not designed for permission reference or calculators</p>
+<h3 id="skill-installation-workflow-diagram"><a href="../../chapters/13-dev-tools-version-control-deployment/#diagram-skill-installation-workflow-diagram">Skill Installation Workflow Diagram</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. timeline-generator (97/100) - Project timeline showing phase progression is perfect vis-timeline use
+2. mermaid-generator (85/100) - Workflow flowchart showing capstone phases with decision points
+3. chartjs-generator (75/100) - Gantt-style timeline chart showing project phases and milestones</p>
+<h3 id="terminal-workflow-for-textbook-development"><a href="../../chapters/13-dev-tools-version-control-deployment/#diagram-terminal-workflow-for-textbook-development">Terminal Workflow for Textbook Development</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 0</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. mermaid-generator (95/100) - Terminal command workflow with sequential steps is ideal flowchart
+2. microsim-p5 (73/100) - Custom workflow with interactive command highlighting possible
+3. vis-network (55/100) - Can model workflow as graph but less intuitive than flowchart</p>
+<h3 id="vs-code-interface-layout-for-textbook-development"><a href="../../chapters/13-dev-tools-version-control-deployment/#diagram-vs-code-interface-layout-for-textbook-development">VS Code Interface Layout for Textbook Development</a></h3>
+<ul>
+<li><strong>Type:</strong> Microsim</li>
+<li><strong>Bloom's Taxonomy:</strong> Not specified</li>
+<li><strong>UI Elements:</strong> 4</li>
+<li><strong>Difficulty:</strong> Medium</li>
+</ul>
+<p><strong>MicroSim Generator Recommendations:</strong>
+1. markdown/screenshot (best) - VS Code interface doesn't benefit from interactivity, annotated image clearest
+2. microsim-p5 (80/100) - If interactive tour/highlighting needed, p5.js with hover zones works
+3. mermaid-generator (50/100) - Not designed for UI interface mockups or screenshots</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../diagram-table/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Diagram Table">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Diagram Table
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../microsim-quality-report/" class="md-footer__link md-footer__link--next" aria-label="Next: MicroSim Quality Report">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                MicroSim Quality Report
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025, 2026 Leah Vogel. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
