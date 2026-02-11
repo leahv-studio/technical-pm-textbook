@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Join Types</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SQL Join Types</h1>
+        <p class="subtitle">Click a join type to see the Venn diagram, SQL syntax, and result set</p>
+        <div class="join-tabs" id="join-tabs"></div>
+        <div class="content-area">
+            <div class="venn-panel">
+                <svg id="venn-svg" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet"></svg>
+                <div class="venn-labels">
+                    <span class="label-a">Table A (Customers)</span>
+                    <span class="label-b">Table B (Orders)</span>
+                </div>
+            </div>
+            <div class="info-panel">
+                <div class="sql-section">
+                    <h3>SQL Syntax</h3>
+                    <pre id="sql-code"></pre>
+                </div>
+                <div class="data-section">
+                    <h3>Sample Result</h3>
+                    <div class="sample-tables">
+                        <table id="result-table"></table>
+                    </div>
+                </div>
+                <div class="description" id="join-description"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
