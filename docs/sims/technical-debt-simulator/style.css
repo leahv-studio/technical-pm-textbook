@@ -1,0 +1,274 @@
+:root {
+    --primary: rgb(30, 75, 105);
+    --accent: rgb(70, 180, 200);
+    --light-bg: #f5f7fa;
+    --border: #dde2e8;
+    --text: #2c3e50;
+    --text-light: #6c7a89;
+    --ship-color: #e67e22;
+    --refactor-color: #3498db;
+    --debt-color: #e74c3c;
+    --success-color: #27ae60;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--light-bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 24px 20px;
+}
+
+h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+/* Canvas */
+#canvas-container {
+    margin-bottom: 14px;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+#canvas-container canvas {
+    display: block;
+}
+
+/* Action Area */
+.action-area {
+    margin-bottom: 12px;
+}
+
+.sprint-info {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 18px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    background: white;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.action-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.action-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.action-btn strong {
+    font-size: 1rem;
+}
+
+.action-btn span {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+.ship-btn {
+    border-color: var(--ship-color);
+}
+
+.ship-btn strong {
+    color: var(--ship-color);
+}
+
+.ship-btn:hover:not(:disabled) {
+    background: #fef6ee;
+}
+
+.refactor-btn {
+    border-color: var(--refactor-color);
+}
+
+.refactor-btn strong {
+    color: var(--refactor-color);
+}
+
+.refactor-btn:hover:not(:disabled) {
+    background: #eef6fb;
+}
+
+/* Prediction */
+.prediction {
+    display: flex;
+    gap: 16px;
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.pred-ship, .pred-refactor {
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--light-bg);
+}
+
+.pred-ship::before {
+    content: "\25CF ";
+    color: var(--ship-color);
+}
+
+.pred-refactor::before {
+    content: "\25CF ";
+    color: var(--refactor-color);
+}
+
+/* Sprint Result */
+.sprint-result {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+}
+
+/* Summary Panel */
+.summary-panel {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+}
+
+.summary-panel h4 {
+    color: var(--primary);
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.summary-stat {
+    text-align: center;
+    padding: 12px 8px;
+    border-radius: 6px;
+    background: var(--light-bg);
+}
+
+.summary-stat .stat-number {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 800;
+    font-family: "SF Mono", "Fira Code", monospace;
+}
+
+.summary-stat .stat-desc {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: 2px;
+}
+
+.summary-stat.yours .stat-number { color: var(--primary); }
+.summary-stat.balanced .stat-number { color: var(--success-color); }
+.summary-stat.rush .stat-number { color: var(--debt-color); }
+
+.summary-panel p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+/* Bottom Bar */
+.bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.feature-total {
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.feature-total strong {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-family: "SF Mono", "Fira Code", monospace;
+}
+
+.btn {
+    padding: 8px 20px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    background: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background: var(--light-bg);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .prediction {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+}

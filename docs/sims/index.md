@@ -19,4 +19,8 @@ Interactive simulations to help product managers build technical fluency through
 
     Interactive p5.js simulation demonstrating the REST API request and response cycle. Explore HTTP methods, endpoints, status codes, and request/response bodies.
 
+-   **[Technical Debt Simulator](./technical-debt-simulator/index.md)**
+
+    Play through 12 sprints choosing to ship fast or refactor. Watch how technical debt compounds into delivery slowdowns and compare your strategy against a balanced team.
+
 </div>

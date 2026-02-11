@@ -33,6 +33,7 @@ nav:
     - Interactive MicroSims: sims/index.md
     - A/B Test Calculator: sims/ab-test-calculator/index.md
     - API Request Builder: sims/api-request-builder/index.md
+    - Technical Debt Simulator: sims/technical-debt-simulator/index.md
 
   - Learning Graph:
     - Introduction: learning-graph/index.md
