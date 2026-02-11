@@ -1,5 +1,5 @@
-site_name: 'Claude Skills for Intelligent Textbooks'
-site_description: 'A collection of skills and techniques for building intelligent textbooks using Claude AI.'
+site_name: 'From Product Manager to Technical Product Manager'
+site_description: "A practitioner's guide for experienced product managers transitioning into technical PM roles."
 site_author: 'Dan McCreary'
 repo_name: 'GitHub Repo'
 site_url: 'https://dmccreary.github.io/claude-skills/'
@@ -194,9 +194,9 @@ theme:
   logo: img/logo.png
   favicon: img/favicon.ico
   palette:
-    # Primary color overridden in css/extra.css with Anthropic brown (RGB: 218, 120, 87)
+    # Primary color overridden in css/extra.css to match cover image teal-blue
     primary: 'custom'
-    accent: 'orange'
+    accent: 'light-blue'
   include_sidebar: true
   features:
     - content.code.copy
@@ -229,7 +229,7 @@ extra_javascript:
 copyright: Copyright &copy; 2025, 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
 extra:
   schema: https://dmccreary.github.io/intelligent-textbooks/ns/textbook/v1
-  textbook_name: Claude Skills for Intelligent Textbooks
+  textbook_name: From Product Manager to Technical Product Manager
   textbook_version: "1.0"
   generator: false
   analytics:

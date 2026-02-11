@@ -7,15 +7,16 @@
     width: 50px;
 }
 
-/* Anthropic brown color for the header close match to Burnt Sienna - very close match
-RGB: 218, 120, 87 Hex: #DA7857
+/* Teal-blue color matching the Technical PM textbook cover image
+   Dark navy base with teal accent cards
 */
 
-/* Override Material theme primary color with Anthropic brown */
+/* Override Material theme primary color with cover-matched teal-blue */
 :root {
-    --md-primary-fg-color: rgb(218, 120, 87);
-    --md-primary-fg-color--light: rgb(228, 140, 107);
-    --md-primary-fg-color--dark: rgb(198, 100, 67);
+    --md-primary-fg-color: rgb(30, 75, 105);
+    --md-primary-fg-color--light: rgb(50, 120, 160);
+    --md-primary-fg-color--dark: rgb(20, 55, 80);
+    --md-accent-fg-color: rgb(70, 180, 200);
 }
 
 /* Container to control the iframe size and scaling */
@@ -28,7 +29,7 @@ RGB: 218, 120, 87 Hex: #DA7857
   /* Iframe styles */
   iframe {
     width: 100%;
-    border: solid 2px blue;
+    border: solid 2px rgb(50, 120, 160);
   }
 
   /* if a div with <div class="upper-alpha"> wraps a list, then number A.B.C.D etc */
