@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Testing Pipeline</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Automated Testing Pipeline</h1>
+        <p class="subtitle">Hover for stage details. Click to see failure impact.</p>
+
+        <div class="pipeline" id="pipeline"></div>
+
+        <div class="info-panel" id="infoPanel">
+            <div class="info-header">
+                <div class="info-icon" id="infoIcon"></div>
+                <h2 id="infoTitle"></h2>
+            </div>
+            <p id="infoDescription"></p>
+            <div class="info-section">
+                <h3>Key Activities</h3>
+                <ul id="infoActivities"></ul>
+            </div>
+            <div class="info-section failure-section" id="failureSection">
+                <h3>When This Stage Fails</h3>
+                <p id="failureText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

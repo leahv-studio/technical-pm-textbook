@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Debt Quadrant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Technical Debt Quadrant</h1>
+        <p class="subtitle">Click a quadrant to explore examples and management strategies</p>
+
+        <div class="matrix-wrapper">
+            <div class="y-axis-label">
+                <span class="axis-end">Prudent</span>
+                <span class="axis-start">Reckless</span>
+            </div>
+
+            <div class="matrix-area">
+                <div class="matrix-grid">
+                    <div class="quadrant quadrant-strategic" data-quadrant="strategic">
+                        <div class="quadrant-title">Strategic Debt</div>
+                        <div class="quadrant-quote">"We know this shortcut and will fix it next sprint"</div>
+                        <div class="quadrant-label">Prudent + Deliberate</div>
+                    </div>
+                    <div class="quadrant quadrant-learned" data-quadrant="learned">
+                        <div class="quadrant-title">Learned Debt</div>
+                        <div class="quadrant-quote">"Now we know how we should have built it"</div>
+                        <div class="quadrant-label">Prudent + Inadvertent</div>
+                    </div>
+                    <div class="quadrant quadrant-shortcut" data-quadrant="shortcut">
+                        <div class="quadrant-title">Shortcut Debt</div>
+                        <div class="quadrant-quote">"We don't have time to do it right"</div>
+                        <div class="quadrant-label">Reckless + Deliberate</div>
+                    </div>
+                    <div class="quadrant quadrant-ignorance" data-quadrant="ignorance">
+                        <div class="quadrant-title">Ignorance Debt</div>
+                        <div class="quadrant-quote">"What's a design pattern?"</div>
+                        <div class="quadrant-label">Reckless + Inadvertent</div>
+                    </div>
+                </div>
+
+                <div class="x-axis-label">
+                    <span class="axis-start">Deliberate</span>
+                    <span class="axis-end">Inadvertent</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-panel" id="detailPanel">
+            <div class="detail-close" id="detailClose">&times;</div>
+            <h2 id="detailTitle"></h2>
+            <div class="detail-section">
+                <h3>Description</h3>
+                <p id="detailDescription"></p>
+            </div>
+            <div class="detail-section">
+                <h3>Examples</h3>
+                <ul id="detailExamples"></ul>
+            </div>
+            <div class="detail-section">
+                <h3>Management Strategies</h3>
+                <ul id="detailStrategies"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

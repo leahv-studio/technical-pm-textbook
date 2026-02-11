@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Debt Impact on Velocity</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tech Debt Impact on Feature Velocity</h1>
+        <p class="subtitle">Adjust the slider to see how sprint allocation to debt reduction affects long-term velocity</p>
+
+        <div class="controls">
+            <div class="slider-group">
+                <label for="debtSlider">Sprint time allocated to debt reduction:</label>
+                <div class="slider-row">
+                    <input type="range" id="debtSlider" min="0" max="40" value="20" step="5">
+                    <span class="slider-value" id="sliderValue">20%</span>
+                </div>
+                <div class="slider-labels">
+                    <span>0%</span>
+                    <span>20%</span>
+                    <span>40%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-wrapper">
+            <canvas id="velocityChart"></canvas>
+        </div>
+
+        <div class="metrics-row" id="metricsRow">
+            <div class="metric-card">
+                <div class="metric-value" id="crossoverQuarter">--</div>
+                <div class="metric-label">Crossover Quarter</div>
+                <div class="metric-desc">When debt reduction strategy overtakes ignoring debt</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="velocityGain">--</div>
+                <div class="metric-label">Velocity Gain at Q12</div>
+                <div class="metric-desc">Additional story points delivered by Q12</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="totalFeatures">--</div>
+                <div class="metric-label">Cumulative Advantage</div>
+                <div class="metric-desc">Total extra features delivered over 12 quarters</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
