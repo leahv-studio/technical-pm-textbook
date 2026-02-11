@@ -1,542 +1,84 @@
-# Getting Started Guide for Installing Textbook Generation Skills in Claude Code
+# Getting Started
 
-This document guides you through the steps to install a set of Claude Code Skills
-used to generate intelligent textbook on your local computer so they are accessible to Claude Code.
+Welcome to *From Product Manager to Technical Product Manager: A Practitioner's Guide*.
 
-This Document has two sections:
+This textbook is designed for product managers with 3-8 years of experience who want to transition into technical PM roles. No prior engineering or programming background is required.
 
-1. A [Quick Start Summary](#quick-start-summary) for experienced users that understand UNIX shell command
-2. A [Detailed Installations Options](#detailed-installation-options-for-new-users) for users that have never use the UNIX shell
+## How to Use This Textbook
 
-At the end of this getting started guild you should be 
-able to run all the skills and book-building utilities in this project.
+### Read the Chapters in Order
 
-!!! Note
-    Claude Code does not currently run on the Windows PowerShell.  See details below
-    on how to install Claude Code on the MicroSoft Windows System for Linus (WSL).
+The 14 chapters are organized as a learning progression, with each chapter building on concepts introduced in earlier ones. Start with [Chapter 1: Product Management Foundations](chapters/01-pm-foundations/index.md) and work through sequentially for the best experience.
 
-## Quick Start Summary
+If you already have experience with certain topics, you can skip ahead. Check the [learning graph](learning-graph/index.md) to see concept dependencies and identify which prerequisites you need for any given chapter.
 
-#### Diagram: Install Book Building Environment
+### Use the Reference Materials
 
-<!-- Such a wild bug.  A top level document like /docs/getting-started.md can't use a relative path like "./sims" ! -->
-<iframe src="/claude-skills/sims/install-book-env/main.html" width="100%" height="400px" scrolling="no"></iframe>
-[View the Install Book Building Environment Fullscreen](sims/install-book-env/main.html)
+- **[Glossary](glossary.md)** - Definitions of all 200 key concepts, written from a PM perspective
+- **[FAQ](faq.md)** - Answers to 80 common questions organized by category
+- **[Course Description](course-description.md)** - Full overview of topics, learning objectives, and outcomes
 
+### Explore the Interactive Elements
 
-Here's a quick overview of the five main steps of the installation process.
-These steps assume you are familiar with using the UNIX Terminal or shell.
-You can find details on teach step later in the document in the [Detailed Installation Options for New Users](#detailed-installation-options-for-new-users).
-The Quick Start steps if you are an experienced UNIX user and have git already installed on your computer.
+Each chapter includes interactive MicroSims that let you explore technical concepts visually. You can adjust parameters, observe outcomes, and build intuition through hands-on experimentation. Browse all available simulations in the [MicroSims](sims/index.md) section.
 
-### Step 1: Clone the Claude Skills GitHub Repo
+### Test Your Understanding
 
-Download the claude-skills repository from GitHub to your local drive.
+Chapter quizzes are aligned to Bloom's Taxonomy cognitive levels, testing your knowledge from basic recall through analysis and evaluation. Use them to identify areas where you may need additional review.
 
-```bash
-mkdir -m "$HOME/projects"
-cd "$HOME/projects"
-git clone https://github.com/dmccreary/claude-skills
-```
+## Prerequisites
 
-### Step 2: Set the BK_HOME and Configure PATH
-Set environment variables in your shell startup file.
-Set `BK_HOME` and add `~/.local/bin` to your `PATH` if it is not already on your path
+Before starting, you should have:
 
-```bash
-BK_HOME="$HOME/projects/claude-skills"
-export PATH="$HOME/.local/bin:$PATH"
-```
+- **3+ years of product management experience** - You understand roadmaps, backlogs, stakeholder management, and the basics of shipping products
+- **Basic familiarity with the software development lifecycle** - You know what sprints, releases, and deployments are, even if you don't understand the technical details
+- **Willingness to learn technical concepts** - This textbook will push you outside your comfort zone, and that's the point
 
-Restart you shell and type: ```echo $BK_HOME``` to verify the environment variable is set
+### Optional but Helpful
 
-### Step 3: Install The Book Building Scripts
+- **Access to an AI assistant** (Claude, ChatGPT, or similar) - The textbook teaches you how to use AI tools for technical learning, and having one available to practice with will accelerate your progress
+- **A SQL playground** - Free options like [SQLite Online](https://sqliteonline.com/) or [DB Fiddle](https://www.db-fiddle.com/) let you practice the SQL concepts covered in Chapters 7 and 8
 
-Install book utilities
-Run `bk-install-scripts` to install book-building commands
+## Suggested Study Approach
 
-```bash
-$BK_HOME/scripts/bk-install-scripts
-```
+### For a Structured Learning Path (3-4 Months)
 
-Type ```bk``` and you should see a list of the book building commmands
+Dedicate 2-4 hours per week and work through one chapter every 1-2 weeks:
 
-### Step 4: Install Claude Skills
+1. **Weeks 1-4**: Chapters 1-3 (PM foundations, software development, documentation)
+2. **Weeks 5-8**: Chapters 4-6 (architecture, cloud, APIs)
+3. **Weeks 9-12**: Chapters 7-10 (databases, data management, quality, Agile)
+4. **Weeks 13-16**: Chapters 11-14 (analytics, experimentation, AI tools, career transition)
 
-To install skills globally, you just need to type the following command
+### For Quick Reference
 
-```
-bk-install-claude-skills
-```
+If you're preparing for a specific interview or need to understand a particular topic:
 
-This will install all the book builder scripts in your ~/.claude/skills directory
+1. Look up the concept in the [glossary](glossary.md)
+2. Find the relevant chapter using the [table of contents](chapters/index.md)
+3. Review the chapter content and try the interactive MicroSims
+4. Test your understanding with the chapter quiz
 
-### Step 5 Verify installation
+### For AI-Augmented Learning
 
-Check that everything is working correctly by asking Claude what skills it knows about.
+As you work through each chapter, practice using AI tools to deepen your understanding:
 
-```bash
-claude
-what skills do you know about?
-```
+- Ask Claude or ChatGPT to explain concepts in different ways
+- Use AI to generate practice scenarios related to your actual product
+- Have AI tools help you write SQL queries or read code snippets
+- Chapter 13 covers [AI tools and strategy](chapters/13-ai-tools-and-strategy/index.md) in depth
 
-Here is a sample response:
+## What You Will Be Able to Do
 
-```
-⏺ I have access to 23 specialized skills in this repository for creating intelligent educational textbooks.
-  Here's an overview:...
-```
+By the end of this textbook, you will be able to:
 
-!!! Warning
-    The installation process only installs **symbolic links** in your ~./local/bin and your ~/.claude/skills.
-    This allows you to just do a `git pull` on the claudes-skill repo to get new updates to existing skills.
-    You must not delete the claude-skills repo or the skills will stop working.
-    When new skills or scripts are added you MUST reinstall them to get the new symbolic links installed.
-    When in doubt do a git pull and rerun the installers for both scripts and skills.
+- **Speak the language of engineers** using appropriate technical terminology
+- **Evaluate system architecture proposals** and ask informed questions
+- **Write SQL queries** to answer product questions directly from data
+- **Understand APIs** well enough to scope integrations and review documentation
+- **Navigate Agile ceremonies** with technical depth, not just process knowledge
+- **Use AI tools strategically** to accelerate your technical learning
+- **Make informed build-versus-buy decisions** with both business and technical context
+- **Prepare for technical PM interviews** with confidence
 
-Detailed instructions for each step are provided below.
-
-## Detailed Installation Options For New Users
-
-This section of the Getting Started Guide walks new users through some of the 
-detailed step-by-step guide for getting the Claude skills loaded into
-your local computer.  It is intended for users that are new to the UNIX shell.
-
-
-There are two installation options for Claude skills:
-
-1. **Option 1: Global Skills** - The skills will be usable by all your projects. If you are creating multiple textbooks you should choose this option. (Recommended)
-2. **Option 2: Project Skills** - If you are only working on a single textbook you can use this option. If you are using many other skills on other projects that might have conflicting skill names, this is a good choice.
-
-The book-building utilities are always installed globally to `~/.local/bin`.
-
-### Prerequisites
-
-#### Git Installation
-
-Git comes install on many operating systems including
-
-1. MacOS
-2. Linux (many versions)
-3. Raspberry Pi OS
-4. Windows Subsystem for Linux (WSL)
-
-!!! note
-    Although git can be installed on Windows, you can't run Claude with PowerShell.
-    You must run the Windows Subsystem for Linux (WSL) or the git bash shell.
-    When you use Visual Studio Code, it must be configured to use these shells
-    in the Terminal View.
-
-You can test that git is installed by running:
-
-```sh
-git --version
-```
-
-Sample response:
-```
-git version 2.50.1 (Apple Git-155)
-```
-
-#### Background on UNIX Environment Variables
-
-The Claude Skills depend on running a set of UNIX shell commands.
-To find the shell commands the UNIX shell looks in a series of specified locations
-in your PATH variable.  You can see your current PATH by doing the following:
-
-```sh
-echo $PATH
-```
-
-By default, the claude program and the book building scripts are stored in a
-directory that your personal account always has write access to.
-This is called your "Hidden Local Binaries" location.
-
-```sh
-ls ~/.local/bin
-```
-
-The tilde character `~` is a shorthand for the home directory you are in when your shell starts up.
-This is referred to as your `$HOME` directory.  Note that you should never put `~` in your startup file.
-Always use `$HOME` in the startup files.
-
-Before installing the skills, you must complete two important setup steps:
-
-### 1. Set the BK_HOME Environment Variable
-
-The `BK_HOME` environment variable must point to the root directory of your cloned claude-skills repository. Add this to your shell startup file:
-
-**For Bash** (add to `~/.bashrc` or `~/.bash_profile`):
-```bash
-export BK_HOME=~/projects/claude-skills
-```
-
-**For Zsh** (add to `~/.zshrc`):
-```bash
-export BK_HOME=~/projects/claude-skills
-```
-
-**For Fish** (add to `~/.config/fish/config.fish`):
-```fish
-set -gx BK_HOME /Users/YOUR_USERNAME/Documents/ws/claude-skills
-```
-
-Replace `$HOME/projects/claude-skills` with the actual path where you cloned the repository.
-
-### 2. Add ~/.local/bin to Your PATH
-
-The book-building scripts will be installed to `~/.local/bin`. Ensure this directory is in your PATH:
-
-**For Bash** (add to `~/.bashrc` or `~/.bash_profile`):
-```bash
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-**For Zsh** (add to `~/.zshrc`):
-```bash
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-**For Fish** (add to `~/.config/fish/config.fish`):
-```fish
-set -gx PATH $HOME/.local/bin $PATH
-```
-
-After adding these lines, restart your terminal or run:
-```bash
-source ~/.bashrc  # or ~/.zshrc, depending on your shell
-```
-
-## Downloading the Skills
-
-The best way to download the skills is to use the git clone command:
-
-```sh
-cd ~/projects  # or your preferred workspace directory
-git clone https://github.com/dmccreary/claude-skills.git
-```
-
-This assumes that `projects`  is the directory where you check out your GitHub repositories. 
-You can use any directory you prefer, just remember to update your `BK_HOME` environment variable accordingly.
-
-## Installing Book-Building Scripts
-
-Before installing the Claude skills, you should install the book-building utility scripts. 
-These are scripts prefixed with `bk-` that help you manage and build intelligent textbooks.
-
-Run the installation script:
-
-```sh
-cd $BK_HOME/scripts
-./bk-install-scripts
-```
-
-This script will:
-- Create symbolic links for all `bk-*` scripts in `$BK_HOME/scripts/`
-- Place the links in `$HOME/.local/bin` for easy command-line access
-- Verify that `$HOME/.local/bin` is in your PATH
-- Display a list of all installed book utilities
-
-After installation, you can use commands like `bk-book-status`, `bk-build`, and other book utilities from anywhere in your terminal.
-
-## Installing Claude Skills
-
-After you have downloaded the repository and installed the book-building scripts, you have two options for installing the Claude skills:
-
-1. **Personal Level:** Install these skills for ALL your projects. (Recommended)
-2. **Project Level:** Install these skills for a specific project
-
-The first option will allow you to work on many different intelligent textbook projects without duplicating the skills on your local computer. It is highly recommended.
-
-The only reason that you might want to use the second option for specific projects is if you are doing complex development such as creating different versions of these skills.
-
-## Skill Installation for ALL Projects
-
-We will do this by creating symbolic links from your home Claude directory (`~/.claude/skills/`) to the skills in the cloned repository.
-
-Run the installation script:
-
-```sh
-cd $BK_HOME/scripts
-./install-claude-skills.sh
-```
-
-You will see a log of all the skills that were correctly installed:
-
-```
-Created symlink: ~/.claude/skills/faq-generator -> $HOME/Documents/ws/claude-skills/skills/faq-generator
-Created symlink: ~/.claude/skills/glossary-generator -> $HOME/Documents/ws/claude-skills/skills/glossary-generator
-Created symlink: ~/.claude/skills/intelligent-textbook -> $HOME/Documents/ws/claude-skills/skills/intelligent-textbook
-Created symlink: ~/.claude/skills/intelligent-textbook-creator -> $HOME/Documents/ws/claude-skills/skills/intelligent-textbook-creator
-Created symlink: ~/.claude/skills/learning-graph-generator -> $HOME/Documents/ws/claude-skills/skills/learning-graph-generator
-Created symlink: ~/.claude/skills/microsim-p5 -> $HOME/Documents/ws/claude-skills/skills/microsim-p5
-Created symlink: ~/.claude/skills/moving-rainbow -> $HOME/Documents/ws/claude-skills/skills/moving-rainbow
-Created symlink: ~/.claude/skills/quiz-generator -> $HOME/Documents/ws/claude-skills/skills/quiz-generator
-```
-
-## Getting Updates
-
-These skills will be updated frequently. To install the latest release, just run git pull:
-
-```sh
-cd $BK_HOME
-git pull
-```
-
-After pulling updates, you may need to re-run the installation scripts if new scripts or skills were added:
-
-```sh
-cd $BK_HOME/scripts
-./bk-install-scripts      # For book-building utilities
-./install-claude-skills.sh # For Claude skills
-```
-
-## Details of the Installation script
-
-The script will create a set of symbolic link commands, one for each skill file in this repo.
-
-```sh
-#!/bin/bash
-
-   # Create the target directory if it doesn't exist
-   # CHANGE $HOME to be the project you are working on
-   # $HOME = ~
-   # $HOME = /User/NAME/projects/PROJECT_NAME/.claude/skills
-   mkdir -p $HOME/.claude/skills
-
-   # Get the absolute path of the skills directory
-   SKILLS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/skills" && pwd)"
-
-   # Create symbolic links for each skill folder
-   for skill_dir in "$SKILLS_DIR"/*; do
-       if [ -d "$skill_dir" ]; then
-           skill_name=$(basename "$skill_dir")
-           target_link="$HOME/.claude/skills/$skill_name"
-
-           # Remove existing symlink if it exists
-           if [ -L "$target_link" ]; then
-               rm "$target_link"
-           fi
-
-           # Create the symbolic link
-           ln -s "$skill_dir" "$target_link"
-           echo "Created symlink: $HOME/.claude/skills/$skill_name -> $skill_dir"
-       fi
-   done
-
-   echo "Done! All skill symlinks created in $HOME/.claude/skills"
-```
-
-If you want to change the links to work in your specific project, just change the
-path where the links are created.
-
-Change:
-
-```sh
-$HOME = ~
-```
-
-to be:
-
-```sh
-$HOME = /User/NAME/projects/PROJECT_NAME/.claude/skills
-```
-
-## Testing Your Skill List
-
-```
-What skills do you know about.  Check the ~/.claude/skills/ area.
-```
-
-Response:
-
-```
-You have 8 skills installed in ~/.claude/skills/:
-
-  1. faq-generator - Generates FAQ content
-  2. glossary-generator - Creates glossary entries
-  3. intelligent-textbook - Works with intelligent textbook content
-  4. intelligent-textbook-creator - Creates intelligent textbooks
-  5. learning-graph-generator - Generates learning graphs
-  6. microsim-p5 - Creates p5.js micro-simulations
-  7. moving-rainbow - Creates moving rainbow animations
-  8. quiz-generator - Generates quiz content
-```
-
-## Add the /skills Command
-
-Claude Code allows you to add custom slash commands that execute scripts. You can add a `/skills` command that lists all available skills.
-
-The custom slash command system works by:
-1. Creating a command definition file in `~/.claude/commands/` (or `.claude/commands/` in your project)
-2. Having an executable script in your `$PATH` that the command calls
-
-The `list-skills.sh` script provides this functionality and is automatically installed to `~/.local/bin` when you run `bk-install-scripts`.
-
-To enable the `/skills` slash command:
-
-**Option 1: Install globally (recommended):**
-```sh
-cd $BK_HOME/scripts
-./install-skills-command.sh
-```
-
-This will:
-- Copy `list-skills.sh` to `~/.local/bin/` (if not already installed by bk-install-scripts)
-- Copy `commands/skills.md` to `~/.claude/commands/skills.md`
-
-**Option 2: Install for a specific project:**
-```sh
-mkdir -p .claude/commands
-cp $BK_HOME/commands/skills.md .claude/commands/skills.md
-```
-
-Note: The `list-skills.sh` script must be in your `$PATH` (which it will be if you followed the prerequisites and ran `bk-install-scripts`).
-
-## Sample Skill Slash Command Execution
-
-I just type '/sk` into Claude Code and you should see the code listed
-
-![](img/claude-code-skill-command.png)
-
-**Result:**
-
-```
-Available Claude Skills (8 total)
-
-  Educational Content Creation:
-  - faq-generator (user) - Generates FAQs from course content
-  - glossary-generator (user) - Creates ISO 11179-compliant glossaries
-  - quiz-generator (user) - Creates Bloom's Taxonomy-aligned quizzes
-
-  Intelligent Textbook Development:
-  - intelligent-textbook (user) - Complete workflow for AI-generated textbooks
-  - intelligent-textbook-creator (user) - Creates MkDocs Material textbooks (Level 2-5)
-  - learning-graph-generator (user) - Generates 200-concept learning graphs
-
-  Interactive Simulations:
-  - microsim-p5 (user) - Creates p5.js educational MicroSims
-
-  Hardware Projects:
-  - moving-rainbow (user) - MicroPython for Raspberry Pi Pico NeoPixels
-
-  All 8 skills are from your user directory (~/.claude/skills/). No project-specific skills found in .claude/skills/.
-
-```
-
-## Verifying Your Installation
-
-After completing all installation steps, verify everything is working:
-
-**1. Check environment variables:**
-```sh
-echo $BK_HOME
-# Should output: /Users/YOUR_USERNAME/Documents/ws/claude-skills (or your path)
-
-echo $PATH | grep -o "$HOME/.local/bin"
-# Should output: /Users/YOUR_USERNAME/.local/bin
-```
-
-**2. Check book-building utilities:**
-```sh
-which bk-book-status
-# Should output: /Users/YOUR_USERNAME/.local/bin/bk-book-status
-
-bk-book-status --help  # Test a book utility
-```
-
-**3. Check Claude skills:**
-```sh
-ls ~/.claude/skills/
-# Should list all installed skills (learning-graph-generator, glossary-generator, etc.)
-```
-
-**4. Test the /skills command in Claude Code:**
-Type `/skills` in Claude Code and it should list all available skills.
-
-## Configuring Permissions
-
-The default Claude Code permission behavior is very strict and will prompt you for many operations. For efficient workflow when working on textbook projects, you can configure permissions to be more permissive.
-
-**IMPORTANT**: Only use permissive settings when working in a safe, version-controlled directory (like a Git repository). This way, you can always revert unwanted changes.
-
-Create or edit `.claude/settings.json` in your project directory:
-
-```json
-{
-  "permissions": {
-    "allow": [
-      "Skill(*)",
-      "Bash(*:*)",
-      "FileSystem(read:./**/*.*,write:./**/*.*)"
-    ],
-    "deny": [],
-    "ask": []
-  }
-}
-```
-
-This configuration:
-- Allows all skills to run without prompting
-- Allows all bash commands
-- Allows reading and writing all files in the current project directory (`./**/*.*`)
-
-Since your work is in a Git repository, you can always review changes with `git diff` and revert if needed.
-
-## Troubleshooting
-
-### BK_HOME not set error
-
-If you get an error saying `BK_HOME environment variable is not set`:
-
-1. Add the export to your shell startup file (see Prerequisites section)
-2. Restart your terminal or run: `source ~/.bashrc` (or `~/.zshrc`)
-3. Verify with: `echo $BK_HOME`
-
-### Scripts not found in PATH
-
-If you get `command not found` when trying to run `bk-*` commands:
-
-1. Check that `~/.local/bin` is in your PATH: `echo $PATH | grep .local/bin`
-2. Add the export to your shell startup file (see Prerequisites section)
-3. Restart your terminal or run: `source ~/.bashrc` (or `~/.zshrc`)
-4. Re-run the installation: `cd $BK_HOME/scripts && ./bk-install-scripts`
-
-### Skills not showing up in Claude Code
-
-If skills don't appear when you try to use them:
-
-1. Check that symlinks were created: `ls -la ~/.claude/skills/`
-2. Re-run the installation: `cd $BK_HOME/scripts && ./install-claude-skills.sh`
-3. Restart Claude Code
-4. Try listing skills with `/skills` command or ask Claude: "What skills do you have access to?"
-
-### /skills command not working
-
-If the `/skills` slash command doesn't work:
-
-1. Check that `list-skills.sh` is in your PATH: `which list-skills.sh`
-2. Check that the command file exists: `ls ~/.claude/commands/skills.md`
-3. Re-run: `cd $BK_HOME/scripts && ./install-skills-command.sh`
-4. Restart Claude Code
-
-### Permission denied when running scripts
-
-If you get permission denied errors:
-
-1. Make scripts executable: `chmod +x $BK_HOME/scripts/*.sh`
-2. For specific scripts: `chmod +x $BK_HOME/scripts/bk-install-scripts`
-
-## Next Steps
-
-Once you have successfully installed the skills and utilities, you can:
-
-1. **Create a new intelligent textbook project** - Use the `intelligent-textbook-creator` skill
-2. **Generate a learning graph** - Use the `learning-graph-generator` skill
-3. **Create interactive simulations** - Use the `microsim-p5` skill
-4. **Generate course content** - Use the `glossary-generator`, `quiz-generator`, and `faq-generator` skills
-
-For detailed documentation on each skill, visit the [skills documentation](https://dmccreary.github.io/claude-skills/) or use the `/skills` command in Claude Code.
-
-
-
+Ready to begin? Start with [Chapter 1: Product Management Foundations](chapters/01-pm-foundations/index.md).
