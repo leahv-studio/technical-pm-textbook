@@ -3,35 +3,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A practitioner's guide for experienced product managers transitioning into technical PM roles">
+        <meta name="description" content="A practitioner's guide for experienced product managers transitioning into technical PM roles.">
       
       
         <meta name="author" content="Leah Vogel">
       
       
-        <link rel="canonical" href="https://leahv-studio.github.io/technical-pm-textbook/">
+        <link rel="canonical" href="https://leahv-studio.github.io/technical-pm-textbook/sims/sql-query-builder/">
       
       
+        <link rel="prev" href="../api-request-builder/">
       
-        <link rel="next" href="about/">
+      
+        <link rel="next" href="../technical-debt-simulator/">
       
       
         
       
       
-      <link rel="icon" href="img/favicon.ico">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>From Product Manager to Technical Product Manager - From Product Manager to Technical Product Manager</title>
+        <title>SQL Query Builder - From Product Manager to Technical Product Manager</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -50,9 +52,9 @@
       
     
     
-      <link rel="stylesheet" href="css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -68,7 +70,7 @@
 
     
     
-  <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -95,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#from-product-manager-to-technical-product-manager" class="md-skip">
+        <a href="#sql-query-builder" class="md-skip">
           Skip to content
         </a>
       
@@ -111,9 +113,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="From Product Manager to Technical Product Manager" class="md-header__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
+    <a href="../.." title="From Product Manager to Technical Product Manager" class="md-header__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
       
-  <img src="img/logo.png" alt="logo">
+  <img src="../../img/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -130,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              From Product Manager to Technical Product Manager
+              SQL Query Builder
             
           </span>
         </div>
@@ -211,8 +213,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -222,9 +222,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="From Product Manager to Technical Product Manager" class="md-nav__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
+    <a href="../.." title="From Product Manager to Technical Product Manager" class="md-nav__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
       
-  <img src="img/logo.png" alt="logo">
+  <img src="../../img/logo.png" alt="logo">
 
     </a>
     From Product Manager to Technical Product Manager
@@ -248,19 +248,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -276,7 +267,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -288,7 +278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   
@@ -315,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="course-description/" class="md-nav__link">
+      <a href="../../course-description/" class="md-nav__link">
         
   
   
@@ -342,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/" class="md-nav__link">
+      <a href="../../getting-started/" class="md-nav__link">
         
   
   
@@ -418,7 +408,7 @@
   
   
   
-    <a href="chapters/" class="md-nav__link">
+    <a href="../../chapters/" class="md-nav__link">
       
   
   
@@ -448,6 +438,8 @@
       
   
   
+    
+  
   
   
     
@@ -470,18 +462,17 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="sims/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -495,12 +486,255 @@
   
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MicroSims
   
 
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab-test-calculator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A/B Test Calculator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-request-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Request Builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL Query Builder
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL Query Builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Database
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Content
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical-debt-simulator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Debt Simulator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -552,7 +786,7 @@
   
   
   
-    <a href="learning-graph/" class="md-nav__link">
+    <a href="../../learning-graph/" class="md-nav__link">
       
   
   
@@ -585,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="glossary/" class="md-nav__link">
+      <a href="../../glossary/" class="md-nav__link">
         
   
   
@@ -612,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         
   
   
@@ -639,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="references/" class="md-nav__link">
+      <a href="../../references/" class="md-nav__link">
         
   
   
@@ -666,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="license/" class="md-nav__link">
+      <a href="../../license/" class="md-nav__link">
         
   
   
@@ -693,7 +927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="contact/" class="md-nav__link">
+      <a href="../../contact/" class="md-nav__link">
         
   
   
@@ -721,9 +955,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -734,6 +966,80 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Database
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Content
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -746,23 +1052,59 @@
               
                 
 
+
+
   
 
 
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
 
+      </a>
+    </li>
   
 
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
 
               
               <article class="md-content__inner md-typeset">
                 
                   
-  
-
 
 
   
-    <a href="https://github.com/leahv-studio/technical-pm-textbook/blob/master/docs/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/leahv-studio/technical-pm-textbook/blob/master/docs/sims/sql-query-builder/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -770,23 +1112,80 @@
   
 
 
-<style>
-.md-content__inner h1 {display: none !important;}
-</style>
-<h1 id="from-product-manager-to-technical-product-manager">From Product Manager to Technical Product Manager</h1>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/cover.png" data-desc-position="bottom"><img alt="Cover" src="img/cover.png"></a></p>
-<p>Welcome to <em>From Product Manager to Technical Product Manager: A Practitioner's Guide</em>.</p>
-<p>Not all technical product managers start as engineers. This textbook is designed for experienced product managers with 3-8 years of experience who want to transition into technical PM roles but didn't follow the traditional engineer-to-PM path. Whether your background is in art history, business, or any non-engineering field, this course proves that technical product management is accessible through deliberate learning, AI-augmented skill building, and practical application.</p>
-<p>You'll learn to speak the language of engineers, understand system architecture, make data-driven decisions, and confidently navigate technical trade-offs — all while leveraging the product instincts you've already developed.</p>
-<p><strong>The AI Advantage:</strong> Generative AI tools are democratizing technical knowledge, making this transition more achievable than ever. This course teaches you how to leverage AI assistants for learning technical concepts, debugging code, analyzing data, and understanding system designs.</p>
-<p>There are three key sections to get started:</p>
+<h1 id="sql-query-builder">SQL Query Builder</h1>
+<p>An interactive simulation that lets you construct SQL queries visually and see how they retrieve and filter data from a relational database. Build SELECT, WHERE, ORDER BY, and JOIN clauses step by step.</p>
+<iframe src="./main.html" width="100%" height="920px" scrolling="no" style="border: none; border-radius: 8px;"></iframe>
+
+<p><a class="md-button md-button--primary" href="main.html">View Fullscreen</a></p>
+<h2 id="overview">Overview</h2>
+<p>This MicroSim teaches the fundamentals of SQL by letting you build queries interactively against a sample database:</p>
+<ul>
+<li><strong>Three tables</strong> — Customers (5 rows), Orders (6 rows), Products (4 rows) — with realistic relationships</li>
+<li><strong>Visual query builder</strong> — select FROM, JOIN, SELECT columns, WHERE filters, and ORDER BY without typing SQL</li>
+<li><strong>Live SQL preview</strong> — watch the query form with color-coded syntax as you make choices</li>
+<li><strong>Run and see results</strong> — matching rows highlight in the source tables and the result set appears below</li>
+<li><strong>Six example queries</strong> — click any example to instantly load and run it</li>
+</ul>
+<h2 id="how-to-use">How to Use</h2>
 <ol>
-<li><a href="course-description/">Course Description</a> - A detailed overview of the course including topics covered and learning objectives aligned to Bloom's Taxonomy.</li>
-<li><a href="chapters/">Chapters</a> - 14 chapters covering the full journey from PM foundations to career transition and technical leadership.</li>
-<li><a href="getting-started/">Getting Started</a> - Setup instructions and prerequisites for working through the course materials.</li>
+<li><strong>Choose a table</strong> from the FROM dropdown — this is the table your query starts from</li>
+<li><strong>Optionally add a JOIN</strong> to combine data from a related table</li>
+<li><strong>Pick columns</strong> to SELECT — choose "All (*)" or specific columns</li>
+<li><strong>Add a WHERE filter</strong> to narrow results (e.g., city = Seattle, price &lt; 40)</li>
+<li><strong>Set ORDER BY</strong> to sort results ascending or descending</li>
+<li><strong>Click Run Query</strong> to execute — matching source rows highlight in teal and the result set appears below</li>
+<li>Try the <strong>example query buttons</strong> to see common SQL patterns in action</li>
 </ol>
-<p>Please contact me on <a href="https://www.linkedin.com/in/leah-vogel/">LinkedIn</a> if you have any questions.</p>
-<p>Thanks! - Leah</p>
+<h2 id="sample-database">Sample Database</h2>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Rows</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Customers</strong></td>
+<td>5</td>
+<td>customer_id, name, email, city</td>
+</tr>
+<tr>
+<td><strong>Orders</strong></td>
+<td>6</td>
+<td>order_id, customer_id, product_id, quantity, order_date</td>
+</tr>
+<tr>
+<td><strong>Products</strong></td>
+<td>4</td>
+<td>product_id, product_name, category, price</td>
+</tr>
+</tbody>
+</table>
+<p>Relationships: Customers → Orders (one-to-many via customer_id), Orders → Products (many-to-one via product_id).</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>SELECT</strong> determines which columns appear in the result</li>
+<li><strong>FROM</strong> specifies the source table</li>
+<li><strong>JOIN</strong> combines rows from two tables using a shared key</li>
+<li><strong>WHERE</strong> filters rows that don't meet the condition</li>
+<li><strong>ORDER BY</strong> sorts the final result set</li>
+<li>SQL reads like English: "Select name and email from Customers where city equals Seattle, ordered by name"</li>
+</ul>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After using this simulation, you should be able to:</p>
+<ul>
+<li>Construct basic SELECT queries with column selection and table specification</li>
+<li>Apply WHERE clauses to filter data using comparison operators</li>
+<li>Use ORDER BY to sort result sets ascending or descending</li>
+<li>Write JOIN queries to combine data from related tables using foreign keys</li>
+<li>Predict the result set of a query before running it</li>
+</ul>
+<h2 id="related-content">Related Content</h2>
+<p>This simulation supports <a href="../../chapters/07-databases-and-sql/">Chapter 7: Databases and SQL</a>, which covers relational database concepts, SQL fundamentals, table design, and how PMs work with data teams to define data requirements.</p>
+
+
 
 
 
@@ -795,14 +1194,7 @@
 
 
   
-  
 
-
-
-  
-
-
-  
 
 
 
@@ -826,19 +1218,33 @@
   
     
       
-        
-      
       <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../api-request-builder/" class="md-footer__link md-footer__link--prev" aria-label="Previous: API Request Builder">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                API Request Builder
+              </div>
+            </div>
+          </a>
         
         
           
-          <a href="about/" class="md-footer__link md-footer__link--next" aria-label="Next: About">
+          <a href="../technical-debt-simulator/" class="md-footer__link md-footer__link--next" aria-label="Next: Technical Debt Simulator">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                About
+                Technical Debt Simulator
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -874,12 +1280,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="js/extra.js"></script>
+        <script src="../../js/extra.js"></script>
       
     
   
