@@ -1,0 +1,2450 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How software is built, from source code and programming languages through version control, code review, and collaboration workflows">
+      
+      
+        <meta name="author" content="Leah Vogel">
+      
+      
+        <link rel="canonical" href="https://leahv-studio.github.io/technical-pm-textbook/chapters/02-software-development-essentials/">
+      
+      
+        <link rel="prev" href="../01-pm-foundations/">
+      
+      
+        <link rel="next" href="../03-technical-documentation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Software Development Essentials - From Product Manager to Technical Product Manager</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-HPLDD3D3K2"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-HPLDD3D3K2",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-HPLDD3D3K2",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#software-development-essentials" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="From Product Manager to Technical Product Manager" class="md-header__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            From Product Manager to Technical Product Manager
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Software Development Essentials
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/leahv-studio/technical-pm-textbook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="From Product Manager to Technical Product Manager" class="md-nav__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    From Product Manager to Technical Product Manager
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/leahv-studio/technical-pm-textbook" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-pm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Management Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Software Development Essentials
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Software Development Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-software-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Software Development?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code-the-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source Code: The Foundation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programming-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programming Languages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontend-and-backend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frontend and Backend Development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frontend and Backend Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frontend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frontend Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-full-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Full Stack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Full Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-full-stack-architecture-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Full Stack Architecture Layers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-control-and-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Control and Git
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version Control and Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-version-control-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Version Control Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Repositories
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Repositories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-git-branching-and-merge-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Git Branching and Merge Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-review-and-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Review and Pull Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Review and Pull Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pull Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pull Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-pull-request-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Pull Request Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-technical-pms-engage-with-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Technical PMs Engage with Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-technical-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Technical Documentation and Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-system-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. System Architecture Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-cloud-computing-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Cloud Computing, Scaling, and Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-apis-and-integrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. APIs and Integrations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-databases-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Databases and SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Advanced Data Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-quality-assurance-technical-debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Quality Assurance and Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-sdlc-and-agile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. SDLC and Agile Methodologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-analytics-data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Analytics and Data-Driven Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-advanced-analytics-experimentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Advanced Analytics and Experimentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-ai-tools-and-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. AI Tools and Strategy for Technical PMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-career-transition-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Career Transition and Technical Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-software-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Software Development?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code-the-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source Code: The Foundation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programming-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programming Languages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontend-and-backend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frontend and Backend Development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frontend and Backend Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frontend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frontend Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-full-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Full Stack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Full Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-full-stack-architecture-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Full Stack Architecture Layers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-control-and-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Control and Git
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version Control and Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-version-control-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Version Control Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Repositories
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Repositories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-git-branching-and-merge-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Git Branching and Merge Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-review-and-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Review and Pull Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Review and Pull Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pull Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pull Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-pull-request-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Pull Request Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-technical-pms-engage-with-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Technical PMs Engage with Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/leahv-studio/technical-pm-textbook/blob/master/docs/chapters/02-software-development-essentials/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="software-development-essentials">Software Development Essentials</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduces the fundamentals of how software is built, giving you the technical vocabulary to collaborate effectively with engineering teams. You'll learn about source code, programming languages, and the distinction between frontend and backend development, then explore version control with Git, code repositories, code reviews, and pull request workflows. This chapter bridges the gap between PM knowledge and hands-on software development understanding.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 11 concepts from the learning graph:</p>
+<ol>
+<li>Software Development</li>
+<li>Source Code</li>
+<li>Programming Languages</li>
+<li>Frontend Development</li>
+<li>Backend Development</li>
+<li>Full Stack Overview</li>
+<li>Version Control</li>
+<li>Git Basics</li>
+<li>Code Repository</li>
+<li>Code Review</li>
+<li>Pull Request</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-pm-foundations/">Chapter 1: Product Management Foundations</a></li>
+</ul>
+<hr>
+<h2 id="what-is-software-development">What Is Software Development?</h2>
+<p><strong>Software development</strong> is the systematic process of designing, writing, testing, and maintaining the instructions that tell computers what to do. As a technical PM, you won't be writing production code, but understanding how software gets built transforms your ability to set realistic timelines, evaluate technical proposals, and communicate with engineers on their terms. When an engineer says "this will take three sprints because we need to refactor the data access layer," you should understand what that means and why it matters.</p>
+<p>Software development is not a single activity but a collection of interconnected disciplines. It encompasses writing code, designing system architecture, testing for correctness, managing dependencies, deploying to production, and monitoring performance. Each of these activities has its own tools, practices, and vocabulary that you'll encounter throughout this course.</p>
+<p>The development process typically follows a cycle:</p>
+<ol>
+<li><strong>Requirements gathering</strong> - Translating user needs and business requirements into technical specifications</li>
+<li><strong>Design</strong> - Choosing the architecture, data structures, and patterns that will guide implementation</li>
+<li><strong>Implementation</strong> - Writing the actual source code</li>
+<li><strong>Testing</strong> - Verifying that the code works correctly and handles edge cases</li>
+<li><strong>Deployment</strong> - Releasing the software to users</li>
+<li><strong>Maintenance</strong> - Fixing bugs, improving performance, and adding features over time</li>
+</ol>
+<h2 id="source-code-the-foundation">Source Code: The Foundation</h2>
+<p><strong>Source code</strong> is the human-readable set of instructions written by developers that defines how a software application behaves. It is the raw material of software - text files containing logic, data structures, and algorithms that a compiler or interpreter translates into machine-executable instructions. When engineers talk about "the codebase," they're referring to the entire collection of source code files that make up a product.</p>
+<p>Source code is organized into files and directories following conventions specific to the programming language and framework being used. A typical project might have hundreds or thousands of source code files, each responsible for a different aspect of the application. Understanding this structure helps you navigate technical conversations and review engineering proposals.</p>
+<p>Here's what a simple piece of source code looks like in Python, a language commonly used for data analysis and backend services:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_conversion_rate</span><span class="p">(</span><span class="n">conversions</span><span class="p">,</span> <span class="n">total_visitors</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Calculate the conversion rate as a percentage."""</span>
+    <span class="k">if</span> <span class="n">total_visitors</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">conversions</span> <span class="o">/</span> <span class="n">total_visitors</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">calculate_conversion_rate</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Conversion rate: </span><span class="si">{</span><span class="n">rate</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>  <span class="c1"># Output: Conversion rate: 7.5%</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>You don't need to write code like this, but being able to read it and understand its intent is a valuable technical PM skill. This function takes two numbers, checks for a division-by-zero edge case, and returns a percentage. Even without programming experience, you can follow the logic.</p>
+<h2 id="programming-languages">Programming Languages</h2>
+<p><strong>Programming languages</strong> are formal systems of notation used to write source code. Just as human languages have different grammars and vocabularies suited to different contexts, programming languages have different strengths suited to different technical problems. As a technical PM, understanding the landscape of programming languages helps you evaluate technology decisions, understand hiring constraints, and appreciate why certain features take longer to build in some tech stacks than others.</p>
+<p>Programming languages fall into several broad categories based on where and how they're used:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Common Languages</th>
+<th>Typical Use</th>
+<th>PM Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend (browser)</td>
+<td>JavaScript, TypeScript</td>
+<td>User interfaces, interactivity</td>
+<td>Affects UI/UX possibilities and performance</td>
+</tr>
+<tr>
+<td>Backend (server)</td>
+<td>Python, Java, Go, Node.js, Ruby</td>
+<td>Business logic, data processing, APIs</td>
+<td>Affects scalability, hiring pool, development speed</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>Swift (iOS), Kotlin (Android), React Native, Flutter</td>
+<td>Mobile applications</td>
+<td>Affects platform coverage and development cost</td>
+</tr>
+<tr>
+<td>Data &amp; Analytics</td>
+<td>Python, R, SQL</td>
+<td>Data analysis, machine learning, reporting</td>
+<td>Affects analytics capabilities</td>
+</tr>
+<tr>
+<td>Infrastructure</td>
+<td>Bash, Terraform, YAML</td>
+<td>Server configuration, deployment</td>
+<td>Affects deployment speed and reliability</td>
+</tr>
+</tbody>
+</table>
+<p>No single language is "best" - each involves trade-offs. Python is excellent for rapid development and data analysis but slower for high-performance computing. Java is battle-tested for enterprise systems but verbose. Go excels at concurrent server applications but has a smaller ecosystem. When your engineering team proposes a technology choice, understanding these trade-offs helps you ask the right questions.</p>
+<div class="admonition tip">
+<p class="admonition-title">What Technical PMs Need to Know About Languages</p>
+<p>You don't need to be fluent in any programming language. You need to understand why your team chose their tech stack, what trade-offs that choice implies, and how it affects hiring, velocity, and future flexibility. Ask your engineers: "Why did we choose this language, and what would we lose if we switched?"</p>
+</div>
+<h2 id="frontend-and-backend-development">Frontend and Backend Development</h2>
+<h3 id="frontend-development">Frontend Development</h3>
+<p><strong>Frontend development</strong> (also called client-side development) focuses on everything users see and interact with directly in their browser or mobile app. The frontend is responsible for layout, visual design, animations, form validation, and responsiveness across different screen sizes. When a user clicks a button, types in a search box, or scrolls through a feed, they're interacting with frontend code.</p>
+<p>Frontend development relies on three core technologies in web browsers:</p>
+<ul>
+<li><strong>HTML</strong> (HyperText Markup Language) - Defines the structure and content of a page</li>
+<li><strong>CSS</strong> (Cascading Style Sheets) - Controls visual appearance, layout, and responsive design</li>
+<li><strong>JavaScript</strong> - Adds interactivity, dynamic content, and communication with backend services</li>
+</ul>
+<p>Modern frontend development uses frameworks like React, Angular, or Vue.js that provide structured patterns for building complex user interfaces. These frameworks manage the challenge of keeping the visual interface synchronized with underlying data as users interact with the application.</p>
+<h3 id="backend-development">Backend Development</h3>
+<p><strong>Backend development</strong> (also called server-side development) handles everything that happens behind the scenes - processing requests, managing data, enforcing business rules, authenticating users, and communicating with external services. When a user submits a form, the frontend sends that data to the backend, which validates it, stores it in a database, triggers any necessary workflows, and returns a response.</p>
+<p>Backend systems are responsible for:</p>
+<ul>
+<li><strong>API endpoints</strong> - Entry points where frontend and external systems send requests</li>
+<li><strong>Business logic</strong> - Rules governing how data is processed and decisions are made</li>
+<li><strong>Data persistence</strong> - Reading from and writing to databases</li>
+<li><strong>Authentication and authorization</strong> - Verifying user identity and permissions</li>
+<li><strong>Integration</strong> - Communicating with third-party services, payment processors, email providers</li>
+</ul>
+<h3 id="the-full-stack">The Full Stack</h3>
+<p>A <strong>full stack overview</strong> encompasses both frontend and backend together with the infrastructure that connects them. "Full stack" development means working across all layers of the application. While most engineers specialize in either frontend or backend, understanding the full stack helps you appreciate how changes in one layer ripple through others.</p>
+<h4 id="diagram-full-stack-architecture-layers">Diagram: Full Stack Architecture Layers</h4>
+<iframe src="../../sims/full-stack-architecture/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Full Stack Architecture Layers</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain, classify
+Learning Objective: Students will be able to explain the role of each layer in a full stack web application and classify technical decisions into the correct architectural layer.</p>
+<p>Purpose: Illustrate the layered architecture of a modern web application, showing how user actions flow from the browser through frontend, backend, and database layers</p>
+<p>Layout: Vertical stack diagram with four horizontal layers, connected by bidirectional arrows</p>
+<p>Layers (top to bottom):
+1. User/Browser Layer (light blue):
+   Label: "What the user sees"
+   Components: Browser window, mobile app
+   Technologies: HTML, CSS, JavaScript
+   Example interaction: "User clicks 'Add to Cart'"</p>
+<ol>
+<li>
+<p>Frontend Layer (blue):
+   Label: "Client-side application"
+   Components: React/Vue/Angular app, state management, routing
+   Technologies: TypeScript, React, CSS frameworks
+   Example: "Frontend validates input, updates UI optimistically, sends API request"</p>
+</li>
+<li>
+<p>Backend Layer (green):
+   Label: "Server-side processing"
+   Components: API server, business logic, authentication, job queues
+   Technologies: Python/Node.js/Java, REST API, middleware
+   Example: "Backend validates request, checks inventory, processes payment, returns confirmation"</p>
+</li>
+<li>
+<p>Database Layer (orange):
+   Label: "Data persistence"
+   Components: Relational DB, cache, file storage
+   Technologies: PostgreSQL, Redis, S3
+   Example: "Database records order, updates inventory count, stores receipt"</p>
+</li>
+</ol>
+<p>Connections: Bidirectional arrows between each adjacent layer with labels:
+- Browser → Frontend: "User interactions (clicks, input)"
+- Frontend → Backend: "HTTP requests (GET, POST, PUT, DELETE)"
+- Backend → Database: "SQL queries, cache reads/writes"
+- Return arrows labeled with responses: "HTML/JSON responses", "API responses", "Query results"</p>
+<p>Interactive elements:
+- Hover over each layer to see expanded description with technology examples
+- Hover over arrows to see example data flowing in each direction
+- Click a layer to highlight what a PM typically discusses with engineers at that level</p>
+<p>Color scheme: Light blue to blue to green to orange (user-facing to infrastructure)
+Implementation: HTML/CSS/JavaScript with responsive stacked layout</p>
+</details>
+<h2 id="version-control-and-git">Version Control and Git</h2>
+<h3 id="why-version-control-matters">Why Version Control Matters</h3>
+<p><strong>Version control</strong> is a system that records changes to files over time so you can recall specific versions later, collaborate with others without overwriting each other's work, and maintain a complete history of every change ever made to the codebase. Without version control, software development would be chaotic - imagine 20 engineers editing the same files simultaneously with no way to track or merge their changes.</p>
+<p>Version control solves several critical problems:</p>
+<ul>
+<li><strong>Collaboration</strong> - Multiple developers can work on the same codebase simultaneously</li>
+<li><strong>History</strong> - Every change is recorded with who made it, when, and why</li>
+<li><strong>Reversibility</strong> - Any change can be undone by reverting to a previous version</li>
+<li><strong>Branching</strong> - Developers can work on experimental features without affecting the stable codebase</li>
+<li><strong>Accountability</strong> - Changes are attributed to specific individuals, enabling code review</li>
+</ul>
+<h3 id="git-basics">Git Basics</h3>
+<p><strong>Git</strong> is the dominant version control system used in modern software development, created by Linus Torvalds (who also created Linux) in 2005. Git is a distributed version control system, meaning every developer has a complete copy of the entire project history on their local machine. This design makes Git fast, resilient, and capable of supporting offline work.</p>
+<p>The core concepts you'll encounter in Git conversations:</p>
+<table>
+<thead>
+<tr>
+<th>Git Concept</th>
+<th>What It Means</th>
+<th>PM Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Repository (repo)</strong></td>
+<td>A project's complete codebase and history</td>
+<td>"Which repo is this feature in?"</td>
+</tr>
+<tr>
+<td><strong>Commit</strong></td>
+<td>A snapshot of changes with a descriptive message</td>
+<td>"How many commits are in this release?"</td>
+</tr>
+<tr>
+<td><strong>Branch</strong></td>
+<td>A parallel line of development</td>
+<td>"Is this on a feature branch or main?"</td>
+</tr>
+<tr>
+<td><strong>Main/Master</strong></td>
+<td>The primary branch representing production-ready code</td>
+<td>"When does this merge to main?"</td>
+</tr>
+<tr>
+<td><strong>Merge</strong></td>
+<td>Combining changes from one branch into another</td>
+<td>"Any merge conflicts we should know about?"</td>
+</tr>
+<tr>
+<td><strong>Conflict</strong></td>
+<td>When two changes affect the same code and can't auto-merge</td>
+<td>"How long will resolving conflicts take?"</td>
+</tr>
+<tr>
+<td><strong>Tag</strong></td>
+<td>A named marker on a specific commit, often used for releases</td>
+<td>"What version tag is in production?"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="code-repositories">Code Repositories</h3>
+<p>A <strong>code repository</strong> (or "repo") is the storage location for a project's source code, complete version history, and associated configuration files. In practice, teams host repositories on platforms like GitHub, GitLab, or Bitbucket, which add collaboration features on top of Git's version control capabilities.</p>
+<p>Repositories are more than just code storage. They serve as the central hub for engineering collaboration, containing:</p>
+<ul>
+<li><strong>Source code</strong> organized in directories by feature or module</li>
+<li><strong>README files</strong> explaining what the project does and how to set it up</li>
+<li><strong>Configuration files</strong> for build tools, testing frameworks, and deployment pipelines</li>
+<li><strong>Issue trackers</strong> for bugs, feature requests, and technical debt items</li>
+<li><strong>Documentation</strong> for APIs, architecture decisions, and onboarding guides</li>
+</ul>
+<p>As a technical PM, you'll regularly interact with your team's repositories - reading pull requests, tracking issues, reviewing release notes, and occasionally inspecting code to understand how a feature works.</p>
+<h4 id="diagram-git-branching-and-merge-workflow">Diagram: Git Branching and Merge Workflow</h4>
+<iframe src="../../sims/git-branching-workflow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Git Branching and Merge Workflow</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain, interpret
+Learning Objective: Students will be able to explain how Git branches enable parallel development and interpret a branching diagram to understand the state of a codebase.</p>
+<p>Purpose: Visualize how Git branches allow parallel development with eventual merging back to the main branch</p>
+<p>Layout: Horizontal timeline-style diagram showing parallel branch lines</p>
+<p>Elements:
+- Main branch (dark blue solid line): Horizontal line across the top representing the stable production code, with commit dots at regular intervals
+- Feature Branch A (green line): Branches off main at commit 3, has 4 commits, merges back at commit 8 with a merge commit
+- Feature Branch B (orange line): Branches off main at commit 5, has 3 commits, merges back at commit 10
+- Hotfix Branch (red line): Branches off main at commit 7, has 1 commit, merges back quickly at commit 9
+- Release tags: Diamond markers on main branch at commits 6 ("v2.1") and 11 ("v2.2")</p>
+<p>Commit dots: Small circles on each branch line, numbered sequentially on main
+Branch points: Circles where branches diverge from main
+Merge points: Circles where branches rejoin main (show merge commit)</p>
+<p>Labels:
+- "main" label on the primary branch
+- "feature/user-auth" on Branch A
+- "feature/search-api" on Branch B
+- "hotfix/login-bug" on the hotfix branch
+- Timestamps or sprint labels below main branch</p>
+<p>Interactive elements:
+- Hover over any commit dot to see commit message and author
+- Hover over branch lines to see branch name and description
+- Hover over merge points to see "Merge commit: combined changes from [branch] into main"
+- Click a release tag to see what features were included in that release</p>
+<p>Color scheme: Dark blue (main), green (feature A), orange (feature B), red (hotfix)
+Implementation: HTML/CSS/JavaScript with SVG timeline, responsive horizontal layout</p>
+</details>
+<h2 id="code-review-and-pull-requests">Code Review and Pull Requests</h2>
+<h3 id="code-review">Code Review</h3>
+<p><strong>Code review</strong> is the practice of having other developers examine source code changes before they're merged into the main codebase. It serves as a quality gate that catches bugs, enforces coding standards, shares knowledge across the team, and ensures changes align with architectural decisions. Most engineering teams require at least one approving review before code can be merged.</p>
+<p>Code reviews benefit the team in multiple ways:</p>
+<ul>
+<li><strong>Bug detection</strong> - Fresh eyes catch issues the original author missed</li>
+<li><strong>Knowledge sharing</strong> - Reviewers learn about parts of the codebase they didn't write</li>
+<li><strong>Consistency</strong> - Reviews enforce coding standards and architectural patterns</li>
+<li><strong>Mentorship</strong> - Senior engineers guide junior developers through review feedback</li>
+<li><strong>Documentation</strong> - Review comments create a record of why decisions were made</li>
+</ul>
+<p>For technical PMs, understanding code review culture matters because it directly affects development velocity. Teams with healthy review practices ship more reliable code but may take longer per feature. Teams that skip reviews move faster initially but accumulate bugs and inconsistencies. When planning timelines, factor in review time - a feature isn't "done" when the code is written; it's done when it's reviewed, approved, and merged.</p>
+<h3 id="pull-requests">Pull Requests</h3>
+<p>A <strong>pull request</strong> (PR) - called a "merge request" in some platforms - is a formal proposal to merge code changes from one branch into another, typically from a feature branch into the main branch. Pull requests are the primary mechanism through which code review happens in modern development workflows.</p>
+<p>A well-structured pull request includes:</p>
+<table>
+<thead>
+<tr>
+<th>PR Component</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Title</strong></td>
+<td>Concise description of the change</td>
+<td>"Add search filtering to product catalog"</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Context, motivation, and approach</td>
+<td>"Users reported difficulty finding products. This adds category and price filters using the existing search API."</td>
+</tr>
+<tr>
+<td><strong>Linked issues</strong></td>
+<td>Traceability to requirements</td>
+<td>"Closes #342, relates to #298"</td>
+</tr>
+<tr>
+<td><strong>Code changes</strong></td>
+<td>The actual diff showing what changed</td>
+<td>Modified 5 files, +180 lines, -22 lines</td>
+</tr>
+<tr>
+<td><strong>Tests</strong></td>
+<td>Proof that the change works correctly</td>
+<td>"Added 12 unit tests, all passing"</td>
+</tr>
+<tr>
+<td><strong>Screenshots</strong></td>
+<td>Visual evidence for UI changes</td>
+<td>Before/after screenshots of the filter panel</td>
+</tr>
+<tr>
+<td><strong>Reviewer assignment</strong></td>
+<td>Who should evaluate this change</td>
+<td>Backend team lead + frontend specialist</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagram-pull-request-lifecycle">Diagram: Pull Request Lifecycle</h4>
+<iframe src="../../sims/pull-request-lifecycle/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Pull Request Lifecycle</summary>
+<p>Type: workflow</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: use, demonstrate
+Learning Objective: Students will be able to use their understanding of the PR workflow to demonstrate how a feature moves from development to production, including review cycles and CI checks.</p>
+<p>Purpose: Show the complete lifecycle of a pull request from creation to merge</p>
+<p>Visual style: Horizontal workflow with decision points and feedback loops</p>
+<p>Steps (left to right):
+1. Start: "Developer creates branch" (blue circle)
+   Hover: "Developer creates a feature branch from main and begins coding"</p>
+<ol>
+<li>
+<p>Process: "Write code and tests" (blue rectangle)
+   Hover: "Developer implements the feature, writes unit tests, and verifies locally"</p>
+</li>
+<li>
+<p>Process: "Open Pull Request" (blue rectangle)
+   Hover: "Developer pushes branch and creates a PR with title, description, and reviewer assignments"</p>
+</li>
+<li>
+<p>Process: "Automated CI checks run" (gray rectangle)
+   Hover: "Continuous integration runs linting, tests, build verification, and security scans automatically"</p>
+</li>
+<li>
+<p>Decision: "CI passes?" (yellow diamond)
+   Hover: "All automated checks must pass before human review begins"</p>
+</li>
+<li>No → Loop back to "Write code and tests" with label "Fix failing checks"</li>
+<li>
+<p>Yes → Continue</p>
+</li>
+<li>
+<p>Process: "Peer code review" (green rectangle)
+   Hover: "Assigned reviewers examine code changes, leave comments, and request modifications"</p>
+</li>
+<li>
+<p>Decision: "Approved?" (yellow diamond)
+   Hover: "Reviewer either approves, requests changes, or comments"</p>
+</li>
+<li>Changes requested → Loop back to "Write code and tests" with label "Address feedback"</li>
+<li>
+<p>Approved → Continue</p>
+</li>
+<li>
+<p>Process: "Merge to main" (green rectangle)
+   Hover: "PR is merged, feature branch is deleted, changes become part of the main codebase"</p>
+</li>
+<li>
+<p>End: "Deploy to production" (green circle)
+   Hover: "Merged code is deployed through the CI/CD pipeline to production"</p>
+</li>
+</ol>
+<p>Feedback loops shown as curved arrows going backward with labels explaining what triggers the loop.</p>
+<p>Color scheme: Blue (development), gray (automation), yellow (decisions), green (approval/completion)
+Implementation: HTML/CSS/JavaScript with SVG workflow diagram, responsive design</p>
+</details>
+<h2 id="how-technical-pms-engage-with-development">How Technical PMs Engage with Development</h2>
+<p>Understanding software development fundamentals changes how you operate as a PM in several practical ways. You can read pull request descriptions to understand what's shipping. You can browse the repository to see how features are structured. You can look at commit history to understand development velocity. You can participate in architecture discussions with informed questions rather than silence.</p>
+<p>Here are concrete ways technical PMs apply these concepts daily:</p>
+<ul>
+<li><strong>Sprint planning</strong> - You understand when an engineer says "we need to refactor this module first" because you know what source code organization looks like</li>
+<li><strong>Timeline estimation</strong> - You account for code review cycles, merge conflicts, and testing when setting expectations with stakeholders</li>
+<li><strong>Bug triage</strong> - You can read a stack trace well enough to identify which service is failing and route the issue to the right team</li>
+<li><strong>Technical debt conversations</strong> - You can evaluate whether a proposed refactoring is necessary by understanding the codebase's current state</li>
+<li><strong>Vendor evaluation</strong> - You can assess a third-party tool's API documentation and SDK quality because you understand the developer experience</li>
+</ul>
+<details class="question">
+<summary>Self-Check: Can you answer these questions?</summary>
+<ol>
+<li>What is the difference between frontend and backend development, and why does this distinction matter for product decisions?</li>
+<li>Why is version control essential for team-based software development? What problems does it solve?</li>
+<li>Describe the pull request workflow from branch creation to merge. What role does code review play?</li>
+<li>If an engineer tells you "we have a merge conflict on the authentication module," what does that mean and what's the likely impact on the timeline?</li>
+<li>Name three programming language categories and explain how a PM's awareness of them affects product planning.</li>
+</ol>
+</details>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Software development</strong> is a systematic process encompassing design, coding, testing, deployment, and maintenance - understanding this cycle helps PMs set realistic expectations</li>
+<li><strong>Source code</strong> is human-readable text organized in files and directories; being able to read code at a high level builds credibility with engineering teams</li>
+<li><strong>Programming languages</strong> have different strengths and trade-offs - the tech stack choice affects hiring, velocity, scalability, and future flexibility</li>
+<li><strong>Frontend development</strong> handles what users see and interact with, while <strong>backend development</strong> manages data processing, business logic, and integrations</li>
+<li>A <strong>full stack</strong> perspective helps PMs understand how changes in one layer affect others</li>
+<li><strong>Version control</strong> with <strong>Git</strong> enables collaboration, tracks history, and provides reversibility - it's the foundation of modern engineering workflows</li>
+<li><strong>Code repositories</strong> on platforms like GitHub serve as the central hub for source code, documentation, issues, and collaboration</li>
+<li><strong>Code review</strong> is a quality practice that catches bugs, shares knowledge, and enforces standards - it directly affects development timelines</li>
+<li><strong>Pull requests</strong> are the formal mechanism for proposing, reviewing, and merging code changes - understanding the PR lifecycle helps PMs track feature progress accurately</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../01-pm-foundations/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Product Management Foundations">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                1. Product Management Foundations
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-technical-documentation/" class="md-footer__link md-footer__link--next" aria-label="Next: 3. Technical Documentation and Requirements">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                3. Technical Documentation and Requirements
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025, 2026 Leah Vogel. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

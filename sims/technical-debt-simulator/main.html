@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Debt Simulator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Technical Debt Simulator</h2>
+        <p class="subtitle">Play through 12 sprints. Each sprint, choose to ship fast or refactor. Watch how debt compounds.</p>
+
+        <div id="canvas-container"></div>
+
+        <div class="action-area" id="action-area">
+            <div class="sprint-info" id="sprint-info">Sprint 1 of 12 &mdash; Choose your action:</div>
+            <div class="action-buttons">
+                <button class="action-btn ship-btn" id="ship-btn">
+                    <strong>Ship Fast</strong>
+                    <span>Rush features, skip tests. +2 bonus output, +15 debt.</span>
+                </button>
+                <button class="action-btn refactor-btn" id="refactor-btn">
+                    <strong>Refactor</strong>
+                    <span>Pay down debt, improve code. Half output, &minus;20 debt.</span>
+                </button>
+            </div>
+            <div class="prediction" id="prediction"></div>
+        </div>
+
+        <div class="sprint-result" id="sprint-result" style="display: none;"></div>
+
+        <div class="summary-panel" id="summary-panel" style="display: none;">
+            <h4 id="summary-title"></h4>
+            <div class="summary-stats" id="summary-stats"></div>
+            <p id="summary-text"></p>
+        </div>
+
+        <div class="bottom-bar">
+            <div class="feature-total" id="feature-total">Features shipped: <strong>0</strong></div>
+            <button class="btn reset-btn" id="reset-btn">Reset</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "PMFND": {
+    "range": [1, 20],
+    "keywords": ["product management", "stakeholder", "roadmap", "value proposition", "market research", "competitive", "customer feedback", "product metrics", "kpi", "okr", "product vision", "product lifecycle"],
+    "exclude": ["technical roadmapping"]
+  },
+  "SWDEV": {
+    "range": [21, 31],
+    "keywords": ["source code", "programming language", "frontend", "backend", "full stack", "version control", "git basics", "code repository", "code review", "pull request"],
+    "exclude": []
+  },
+  "TCDOC": {
+    "range": [32, 40],
+    "keywords": ["technical documentation", "engineering specification", "technical requirement", "functional requirement", "non-functional requirement", "technical specification", "software bug", "debugging", "technical jargon"],
+    "exclude": ["api documentation", "ai for debugging"]
+  },
+  "SARCH": {
+    "range": [41, 65],
+    "keywords": ["system architecture", "software component", "client-server", "monolithic", "microservice", "service-oriented", "distributed system", "cloud computing", "infrastructure as a service", "platform as a service", "software as a service", "serverless", "containerization", "docker", "kubernetes", "load balancing", "scaling", "caching", "content delivery", "reliability", "availability", "fault tolerance", "latency", "throughput"],
+    "exclude": []
+  },
+  "APINT": {
+    "range": [66, 85],
+    "keywords": ["api", "rest api", "graphql", "endpoint", "http method", "webhook", "third-party integration", "middleware", "serialization", "json format", "xml format", "sdk", "postman", "api gateway"],
+    "exclude": ["continuous integration", "integration testing", "ai integration"]
+  },
+  "DBASE": {
+    "range": [86, 110],
+    "keywords": ["database", "relational database", "sql", "nosql", "data warehouse", "data lake", "data table", "primary key", "foreign key", "schema", "normalization", "query optimization", "data migration", "transaction", "acid", "data modeling", "entity relationship", "indexing", "backup and recovery", "read vs write"],
+    "exclude": ["data-driven", "data visualization", "data pipeline", "data privacy", "data governance"]
+  },
+  "AGILE": {
+    "range": [111, 130],
+    "keywords": ["software dev lifecycle", "waterfall", "agile development", "scrum", "sprint", "daily standup", "product backlog", "user story", "acceptance criteria", "story point", "velocity", "kanban", "continuous integration", "continuous delivery", "release management", "feature flag", "minimum viable product", "iterative development"],
+    "exclude": []
+  },
+  "QATST": {
+    "range": [131, 145],
+    "keywords": ["technical debt", "code quality", "code refactoring", "legacy system", "system migration", "testing fundamental", "unit testing", "integration testing", "end-to-end testing", "quality assurance", "performance testing", "security testing", "code coverage", "automated testing"],
+    "exclude": ["a/b testing"]
+  },
+  "ANLYT": {
+    "range": [146, 170],
+    "keywords": ["data-driven", "product analytics", "web analytics", "user behavior", "funnel analysis", "cohort analysis", "a/b testing", "statistical significance", "conversion rate", "retention metric", "churn rate", "dashboard design", "data visualization", "python for data", "data pipeline", "etl process", "real-time analytics", "event tracking", "attribution", "customer segmentation", "predictive analytics", "data privacy", "gdpr", "data governance", "experiment design"],
+    "exclude": []
+  },
+  "AITOL": {
+    "range": [171, 190],
+    "keywords": ["generative ai", "large language model", "chatgpt", "claude for pm", "github copilot", "ai prompt", "ai code", "ai for documentation", "ai for data", "ai limitation", "ai ethics", "ai in product", "ai-augmented", "ai tool selection", "ai integration", "ai cost-benefit", "ai governance", "ai productivity", "ai for debugging", "ai for prototyping"],
+    "exclude": []
+  },
+  "CARER": {
+    "range": [191, 200],
+    "keywords": ["technical pm job", "technical interview", "technical communication", "engineering team dynamics", "build vs buy", "technical decision", "escalation framework", "technical roadmapping", "personal learning plan", "continuous tech learning"],
+    "exclude": []
+  }
+}
