@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/B Testing Workflow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>A/B Testing Workflow</h1>
+        <p class="subtitle">Six stages from hypothesis to decision with feedback loop</p>
+
+        <div class="workflow-row" id="workflowRow"></div>
+
+        <div class="feedback-loop">
+            <svg class="feedback-svg" viewBox="0 0 800 50" preserveAspectRatio="none">
+                <defs>
+                    <marker id="arrowHead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed" />
+                    </marker>
+                </defs>
+                <path d="M 720 5 C 720 40, 400 45, 80 40 L 80 25" stroke="#7c3aed" stroke-width="2" fill="none" stroke-dasharray="6,4" marker-end="url(#arrowHead)" />
+            </svg>
+            <span class="feedback-label">Iterate: refine hypothesis based on results</span>
+        </div>
+
+        <div class="panels">
+            <div class="panel" id="artifactPanel">
+                <h3 id="artifactTitle">Key Artifacts</h3>
+                <div id="artifactBody">Click a stage to see its key artifacts and deliverables.</div>
+            </div>
+            <div class="panel" id="pitfallPanel">
+                <h3 id="pitfallTitle">Common Pitfalls</h3>
+                <div id="pitfallBody">Click a stage to see common mistakes PMs make at that step.</div>
+            </div>
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Analytics Pipeline</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Predictive Analytics Pipeline</h1>
+        <p class="subtitle">From business question to deployed model with continuous learning</p>
+
+        <div class="pipeline-grid" id="pipelineGrid"></div>
+
+        <div class="feedback-loop">
+            <div class="feedback-badge">Continuous Learning</div>
+            <svg class="feedback-svg" viewBox="0 0 700 40" preserveAspectRatio="none">
+                <defs>
+                    <marker id="fbArrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#1e4b69" />
+                    </marker>
+                </defs>
+                <path d="M 620 5 C 620 30, 350 35, 80 30 L 80 18" stroke="#1e4b69" stroke-width="2" fill="none" stroke-dasharray="5,4" marker-end="url(#fbArrow)" />
+            </svg>
+            <span class="feedback-text">Model performance feeds back to refine questions and features</span>
+        </div>
+
+        <div class="panels">
+            <div class="panel" id="activityPanel">
+                <h3 id="activityTitle">Activities</h3>
+                <div id="activityBody">Click a stage to see PM activities and responsibilities at that step.</div>
+            </div>
+            <div class="panel" id="artifactPanel">
+                <h3 id="artifactTitle">Artifacts</h3>
+                <div id="artifactBody">Click a stage to see the key artifacts and deliverables produced.</div>
+            </div>
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
