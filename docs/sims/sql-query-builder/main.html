@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Query Builder</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>SQL Query Builder</h1>
+        <p class="subtitle">Build queries interactively and see how SQL retrieves data from a relational database.</p>
+
+        <div class="main-layout">
+            <!-- Left: Database Tables -->
+            <div class="tables-panel">
+                <h2>Database Tables</h2>
+                <div id="db-tables"></div>
+                <div id="er-canvas-container">
+                    <h3>Table Relationships</h3>
+                    <div id="er-canvas"></div>
+                </div>
+            </div>
+
+            <!-- Right: Query Builder + Results -->
+            <div class="query-panel">
+                <h2>Query Builder</h2>
+
+                <div class="builder-row">
+                    <label>FROM</label>
+                    <select id="from-select">
+                        <option value="">-- select table --</option>
+                        <option value="Customers">Customers</option>
+                        <option value="Orders">Orders</option>
+                        <option value="Products">Products</option>
+                    </select>
+                </div>
+
+                <div class="builder-row">
+                    <label>JOIN</label>
+                    <select id="join-select">
+                        <option value="">-- no join --</option>
+                    </select>
+                </div>
+
+                <div class="builder-row">
+                    <label>SELECT</label>
+                    <div id="select-checkboxes" class="checkbox-group">
+                        <span class="hint">Choose a table first</span>
+                    </div>
+                </div>
+
+                <div class="builder-row">
+                    <label>WHERE</label>
+                    <div class="where-group">
+                        <select id="where-col">
+                            <option value="">-- no filter --</option>
+                        </select>
+                        <select id="where-op">
+                            <option value="=">=</option>
+                            <option value=">">&gt;</option>
+                            <option value="<">&lt;</option>
+                            <option value=">=">≥</option>
+                            <option value="<=">≤</option>
+                            <option value="!=">≠</option>
+                            <option value="LIKE">LIKE</option>
+                        </select>
+                        <input type="text" id="where-val" placeholder="value">
+                    </div>
+                </div>
+
+                <div class="builder-row">
+                    <label>ORDER BY</label>
+                    <select id="orderby-col">
+                        <option value="">-- no ordering --</option>
+                    </select>
+                    <select id="orderby-dir">
+                        <option value="ASC">ASC</option>
+                        <option value="DESC">DESC</option>
+                    </select>
+                </div>
+
+                <!-- SQL Preview -->
+                <div class="sql-preview">
+                    <h3>SQL Statement</h3>
+                    <pre id="sql-display"><span class="sql-hint">Build your query above...</span></pre>
+                </div>
+
+                <div class="button-row">
+                    <button id="run-btn" class="btn-run" disabled>Run Query</button>
+                    <button id="clear-btn" class="btn-clear">Clear</button>
+                </div>
+
+                <!-- Example Queries -->
+                <div class="examples-section">
+                    <h3>Example Queries</h3>
+                    <div class="example-buttons" id="example-buttons"></div>
+                </div>
+
+                <!-- Results -->
+                <div id="results-section" class="results-section" style="display:none;">
+                    <h3>Result Set <span id="row-count"></span></h3>
+                    <div id="results-table"></div>
+                </div>
+
+                <!-- Error -->
+                <div id="error-section" class="error-section" style="display:none;">
+                    <span id="error-msg"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
