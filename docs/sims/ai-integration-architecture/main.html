@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Integration Architecture</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Integration Architecture Patterns</h1>
+        <p class="subtitle">Compare synchronous and asynchronous AI integration approaches</p>
+
+        <div class="toggle-buttons">
+            <button class="toggle-btn active" id="btn-both" onclick="setView('both')">Both Patterns</button>
+            <button class="toggle-btn" id="btn-sync" onclick="setView('sync')">Synchronous</button>
+            <button class="toggle-btn" id="btn-async" onclick="setView('async')">Asynchronous</button>
+        </div>
+
+        <div class="architecture-wrapper">
+            <div class="architecture-column sync-col" id="sync-col">
+                <div class="col-header sync-header">
+                    <h2>Synchronous</h2>
+                    <span class="latency-badge">200ms - 5s latency</span>
+                </div>
+                <div class="flow-steps">
+                    <div class="flow-step sync-step" data-tooltip="User initiates a request and waits for the response in real-time. Best for simple queries and quick interactions.">
+                        <div class="step-number">1</div>
+                        <div class="step-label">User Request</div>
+                    </div>
+                    <div class="flow-arrow sync-arrow">&#x25BC;</div>
+                    <div class="flow-step sync-step" data-tooltip="Routes the request, handles authentication, rate limiting, and load balancing before forwarding to the AI service.">
+                        <div class="step-number">2</div>
+                        <div class="step-label">API Gateway</div>
+                    </div>
+                    <div class="flow-arrow sync-arrow">&#x25BC;</div>
+                    <div class="flow-step sync-step" data-tooltip="The AI model processes the input and generates a response. Latency depends on model size and input complexity.">
+                        <div class="step-number">3</div>
+                        <div class="step-label">AI Service</div>
+                    </div>
+                    <div class="flow-arrow sync-arrow">&#x25BC;</div>
+                    <div class="flow-step sync-step" data-tooltip="Validates, formats, and filters the AI output. Applies content safety checks and response formatting.">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Response Processing</div>
+                    </div>
+                    <div class="flow-arrow sync-arrow">&#x25BC;</div>
+                    <div class="flow-step sync-step" data-tooltip="The processed response is delivered directly back to the user. Total round-trip: 200ms to 5 seconds.">
+                        <div class="step-number">5</div>
+                        <div class="step-label">User Response</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shared-center" id="shared-center">
+                <h3>Shared Infrastructure</h3>
+                <div class="shared-component" data-tooltip="Tracks latency, error rates, token usage, and cost per request. Provides real-time dashboards and alerting for both patterns." onclick="showDetail(this)">
+                    <div class="shared-icon">&#x1F4CA;</div>
+                    <span>Monitoring Dashboard</span>
+                </div>
+                <div class="shared-component" data-tooltip="Collects user feedback, tracks accuracy metrics, and feeds data back to improve model performance over time." onclick="showDetail(this)">
+                    <div class="shared-icon">&#x1F504;</div>
+                    <span>Feedback Loop</span>
+                </div>
+                <div class="shared-component" data-tooltip="Provides graceful degradation when the AI service is unavailable. Serves cached responses, default values, or routes to alternative services." onclick="showDetail(this)">
+                    <div class="shared-icon">&#x1F6E1;</div>
+                    <span>Fallback Handler</span>
+                </div>
+            </div>
+
+            <div class="architecture-column async-col" id="async-col">
+                <div class="col-header async-header">
+                    <h2>Asynchronous</h2>
+                    <span class="latency-badge">Seconds to minutes</span>
+                </div>
+                <div class="flow-steps">
+                    <div class="flow-step async-step" data-tooltip="User submits a request and receives an immediate acknowledgment. They don't wait for the AI to finish processing.">
+                        <div class="step-number">1</div>
+                        <div class="step-label">User Request</div>
+                    </div>
+                    <div class="flow-arrow async-arrow">&#x25BC;</div>
+                    <div class="flow-step async-step" data-tooltip="The request is placed in a message queue (e.g., RabbitMQ, SQS) for processing. Enables handling of large volumes and complex tasks.">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Task Queue</div>
+                    </div>
+                    <div class="flow-arrow async-arrow">&#x25BC;</div>
+                    <div class="flow-step async-step" data-tooltip="Workers pull tasks from the queue and process them through the AI model. Can handle longer-running operations like document analysis.">
+                        <div class="step-number">3</div>
+                        <div class="step-label">AI Service</div>
+                    </div>
+                    <div class="flow-arrow async-arrow">&#x25BC;</div>
+                    <div class="flow-step async-step" data-tooltip="Completed results are stored in a database or cache, ready for retrieval. Enables result persistence and later access.">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Result Store</div>
+                    </div>
+                    <div class="flow-arrow async-arrow">&#x25BC;</div>
+                    <div class="flow-step async-step" data-tooltip="User is notified via push notification, email, or WebSocket that their result is ready. Keeps users informed without blocking.">
+                        <div class="step-number">5</div>
+                        <div class="step-label">Notification</div>
+                    </div>
+                    <div class="flow-arrow async-arrow">&#x25BC;</div>
+                    <div class="flow-step async-step" data-tooltip="User retrieves and views the completed result at their convenience. Results remain available for future reference.">
+                        <div class="step-number">6</div>
+                        <div class="step-label">User Views</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-panel" id="detail-panel">
+            <button class="close-btn" onclick="closeDetail()">&times;</button>
+            <p id="detail-text"></p>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+    <script src="script.js"></script>
+</body>
+</html>

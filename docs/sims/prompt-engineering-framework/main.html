@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Engineering Framework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Prompt Engineering Framework</h1>
+        <p class="subtitle">Click each component to toggle between weak and strong examples</p>
+
+        <div class="components-stack">
+            <div class="component" data-component="context" onclick="toggleComponent('context')">
+                <div class="component-header">
+                    <div class="component-icon">C</div>
+                    <div class="component-title">
+                        <h3>Context</h3>
+                        <span class="component-desc">Background information</span>
+                    </div>
+                    <div class="toggle-badge" id="badge-context">Weak</div>
+                </div>
+                <div class="component-body" id="body-context">
+                    <div class="example weak-example active" id="weak-context">
+                        <div class="example-label">Weak Example</div>
+                        <p>"Write about databases."</p>
+                    </div>
+                    <div class="example strong-example" id="strong-context">
+                        <div class="example-label">Strong Example</div>
+                        <p>"You are helping a non-technical PM understand database choices for a SaaS product with 10K users."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component" data-component="role" onclick="toggleComponent('role')">
+                <div class="component-header">
+                    <div class="component-icon">R</div>
+                    <div class="component-title">
+                        <h3>Role</h3>
+                        <span class="component-desc">Perspective to adopt</span>
+                    </div>
+                    <div class="toggle-badge" id="badge-role">Weak</div>
+                </div>
+                <div class="component-body" id="body-role">
+                    <div class="example weak-example active" id="weak-role">
+                        <div class="example-label">Weak Example</div>
+                        <p>"Explain APIs."</p>
+                    </div>
+                    <div class="example strong-example" id="strong-role">
+                        <div class="example-label">Strong Example</div>
+                        <p>"As a senior engineer mentoring a new technical PM, explain REST APIs."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component" data-component="task" onclick="toggleComponent('task')">
+                <div class="component-header">
+                    <div class="component-icon">T</div>
+                    <div class="component-title">
+                        <h3>Task</h3>
+                        <span class="component-desc">Specific action requested</span>
+                    </div>
+                    <div class="toggle-badge" id="badge-task">Weak</div>
+                </div>
+                <div class="component-body" id="body-task">
+                    <div class="example weak-example active" id="weak-task">
+                        <div class="example-label">Weak Example</div>
+                        <p>"Help with my presentation."</p>
+                    </div>
+                    <div class="example strong-example" id="strong-task">
+                        <div class="example-label">Strong Example</div>
+                        <p>"Create 5 slide titles and 3 bullet points each for a board presentation on our API strategy."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component" data-component="format" onclick="toggleComponent('format')">
+                <div class="component-header">
+                    <div class="component-icon">F</div>
+                    <div class="component-title">
+                        <h3>Format</h3>
+                        <span class="component-desc">Output structure</span>
+                    </div>
+                    <div class="toggle-badge" id="badge-format">Weak</div>
+                </div>
+                <div class="component-body" id="body-format">
+                    <div class="example weak-example active" id="weak-format">
+                        <div class="example-label">Weak Example</div>
+                        <p>"Give me information."</p>
+                    </div>
+                    <div class="example strong-example" id="strong-format">
+                        <div class="example-label">Strong Example</div>
+                        <p>"Provide a comparison table with columns: Feature, Pros, Cons, Best For."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component" data-component="constraints" onclick="toggleComponent('constraints')">
+                <div class="component-header">
+                    <div class="component-icon">C</div>
+                    <div class="component-title">
+                        <h3>Constraints</h3>
+                        <span class="component-desc">Boundaries and limits</span>
+                    </div>
+                    <div class="toggle-badge" id="badge-constraints">Weak</div>
+                </div>
+                <div class="component-body" id="body-constraints">
+                    <div class="example weak-example active" id="weak-constraints">
+                        <div class="example-label">Weak Example</div>
+                        <p><em>(no constraints specified)</em></p>
+                    </div>
+                    <div class="example strong-example" id="strong-constraints">
+                        <div class="example-label">Strong Example</div>
+                        <p>"Use no more than 200 words. Avoid jargon. Target a non-technical executive audience."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="combined-prompt">
+            <h3>Combined Prompt</h3>
+            <div class="prompt-output" id="prompt-output">
+                <span class="placeholder">Click components above to build your prompt...</span>
+            </div>
+            <div class="prompt-counter"><span id="active-count">0</span> / 5 components active</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
