@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrum vs Kanban</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Scrum vs Kanban</h1>
+        <p class="subtitle">Hover over elements for descriptions. Explore the differences between these Agile frameworks.</p>
+
+        <!-- Scrum Section -->
+        <div class="framework-section">
+            <div class="framework-header scrum-header">
+                <h2>Scrum</h2>
+                <span class="framework-tag">Time-boxed Sprints</span>
+            </div>
+
+            <div class="scrum-content">
+                <div class="sprint-cycle-wrapper">
+                    <div class="sprint-cycle">
+                        <div class="cycle-ring">
+                            <div class="cycle-center">Sprint<br><span class="cycle-duration">2 weeks</span></div>
+                            <div class="cycle-event" data-event="plan" style="--angle: 0deg;">
+                                <div class="event-dot"></div>
+                                <div class="event-label">Plan</div>
+                            </div>
+                            <div class="cycle-event" data-event="standup" style="--angle: 72deg;">
+                                <div class="event-dot"></div>
+                                <div class="event-label">Daily Standup</div>
+                            </div>
+                            <div class="cycle-event" data-event="work" style="--angle: 144deg;">
+                                <div class="event-dot"></div>
+                                <div class="event-label">Sprint Work</div>
+                            </div>
+                            <div class="cycle-event" data-event="review" style="--angle: 216deg;">
+                                <div class="event-dot"></div>
+                                <div class="event-label">Review</div>
+                            </div>
+                            <div class="cycle-event" data-event="retro" style="--angle: 288deg;">
+                                <div class="event-dot"></div>
+                                <div class="event-label">Retro</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sprint-backlog">
+                        <h3>Sprint Backlog</h3>
+                        <div class="backlog-items">
+                            <div class="backlog-item" data-pts="5">User Authentication <span class="story-pts">5 pts</span></div>
+                            <div class="backlog-item" data-pts="3">Dashboard Layout <span class="story-pts">3 pts</span></div>
+                            <div class="backlog-item" data-pts="8">API Integration <span class="story-pts">8 pts</span></div>
+                            <div class="backlog-item" data-pts="2">Bug Fix: Login <span class="story-pts">2 pts</span></div>
+                            <div class="backlog-item" data-pts="3">Unit Tests <span class="story-pts">3 pts</span></div>
+                        </div>
+                        <div class="velocity-bar">
+                            <span>Sprint Velocity: 21 pts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scrum-tooltip" id="scrumTooltip"></div>
+            </div>
+        </div>
+
+        <!-- Comparison Callouts -->
+        <div class="comparison-callouts">
+            <div class="callout" data-compare="cadence">
+                <div class="callout-icon">&#9200;</div>
+                <div class="callout-text">
+                    <strong>Cadence:</strong> Scrum uses fixed sprints; Kanban uses continuous flow
+                </div>
+            </div>
+            <div class="callout" data-compare="roles">
+                <div class="callout-icon">&#128101;</div>
+                <div class="callout-text">
+                    <strong>Roles:</strong> Scrum has PO, SM, Team; Kanban has no prescribed roles
+                </div>
+            </div>
+            <div class="callout" data-compare="change">
+                <div class="callout-icon">&#128260;</div>
+                <div class="callout-text">
+                    <strong>Changes:</strong> Scrum discourages mid-sprint changes; Kanban allows anytime
+                </div>
+            </div>
+            <div class="callout" data-compare="metrics">
+                <div class="callout-icon">&#128200;</div>
+                <div class="callout-text">
+                    <strong>Metrics:</strong> Scrum tracks velocity; Kanban tracks cycle time and throughput
+                </div>
+            </div>
+        </div>
+
+        <!-- Kanban Section -->
+        <div class="framework-section">
+            <div class="framework-header kanban-header">
+                <h2>Kanban</h2>
+                <span class="framework-tag">Continuous Flow</span>
+            </div>
+
+            <div class="kanban-content">
+                <div class="kanban-board">
+                    <div class="kanban-column" data-col="todo">
+                        <div class="column-header">
+                            <span class="column-title">To Do</span>
+                        </div>
+                        <div class="kanban-cards">
+                            <div class="kanban-card card-feature">Search Feature</div>
+                            <div class="kanban-card card-bug">Fix: Timeout Error</div>
+                            <div class="kanban-card card-feature">Export CSV</div>
+                        </div>
+                    </div>
+                    <div class="kanban-column" data-col="progress">
+                        <div class="column-header">
+                            <span class="column-title">In Progress</span>
+                            <span class="wip-badge">WIP: 3</span>
+                        </div>
+                        <div class="kanban-cards">
+                            <div class="kanban-card card-feature animated-card">Notification System</div>
+                            <div class="kanban-card card-feature animated-card" style="animation-delay: 0.5s;">User Profile Page</div>
+                        </div>
+                    </div>
+                    <div class="kanban-column" data-col="review">
+                        <div class="column-header">
+                            <span class="column-title">Review</span>
+                        </div>
+                        <div class="kanban-cards">
+                            <div class="kanban-card card-feature animated-card" style="animation-delay: 1s;">Payment Gateway</div>
+                        </div>
+                    </div>
+                    <div class="kanban-column" data-col="done">
+                        <div class="column-header">
+                            <span class="column-title">Done</span>
+                        </div>
+                        <div class="kanban-cards">
+                            <div class="kanban-card card-done">Email Verification</div>
+                            <div class="kanban-card card-done">Password Reset</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-indicator">
+                    <div class="flow-arrow"></div>
+                    <span>Continuous flow direction</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
