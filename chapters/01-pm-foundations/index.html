@@ -1,0 +1,2785 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Core PM vocabulary, frameworks, and strategic concepts that form the foundation for technical product management">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/claude-skills/chapters/01-pm-foundations/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../02-software-development-essentials/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Product Management Foundations - Claude Skills for Intelligent Textbooks</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-HPLDD3D3K2"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-HPLDD3D3K2",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-HPLDD3D3K2",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#product-management-foundations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-header__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Claude Skills for Intelligent Textbooks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Product Management Foundations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-nav__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Claude Skills for Intelligent Textbooks
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Management Foundations
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Management Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-product-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Product Management?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-product-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Product Lifecycle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Product Lifecycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-product-lifecycle-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Product Lifecycle Phases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-technical-product-manager-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Technical Product Manager Role
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-users-and-the-market" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding Users and the Market
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Users and the Market">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-needs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Needs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#market-research-and-competitive-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Market Research and Competitive Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-value-and-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defining Value and Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Value and Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value-proposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Value Proposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-vision-and-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Vision and Roadmap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Vision and Roadmap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-from-vision-to-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: From Vision to Execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-people-and-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing People and Teams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing People and Teams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stakeholder-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stakeholder Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-functional-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Functional Teams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-Functional Teams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cross-functional-team-communication-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Cross-Functional Team Communication Hub
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measuring-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring Success
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Measuring Success">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-performance-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Performance Indicators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#okrs-objectives-and-key-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OKRs: Objectives and Key Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OKRs: Objectives and Key Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-okr-alignment-cascade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: OKR Alignment Cascade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bringing-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bringing It All Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-software-development-essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Software Development Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-technical-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Technical Documentation and Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-system-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. System Architecture Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-cloud-computing-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Cloud Computing, Scaling, and Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-apis-and-integrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. APIs and Integrations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-databases-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Databases and SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Advanced Data Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-quality-assurance-technical-debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Quality Assurance and Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-sdlc-and-agile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. SDLC and Agile Methodologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-analytics-data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Analytics and Data-Driven Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-advanced-analytics-experimentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Advanced Analytics and Experimentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-ai-tools-and-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. AI Tools and Strategy for Technical PMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-career-transition-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Career Transition and Technical Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../skill-descriptions/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Descriptions
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../workshops/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consolidation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consolidation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-product-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is Product Management?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-product-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Product Lifecycle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Product Lifecycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-product-lifecycle-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Product Lifecycle Phases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-technical-product-manager-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Technical Product Manager Role
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-users-and-the-market" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding Users and the Market
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Users and the Market">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-needs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Needs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#market-research-and-competitive-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Market Research and Competitive Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-value-and-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defining Value and Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Value and Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value-proposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Value Proposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product-vision-and-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Vision and Roadmap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Vision and Roadmap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-from-vision-to-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: From Vision to Execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-people-and-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing People and Teams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing People and Teams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stakeholder-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stakeholder Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-functional-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Functional Teams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-Functional Teams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-cross-functional-team-communication-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Cross-Functional Team Communication Hub
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measuring-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring Success
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Measuring Success">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-performance-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Performance Indicators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#okrs-objectives-and-key-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OKRs: Objectives and Key Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OKRs: Objectives and Key Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-okr-alignment-cascade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: OKR Alignment Cascade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bringing-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bringing It All Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/claude-skills/blob/master/docs/chapters/01-pm-foundations/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="product-management-foundations">Product Management Foundations</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter establishes the foundational product management vocabulary and frameworks that every technical PM must master. You'll explore the core concepts of product management including product lifecycle, strategy, vision, and roadmapping, as well as stakeholder management, user needs, and competitive analysis. By the end of this chapter, you'll have a solid understanding of the PM fundamentals that all subsequent technical concepts build upon.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 20 concepts from the learning graph:</p>
+<ol>
+<li>Product Management</li>
+<li>Technical Product Manager</li>
+<li>Product Lifecycle</li>
+<li>Software Product</li>
+<li>Technical Literacy</li>
+<li>Engineering Mindset</li>
+<li>Product Strategy</li>
+<li>Business Requirements</li>
+<li>User Needs</li>
+<li>Stakeholder Management</li>
+<li>Cross-Functional Teams</li>
+<li>Product Vision</li>
+<li>Product Roadmap</li>
+<li>Value Proposition</li>
+<li>Market Research</li>
+<li>Competitive Analysis</li>
+<li>Customer Feedback</li>
+<li>Product Metrics</li>
+<li>Key Performance Indicators</li>
+<li>OKRs</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter assumes only the prerequisites listed in the <a href="../../course-description/">course description</a>.</p>
+<hr>
+<h2 id="what-is-product-management">What Is Product Management?</h2>
+<p>Product management is the organizational function responsible for guiding the strategy, development, and continuous improvement of a product throughout its existence. As a product manager, you sit at the intersection of business, technology, and user experience, making decisions that balance what users need, what the business can sustain, and what technology can deliver. This role requires a unique blend of analytical thinking, empathy, communication skills, and strategic vision.</p>
+<p>A <strong>software product</strong> is any application, platform, or digital service delivered to users to solve a specific problem or fulfill a need. Unlike physical goods, software products can be updated continuously, distributed globally at near-zero marginal cost, and instrumented to capture detailed usage data. These characteristics make software product management fundamentally different from traditional product management - the feedback loops are shorter, the iteration speed is faster, and the data available for decision-making is richer.</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Physical Product</th>
+<th>Software Product</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distribution</td>
+<td>Manufacturing, shipping, retail</td>
+<td>Digital download, cloud delivery</td>
+</tr>
+<tr>
+<td>Update cycle</td>
+<td>Months to years</td>
+<td>Days to weeks</td>
+</tr>
+<tr>
+<td>User feedback</td>
+<td>Surveys, focus groups</td>
+<td>Real-time analytics, in-app feedback</td>
+</tr>
+<tr>
+<td>Marginal cost</td>
+<td>Significant per unit</td>
+<td>Near zero</td>
+</tr>
+<tr>
+<td>Iteration speed</td>
+<td>Slow (tooling changes)</td>
+<td>Fast (deploy and measure)</td>
+</tr>
+<tr>
+<td>Rollback capability</td>
+<td>Recall (costly, rare)</td>
+<td>Feature flags, instant rollback</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-product-lifecycle">The Product Lifecycle</h2>
+<p>The <strong>product lifecycle</strong> describes the stages a product passes through from initial concept to eventual retirement. Understanding where your product sits in this lifecycle directly influences your priorities, metrics, and technical decisions.</p>
+<p>The lifecycle typically follows four major phases:</p>
+<ol>
+<li><strong>Introduction</strong> - Initial launch focused on validating product-market fit, acquiring early adopters, and establishing core functionality</li>
+<li><strong>Growth</strong> - Scaling the user base, expanding features, and optimizing infrastructure to handle increasing demand</li>
+<li><strong>Maturity</strong> - Maximizing value from the existing product through optimization, efficiency improvements, and defending market position</li>
+<li><strong>Decline</strong> - Managing the transition as the product loses relevance, planning migration paths, and making end-of-life decisions</li>
+</ol>
+<p>Each phase demands different technical investments. During introduction, speed matters more than scalability. During growth, architecture decisions around scaling, database performance, and API design become critical. A technical PM who understands these lifecycle dynamics can advocate for the right engineering investments at the right time.</p>
+<h4 id="diagram-product-lifecycle-phases">Diagram: Product Lifecycle Phases</h4>
+<iframe src="../../sims/product-lifecycle-phases/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Product Lifecycle Phases</summary>
+<p>Type: infographic</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: classify, compare
+Learning Objective: Students will be able to classify a product into the correct lifecycle phase and explain how PM priorities shift across phases.</p>
+<p>Layout: Horizontal flow diagram showing four phases as connected cards arranged left to right, with a curve above showing relative revenue/usage over time.</p>
+<p>Phase Cards:
+- Introduction (blue): Key activities: MVP launch, user research, rapid iteration. PM Focus: "Does anyone want this?" Metrics: activation rate, qualitative feedback. Technical priority: Speed of iteration.
+- Growth (green): Key activities: scaling, feature expansion, team growth. PM Focus: "How do we serve more users?" Metrics: user growth rate, retention, revenue. Technical priority: Scalability and reliability.
+- Maturity (orange): Key activities: optimization, cost efficiency, market defense. PM Focus: "How do we maximize value?" Metrics: profitability, market share, NPS. Technical priority: Performance optimization, technical debt reduction.
+- Decline (gray): Key activities: sunsetting, migration, cost reduction. PM Focus: "What comes next?" Metrics: churn rate, migration completion. Technical priority: Data migration, API deprecation.</p>
+<p>Interactive elements:
+- Hover over each phase card to see detailed description with 2-3 real-world examples
+- Hover over the revenue curve to see how revenue correlates with each phase
+- Click a phase to highlight its key metrics and technical priorities</p>
+<p>Color scheme: Blue to green to orange to gray gradient following lifecycle progression
+Implementation: HTML/CSS/JavaScript with responsive card layout</p>
+</details>
+<h2 id="the-technical-product-manager-role">The Technical Product Manager Role</h2>
+<p>A <strong>technical product manager</strong> is a product manager who possesses sufficient technical depth to engage directly with engineering teams on architecture, system design, and implementation decisions while maintaining focus on user needs and business outcomes. The "technical" modifier does not mean you need to write production code - it means you can read code, understand system architecture diagrams, evaluate technical trade-offs, and communicate credibly with engineers.</p>
+<p><strong>Technical literacy</strong> is the ability to understand and communicate about technology concepts at a level sufficient for effective collaboration with engineering teams. For a technical PM, this includes understanding how systems are built, how data flows through applications, what makes some technical approaches better than others, and how engineering constraints affect product decisions.</p>
+<p>Developing an <strong>engineering mindset</strong> means adopting the systematic, analytical thinking patterns that engineers use to solve problems. This includes breaking complex problems into smaller components, thinking about edge cases and failure modes, considering scalability from the outset, and making decisions based on data rather than assumptions. You don't need to think like an engineer all the time, but you need to be able to switch into this mode when evaluating technical proposals or debugging product issues.</p>
+<div class="admonition tip">
+<p class="admonition-title">The Technical PM Advantage</p>
+<p>Technical PMs who can read a pull request, understand an architecture diagram, or debug a data pipeline issue earn credibility with engineering teams faster than those who rely solely on business acumen. This course builds exactly these skills.</p>
+</div>
+<h2 id="understanding-users-and-the-market">Understanding Users and the Market</h2>
+<h3 id="user-needs">User Needs</h3>
+<p><strong>User needs</strong> are the problems, goals, and desires that motivate people to seek out and use a product. Identifying genuine user needs - as opposed to feature requests or stated preferences - is the most fundamental skill in product management. Users often describe solutions rather than problems, so effective PMs learn to dig beneath surface-level requests to uncover the underlying need.</p>
+<p><strong>Customer feedback</strong> encompasses all information gathered from users about their experience with a product, including direct feedback (surveys, interviews, support tickets), behavioral data (usage patterns, drop-off points), and indirect signals (social media mentions, app store reviews). The key challenge is synthesizing diverse feedback sources into actionable insights without being whipsawed by individual requests.</p>
+<p>Effective customer feedback programs follow a structured approach:</p>
+<ul>
+<li><strong>Collect</strong> feedback through multiple channels (in-app surveys, user interviews, support analysis, analytics)</li>
+<li><strong>Categorize</strong> feedback by theme, user segment, and severity</li>
+<li><strong>Quantify</strong> how many users are affected and the business impact</li>
+<li><strong>Prioritize</strong> based on alignment with strategy and feasibility</li>
+<li><strong>Close the loop</strong> by communicating back to users what you learned and what you're doing about it</li>
+</ul>
+<h3 id="market-research-and-competitive-analysis">Market Research and Competitive Analysis</h3>
+<p><strong>Market research</strong> is the systematic process of gathering, analyzing, and interpreting information about a market, including its size, growth trajectory, customer segments, and unmet needs. For technical PMs, market research also includes understanding the technology landscape - what platforms are gaining adoption, what APIs competitors expose, and what infrastructure trends affect product decisions.</p>
+<p><strong>Competitive analysis</strong> builds on market research by specifically examining rival products and companies. A thorough competitive analysis goes beyond feature comparison tables to examine competitors' technical architecture, pricing models, integration ecosystems, and strategic direction.</p>
+<table>
+<thead>
+<tr>
+<th>Analysis Dimension</th>
+<th>Questions to Answer</th>
+<th>Where to Find Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Feature comparison</td>
+<td>What can their product do vs. ours?</td>
+<td>Product demos, documentation, free trials</td>
+</tr>
+<tr>
+<td>Technical architecture</td>
+<td>What tech stack do they use? How does it scale?</td>
+<td>Job postings, engineering blogs, conference talks</td>
+</tr>
+<tr>
+<td>Pricing model</td>
+<td>How do they monetize? What does scaling cost?</td>
+<td>Pricing pages, sales conversations, analyst reports</td>
+</tr>
+<tr>
+<td>Integration ecosystem</td>
+<td>What third-party tools do they connect with?</td>
+<td>API docs, marketplace listings, partner pages</td>
+</tr>
+<tr>
+<td>User sentiment</td>
+<td>What do their users love and hate?</td>
+<td>App store reviews, G2/Capterra, Reddit, social media</td>
+</tr>
+<tr>
+<td>Strategic direction</td>
+<td>Where are they heading?</td>
+<td>Press releases, investor calls, product changelog</td>
+</tr>
+</tbody>
+</table>
+<h2 id="defining-value-and-strategy">Defining Value and Strategy</h2>
+<h3 id="value-proposition">Value Proposition</h3>
+<p>A <strong>value proposition</strong> is a clear statement describing the specific benefit a product delivers to its target customers and how it differs from alternatives. A strong value proposition answers three questions: who is this for, what problem does it solve, and why is this solution better than what exists today?</p>
+<p>For technical PMs, the value proposition must also account for technical differentiation. If your product processes data 10x faster, integrates with 50 more platforms, or offers an API that developers prefer over competitors', these technical advantages become part of the value proposition.</p>
+<h3 id="product-strategy">Product Strategy</h3>
+<p><strong>Product strategy</strong> defines the approach a product team will take to deliver on the company's vision and achieve its business objectives. It sits between the high-level company strategy and the tactical day-to-day execution, providing a framework for making prioritization decisions. A good product strategy answers: who are we building for, what problems are we solving, how will we win, and what are we not doing?</p>
+<p><strong>Business requirements</strong> translate strategic objectives and user needs into specific capabilities the product must deliver. They describe the "what" and "why" without specifying the "how" - that's left to technical requirements and engineering design. A well-written business requirement is testable, traceable to a strategic objective, and clear enough that both business stakeholders and engineers understand what success looks like.</p>
+<h3 id="product-vision-and-roadmap">Product Vision and Roadmap</h3>
+<p>The <strong>product vision</strong> is an aspirational description of the future state your product aims to create. It provides long-term direction and inspiration, answering the question "what does the world look like when our product succeeds?" A compelling vision aligns the team, attracts talent, and helps stakeholders understand why day-to-day work matters.</p>
+<p>A <strong>product roadmap</strong> translates the product vision and strategy into a time-oriented plan that communicates priorities and expected milestones. Modern roadmaps emphasize themes and outcomes over specific features and dates, acknowledging that plans will evolve as you learn more.</p>
+<h4 id="diagram-from-vision-to-execution">Diagram: From Vision to Execution</h4>
+<iframe src="../../sims/vision-to-execution/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>From Vision to Execution</summary>
+<p>Type: workflow</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain, summarize
+Learning Objective: Students will be able to explain the relationship between product vision, strategy, roadmap, and day-to-day execution and summarize how each level informs the next.</p>
+<p>Purpose: Show the hierarchical flow from abstract vision to concrete execution</p>
+<p>Visual style: Vertical flowchart with four levels, each expanding in detail</p>
+<p>Levels (top to bottom):
+1. Product Vision (purple, wide banner): "What does the world look like when we succeed?" Time horizon: 3-5 years. Example: "Every product team makes decisions backed by real-time data."
+2. Product Strategy (blue, slightly narrower): "How will we get there?" Time horizon: 1-2 years. Example: "Win the mid-market analytics segment by being the easiest tool to integrate."
+3. Product Roadmap (green, medium width): "What are we prioritizing?" Time horizon: Quarter to year. Example: "Q1: Self-serve onboarding. Q2: API marketplace. Q3: Enterprise dashboards."
+4. Sprint/Execution (orange, narrow cards): "What are we building this week?" Time horizon: 1-2 weeks. Example: "Implement OAuth integration for three new data sources."</p>
+<p>Connections: Downward arrows between each level with labels:
+- Vision → Strategy: "Guides direction"
+- Strategy → Roadmap: "Sets priorities"
+- Roadmap → Execution: "Defines scope"
+- Upward feedback arrows (dashed): "Learnings inform strategy"</p>
+<p>Interactive elements:
+- Hover over each level to see expanded description with real-world examples
+- Hover over connecting arrows to see how information flows between levels</p>
+<p>Color scheme: Purple to blue to green to orange (abstract to concrete)
+Implementation: HTML/CSS/JavaScript with responsive vertical layout</p>
+</details>
+<h2 id="managing-people-and-teams">Managing People and Teams</h2>
+<h3 id="stakeholder-management">Stakeholder Management</h3>
+<p><strong>Stakeholder management</strong> is the practice of identifying, understanding, and effectively engaging with all individuals and groups who have an interest in or influence over your product's direction. Stakeholders include executives, engineering leads, designers, sales teams, customer support, legal, finance, and external partners. Each group has different information needs, decision-making power, and concerns.</p>
+<p>Effective stakeholder management requires mapping stakeholders along two dimensions: their level of influence over decisions and their level of interest in the product. This mapping determines your communication strategy:</p>
+<ul>
+<li><strong>High influence, high interest</strong> (e.g., VP of Engineering, CEO) - Manage closely with regular updates and proactive engagement</li>
+<li><strong>High influence, low interest</strong> (e.g., CFO, Legal) - Keep satisfied with periodic updates focused on their concerns</li>
+<li><strong>Low influence, high interest</strong> (e.g., power users, developer advocates) - Keep informed through newsletters, changelogs, and community forums</li>
+<li><strong>Low influence, low interest</strong> (e.g., peripheral departments) - Monitor with minimal effort</li>
+</ul>
+<h3 id="cross-functional-teams">Cross-Functional Teams</h3>
+<p><strong>Cross-functional teams</strong> are groups composed of members from different functional disciplines - engineering, design, data science, marketing, and product - who work together toward shared product goals. As a technical PM, you're typically the connective tissue in a cross-functional team, translating between business language and technical language, aligning priorities, and ensuring everyone understands the "why" behind decisions.</p>
+<p>Working effectively with cross-functional teams requires understanding each discipline's constraints, incentives, and communication preferences. Engineers want clear requirements and uninterrupted focus time. Designers want user research data and creative freedom. Data scientists want clean data and well-defined questions. Marketing wants compelling narratives and predictable timelines. Your job is to create an environment where all these needs are balanced.</p>
+<h4 id="diagram-cross-functional-team-communication-hub">Diagram: Cross-Functional Team Communication Hub</h4>
+<iframe src="../../sims/cross-functional-team-hub/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Cross-Functional Team Communication Hub</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: organize, differentiate
+Learning Objective: Students will be able to differentiate the communication needs and priorities of each discipline in a cross-functional team and organize their PM communication strategy accordingly.</p>
+<p>Purpose: Illustrate the PM as the central hub connecting different disciplines, with information flowing in both directions</p>
+<p>Layout: Radial diagram with PM at center, six functional disciplines arranged in a circle around it</p>
+<p>Center node: "Technical PM" (gold star shape)</p>
+<p>Surrounding nodes (arranged in circle):
+1. Engineering (blue gear icon): Needs: Clear specs, technical context, uninterrupted time. Communicates: Feasibility, estimates, trade-offs, risks.
+2. Design (purple palette icon): Needs: User research, constraints, brand guidelines. Communicates: Wireframes, prototypes, user flows.
+3. Data Science (green chart icon): Needs: Clean data, defined questions, access to tools. Communicates: Insights, models, experiment results.
+4. Marketing (orange megaphone icon): Needs: Product narrative, timelines, differentiators. Communicates: Market feedback, positioning, launch plans.
+5. Sales (red handshake icon): Needs: Feature updates, competitive intel, demo support. Communicates: Customer objections, deal blockers, revenue data.
+6. Leadership (gray crown icon): Needs: Progress updates, risk flags, strategic alignment. Communicates: Vision, resources, organizational priorities.</p>
+<p>Edges: Bidirectional arrows between PM and each node, with labels showing what information flows in each direction.</p>
+<p>Interactive elements:
+- Hover over each discipline node to see detailed communication preferences and tips
+- Click a node to highlight the information flows to/from that discipline
+- Hover over arrows to see example artifacts (e.g., PRDs, sprint reviews, dashboards)</p>
+<p>Color scheme: Each discipline has its own color as listed above
+Implementation: HTML/CSS/JavaScript with SVG radial layout, responsive design</p>
+</details>
+<h2 id="measuring-success">Measuring Success</h2>
+<h3 id="product-metrics">Product Metrics</h3>
+<p><strong>Product metrics</strong> are quantitative measurements that indicate how well a product is performing against its objectives. Metrics transform subjective opinions about product health into objective, trackable data points. The challenge is not finding things to measure - modern analytics tools can track virtually anything - but choosing the right metrics that actually drive better decisions.</p>
+<p>Good product metrics share several characteristics:</p>
+<ul>
+<li><strong>Actionable</strong> - The team can influence the metric through their work</li>
+<li><strong>Accessible</strong> - Everyone on the team understands what the metric means</li>
+<li><strong>Auditable</strong> - The data source and calculation method are transparent</li>
+<li><strong>Aligned</strong> - The metric connects to a strategic objective</li>
+</ul>
+<h3 id="key-performance-indicators">Key Performance Indicators</h3>
+<p><strong>Key performance indicators (KPIs)</strong> are the subset of product metrics that are most critical to measuring progress toward strategic objectives. While a product might track dozens of metrics, KPIs are the 3-5 numbers that appear on executive dashboards and drive resource allocation decisions. Choosing the wrong KPIs can misalign an entire organization, so this decision deserves careful thought.</p>
+<p>Common product KPIs include:</p>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>What It Measures</th>
+<th>When It Matters Most</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monthly Active Users (MAU)</td>
+<td>Breadth of engagement</td>
+<td>Growth phase</td>
+</tr>
+<tr>
+<td>Daily Active Users / MAU</td>
+<td>Engagement depth (stickiness)</td>
+<td>Growth and maturity</td>
+</tr>
+<tr>
+<td>Net Promoter Score (NPS)</td>
+<td>Customer satisfaction and loyalty</td>
+<td>All phases</td>
+</tr>
+<tr>
+<td>Customer Acquisition Cost (CAC)</td>
+<td>Efficiency of growth</td>
+<td>Growth and maturity</td>
+</tr>
+<tr>
+<td>Lifetime Value (LTV)</td>
+<td>Long-term revenue per customer</td>
+<td>Maturity phase</td>
+</tr>
+<tr>
+<td>Churn Rate</td>
+<td>Customer loss rate</td>
+<td>Growth and maturity</td>
+</tr>
+<tr>
+<td>Time to Value</td>
+<td>Speed of user onboarding</td>
+<td>Introduction and growth</td>
+</tr>
+<tr>
+<td>Feature Adoption Rate</td>
+<td>Usage of new capabilities</td>
+<td>All phases</td>
+</tr>
+</tbody>
+</table>
+<h3 id="okrs-objectives-and-key-results">OKRs: Objectives and Key Results</h3>
+<p><strong>OKRs (Objectives and Key Results)</strong> are a goal-setting framework that connects ambitious qualitative objectives to specific, measurable key results. Originally developed at Intel and popularized by Google, OKRs provide a structured way to align product teams around outcomes rather than outputs.</p>
+<p>An <strong>Objective</strong> is a qualitative, inspirational goal that describes what you want to achieve. <strong>Key Results</strong> are 2-4 quantitative metrics that indicate whether you've achieved the objective. Good key results are specific, time-bound, and measurable - you should be able to objectively determine whether you hit them.</p>
+<p><strong>Example OKR for a Technical PM:</strong></p>
+<ul>
+<li><strong>Objective:</strong> Make our API the easiest integration experience in the market<ul>
+<li><strong>KR1:</strong> Reduce average time-to-first-API-call from 45 minutes to 10 minutes</li>
+<li><strong>KR2:</strong> Increase API documentation satisfaction score from 3.2 to 4.5 (out of 5)</li>
+<li><strong>KR3:</strong> Grow third-party integrations from 12 to 30 by end of quarter</li>
+<li><strong>KR4:</strong> Reduce API-related support tickets by 40%</li>
+</ul>
+</li>
+</ul>
+<h4 id="diagram-okr-alignment-cascade">Diagram: OKR Alignment Cascade</h4>
+<iframe src="../../sims/okr-alignment-cascade/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>OKR Alignment Cascade</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: implement, demonstrate
+Learning Objective: Students will be able to implement an OKR hierarchy that demonstrates alignment between company, product, and team-level objectives.</p>
+<p>Purpose: Show how OKRs cascade from company level through product to individual teams, maintaining alignment at each level</p>
+<p>Layout: Three-tier hierarchical tree diagram</p>
+<p>Tiers:
+1. Company OKR (top, single node, dark blue):
+   Objective: "Become the #1 platform for mid-market analytics"
+   KR1: "Grow ARR from $10M to $25M"
+   KR2: "Achieve 50 NPS across mid-market segment"
+   KR3: "Reach 500 paying customers"</p>
+<ol>
+<li>Product Team OKRs (middle, two nodes, medium blue):
+   Product OKR A:
+   Objective: "Deliver a self-serve onboarding experience"
+   KR1: "Reduce time-to-value from 3 days to 2 hours"
+   KR2: "Increase trial-to-paid conversion from 8% to 18%"
+   KR3: "Achieve 90% onboarding completion rate"</li>
+</ol>
+<p>Product OKR B:
+   Objective: "Build the most connected analytics platform"
+   KR1: "Launch 20 new data source integrations"
+   KR2: "Reduce average integration setup time to under 5 minutes"
+   KR3: "Grow API calls by 300%"</p>
+<ol>
+<li>Team-Level OKRs (bottom, four nodes, light blue):
+   Show 2 teams under each product OKR with specific engineering/design objectives</li>
+</ol>
+<p>Connections: Downward arrows showing how each lower-level OKR contributes to the one above it, with labels explaining the relationship.</p>
+<p>Interactive elements:
+- Hover over any OKR node to see full objective and key results
+- Click a node to highlight its parent and children, showing the alignment chain
+- Hover over connecting arrows to see how the child OKR contributes to the parent</p>
+<p>Color scheme: Dark to light blue cascade from company to team level
+Implementation: HTML/CSS/JavaScript with hierarchical tree layout, responsive design</p>
+</details>
+<h2 id="bringing-it-all-together">Bringing It All Together</h2>
+<p>The concepts in this chapter form the foundation upon which every subsequent chapter builds. Product management provides the strategic lens, user needs and market research provide the "why," and metrics and OKRs provide the accountability framework. As you move into technical chapters on software development, system architecture, APIs, and databases, you'll repeatedly connect back to these foundations - every technical decision should ultimately trace back to a user need, a strategic objective, or a measurable outcome.</p>
+<p>The transition from product manager to technical product manager is not about abandoning these fundamentals. It's about deepening your ability to execute on them by understanding the technical substrate that makes modern software products possible. The engineering mindset you develop throughout this course will complement - not replace - the product instincts you've already built.</p>
+<details class="question">
+<summary>Self-Check: Can you answer these questions?</summary>
+<ol>
+<li>What are the four phases of the product lifecycle, and how do technical priorities differ in each?</li>
+<li>How does a technical PM differ from a traditional PM in daily practice?</li>
+<li>What makes a good KPI versus a vanity metric?</li>
+<li>Write an example OKR for a product that's transitioning from the Growth phase to the Maturity phase.</li>
+<li>Name three stakeholder groups and describe what information each needs from the PM.</li>
+</ol>
+</details>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Product management</strong> sits at the intersection of business, technology, and user experience - technical PMs add deeper technical engagement to this foundation</li>
+<li>The <strong>product lifecycle</strong> (introduction, growth, maturity, decline) determines which technical investments are most important at any given time</li>
+<li><strong>Technical literacy</strong> and an <strong>engineering mindset</strong> are skills that can be developed through deliberate practice and AI-augmented learning</li>
+<li>Understanding <strong>user needs</strong> through <strong>customer feedback</strong> and <strong>market research</strong> provides the "why" behind every product decision</li>
+<li>A <strong>value proposition</strong>, <strong>product strategy</strong>, <strong>product vision</strong>, and <strong>product roadmap</strong> create a coherent hierarchy from aspiration to execution</li>
+<li><strong>Stakeholder management</strong> and <strong>cross-functional team</strong> leadership require understanding each discipline's unique needs and constraints</li>
+<li><strong>Product metrics</strong>, <strong>KPIs</strong>, and <strong>OKRs</strong> provide the accountability framework that translates strategy into measurable outcomes</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: List of Chapters">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                List of Chapters
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02-software-development-essentials/" class="md-footer__link md-footer__link--next" aria-label="Next: 2. Software Development Essentials">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                2. Software Development Essentials
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025, 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,0 +1,2706 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How software systems are designed and structured, covering architectural patterns, distributed systems, reliability, and performance concepts for technical product managers">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/claude-skills/chapters/04-system-architecture/">
+      
+      
+        <link rel="prev" href="../03-technical-documentation/">
+      
+      
+        <link rel="next" href="../05-cloud-computing-infrastructure/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>System Architecture Fundamentals - Claude Skills for Intelligent Textbooks</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-HPLDD3D3K2"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-HPLDD3D3K2",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-HPLDD3D3K2",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#system-architecture-fundamentals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-header__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Claude Skills for Intelligent Textbooks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              System Architecture Fundamentals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-nav__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Claude Skills for Intelligent Textbooks
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-pm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Management Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-software-development-essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Software Development Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-technical-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Technical Documentation and Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. System Architecture Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. System Architecture Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is System Architecture?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-components-and-the-client-server-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Components and the Client-Server Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software Components and the Client-Server Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#software-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-client-server-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Client-Server Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Client-Server Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-client-server-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Client-Server Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architectural Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monolithic-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monolithic Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microservices-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Microservices Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-oriented-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service-Oriented Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Service-Oriented Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-architecture-patterns-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Architecture Patterns Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distributed Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-latency-and-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance: Latency and Throughput
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance: Latency and Throughput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Latency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Throughput
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-balancing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load Balancing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Load Balancing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-load-balancing-in-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Load Balancing in Action
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reliability-availability-and-fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reliability, Availability, and Fault Tolerance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reliability, Availability, and Fault Tolerance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Reliability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High Availability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fault Tolerance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bringing-architecture-decisions-to-product-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bringing Architecture Decisions to Product Strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-cloud-computing-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Cloud Computing, Scaling, and Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-apis-and-integrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. APIs and Integrations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-databases-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Databases and SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Advanced Data Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-quality-assurance-technical-debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Quality Assurance and Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-sdlc-and-agile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. SDLC and Agile Methodologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-analytics-data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Analytics and Data-Driven Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-advanced-analytics-experimentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Advanced Analytics and Experimentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-ai-tools-and-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. AI Tools and Strategy for Technical PMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-career-transition-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Career Transition and Technical Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../skill-descriptions/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Descriptions
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../workshops/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consolidation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consolidation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is System Architecture?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-components-and-the-client-server-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Components and the Client-Server Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software Components and the Client-Server Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#software-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-client-server-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Client-Server Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Client-Server Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-client-server-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Client-Server Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architectural Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architectural Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monolithic-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monolithic Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microservices-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Microservices Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-oriented-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service-Oriented Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Service-Oriented Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-architecture-patterns-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Architecture Patterns Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distributed Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-latency-and-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance: Latency and Throughput
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance: Latency and Throughput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Latency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Throughput
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-balancing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load Balancing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Load Balancing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-load-balancing-in-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Load Balancing in Action
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reliability-availability-and-fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reliability, Availability, and Fault Tolerance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reliability, Availability, and Fault Tolerance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Reliability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High Availability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fault Tolerance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bringing-architecture-decisions-to-product-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bringing Architecture Decisions to Product Strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/claude-skills/blob/master/docs/chapters/04-system-architecture/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="system-architecture-fundamentals">System Architecture Fundamentals</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter explores how software systems are designed and structured, giving you the ability to evaluate technical proposals and participate in architecture discussions. You will learn about key architectural patterns including monolithic vs microservices, client-server models, and distributed systems. The chapter also covers system reliability, availability, fault tolerance, and performance concepts like latency, throughput, and load balancing that are central to technical decision-making.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 13 concepts from the learning graph:</p>
+<ol>
+<li>System Architecture</li>
+<li>Software Components</li>
+<li>Client-Server Model</li>
+<li>Monolithic Architecture</li>
+<li>Microservices</li>
+<li>Service-Oriented Architecture</li>
+<li>Distributed Systems</li>
+<li>Load Balancing</li>
+<li>System Reliability</li>
+<li>High Availability</li>
+<li>Fault Tolerance</li>
+<li>System Latency</li>
+<li>System Throughput</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-pm-foundations/">Chapter 1: Product Management Foundations</a></li>
+<li><a href="../02-software-development-essentials/">Chapter 2: Software Development Essentials</a></li>
+</ul>
+<hr>
+<h2 id="what-is-system-architecture">What Is System Architecture?</h2>
+<p><strong>System architecture</strong> is the high-level structure of a software system, defining how its components are organized, how they interact with each other, and how they collectively deliver the product's functionality. Think of architecture as the blueprint for your software - just as a building's architecture determines its structural integrity, capacity, and flexibility for future modifications, a software system's architecture determines its performance, scalability, and maintainability.</p>
+<p>As a technical PM, you will not be designing system architecture yourself. However, you need to understand architectural concepts well enough to evaluate proposals from your engineering team, ask informed questions during design reviews, and appreciate how architectural decisions affect product timelines, costs, and capabilities. An architecture decision made early in a product's life can have consequences that persist for years.</p>
+<p>Architecture decisions typically involve trade-offs across several dimensions:</p>
+<ul>
+<li><strong>Complexity vs. simplicity</strong> - More sophisticated architectures handle more scenarios but are harder to build and maintain</li>
+<li><strong>Performance vs. cost</strong> - Faster systems often require more expensive infrastructure</li>
+<li><strong>Flexibility vs. speed</strong> - Building for future extensibility takes longer than building for today's needs</li>
+<li><strong>Consistency vs. availability</strong> - In distributed systems, you sometimes must choose between data accuracy and system uptime</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Why Architecture Matters to PMs</p>
+<p>When your engineering team says "we need to re-architect the payment service," they are describing work that may take months and produce no visible user-facing changes. Understanding architecture helps you explain to stakeholders why this investment is necessary and what risks exist if it is deferred.</p>
+</div>
+<h2 id="software-components-and-the-client-server-model">Software Components and the Client-Server Model</h2>
+<h3 id="software-components">Software Components</h3>
+<p><strong>Software components</strong> are the discrete, self-contained building blocks that make up a software system. Each component has a defined responsibility, a clear interface for communicating with other components, and an internal implementation that can be modified without affecting the rest of the system. Well-designed components follow the principle of separation of concerns - each component does one thing well.</p>
+<p>Common types of software components include:</p>
+<ul>
+<li><strong>Services</strong> - Backend processes that handle specific business logic (user authentication, payment processing, search)</li>
+<li><strong>Databases</strong> - Components that store and retrieve data persistently</li>
+<li><strong>Message queues</strong> - Components that enable asynchronous communication between services</li>
+<li><strong>Caches</strong> - Components that store frequently accessed data in fast-access memory</li>
+<li><strong>API gateways</strong> - Components that route incoming requests to the appropriate backend service</li>
+<li><strong>Load balancers</strong> - Components that distribute traffic across multiple instances of a service</li>
+</ul>
+<h3 id="the-client-server-model">The Client-Server Model</h3>
+<p>The <strong>client-server model</strong> is the foundational architectural pattern underlying virtually all modern web and mobile applications. In this model, the system is divided into two roles: clients that request services and servers that provide them. When you open a mobile app or visit a website, your device acts as the client, sending requests over the network to servers that process those requests and return responses.</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Role</strong></td>
+<td>Initiates requests</td>
+<td>Responds to requests</td>
+</tr>
+<tr>
+<td><strong>Location</strong></td>
+<td>User's device (browser, mobile app)</td>
+<td>Data center or cloud</td>
+</tr>
+<tr>
+<td><strong>Examples</strong></td>
+<td>Web browser, iOS app, Android app</td>
+<td>Web server, API server, database server</td>
+</tr>
+<tr>
+<td><strong>Resources</strong></td>
+<td>Limited by device capability</td>
+<td>Can be scaled with more hardware</td>
+</tr>
+<tr>
+<td><strong>State</strong></td>
+<td>Temporary (session-based)</td>
+<td>Persistent (stored in databases)</td>
+</tr>
+</tbody>
+</table>
+<p>The client-server model is important for PMs because it determines how work is distributed between the user's device and your infrastructure. Decisions about what logic runs on the client vs. the server affect performance, offline capability, security, and infrastructure costs.</p>
+<h4 id="diagram-client-server-architecture">Diagram: Client-Server Architecture</h4>
+<iframe src="../../sims/client-server-architecture/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Client-Server Architecture</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain, classify
+Learning Objective: Students will be able to explain how the client-server model works and classify different system components as client-side or server-side.</p>
+<p>Layout: Left-right diagram showing clients on the left communicating with servers on the right through a network layer in the middle. Multiple client types (browser, mobile, desktop) connect to multiple server types (web server, API server, database) through the network.</p>
+<p>Interactive elements: Hover over each component to see its role and example technologies. Click on connection arrows to see example request/response data.</p>
+<p>Color scheme: Blue for clients, green for servers, gray for network layer
+Implementation: HTML/CSS/JavaScript with responsive layout</p>
+</details>
+<h2 id="architectural-patterns">Architectural Patterns</h2>
+<h3 id="monolithic-architecture">Monolithic Architecture</h3>
+<p><strong>Monolithic architecture</strong> is a software design pattern where the entire application is built and deployed as a single, unified unit. All functionality - user interface logic, business rules, data access, and background processing - lives in one codebase and runs as one process. When you deploy a monolith, you deploy everything at once.</p>
+<p>Monolithic architecture is not inherently bad. For many products, especially those in the early stages of the product lifecycle, a monolith is the right choice. It is simpler to build, easier to debug, and faster to deploy than more distributed alternatives.</p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple to develop and understand</td>
+<td>Changes in one area can break unrelated features</td>
+</tr>
+<tr>
+<td>Easy to test end-to-end</td>
+<td>Scaling requires scaling the entire application</td>
+</tr>
+<tr>
+<td>Single deployment unit</td>
+<td>Large codebases become difficult to maintain</td>
+</tr>
+<tr>
+<td>Good performance (no network calls between components)</td>
+<td>Technology choices are locked in for the whole application</td>
+</tr>
+<tr>
+<td>Ideal for small teams and early-stage products</td>
+<td>Deployment risk increases as the application grows</td>
+</tr>
+</tbody>
+</table>
+<h3 id="microservices-architecture">Microservices Architecture</h3>
+<p><strong>Microservices</strong> is an architectural pattern where the application is decomposed into small, independently deployable services, each responsible for a specific business capability. Each microservice has its own codebase, its own database (ideally), and can be developed, deployed, and scaled independently. Services communicate with each other through well-defined APIs, typically using HTTP/REST or message queues.</p>
+<p>The transition from monolith to microservices is one of the most significant architectural decisions a product team can make. It affects development velocity, operational complexity, team organization, and infrastructure costs. As a technical PM, you should understand both the benefits and the considerable costs of this transition.</p>
+<ul>
+<li><strong>Benefits</strong>: Independent deployment enables faster iteration on individual services; teams can choose the best technology for each service; services can be scaled independently based on demand; failure in one service does not necessarily bring down the entire system</li>
+<li><strong>Costs</strong>: Distributed systems are inherently more complex to debug and monitor; network communication between services adds latency; data consistency across services is challenging; you need sophisticated deployment and monitoring infrastructure</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">The Microservices Trap</p>
+<p>Many teams adopt microservices prematurely, before they have the operational maturity to manage the complexity. A common pattern is to start with a monolith, identify the components that need independent scaling or deployment, and extract those into microservices incrementally. Do not let "microservices" become a buzzword that drives premature architectural decisions.</p>
+</div>
+<h3 id="service-oriented-architecture">Service-Oriented Architecture</h3>
+<p><strong>Service-oriented architecture (SOA)</strong> is an architectural style that predates microservices, organizing software as a collection of loosely coupled services that communicate through standardized interfaces. While microservices evolved from SOA principles, there are key differences: SOA services tend to be larger in scope, often share databases, and typically use an enterprise service bus (ESB) for communication. Microservices favor smaller, more independent services with direct communication.</p>
+<p>For practical purposes as a technical PM, the distinction matters less than the underlying principle both patterns share: decomposing a system into modular services with well-defined boundaries and interfaces. Whether your team calls their architecture SOA or microservices, the questions you should ask are the same: What are the service boundaries? How do services communicate? How do you handle failures?</p>
+<h4 id="diagram-architecture-patterns-comparison">Diagram: Architecture Patterns Comparison</h4>
+<iframe src="../../sims/architecture-patterns/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Architecture Patterns Comparison</summary>
+<p>Type: comparison-table</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: compare, differentiate
+Learning Objective: Students will be able to compare monolithic, SOA, and microservices architectures and differentiate their trade-offs for different product scenarios.</p>
+<p>Layout: Three-column comparison showing Monolithic, SOA, and Microservices architectures side by side with visual representations, key characteristics, best-fit scenarios, and trade-offs.</p>
+<p>Interactive elements: Click each architecture to see a detailed case study. Hover over trade-offs to see real-world examples.</p>
+<p>Color scheme: Blue for monolith, teal for SOA, green for microservices
+Implementation: HTML/CSS/JavaScript with responsive card layout</p>
+</details>
+<h2 id="distributed-systems">Distributed Systems</h2>
+<p>A <strong>distributed system</strong> is a collection of independent computers that appears to its users as a single coherent system. When your application runs across multiple servers, data centers, or cloud regions, it is a distributed system. Most modern web applications are distributed systems by necessity - no single server can handle the traffic, data, and computational requirements of a product with millions of users.</p>
+<p>Distributed systems introduce fundamental challenges that do not exist in single-machine applications:</p>
+<ul>
+<li><strong>Network unreliability</strong> - Communication between machines can fail, be delayed, or deliver messages out of order</li>
+<li><strong>Partial failures</strong> - Some components can fail while others continue operating</li>
+<li><strong>Clock synchronization</strong> - Different machines may disagree about the current time</li>
+<li><strong>Data consistency</strong> - Keeping data synchronized across multiple locations is inherently difficult</li>
+</ul>
+<p>Understanding these challenges helps you appreciate why some engineering tasks take longer than expected and why certain guarantees (like "the data is always perfectly consistent") may be technically impossible or prohibitively expensive in a distributed system.</p>
+<h2 id="performance-latency-and-throughput">Performance: Latency and Throughput</h2>
+<h3 id="system-latency">System Latency</h3>
+<p><strong>System latency</strong> is the time elapsed between initiating a request and receiving the first byte of the response. It measures how long users wait for the system to respond to their actions. Latency is one of the most user-perceptible performance metrics - research consistently shows that even small increases in latency lead to measurable drops in user engagement, conversion rates, and satisfaction.</p>
+<p>Latency has multiple components:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Typical Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Network latency</strong></td>
+<td>Time for data to travel across the network</td>
+<td>1-200ms depending on distance</td>
+</tr>
+<tr>
+<td><strong>Processing latency</strong></td>
+<td>Time for the server to compute the response</td>
+<td>1-500ms depending on complexity</td>
+</tr>
+<tr>
+<td><strong>Database latency</strong></td>
+<td>Time to read from or write to a database</td>
+<td>1-100ms for indexed queries</td>
+</tr>
+<tr>
+<td><strong>Serialization</strong></td>
+<td>Time to convert data to/from transmission format</td>
+<td>&lt;1ms typically</td>
+</tr>
+<tr>
+<td><strong>Queue wait time</strong></td>
+<td>Time spent waiting in a processing queue</td>
+<td>0-1000ms+ under load</td>
+</tr>
+</tbody>
+</table>
+<h3 id="system-throughput">System Throughput</h3>
+<p><strong>System throughput</strong> is the number of requests or transactions a system can process per unit of time, typically measured in requests per second (RPS) or transactions per second (TPS). While latency measures how fast a single request is handled, throughput measures how many requests the system can handle simultaneously.</p>
+<p>Latency and throughput are related but not identical. A system can have low latency (each request is fast) but low throughput (it can only handle a few requests at once). Conversely, a system can have high throughput (handles many requests) with moderate latency per individual request.</p>
+<div class="admonition tip">
+<p class="admonition-title">The PM's Performance Conversation</p>
+<p>When discussing performance with engineers, always ask about both latency and throughput. "How fast is it?" (latency) and "How many users can it handle?" (throughput) are different questions with different answers. Also ask about performance under load: "What happens to latency when we are at peak traffic?"</p>
+</div>
+<h2 id="load-balancing">Load Balancing</h2>
+<p><strong>Load balancing</strong> is the practice of distributing incoming network traffic across multiple servers to ensure no single server becomes overwhelmed. A load balancer acts as a traffic director, sitting between clients and a pool of backend servers, routing each request to the server best able to handle it.</p>
+<p>Load balancing is essential for any product that needs to serve more users than a single server can handle. It also provides redundancy: if one server fails, the load balancer automatically routes traffic to the remaining healthy servers.</p>
+<p>Common load balancing strategies include:</p>
+<ul>
+<li><strong>Round robin</strong> - Requests are distributed to servers sequentially (Server 1, Server 2, Server 3, repeat)</li>
+<li><strong>Least connections</strong> - Requests go to the server currently handling the fewest active connections</li>
+<li><strong>IP hash</strong> - The client's IP address determines which server receives the request, ensuring the same user consistently reaches the same server</li>
+<li><strong>Weighted</strong> - Servers with more capacity receive proportionally more traffic</li>
+</ul>
+<h4 id="diagram-load-balancing-in-action">Diagram: Load Balancing in Action</h4>
+<iframe src="../../sims/load-balancing/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Load Balancing in Action</summary>
+<p>Type: microsim</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: demonstrate, illustrate
+Learning Objective: Students will be able to demonstrate how different load balancing strategies distribute traffic and illustrate the impact on server utilization.</p>
+<p>Layout: Animation showing incoming requests being distributed across a pool of servers by a load balancer. Users can switch between round-robin, least-connections, and weighted strategies.</p>
+<p>Interactive elements: Select load balancing strategy from dropdown; adjust simulated traffic volume with slider; observe server load indicators in real time.</p>
+<p>Color scheme: Blue for load balancer, green gradient for server utilization
+Implementation: HTML/CSS/JavaScript with animated request flow</p>
+</details>
+<h2 id="reliability-availability-and-fault-tolerance">Reliability, Availability, and Fault Tolerance</h2>
+<h3 id="system-reliability">System Reliability</h3>
+<p><strong>System reliability</strong> is the probability that a system will perform its intended function without failure over a specified period of time. A reliable system consistently produces correct results and behaves predictably. Reliability is built through careful engineering practices including thorough testing, code review, monitoring, and redundancy.</p>
+<p>Reliability matters enormously for product trust. Users who experience frequent errors, data loss, or unexpected behavior lose confidence in the product and eventually leave. For technical PMs, reliability is not just an engineering metric - it is a core component of the user experience and directly affects retention, NPS, and revenue.</p>
+<h3 id="high-availability">High Availability</h3>
+<p><strong>High availability</strong> refers to a system's ability to remain operational and accessible for a very high percentage of time, minimizing downtime whether planned (maintenance) or unplanned (failures). Availability is typically expressed as a percentage, often referred to as "nines":</p>
+<table>
+<thead>
+<tr>
+<th>Availability</th>
+<th>Downtime Per Year</th>
+<th>Downtime Per Month</th>
+<th>Common Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>99%</td>
+<td>3.65 days</td>
+<td>7.3 hours</td>
+<td>"Two nines"</td>
+</tr>
+<tr>
+<td>99.9%</td>
+<td>8.76 hours</td>
+<td>43.8 minutes</td>
+<td>"Three nines"</td>
+</tr>
+<tr>
+<td>99.95%</td>
+<td>4.38 hours</td>
+<td>21.9 minutes</td>
+<td></td>
+</tr>
+<tr>
+<td>99.99%</td>
+<td>52.6 minutes</td>
+<td>4.38 minutes</td>
+<td>"Four nines"</td>
+</tr>
+<tr>
+<td>99.999%</td>
+<td>5.26 minutes</td>
+<td>26.3 seconds</td>
+<td>"Five nines"</td>
+</tr>
+</tbody>
+</table>
+<p>Each additional "nine" of availability requires significantly more engineering investment and operational discipline. Moving from 99.9% to 99.99% is far more expensive than moving from 99% to 99.9%. As a technical PM, you need to determine the right availability target for your product based on user expectations, contractual obligations (SLAs), and the cost of downtime versus the cost of achieving higher availability.</p>
+<h3 id="fault-tolerance">Fault Tolerance</h3>
+<p><strong>Fault tolerance</strong> is a system's ability to continue operating correctly even when one or more of its components fail. A fault-tolerant system is designed with the assumption that failures will happen and incorporates mechanisms to detect, isolate, and recover from them without user impact.</p>
+<p>Fault tolerance strategies include:</p>
+<ul>
+<li><strong>Redundancy</strong> - Running multiple copies of critical components so that if one fails, others continue serving</li>
+<li><strong>Failover</strong> - Automatically switching to a backup system when the primary fails</li>
+<li><strong>Circuit breakers</strong> - Detecting when a downstream service is failing and temporarily stopping requests to prevent cascading failures</li>
+<li><strong>Graceful degradation</strong> - Reducing functionality rather than failing completely (showing cached data when the database is slow)</li>
+<li><strong>Health checks</strong> - Continuously monitoring component health and removing unhealthy instances from service</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Reliability vs. Availability vs. Fault Tolerance</p>
+<p>These three concepts are related but distinct. <strong>Reliability</strong> means the system works correctly. <strong>Availability</strong> means the system is accessible when users need it. <strong>Fault tolerance</strong> means the system handles component failures gracefully. A system can be highly available but unreliable (it is always up but sometimes returns wrong data). A system can be reliable but not fault-tolerant (it works perfectly until a component fails, then crashes entirely).</p>
+</div>
+<h2 id="bringing-architecture-decisions-to-product-strategy">Bringing Architecture Decisions to Product Strategy</h2>
+<p>Architecture decisions are product decisions. The choice between a monolith and microservices affects team velocity, deployment frequency, and the types of features you can build. The choice of availability targets determines infrastructure costs and on-call requirements. The choice of latency targets shapes the user experience.</p>
+<p>As a technical PM, your role in architecture discussions is to represent the product perspective:</p>
+<ul>
+<li><strong>What are the user expectations?</strong> A consumer social app needs sub-second response times; an internal analytics tool can tolerate slower queries</li>
+<li><strong>What scale do we need to support?</strong> Architecture that works for 1,000 users may not work for 1,000,000</li>
+<li><strong>What is our tolerance for downtime?</strong> An e-commerce checkout needs higher availability than a blog</li>
+<li><strong>How fast do we need to iterate?</strong> If rapid experimentation is critical, the architecture must support frequent, safe deployments</li>
+<li><strong>What is our budget?</strong> More sophisticated architectures cost more to build and operate</li>
+</ul>
+<details class="question">
+<summary>Self-Check: Can you answer these questions?</summary>
+<ol>
+<li>What is the difference between monolithic and microservices architecture? When might each be the better choice?</li>
+<li>Explain the client-server model and give an example of a product that uses it.</li>
+<li>What is the relationship between latency and throughput? Can a system have high throughput but high latency?</li>
+<li>What does "99.99% availability" mean in practical terms? How many minutes of downtime per month does it allow?</li>
+<li>Name three fault tolerance strategies and explain how each one prevents user-facing failures.</li>
+</ol>
+</details>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>System architecture</strong> is the high-level structure defining how components are organized and interact - it shapes performance, scalability, and maintainability for years</li>
+<li><strong>Software components</strong> are self-contained building blocks with defined responsibilities; the <strong>client-server model</strong> is the foundational pattern for web and mobile applications</li>
+<li><strong>Monolithic architecture</strong> is simpler and faster to build, making it ideal for early-stage products; <strong>microservices</strong> enable independent scaling and deployment but add operational complexity</li>
+<li><strong>Service-oriented architecture</strong> shares principles with microservices but predates them with larger, more loosely defined service boundaries</li>
+<li><strong>Distributed systems</strong> introduce challenges around network reliability, partial failures, and data consistency that do not exist in single-machine applications</li>
+<li><strong>System latency</strong> measures response time for individual requests; <strong>system throughput</strong> measures how many requests the system handles per unit of time</li>
+<li><strong>Load balancing</strong> distributes traffic across multiple servers to improve throughput and provide redundancy</li>
+<li><strong>System reliability</strong> means the system works correctly; <strong>high availability</strong> means it is accessible when needed; <strong>fault tolerance</strong> means it handles component failures gracefully</li>
+<li>Architecture decisions are product decisions - always evaluate them through the lens of user expectations, scale requirements, iteration speed, and budget</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../03-technical-documentation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3. Technical Documentation and Requirements">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                3. Technical Documentation and Requirements
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../05-cloud-computing-infrastructure/" class="md-footer__link md-footer__link--next" aria-label="Next: 5. Cloud Computing, Scaling, and Infrastructure">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                5. Cloud Computing, Scaling, and Infrastructure
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025, 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

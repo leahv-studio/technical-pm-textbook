@@ -1,0 +1,15 @@
+{
+  "title": "From Product Manager to Technical Product Manager",
+  "description": "Learning graph with 200 concepts covering the transition from product management to technical product management, including system architecture, APIs, databases, agile methodologies, analytics, and AI tools.",
+  "creator": "Leah Vogel",
+  "date": "2026-02-10",
+  "version": "1.0",
+  "format": "Learning Graph JSON v1.0",
+  "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+  "license": "CC BY-NC-SA 4.0 DEED",
+  "audience": "Product managers with 3-8 years of experience transitioning to technical PM roles",
+  "prerequisites": "3+ years product management experience, basic understanding of software development lifecycle",
+  "concepts": 200,
+  "categories": 11,
+  "bloomLevels": "All six levels (Remember, Understand, Apply, Analyze, Evaluate, Create)"
+}

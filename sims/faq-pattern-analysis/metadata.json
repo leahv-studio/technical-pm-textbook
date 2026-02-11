@@ -1,0 +1,60 @@
+{
+  "title": "FAQ Question Pattern Analysis Workflow",
+  "description": "Interactive Mermaid visualization for faq question pattern analysis workflow",
+  "creator": "Dan McCreary",
+  "date": "2025-11-22",
+  "subject": [
+    "educational technology",
+    "data visualization",
+    "mermaid"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "publisher": "Claude Skills Repository",
+  "learningResourceType": "simulation",
+  "audience": "Educators, Developers",
+  "version": "1.0.0",
+  "library": "Mermaid",
+  "visualizationType": [
+    "diagram",
+    "graph",
+    "interactive-demo"
+  ],
+  "learningObjectives": [
+    "Understand the key concepts of faq question pattern analysis workflow",
+    "Explore faq question pattern analysis workflow through interactive visualization",
+    "Apply knowledge of faq question pattern analysis workflow to solve problems",
+    "Test understanding of faq question pattern analysis workflow through interactive exercises"
+  ],
+  "bloomsTaxonomy": [
+    "Remember",
+    "Apply",
+    "Analyze",
+    "Create"
+  ],
+  "pedagogical": {
+    "pattern": "assessment",
+    "bloomAlignment": [
+      "apply",
+      "analyze",
+      "evaluate"
+    ],
+    "bloomVerbs": [
+      "demonstrate",
+      "illustrate",
+      "solve",
+      "use",
+      "analyze"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": false,
+    "dataVisibility": "medium",
+    "feedbackType": [
+      "delayed",
+      "explanatory"
+    ],
+    "interactionStyle": "observe"
+  }
+}

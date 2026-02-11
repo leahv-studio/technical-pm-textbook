@@ -1,0 +1,2646 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How to read, interpret, and contribute to technical documentation including engineering specifications, functional and non-functional requirements, technical specifications, and software debugging">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/claude-skills/chapters/03-technical-documentation/">
+      
+      
+        <link rel="prev" href="../02-software-development-essentials/">
+      
+      
+        <link rel="next" href="../04-system-architecture/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Technical Documentation and Requirements - Claude Skills for Intelligent Textbooks</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-HPLDD3D3K2"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-HPLDD3D3K2",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-HPLDD3D3K2",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#technical-documentation-and-requirements" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-header__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Claude Skills for Intelligent Textbooks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Technical Documentation and Requirements
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-nav__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Claude Skills for Intelligent Textbooks
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-pm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Management Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-software-development-essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Software Development Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Technical Documentation and Requirements
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Technical Documentation and Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-technical-documentation-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Technical Documentation Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engineering-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engineering Specifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Functional Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-Functional Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-functional-vs-non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Functional vs. Non-Functional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-technical-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Technical Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Technical Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-technical-specification-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Technical Specification Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-bugs-and-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Bugs and Debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software Bugs and Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-software-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is a Software Bug?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-bug-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Bug Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigating-technical-jargon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navigating Technical Jargon
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together-the-documentation-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together: The Documentation Ecosystem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Putting It All Together: The Documentation Ecosystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-documentation-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Documentation Ecosystem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-system-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. System Architecture Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-cloud-computing-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Cloud Computing, Scaling, and Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-apis-and-integrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. APIs and Integrations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-databases-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Databases and SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Advanced Data Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-quality-assurance-technical-debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Quality Assurance and Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-sdlc-and-agile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. SDLC and Agile Methodologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-analytics-data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Analytics and Data-Driven Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-advanced-analytics-experimentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Advanced Analytics and Experimentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-ai-tools-and-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. AI Tools and Strategy for Technical PMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-career-transition-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Career Transition and Technical Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../skill-descriptions/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Descriptions
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../workshops/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consolidation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consolidation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-technical-documentation-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Technical Documentation Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engineering-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engineering Specifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Functional Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-Functional Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-functional-vs-non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Functional vs. Non-Functional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-technical-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Technical Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Technical Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-technical-specification-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Technical Specification Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-bugs-and-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Bugs and Debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software Bugs and Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-software-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is a Software Bug?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-bug-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Bug Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigating-technical-jargon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navigating Technical Jargon
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together-the-documentation-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together: The Documentation Ecosystem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Putting It All Together: The Documentation Ecosystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-documentation-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Documentation Ecosystem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/claude-skills/blob/master/docs/chapters/03-technical-documentation/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="technical-documentation-and-requirements">Technical Documentation and Requirements</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter teaches you how to read, interpret, and contribute to technical documentation - a critical skill for technical PMs. You'll learn about engineering specifications, the distinction between functional and non-functional requirements, and how to write effective technical specifications. The chapter also covers software bugs, debugging basics, and the technical jargon you'll encounter daily when working with engineering teams.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 9 concepts from the learning graph:</p>
+<ol>
+<li>Technical Documentation</li>
+<li>Engineering Specifications</li>
+<li>Technical Requirements</li>
+<li>Functional Requirements</li>
+<li>Non-Functional Requirements</li>
+<li>Technical Specifications</li>
+<li>Software Bug</li>
+<li>Debugging Basics</li>
+<li>Technical Jargon</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-pm-foundations/">Chapter 1: Product Management Foundations</a></li>
+<li><a href="../02-software-development-essentials/">Chapter 2: Software Development Essentials</a></li>
+</ul>
+<hr>
+<h2 id="why-technical-documentation-matters">Why Technical Documentation Matters</h2>
+<p>As a product manager transitioning into a technical PM role, you will quickly discover that documentation is the connective tissue of engineering organizations. Every decision, requirement, constraint, and trade-off that shapes your product passes through some form of written documentation before it becomes working software. Your ability to read, contribute to, and occasionally author these documents directly determines how effectively you collaborate with engineering teams.</p>
+<p><strong>Technical documentation</strong> is the collection of written materials that describe how a software system is designed, built, operated, and maintained. It encompasses everything from high-level architecture overviews to detailed API references, from product requirement documents to runbooks that engineers consult at 2 a.m. during an outage. Unlike marketing or user-facing content, technical documentation is written primarily for internal audiences - engineers, QA teams, DevOps, and technical PMs - who need precise, unambiguous information to do their jobs.</p>
+<p>Technical documentation serves multiple audiences and purposes:</p>
+<ul>
+<li><strong>Engineers</strong> use it to understand system behavior, onboard to new codebases, and make implementation decisions</li>
+<li><strong>QA teams</strong> use it to derive test cases and validate that the system meets its requirements</li>
+<li><strong>Technical PMs</strong> use it to evaluate feasibility, track scope, and communicate trade-offs to stakeholders</li>
+<li><strong>Operations teams</strong> use it to deploy, monitor, and troubleshoot production systems</li>
+<li><strong>Future team members</strong> use it to understand why decisions were made months or years earlier</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Documentation as a PM Superpower</p>
+<p>Many product managers avoid technical documents because the jargon feels intimidating. Technical PMs who invest in reading engineering specs, architecture documents, and design proposals gain an outsized advantage: they can spot scope creep before it happens, identify missing requirements early, and earn engineering trust by demonstrating that they understand the technical landscape.</p>
+</div>
+<h2 id="engineering-specifications">Engineering Specifications</h2>
+<p>An <strong>engineering specification</strong> (often called an "eng spec" or "design doc") is a detailed document that describes how a system or feature will be implemented from a technical perspective. While business requirements describe <em>what</em> the product should do and <em>why</em>, engineering specifications describe <em>how</em> the engineering team plans to build it. They are the bridge between product intent and technical execution.</p>
+<p>Engineering specifications typically follow a structured format that engineering teams customize to their needs. Most include the following sections:</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Purpose</th>
+<th>What PMs Should Look For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Overview</strong></td>
+<td>States the problem and proposed solution</td>
+<td>Does this match the product requirements?</td>
+</tr>
+<tr>
+<td><strong>Goals and Non-Goals</strong></td>
+<td>Scopes what is and isn't included</td>
+<td>Are the non-goals acceptable trade-offs?</td>
+</tr>
+<tr>
+<td><strong>Background</strong></td>
+<td>Provides context on existing systems</td>
+<td>Are there dependencies you weren't aware of?</td>
+</tr>
+<tr>
+<td><strong>Detailed Design</strong></td>
+<td>Describes the technical approach</td>
+<td>Does the complexity match the timeline estimate?</td>
+</tr>
+<tr>
+<td><strong>Alternatives Considered</strong></td>
+<td>Lists rejected approaches with rationale</td>
+<td>Were simpler alternatives properly evaluated?</td>
+</tr>
+<tr>
+<td><strong>Security &amp; Privacy</strong></td>
+<td>Addresses data handling and access control</td>
+<td>Does this meet compliance requirements?</td>
+</tr>
+<tr>
+<td><strong>Testing Plan</strong></td>
+<td>Describes how correctness will be verified</td>
+<td>Is the testing strategy proportional to the risk?</td>
+</tr>
+<tr>
+<td><strong>Rollout Plan</strong></td>
+<td>Explains how the feature will be deployed</td>
+<td>Is there a rollback strategy if something goes wrong?</td>
+</tr>
+</tbody>
+</table>
+<p>When reviewing an engineering specification, you don't need to evaluate every line of the technical design. Focus on the sections that affect product outcomes: scope (goals and non-goals), timeline implications (complexity of the design), risk (testing and rollout plans), and user impact (how the design affects performance, reliability, and functionality).</p>
+<div class="admonition tip">
+<p class="admonition-title">Questions to Ask When Reviewing an Eng Spec</p>
+<ol>
+<li>Does the scope match what we agreed on in the product requirements?</li>
+<li>Are the non-goals things we can truly defer, or will users notice their absence?</li>
+<li>What's the simplest approach among the alternatives, and why wasn't it chosen?</li>
+<li>What could go wrong during rollout, and how would we detect it?</li>
+</ol>
+</div>
+<h2 id="understanding-requirements">Understanding Requirements</h2>
+<h3 id="technical-requirements">Technical Requirements</h3>
+<p><strong>Technical requirements</strong> define the capabilities, constraints, and conditions that a system must satisfy to meet its intended purpose. They translate the business requirements you authored as a PM into language precise enough for engineers to implement and testers to verify. Technical requirements sit at the intersection of "what the product needs to do" and "what the technology must support."</p>
+<p>Technical requirements differ from business requirements in their specificity and audience. A business requirement might state: "Users should be able to search for products." The corresponding technical requirement specifies: "The search service must return results within 200 milliseconds for queries against a catalog of up to 10 million items, supporting full-text search with typo tolerance."</p>
+<p>The relationship between business and technical requirements flows in one direction:</p>
+<ol>
+<li><strong>Business requirements</strong> state what the product must achieve (driven by user needs and strategy)</li>
+<li><strong>Technical requirements</strong> state what the system must do to fulfill those business requirements (driven by engineering constraints and best practices)</li>
+<li><strong>Implementation</strong> fulfills the technical requirements through code, configuration, and infrastructure</li>
+</ol>
+<h3 id="functional-requirements">Functional Requirements</h3>
+<p><strong>Functional requirements</strong> describe <em>what</em> the system must do - the specific behaviors, features, and capabilities that users and other systems can observe. They define the inputs the system accepts, the processing it performs, and the outputs it produces. Functional requirements are testable: you can verify whether the system exhibits the described behavior or not.</p>
+<p>Functional requirements answer the question: "What does this system do?" Examples include:</p>
+<ul>
+<li>The system shall allow users to create an account using an email address and password</li>
+<li>The system shall send a confirmation email within 30 seconds of account creation</li>
+<li>The system shall display search results ranked by relevance, with the option to sort by price or date</li>
+<li>The system shall calculate and display shipping costs based on the user's zip code before checkout</li>
+</ul>
+<p>Well-written functional requirements share key characteristics:</p>
+<ul>
+<li><strong>Specific</strong> - Precise enough that two engineers would implement them the same way</li>
+<li><strong>Testable</strong> - Clear criteria for determining pass or fail</li>
+<li><strong>Traceable</strong> - Linked to a business requirement or user story</li>
+<li><strong>Independent</strong> - Can be understood without reading every other requirement</li>
+</ul>
+<h3 id="non-functional-requirements">Non-Functional Requirements</h3>
+<p><strong>Non-functional requirements</strong> describe <em>how well</em> the system must perform its functions rather than <em>what</em> it does. They define quality attributes such as performance, security, scalability, usability, and reliability. Non-functional requirements are sometimes called "quality requirements" or "-ilities" because many of them end in "-ility" (scalability, reliability, availability, usability).</p>
+<p>Non-functional requirements are critically important yet frequently overlooked by product teams. A system can meet every functional requirement and still fail if it's too slow, unreliable, or insecure. Consider a search feature that returns correct results but takes 15 seconds to load - it meets the functional requirement but fails the non-functional performance requirement, making it effectively unusable.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Example Requirement</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Search results return in under 200ms</td>
+<td>Slow responses cause user drop-off</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>System handles 10,000 concurrent users</td>
+<td>Growth shouldn't break the product</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>99.9% uptime (less than 8.7 hours downtime/year)</td>
+<td>Users depend on consistent access</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>All data encrypted at rest and in transit</td>
+<td>Protects user data and meets compliance</td>
+</tr>
+<tr>
+<td><strong>Usability</strong></td>
+<td>New users complete onboarding in under 5 minutes</td>
+<td>Reduces time-to-value</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td>WCAG 2.1 AA compliance</td>
+<td>Ensures the product works for all users</td>
+</tr>
+<tr>
+<td><strong>Maintainability</strong></td>
+<td>New developers productive within one week</td>
+<td>Affects long-term engineering velocity</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagram-functional-vs-non-functional-requirements">Diagram: Functional vs. Non-Functional Requirements</h4>
+<iframe src="../../sims/functional-vs-nonfunctional/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Functional vs. Non-Functional Requirements</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: differentiate, classify
+Learning Objective: Students will be able to differentiate between functional and non-functional requirements and classify real-world requirements into the correct category.</p>
+<p>Layout: Two-column comparison diagram with a shared product feature in the center. Left column (blue) shows functional requirements, right column (green) shows non-functional requirements for a "User Search" feature.</p>
+<p>Interactive elements: Hover over each requirement to see detailed explanation and testing criteria.</p>
+<p>Color scheme: Blue for functional, green for non-functional, gray for the shared feature
+Implementation: HTML/CSS/JavaScript with responsive two-column layout</p>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">The NFR Trap</p>
+<p>Non-functional requirements are frequently treated as afterthoughts. Engineers may ask "what are the performance requirements?" late in development, only to discover that meeting them requires a fundamentally different architecture. As a technical PM, push for non-functional requirements to be defined alongside functional ones during the planning phase.</p>
+</div>
+<h2 id="writing-technical-specifications">Writing Technical Specifications</h2>
+<p>A <strong>technical specification</strong> (often called a "tech spec") is a detailed document that prescribes exactly how a system, feature, or component should be built. While engineering specifications are authored by engineers to describe their proposed approach, technical specifications can be collaborative documents where PMs define the "what" and engineers fill in the "how." In practice, the terms "eng spec" and "tech spec" are sometimes used interchangeably, though some organizations draw distinctions between them.</p>
+<p>Technical specifications serve as a contract between product and engineering. They reduce ambiguity, prevent scope creep, and create an auditable record of what was agreed upon. A well-written tech spec saves time by surfacing misunderstandings before a single line of code is written, rather than during code review or - worse - after launch.</p>
+<p>The anatomy of an effective technical specification includes:</p>
+<ol>
+<li><strong>Problem statement</strong> - What user or business problem are we solving?</li>
+<li><strong>Proposed solution</strong> - High-level description of the approach</li>
+<li><strong>Functional requirements</strong> - What the system must do (inputs, outputs, behaviors)</li>
+<li><strong>Non-functional requirements</strong> - Performance, scalability, security, and reliability targets</li>
+<li><strong>Data model</strong> - What data is stored, how it's structured, and how it flows</li>
+<li><strong>API contracts</strong> - Endpoint definitions, request/response formats, error handling</li>
+<li><strong>Edge cases</strong> - Unusual scenarios the system must handle gracefully</li>
+<li><strong>Dependencies</strong> - External services, libraries, or team deliverables required</li>
+<li><strong>Out of scope</strong> - Explicitly what this specification does not cover</li>
+<li><strong>Success metrics</strong> - How you'll measure whether the feature works as intended</li>
+</ol>
+<h4 id="diagram-technical-specification-workflow">Diagram: Technical Specification Workflow</h4>
+<iframe src="../../sims/tech-spec-workflow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Technical Specification Workflow</summary>
+<p>Type: workflow</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: implement, use
+Learning Objective: Students will be able to use the tech spec workflow to guide collaboration between product and engineering from initial idea to approved specification.</p>
+<p>Layout: Horizontal workflow showing five stages from Problem Definition through Technical Discovery, Spec Drafting, Review and Refinement, to Approval and Handoff, with feedback loops.</p>
+<p>Color scheme: Blue to teal to green to orange to purple (progression from idea to execution)
+Implementation: HTML/CSS/JavaScript with responsive horizontal workflow</p>
+</details>
+<h2 id="software-bugs-and-debugging">Software Bugs and Debugging</h2>
+<h3 id="what-is-a-software-bug">What Is a Software Bug?</h3>
+<p>A <strong>software bug</strong> is an error, flaw, or unintended behavior in a software program that causes it to produce incorrect results, behave unexpectedly, or crash. The term dates back to the earliest days of computing - legend attributes it to an actual moth found in a relay of the Harvard Mark II computer in 1947. Today, bugs range from minor visual glitches to critical security vulnerabilities that compromise user data.</p>
+<p>Bugs arise from many sources:</p>
+<ul>
+<li><strong>Logic errors</strong> - The code does something different from what the developer intended</li>
+<li><strong>Off-by-one errors</strong> - A loop runs one too many or one too few times</li>
+<li><strong>Race conditions</strong> - Two processes interfere with each other's timing</li>
+<li><strong>Null references</strong> - The code tries to use data that doesn't exist</li>
+<li><strong>Integration failures</strong> - Two systems interpret the same data differently</li>
+<li><strong>Edge cases</strong> - The code doesn't handle unusual inputs (empty strings, very large numbers, special characters)</li>
+</ul>
+<p>As a technical PM, you need to understand bugs well enough to triage them effectively. Not all bugs are equal. A critical bug that causes data loss demands an immediate fix, while a cosmetic bug affecting a rarely used feature can wait for the next planned release.</p>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Description</th>
+<th>Example</th>
+<th>Response Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical (P0)</strong></td>
+<td>System down, data loss, security breach</td>
+<td>Payment processing fails for all users</td>
+<td>Immediate (drop everything)</td>
+</tr>
+<tr>
+<td><strong>High (P1)</strong></td>
+<td>Major feature broken, significant user impact</td>
+<td>Search returns no results for 20% of queries</td>
+<td>Within 24 hours</td>
+</tr>
+<tr>
+<td><strong>Medium (P2)</strong></td>
+<td>Feature partially broken, workaround exists</td>
+<td>Export to PDF generates blurry images</td>
+<td>Next sprint</td>
+</tr>
+<tr>
+<td><strong>Low (P3)</strong></td>
+<td>Minor issue, cosmetic, edge case</td>
+<td>Tooltip text is truncated on very long labels</td>
+<td>Backlog</td>
+</tr>
+</tbody>
+</table>
+<h3 id="debugging-basics">Debugging Basics</h3>
+<p><strong>Debugging</strong> is the systematic process of identifying, isolating, and resolving software bugs. The name comes from the concept of removing "bugs" from the system. Debugging is part detective work, part scientific method - you observe symptoms, form hypotheses about the cause, test those hypotheses, and iterate until you find and fix the root issue.</p>
+<p>While you won't be debugging code directly as a technical PM, understanding the debugging process helps you set realistic expectations for bug resolution timelines and communicate more effectively with engineers during incidents. A bug that's easy to reproduce might take an hour to fix. A bug that occurs intermittently in production but never in testing might take days or weeks.</p>
+<p>The typical debugging process follows these steps:</p>
+<ol>
+<li><strong>Reproduce</strong> - Can you reliably make the bug happen? Under what conditions?</li>
+<li><strong>Isolate</strong> - Narrow down which component, service, or code path is causing the problem</li>
+<li><strong>Diagnose</strong> - Read logs, inspect variables, trace execution to find the root cause</li>
+<li><strong>Fix</strong> - Modify the code to correct the underlying issue (not just mask the symptom)</li>
+<li><strong>Verify</strong> - Confirm the fix resolves the bug without introducing new ones</li>
+<li><strong>Prevent</strong> - Add tests or monitoring to catch similar issues in the future</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">How PMs Can Help Debugging</p>
+<p>When reporting a bug, include: what you expected to happen, what actually happened, the exact steps to reproduce it, your browser/device/OS, and any error messages you saw. This information can cut debugging time dramatically. A bug report that says "search is broken" is far less useful than one that says "searching for product names containing apostrophes returns a 500 error on Chrome 120, Safari works fine."</p>
+</div>
+<h4 id="diagram-bug-lifecycle">Diagram: Bug Lifecycle</h4>
+<iframe src="../../sims/bug-lifecycle/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Bug Lifecycle</summary>
+<p>Type: workflow</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: describe, explain
+Learning Objective: Students will be able to describe the stages of a bug's lifecycle from discovery through resolution and explain how PMs participate at each stage.</p>
+<p>Layout: Circular workflow showing eight stages from Discovered through Triaged, Assigned, In Progress, In Review, Testing, Deployed, to Closed, with special paths for Won't Fix and Reopened.</p>
+<p>Color scheme: Red to orange to yellow to blue to green to gray (severity to resolution)
+Implementation: HTML/CSS/JavaScript with circular workflow, responsive design</p>
+</details>
+<h2 id="navigating-technical-jargon">Navigating Technical Jargon</h2>
+<p><strong>Technical jargon</strong> refers to the specialized vocabulary and acronyms used by engineering teams that may be unfamiliar to non-technical team members. Every profession has its jargon, but software engineering is particularly dense with abbreviations, metaphors, and terms borrowed from computer science, mathematics, and internet culture. For a PM transitioning to a technical role, mastering this vocabulary is essential for credibility and communication efficiency.</p>
+<p>Technical jargon falls into several categories:</p>
+<ul>
+<li><strong>Architecture terms</strong> - Microservices, monolith, API gateway, message queue, load balancer</li>
+<li><strong>Development terms</strong> - Refactoring, technical debt, dependency injection, design pattern</li>
+<li><strong>Operations terms</strong> - CI/CD, deployment pipeline, rollback, canary release, blue-green deployment</li>
+<li><strong>Data terms</strong> - Schema, migration, index, query optimization, sharding</li>
+<li><strong>Process terms</strong> - Sprint, standup, retro, blocker, spike, timeboxing</li>
+</ul>
+<p>The most effective approach to learning technical jargon is <em>not</em> memorizing a glossary. Instead, pay attention to terms as they come up in meetings, ask engineers to explain them in context, and build your vocabulary organically. When you hear an unfamiliar term, write it down and look it up afterward - or better yet, ask in the moment. Engineers generally respect curiosity far more than they respect false confidence.</p>
+<p>Here is a reference table of common engineering jargon organized by category:</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Example Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Refactoring</strong></td>
+<td>Restructuring code without changing its behavior</td>
+<td>"We need to refactor the payment module before adding new features"</td>
+</tr>
+<tr>
+<td><strong>Technical debt</strong></td>
+<td>Shortcuts in code that save time now but cost time later</td>
+<td>"We've accumulated tech debt in the auth service"</td>
+</tr>
+<tr>
+<td><strong>Spike</strong></td>
+<td>A time-boxed investigation to reduce uncertainty</td>
+<td>"Let's do a two-day spike on the new caching approach"</td>
+</tr>
+<tr>
+<td><strong>Blocker</strong></td>
+<td>An issue preventing progress on a task</td>
+<td>"The API rate limit is a blocker for the integration"</td>
+</tr>
+<tr>
+<td><strong>Regression</strong></td>
+<td>A bug introduced by a recent change that breaks previously working functionality</td>
+<td>"The latest deploy caused a regression in the checkout flow"</td>
+</tr>
+<tr>
+<td><strong>Idempotent</strong></td>
+<td>An operation that produces the same result whether executed once or multiple times</td>
+<td>"The retry logic works because the API call is idempotent"</td>
+</tr>
+<tr>
+<td><strong>Deprecated</strong></td>
+<td>Marked for removal in a future version; still works but shouldn't be used</td>
+<td>"That endpoint is deprecated; use the v2 API instead"</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>The time delay between a request and a response</td>
+<td>"We're seeing high latency on the search endpoint"</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Building Your Technical Vocabulary</p>
+<p>Create a personal glossary in a document or note-taking app. Each time you encounter a new term in a meeting or document, add it with the context where you heard it. Review your glossary weekly. Within three months, you'll find that engineering conversations feel dramatically more accessible.</p>
+</div>
+<h2 id="putting-it-all-together-the-documentation-ecosystem">Putting It All Together: The Documentation Ecosystem</h2>
+<p>Technical documentation doesn't exist in isolation. Each document type feeds into and references others, creating an interconnected ecosystem that guides a feature from idea to production. Understanding this ecosystem helps you navigate engineering organizations and find the information you need.</p>
+<h4 id="diagram-documentation-ecosystem">Diagram: Documentation Ecosystem</h4>
+<iframe src="../../sims/documentation-ecosystem/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Documentation Ecosystem</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: organize, relate
+Learning Objective: Students will be able to organize the different types of technical documentation into a coherent ecosystem and relate each document type to its role in the product development lifecycle.</p>
+<p>Layout: Hub-and-spoke diagram with "Product Feature" at center, surrounded by Business Requirements, Engineering Specification, Technical Specification, API Documentation, Test Plan, and Runbook nodes with connecting arrows showing information flow.</p>
+<p>Color scheme: Each document type has a distinct color
+Implementation: HTML/CSS/JavaScript with SVG radial layout, responsive design</p>
+</details>
+<p>The key takeaway is that you don't need to author all of these documents yourself. As a technical PM, your primary role is to own business requirements and product specifications, contribute to technical specifications, and review engineering specifications. By understanding the full ecosystem, you know where to look when you need information and how your documents influence downstream engineering work.</p>
+<details class="question">
+<summary>Self-Check: Can you answer these questions?</summary>
+<ol>
+<li>What is the difference between functional and non-functional requirements? Give two examples of each for an e-commerce checkout feature.</li>
+<li>When reviewing an engineering specification, what four areas should a technical PM focus on?</li>
+<li>Why are non-functional requirements often called "-ilities," and why are they frequently overlooked?</li>
+<li>Describe the debugging process in five steps. How can a PM contribute to faster bug resolution?</li>
+<li>What is technical jargon, and what strategy does this chapter recommend for learning it effectively?</li>
+</ol>
+</details>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Technical documentation</strong> is the connective tissue of engineering organizations - PMs who engage with it earn credibility and catch issues early</li>
+<li><strong>Engineering specifications</strong> describe how a feature will be built; focus your review on scope, timeline implications, risk, and user impact</li>
+<li><strong>Technical requirements</strong> translate business needs into precise, implementable system capabilities</li>
+<li><strong>Functional requirements</strong> define what the system does (specific behaviors and features), while <strong>non-functional requirements</strong> define how well it performs (speed, reliability, security, scalability)</li>
+<li><strong>Technical specifications</strong> serve as a contract between product and engineering, reducing ambiguity and preventing scope creep</li>
+<li>A <strong>software bug</strong> is an error causing incorrect or unexpected system behavior; effective triage based on severity ensures the right bugs get fixed at the right time</li>
+<li><strong>Debugging</strong> is a systematic process of reproducing, isolating, diagnosing, fixing, and verifying - understanding it helps PMs set realistic resolution timelines</li>
+<li><strong>Technical jargon</strong> is best learned organically in context rather than through memorization; building a personal glossary accelerates the process</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../02-software-development-essentials/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2. Software Development Essentials">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2. Software Development Essentials
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04-system-architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. System Architecture Fundamentals">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                4. System Architecture Fundamentals
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025, 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

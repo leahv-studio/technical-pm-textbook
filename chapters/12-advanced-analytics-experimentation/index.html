@@ -1,0 +1,2867 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Experiment design, A/B testing, statistical significance, data pipelines, real-time analytics, attribution modeling, customer segmentation, and predictive analytics for technical PMs">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/claude-skills/chapters/12-advanced-analytics-experimentation/">
+      
+      
+        <link rel="prev" href="../11-analytics-data-driven-decisions/">
+      
+      
+        <link rel="next" href="../13-ai-tools-and-strategy/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Advanced Analytics and Experimentation - Claude Skills for Intelligent Textbooks</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-HPLDD3D3K2"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-HPLDD3D3K2",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-HPLDD3D3K2",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#advanced-analytics-and-experimentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-header__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Claude Skills for Intelligent Textbooks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Advanced Analytics and Experimentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-nav__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Claude Skills for Intelligent Textbooks
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-pm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Management Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-software-development-essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Software Development Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-technical-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Technical Documentation and Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-system-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. System Architecture Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-cloud-computing-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Cloud Computing, Scaling, and Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-apis-and-integrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. APIs and Integrations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-databases-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Databases and SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Advanced Data Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-quality-assurance-technical-debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Quality Assurance and Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-sdlc-and-agile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. SDLC and Agile Methodologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-analytics-data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Analytics and Data-Driven Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Advanced Analytics and Experimentation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Advanced Analytics and Experimentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-experimentation-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Experimentation Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A/B Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A/B Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-ab-testing-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: A/B Testing Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beyond-simple-ab-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond Simple A/B Tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistical-significance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statistical Significance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conversion-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion Rate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-data-infrastructure-pipelines-etl-and-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Data Infrastructure: Pipelines, ETL, and Tracking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Data Infrastructure: Pipelines, ETL, and Tracking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Pipelines
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Pipelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-data-pipeline-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Data Pipeline Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etl-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ETL Process
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event Tracking
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-time-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-Time Analytics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attribution-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attribution Modeling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attribution Modeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-attribution-model-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Attribution Model Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customer-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customer Segmentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictive-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predictive Analytics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Predictive Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-predictive-analytics-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Predictive Analytics Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together-the-experimentation-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together: The Experimentation Ecosystem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-ai-tools-and-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. AI Tools and Strategy for Technical PMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-career-transition-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Career Transition and Technical Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../skill-descriptions/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Descriptions
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../workshops/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consolidation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consolidation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-experimentation-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Experimentation Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A/B Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A/B Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-ab-testing-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: A/B Testing Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beyond-simple-ab-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond Simple A/B Tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistical-significance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statistical Significance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conversion-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion Rate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-data-infrastructure-pipelines-etl-and-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Data Infrastructure: Pipelines, ETL, and Tracking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Data Infrastructure: Pipelines, ETL, and Tracking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Pipelines
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Pipelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-data-pipeline-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Data Pipeline Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etl-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ETL Process
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event Tracking
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-time-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-Time Analytics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attribution-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attribution Modeling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attribution Modeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-attribution-model-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Attribution Model Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customer-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customer Segmentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictive-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predictive Analytics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Predictive Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-predictive-analytics-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Predictive Analytics Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together-the-experimentation-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together: The Experimentation Ecosystem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/claude-skills/blob/master/docs/chapters/12-advanced-analytics-experimentation/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="advanced-analytics-and-experimentation">Advanced Analytics and Experimentation</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter builds on analytics foundations to cover advanced experimentation and data engineering concepts. You'll learn how to design and run A/B tests, understand statistical significance, and apply experiment design principles to product decisions. The chapter also covers data pipelines, ETL processes, real-time analytics, event tracking, attribution modeling, customer segmentation, and predictive analytics - the tools that separate good product decisions from great ones.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 11 concepts from the learning graph:</p>
+<ol>
+<li>Experiment Design</li>
+<li>A/B Testing</li>
+<li>Statistical Significance</li>
+<li>Conversion Rate</li>
+<li>Data Pipelines</li>
+<li>ETL Process</li>
+<li>Real-Time Analytics</li>
+<li>Event Tracking</li>
+<li>Attribution Modeling</li>
+<li>Customer Segmentation</li>
+<li>Predictive Analytics</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../08-advanced-data-management/">Chapter 8: Advanced Data Management</a></li>
+<li><a href="../10-sdlc-and-agile/">Chapter 10: SDLC and Agile Methodologies</a></li>
+<li><a href="../11-analytics-data-driven-decisions/">Chapter 11: Analytics and Data-Driven Decisions</a></li>
+</ul>
+<hr>
+<h2 id="why-experimentation-matters">Why Experimentation Matters</h2>
+<p>Every product team faces the same fundamental challenge: you have more ideas than resources, and you cannot predict with certainty which changes will improve outcomes for users and the business. Intuition and experience are valuable, but they are insufficient on their own. The most successful product organizations build a culture of experimentation, where decisions are validated by evidence rather than authority. As a technical PM, understanding how experiments work - not just conceptually, but at the level of statistical rigor and data infrastructure - gives you the ability to drive better decisions and earn credibility with data science and engineering teams.</p>
+<p>This chapter progresses from the fundamentals of experiment design through the data infrastructure that makes experimentation possible at scale. By the end, you will understand how to design rigorous experiments, interpret their results, and leverage advanced analytics techniques like attribution modeling, customer segmentation, and predictive analytics to anticipate user behavior rather than merely react to it.</p>
+<div class="admonition note">
+<p class="admonition-title">From Opinions to Evidence</p>
+<p>The best technical PMs do not say "I think this will work." They say "Let's test it, and here's how we'll know." Experimentation transforms product management from a debate about preferences into a discipline grounded in measurement.</p>
+</div>
+<h2 id="experiment-design">Experiment Design</h2>
+<p><strong>Experiment design</strong> is the systematic process of planning a controlled test to measure the causal effect of a specific change on a defined outcome metric. Good experiment design ensures that your results are trustworthy, reproducible, and actionable. Without rigorous design, you risk making decisions based on misleading data - a costly mistake that can send your product in the wrong direction for months.</p>
+<p>The core elements of any well-designed experiment include:</p>
+<ul>
+<li><strong>Hypothesis</strong> - A clear, falsifiable statement about what you expect to happen and why (e.g., "Reducing the signup form from five fields to three will increase completion rate because users abandon long forms")</li>
+<li><strong>Independent variable</strong> - The factor you are deliberately changing (e.g., the number of form fields)</li>
+<li><strong>Dependent variable</strong> - The outcome you are measuring (e.g., signup completion rate)</li>
+<li><strong>Control group</strong> - The group that experiences the current, unchanged product</li>
+<li><strong>Treatment group</strong> - The group that experiences the change</li>
+<li><strong>Sample size</strong> - The number of users needed to detect a meaningful difference</li>
+<li><strong>Duration</strong> - How long the experiment must run to capture sufficient data</li>
+</ul>
+<p>A common mistake is designing experiments that are too broad. If you change the signup form layout, colors, copy, and field count simultaneously, you cannot determine which change drove the result. Effective experiments isolate a single variable whenever possible.</p>
+<table>
+<thead>
+<tr>
+<th>Design Element</th>
+<th>Good Practice</th>
+<th>Common Mistake</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hypothesis</td>
+<td>Specific, measurable, tied to user behavior</td>
+<td>Vague ("this will be better")</td>
+</tr>
+<tr>
+<td>Variable isolation</td>
+<td>One change per experiment</td>
+<td>Multiple changes bundled together</td>
+</tr>
+<tr>
+<td>Sample size</td>
+<td>Calculated before launch using power analysis</td>
+<td>Arbitrary or too small</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>Runs through full business cycles (weekday + weekend)</td>
+<td>Stopped early when results "look good"</td>
+</tr>
+<tr>
+<td>Success metric</td>
+<td>Primary metric defined in advance</td>
+<td>Metric chosen after seeing results</td>
+</tr>
+<tr>
+<td>Guardrail metrics</td>
+<td>Tracked to ensure no negative side effects</td>
+<td>Ignored entirely</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ab-testing">A/B Testing</h2>
+<p><strong>A/B testing</strong> is the most common form of controlled experiment in product development, where users are randomly assigned to one of two groups - Group A (control) sees the existing experience, and Group B (treatment) sees a modified version - and the outcomes of both groups are compared to determine which performs better. The randomization is critical because it ensures that differences in outcomes can be attributed to the change rather than to pre-existing differences between the groups.</p>
+<p>A/B testing has become the gold standard for product decisions because it provides causal evidence rather than correlation. When you observe that users who clicked a blue button converted at higher rates than users who clicked a green button, you might be observing selection bias - perhaps more motivated users preferred the blue button. An A/B test removes this ambiguity by randomly assigning the button color.</p>
+<p>The technical infrastructure for A/B testing typically involves:</p>
+<ol>
+<li><strong>Randomization service</strong> - Assigns users to groups consistently (a user should always see the same variant during the experiment)</li>
+<li><strong>Feature flag system</strong> - Controls which experience each group sees</li>
+<li><strong>Event tracking</strong> - Captures user actions for analysis</li>
+<li><strong>Statistical analysis engine</strong> - Computes results and determines significance</li>
+</ol>
+<h4 id="diagram-ab-testing-workflow">Diagram: A/B Testing Workflow</h4>
+<iframe src="../../sims/ab-testing-workflow/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>A/B Testing Workflow</summary>
+<p>Type: workflow</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: implement, demonstrate
+Learning Objective: Students will be able to trace the end-to-end A/B testing process from hypothesis formulation through result interpretation and decision making.</p>
+<p>Layout: Horizontal flow diagram with six sequential stages connected by arrows, with a feedback loop from the final stage back to the first.</p>
+<p>Stages (left to right):</p>
+<ol>
+<li>Hypothesize (purple): Define hypothesis, select metrics, calculate sample size. Artifact: Experiment brief.</li>
+<li>Design (blue): Set control vs. treatment, configure feature flags, define segments. Artifact: Test configuration.</li>
+<li>Instrument (teal): Implement event tracking, verify data collection, QA the experience. Artifact: Tracking plan.</li>
+<li>Run (green): Launch to randomized users, monitor guardrail metrics, wait for sufficient data. Artifact: Live experiment dashboard.</li>
+<li>Analyze (orange): Calculate statistical significance, check for segments, review guardrails. Artifact: Results report.</li>
+<li>Decide (red): Ship winner, iterate, or kill. Document learnings. Artifact: Decision log.</li>
+</ol>
+<p>Feedback loop: Dashed arrow from Decide back to Hypothesize labeled "Learnings inform next experiment."</p>
+<p>Interactive elements:</p>
+<ul>
+<li>Hover over each stage to see detailed checklist of activities</li>
+<li>Click a stage to see example artifacts and common pitfalls</li>
+<li>Hover over arrows to see handoff criteria between stages</li>
+</ul>
+<p>Color scheme: Purple to red gradient following the experiment lifecycle
+Implementation: HTML/CSS/JavaScript with responsive horizontal flow layout</p>
+</details>
+<h3 id="beyond-simple-ab-tests">Beyond Simple A/B Tests</h3>
+<p>While standard A/B tests compare two variants, the methodology extends to more sophisticated designs:</p>
+<ul>
+<li><strong>A/B/n testing</strong> - Testing multiple variants simultaneously (e.g., three different pricing pages)</li>
+<li><strong>Multivariate testing</strong> - Testing combinations of multiple variables (e.g., headline x image x button color)</li>
+<li><strong>Holdout groups</strong> - Permanently withholding a feature from a small percentage of users to measure long-term cumulative impact</li>
+<li><strong>Bandit algorithms</strong> - Dynamically shifting traffic toward the winning variant during the experiment, trading statistical rigor for faster optimization</li>
+</ul>
+<h2 id="statistical-significance">Statistical Significance</h2>
+<p><strong>Statistical significance</strong> is a measure of confidence that the observed difference between an experiment's control and treatment groups reflects a real effect rather than random chance. When you see that the treatment group's conversion rate was 12.3% compared to the control's 11.8%, statistical significance tells you whether that 0.5 percentage point difference is meaningful or just noise in the data.</p>
+<p>Statistical significance is conventionally expressed through two key values:</p>
+<ul>
+<li><strong>p-value</strong> - The probability of observing the measured difference (or a larger one) if there were actually no real difference between the groups. A p-value below 0.05 (5%) is the standard threshold for declaring significance, meaning there is less than a 5% chance the result is due to random variation.</li>
+<li><strong>Confidence interval</strong> - A range within which the true effect is likely to fall. A 95% confidence interval of [0.2%, 0.8%] for conversion rate lift means you can be 95% confident the real improvement is between 0.2 and 0.8 percentage points.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Statistical Significance Is Not Business Significance</p>
+<p>A result can be statistically significant but practically meaningless. If your A/B test shows a conversion rate improvement of 0.01% with high confidence, the effect is real but may not justify the engineering cost of maintaining the change. Always pair statistical significance with a practical significance threshold defined before the experiment.</p>
+</div>
+<p>Two critical errors to guard against:</p>
+<ul>
+<li><strong>Type I error (false positive)</strong> - Concluding there is an effect when there is none. Controlled by the significance threshold (typically 5%).</li>
+<li><strong>Type II error (false negative)</strong> - Failing to detect a real effect. Controlled by statistical power, which depends on sample size.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Why It Matters to PMs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p-value</td>
+<td>Probability of seeing the result if no real effect exists</td>
+<td>Tells you if you can trust the result</td>
+</tr>
+<tr>
+<td>Confidence interval</td>
+<td>Range of plausible true effect sizes</td>
+<td>Tells you the magnitude of the effect</td>
+</tr>
+<tr>
+<td>Statistical power</td>
+<td>Probability of detecting a real effect if one exists</td>
+<td>Determines how many users you need</td>
+</tr>
+<tr>
+<td>Effect size</td>
+<td>The magnitude of the difference you want to detect</td>
+<td>Drives sample size calculations</td>
+</tr>
+<tr>
+<td>Significance threshold</td>
+<td>The p-value cutoff for declaring a result significant</td>
+<td>Sets your tolerance for false positives</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conversion-rate">Conversion Rate</h2>
+<p><strong>Conversion rate</strong> is the percentage of users who complete a desired action out of the total number of users who had the opportunity to take that action. It is one of the most fundamental metrics in product analytics and serves as the primary outcome measure for many A/B tests. A conversion rate is calculated as: conversions divided by total visitors (or users), multiplied by 100.</p>
+<p>Conversion rates apply at every stage of the user journey:</p>
+<ul>
+<li><strong>Visitor to signup</strong> - What percentage of website visitors create an account?</li>
+<li><strong>Signup to activation</strong> - What percentage of new signups complete a key onboarding action?</li>
+<li><strong>Trial to paid</strong> - What percentage of trial users convert to paying customers?</li>
+<li><strong>Free to premium</strong> - What percentage of free-tier users upgrade?</li>
+<li><strong>Page view to purchase</strong> - What percentage of product page visitors complete a purchase?</li>
+</ul>
+<p>Understanding conversion rates at each stage allows you to identify the biggest opportunities for improvement. A 50% improvement in a conversion rate at the top of the funnel (where volume is highest) will typically have more impact than the same percentage improvement at the bottom. However, bottom-of-funnel improvements often affect higher-value actions, so the revenue impact must be evaluated holistically.</p>
+<div class="admonition tip">
+<p class="admonition-title">Conversion Rate Benchmarks</p>
+<p>Benchmarks vary dramatically by industry, product type, and funnel stage. E-commerce checkout conversion rates typically range from 2-4%, while B2B SaaS trial-to-paid rates might be 5-15%. Always compare your conversion rates against your own historical performance first, and use industry benchmarks only as a rough reference point.</p>
+</div>
+<h2 id="the-data-infrastructure-pipelines-etl-and-tracking">The Data Infrastructure: Pipelines, ETL, and Tracking</h2>
+<h3 id="data-pipelines">Data Pipelines</h3>
+<p><strong>Data pipelines</strong> are automated sequences of processes that move data from source systems to destination systems, transforming and enriching the data along the way. For a technical PM, data pipelines are the plumbing that makes analytics, experimentation, and machine learning possible. Without reliable pipelines, dashboards show stale numbers, experiments cannot be analyzed, and predictive models train on incomplete data.</p>
+<p>A typical product analytics pipeline follows this flow:</p>
+<ol>
+<li><strong>Ingestion</strong> - Raw events are captured from web, mobile, and server-side sources</li>
+<li><strong>Transport</strong> - Events are streamed or batched to a central data store</li>
+<li><strong>Storage</strong> - Data lands in a data warehouse or data lake</li>
+<li><strong>Transformation</strong> - Raw data is cleaned, joined, and aggregated into analytics-ready tables</li>
+<li><strong>Serving</strong> - Transformed data is made available to dashboards, reports, and models</li>
+</ol>
+<h4 id="diagram-data-pipeline-architecture">Diagram: Data Pipeline Architecture</h4>
+<iframe src="../../sims/data-pipeline-architecture/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Data Pipeline Architecture</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain, trace
+Learning Objective: Students will be able to trace the flow of data from user actions through a pipeline to analytics dashboards and explain the purpose of each stage.</p>
+<p>Layout: Left-to-right horizontal flow diagram showing five pipeline stages with data sources on the left and consumers on the right.</p>
+<p>Data Sources (left column, stacked vertically):</p>
+<ul>
+<li>Web app (blue browser icon)</li>
+<li>Mobile app (green phone icon)</li>
+<li>Backend services (orange server icon)</li>
+<li>Third-party APIs (purple plug icon)</li>
+</ul>
+<p>Pipeline Stages (center, horizontal flow):</p>
+<ol>
+<li>Ingestion (light blue): SDKs, webhooks, log collectors. Tools: Segment, Snowplow, custom SDKs.</li>
+<li>Transport (teal): Message queues, streaming. Tools: Kafka, Kinesis, Pub/Sub.</li>
+<li>Storage (green): Raw data landing zone. Tools: S3, BigQuery, Snowflake, Redshift.</li>
+<li>Transformation (orange): Cleaning, joining, aggregating. Tools: dbt, Airflow, Spark.</li>
+<li>Serving (red): Analytics-ready tables and APIs. Tools: Looker, Tableau, custom APIs.</li>
+</ol>
+<p>Consumers (right column, stacked vertically):</p>
+<ul>
+<li>Dashboards (chart icon)</li>
+<li>A/B test analysis (split icon)</li>
+<li>ML models (brain icon)</li>
+<li>Ad-hoc queries (magnifying glass icon)</li>
+</ul>
+<p>Interactive elements:</p>
+<ul>
+<li>Hover over each stage to see detailed description, common tools, and typical failure modes</li>
+<li>Hover over data sources to see what types of events each generates</li>
+<li>Click a consumer to highlight the pipeline path that serves it</li>
+</ul>
+<p>Color scheme: Light blue to red gradient following data flow direction
+Implementation: HTML/CSS/JavaScript with responsive horizontal layout</p>
+</details>
+<h3 id="etl-process">ETL Process</h3>
+<p>The <strong>ETL process</strong> (Extract, Transform, Load) is a specific pattern for moving data through a pipeline. ETL describes the three fundamental operations: extracting data from source systems, transforming it into a usable format, and loading it into a destination system such as a data warehouse.</p>
+<p>Each step serves a distinct purpose:</p>
+<ul>
+<li><strong>Extract</strong> - Pull raw data from operational databases, APIs, log files, and event streams. The extraction must be reliable and handle source system changes gracefully.</li>
+<li><strong>Transform</strong> - Clean invalid records, standardize formats (e.g., dates, currencies), join data from multiple sources, compute derived fields (e.g., session duration from individual page view events), and apply business logic.</li>
+<li><strong>Load</strong> - Write the transformed data into the destination system in a format optimized for querying and analysis.</li>
+</ul>
+<p>A modern variation is <strong>ELT</strong> (Extract, Load, Transform), where raw data is loaded first and transformations happen inside the data warehouse. ELT has gained popularity because modern cloud warehouses like Snowflake and BigQuery are powerful enough to handle transformations at query time, reducing pipeline complexity.</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>ETL</th>
+<th>ELT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transform location</td>
+<td>Before loading (in pipeline)</td>
+<td>After loading (in warehouse)</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Structured data, known schemas</td>
+<td>Large volumes, evolving schemas</td>
+</tr>
+<tr>
+<td>Flexibility</td>
+<td>Must redesign pipeline for new analyses</td>
+<td>Transform on demand</td>
+</tr>
+<tr>
+<td>Storage cost</td>
+<td>Lower (only transformed data stored)</td>
+<td>Higher (raw + transformed data stored)</td>
+</tr>
+<tr>
+<td>Processing tools</td>
+<td>Airflow, Informatica, custom scripts</td>
+<td>dbt, Snowflake, BigQuery SQL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-tracking">Event Tracking</h3>
+<p><strong>Event tracking</strong> is the practice of capturing discrete user actions and system occurrences as structured data records, each with a timestamp, user identifier, event type, and associated properties. Event tracking is the foundation of modern product analytics - without well-instrumented events, you cannot measure conversion rates, run A/B tests, or build behavioral models.</p>
+<p>A well-designed event tracking system follows a structured taxonomy. Every event should answer four questions: who did it, what did they do, when did they do it, and what was the context?</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>Example event structure:
+{
+  "user_id": "u_12345",
+  "event": "checkout_completed",
+  "timestamp": "2026-02-11T14:32:01Z",
+  "properties": {
+    "cart_value": 89.99,
+    "items_count": 3,
+    "payment_method": "credit_card",
+    "coupon_applied": true,
+    "experiment_variant": "streamlined_checkout_v2"
+  }
+}
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition tip">
+<p class="admonition-title">The Tracking Plan</p>
+<p>Before implementing event tracking, create a tracking plan - a shared document that defines every event your product will capture, including event names, properties, data types, and where each event fires. A tracking plan prevents the chaos of inconsistent event naming (e.g., "signup_complete" vs. "signupCompleted" vs. "user_registered") that makes data analysis painful.</p>
+</div>
+<p>Common event tracking mistakes that technical PMs should watch for:</p>
+<ul>
+<li><strong>Over-tracking</strong> - Capturing every click and hover generates noise and increases storage costs without proportional value</li>
+<li><strong>Under-tracking</strong> - Missing critical events in the user journey, creating blind spots in your funnel analysis</li>
+<li><strong>Inconsistent naming</strong> - Using different conventions across platforms (web vs. mobile) or teams</li>
+<li><strong>Missing properties</strong> - Capturing the event but not the context needed for meaningful analysis</li>
+<li><strong>No versioning</strong> - Changing event schemas without documentation, breaking downstream analyses</li>
+</ul>
+<h2 id="real-time-analytics">Real-Time Analytics</h2>
+<p><strong>Real-time analytics</strong> is the practice of processing and analyzing data as it is generated, with latency measured in seconds to minutes rather than hours to days. While batch analytics (processing data on a schedule, such as nightly) is sufficient for most strategic decisions, certain product scenarios demand real-time insights.</p>
+<p>Real-time analytics is essential for:</p>
+<ul>
+<li><strong>Fraud detection</strong> - Identifying suspicious transactions before they complete</li>
+<li><strong>Live dashboards</strong> - Monitoring product launches, marketing campaigns, or system health in real time</li>
+<li><strong>Personalization</strong> - Adapting the user experience based on current-session behavior</li>
+<li><strong>Alerting</strong> - Triggering notifications when metrics breach defined thresholds (e.g., error rate exceeds 5%)</li>
+<li><strong>Operational monitoring</strong> - Tracking API response times, queue depths, and system load</li>
+</ul>
+<p>The technical infrastructure for real-time analytics typically involves stream processing systems like Apache Kafka, Apache Flink, or AWS Kinesis. These systems process events as continuous streams rather than discrete batches. As a technical PM, you do not need to configure these systems, but you should understand the trade-offs: real-time analytics is more expensive, more complex to maintain, and more difficult to debug than batch analytics. Always ask whether the use case truly requires real-time data before requesting it.</p>
+<table>
+<thead>
+<tr>
+<th>Analytics Type</th>
+<th>Latency</th>
+<th>Complexity</th>
+<th>Cost</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batch</td>
+<td>Hours to days</td>
+<td>Low</td>
+<td>Low</td>
+<td>Reporting, trend analysis, strategic decisions</td>
+</tr>
+<tr>
+<td>Near-real-time</td>
+<td>Minutes</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Dashboards, experiment monitoring</td>
+</tr>
+<tr>
+<td>Real-time</td>
+<td>Seconds</td>
+<td>High</td>
+<td>High</td>
+<td>Fraud detection, personalization, alerting</td>
+</tr>
+</tbody>
+</table>
+<h2 id="attribution-modeling">Attribution Modeling</h2>
+<p><strong>Attribution modeling</strong> is the analytical practice of assigning credit to the marketing channels, touchpoints, and product interactions that contributed to a desired outcome such as a signup, purchase, or upgrade. When a user discovers your product through a blog post, returns via a retargeting ad, and finally converts after receiving an email, attribution modeling determines how much credit each touchpoint receives.</p>
+<p>Attribution matters to technical PMs because it directly influences resource allocation. If your attribution model gives all credit to the last touchpoint (last-touch attribution), you might over-invest in retargeting ads while under-investing in the content marketing that generated initial awareness. Conversely, first-touch attribution might overvalue awareness channels at the expense of conversion-focused efforts.</p>
+<p>Common attribution models include:</p>
+<ul>
+<li><strong>Last-touch</strong> - 100% credit to the final interaction before conversion. Simple but biased toward bottom-of-funnel channels.</li>
+<li><strong>First-touch</strong> - 100% credit to the first interaction. Biased toward awareness channels.</li>
+<li><strong>Linear</strong> - Equal credit to every touchpoint. Simple but treats all interactions as equally important.</li>
+<li><strong>Time-decay</strong> - More credit to touchpoints closer to conversion. Reflects the intuition that recent interactions matter more.</li>
+<li><strong>Position-based (U-shaped)</strong> - 40% credit each to first and last touchpoints, 20% distributed among middle interactions. Balances awareness and conversion.</li>
+<li><strong>Data-driven</strong> - Uses machine learning to determine credit based on actual conversion patterns. Most accurate but requires significant data volume.</li>
+</ul>
+<h4 id="diagram-attribution-model-comparison">Diagram: Attribution Model Comparison</h4>
+<iframe src="../../sims/attribution-model-comparison/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Attribution Model Comparison</summary>
+<p>Type: chart</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: compare, differentiate
+Learning Objective: Students will be able to compare different attribution models and differentiate how each distributes credit across touchpoints in a customer journey.</p>
+<p>Layout: Interactive visualization showing a sample customer journey with five touchpoints across the top, and a stacked bar chart below showing credit distribution under each attribution model.</p>
+<p>Customer Journey (top):
+Five touchpoints shown as connected nodes on a timeline:</p>
+<ol>
+<li>Blog Post (awareness) - Day 1</li>
+<li>Social Media Ad (consideration) - Day 5</li>
+<li>Webinar (evaluation) - Day 12</li>
+<li>Email Campaign (nurture) - Day 18</li>
+<li>Direct Visit (conversion) - Day 22</li>
+</ol>
+<p>Attribution Models (below, as grouped bar chart):
+Each model shows a horizontal bar broken into five colored segments representing credit to each touchpoint:</p>
+<ul>
+<li>Last-touch: 100% to Direct Visit</li>
+<li>First-touch: 100% to Blog Post</li>
+<li>Linear: 20% to each</li>
+<li>Time-decay: 5%, 10%, 15%, 25%, 45%</li>
+<li>Position-based: 40%, 6.7%, 6.7%, 6.7%, 40%</li>
+<li>Data-driven: Variable based on learned weights</li>
+</ul>
+<p>Interactive elements:</p>
+<ul>
+<li>Click on an attribution model name to highlight its distribution</li>
+<li>Hover over segments to see exact credit percentages</li>
+<li>Toggle between percentage view and revenue view ($100 conversion)</li>
+<li>Dropdown to select different sample journeys with varying touchpoint counts</li>
+</ul>
+<p>Color scheme: Each touchpoint has a consistent color across all models for easy comparison
+Implementation: HTML/CSS/JavaScript with Chart.js bar chart, responsive design</p>
+</details>
+<h2 id="customer-segmentation">Customer Segmentation</h2>
+<p><strong>Customer segmentation</strong> is the practice of dividing your user base into distinct groups based on shared characteristics, behaviors, or needs, so that you can tailor your product experience, messaging, and strategy to each group. Segmentation transforms a monolithic view of "our users" into a nuanced understanding of different user populations with different motivations, behaviors, and value to the business.</p>
+<p>Segmentation can be based on multiple dimensions:</p>
+<ul>
+<li><strong>Demographic</strong> - Age, location, company size, industry, job title</li>
+<li><strong>Behavioral</strong> - Feature usage patterns, engagement frequency, purchase history</li>
+<li><strong>Psychographic</strong> - Goals, motivations, pain points, technical sophistication</li>
+<li><strong>Value-based</strong> - Revenue contribution, lifetime value, expansion potential</li>
+<li><strong>Lifecycle stage</strong> - New user, activated, power user, at-risk, churned</li>
+</ul>
+<p>For technical PMs, behavioral segmentation is particularly powerful because it is derived from actual product usage data rather than self-reported characteristics. When you segment users by feature adoption patterns, you discover which features drive retention, which users are candidates for upselling, and which cohorts are at risk of churning.</p>
+<div class="admonition example">
+<p class="admonition-title">Segmentation in Action</p>
+<p>A project management tool might segment users into: (1) Solo planners who use basic task lists, (2) Team coordinators who actively assign tasks and track progress, and (3) Portfolio managers who use cross-project dashboards and reporting. Each segment has different feature needs, different willingness to pay, and different retention drivers. A technical PM uses these segments to prioritize feature development, design onboarding flows, and set pricing tiers.</p>
+</div>
+<h2 id="predictive-analytics">Predictive Analytics</h2>
+<p><strong>Predictive analytics</strong> is the use of statistical models, machine learning algorithms, and historical data to forecast future outcomes such as user behavior, revenue, churn risk, or demand. While traditional analytics tells you what happened and why, predictive analytics tells you what is likely to happen next, enabling proactive rather than reactive product management.</p>
+<p>Common predictive analytics applications for product teams include:</p>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>What It Predicts</th>
+<th>Business Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Churn prediction</td>
+<td>Which users are likely to cancel</td>
+<td>Enables proactive retention interventions</td>
+</tr>
+<tr>
+<td>Demand forecasting</td>
+<td>Expected usage or sales volumes</td>
+<td>Guides capacity planning and inventory</td>
+</tr>
+<tr>
+<td>Lead scoring</td>
+<td>Which prospects are most likely to convert</td>
+<td>Focuses sales effort on high-value opportunities</td>
+</tr>
+<tr>
+<td>Lifetime value prediction</td>
+<td>Expected revenue from a customer over time</td>
+<td>Informs acquisition spend and pricing strategy</td>
+</tr>
+<tr>
+<td>Anomaly detection</td>
+<td>Unusual patterns that may indicate issues</td>
+<td>Early warning system for bugs, fraud, or outages</td>
+</tr>
+<tr>
+<td>Next-best-action</td>
+<td>Which feature or content to recommend</td>
+<td>Improves engagement and activation rates</td>
+</tr>
+</tbody>
+</table>
+<p>Building a predictive model follows a structured process:</p>
+<ol>
+<li><strong>Define the prediction target</strong> - What exactly are you trying to predict? (e.g., "Will this user churn within 30 days?")</li>
+<li><strong>Gather training data</strong> - Collect historical examples of both outcomes (churned and retained users)</li>
+<li><strong>Engineer features</strong> - Create input variables from raw data (e.g., login frequency, feature usage counts, support ticket volume)</li>
+<li><strong>Train the model</strong> - Apply machine learning algorithms to learn patterns in the training data</li>
+<li><strong>Validate the model</strong> - Test on held-out data to ensure the model generalizes beyond training examples</li>
+<li><strong>Deploy and monitor</strong> - Integrate predictions into product workflows and track accuracy over time</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Predictions Are Probabilities, Not Certainties</p>
+<p>A churn prediction model that says a user has an 85% likelihood of churning is not guaranteeing that outcome. It means that among users who looked similar in the past, about 85% did churn. The prediction is a signal to take action - perhaps trigger a personalized retention campaign - not a foregone conclusion.</p>
+</div>
+<p>As a technical PM, you do not need to build predictive models yourself. However, you need to understand them well enough to:</p>
+<ul>
+<li>Articulate which predictions would create the most product value</li>
+<li>Evaluate whether your data is sufficient to train a reliable model</li>
+<li>Ask the right questions about model accuracy, bias, and failure modes</li>
+<li>Design product experiences that act on predictions appropriately</li>
+<li>Communicate model limitations to stakeholders who may overestimate certainty</li>
+</ul>
+<h4 id="diagram-predictive-analytics-pipeline">Diagram: Predictive Analytics Pipeline</h4>
+<iframe src="../../sims/predictive-analytics-pipeline/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Predictive Analytics Pipeline</summary>
+<p>Type: workflow</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain, summarize
+Learning Objective: Students will be able to explain the stages of a predictive analytics pipeline and summarize the role each stage plays in producing actionable predictions.</p>
+<p>Layout: Circular workflow diagram showing six stages with a data feedback loop.</p>
+<p>Stages (clockwise):</p>
+<ol>
+<li>Business Question (purple): "Which users will churn in the next 30 days?" Define success criteria and acceptable accuracy thresholds.</li>
+<li>Data Collection (blue): Gather historical user behavior, demographics, support interactions, billing data. Assess data quality and completeness.</li>
+<li>Feature Engineering (teal): Transform raw data into model inputs. Examples: days since last login, feature adoption score, support ticket sentiment, billing changes.</li>
+<li>Model Training (green): Apply algorithms (logistic regression, random forest, gradient boosting). Split data into training and validation sets.</li>
+<li>Validation (orange): Test on holdout data. Evaluate precision, recall, and AUC. Check for bias across user segments.</li>
+<li>Deployment (red): Integrate predictions into product. Trigger retention workflows, update dashboards, enable personalization.</li>
+</ol>
+<p>Center: "Continuous Learning" label with arrows showing predictions feed back into training data as outcomes are observed.</p>
+<p>Interactive elements:</p>
+<ul>
+<li>Hover over each stage to see detailed activities, common tools, and PM responsibilities</li>
+<li>Click a stage to see example artifacts</li>
+<li>Hover over feedback arrows to see how model accuracy improves over time</li>
+</ul>
+<p>Color scheme: Purple to red gradient following the pipeline stages
+Implementation: HTML/CSS/JavaScript with responsive circular layout</p>
+</details>
+<h2 id="putting-it-all-together-the-experimentation-ecosystem">Putting It All Together: The Experimentation Ecosystem</h2>
+<p>The concepts in this chapter are not isolated techniques - they form an interconnected ecosystem. Event tracking feeds the data pipelines that power your A/B tests. Statistical significance validates the results of experiments designed to improve conversion rates. Customer segmentation reveals which user groups respond differently to experiments. Attribution modeling helps you understand which channels and touchpoints drive the conversions you are testing. Predictive analytics uses the same data infrastructure to forecast outcomes before experiments are even run.</p>
+<p>The most mature product organizations build an "experimentation platform" that integrates all of these capabilities. Such a platform enables any team member to propose a hypothesis, design an experiment with appropriate sample sizes, launch it with feature flags, monitor results in real-time, and analyze outcomes with statistical rigor - all without requiring a data scientist for every test.</p>
+<p>As a technical PM, your role is not to build this infrastructure yourself. Your role is to understand it well enough to advocate for the right investments, ask the right questions, and make decisions that are grounded in evidence rather than opinion. The skills in this chapter equip you to be the PM who says "let's test it" and actually knows what that means.</p>
+<details class="question">
+<summary>Self-Check: Can you answer these questions?</summary>
+<ol>
+<li>What are the core elements of a well-designed experiment, and why is isolating a single variable important?</li>
+<li>Explain the difference between statistical significance and practical significance. Why does this distinction matter for product decisions?</li>
+<li>A colleague wants to stop an A/B test early because the treatment looks like it is winning after two days. What would you advise and why?</li>
+<li>Describe the difference between ETL and ELT. When would you recommend each approach?</li>
+<li>Compare last-touch and data-driven attribution models. In what scenario would each be most appropriate?</li>
+<li>How would you use customer segmentation to improve the design of an A/B test?</li>
+</ol>
+</details>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Experiment design</strong> requires a clear hypothesis, isolated variables, pre-calculated sample sizes, and pre-defined success metrics to produce trustworthy results</li>
+<li><strong>A/B testing</strong> provides causal evidence for product decisions by randomly assigning users to control and treatment groups, eliminating selection bias</li>
+<li><strong>Statistical significance</strong> (measured by p-values and confidence intervals) tells you whether results are real, but must be paired with practical significance to determine if they matter</li>
+<li><strong>Conversion rate</strong> is the fundamental metric for measuring the percentage of users who complete desired actions at every stage of the user journey</li>
+<li><strong>Data pipelines</strong> are the automated infrastructure that moves, transforms, and delivers data from source systems to analytics tools, dashboards, and models</li>
+<li>The <strong>ETL process</strong> (Extract, Transform, Load) and its modern variant ELT are the core patterns for processing data through pipelines</li>
+<li><strong>Real-time analytics</strong> enables immediate insights for time-sensitive use cases like fraud detection and personalization, but comes with higher complexity and cost</li>
+<li><strong>Event tracking</strong> provides the raw behavioral data that powers all analytics, and must follow a consistent taxonomy documented in a tracking plan</li>
+<li><strong>Attribution modeling</strong> assigns credit across marketing touchpoints to guide investment decisions, with model choice significantly affecting conclusions</li>
+<li><strong>Customer segmentation</strong> divides users into meaningful groups for targeted product experiences, experimentation, and strategic prioritization</li>
+<li><strong>Predictive analytics</strong> uses historical data and machine learning to forecast future outcomes, enabling proactive product decisions rather than reactive ones</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../11-analytics-data-driven-decisions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 11. Analytics and Data-Driven Decisions">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                11. Analytics and Data-Driven Decisions
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../13-ai-tools-and-strategy/" class="md-footer__link md-footer__link--next" aria-label="Next: 13. AI Tools and Strategy for Technical PMs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                13. AI Tools and Strategy for Technical PMs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025, 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,0 +1,60 @@
+{
+  "title": "Skill Installation Workflow",
+  "description": "Interactive HTML/CSS/JavaScript visualization for skill installation workflow",
+  "creator": "Dan McCreary",
+  "date": "2025-11-22",
+  "subject": [
+    "educational technology",
+    "data visualization",
+    "html/css/javascript"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "publisher": "Claude Skills Repository",
+  "learningResourceType": "simulation",
+  "audience": "Educators, Developers",
+  "version": "1.0.0",
+  "library": "HTML/CSS/JavaScript",
+  "visualizationType": [
+    "diagram",
+    "graph",
+    "interactive-demo",
+    "map",
+    "timeline"
+  ],
+  "learningObjectives": [
+    "Understand the key concepts of skill installation workflow",
+    "Explore skill installation workflow through interactive visualization",
+    "Apply knowledge of skill installation workflow to solve problems"
+  ],
+  "bloomsTaxonomy": [
+    "Remember",
+    "Apply",
+    "Evaluate",
+    "Create"
+  ],
+  "pedagogical": {
+    "pattern": "demonstration",
+    "bloomAlignment": [
+      "remember",
+      "apply",
+      "evaluate"
+    ],
+    "bloomVerbs": [
+      "apply",
+      "demonstrate",
+      "illustrate",
+      "implement",
+      "use"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": false,
+    "dataVisibility": "medium",
+    "feedbackType": [
+      "corrective"
+    ],
+    "interactionStyle": "respond"
+  }
+}

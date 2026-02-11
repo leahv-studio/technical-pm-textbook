@@ -1,0 +1,3040 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How product data is stored and accessed, from relational database fundamentals and SQL queries through schema design, normalization, and NoSQL alternatives">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/claude-skills/chapters/07-databases-and-sql/">
+      
+      
+        <link rel="prev" href="../06-apis-and-integrations/">
+      
+      
+        <link rel="next" href="../08-advanced-data-management/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Databases and SQL - Claude Skills for Intelligent Textbooks</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-HPLDD3D3K2"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-HPLDD3D3K2",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-HPLDD3D3K2",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#databases-and-sql" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-header__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Claude Skills for Intelligent Textbooks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Databases and SQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-nav__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Claude Skills for Intelligent Textbooks
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-pm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Management Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-software-development-essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Software Development Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-technical-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Technical Documentation and Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-system-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. System Architecture Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-cloud-computing-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Cloud Computing, Scaling, and Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-apis-and-integrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. APIs and Integrations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Databases and SQL
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Databases and SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-databases-matter-for-product-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Databases Matter for Product Managers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relational Databases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relational Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-keys-and-foreign-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primary Keys and Foreign Keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Primary Keys and Foreign Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-primary-keys-and-foreign-keys-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Primary Keys and Foreign Keys Relationship
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-the-language-of-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL: The Language of Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SQL: The Language of Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Joins
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SQL Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sql-join-types-visualized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: SQL Join Types Visualized
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Normalization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-relational-nosql-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond Relational: NoSQL Databases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beyond Relational: NoSQL Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nosql-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NoSQL Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-value-stores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key-Value Stores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key-Value Stores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-database-type-decision-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Database Type Decision Guide
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-sql-for-product-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical SQL for Product Managers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-between-sql-and-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing Between SQL and NoSQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Advanced Data Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-quality-assurance-technical-debt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Quality Assurance and Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-sdlc-and-agile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. SDLC and Agile Methodologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-analytics-data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Analytics and Data-Driven Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-advanced-analytics-experimentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Advanced Analytics and Experimentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-ai-tools-and-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. AI Tools and Strategy for Technical PMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-career-transition-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Career Transition and Technical Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../skill-descriptions/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Descriptions
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../workshops/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consolidation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consolidation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-databases-matter-for-product-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Databases Matter for Product Managers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relational Databases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relational Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-keys-and-foreign-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primary Keys and Foreign Keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Primary Keys and Foreign Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-primary-keys-and-foreign-keys-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Primary Keys and Foreign Keys Relationship
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-the-language-of-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL: The Language of Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SQL: The Language of Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Joins
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SQL Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sql-join-types-visualized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: SQL Join Types Visualized
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Normalization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-relational-nosql-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond Relational: NoSQL Databases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beyond Relational: NoSQL Databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nosql-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NoSQL Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-value-stores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key-Value Stores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key-Value Stores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-database-type-decision-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Database Type Decision Guide
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-sql-for-product-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical SQL for Product Managers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-between-sql-and-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing Between SQL and NoSQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/claude-skills/blob/master/docs/chapters/07-databases-and-sql/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="databases-and-sql">Databases and SQL</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter introduces the database concepts every technical PM needs to query data and make informed product decisions. You will learn about relational databases, write SQL queries and joins, and understand data tables, primary keys, foreign keys, schema design, and normalization. The chapter also covers NoSQL databases including document databases and key-value stores, giving you a well-rounded understanding of how product data is stored and accessed.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 13 concepts from the learning graph:</p>
+<ol>
+<li>Database Fundamentals</li>
+<li>Relational Databases</li>
+<li>SQL Basics</li>
+<li>SQL Queries</li>
+<li>SQL Joins</li>
+<li>Data Tables</li>
+<li>Primary Keys</li>
+<li>Foreign Keys</li>
+<li>Database Schema</li>
+<li>Data Normalization</li>
+<li>NoSQL Databases</li>
+<li>Document Databases</li>
+<li>Key-Value Stores</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../01-pm-foundations/">Chapter 1: Product Management Foundations</a></li>
+</ul>
+<hr>
+<h2 id="why-databases-matter-for-product-managers">Why Databases Matter for Product Managers</h2>
+<p>Every product you manage generates and relies on data - user accounts, transactions, content, analytics events, configuration settings, and more. That data has to live somewhere organized and accessible. <strong>Database fundamentals</strong> encompass the core principles of how data is stored, organized, retrieved, and protected in software systems. A database is a structured collection of data managed by software (a database management system, or DBMS) that provides reliable storage, efficient retrieval, and concurrent access for multiple users and applications simultaneously.</p>
+<p>As a technical PM, database literacy gives you three critical capabilities. First, you can query your own product data rather than waiting for an analyst to pull numbers. Second, you can evaluate engineering proposals about data architecture with informed questions. Third, you can understand performance constraints that affect user experience - why some pages load slowly, why certain reports take minutes to generate, and why "just adding a field" is sometimes harder than it sounds.</p>
+<div class="admonition info">
+<p class="admonition-title">The PM Who Can Query</p>
+<p>Technical PMs who can write basic SQL queries gain a significant advantage. Instead of filing a ticket and waiting two days to learn how many users completed onboarding last week, you can answer that question yourself in two minutes. This chapter gives you that capability.</p>
+</div>
+<h2 id="relational-databases">Relational Databases</h2>
+<p>A <strong>relational database</strong> is a type of database that organizes data into structured tables with rows and columns, where relationships between tables are defined through shared values. Developed by Edgar F. Codd at IBM in 1970, the relational model remains the most widely used approach for storing structured business data. Popular relational database systems include PostgreSQL, MySQL, Microsoft SQL Server, and Oracle Database.</p>
+<p>The relational model is built on a simple but powerful idea: store each type of information in its own table, and use references (keys) to connect related information across tables. This approach eliminates data duplication, enforces consistency, and makes it easy to answer complex questions by combining data from multiple tables.</p>
+<h3 id="data-tables">Data Tables</h3>
+<p><strong>Data tables</strong> (also called relations) are the fundamental storage structures in a relational database. Each table stores data about one type of entity - users, orders, products, subscriptions - organized into rows and columns. Each row represents a single record (one user, one order), and each column represents a specific attribute of that entity (name, email, creation date).</p>
+<p>Here is an example of a <code>users</code> table:</p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>name</th>
+<th>email</th>
+<th>plan</th>
+<th>created_at</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Sarah Chen</td>
+<td>sarah@example.com</td>
+<td>Pro</td>
+<td>2025-01-15</td>
+</tr>
+<tr>
+<td>2</td>
+<td>James Wilson</td>
+<td>james@example.com</td>
+<td>Free</td>
+<td>2025-02-20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Maria Garcia</td>
+<td>maria@example.com</td>
+<td>Enterprise</td>
+<td>2025-03-01</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Alex Kim</td>
+<td>alex@example.com</td>
+<td>Pro</td>
+<td>2025-03-15</td>
+</tr>
+</tbody>
+</table>
+<p>And a related <code>orders</code> table:</p>
+<table>
+<thead>
+<tr>
+<th>order_id</th>
+<th>user_id</th>
+<th>product</th>
+<th>amount</th>
+<th>order_date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>1</td>
+<td>Dashboard Add-on</td>
+<td>29.99</td>
+<td>2025-04-01</td>
+</tr>
+<tr>
+<td>102</td>
+<td>1</td>
+<td>API Access Pack</td>
+<td>49.99</td>
+<td>2025-04-15</td>
+</tr>
+<tr>
+<td>103</td>
+<td>3</td>
+<td>Custom Reports</td>
+<td>99.99</td>
+<td>2025-04-20</td>
+</tr>
+<tr>
+<td>104</td>
+<td>4</td>
+<td>Dashboard Add-on</td>
+<td>29.99</td>
+<td>2025-05-01</td>
+</tr>
+</tbody>
+</table>
+<p>Notice how <code>user_id</code> appears in both tables - this is the link that connects users to their orders. This connection is the essence of the relational model.</p>
+<h3 id="primary-keys-and-foreign-keys">Primary Keys and Foreign Keys</h3>
+<p>A <strong>primary key</strong> is a column (or combination of columns) that uniquely identifies each row in a table. No two rows can have the same primary key value, and the value cannot be empty (null). In the <code>users</code> table above, <code>user_id</code> is the primary key - every user has a unique ID that distinguishes them from all other users.</p>
+<p>A <strong>foreign key</strong> is a column in one table that references the primary key of another table, creating a relationship between the two tables. In the <code>orders</code> table, <code>user_id</code> is a foreign key that references <code>users.user_id</code>. This reference enforces <strong>referential integrity</strong> - the database ensures you cannot create an order for a user that does not exist, and you cannot delete a user who has existing orders (without explicitly handling the orders first).</p>
+<h4 id="diagram-primary-keys-and-foreign-keys-relationship">Diagram: Primary Keys and Foreign Keys Relationship</h4>
+<iframe src="../../sims/primary-foreign-keys/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Primary Keys and Foreign Keys Relationship</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain, illustrate
+Learning Objective: Students will be able to explain how primary keys uniquely identify records and how foreign keys create relationships between tables.</p>
+<p>Layout: Two tables displayed side by side with connecting lines showing the key relationships. Left table shows users with user_id as PK highlighted in gold. Right table shows orders with order_id as PK and user_id as FK highlighted in blue. Connecting lines from matching user_id values illustrate the one-to-many relationship.</p>
+<p>Color scheme: Gold (primary keys), blue (foreign keys), green (valid connections)
+Implementation: HTML/CSS/JavaScript with SVG table visualization</p>
+</details>
+<h2 id="sql-the-language-of-data">SQL: The Language of Data</h2>
+<h3 id="sql-basics">SQL Basics</h3>
+<p><strong>SQL (Structured Query Language)</strong> is the standard programming language for managing and querying relational databases. Pronounced "sequel" or "S-Q-L," SQL has been the dominant database language since the 1970s and remains essential today. Unlike general-purpose programming languages, SQL is declarative - you describe <em>what</em> data you want, not <em>how</em> to retrieve it. The database engine figures out the most efficient way to execute your request.</p>
+<p>SQL provides four categories of operations:</p>
+<ul>
+<li><strong>Querying</strong> (SELECT) - Retrieving data from one or more tables</li>
+<li><strong>Inserting</strong> (INSERT) - Adding new rows to a table</li>
+<li><strong>Updating</strong> (UPDATE) - Modifying existing rows</li>
+<li><strong>Deleting</strong> (DELETE) - Removing rows from a table</li>
+</ul>
+<p>For PMs, SELECT queries are by far the most important. You will use them to pull product data, analyze user behavior, and answer business questions. The other operations are primarily the domain of application code and database administrators.</p>
+<h3 id="sql-queries">SQL Queries</h3>
+<p><strong>SQL queries</strong> are SELECT statements that retrieve data from the database based on specified criteria. A query tells the database which columns you want, from which table, and under what conditions. Learning to write basic SQL queries is one of the most practical technical skills a PM can acquire.</p>
+<p>Here are progressively more complex queries using our example tables:</p>
+<p><strong>Basic query - all users:</strong>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">plan</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<p><strong>Filtered query - only Pro users:</strong>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">plan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Pro'</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<p><strong>Aggregation - count users by plan:</strong>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">plan</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">user_count</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">plan</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">user_count</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<p><strong>Date filtering - users who signed up in March 2025:</strong>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">created_at</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">'2025-03-01'</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">'2025-04-01'</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<table>
+<thead>
+<tr>
+<th>SQL Clause</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SELECT</code></td>
+<td>Which columns to return</td>
+<td><code>SELECT name, email</code></td>
+</tr>
+<tr>
+<td><code>FROM</code></td>
+<td>Which table to query</td>
+<td><code>FROM users</code></td>
+</tr>
+<tr>
+<td><code>WHERE</code></td>
+<td>Filter rows by condition</td>
+<td><code>WHERE plan = 'Pro'</code></td>
+</tr>
+<tr>
+<td><code>GROUP BY</code></td>
+<td>Group rows for aggregation</td>
+<td><code>GROUP BY plan</code></td>
+</tr>
+<tr>
+<td><code>HAVING</code></td>
+<td>Filter groups (after GROUP BY)</td>
+<td><code>HAVING COUNT(*) &gt; 10</code></td>
+</tr>
+<tr>
+<td><code>ORDER BY</code></td>
+<td>Sort results</td>
+<td><code>ORDER BY created_at DESC</code></td>
+</tr>
+<tr>
+<td><code>LIMIT</code></td>
+<td>Restrict number of rows returned</td>
+<td><code>LIMIT 100</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">SQL for Product Questions</p>
+<p>Think of SQL as a way to ask your database questions in a structured format. "How many users signed up last month?" becomes a SELECT with COUNT and a WHERE clause on the date. "What is our most popular plan?" becomes a GROUP BY with ORDER BY. Once you internalize this translation, SQL becomes a natural extension of your analytical thinking.</p>
+</div>
+<h3 id="sql-joins">SQL Joins</h3>
+<p><strong>SQL joins</strong> combine rows from two or more tables based on a related column, allowing you to answer questions that span multiple entities. Joins are where SQL becomes truly powerful for product analysis - you can connect user data with order data, subscription data with usage data, and any other related datasets.</p>
+<p>The most common join types:</p>
+<p><strong>INNER JOIN</strong> - Returns only rows that have matching values in both tables:
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">amount</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">user_id</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<p>This returns only users who have orders. User James Wilson (who has no orders) would not appear in the results.</p>
+<p><strong>LEFT JOIN</strong> - Returns all rows from the left table and matching rows from the right table:
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">amount</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">user_id</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<p>This returns all users, including James Wilson with NULL values for product and amount (since he has no orders). LEFT JOINs are especially useful for finding records without matches - such as users who never made a purchase.</p>
+<table>
+<thead>
+<tr>
+<th>Join Type</th>
+<th>What It Returns</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INNER JOIN</strong></td>
+<td>Only matching rows from both tables</td>
+<td>"Show me users and their orders"</td>
+</tr>
+<tr>
+<td><strong>LEFT JOIN</strong></td>
+<td>All rows from left table, matches from right</td>
+<td>"Show all users, including those without orders"</td>
+</tr>
+<tr>
+<td><strong>RIGHT JOIN</strong></td>
+<td>All rows from right table, matches from left</td>
+<td>"Show all orders, including orphaned ones"</td>
+</tr>
+<tr>
+<td><strong>FULL OUTER JOIN</strong></td>
+<td>All rows from both tables</td>
+<td>"Show everything, matched or not"</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagram-sql-join-types-visualized">Diagram: SQL Join Types Visualized</h4>
+<iframe src="../../sims/sql-join-types/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>SQL Join Types Visualized</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: compare, distinguish
+Learning Objective: Students will be able to compare the four main SQL join types and distinguish which rows each type includes or excludes.</p>
+<p>Layout: Four Venn diagram pairs arranged in a 2x2 grid, each showing two overlapping circles representing Table A (users) and Table B (orders). Each diagram highlights which regions are included in the join result: INNER JOIN highlights only the overlap, LEFT JOIN highlights all of circle A plus overlap, RIGHT JOIN highlights all of circle B plus overlap, FULL OUTER JOIN highlights both entire circles.</p>
+<p>Color scheme: Green (inner), blue (left), orange (right), purple (full outer)
+Implementation: HTML/CSS/JavaScript with SVG Venn diagrams</p>
+</details>
+<h2 id="database-design">Database Design</h2>
+<h3 id="database-schema">Database Schema</h3>
+<p>A <strong>database schema</strong> is the formal definition of a database structure, including its tables, columns, data types, relationships, constraints, and indexes. The schema is the blueprint for how data is organized and related. Schema design decisions made early in a product life can be difficult and expensive to change later, which is why technical PMs should understand the trade-offs involved.</p>
+<p>A schema defines several things for each table:</p>
+<ul>
+<li><strong>Column names and data types</strong> - What information is stored and in what format (text, integer, date, boolean)</li>
+<li><strong>Constraints</strong> - Rules like NOT NULL (value required), UNIQUE (no duplicates), and CHECK (value must meet a condition)</li>
+<li><strong>Relationships</strong> - How tables connect through primary and foreign keys</li>
+<li><strong>Indexes</strong> - Optimizations that speed up specific queries (covered in Chapter 8)</li>
+</ul>
+<p>Here is a simplified schema for a product management SaaS application:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code>users
+-- user_id (INTEGER, PRIMARY KEY)
+-- name (VARCHAR(100), NOT NULL)
+-- email (VARCHAR(255), UNIQUE, NOT NULL)
+-- plan (VARCHAR(20), NOT NULL)
+-- created_at (TIMESTAMP, NOT NULL)
+
+orders
+-- order_id (INTEGER, PRIMARY KEY)
+-- user_id (INTEGER, FOREIGN KEY -&gt; users.user_id)
+-- product (VARCHAR(100), NOT NULL)
+-- amount (DECIMAL(10,2), NOT NULL)
+-- order_date (DATE, NOT NULL)
+
+subscriptions
+-- subscription_id (INTEGER, PRIMARY KEY)
+-- user_id (INTEGER, FOREIGN KEY -&gt; users.user_id)
+-- plan (VARCHAR(20), NOT NULL)
+-- status (VARCHAR(20), NOT NULL)
+-- started_at (TIMESTAMP, NOT NULL)
+-- expires_at (TIMESTAMP)
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="data-normalization">Data Normalization</h3>
+<p><strong>Data normalization</strong> is the process of organizing database tables to minimize data redundancy and dependency issues. Normalization involves structuring tables so that each piece of information is stored in exactly one place. When data is duplicated across multiple tables, updates become error-prone - change the data in one place but forget another, and you have inconsistent data.</p>
+<p>Consider a poorly normalized (denormalized) table:</p>
+<table>
+<thead>
+<tr>
+<th>order_id</th>
+<th>user_name</th>
+<th>user_email</th>
+<th>user_plan</th>
+<th>product</th>
+<th>amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>Sarah Chen</td>
+<td>sarah@example.com</td>
+<td>Pro</td>
+<td>Dashboard Add-on</td>
+<td>29.99</td>
+</tr>
+<tr>
+<td>102</td>
+<td>Sarah Chen</td>
+<td>sarah@example.com</td>
+<td>Pro</td>
+<td>API Access Pack</td>
+<td>49.99</td>
+</tr>
+<tr>
+<td>103</td>
+<td>Maria Garcia</td>
+<td>maria@example.com</td>
+<td>Enterprise</td>
+<td>Custom Reports</td>
+<td>99.99</td>
+</tr>
+</tbody>
+</table>
+<p>The problem is clear: Sarah Chen name, email, and plan are stored in every order row. If she changes her email, you must update every order row - miss one and your data is inconsistent. The normalized approach uses separate tables (as shown earlier) with foreign keys connecting them.</p>
+<p>Normalization follows progressive levels called "normal forms":</p>
+<table>
+<thead>
+<tr>
+<th>Normal Form</th>
+<th>Rule</th>
+<th>What It Prevents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1NF</strong></td>
+<td>Each column contains atomic (indivisible) values; no repeating groups</td>
+<td>Storing comma-separated lists in a single column</td>
+</tr>
+<tr>
+<td><strong>2NF</strong></td>
+<td>Meet 1NF + every non-key column depends on the entire primary key</td>
+<td>Partial dependencies that cause update anomalies</td>
+</tr>
+<tr>
+<td><strong>3NF</strong></td>
+<td>Meet 2NF + no non-key column depends on another non-key column</td>
+<td>Transitive dependencies that duplicate data</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Normalization vs. Performance</p>
+<p>Normalization reduces redundancy but can require more joins to reassemble data, which affects query performance. In practice, most applications normalize to Third Normal Form (3NF) and selectively denormalize specific tables for performance-critical queries. This trade-off between data integrity and read performance is a common engineering discussion that PMs should understand.</p>
+</div>
+<h2 id="beyond-relational-nosql-databases">Beyond Relational: NoSQL Databases</h2>
+<h3 id="nosql-databases">NoSQL Databases</h3>
+<p><strong>NoSQL databases</strong> (often interpreted as "Not Only SQL") are a category of database systems that store data in formats other than the traditional relational table structure. NoSQL databases emerged to address limitations of relational databases when handling massive scale, flexible data structures, or high-velocity data that does not fit neatly into rows and columns.</p>
+<p>NoSQL databases do not replace relational databases - they complement them. Many modern products use both: a relational database for structured transactional data (users, orders, billing) and a NoSQL database for semi-structured or high-volume data (user activity logs, product catalogs, session data). The choice depends on the data characteristics and access patterns.</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Relational (SQL)</th>
+<th>NoSQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data structure</td>
+<td>Fixed schema (tables, rows, columns)</td>
+<td>Flexible schema (documents, key-value, graphs)</td>
+</tr>
+<tr>
+<td>Scaling approach</td>
+<td>Vertical (bigger server)</td>
+<td>Horizontal (more servers)</td>
+</tr>
+<tr>
+<td>Consistency</td>
+<td>Strong (ACID transactions)</td>
+<td>Varies (eventual consistency common)</td>
+</tr>
+<tr>
+<td>Query language</td>
+<td>SQL (standardized)</td>
+<td>Database-specific APIs</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Structured data, complex queries, transactions</td>
+<td>Flexible data, massive scale, simple access patterns</td>
+</tr>
+<tr>
+<td>Examples</td>
+<td>PostgreSQL, MySQL, SQL Server</td>
+<td>MongoDB, DynamoDB, Redis, Cassandra</td>
+</tr>
+</tbody>
+</table>
+<h3 id="document-databases">Document Databases</h3>
+<p>A <strong>document database</strong> stores data as semi-structured documents, typically in JSON-like format. Each document contains all the data for a single entity, including nested objects and arrays, without requiring a fixed schema. This means different documents in the same collection can have different fields - one user document might include a phone number while another does not.</p>
+<p>MongoDB, the most popular document database, stores data like this:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_001"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sarah Chen"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sarah@example.com"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"plan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pro"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"preferences"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"theme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dark"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"recent_activity"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login"</span><span class="p">,</span><span class="w"> </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-01T09:00:00Z"</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created_report"</span><span class="p">,</span><span class="w"> </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-01T09:15:00Z"</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Document databases excel when your data has variable structure (not every record has the same fields), when you frequently read and write entire documents at once, and when horizontal scaling is a priority. They are popular for content management systems, user profiles with varying attributes, and product catalogs where items have different characteristics.</p>
+<h3 id="key-value-stores">Key-Value Stores</h3>
+<p>A <strong>key-value store</strong> is the simplest type of NoSQL database, storing data as pairs of unique keys and their associated values. Think of it as a giant dictionary or hash map - you provide a key and get back the corresponding value. The value can be anything: a string, a number, a JSON document, or even a binary file. The database does not inspect or index the value; it just stores and retrieves it by key.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session:abc123</code></td>
+<td><code>{"user_id": 1, "expires": "2025-04-01T10:00:00Z"}</code></td>
+</tr>
+<tr>
+<td><code>cache:product:42</code></td>
+<td><code>{"name": "Analytics Pro", "price": 49.99}</code></td>
+</tr>
+<tr>
+<td><code>config:feature_flags</code></td>
+<td><code>{"dark_mode": true, "new_search": false}</code></td>
+</tr>
+<tr>
+<td><code>rate_limit:user:1</code></td>
+<td><code>47</code> (requests remaining)</td>
+</tr>
+</tbody>
+</table>
+<p>Key-value stores are extremely fast because lookups by key are the simplest possible database operation. Redis, the most popular key-value store, processes millions of operations per second and stores data in memory for sub-millisecond response times.</p>
+<p>Common use cases for key-value stores:</p>
+<ul>
+<li><strong>Session management</strong> - Storing user session data for logged-in users</li>
+<li><strong>Caching</strong> - Storing frequently accessed data to avoid expensive database queries</li>
+<li><strong>Feature flags</strong> - Storing configuration that controls feature availability</li>
+<li><strong>Rate limiting</strong> - Tracking API request counts per user or IP address</li>
+<li><strong>Leaderboards</strong> - Maintaining sorted rankings that update in real time</li>
+</ul>
+<h4 id="diagram-database-type-decision-guide">Diagram: Database Type Decision Guide</h4>
+<iframe src="../../sims/database-type-decision/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Database Type Decision Guide</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Evaluate (L5)
+Bloom Verb: assess, recommend
+Learning Objective: Students will be able to assess a data storage requirement and recommend the appropriate database type based on data characteristics, access patterns, and scale requirements.</p>
+<p>Layout: Decision flowchart starting from "What type of data are you storing?" with branching paths leading to database type recommendations. Branches cover structured data with complex relationships (relational), semi-structured with varying fields (document), simple lookups needing speed (key-value), and large-scale analytics (forward reference to Chapter 8).</p>
+<p>Color scheme: Blue (decisions), green (relational), orange (document), purple (key-value)
+Implementation: HTML/CSS/JavaScript with interactive decision tree</p>
+</details>
+<h2 id="practical-sql-for-product-managers">Practical SQL for Product Managers</h2>
+<p>Now that you understand the theory, here are five SQL query patterns that cover the majority of questions a PM asks of a database. These patterns apply regardless of which relational database your team uses.</p>
+<p><strong>Pattern 1: How many users signed up each month?</strong>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">'month'</span><span class="p">,</span><span class="w"> </span><span class="n">created_at</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">signup_month</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">new_users</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">'month'</span><span class="p">,</span><span class="w"> </span><span class="n">created_at</span><span class="p">)</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">signup_month</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<p><strong>Pattern 2: What is the revenue by plan type?</strong>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">users</span><span class="p">.</span><span class="n">plan</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">orders</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_revenue</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">paying_users</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">user_id</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">plan</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_revenue</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<p><strong>Pattern 3: Which users have never placed an order?</strong>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">plan</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">user_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">order_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<p><strong>Pattern 4: What is the average order value by month?</strong>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">'month'</span><span class="p">,</span><span class="w"> </span><span class="n">order_date</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">order_month</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_order_value</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_orders</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">DATE_TRUNC</span><span class="p">(</span><span class="s1">'month'</span><span class="p">,</span><span class="w"> </span><span class="n">order_date</span><span class="p">)</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">order_month</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<p><strong>Pattern 5: Who are the top 10 customers by total spend?</strong>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">users</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">users</span><span class="p">.</span><span class="n">email</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">orders</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_spent</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="n">orders</span><span class="p">.</span><span class="n">order_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">order_count</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orders</span><span class="p">.</span><span class="n">user_id</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">email</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_spent</span><span class="w"> </span><span class="k">DESC</span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div><p></p>
+<div class="admonition tip">
+<p class="admonition-title">Start Simple, Iterate</p>
+<p>Do not try to write the perfect query on the first attempt. Start with a basic SELECT to see your data, add a WHERE clause to filter it, then layer in JOINs, GROUP BY, and aggregations. Build your query piece by piece, checking results at each step. This iterative approach is how experienced analysts work too.</p>
+</div>
+<h2 id="choosing-between-sql-and-nosql">Choosing Between SQL and NoSQL</h2>
+<p>The relational-vs-NoSQL decision is one of the most consequential technical choices your engineering team will make. As a PM, you should understand the trade-offs well enough to ask informed questions and evaluate proposals.</p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Favors Relational</th>
+<th>Favors NoSQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data structure</td>
+<td>Well-defined, consistent schema</td>
+<td>Evolving, variable schema</td>
+</tr>
+<tr>
+<td>Query complexity</td>
+<td>Complex joins across many tables</td>
+<td>Simple lookups by key or document</td>
+</tr>
+<tr>
+<td>Transaction needs</td>
+<td>Financial data, inventory, anything requiring ACID</td>
+<td>Social feeds, logs, analytics events</td>
+</tr>
+<tr>
+<td>Scale pattern</td>
+<td>Moderate scale, read-heavy</td>
+<td>Massive scale, write-heavy</td>
+</tr>
+<tr>
+<td>Team expertise</td>
+<td>Strong SQL skills</td>
+<td>Experience with specific NoSQL system</td>
+</tr>
+<tr>
+<td>Development speed</td>
+<td>Schema changes require migrations</td>
+<td>Flexible schema adapts quickly</td>
+</tr>
+</tbody>
+</table>
+<p>In practice, the answer is often "both." A typical modern product might use PostgreSQL for user accounts, billing, and orders (where consistency matters), MongoDB for a product catalog with varying attributes, and Redis for session management and caching. This polyglot persistence approach uses each database type for what it does best.</p>
+<details class="question">
+<summary>Self-Check: Can you answer these questions?</summary>
+<ol>
+<li>What is the difference between a primary key and a foreign key, and how do they work together?</li>
+<li>Write a SQL query that counts the number of orders per user, showing only users with more than 5 orders.</li>
+<li>Explain the difference between an INNER JOIN and a LEFT JOIN. When would you use each?</li>
+<li>What is data normalization, and what problem does it solve?</li>
+<li>Name two scenarios where a document database would be a better choice than a relational database.</li>
+<li>What is a key-value store, and why is it used for caching rather than a relational database?</li>
+</ol>
+</details>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Database fundamentals</strong> provide the foundation for understanding how product data is stored, organized, and retrieved - database literacy is a high-leverage PM skill</li>
+<li><strong>Relational databases</strong> organize data into <strong>data tables</strong> with rows and columns, connected through <strong>primary keys</strong> (unique identifiers) and <strong>foreign keys</strong> (cross-table references)</li>
+<li><strong>SQL basics</strong> revolve around the SELECT statement, which lets PMs query data directly to answer product questions without waiting for analyst support</li>
+<li><strong>SQL queries</strong> use clauses like WHERE (filter), GROUP BY (aggregate), ORDER BY (sort), and LIMIT (restrict) to extract specific insights from data</li>
+<li><strong>SQL joins</strong> combine data from multiple tables - INNER JOIN returns only matches, LEFT JOIN includes all rows from the left table even without matches</li>
+<li>A <strong>database schema</strong> defines the complete structure of a database, and <strong>data normalization</strong> eliminates redundancy by ensuring each piece of data is stored in exactly one place</li>
+<li><strong>NoSQL databases</strong> offer alternatives for data that does not fit neatly into relational tables, with trade-offs around flexibility, scale, and consistency</li>
+<li><strong>Document databases</strong> (like MongoDB) store semi-structured JSON-like documents with flexible schemas, ideal for variable data structures</li>
+<li><strong>Key-value stores</strong> (like Redis) provide extremely fast lookups by key, perfect for caching, session management, and real-time counters</li>
+<li>Most modern products use multiple database types together (polyglot persistence), choosing the right tool for each data storage need</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../06-apis-and-integrations/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6. APIs and Integrations">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                6. APIs and Integrations
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../08-advanced-data-management/" class="md-footer__link md-footer__link--next" aria-label="Next: 8. Advanced Data Management">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                8. Advanced Data Management
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025, 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

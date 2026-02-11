@@ -1,0 +1,2732 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Understanding technical debt, code quality, testing methodologies, and system migration strategies that impact product velocity and reliability">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/claude-skills/chapters/09-quality-assurance-technical-debt/">
+      
+      
+        <link rel="prev" href="../08-advanced-data-management/">
+      
+      
+        <link rel="next" href="../10-sdlc-and-agile/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Quality Assurance and Technical Debt - Claude Skills for Intelligent Textbooks</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-HPLDD3D3K2"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-HPLDD3D3K2",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-HPLDD3D3K2",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quality-assurance-and-technical-debt" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-header__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Claude Skills for Intelligent Textbooks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quality Assurance and Technical Debt
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Claude Skills for Intelligent Textbooks" class="md-nav__button md-logo" aria-label="Claude Skills for Intelligent Textbooks" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Claude Skills for Intelligent Textbooks
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-pm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Management Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-software-development-essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Software Development Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-technical-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Technical Documentation and Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-system-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. System Architecture Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-cloud-computing-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Cloud Computing, Scaling, and Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-apis-and-integrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. APIs and Integrations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-databases-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Databases and SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-advanced-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Advanced Data Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Quality Assurance and Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Quality Assurance and Technical Debt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-quality-matters-for-product-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Quality Matters for Product Managers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-technical-debt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding Technical Debt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Technical Debt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-technical-debt-quadrant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Technical Debt Quadrant
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-quality-and-refactoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Quality and Refactoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy-systems-and-system-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy Systems and System Migration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Fundamentals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-the-testing-pyramid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: The Testing Pyramid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unit Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-to-End Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specialized-testing-performance-and-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specialized Testing: Performance and Security
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specialized Testing: Performance and Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-coverage-and-automated-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Coverage and Automated Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Coverage and Automated Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-automated-testing-in-the-cicd-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Automated Testing in the CI/CD Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-debt-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Debt Tracking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical Debt Tracking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-technical-debt-impact-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Technical Debt Impact Over Time
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together-a-pms-quality-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together: A PM\'s Quality Strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-sdlc-and-agile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. SDLC and Agile Methodologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-analytics-data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Analytics and Data-Driven Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-advanced-analytics-experimentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Advanced Analytics and Experimentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-ai-tools-and-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. AI Tools and Strategy for Technical PMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-career-transition-leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Career Transition and Technical Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../skill-descriptions/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Descriptions
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../workshops/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../consolidation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consolidation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-quality-matters-for-product-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Quality Matters for Product Managers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-technical-debt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding Technical Debt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Technical Debt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-technical-debt-quadrant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Technical Debt Quadrant
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-quality-and-refactoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Quality and Refactoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy-systems-and-system-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy Systems and System Migration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Fundamentals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-the-testing-pyramid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: The Testing Pyramid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unit Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-to-End Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specialized-testing-performance-and-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specialized Testing: Performance and Security
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specialized Testing: Performance and Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-coverage-and-automated-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Coverage and Automated Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Coverage and Automated Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-automated-testing-in-the-cicd-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Automated Testing in the CI/CD Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-debt-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Debt Tracking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical Debt Tracking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-technical-debt-impact-over-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Technical Debt Impact Over Time
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together-a-pms-quality-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together: A PM\'s Quality Strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/dmccreary/claude-skills/blob/master/docs/chapters/09-quality-assurance-technical-debt/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="quality-assurance-and-technical-debt">Quality Assurance and Technical Debt</h1>
+<h2 id="summary">Summary</h2>
+<p>This chapter covers the quality and maintenance dimensions of software development that directly impact product velocity and reliability. You'll learn about technical debt - what it is, how to track it, and when to pay it down - along with code quality, refactoring, and legacy systems. The chapter also provides a thorough introduction to testing methodologies including unit, integration, and end-to-end testing, as well as performance testing, security testing, automated testing, and system migration strategies.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 15 concepts from the learning graph:</p>
+<ol>
+<li>Technical Debt</li>
+<li>Code Quality</li>
+<li>Code Refactoring</li>
+<li>Legacy Systems</li>
+<li>System Migration</li>
+<li>Testing Fundamentals</li>
+<li>Unit Testing</li>
+<li>Integration Testing</li>
+<li>End-to-End Testing</li>
+<li>Quality Assurance</li>
+<li>Performance Testing</li>
+<li>Security Testing</li>
+<li>Code Coverage</li>
+<li>Automated Testing</li>
+<li>Technical Debt Tracking</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../02-software-development-essentials/">Chapter 2: Software Development Essentials</a></li>
+<li><a href="../03-technical-documentation/">Chapter 3: Technical Documentation and Requirements</a></li>
+<li><a href="../04-system-architecture/">Chapter 4: System Architecture Fundamentals</a></li>
+<li><a href="../06-apis-and-integrations/">Chapter 6: APIs and Integrations</a></li>
+<li><a href="../08-advanced-data-management/">Chapter 8: Advanced Data Management</a></li>
+</ul>
+<hr>
+<h2 id="why-quality-matters-for-product-managers">Why Quality Matters for Product Managers</h2>
+<p>Every product manager has experienced the tension between shipping new features and maintaining what already exists. Engineering teams ask for "hardening sprints," architects raise concerns about system fragility, and customers report bugs that should have been caught before release. These conversations all trace back to two interconnected topics: quality assurance and technical debt. Understanding both concepts deeply will transform how you prioritize work, negotiate trade-offs, and communicate with your engineering partners.</p>
+<p>This chapter equips you to participate meaningfully in conversations about code quality, testing strategy, and system modernization. You will not need to write tests yourself, but you will need to understand why your engineering team insists on certain quality gates, how testing strategies affect release timelines, and when investing in debt reduction yields better returns than building new features.</p>
+<div class="admonition note">
+<p class="admonition-title">The PM\'s Role in Quality</p>
+<p>You don\'t need to be the person who writes tests or refactors code. Your job is to understand the <em>business impact</em> of quality decisions, create space in the roadmap for quality investments, and help the team make informed trade-offs between speed and sustainability.</p>
+</div>
+<h2 id="understanding-technical-debt">Understanding Technical Debt</h2>
+<p><strong>Technical debt</strong> is the implied cost of future rework caused by choosing an expedient solution today instead of a better approach that would take longer to implement. The metaphor was coined by Ward Cunningham in 1992 and draws a deliberate parallel to financial debt: you borrow against future productivity to deliver something now, and you pay interest on that loan through increased maintenance costs, slower feature development, and higher defect rates until you repay the principal by fixing the underlying problem.</p>
+<p>Technical debt is not inherently bad. Just as financial debt can be a strategic tool - taking a mortgage to buy a house, or borrowing to fund a business - technical debt can be a rational product decision. Launching a feature with a simpler-but-less-scalable implementation to validate market demand before investing in a robust architecture is a perfectly sound strategy. The problems arise when debt accumulates without tracking, when teams take on debt unintentionally, or when leadership refuses to allocate time for repayment.</p>
+<p>Technical debt generally falls into four categories:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+<th>Risk Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deliberate, Prudent</strong></td>
+<td>Conscious decision to ship quickly with known trade-offs</td>
+<td>"We\'ll use a flat file instead of a database for the MVP and migrate later"</td>
+<td>Low (planned)</td>
+</tr>
+<tr>
+<td><strong>Deliberate, Reckless</strong></td>
+<td>Conscious decision to cut corners without a repayment plan</td>
+<td>"We don\'t have time for tests, just ship it"</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Inadvertent, Prudent</strong></td>
+<td>Learning from experience reveals a better approach</td>
+<td>"Now that we understand the domain better, this module should be restructured"</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Inadvertent, Reckless</strong></td>
+<td>Poor practices due to lack of knowledge or discipline</td>
+<td>Duplicated code, no documentation, hardcoded values everywhere</td>
+<td>Very High</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagram-technical-debt-quadrant">Diagram: Technical Debt Quadrant</h4>
+<iframe src="../../sims/technical-debt-quadrant/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Technical Debt Quadrant</summary>
+<p>Type: diagram</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: classify, differentiate
+Learning Objective: Students will be able to classify examples of technical debt into the four quadrants and differentiate between strategic and harmful debt accumulation.</p>
+<p>Layout: 2x2 matrix with "Deliberate vs. Inadvertent" on the horizontal axis and "Prudent vs. Reckless" on the vertical axis. Each quadrant contains a color-coded card with a title, description, real-world example, and recommended PM action.</p>
+<p>Quadrants:</p>
+<ul>
+<li>Top-left (Deliberate + Prudent, green): "Strategic Debt" - Conscious shortcuts with a plan to repay. Example: shipping MVP with manual processes before automating. PM action: Track in backlog with clear trigger for repayment.</li>
+<li>Top-right (Inadvertent + Prudent, blue): "Learned Debt" - Better approaches discovered through experience. Example: realizing the data model needs restructuring after user research reveals new use cases. PM action: Schedule refactoring when touching related code.</li>
+<li>Bottom-left (Deliberate + Reckless, orange): "Shortcut Debt" - Cutting corners knowingly with no plan. Example: skipping tests to hit a deadline. PM action: Advocate for quality gates; escalate if pattern repeats.</li>
+<li>Bottom-right (Inadvertent + Reckless, red): "Ignorance Debt" - Poor practices from lack of skill or awareness. Example: no code reviews, duplicated logic, hardcoded credentials. PM action: Invest in team training and engineering standards.</li>
+</ul>
+<p>Interactive elements:</p>
+<ul>
+<li>Hover over each quadrant to see expanded description and 2-3 additional examples</li>
+<li>Click a quadrant to see recommended tracking and repayment strategies</li>
+<li>Animated arrows show how debt can migrate between quadrants over time if not addressed</li>
+</ul>
+<p>Color scheme: Green (safe) to red (dangerous) gradient across quadrants
+Implementation: HTML/CSS/JavaScript with responsive grid layout</p>
+</details>
+<h2 id="code-quality-and-refactoring">Code Quality and Refactoring</h2>
+<p><strong>Code quality</strong> is the degree to which source code meets defined standards for readability, maintainability, reliability, and performance. High-quality code is easy for developers to understand, modify, and extend. Low-quality code - often called "spaghetti code" - is tangled, poorly documented, and fragile, meaning that changing one part frequently breaks another. As a product manager, you cannot assess code quality by reading the code yourself, but you can recognize the symptoms of poor code quality in your team\'s velocity and defect rates.</p>
+<p>Indicators that code quality may be degrading include:</p>
+<ul>
+<li>Feature delivery slows down even though team size has not changed</li>
+<li>Bug rates increase, especially regressions (bugs in previously working features)</li>
+<li>Engineers estimate simple-sounding features as taking weeks instead of days</li>
+<li>New team members take months to become productive</li>
+<li>The same components appear repeatedly in incident reports</li>
+</ul>
+<p><strong>Code refactoring</strong> is the process of restructuring existing code without changing its external behavior. Refactoring improves the internal structure - making the code cleaner, more modular, and easier to extend - while keeping the product\'s functionality identical from the user\'s perspective. Think of it as renovating the plumbing and wiring of a house while the family continues living in it. The house looks the same from the outside, but it works better on the inside.</p>
+<div class="admonition tip">
+<p class="admonition-title">How to Talk About Refactoring with Stakeholders</p>
+<p>Stakeholders often resist refactoring because it produces no visible features. Frame refactoring in business terms: "This refactoring will reduce our average bug-fix time from 3 days to 1 day, letting us ship features 20% faster next quarter." Always connect engineering investments to business outcomes.</p>
+</div>
+<p>Common refactoring triggers that a PM should recognize:</p>
+<ul>
+<li><strong>High coupling</strong> - Changes to one module require changes to many others</li>
+<li><strong>Code duplication</strong> - The same logic exists in multiple places, creating inconsistency risk</li>
+<li><strong>Long methods</strong> - Functions that do too many things and are difficult to test</li>
+<li><strong>Outdated patterns</strong> - Code using deprecated libraries or obsolete architecture patterns</li>
+</ul>
+<h2 id="legacy-systems-and-system-migration">Legacy Systems and System Migration</h2>
+<p><strong>Legacy systems</strong> are older software applications or platforms that remain in active use because they serve critical business functions, even though they may use outdated technology, lack modern features, or be difficult and expensive to maintain. Legacy systems are not necessarily bad systems - many were excellently designed for their era - but they become liabilities when they cannot integrate with modern tools, when the engineers who understand them retire, or when they cannot scale to meet current demands.</p>
+<p>As a technical PM, you will almost certainly inherit at least one legacy system. The question is never "should we replace it?" but rather "when, how, and at what pace should we modernize it?" Ripping out a legacy system and replacing it all at once (known as a "big bang" migration) is almost always riskier than a phased approach.</p>
+<p><strong>System migration</strong> is the process of moving a product, application, or data from one technology platform or architecture to another. Migrations are among the highest-risk, highest-impact projects a technical PM will manage. They require careful planning, extensive testing, and clear communication because a failed migration can cause data loss, extended downtime, and customer churn.</p>
+<table>
+<thead>
+<tr>
+<th>Migration Strategy</th>
+<th>Approach</th>
+<th>Risk</th>
+<th>Timeline</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Big Bang</strong></td>
+<td>Replace everything at once on a cutover date</td>
+<td>Very High</td>
+<td>Short</td>
+<td>Small, simple systems with low data volume</td>
+</tr>
+<tr>
+<td><strong>Strangler Fig</strong></td>
+<td>Gradually replace legacy components while both systems run</td>
+<td>Low-Medium</td>
+<td>Long</td>
+<td>Large, complex systems with many integrations</td>
+</tr>
+<tr>
+<td><strong>Parallel Run</strong></td>
+<td>Run old and new systems simultaneously, comparing outputs</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Financial or compliance-critical systems</td>
+</tr>
+<tr>
+<td><strong>Phased Rollout</strong></td>
+<td>Migrate users or features in stages</td>
+<td>Medium</td>
+<td>Medium-Long</td>
+<td>Systems with distinct user segments or modules</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>strangler fig pattern</strong> - named after the tropical tree that gradually envelops and replaces its host - is particularly popular for large-scale migrations. You route new functionality through the new system while the old system continues to handle existing features. Over time, more and more traffic flows through the new system until the legacy system can be safely decommissioned.</p>
+<div class="admonition warning">
+<p class="admonition-title">Migration Risks PMs Must Watch</p>
+<p>The three most common causes of migration failure are: (1) incomplete data migration that loses or corrupts records, (2) undocumented integrations with the legacy system that break when it changes, and (3) underestimating user retraining needs. As a PM, insist on a comprehensive integration inventory and a data validation plan before any migration begins.</p>
+</div>
+<h2 id="testing-fundamentals">Testing Fundamentals</h2>
+<p><strong>Testing fundamentals</strong> encompass the principles, practices, and strategies that engineering teams use to verify that software behaves correctly and meets its requirements. Testing is not just about finding bugs - it is about building confidence that the product works as intended across a wide range of conditions, inputs, and user behaviors.</p>
+<p><strong>Quality assurance (QA)</strong> is the broader discipline of ensuring that a product meets defined quality standards through systematic processes, including testing, code reviews, standards enforcement, and process improvements. While testing focuses on finding defects, quality assurance focuses on preventing them. A mature QA practice means that quality is built into every stage of development rather than bolted on at the end.</p>
+<p>The relationship between QA and testing is hierarchical:</p>
+<ul>
+<li><strong>Quality Assurance</strong> (umbrella discipline)<ul>
+<li>Process standards and code review policies</li>
+<li><strong>Testing</strong> (one component of QA)<ul>
+<li>Manual testing</li>
+<li><strong>Automated testing</strong><ul>
+<li>Unit tests</li>
+<li>Integration tests</li>
+<li>End-to-end tests</li>
+</ul>
+</li>
+<li>Specialized testing (performance, security)</li>
+</ul>
+</li>
+<li>Continuous improvement and retrospectives</li>
+</ul>
+</li>
+</ul>
+<h4 id="diagram-the-testing-pyramid">Diagram: The Testing Pyramid</h4>
+<iframe src="../../sims/testing-pyramid/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>The Testing Pyramid</summary>
+<p>Type: infographic</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: explain, classify
+Learning Objective: Students will be able to explain the three levels of the testing pyramid and classify different test types into the correct level.</p>
+<p>Layout: Triangular pyramid diagram with three horizontal layers, widest at bottom. Each layer has a color, label, count indicator, speed indicator, and cost indicator.</p>
+<p>Layers (bottom to top):</p>
+<ol>
+<li>Unit Tests (green, widest): Many tests, fast execution (milliseconds), low cost. Tests individual functions or methods in isolation. Example: "Does the calculateDiscount() function return the correct value for a 20% coupon?"</li>
+<li>Integration Tests (blue, medium): Moderate number, moderate speed (seconds), moderate cost. Tests how components work together. Example: "Does the checkout service correctly communicate with the payment gateway and inventory system?"</li>
+<li>End-to-End Tests (orange, narrowest): Few tests, slow execution (minutes), high cost. Tests complete user workflows through the entire system. Example: "Can a user search for a product, add it to cart, enter payment, and receive a confirmation email?"</li>
+</ol>
+<p>Side annotations:</p>
+<ul>
+<li>Left side: Arrow pointing up labeled "Slower, more expensive, more brittle"</li>
+<li>Right side: Arrow pointing down labeled "Faster, cheaper, more stable"</li>
+<li>Callout: "Recommended ratio: 70% unit, 20% integration, 10% E2E"</li>
+</ul>
+<p>Interactive elements:</p>
+<ul>
+<li>Hover over each layer to see expanded description with 3-4 examples</li>
+<li>Click a layer to see tools commonly used (JUnit, pytest, Selenium, Cypress, etc.)</li>
+<li>Toggle button to switch between "ideal pyramid" and "common anti-patterns" (ice cream cone, hourglass)</li>
+</ul>
+<p>Color scheme: Green (unit) to blue (integration) to orange (E2E)
+Implementation: HTML/CSS/JavaScript with SVG pyramid, responsive design</p>
+</details>
+<h2 id="unit-testing">Unit Testing</h2>
+<p><strong>Unit testing</strong> is the practice of testing individual functions, methods, or components of code in isolation to verify that each small piece works correctly on its own. Unit tests are the foundation of a healthy test suite because they are fast to run (typically milliseconds each), cheap to write, and precise in identifying where a problem occurs. When a unit test fails, the developer usually knows exactly which function is broken.</p>
+<p>Consider a simple example. If your product has a pricing engine that calculates discounts, a unit test might verify that "when a customer has a 20% coupon and their cart total is $100, the function returns $80." The test does not launch the full application, does not connect to a database, and does not render a user interface. It tests one function with one set of inputs and checks one expected output.</p>
+<p>From a PM perspective, unit tests matter because they give the team confidence to make changes quickly. When a codebase has comprehensive unit tests, engineers can refactor code, add new features, or fix bugs knowing that any unintended side effects will be caught immediately. Codebases without unit tests become increasingly fragile, and developers slow down because every change carries the risk of breaking something silently.</p>
+<h2 id="integration-testing">Integration Testing</h2>
+<p><strong>Integration testing</strong> verifies that multiple components or services work correctly when combined. While unit tests confirm that individual pieces function in isolation, integration tests confirm that those pieces communicate properly, pass data in the correct format, and handle error conditions across boundaries. Integration issues are among the most common sources of production bugs, especially in microservices architectures where many independent services must coordinate.</p>
+<p>A typical integration test might verify that when the checkout service sends a payment request to the payment gateway, the gateway processes it correctly and returns a confirmation that the checkout service can parse. This test exercises the real communication pathway between two systems, including serialization, network calls, authentication, and error handling.</p>
+<table>
+<thead>
+<tr>
+<th>Test Type</th>
+<th>Scope</th>
+<th>Speed</th>
+<th>When Failures Occur</th>
+<th>What They Catch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit</td>
+<td>Single function</td>
+<td>Milliseconds</td>
+<td>Immediately on code change</td>
+<td>Logic errors, calculation bugs</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>Multiple components</td>
+<td>Seconds</td>
+<td>After components are assembled</td>
+<td>Communication failures, data format mismatches</td>
+</tr>
+<tr>
+<td>End-to-End</td>
+<td>Full system</td>
+<td>Minutes</td>
+<td>After full deployment</td>
+<td>Workflow breaks, environment issues</td>
+</tr>
+</tbody>
+</table>
+<h2 id="end-to-end-testing">End-to-End Testing</h2>
+<p><strong>End-to-end testing</strong> (also called E2E testing) validates complete user workflows by exercising the entire application stack from the user interface through the backend services to the database and back. E2E tests simulate real user behavior: clicking buttons, filling out forms, navigating between pages, and verifying that the expected outcomes occur. They are the most comprehensive form of testing but also the most expensive, slowest, and most brittle.</p>
+<p>An E2E test for an e-commerce product might simulate a user who searches for "wireless headphones," selects a product, adds it to the cart, proceeds to checkout, enters a credit card number, and verifies that a confirmation email arrives. This test touches every layer of the application and every external service.</p>
+<div class="admonition info">
+<p class="admonition-title">The E2E Testing Trade-off</p>
+<p>E2E tests provide the highest confidence that the product works as users expect, but they are expensive to maintain. When the UI changes, E2E tests break even if the underlying logic is fine. Most teams limit E2E tests to critical user paths (signup, purchase, core workflow) and rely on unit and integration tests for broader coverage. As a PM, understand that a team cannot E2E-test every feature - focus E2E testing on revenue-critical and safety-critical paths.</p>
+</div>
+<h2 id="specialized-testing-performance-and-security">Specialized Testing: Performance and Security</h2>
+<h3 id="performance-testing">Performance Testing</h3>
+<p><strong>Performance testing</strong> evaluates how a system behaves under various load conditions, measuring response times, throughput, resource utilization, and stability. Performance testing answers questions that matter deeply to product managers: "Can our system handle Black Friday traffic?" "What happens if usage doubles next quarter?" "How long do users wait for search results?"</p>
+<p>Common types of performance testing include:</p>
+<ul>
+<li><strong>Load testing</strong> - Applying expected production-level traffic to measure baseline performance</li>
+<li><strong>Stress testing</strong> - Pushing beyond expected limits to find breaking points</li>
+<li><strong>Spike testing</strong> - Simulating sudden traffic surges (product launch, viral event)</li>
+<li><strong>Endurance testing</strong> - Running sustained load over extended periods to detect memory leaks and resource degradation</li>
+</ul>
+<h3 id="security-testing">Security Testing</h3>
+<p><strong>Security testing</strong> systematically evaluates a system\'s ability to protect data, maintain integrity, and resist unauthorized access. In an era of frequent data breaches and increasingly strict regulations, security testing is not optional - it is a fundamental quality requirement. As a technical PM, you are responsible for ensuring that security is considered in product requirements, not bolted on as an afterthought.</p>
+<p>Key security testing practices include:</p>
+<ul>
+<li><strong>Vulnerability scanning</strong> - Automated tools that check for known security weaknesses in code and dependencies</li>
+<li><strong>Penetration testing</strong> - Simulated attacks by security professionals to find exploitable weaknesses</li>
+<li><strong>Static Application Security Testing (SAST)</strong> - Analyzing source code for security flaws without executing it</li>
+<li><strong>Dynamic Application Security Testing (DAST)</strong> - Testing a running application for vulnerabilities</li>
+<li><strong>Dependency auditing</strong> - Checking third-party libraries for known vulnerabilities</li>
+</ul>
+<h2 id="code-coverage-and-automated-testing">Code Coverage and Automated Testing</h2>
+<p><strong>Code coverage</strong> is a metric that measures the percentage of source code that is executed during automated testing. It answers the question "how much of our code is actually tested?" Code coverage is typically expressed as a percentage - for example, "our test suite has 78% code coverage" means that 78% of the codebase\'s lines, branches, or functions are exercised by at least one test.</p>
+<p>Code coverage is a useful but imperfect metric. High coverage does not guarantee high quality - it is entirely possible to have 100% code coverage with tests that check trivial conditions and miss critical edge cases. Conversely, a team with 60% coverage focused on the most important and complex code paths may have a more effective test suite than a team with 90% coverage spread uniformly. Industry benchmarks typically target 70-80% coverage as a healthy goal, with critical paths expected to exceed 90%.</p>
+<div class="admonition warning">
+<p class="admonition-title">The Code Coverage Trap</p>
+<p>Do not set code coverage as a rigid target that teams must hit. When coverage becomes a mandate, developers write meaningless tests just to increase the number. Instead, use coverage as a conversation starter: "Our payment module has only 40% coverage - should we invest in testing there before adding new features?" Focus on coverage of <em>critical paths</em>, not overall percentages.</p>
+</div>
+<p><strong>Automated testing</strong> is the practice of using software tools to execute tests, compare actual results to expected results, and report outcomes without manual intervention. Automation transforms testing from a bottleneck into an accelerator. Instead of QA engineers manually clicking through the application before every release, automated test suites run in minutes (or seconds for unit tests) and execute on every code change.</p>
+<p>The benefits of automated testing compound over time:</p>
+<ul>
+<li><strong>Speed</strong> - A test suite that would take days to run manually executes in minutes</li>
+<li><strong>Consistency</strong> - Automated tests perform the same checks every time, eliminating human error and oversight</li>
+<li><strong>Frequency</strong> - Tests can run on every code commit, catching issues immediately</li>
+<li><strong>Regression protection</strong> - Tests ensure that new changes don\'t break existing functionality</li>
+<li><strong>Developer confidence</strong> - Engineers move faster when they trust the safety net</li>
+</ul>
+<h4 id="diagram-automated-testing-in-the-cicd-pipeline">Diagram: Automated Testing in the CI/CD Pipeline</h4>
+<iframe src="../../sims/automated-testing-pipeline/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Automated Testing in the CI/CD Pipeline</summary>
+<p>Type: workflow</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: implement, demonstrate
+Learning Objective: Students will be able to demonstrate how automated testing stages fit into a CI/CD pipeline and implement quality gates at each stage.</p>
+<p>Layout: Horizontal pipeline diagram flowing left to right with stages represented as connected nodes. Each stage shows which tests run, approximate duration, and pass/fail gates.</p>
+<p>Pipeline Stages:</p>
+<ol>
+<li>Code Commit (gray): Developer pushes code. Triggers: pre-commit hooks (linting, formatting).</li>
+<li>Unit Tests (green): Run all unit tests. Duration: 1-3 minutes. Gate: Must pass 100%. Blocks merge if any fail.</li>
+<li>Integration Tests (blue): Run integration test suite. Duration: 5-15 minutes. Gate: Must pass 100%. Blocks deployment if any fail.</li>
+<li>Build and Package (teal): Compile, containerize, create artifact. Duration: 2-5 minutes.</li>
+<li>E2E Tests (orange): Run critical path E2E tests against staging. Duration: 15-30 minutes. Gate: Critical paths must pass. Non-critical failures reviewed.</li>
+<li>Performance Tests (purple): Run load tests against staging. Duration: 10-20 minutes. Gate: Response times within SLA thresholds.</li>
+<li>Security Scan (red): Run SAST/DAST tools, dependency audit. Duration: 5-10 minutes. Gate: No critical or high vulnerabilities.</li>
+<li>Deploy to Production (gold): Release to users. Can be gated by manual approval.</li>
+</ol>
+<p>Annotations:</p>
+<ul>
+<li>Above pipeline: "Faster feedback loops on the left, higher confidence on the right"</li>
+<li>Below: "Each gate prevents bad code from progressing further"</li>
+</ul>
+<p>Interactive elements:</p>
+<ul>
+<li>Hover over each stage to see detailed description, tools used, and example output</li>
+<li>Click a stage to see what happens when it fails (rollback, notification, blocking behavior)</li>
+<li>Toggle between "fast feedback" mode (unit+integration only) and "full pipeline" mode</li>
+</ul>
+<p>Color scheme: Gray to green to blue to gold progression
+Implementation: HTML/CSS/JavaScript with horizontal pipeline visualization</p>
+</details>
+<h2 id="technical-debt-tracking">Technical Debt Tracking</h2>
+<p><strong>Technical debt tracking</strong> is the practice of systematically identifying, documenting, prioritizing, and monitoring technical debt items so that the team can make informed decisions about when and how to address them. Without explicit tracking, technical debt becomes invisible to product managers and leadership, accumulating silently until it reaches a crisis point where development velocity collapses or a major incident occurs.</p>
+<p>Effective technical debt tracking requires a shared vocabulary between product and engineering. Each debt item should be documented with:</p>
+<ul>
+<li><strong>Description</strong> - What is the debt and where does it live in the codebase?</li>
+<li><strong>Origin</strong> - When and why was the debt incurred? Was it deliberate or accidental?</li>
+<li><strong>Impact</strong> - How does this debt affect development velocity, reliability, or user experience?</li>
+<li><strong>Interest rate</strong> - How much additional cost does this debt impose per sprint/quarter?</li>
+<li><strong>Remediation effort</strong> - How much work would it take to eliminate this debt?</li>
+<li><strong>Remediation trigger</strong> - What event or threshold should prompt repayment?</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tracking Approach</th>
+<th>How It Works</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dedicated backlog</td>
+<td>Separate backlog or tag for tech debt items</td>
+<td>Visible, easy to prioritize</td>
+<td>Can become a "graveyard" of ignored items</td>
+</tr>
+<tr>
+<td>Debt budget</td>
+<td>Allocate fixed percentage (e.g., 20%) of each sprint to debt</td>
+<td>Consistent investment</td>
+<td>May not address highest-priority items first</td>
+</tr>
+<tr>
+<td>Boy Scout Rule</td>
+<td>"Leave the code better than you found it" on every change</td>
+<td>Low overhead, continuous improvement</td>
+<td>Hard to measure, misses large systemic debt</td>
+</tr>
+<tr>
+<td>Debt sprints</td>
+<td>Periodic sprints dedicated entirely to debt reduction</td>
+<td>Focused progress</td>
+<td>Feature work stops; stakeholder resistance</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">The 20% Rule</p>
+<p>Many high-performing engineering teams allocate approximately 20% of each sprint to technical debt reduction, infrastructure improvements, and developer tooling. As a PM, advocating for this investment demonstrates technical maturity and builds trust with engineering. The payoff comes in sustained velocity - teams that never address debt gradually slow to a crawl.</p>
+</div>
+<h4 id="diagram-technical-debt-impact-over-time">Diagram: Technical Debt Impact Over Time</h4>
+<iframe src="../../sims/tech-debt-impact/main.html" width="100%" height="500px" scrolling="no"></iframe>
+
+<details>
+<summary>Technical Debt Impact Over Time</summary>
+<p>Type: chart</p>
+<p>Bloom Level: Evaluate (L5)
+Bloom Verb: assess, judge
+Learning Objective: Students will be able to assess the long-term cost of ignoring technical debt and judge when debt reduction should be prioritized over feature development.</p>
+<p>Layout: Dual-line chart showing two scenarios over a 12-quarter timeline.</p>
+<p>Data series:</p>
+<ol>
+<li>"Team A: No debt management" (red line): Starts with high feature velocity that gradually declines as debt accumulates. By quarter 8, velocity drops below 50% of original. By quarter 12, most effort goes to firefighting and maintenance.</li>
+<li>"Team B: 20% debt allocation" (green line): Starts slightly lower (80% feature velocity) but maintains steady velocity throughout. By quarter 6, surpasses Team A. By quarter 12, delivers 2x the cumulative features.</li>
+</ol>
+<p>Secondary chart (stacked area below): Shows the composition of Team A\'s time allocation shifting from mostly feature work to mostly maintenance/bug fixes over time.</p>
+<p>Annotations:</p>
+<ul>
+<li>"Crossover point" marker where Team B surpasses Team A in cumulative features delivered</li>
+<li>"Crisis zone" shaded region where Team A\'s velocity drops below sustainable levels</li>
+<li>Key insight callout: "Short-term speed creates long-term drag"</li>
+</ul>
+<p>Interactive elements:</p>
+<ul>
+<li>Slider to adjust the debt allocation percentage (10%, 20%, 30%) and see how it affects the curves</li>
+<li>Hover over any point to see exact velocity percentages and cumulative feature counts</li>
+<li>Toggle between "velocity per quarter" and "cumulative features delivered" views</li>
+</ul>
+<p>Color scheme: Red (unsustainable) vs. green (sustainable) with gray background grid
+Implementation: Chart.js line chart with interactive slider control</p>
+</details>
+<h2 id="putting-it-all-together-a-pms-quality-strategy">Putting It All Together: A PM\'s Quality Strategy</h2>
+<p>Understanding these concepts individually is valuable, but the real skill lies in weaving them into a coherent quality strategy for your product. As a technical PM, you must balance the team\'s desire for quality with the business\'s demand for features. This balance is not static - it shifts based on your product\'s lifecycle phase, competitive pressures, and the current state of your technical debt.</p>
+<p>In the early stages of a product, you might accept higher technical debt and lower test coverage to validate product-market fit quickly. As the product matures and the user base grows, the cost of defects increases and the need for reliability becomes paramount. A mature product with millions of users should have comprehensive automated testing, active debt tracking, and clear quality gates in the deployment pipeline.</p>
+<p>The key insight for product managers is that quality is not the absence of bugs - it is the confidence to move fast without breaking things. Teams with strong testing practices, clean code, and managed technical debt actually ship faster than teams that cut corners, because they spend less time debugging, fixing regressions, and fighting fires.</p>
+<details class="question">
+<summary>Self-Check: Can you answer these questions?</summary>
+<ol>
+<li>What are the four types of technical debt in the debt quadrant, and which type should a PM be most concerned about?</li>
+<li>Explain the testing pyramid. Why should the majority of tests be unit tests rather than end-to-end tests?</li>
+<li>You inherit a product with 30% code coverage and engineers reporting that simple features take twice as long as expected. What would you investigate, and what might you propose?</li>
+<li>Your CEO wants to replace the company\'s 15-year-old order management system. What migration strategy would you recommend and why?</li>
+<li>How would you explain the value of allocating 20% of sprint capacity to technical debt to a stakeholder who only wants to see new features?</li>
+</ol>
+</details>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Technical debt</strong> is the implied cost of future rework from expedient solutions; it can be strategic when deliberate and tracked, but becomes dangerous when ignored</li>
+<li><strong>Code quality</strong> directly affects team velocity, bug rates, and developer morale - declining quality is visible through slower delivery and rising defect counts</li>
+<li><strong>Code refactoring</strong> improves internal code structure without changing user-facing behavior, and should be framed in business terms when communicating with stakeholders</li>
+<li><strong>Legacy systems</strong> serve critical business functions but become liabilities when they cannot integrate with modern tools or when institutional knowledge about them is lost</li>
+<li><strong>System migration</strong> strategies range from big-bang replacement to gradual strangler fig patterns; the right choice depends on system complexity, risk tolerance, and data sensitivity</li>
+<li><strong>Testing fundamentals</strong> follow the testing pyramid: many fast unit tests at the base, fewer integration tests in the middle, and a small number of E2E tests at the top</li>
+<li><strong>Unit testing</strong>, <strong>integration testing</strong>, and <strong>end-to-end testing</strong> each serve different purposes and operate at different cost/confidence trade-offs</li>
+<li><strong>Quality assurance</strong> is the umbrella discipline that encompasses testing, code reviews, process standards, and continuous improvement</li>
+<li><strong>Performance testing</strong> and <strong>security testing</strong> are specialized practices that verify non-functional requirements critical to user trust and system reliability</li>
+<li><strong>Code coverage</strong> measures what percentage of code is exercised by tests - useful as a guide but dangerous as a rigid target</li>
+<li><strong>Automated testing</strong> transforms quality from a bottleneck into an accelerator by running tests on every code change</li>
+<li><strong>Technical debt tracking</strong> makes invisible costs visible, enabling informed prioritization decisions between feature work and debt reduction</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../08-advanced-data-management/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 8. Advanced Data Management">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                8. Advanced Data Management
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../10-sdlc-and-agile/" class="md-footer__link md-footer__link--next" aria-label="Next: 10. SDLC and Agile Methodologies">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                10. SDLC and Agile Methodologies
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025, 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

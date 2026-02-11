@@ -1,0 +1,58 @@
+{
+  "title": "Skill Directory Structure",
+  "description": "Interactive Mermaid visualization for skill directory structure",
+  "creator": "Dan McCreary",
+  "date": "2025-11-22",
+  "subject": [
+    "educational technology",
+    "data visualization",
+    "mermaid"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "publisher": "Claude Skills Repository",
+  "learningResourceType": "simulation",
+  "audience": "Educators, Developers",
+  "version": "1.0.0",
+  "library": "Mermaid",
+  "visualizationType": [
+    "diagram",
+    "interactive-demo"
+  ],
+  "learningObjectives": [
+    "Understand the key concepts of skill directory structure",
+    "Explore skill directory structure through interactive visualization",
+    "Apply knowledge of skill directory structure to solve problems",
+    "Test understanding of skill directory structure through interactive exercises"
+  ],
+  "bloomsTaxonomy": [
+    "Remember",
+    "Understand",
+    "Apply",
+    "Analyze"
+  ],
+  "pedagogical": {
+    "pattern": "worked-example",
+    "bloomAlignment": [
+      "understand",
+      "apply",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "summarize",
+      "demonstrate",
+      "illustrate",
+      "implement",
+      "analyze"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": false,
+    "dataVisibility": "medium",
+    "feedbackType": [
+      "corrective"
+    ],
+    "interactionStyle": "observe"
+  }
+}
