@@ -1,1277 +1,1643 @@
 # Glossary of Terms
 
-This glossary contains definitions of key concepts used throughout the course "Using Claude Skills to Create Intelligent Textbooks." Each definition follows ISO 11179 metadata registry standards: precise, concise, distinct, non-circular, and free of business rules.
+This glossary contains definitions of key concepts used throughout the course "From Product Manager to Technical Product Manager: A Practitioner's Guide." Each definition follows ISO 11179 metadata registry standards: precise, concise, distinct, non-circular, and free of business rules.
 
 ## A
 
-#### Action Verbs for Learning Outcomes
+#### A/B Testing
 
-Specific action words that describe observable behaviors students can demonstrate at each level of Bloom's Taxonomy.
+A controlled experiment comparing two versions of a product element to determine which performs better based on measured user behavior.
 
-**Example:** The verb "define" indicates Remember level, while "design" indicates Create level in learning outcomes.
+A/B testing allows technical PMs to make evidence-based decisions about feature changes rather than relying on intuition. Results require statistical significance to be actionable.
 
-#### add-taxonomy.py Script
+**Example:** Testing two checkout button colors to see which produces a higher conversion rate, with 50% of users seeing each version.
 
-A Python program that adds a taxonomy categorization column to a learning graph CSV file.
+#### Acceptance Criteria
 
-**Example:** Running this script on `learning-graph.csv` adds a TaxonomyID field to categorize each concept.
+Specific, testable conditions that a user story must satisfy to be considered complete and ready for release.
 
-#### Advanced Concepts
+Acceptance criteria bridge the gap between product requirements and engineering deliverables by providing an unambiguous definition of "done."
 
-High-level ideas that require multiple prerequisite concepts to be understood before they can be mastered.
+**Example:** "User can reset password via email link within 5 minutes, and the old password is immediately invalidated."
 
-**Example:** "Capstone: Complete Textbook Project" depends on understanding all 199 prior concepts in the learning graph.
+#### ACID Properties
 
-#### Admonitions in MkDocs
+Four guarantees that database transactions provide: Atomicity, Consistency, Isolation, and Durability, ensuring data reliability.
 
-Specially formatted callout boxes in Material for MkDocs that highlight notes, warnings, tips, or important information.
+Understanding ACID properties helps technical PMs evaluate database choices and explain to stakeholders why certain data operations require specific database technologies.
 
-**Example:** Using `!!! note` creates a blue box with "Note" header to draw attention to key information.
+**Example:** A bank transfer debiting one account and crediting another must complete both operations or neither, demonstrating atomicity.
 
-#### Allowed Tools in Skills
+#### Agile Development
 
-Specification in skill YAML frontmatter defining which Claude Code tools the skill is permitted to use.
+An iterative software development methodology emphasizing collaboration, flexibility, and continuous delivery of working software in short cycles.
 
-**Example:** A skill might specify `allowed-tools: [Read, Write, Bash]` to limit file operations.
+Agile is the dominant methodology in modern software teams. Technical PMs must understand its ceremonies, artifacts, and principles to lead sprint planning and prioritization effectively.
 
-#### Analyze (Cognitive Level 4)
+**Example:** A team delivers a working feature increment every two weeks through sprint cycles of planning, building, reviewing, and retrospecting.
 
-The fourth level of Bloom's Taxonomy where learners break material into parts and determine relationships between components.
+#### AI Code Understanding
 
-**Example:** Students analyze why a skill fails by examining error logs, file permissions, and workflow dependencies.
+The capability of AI tools to read, interpret, and explain source code, helping non-engineers comprehend technical implementations.
 
-#### analyze-graph.py Script
+This capability is particularly valuable for technical PMs who need to understand codebases without writing code themselves.
 
-A Python program that validates learning graph structure, detects circular dependencies, and generates quality metrics reports.
+**Example:** Pasting a function into Claude and asking "What does this code do?" to understand a feature's implementation before a sprint review.
 
-**Example:** This script checks if your 200-concept graph is a valid DAG and reports statistics like average dependencies per concept.
+#### AI Cost-Benefit Analysis
 
-#### Anthropic Claude Pro Account
+The process of evaluating the financial and operational trade-offs of adopting AI solutions versus alternative approaches.
 
-A paid subscription to Claude AI that provides extended usage limits, longer conversation context, and access to Claude Code.
+Technical PMs must quantify both the costs (licensing, infrastructure, maintenance) and benefits (efficiency, quality, speed) of AI integration.
 
-**Example:** A Claude Pro account allows 4-hour usage windows with higher token limits for generating textbook content.
+**Example:** Comparing the cost of an AI-powered customer support chatbot against hiring additional support agents, factoring in accuracy and customer satisfaction.
 
-#### Apply (Cognitive Level 3)
+#### AI Ethics
 
-The third level of Bloom's Taxonomy where learners carry out procedures or use knowledge in specific situations.
+Principles and guidelines governing the responsible development and deployment of artificial intelligence systems, including fairness, transparency, and accountability.
 
-**Example:** Students apply prompt engineering principles to create a new skill for generating chapter quizzes.
+Technical PMs play a critical role in ensuring AI features comply with ethical standards and do not introduce bias or harm to users.
 
-#### Artificial Intelligence
+**Example:** Reviewing an AI recommendation algorithm for demographic bias before launching it to ensure equitable treatment across user groups.
 
-Computer systems designed to perform tasks that typically require human intelligence, such as learning, reasoning, and problem-solving.
+#### AI for Data Analysis
 
-**Example:** Claude AI uses artificial intelligence to understand course descriptions and generate structured learning content.
+The application of AI tools to automate data exploration, pattern recognition, and insight generation from datasets.
 
-#### Assessing Course Descriptions
+AI-assisted data analysis enables technical PMs to quickly surface insights from large datasets without deep statistical expertise.
 
-The process of evaluating a course description for completeness, clarity, and alignment with educational standards.
+**Example:** Using Claude to write Python scripts that analyze user engagement data and identify trends across customer segments.
 
-**Example:** The course-description-analyzer skill scores descriptions on presence of prerequisites, Bloom's outcomes, and target audience.
+#### AI for Debugging
 
-#### Assessing Student Understanding
+The use of AI tools to identify, diagnose, and suggest fixes for software defects by analyzing code, logs, and error messages.
 
-Methods for evaluating whether learners have mastered concepts through quizzes, exercises, and interactive activities.
+Technical PMs can use AI debugging tools to understand bug reports more deeply and have more informed conversations with engineers about root causes.
 
-**Example:** Multiple-choice quizzes aligned to Bloom's Taxonomy levels assess student understanding across cognitive domains.
+**Example:** Pasting an error stack trace into an AI assistant to understand which component failed and why, before triaging with the engineering team.
 
-#### Assessing Student Understanding Through Quiz Analytics
+#### AI for Documentation
 
-Evaluation of learner comprehension by analyzing quiz performance patterns across cognitive levels and concept areas to identify knowledge gaps.
+The application of AI tools to generate, improve, or maintain technical documentation such as API guides, specifications, and release notes.
 
-**Example:** Analyzing quiz results shows students score well on Remember questions but struggle with Analyze questions, indicating need for more worked examples.
+AI-generated documentation helps technical PMs keep documentation current without becoming a bottleneck in the writing process.
 
-#### Atomic Concepts
+**Example:** Using Claude to draft API documentation from code comments and endpoint definitions, then reviewing for accuracy.
 
-Single, indivisible ideas that cannot be meaningfully broken into smaller learning components.
+#### AI for Prototyping
 
-**Example:** "Variable" is atomic, while "Variable Declaration and Assignment" could be split into two atomic concepts.
+The use of AI tools to rapidly create functional prototypes, mockups, or proof-of-concept implementations.
 
-#### Average Dependencies Per Concept
+AI-assisted prototyping dramatically reduces the time from idea to testable prototype, enabling faster validation of product hypotheses.
 
-The mean number of prerequisite relationships each concept has in a learning graph.
+**Example:** Using GitHub Copilot to generate a working prototype of a dashboard feature in hours instead of days.
 
-**Example:** A well-structured graph typically has 2-4 average dependencies per concept, avoiding both isolation and over-complexity.
+#### AI Governance
 
-#### Avoiding Over-Representation
+Organizational policies and frameworks that guide the responsible selection, deployment, monitoring, and management of AI systems.
 
-The practice of ensuring no single taxonomy category contains too many concepts, maintaining balanced distribution.
+Technical PMs often contribute to AI governance by defining usage policies, monitoring AI system performance, and ensuring compliance with regulations.
 
-**Example:** If 60% of concepts are in the BASIC category, the graph may need rebalancing across foundational and advanced levels.
+**Example:** Establishing a review process that requires AI model outputs to be validated by humans before being shown to end users.
+
+#### AI-Augmented Learning
+
+The practice of using AI tools to accelerate personal skill development and technical knowledge acquisition.
+
+For PMs transitioning to technical roles, AI-augmented learning provides an accessible path to understanding engineering concepts without formal training.
+
+**Example:** Using Claude to explain microservices architecture step by step, asking follow-up questions to deepen understanding.
+
+#### AI in Product Strategy
+
+The incorporation of AI capabilities and considerations into product vision, roadmap planning, and competitive positioning.
+
+Technical PMs must evaluate where AI can create product differentiation and how AI trends affect their product's strategic direction.
+
+**Example:** Adding an AI-powered search feature to a product roadmap after analyzing competitor offerings and user demand signals.
+
+#### AI Integration Planning
+
+The process of designing how AI capabilities will be incorporated into an existing product's architecture, workflows, and user experience.
+
+Successful AI integration requires technical PMs to coordinate across engineering, data science, and product design teams.
+
+**Example:** Planning the integration of a large language model into a customer support product, including API design, fallback handling, and monitoring.
+
+#### AI Limitations
+
+Constraints and failure modes of AI systems, including hallucinations, bias, context limitations, and inability to reason about novel situations.
+
+Understanding AI limitations prevents technical PMs from over-promising AI capabilities and helps set realistic stakeholder expectations.
+
+**Example:** Recognizing that an AI chatbot may generate plausible but incorrect answers and designing a human review step for high-stakes responses.
+
+#### AI Prompt Engineering
+
+The practice of crafting precise instructions to AI systems to produce desired outputs, including context setting, formatting guidance, and iterative refinement.
+
+Effective prompt engineering is a high-leverage skill for technical PMs who use AI tools daily for analysis, documentation, and learning.
+
+**Example:** Structuring a prompt with role, context, task, and output format to get Claude to produce a well-organized technical specification.
+
+#### AI Productivity Gains
+
+Measurable improvements in output quality, speed, or efficiency achieved through the strategic use of AI tools in workflows.
+
+Quantifying AI productivity gains helps technical PMs build business cases for AI tool adoption and demonstrate ROI to leadership.
+
+**Example:** Measuring that AI-assisted code review reduces review time by 40% while maintaining the same defect detection rate.
+
+#### AI Tool Selection
+
+The process of evaluating and choosing appropriate AI tools based on task requirements, integration needs, cost, and team capabilities.
+
+Technical PMs must match AI tools to specific use cases rather than adopting tools based on hype alone.
+
+**Example:** Choosing between Claude, ChatGPT, and GitHub Copilot based on whether the primary need is analysis, content generation, or code assistance.
+
+#### API Authentication
+
+Methods for verifying the identity of clients making requests to an API, ensuring only authorized users access protected resources.
+
+Technical PMs must understand authentication mechanisms to make informed decisions about security requirements and third-party integration design.
+
+**Example:** An API using OAuth 2.0 tokens requires users to log in and obtain a bearer token before accessing protected endpoints.
+
+#### API Documentation
+
+Written specifications describing an API's endpoints, request formats, response structures, authentication requirements, and usage examples.
+
+Good API documentation is essential for developer adoption and reduces support burden. Technical PMs often own or influence documentation quality.
+
+**Example:** Swagger/OpenAPI documentation showing each endpoint with request parameters, response schemas, and example calls.
+
+#### API Endpoints
+
+Specific URLs or paths that an API exposes, each representing a distinct resource or operation that clients can interact with.
+
+Understanding endpoints helps technical PMs scope integration work and communicate about API capabilities with engineering teams.
+
+**Example:** `GET /api/v2/users/{id}` is an endpoint that retrieves a specific user's profile data.
+
+#### API Error Handling
+
+Strategies for managing, communicating, and recovering from errors that occur during API requests and responses.
+
+Technical PMs should understand error handling patterns to design better user experiences when integrations fail.
+
+**Example:** Returning a 429 status code with a "Retry-After" header when a client exceeds the rate limit, rather than silently dropping requests.
+
+#### API Fundamentals
+
+Core concepts of Application Programming Interfaces including how software systems communicate, exchange data, and extend functionality through defined contracts.
+
+API literacy is one of the most valuable technical skills for PMs, as nearly every modern product relies on APIs for integrations and data exchange.
+
+**Example:** A weather app uses an API to request forecast data from a remote server, receiving structured JSON responses it displays to users.
+
+#### API Gateway
+
+A server that acts as a single entry point for multiple backend APIs, handling routing, authentication, rate limiting, and request aggregation.
+
+API gateways simplify client integration and give technical PMs a central point for monitoring API usage and enforcing policies.
+
+**Example:** An API gateway routes mobile app requests to the appropriate microservice while handling authentication and logging centrally.
+
+#### API Rate Limiting
+
+Controls that restrict the number of API requests a client can make within a specified time period to protect system resources.
+
+Technical PMs must understand rate limits when designing integrations and setting expectations with partners about API usage patterns.
+
+**Example:** An API allows 1,000 requests per minute per API key, returning a 429 error if the limit is exceeded.
+
+#### API Testing
+
+The practice of verifying that APIs function correctly by sending requests and validating responses against expected behavior.
+
+Technical PMs benefit from basic API testing skills to verify integrations, reproduce bugs, and validate feature completeness.
+
+**Example:** Using Postman to send a POST request to a user creation endpoint and verifying the response includes the new user ID.
+
+#### API Versioning
+
+Strategies for managing changes to an API over time while maintaining backward compatibility for existing clients.
+
+API versioning decisions have long-term implications for product maintenance and partner relationships that technical PMs must weigh carefully.
+
+**Example:** Adding `/v2/` to endpoint URLs when introducing breaking changes, while continuing to support `/v1/` for existing integrations.
+
+#### Attribution Modeling
+
+The analytical method of assigning credit for conversions or outcomes to specific touchpoints in a user's journey.
+
+Attribution modeling helps technical PMs understand which product features and marketing channels drive the most value.
+
+**Example:** Determining whether a signup should be attributed to an email campaign, a blog post, or a product demo the user experienced.
+
+#### Automated Testing
+
+The use of software tools to execute pre-written test cases automatically, reducing manual effort and increasing test coverage and consistency.
+
+Automated testing enables faster release cycles and higher quality. Technical PMs should understand its role in CI/CD pipelines.
+
+**Example:** A suite of 500 automated tests runs on every pull request, catching regressions before code merges to the main branch.
 
 ## B
 
-#### Bash
+#### Backend Development
 
-A Unix shell and command language used for executing system commands, running scripts, and automating tasks.
+The practice of building server-side logic, databases, and APIs that power a software application's core functionality behind the user interface.
 
-**Example:** Running `./install-claude-skills.sh` in Bash creates symlinks to make skills available globally.
+Technical PMs interact frequently with backend engineers and must understand backend concepts to evaluate technical feasibility and performance implications.
 
-#### Bloom's 2001 Revision
+**Example:** Backend development for an e-commerce site includes building the payment processing service, inventory database, and order management API.
 
-An updated framework of cognitive learning objectives that replaced "Knowledge" with "Remember" and "Synthesis" with "Create."
+#### Build vs Buy Analysis
 
-**Example:** The 2001 revision emphasizes active learning verbs and clearer distinctions between cognitive levels.
+A structured evaluation comparing the costs, risks, and benefits of developing a solution internally versus purchasing an existing product or service.
 
-#### Bloom's Taxonomy
+This is one of the most common technical decisions a PM faces. Getting it right requires understanding both business and engineering trade-offs.
 
-A hierarchical framework of six cognitive levels used to classify educational learning objectives from simple recall to complex creation.
+**Example:** Comparing building a custom analytics dashboard (6 months, 3 engineers) versus subscribing to Mixpanel ($2,000/month) for product analytics needs.
 
-**Example:** Learning outcomes progress from Remember (defining terms) through Create (designing complete textbooks).
+#### Business Requirements
 
-#### Bloom's Taxonomy in Quizzes
+Documented descriptions of what an organization needs a product or system to accomplish in terms of business outcomes and capabilities.
 
-The practice of distributing quiz questions across all six cognitive levels to assess comprehensive understanding.
+Business requirements represent the "why" behind product work and serve as the starting point for deriving technical requirements.
 
-**Example:** A quiz includes 20% Remember questions, 20% Understand, 15% Apply, 20% Analyze, 15% Evaluate, and 10% Create.
+**Example:** "The system must support 10,000 concurrent users during peak hours to handle projected growth in the next fiscal year."
 
 ## C
 
-#### Capstone: Complete Textbook Project
+#### Caching Strategies
 
-A culminating project where learners design and implement an entire intelligent textbook from course description through deployment.
+Techniques for temporarily storing frequently accessed data in fast-access memory to reduce load times and backend processing costs.
 
-**Example:** The capstone requires creating a learning graph, generating content, building MicroSims, and publishing to GitHub Pages.
+Understanding caching helps technical PMs evaluate performance optimization proposals and anticipate trade-offs around data freshness.
 
-#### Category Distribution
+**Example:** Caching product catalog data in Redis so that repeated page loads serve stored data instead of querying the database each time.
 
-The spread of concepts across different taxonomy categories in a learning graph.
+#### ChatGPT for PMs
 
-**Example:** A balanced distribution might be 15% foundational, 35% basic, 30% intermediate, 15% advanced, and 5% integration concepts.
+Practical applications of OpenAI's ChatGPT assistant for product management tasks including research, writing, analysis, and technical learning.
 
-#### Chapter Concept Lists
+ChatGPT is one of several AI tools that technical PMs can use to accelerate their work. Understanding its strengths and limitations enables effective tool selection.
 
-Enumerated sets of specific concepts that will be covered within a particular chapter of a textbook.
+**Example:** Using ChatGPT to summarize a lengthy technical RFC and identify the key trade-offs being proposed.
 
-**Example:** Chapter 3's concept list includes concepts 45-67 from the learning graph, respecting dependency order.
+#### Churn Rate
 
-#### Chapter Index Files
+The percentage of customers who stop using a product or cancel their subscription during a given time period.
 
-Markdown files named `index.md` that serve as the main content page for each chapter in a MkDocs textbook.
+Churn rate is a critical health metric for subscription products. Technical PMs use it to prioritize retention features and identify product quality issues.
 
-**Example:** `/docs/chapters/03/index.md` contains the title, summary, concept list, and full content for Chapter 3.
+**Example:** A 5% monthly churn rate means that out of 1,000 subscribers, 50 cancel each month.
 
-#### Chapter Structure
+#### Claude for PMs
 
-The organizational framework defining how textbook content is divided into major sections with logical progression.
+Practical applications of Anthropic's Claude assistant for product management tasks including technical analysis, documentation, coding assistance, and learning.
 
-**Example:** A 200-concept course might be organized into 12 chapters with 15-20 concepts per chapter.
+Claude's strength in nuanced analysis and long-context understanding makes it particularly useful for technical PM tasks like spec review and architecture discussions.
 
-#### Chapter Structure and Token Budgeting
+**Example:** Using Claude to review an engineering design document and generate a list of questions about scalability and edge cases.
 
-The dual consideration of logical content organization and AI token limit management when designing textbook chapters.
+#### Client-Server Model
 
-**Example:** Balancing pedagogical needs (15-20 concepts per chapter) with practical constraints (staying under Claude's token limits per generation).
+A distributed computing architecture where client devices request services and resources from centralized server systems over a network.
 
-#### Circular Dependency Detection
+The client-server model is the foundation of most web and mobile applications. Understanding it helps technical PMs reason about where processing happens and why.
 
-The process of identifying invalid prerequisite loops where concept A depends on B, which depends on C, which depends on A.
+**Example:** A mobile banking app (client) sends a request to the bank's server to check account balances, and the server returns the data.
 
-**Example:** If "Variables" requires "Functions" which requires "Variables," the analyze-graph.py script reports a circular dependency error.
+#### Cloud Computing
 
-#### Claude AI
+The delivery of computing services including servers, storage, databases, and software over the internet on a pay-as-you-go basis.
 
-An artificial intelligence assistant created by Anthropic that uses large language models to understand and generate human-like text.
+Cloud computing fundamentally changed how products are built and scaled. Technical PMs must understand cloud concepts to participate in infrastructure discussions.
 
-**Example:** Claude AI can read a course description and generate a complete 200-concept learning graph with dependencies.
+**Example:** Hosting an application on AWS instead of maintaining physical servers in a data center, scaling resources up during traffic spikes.
 
-#### Claude Code Interface
+#### Code Coverage
 
-The command-line tool that enables users to interact with Claude AI for software development and content creation tasks.
+A measurement of what percentage of a codebase is exercised by automated tests, indicating how thoroughly the code has been tested.
 
-**Example:** Running `claude` in the terminal launches an interactive session where you can invoke skills and execute commands.
+Code coverage helps technical PMs assess testing completeness, though high coverage alone does not guarantee high quality.
 
-#### Claude Command
+**Example:** A project with 80% code coverage means automated tests execute 80% of the code lines, leaving 20% untested.
 
-A user-defined operation in Claude Code that expands a slash command into a full prompt for common workflows.
+#### Code Quality
 
-**Example:** The `/skills` command expands to list all available Claude skills in the current project.
+The degree to which source code is readable, maintainable, efficient, and free of defects, measured through metrics and review practices.
 
-#### Claude Pro Limitations
+Code quality directly affects product velocity and reliability. Technical PMs should understand quality metrics to advocate for sustainable engineering practices.
 
-Usage restrictions on Claude Pro accounts including token limits per message and 4-hour usage windows.
+**Example:** A codebase with clear naming conventions, consistent formatting, comprehensive tests, and low cyclomatic complexity demonstrates high code quality.
 
-**Example:** Claude Pro allows higher token limits than free accounts but still requires managing usage within 4-hour windows.
+#### Code Refactoring
 
-#### Claude Skill
+The process of restructuring existing source code to improve its internal design without changing its external behavior or functionality.
 
-An autonomous agent defined by a SKILL.md file that automates specific tasks in the Claude Code environment.
+Refactoring reduces technical debt and improves maintainability. Technical PMs must balance refactoring investment against feature delivery timelines.
 
-**Example:** The learning-graph-generator skill automates creating a 200-concept dependency graph from a course description.
+**Example:** Extracting repeated database query logic into a shared service module, making the code easier to maintain and test.
 
-#### Claude Token Limits
+#### Code Repository
 
-Maximum number of tokens (roughly word pieces) that can be processed in a single Claude conversation or message.
+A centralized storage location where source code and its version history are managed, enabling collaboration among multiple developers.
 
-**Example:** Managing token limits requires breaking large content generation into multiple skill invocations.
+Code repositories are where product development happens. Technical PMs access repositories to review changes, track progress, and understand implementation details.
 
-#### Color Coding in Visualizations
+**Example:** A GitHub repository containing the application source code, documentation, configuration files, and deployment scripts.
 
-Using distinct colors to represent different categories, groups, or properties in graphical displays.
+#### Code Review
 
-**Example:** Learning graph visualizations use color to distinguish foundational concepts (orange) from advanced concepts (purple).
+The systematic examination of source code by peers to identify defects, improve quality, and share knowledge across the development team.
 
-#### Command-Line Interface Basics
+Code reviews are a quality gate that technical PMs should understand, as they affect merge timelines and code quality.
 
-Fundamental concepts and operations for interacting with computers through text-based terminal commands.
+**Example:** A senior engineer reviewing a pull request and suggesting a more efficient database query before the code is merged.
 
-**Example:** Basic CLI skills include navigating directories with `cd`, listing files with `ls`, and running scripts.
+#### Cohort Analysis
 
-#### Command Definition Files
+A method of grouping users by shared characteristics or time periods to compare behavior patterns and outcomes across segments.
 
-Markdown files that specify slash command behaviors, stored in the `.claude/commands/` directory.
+Cohort analysis reveals trends that aggregate metrics hide, helping technical PMs understand how product changes affect different user groups over time.
 
-**Example:** The file `.claude/commands/skills.md` defines what happens when you type `/skills`.
+**Example:** Comparing 30-day retention rates for users who signed up in January versus February to measure the impact of a new onboarding flow.
 
-#### Common Student Questions
+#### Competitive Analysis
 
-Frequently asked queries that learners typically have about course content, processes, or concepts.
+The systematic evaluation of competitor products, strategies, and market positioning to inform product decisions and identify opportunities.
 
-**Example:** "How do I install a skill globally versus project-specific?" is a common question addressed in the FAQ.
+Technical PMs add value by also analyzing competitors' technical approaches, architectures, and API strategies alongside business positioning.
 
-#### Concept Categorization
+**Example:** Documenting how three competing products handle real-time notifications, comparing their technical approaches, reliability, and user experience.
 
-The process of organizing concepts into groups based on difficulty level, subject area, or other distinguishing characteristics.
+#### Containerization
 
-**Example:** Categorizing concepts as foundational, basic, intermediate, or advanced helps structure curriculum progression.
+A lightweight virtualization method that packages application code with its dependencies into isolated, portable units called containers.
 
-#### Concept Dependencies
+Containerization simplifies deployment and ensures consistency across environments. Technical PMs should understand it when discussing deployment and infrastructure.
 
-Prerequisite relationships where understanding one concept requires prior mastery of other specific concepts.
+**Example:** Packaging a web application and its dependencies into a Docker container that runs identically on any developer's machine and in production.
 
-**Example:** Understanding "Dependency Edges in Learning Graphs" depends on first understanding "Learning Graph."
+#### Content Delivery Network
 
-#### Concept Enumeration Process
+A geographically distributed network of servers that delivers cached web content to users from the server nearest to their location.
 
-The systematic method of identifying and listing all atomic concepts that comprise a course or subject area.
+CDNs improve load times and reliability for global products. Technical PMs should consider CDN usage when planning for international expansion.
 
-**Example:** Reading the course description and generating exactly 200 distinct, atomic concepts covering all main topics.
+**Example:** A CDN serving images from a server in Tokyo for Japanese users instead of fetching them from a server in Virginia, reducing load time from 2 seconds to 200 milliseconds.
 
-#### Concept Granularity
+#### Continuous Delivery
 
-The level of detail or specificity at which ideas are broken down into individual learning components.
+A software engineering practice where code changes are automatically built, tested, and prepared for release to production at any time.
 
-**Example:** "Git Commands" has low granularity, while separate concepts for "Git Add Command," "Git Commit Command" has higher granularity.
+Continuous delivery enables faster iteration cycles, which technical PMs leverage to ship features and fixes more frequently.
 
-#### Concept Label Requirements
+**Example:** Every merged pull request automatically passes through build, test, and staging deployment, ready for one-click production release.
 
-Specifications that concept names must follow, including Title Case formatting and maximum character length constraints.
+#### Continuous Integration
 
-**Example:** Concept labels must be in Title Case and not exceed 32 characters to ensure readability in visualizations.
+A development practice where code changes are automatically merged, built, and tested multiple times per day to detect integration issues early.
 
-#### ConceptID Field
+CI catches bugs early and keeps the codebase stable. Technical PMs should understand CI status when tracking feature delivery progress.
 
-A unique numeric identifier assigned to each concept in a learning graph CSV file.
+**Example:** A CI pipeline that runs 500 automated tests on every pull request and blocks merging if any test fails.
 
-**Example:** The ConceptID field contains integers from 1 to 200, providing a stable reference for each concept.
+#### Continuous Tech Learning
 
-#### ConceptLabel Field
+The ongoing practice of acquiring new technical knowledge and skills to remain effective as technology evolves.
 
-The human-readable name of a concept in a learning graph CSV file, following Title Case and length conventions.
+For PMs who transition to technical roles, continuous learning is essential because technology stacks and best practices change rapidly.
 
-**Example:** The ConceptLabel field might contain "Learning Graph" or "Directed Acyclic Graph (DAG)."
+**Example:** Dedicating two hours per week to learning about new cloud services, reading engineering blogs, and experimenting with AI tools.
 
-#### Concept Nodes in Learning Graphs
+#### Conversion Rate
 
-Individual concepts represented as vertices in a directed graph structure showing learning relationships.
+The percentage of users who complete a desired action out of the total number who had the opportunity to do so.
 
-**Example:** In a visualization, each concept appears as a labeled circle (node) with arrows (edges) pointing to dependent concepts.
+Conversion rate is one of the most commonly tracked product metrics. Technical PMs use it to measure feature effectiveness and optimize user flows.
 
-#### Concise Definitions
+**Example:** If 500 out of 10,000 website visitors sign up for a free trial, the conversion rate is 5%.
 
-Brief explanations that convey essential meaning using minimal words, typically 20-50 words for glossary entries.
+#### Cross-Functional Teams
 
-**Example:** "A directed graph of concepts" is more concise than "A specialized type of graph structure that shows relationships."
+Groups composed of members from different functional areas such as engineering, design, marketing, and product working together toward shared goals.
 
-#### Content Generation Process
+Technical PMs are the connective tissue in cross-functional teams, translating between engineering, design, and business stakeholders.
 
-The systematic workflow for creating textbook chapters, sections, and supporting materials using AI assistance.
+**Example:** A product team including a PM, two engineers, a designer, and a data analyst collaborating on a new search feature.
 
-**Example:** The chapter-content-generator skill reads concept lists and generates comprehensive content with examples and exercises.
+#### Customer Feedback
 
-#### Course Description
+Information provided by users about their experiences, needs, and satisfaction with a product, gathered through surveys, interviews, support tickets, and usage data.
 
-A comprehensive document defining a course's title, audience, prerequisites, topics, exclusions, and Bloom's Taxonomy-aligned outcomes.
+Customer feedback grounds product decisions in real user needs. Technical PMs must translate qualitative feedback into actionable technical requirements.
 
-**Example:** A complete course description enables the learning-graph-generator skill to identify relevant concepts and dependencies.
+**Example:** Analyzing support tickets to discover that 30% of complaints relate to slow page loads, leading to a performance optimization initiative.
 
-#### Course Description Quality Score
+#### Customer Segmentation
 
-A numeric assessment (1-100) evaluating how well a course description meets completeness and clarity standards.
+The practice of dividing a customer base into distinct groups based on shared characteristics, behaviors, or needs for targeted analysis and engagement.
 
-**Example:** A score of 95 indicates all required sections are present with clear, measurable learning outcomes.
+Customer segmentation enables personalized product experiences and targeted feature development. Technical PMs use segments to prioritize roadmap items.
 
-#### Course Prerequisites
-
-Knowledge, skills, or experiences that learners must possess before beginning a course.
-
-**Example:** Prerequisites for this course include basic programming understanding and access to Claude Pro.
-
-#### Create (Cognitive Level 6)
-
-The highest level of Bloom's Taxonomy where learners put elements together to form coherent, original works.
-
-**Example:** Students create new Claude skills from scratch, designing workflows and writing skill definition files.
-
-#### Creator Metadata Field
-
-Dublin Core element identifying the person, organization, or entity responsible for creating a resource.
-
-**Example:** The creator field in metadata.json might contain "Dan McCreary" or your organization name.
-
-#### csv-to-json.py Script
-
-A Python program that converts learning graph CSV files into vis-network JSON format for visualization.
-
-**Example:** Running this script transforms `learning-graph.csv` into `learning-graph.json` with nodes and edges arrays.
-
-#### CSV File Format for Graphs
-
-A structured text format using comma-separated values to store learning graph data with headers and rows.
-
-**Example:** Graph CSVs contain columns: ConceptID, ConceptLabel, Dependencies, TaxonomyID.
+**Example:** Segmenting users into "power users," "casual users," and "at-risk users" based on login frequency and feature usage patterns.
 
 ## D
 
-#### DAG Validation
+#### Daily Standups
 
-The process of verifying that a learning graph forms a valid directed acyclic graph with no circular dependencies.
+Brief daily team meetings where each member shares progress, plans, and obstacles to maintain alignment and unblock work.
 
-**Example:** The analyze-graph.py script performs DAG validation and reports any cycles that would prevent topological sorting.
+Technical PMs use standups to track sprint progress, identify blockers early, and stay informed about technical challenges the team faces.
 
-#### Date Metadata Field
+**Example:** A 15-minute meeting where each team member answers: "What did I do yesterday? What will I do today? What's blocking me?"
 
-Dublin Core element recording when a resource was created, modified, or published.
+#### Dashboard Design
 
-**Example:** The date field captures "2025-11-08" as the generation date for the learning graph.
+The practice of creating visual displays that present key metrics and data in an organized, actionable format for monitoring and decision-making.
 
-#### Definitions Without Business Rules
+Well-designed dashboards help technical PMs monitor product health, track OKRs, and communicate status to stakeholders at a glance.
 
-ISO 11179 principle that glossary definitions should describe concepts without prescribing processes or requirements.
+**Example:** A product dashboard showing daily active users, error rates, API response times, and conversion funnel metrics on a single screen.
 
-**Example:** Define "Prerequisites" as relationships between concepts, not "Students must complete prerequisites before advancing."
+#### Data Backup and Recovery
 
-#### Dependency Edges in Learning Graphs
+Processes and systems for creating copies of data and restoring it to a previous state after loss, corruption, or disaster.
 
-Directed arrows connecting prerequisite concepts to dependent concepts in a graph structure.
+Technical PMs should understand backup strategies when evaluating system reliability and planning for disaster recovery scenarios.
 
-**Example:** An edge from "Variables" to "Functions" indicates that understanding variables is prerequisite for understanding functions.
+**Example:** Automated nightly database backups stored in a separate cloud region, with tested recovery procedures that can restore data within 4 hours.
 
-#### Dependency Mapping Process
+#### Data-Driven Decisions
 
-The systematic method of identifying and recording prerequisite relationships between all concepts in a learning graph.
+The practice of basing product and business decisions on quantitative evidence and data analysis rather than intuition or assumptions alone.
 
-**Example:** For each of 200 concepts, determine which prior concepts must be understood first and record them in the Dependencies field.
+Data-driven decision making is a core competency for technical PMs, bridging the gap between engineering metrics and business outcomes.
 
-#### Dependencies Field
+**Example:** Deciding to prioritize mobile app performance improvements after data shows 60% of users access the product on mobile with 3-second load times.
 
-A CSV column containing pipe-delimited ConceptIDs representing prerequisite concepts that must be learned first.
+#### Data Governance
 
-**Example:** A Dependencies field of "1|5|12" means concepts 1, 5, and 12 are prerequisites for the current concept.
+The organizational framework of policies, processes, and standards that ensure data quality, security, privacy, and proper usage across an organization.
 
-#### Description Metadata Field
+Technical PMs must understand data governance to ensure product features comply with data handling policies and regulatory requirements.
 
-Dublin Core element providing a textual explanation of a resource's content and purpose.
+**Example:** Implementing a data governance policy that requires personally identifiable information to be encrypted at rest and access-logged for audit purposes.
 
-**Example:** The description field summarizes what the learning graph covers and its educational objectives.
+#### Data Lake
 
-#### Difference Between Skills & Commands
+A centralized repository that stores raw, unprocessed data in its native format from multiple sources for future analysis and processing.
 
-Skills are autonomous workflows defined in SKILL.md files, while commands are simple prompt expansions for common tasks.
+Data lakes provide flexibility for exploratory analysis but require governance to prevent them from becoming disorganized "data swamps."
 
-**Example:** A skill generates entire chapters; a command might just list available skills or clear the conversation history.
+**Example:** Storing raw clickstream data, server logs, and CRM exports in an S3 data lake for data scientists to query and analyze.
 
-#### Directed Acyclic Graph (DAG)
+#### Data Migration
 
-A graph structure with directed edges and no cycles, where you cannot traverse from any node back to itself.
+The process of transferring data from one system, format, or storage location to another while maintaining data integrity and consistency.
 
-**Example:** Learning graphs must be DAGs to ensure a valid learning sequence exists without circular prerequisites.
+Data migrations are high-risk technical projects that technical PMs often lead, coordinating between engineering, QA, and business stakeholders.
 
-#### Directory Navigation
+**Example:** Migrating customer records from an on-premise Oracle database to a cloud-based PostgreSQL database as part of a platform modernization initiative.
 
-The process of moving between folders in a file system using command-line or graphical interfaces.
+#### Data Modeling
 
-**Example:** Use `cd docs/chapters` to navigate into the chapters directory from the project root.
+The process of defining how data is structured, stored, and related within a database system to support application requirements.
 
-#### Disconnected Subgraphs
+Understanding data models helps technical PMs evaluate feature feasibility and understand the implications of schema changes on existing functionality.
 
-Separate groups of concepts in a learning graph that have no dependency connections between groups.
+**Example:** Designing a data model where a "User" entity has a one-to-many relationship with "Orders," and each "Order" has a many-to-many relationship with "Products."
 
-**Example:** If web development concepts and database concepts form separate clusters with no links, they are disconnected subgraphs.
+#### Data Normalization
 
-#### Distinct Definitions
+The process of organizing database tables to reduce data redundancy and improve data integrity by applying standard structural rules.
 
-ISO 11179 principle ensuring each glossary entry is clearly distinguishable from related terms.
+Normalization prevents data inconsistencies but can impact query performance. Technical PMs should understand the trade-offs when discussing database design.
 
-**Example:** "Learning Graph" and "Concept Dependency" have distinct definitions focusing on different aspects of concept relationships.
+**Example:** Splitting a table with repeated customer addresses into separate Customer and Address tables linked by a foreign key.
 
-#### Dublin Core Metadata
+#### Data Pipelines
 
-A standardized set of 15 metadata elements for describing digital resources, including title, creator, date, and format.
+Automated sequences of data processing steps that move, transform, and load data from source systems to destination systems.
 
-**Example:** MicroSim metadata.json files use Dublin Core fields to document simulation properties.
+Data pipelines power the analytics and reporting that technical PMs rely on for product decisions. Understanding pipeline architecture helps diagnose data issues.
+
+**Example:** A pipeline that extracts user events from the application, transforms them into aggregated metrics, and loads them into a data warehouse hourly.
+
+#### Data Privacy
+
+The protection of personal and sensitive information from unauthorized access, use, or disclosure, governed by legal and ethical standards.
+
+Data privacy is both a legal requirement and a trust issue. Technical PMs must ensure product features handle user data responsibly.
+
+**Example:** Designing a feature that allows users to export and delete their personal data in compliance with privacy regulations.
+
+#### Data Serialization
+
+The process of converting data structures into a format suitable for storage or transmission and reconstructing them at the destination.
+
+Understanding serialization formats helps technical PMs evaluate API designs and discuss data exchange approaches with engineers.
+
+**Example:** Converting a user profile object into a JSON string for API transmission, then parsing it back into an object on the receiving end.
+
+#### Data Tables
+
+Structured collections of data organized in rows and columns within a database, where each row represents a record and each column represents a field.
+
+Data tables are the fundamental building blocks of relational databases. Technical PMs reference tables when discussing data requirements and queries.
+
+**Example:** A "Users" table with columns for user_id, name, email, and created_date, where each row stores one user's information.
+
+#### Data Visualization
+
+The graphical representation of data and information using charts, graphs, maps, and other visual formats to reveal patterns and support understanding.
+
+Data visualization transforms raw numbers into actionable insights. Technical PMs use visualizations to communicate product performance to stakeholders.
+
+**Example:** A line chart showing monthly active users over 12 months, with annotations marking major feature releases.
+
+#### Data Warehouse
+
+A centralized repository optimized for analytical queries that stores structured, processed data from multiple operational systems.
+
+Data warehouses support the reporting and analytics that technical PMs depend on for tracking product metrics and generating insights.
+
+**Example:** A Snowflake data warehouse aggregating data from the application database, payment system, and marketing platform for cross-functional analysis.
+
+#### Database Fundamentals
+
+Core concepts of organized data storage systems including tables, queries, schemas, and the distinction between relational and non-relational approaches.
+
+Database literacy enables technical PMs to understand data architecture decisions, evaluate feature feasibility, and write basic queries for product insights.
+
+**Example:** Understanding that a relational database stores data in structured tables with defined relationships, while a document database stores flexible JSON-like records.
+
+#### Database Indexing
+
+The creation of data structures that speed up data retrieval by providing quick lookup paths to specific records within database tables.
+
+Indexing is a common performance optimization that technical PMs should understand when discussing slow query issues with engineers.
+
+**Example:** Adding an index on the "email" column of the Users table so that login queries find users in milliseconds instead of scanning every row.
+
+#### Database Performance
+
+The speed and efficiency with which a database system executes queries, handles concurrent access, and manages data operations under load.
+
+Database performance directly impacts user experience. Technical PMs should understand performance metrics to set meaningful SLAs and prioritize optimization work.
+
+**Example:** Monitoring that average query response time is 50ms under normal load but degrades to 2 seconds during peak traffic, triggering optimization work.
+
+#### Database Schema
+
+The formal definition of a database's structure, including tables, columns, data types, relationships, and constraints.
+
+Schema changes can be complex and risky. Technical PMs should understand schemas to evaluate the engineering impact of feature requests.
+
+**Example:** A schema defining a Users table with columns for id (integer, primary key), name (varchar), and email (varchar, unique).
+
+#### Database Transactions
+
+Sequences of database operations that are executed as a single logical unit, ensuring all operations succeed or all are rolled back together.
+
+Understanding transactions helps technical PMs reason about data consistency requirements for features involving multiple related data changes.
+
+**Example:** A purchase transaction that deducts inventory, charges the customer, and creates an order record must complete all three steps or none.
+
+#### Debugging Basics
+
+Fundamental techniques for identifying and resolving software defects, including reading error messages, examining logs, and isolating problem areas.
+
+Basic debugging knowledge helps technical PMs understand bug reports, assess severity accurately, and have informed conversations with engineers about root causes.
+
+**Example:** Reading a stack trace to identify that a NullPointerException occurs in the payment processing module, helping triage the bug to the correct team.
+
+#### Distributed Systems
+
+Computing architectures where components located on different networked computers coordinate actions by passing messages to achieve a common goal.
+
+Most modern software products run as distributed systems. Technical PMs must understand the inherent complexity, including network failures and consistency trade-offs.
+
+**Example:** An e-commerce platform where the product catalog, user authentication, and payment processing run on separate servers communicating over APIs.
+
+#### Docker Overview
+
+An introduction to the Docker platform for building, distributing, and running containerized applications with consistent environments.
+
+Docker knowledge helps technical PMs understand deployment conversations and appreciate why "it works on my machine" problems occur.
+
+**Example:** Using a Dockerfile to define the exact operating system, libraries, and configurations needed to run an application identically everywhere.
+
+#### Document Databases
+
+NoSQL databases that store data as flexible, JSON-like documents rather than in fixed rows and columns, enabling schema flexibility.
+
+Document databases are well-suited for products with evolving data structures. Technical PMs should understand when they are preferred over relational databases.
+
+**Example:** MongoDB storing user profiles as JSON documents where different users can have different fields, unlike a fixed-column relational table.
 
 ## E
 
-#### Edges Section in JSON
+#### End-to-End Testing
 
-The array in vis-network JSON format containing objects that define directed connections between concept nodes.
+Testing that validates complete user workflows from start to finish across all system components to ensure the entire application works correctly.
 
-**Example:** `{"from": 1, "to": 2}` in the edges array represents a dependency from concept 1 to concept 2.
+End-to-end tests catch integration issues that unit tests miss. Technical PMs should understand test coverage when assessing release readiness.
 
-#### Educational Content Prompts
+**Example:** An automated test that simulates a user signing up, adding items to a cart, completing checkout, and receiving a confirmation email.
 
-Carefully designed instructions to AI systems specifying how to generate pedagogically sound learning materials.
+#### Engineering Mindset
 
-**Example:** A prompt might request "Generate 5 worked examples demonstrating this concept at the Apply level of Bloom's Taxonomy."
+A problem-solving orientation characterized by systematic thinking, evidence-based reasoning, and comfort with technical trade-offs and constraints.
 
-#### Educational Simulation Design
+Developing an engineering mindset helps PMs earn credibility with engineering teams and make better technical decisions.
 
-The process of creating interactive visual models that demonstrate concepts through user manipulation and observation.
+**Example:** Approaching a performance problem by first measuring current metrics, identifying bottlenecks with data, and evaluating multiple solutions before recommending one.
 
-**Example:** A MicroSim showing bubble sort lets learners control array size and see step-by-step swaps in real-time.
+#### Engineering Specifications
 
-#### Error Analysis in Skills
+Detailed technical documents describing how a system or feature should be implemented, including architecture, interfaces, and constraints.
 
-The systematic examination of skill execution failures to identify root causes and improvement opportunities.
+Technical PMs review and contribute to engineering specifications, ensuring they align with product requirements and user needs.
 
-**Example:** Analyzing error messages reveals that a skill failed because it expected a file in `/docs/learning-graph/` that didn't exist.
+**Example:** A specification describing the database schema, API endpoints, error handling approach, and performance requirements for a new notification system.
 
-#### Evaluate (Cognitive Level 5)
+#### Engineering Team Dynamics
 
-The fifth level of Bloom's Taxonomy where learners make judgments based on criteria and standards.
+The interpersonal and organizational patterns that influence how engineering teams collaborate, communicate, make decisions, and resolve conflicts.
 
-**Example:** Students evaluate the quality of a generated glossary using ISO 11179 compliance as evaluation criteria.
+Understanding team dynamics helps technical PMs build trust with engineers, facilitate effective collaboration, and navigate organizational challenges.
+
+**Example:** Recognizing that a team's reluctance to estimate story points stems from past pressure to treat estimates as commitments, then adjusting the planning process.
+
+#### Escalation Frameworks
+
+Structured approaches for determining when and how to elevate technical decisions, risks, or blockers to higher levels of authority for resolution.
+
+Knowing when to escalate prevents both premature escalation (which undermines team autonomy) and delayed escalation (which allows problems to grow).
+
+**Example:** A framework where P1 bugs are escalated to the VP of Engineering within 1 hour, while P3 bugs are handled within the team's normal sprint process.
+
+#### ETL Process
+
+A data integration workflow that Extracts data from source systems, Transforms it into a consistent format, and Loads it into a destination system.
+
+ETL processes power the data infrastructure that technical PMs rely on for analytics and reporting. Understanding ETL helps diagnose data quality issues.
+
+**Example:** Extracting raw event data from the application database, transforming timestamps to a consistent timezone and aggregating by user, then loading into the analytics warehouse.
+
+#### Event Tracking
+
+The systematic recording of user interactions and system events within a product for analysis, debugging, and behavioral understanding.
+
+Proper event tracking is the foundation of product analytics. Technical PMs define which events to track and ensure tracking implementation is accurate.
+
+**Example:** Tracking events like "button_clicked," "page_viewed," and "feature_used" with properties like user_id, timestamp, and device type.
+
+#### Experiment Design
+
+The structured methodology for planning controlled tests that isolate the effect of specific product changes on measurable outcomes.
+
+Rigorous experiment design prevents false conclusions from confounding variables, helping technical PMs make truly data-driven decisions.
+
+**Example:** Designing an experiment with a clear hypothesis, control group, treatment group, success metric, sample size calculation, and duration.
 
 ## F
 
-#### FAQ
+#### Fault Tolerance
 
-A document containing Frequently Asked Questions and their answers to help learners find common information quickly.
+The ability of a system to continue operating correctly even when one or more of its components fail.
 
-**Example:** The FAQ addresses questions like "How do I install skills globally?" and "What's the difference between skills and commands?"
+Fault tolerance is critical for products where downtime directly impacts revenue or user safety. Technical PMs should understand resilience patterns.
 
-#### FAQ from Course Content
+**Example:** A system that automatically switches to a backup database server when the primary server fails, maintaining service availability.
 
-Questions and answers derived from analyzing course materials, learning graphs, and glossary terms.
+#### Feature Flags
 
-**Example:** Generated FAQs explain technical terms from the glossary in simpler language with additional context.
+Configuration switches that enable or disable specific product features at runtime without deploying new code.
 
-#### FAQ Generation Process
+Feature flags give technical PMs fine-grained control over feature rollouts, enabling gradual launches, A/B tests, and instant rollbacks.
 
-The systematic workflow for creating comprehensive question-answer pairs from course content and anticipated learner needs.
+**Example:** Enabling a new search algorithm for 10% of users to measure its impact before rolling it out to everyone.
 
-**Example:** The faq-generator skill scans course content, identifies potential confusion points, and creates clear Q&A pairs.
+#### Foreign Keys
 
-#### File Access Permissions
+Database columns that establish a link between data in two tables by referencing the primary key of another table.
 
-Security settings that control which users and processes can read, write, or execute specific files.
+Foreign keys enforce referential integrity, ensuring data relationships remain consistent. Technical PMs encounter them when discussing data models.
 
-**Example:** Script execution requires permission: `chmod +x install-claude-skills.sh` makes the file executable.
+**Example:** An "orders" table with a "user_id" foreign key linking each order to a specific user in the "users" table.
 
-#### File Creation and Editing
+#### Frontend Development
 
-The process of making new files or modifying existing files using text editors or command-line tools.
+The practice of building the user-facing portion of a software application, including visual layout, interactivity, and client-side logic.
 
-**Example:** Use `touch glossary.md` to create a new file, then edit it with VS Code or vim.
+Technical PMs should understand frontend concepts to evaluate design feasibility, discuss performance, and review implementation with engineers.
 
-#### Five Levels of Textbook Intelligence
+**Example:** Building a responsive web interface using HTML, CSS, and JavaScript that renders product listings and handles user interactions like filtering and sorting.
 
-A framework categorizing educational materials from static text (Level 1) to AI-personalized learning (Level 5).
+#### Full Stack Overview
 
-**Example:** Traditional PDFs are Level 1, while textbooks with adaptive quizzes and learning paths are Level 4.
+A broad understanding of both frontend and backend technologies and how they work together to deliver a complete software application.
 
-#### Font Colors for Readability
+Full stack awareness helps technical PMs see how product features span multiple technical layers and coordinate effectively across engineering specializations.
 
-Strategic color choices for text that ensure sufficient contrast and accessibility across different backgrounds.
+**Example:** Understanding that a search feature requires frontend UI components, backend API endpoints, database queries, and possibly a search index service.
 
-**Example:** Light text on dark nodes requires careful color selection to maintain readability in graph visualizations.
+#### Functional Requirements
 
-#### Format Metadata Field
+Specific behaviors, features, and capabilities that a system must provide to satisfy user needs and business objectives.
 
-Dublin Core element specifying the file format or media type of a resource.
+Functional requirements define what the system does. Technical PMs translate user stories into functional requirements that engineers can implement.
 
-**Example:** The format field might indicate "text/html" for MicroSims or "application/json" for learning graphs.
+**Example:** "The system shall allow users to filter search results by date range, category, and price with results updating within 500 milliseconds."
 
-#### Foundational Concepts
+#### Funnel Analysis
 
-Fundamental ideas with no prerequisites that serve as building blocks for more advanced understanding.
+A method of measuring and visualizing how users progress through a sequence of steps toward a desired outcome, identifying where drop-offs occur.
 
-**Example:** "Artificial Intelligence" and "Claude AI" are foundational concepts that don't depend on other course concepts.
+Funnel analysis is one of the most actionable analytics techniques for technical PMs, directly revealing where product improvements can increase conversion.
 
-#### 4-Hour Usage Windows
-
-Time-based limits on Claude Pro usage where token allowances reset after four hours of activity.
-
-**Example:** Planning to generate multiple chapters within a single 4-hour window maximizes efficiency.
+**Example:** Analyzing a signup funnel showing that 70% of users complete step 1, but only 30% complete step 3, revealing a friction point at step 2.
 
 ## G
 
-#### Generating 200 Concepts
+#### GDPR Compliance
 
-The process of systematically enumerating exactly 200 atomic concepts that comprehensively cover a course's scope.
+Adherence to the European Union's General Data Protection Regulation, which establishes rules for collecting, processing, and storing personal data of EU residents.
 
-**Example:** The learning-graph-generator skill analyzes the course description and produces a numbered list of 200 concepts.
+GDPR compliance affects product design, data architecture, and feature development. Technical PMs must ensure features meet privacy requirements from the design phase.
 
-#### Git
+**Example:** Implementing a "right to be forgotten" feature that permanently deletes a user's personal data across all systems upon verified request.
 
-A distributed version control system for tracking changes in source code and collaborating on software projects.
+#### Generative AI Overview
 
-**Example:** Git commands like `git add`, `git commit`, and `git push` manage textbook content versions.
+An introduction to AI systems capable of creating new content such as text, code, images, and data by learning patterns from training data.
 
-#### Git Add Command
+Generative AI is transforming product management by enabling PMs to prototype faster, analyze data more effectively, and learn technical concepts through AI assistance.
 
-A Git operation that stages modified or new files for inclusion in the next commit.
+**Example:** Using Claude to generate a draft product requirements document from meeting notes, then refining it for accuracy and completeness.
 
-**Example:** `git add docs/glossary.md` stages the glossary file for committing to the repository.
+#### Git Basics
 
-#### Git Commit Command
+Foundational concepts and commands for using the Git version control system, including staging, committing, branching, and merging changes.
 
-A Git operation that saves staged changes to the local repository with a descriptive message.
+Git literacy enables technical PMs to track engineering progress, understand development workflows, and collaborate through pull requests.
 
-**Example:** `git commit -m "Add glossary with 200 ISO 11179-compliant definitions"` records the glossary addition.
+**Example:** Understanding that `git commit` saves a snapshot of staged changes locally, while `git push` uploads those changes to the remote repository.
 
-#### Git Push Command
+#### GitHub Copilot
 
-A Git operation that uploads local commits to a remote repository like GitHub.
+An AI-powered coding assistant that suggests code completions, generates functions, and helps developers write code faster within their editor.
 
-**Example:** `git push origin main` sends your latest commits to the main branch on GitHub.
+GitHub Copilot demonstrates how AI augments engineering workflows. Technical PMs should understand its capabilities to set realistic expectations for AI-assisted development.
 
-#### Git Repository Structure
+**Example:** A developer typing a function comment and Copilot automatically suggesting the complete implementation based on the description.
 
-The organization of files, directories, and Git metadata within a version-controlled project.
+#### GraphQL Overview
 
-**Example:** A textbook repo includes `/docs`, `/skills`, `.git` hidden folder, and configuration files like `mkdocs.yml`.
+An introduction to GraphQL, a query language for APIs that allows clients to request exactly the data they need in a single request.
 
-#### Git Status Command
+GraphQL offers an alternative to REST that can reduce over-fetching and under-fetching. Technical PMs should understand when GraphQL may be preferable.
 
-A Git operation that displays the current state of the working directory and staging area.
+**Example:** A mobile app using a single GraphQL query to fetch a user's name, recent orders, and notification count, instead of making three separate REST API calls.
 
-**Example:** `git status` shows which files are modified, staged, or untracked.
+## H
 
-#### GitHub Integration
+#### High Availability
 
-The connection between local Git repositories and GitHub's cloud-based platform for hosting and collaboration.
+A system design approach that ensures a service remains operational and accessible for a very high percentage of time, typically 99.9% or higher.
 
-**Example:** Linking a local textbook repository to GitHub enables deployment to GitHub Pages.
+High availability requirements directly impact architecture decisions and costs. Technical PMs set availability targets based on business needs and user expectations.
 
-#### GitHub Pages Deployment
+**Example:** A 99.99% availability target ("four nines") allows only 52 minutes of downtime per year, requiring redundant infrastructure and automated failover.
 
-The process of publishing static website content to GitHub's free web hosting service.
+#### Horizontal Scaling
 
-**Example:** Running `mkdocs gh-deploy` builds the site and pushes it to the gh-pages branch for public access.
+Increasing system capacity by adding more machines or instances to distribute workload, rather than upgrading a single machine's resources.
 
-#### Glossary
+Understanding scaling strategies helps technical PMs anticipate infrastructure needs and participate in capacity planning discussions.
 
-An alphabetically organized collection of terms and their definitions specific to a subject area or course.
+**Example:** Adding three more web servers behind a load balancer to handle increased traffic during a product launch.
 
-**Example:** This glossary defines 200 concepts related to creating intelligent textbooks with Claude Skills.
+#### HTTP Methods
 
-#### Glossary Generation Process
+Standardized request types in the HTTP protocol (GET, POST, PUT, DELETE, PATCH) that indicate the intended action on a resource.
 
-The systematic workflow for creating ISO 11179-compliant definitions from a concept list with quality validation.
+Understanding HTTP methods helps technical PMs read API documentation and communicate precisely about API behavior with engineers.
 
-**Example:** The glossary-generator skill reads concept lists, generates definitions, adds examples, and produces quality reports.
-
-#### Groups Section in JSON
-
-The array in vis-network JSON format defining visual properties for each taxonomy category.
-
-**Example:** Groups specify colors like orange for foundational concepts and purple for advanced concepts.
+**Example:** Using GET to retrieve data, POST to create new records, PUT to update existing records, and DELETE to remove records.
 
 ## I
 
-#### Iframe Embedding
+#### Infrastructure as a Service
 
-The technique of inserting one HTML document inside another using the `<iframe>` tag.
+A cloud computing model providing virtualized computing resources such as servers, storage, and networking on demand over the internet.
 
-**Example:** MicroSim documentation embeds `main.html` simulations in `index.md` pages using iframe tags.
+IaaS gives organizations maximum control over their infrastructure while eliminating physical hardware management. Technical PMs evaluate IaaS for cost and flexibility.
 
-#### Improving Skill Quality
+**Example:** Using AWS EC2 instances to provision virtual servers for running application workloads, paying only for the compute time consumed.
 
-The iterative process of refining skill workflows, error handling, and output quality through testing and feedback.
+#### Integration Testing
 
-**Example:** Adding validation checks to skills ensures they fail gracefully when required input files are missing.
+Testing that verifies the correct interaction between multiple software components, modules, or services when combined.
 
-#### Indegree Analysis
+Integration tests catch issues that arise when individually working components fail to communicate properly. Technical PMs should understand test coverage across levels.
 
-Examining how many prerequisite concepts point to each concept in a learning graph.
+**Example:** Testing that the user authentication service correctly passes tokens to the order processing service, which then validates them before processing requests.
 
-**Example:** High indegree concepts require many prerequisites and are typically advanced topics.
+#### Iterative Development
 
-#### index.md for MicroSim Docs
+A software development approach that builds products through repeated cycles of planning, implementing, testing, and refining incremental improvements.
 
-A markdown documentation file that describes a MicroSim's purpose, usage, and embeds the interactive simulation.
+Iterative development aligns naturally with Agile practices and enables technical PMs to deliver value incrementally while incorporating user feedback.
 
-**Example:** `/docs/sims/bubble-sort/index.md` explains the simulation and embeds `main.html` in an iframe.
-
-#### Installing a Claude Skill
-
-The process of making a skill available for use in Claude Code by placing it in the `.claude/skills/` directory.
-
-**Example:** Running `./scripts/install-claude-skills.sh` creates symlinks from project skills to global skills directory.
-
-#### Installing Claude Commands
-
-The process of placing command definition files in `.claude/commands/` to enable slash command usage.
-
-**Example:** Copying `skills.md` to `.claude/commands/` enables the `/skills` command.
-
-#### Installing Python Packages
-
-The process of adding third-party Python libraries to your environment using package management tools.
-
-**Example:** `pip install mkdocs-material` installs the Material theme for MkDocs documentation.
-
-#### Installing Skills Globally
-
-Placing skills in `~/.claude/skills/` to make them available across all Claude Code projects.
-
-**Example:** Global skills can be invoked from any project directory without per-project installation.
-
-#### Intelligent Textbook
-
-An educational resource enhanced with interactive elements, adaptive content, or AI-powered features beyond static text.
-
-**Example:** An intelligent textbook includes learning graphs, interactive MicroSims, and automatically generated quizzes.
-
-#### Interactive Controls (Buttons)
-
-User interface elements in MicroSims that trigger actions or state changes when clicked.
-
-**Example:** A "Reset" button returns the simulation to initial conditions, while "Next Step" advances one iteration.
-
-#### Interactive Controls (Sliders)
-
-User interface elements in MicroSims that allow continuous value adjustment through dragging or clicking.
-
-**Example:** A slider controls animation speed from 1 to 100, letting learners observe processes at different rates.
-
-#### Interactive Elements
-
-Components in educational materials that respond to user input and provide dynamic feedback.
-
-**Example:** Interactive elements include clickable diagrams, adjustable parameters in simulations, and self-grading quizzes.
-
-#### Interactive Simulations
-
-Computer programs that model real-world or abstract processes, allowing learners to manipulate variables and observe outcomes.
-
-**Example:** A physics simulation lets students adjust mass and velocity to see how momentum changes.
-
-#### Invoking Skills with Slash Commands
-
-The method of executing Claude skills by typing `/skill [skill-name]` in the Claude Code interface.
-
-**Example:** Typing the skill name launches the skill to create a 200-concept dependency graph.
-
-#### ISO 11179 Standards
-
-International metadata registry standards defining principles for creating precise, concise, distinct, non-circular definitions.
-
-**Example:** ISO 11179 requires glossary definitions avoid business rules like "must complete before advancing."
-
-#### Iterative Prompt Refinement
-
-The process of progressively improving AI prompts through testing, evaluation, and modification based on results.
-
-**Example:** Refining a content generation prompt by adding "include 3 worked examples" after initial results lacked examples.
+**Example:** Building a recommendation engine in three iterations: first with simple rules, then with collaborative filtering, and finally with machine learning models.
 
 ## J
 
-#### JSON Schema for Learning Graphs
+#### JSON Format
 
-A formal specification defining the required structure and data types for learning graph JSON files.
+JavaScript Object Notation, a lightweight data interchange format that uses human-readable text to represent structured data as key-value pairs and arrays.
 
-**Example:** The schema requires "nodes" and "edges" arrays with specific properties like "id," "label," "from," and "to."
+JSON is the dominant format for API communication. Technical PMs encounter JSON when reviewing API responses, configuring tools, and analyzing data.
+
+**Example:** `{"name": "Jane Smith", "role": "Technical PM", "skills": ["SQL", "API design", "data analysis"]}` represents a structured user profile.
+
+## K
+
+#### Kanban Method
+
+A visual workflow management method that uses boards and cards to represent work items, limiting work in progress to improve flow and reduce bottlenecks.
+
+Kanban provides an alternative to Scrum for teams that need continuous flow rather than fixed sprints. Technical PMs choose the method that fits their team's needs.
+
+**Example:** A Kanban board with columns for Backlog, Ready, In Progress (limit: 3), Review, and Done, with cards moving left to right as work progresses.
+
+#### Key Performance Indicators
+
+Quantifiable metrics that measure how effectively an organization or product is achieving its most important business objectives.
+
+KPIs translate business goals into measurable targets. Technical PMs define and track KPIs that connect product features to business outcomes.
+
+**Example:** Tracking daily active users, customer acquisition cost, and net revenue retention as the three primary KPIs for a SaaS product.
+
+#### Key-Value Stores
+
+NoSQL databases that store data as simple pairs of unique keys and their associated values, optimized for fast lookups by key.
+
+Key-value stores are commonly used for caching and session management. Technical PMs encounter them when discussing performance optimization strategies.
+
+**Example:** Using Redis as a key-value store to cache user session data, where the key is a session token and the value contains user preferences and authentication state.
+
+#### Kubernetes Overview
+
+An introduction to Kubernetes, an open-source platform for automating the deployment, scaling, and management of containerized applications.
+
+Kubernetes knowledge helps technical PMs understand infrastructure conversations and appreciate the complexity of container orchestration at scale.
+
+**Example:** Kubernetes automatically scaling a web application from 3 to 20 container instances during a traffic spike, then scaling back down when demand decreases.
 
 ## L
 
-#### Large Language Models Overview
+#### Large Language Models
 
-An introduction to AI systems trained on vast text corpora to understand and generate human-like language.
+AI systems trained on vast text datasets that can understand and generate human-like text, powering applications like chatbots, writing assistants, and code generators.
 
-**Example:** Claude, GPT, and other large language models can generate educational content from structured prompts.
+Understanding LLMs helps technical PMs evaluate AI product opportunities, set realistic expectations, and design features that leverage language AI effectively.
 
-#### Learning Graph
+**Example:** Claude and GPT-4 are large language models that can draft documents, explain code, analyze data, and answer questions in natural language.
 
-A directed graph of concepts showing prerequisite relationships that guide the optimal sequence for learning material.
+#### Legacy Systems
 
-**Example:** A learning graph for programming shows that "Variables" must be understood before "Functions," which precedes "Recursion."
+Older software systems that remain in operation due to their critical business function despite using outdated technology or architecture.
 
-#### Learning Graph Quality Score
+Legacy systems create constraints and opportunities for technical PMs. Modernization initiatives must balance risk, cost, and continued business value.
 
-A numeric assessment (1-100) evaluating graph structure quality based on connectivity, balance, and DAG validity.
+**Example:** A 15-year-old order management system running on COBOL that processes $50 million in transactions daily but cannot integrate with modern APIs.
 
-**Example:** A score of 89 indicates excellent structure with balanced dependencies and no circular references.
+#### Load Balancing
 
-#### Learning Outcomes
+The distribution of incoming network traffic across multiple servers to prevent any single server from becoming overwhelmed and to improve reliability.
 
-Specific, measurable statements describing what learners will be able to do after completing a course or module.
+Load balancing is a fundamental scaling technique. Technical PMs should understand it when discussing system architecture and capacity planning.
 
-**Example:** "Students will be able to create a learning graph with 200 concepts and validate it has no circular dependencies."
-
-#### Learning Pathways
-
-Recommended sequences through course material that respect prerequisite dependencies and learner goals.
-
-**Example:** A pathway for beginners starts with foundational concepts, while advanced learners might skip to intermediate concepts.
-
-#### Level 1: Static Content
-
-Textbooks containing only fixed text and images with no interactive or dynamic features.
-
-**Example:** A PDF textbook or printed book represents Level 1 intelligence.
-
-#### Level 2: Hyperlinked Navigation
-
-Textbooks with clickable links enabling non-linear exploration and cross-referencing between sections.
-
-**Example:** MkDocs-generated websites provide Level 2 intelligence with navigation menus and internal links.
-
-#### Level 3: Interactive Elements
-
-Textbooks incorporating user-controlled components like simulations, quizzes, and dynamic visualizations.
-
-**Example:** Adding p5.js MicroSims and self-grading quizzes elevates a textbook to Level 3.
-
-#### Level 4: Adaptive Content
-
-Textbooks that adjust material presentation based on learner performance, preferences, or knowledge gaps.
-
-**Example:** A Level 4 textbook recommends review material when quiz scores indicate weak understanding of prerequisites.
-
-#### Level 5: AI Personalization
-
-Textbooks using artificial intelligence to create customized learning experiences for individual learners.
-
-**Example:** A Level 5 textbook generates practice problems tailored to each student's specific misconceptions.
-
-#### License Metadata Field
-
-Dublin Core element specifying usage rights, restrictions, and permissions for a resource.
-
-**Example:** The license field might indicate "CC-BY-4.0" for Creative Commons Attribution license.
-
-#### Linear Chain Detection
-
-Identifying sequences in a learning graph where concepts form a single dependency line without branching.
-
-**Example:** A linear chain like "A→B→C→D" lacks the richness of interconnected prerequisite relationships.
-
-#### Listing Available Skills
-
-The process of displaying all Claude skills accessible in the current project or globally.
-
-**Example:** Running `/skills` or `./scripts/list-skills.sh` shows all skills with their descriptions.
+**Example:** A load balancer distributing incoming web requests evenly across four application servers, automatically routing traffic away from any server that becomes unresponsive.
 
 ## M
 
-#### main.html in MicroSims
+#### Market Research
 
-The standalone HTML file containing complete p5.js simulation code that can run independently in a browser.
+The systematic process of gathering, analyzing, and interpreting information about a market, including customer needs, competitor activities, and industry trends.
 
-**Example:** `/docs/sims/sorting/main.html` contains the full bubble sort visualization with embedded JavaScript.
+Market research informs product strategy. Technical PMs enhance traditional market research with technical competitive analysis of APIs, architectures, and developer ecosystems.
 
-#### Main Topics Covered
+**Example:** Surveying 200 potential users to validate demand for a feature, while also analyzing competitors' API documentation to understand technical differentiation.
 
-A comprehensive list of subject areas and themes included within a course's scope.
+#### Microservices
 
-**Example:** Main topics include Claude Skills architecture, learning graphs, MkDocs, and Bloom's Taxonomy application.
+An architectural pattern that structures an application as a collection of small, independently deployable services, each responsible for a specific business capability.
 
-#### Markdown Formatting Basics
+Microservices offer scalability and team autonomy but introduce complexity in communication, debugging, and deployment. Technical PMs must understand these trade-offs.
 
-Fundamental syntax for creating formatted text documents using plain text with special character conventions.
+**Example:** An e-commerce platform with separate services for user accounts, product catalog, shopping cart, payment processing, and shipping, each deployed independently.
 
-**Example:** Use `#` for headers, `**text**` for bold, `*text*` for italic, and `-` for bullet lists.
+#### Middleware
 
-#### Maximum Character Length
+Software that sits between the operating system and application layer, providing common services like authentication, logging, and message routing.
 
-The constraint that concept labels should not exceed 32 characters to ensure readability in visualizations and tables.
+Understanding middleware helps technical PMs grasp how different parts of a system communicate and where cross-cutting concerns like security are handled.
 
-**Example:** "Directed Acyclic Graph (DAG)" is exactly 29 characters, fitting the maximum length requirement.
+**Example:** Express.js middleware that checks authentication tokens on every API request before passing the request to the appropriate route handler.
 
-#### Maximum Dependency Chain Length
+#### Minimum Viable Product
 
-The longest path through prerequisite relationships from a foundational concept to a terminal concept.
+The simplest version of a product that delivers enough value to early adopters while providing learning for future development.
 
-**Example:** A chain length of 15 means some concepts require understanding 14 prerequisite concepts in sequence.
+MVP thinking helps technical PMs scope features appropriately and resist the temptation to over-build before validating assumptions with real users.
 
-#### Metadata Section in JSON
+**Example:** Launching a food delivery app with only one restaurant and one payment method to test whether users will order food through a mobile app.
 
-The top-level object in vis-network JSON containing Dublin Core fields describing the learning graph resource.
+#### Monolithic Architecture
 
-**Example:** Metadata includes title, creator, description, date, version, format, and license information.
+A software design pattern where all application components are built, deployed, and scaled as a single, unified codebase and process.
 
-#### MicroSim
+Monolithic architecture is simpler to develop and deploy initially. Technical PMs should understand when it becomes a bottleneck and when migration to microservices is warranted.
 
-A focused, interactive p5.js simulation demonstrating a single educational concept through visual manipulation and observation.
-
-**Example:** A binary search MicroSim shows how the algorithm eliminates half the search space with each comparison.
-
-#### MicroSim Directory Structure
-
-The standardized organization of files within a simulation folder: `main.html`, `index.md`, and `metadata.json`.
-
-**Example:** `/docs/sims/bubble-sort/` contains these three files for the bubble sort visualization.
-
-#### MicroSim Metadata
-
-Dublin Core fields stored in `metadata.json` describing a simulation's title, creator, description, and educational purpose.
-
-**Example:** Metadata records the concept being taught, target audience, and date created.
-
-#### MicroSim Metadata Standards
-
-The Dublin Core specification requirements for documenting simulations including required fields (title, creator, date) and recommended fields (description, version, license).
-
-**Example:** MicroSim Metadata Standards ensure all simulations include consistent documentation for discovery, attribution, and educational context.
-
-#### MkDocs
-
-A static site generator that creates documentation websites from markdown files, designed for project documentation.
-
-**Example:** Running `mkdocs build` converts markdown files in `/docs` into HTML pages with navigation.
-
-#### MkDocs Configuration File
-
-The `mkdocs.yml` file defining site settings, theme, navigation structure, and plugin configurations.
-
-**Example:** The configuration file specifies the Material theme, navigation menu, and site name.
-
-#### MkDocs Material Theme
-
-A popular responsive theme for MkDocs providing modern design, search, and extensive customization options.
-
-**Example:** Material theme enables features like tabs, admonitions, code highlighting, and dark mode.
-
-#### Multiple-Choice Questions
-
-Quiz items presenting a question with several answer options where learners select the correct response.
-
-**Example:** "Which command stages files for commit? A) git push B) git add C) git status D) git clone"
+**Example:** A web application where the user interface, business logic, and database access are all contained in one codebase and deployed as a single unit.
 
 ## N
 
-#### Navigation Structure in MkDocs
+#### Non-Functional Requirements
 
-The hierarchical menu organization defined in `mkdocs.yml` that controls how pages appear in site navigation.
+System qualities and constraints that define how a system should perform rather than what specific features it should provide.
 
-**Example:** The nav section defines chapters, subsections, and page ordering in the left sidebar menu.
+Non-functional requirements often determine architecture decisions and infrastructure costs. Technical PMs must specify them clearly alongside functional requirements.
 
-#### Nodes Section in JSON
+**Example:** "The API must respond to 95% of requests within 200 milliseconds under a load of 10,000 concurrent users."
 
-The array in vis-network JSON format containing objects representing individual concepts with id, label, and group properties.
+#### NoSQL Databases
 
-**Example:** `{"id": 5, "label": "Claude Code Interface", "group": "FOUND"}` defines one concept node.
+Database systems that store data in formats other than traditional relational tables, offering flexibility for unstructured or rapidly changing data.
 
-#### Non-Circular Definitions
+NoSQL databases solve specific problems that relational databases handle poorly. Technical PMs should understand the trade-offs to guide data architecture decisions.
 
-ISO 11179 principle requiring definitions avoid referencing the term being defined or creating circular chains.
-
-**Example:** Don't define "Learning Graph" using "graph for learning"; instead describe its structure and purpose.
+**Example:** Using MongoDB for a content management system where each article can have different fields and metadata structures.
 
 ## O
 
-#### Optimizing Claude Usage
+#### OKRs
 
-Strategies for maximizing productivity within Claude's token limits and usage windows through efficient prompting and batching.
+Objectives and Key Results, a goal-setting framework that defines qualitative objectives and quantifiable key results to measure progress toward those objectives.
 
-**Example:** Generate multiple chapters in one session rather than invoking skills separately for each chapter.
+OKRs align product teams around measurable outcomes. Technical PMs use OKRs to connect engineering work to business impact and prioritize the backlog accordingly.
 
-#### Orphaned Nodes
-
-Concepts in a learning graph that no other concepts depend on, suggesting they may be too specific or misplaced.
-
-**Example:** If concept 150 has no concepts listing it as a prerequisite, it's orphaned and may need reevaluation.
-
-#### Outdegree Analysis
-
-Examining how many other concepts depend on each concept as a prerequisite in a learning graph.
-
-**Example:** High outdegree indicates fundamental concepts that enable understanding of many subsequent topics.
+**Example:** Objective: "Improve user onboarding experience." Key Results: "Increase day-7 retention from 40% to 55%" and "Reduce time-to-first-value from 10 minutes to 3 minutes."
 
 ## P
 
-#### p5.js JavaScript Library
+#### Performance Testing
 
-An open-source JavaScript library for creating interactive graphics and animations, especially suited for educational visualizations.
+Testing that evaluates a system's speed, responsiveness, and stability under various load conditions to ensure it meets performance requirements.
 
-**Example:** p5.js provides simple functions like `circle()` and `line()` for drawing, plus `setup()` and `draw()` for animation loops.
+Performance testing prevents embarrassing launches. Technical PMs should define performance targets and ensure testing is part of the release process.
 
-#### Permission Management
+**Example:** Running a load test simulating 50,000 concurrent users to verify the system maintains sub-second response times before a major product launch.
 
-The system for controlling access rights to files, directories, and commands in operating systems.
+#### Personal Learning Plan
 
-**Example:** Skills require read permissions on course files and write permissions on output directories.
+A structured, self-directed strategy for acquiring specific technical skills and knowledge over time, aligned with career goals.
 
-#### pip Package Management
+A personal learning plan helps PMs transitioning to technical roles prioritize which skills to develop and track their progress systematically.
 
-Python's standard tool for installing, upgrading, and managing third-party libraries and dependencies.
+**Example:** A 6-month plan covering SQL (month 1-2), API fundamentals (month 3-4), and system architecture (month 5-6), with weekly learning goals and milestones.
 
-**Example:** `pip install mkdocs` downloads and installs MkDocs and its dependencies.
+#### Platform as a Service
 
-#### Pipe-Delimited Dependencies
+A cloud computing model that provides a complete development and deployment environment, managing infrastructure so developers focus on building applications.
 
-A format for recording multiple prerequisite concept IDs separated by vertical bar characters in CSV files.
+PaaS abstracts infrastructure complexity. Technical PMs should understand PaaS when evaluating build-versus-buy decisions and deployment options.
 
-**Example:** The Dependencies field "1|5|12" indicates concepts 1, 5, and 12 are all prerequisites.
+**Example:** Using Heroku to deploy a web application without managing servers, operating systems, or networking, paying based on application usage.
 
-#### Practice Exercises
+#### Postman Tool
 
-Learning activities where students apply concepts to solve problems, reinforcing understanding through active practice.
+A popular API development and testing platform that provides a graphical interface for sending HTTP requests, inspecting responses, and automating API tests.
 
-**Example:** After learning about skills, students practice creating a custom skill for their own use case.
+Postman is a practical tool for technical PMs to explore APIs, test integrations, and verify feature implementations without writing code.
 
-#### Precise Definitions
+**Example:** Using Postman to send a GET request to `/api/users/123` and inspect the JSON response to verify user data is returned correctly.
 
-ISO 11179 principle requiring glossary entries accurately capture specific meanings without ambiguity.
+#### Predictive Analytics
 
-**Example:** Define "DAG" as "directed acyclic graph" with structural properties, not vaguely as "a type of graph."
+The use of statistical models, machine learning, and data patterns to forecast future outcomes and behaviors.
 
-#### Prerequisite Concepts
+Predictive analytics enables proactive product decisions. Technical PMs use predictions to anticipate churn, forecast demand, and optimize resource allocation.
 
-Ideas that must be understood before a learner can successfully grasp dependent advanced concepts.
+**Example:** Using historical usage data to predict which users are likely to churn in the next 30 days, enabling targeted retention campaigns.
 
-**Example:** "Variables" is a prerequisite concept for understanding "Functions" in programming.
+#### Primary Keys
 
-#### Prerequisite Relationships
+Unique identifiers assigned to each record in a database table that distinguish it from all other records.
 
-Dependency connections indicating that understanding one concept requires prior mastery of other specific concepts.
+Primary keys are fundamental to database design. Technical PMs encounter them when discussing data models and integration requirements.
 
-**Example:** The relationship between "Git" and "Git Add Command" shows the general concept must precede the specific command.
+**Example:** A "user_id" column that auto-increments (1, 2, 3...) or uses UUIDs to uniquely identify each user in the Users table.
 
-#### Project-Specific Skills
+#### Product Analytics
 
-Claude skills installed in a project's `.claude/skills/` directory, available only within that project.
+The collection and analysis of user behavior data within a product to understand usage patterns, measure feature adoption, and inform product decisions.
 
-**Example:** A custom textbook-generation skill stored locally serves project-specific needs without global installation.
+Product analytics is the foundation of data-driven product management. Technical PMs must understand analytics infrastructure to ensure reliable measurement.
 
-#### Prompt Design Principles
+**Example:** Tracking that 65% of users engage with the new dashboard feature within their first week, with power users averaging 12 sessions per week.
 
-Guidelines for creating effective AI instructions including clarity, specificity, context provision, and example usage.
+#### Product Backlog
 
-**Example:** Good prompts specify output format, provide context, include examples, and define success criteria.
+An ordered list of all work items, features, bug fixes, and improvements planned for a product, maintained and prioritized by the product manager.
 
-#### Prompt Engineering
+The product backlog is the PM's primary planning tool. Technical PMs enhance backlog management by adding technical context and feasibility assessments to each item.
 
-The practice of crafting precise instructions to AI systems to elicit desired outputs and behaviors.
+**Example:** A backlog containing 150 items ranked by business value, with the top 20 items refined with acceptance criteria and engineering estimates.
 
-**Example:** Prompt engineering transforms "write about graphs" into "generate 200 atomic concepts with dependencies for graph theory."
+#### Product Lifecycle
 
-#### Python
+The sequence of stages a product passes through from initial conception through growth, maturity, and eventual retirement or replacement.
 
-A high-level programming language widely used for scripting, data processing, and automation tasks.
+Understanding the product lifecycle helps technical PMs apply different strategies at different stages, from rapid experimentation in early stages to optimization in maturity.
 
-**Example:** Python scripts like `analyze-graph.py` process learning graph data and generate quality reports.
+**Example:** A product moving from launch (user acquisition focus) to growth (feature expansion) to maturity (optimization and retention) over three years.
 
-#### Python Scripts for Processing
+#### Product Management
 
-Automated programs written in Python to transform, analyze, or validate data in the textbook creation workflow.
+The organizational function responsible for defining product strategy, understanding user needs, prioritizing features, and guiding cross-functional teams to deliver valuable products.
 
-**Example:** Scripts convert CSV to JSON, add taxonomy categories, and analyze graph structure.
+Product management is the foundation upon which technical PM skills are built. Mastering PM fundamentals is prerequisite to adding technical depth.
 
-#### Python Scripts in Skills
+**Example:** A product manager conducting user research, writing requirements, prioritizing the backlog, and coordinating with engineering, design, and marketing teams.
 
-Supporting Python programs included in skill directories that perform specific data processing tasks.
+#### Product Metrics
 
-**Example:** The learning-graph-generator skill includes four Python scripts for validation and transformation.
+Quantitative measurements used to assess product performance, user engagement, business impact, and progress toward strategic goals.
+
+Product metrics provide the evidence base for product decisions. Technical PMs must ensure metrics are accurately implemented, reliably collected, and correctly interpreted.
+
+**Example:** Tracking monthly active users, average session duration, feature adoption rates, and net promoter score to measure overall product health.
+
+#### Product Roadmap
+
+A strategic document communicating the planned direction and timeline for product development, including features, milestones, and priorities.
+
+The roadmap translates product strategy into an actionable plan. Technical PMs add value by incorporating technical dependencies and infrastructure needs into roadmap planning.
+
+**Example:** A quarterly roadmap showing Q1 focused on API platform, Q2 on mobile optimization, Q3 on AI features, and Q4 on international expansion.
+
+#### Product Strategy
+
+The high-level plan defining a product's target market, value proposition, competitive positioning, and key initiatives for achieving business objectives.
+
+Product strategy provides the "why" behind roadmap decisions. Technical PMs contribute by understanding how technical capabilities enable or constrain strategic options.
+
+**Example:** A strategy to become the market leader in real-time collaboration by investing in WebSocket infrastructure and conflict resolution algorithms.
+
+#### Product Vision
+
+A compelling, aspirational statement describing the future state a product aims to achieve and the value it will create for users and the business.
+
+Product vision aligns the entire team around a shared direction. Technical PMs ensure the vision is grounded in technical feasibility while remaining ambitious.
+
+**Example:** "Every small business owner can manage their entire operation from their phone, with AI handling the routine tasks."
+
+#### Programming Languages
+
+Formal languages with defined syntax and semantics used to write instructions that computers can execute to perform tasks.
+
+Technical PMs don't need to master programming languages, but understanding their characteristics helps evaluate technical decisions and communicate with engineers.
+
+**Example:** Python is commonly used for data analysis and scripting, JavaScript for web development, and Java for enterprise backend systems.
+
+#### Pull Request
+
+A mechanism in version control systems where a developer proposes code changes for review and merging into the main codebase.
+
+Pull requests are where code quality happens. Technical PMs should understand the PR process to track feature progress and appreciate review timelines.
+
+**Example:** A developer opening a pull request with 200 lines of code changes, which two reviewers approve after suggesting minor improvements.
+
+#### Python for Data Analysis
+
+The application of the Python programming language and its data libraries for exploring, analyzing, and visualizing product data.
+
+Python is accessible enough for technical PMs to learn basic data analysis, enabling them to answer product questions without depending entirely on data teams.
+
+**Example:** Using pandas to load a CSV of user engagement data, calculating average session duration by user segment, and creating a matplotlib chart of the results.
 
 ## Q
 
-#### Quality Metrics for Graphs
+#### Quality Assurance
 
-Quantitative measures used to assess learning graph structure, including connectivity, balance, and DAG validity.
+The systematic process of monitoring and evaluating all aspects of product development to ensure quality standards are met before release.
 
-**Example:** Quality metrics include average dependencies, chain length, orphaned nodes, and category distribution percentages.
+QA is a shared responsibility. Technical PMs work with QA teams to define test strategies, prioritize test coverage, and make risk-based release decisions.
 
-#### Quiz
+**Example:** A QA process that includes automated regression testing, manual exploratory testing, and user acceptance testing before each production release.
 
-A set of questions designed to assess learner understanding of concepts, typically with immediate feedback.
+#### Query Optimization
 
-**Example:** Chapter quizzes contain 10-15 multiple-choice questions distributed across Bloom's Taxonomy levels.
+Techniques for improving the speed and efficiency of database queries by restructuring queries, adding indexes, or modifying data access patterns.
 
-#### Quiz Alignment with Concepts
+Query optimization is a common performance improvement area. Technical PMs should understand it enough to discuss performance bottlenecks with database engineers.
 
-The practice of ensuring each quiz question specifically tests understanding of identified learning graph concepts.
-
-**Example:** Question 5 tests concept 42 ("Directed Acyclic Graph") by asking students to identify invalid graph structures.
-
-#### Quiz Distribution Across Levels
-
-Spreading quiz questions proportionally across all six Bloom's Taxonomy cognitive levels for comprehensive assessment.
-
-**Example:** A balanced quiz has 15% Remember, 20% Understand, 20% Apply, 20% Analyze, 15% Evaluate, 10% Create questions.
+**Example:** Rewriting a query that scans the entire 10-million-row orders table to use an index on the customer_id column, reducing execution time from 30 seconds to 50 milliseconds.
 
 ## R
 
-#### Reading Level Appropriateness
+#### Read vs Write Operations
 
-Ensuring textbook language complexity matches the target audience's comprehension abilities.
+The distinction between data retrieval (read) and data modification (write) operations in databases, which have different performance characteristics and scaling requirements.
 
-**Example:** Professional development content uses more technical vocabulary than high school materials.
+Understanding read/write patterns helps technical PMs evaluate database architecture decisions and anticipate performance challenges.
 
-#### Reading Level Categories
+**Example:** A product with a 95:5 read-to-write ratio may benefit from read replicas, while a real-time messaging app with high write volume needs a different optimization strategy.
 
-Standard classifications of target audiences based on educational development stage: junior-high, senior-high, college, and graduate levels.
+#### Real-Time Analytics
 
-**Example:** Reading Level Categories determine vocabulary complexity, sentence structure, and conceptual depth for generated textbook content.
+The processing and analysis of data as it is generated, providing immediate or near-immediate insights into current activity and behavior.
 
-#### Reference Documentation in Skills
+Real-time analytics enables instant response to product events. Technical PMs should understand the infrastructure costs and trade-offs of real-time versus batch processing.
 
-Supporting files in skill directories providing examples, specifications, or guidance for skill execution.
+**Example:** A dashboard showing live user activity, current error rates, and active sessions updating every second for incident monitoring.
 
-**Example:** The learning-graph-generator includes sample CSVs and JSON schemas as reference documentation.
+#### Relational Databases
 
-#### Remember (Cognitive Level 1)
+Database systems that organize data into structured tables with predefined schemas, using SQL for data manipulation and enforcing relationships through keys.
 
-The first level of Bloom's Taxonomy where learners retrieve, recognize, and recall relevant knowledge from memory.
+Relational databases remain the backbone of most business applications. Technical PMs should understand relational concepts to discuss data architecture effectively.
 
-**Example:** Students remember the six levels of Bloom's Taxonomy: Remember, Understand, Apply, Analyze, Evaluate, Create.
+**Example:** PostgreSQL storing user data, order records, and product information in related tables, with SQL queries joining them to generate business reports.
+
+#### Release Management
+
+The process of planning, scheduling, coordinating, and controlling the deployment of software releases from development through production.
+
+Release management balances speed and stability. Technical PMs participate in release decisions, weighing feature urgency against deployment risk.
+
+**Example:** Coordinating a monthly release that includes 15 features from three teams, with staged rollout to 5%, 25%, 50%, and 100% of users over a week.
+
+#### REST API
+
+An architectural style for designing networked APIs that uses standard HTTP methods and stateless communication to access and manipulate resources.
+
+REST APIs are the most common API design pattern. Technical PMs encounter REST APIs in virtually every product integration and must understand their conventions.
+
+**Example:** A REST API where `GET /products/42` retrieves product 42, `PUT /products/42` updates it, and `DELETE /products/42` removes it.
+
+#### Retention Metrics
+
+Measurements of how effectively a product keeps users engaged and returning over time, indicating long-term product value and stickiness.
+
+Retention is the most important long-term health metric. Technical PMs use retention data to evaluate whether features create lasting value.
+
+**Example:** Measuring that 60% of users return within 7 days (D7 retention) and 35% return within 30 days (D30 retention).
 
 ## S
 
-#### Script Execution Permissions
+#### Scrum Framework
 
-File system settings that determine whether a script file can be run as a program.
+An Agile project management framework organizing work into fixed-length sprints with defined roles, ceremonies, and artifacts for iterative delivery.
 
-**Example:** `chmod +x script.sh` grants execution permission, allowing `./script.sh` to run.
+Scrum is the most widely used Agile framework. Technical PMs often serve as product owners within Scrum teams, managing the backlog and defining priorities.
 
-#### Section Organization
+**Example:** A Scrum team with a product owner, scrum master, and five developers working in two-week sprints with planning, daily standups, reviews, and retrospectives.
 
-The structure of how content within chapters is divided into logical subsections with clear headings.
+#### SDK Overview
 
-**Example:** Sections might include Introduction, Core Concepts, Examples, Practice Exercises, and Summary.
+An introduction to Software Development Kits, which are collections of tools, libraries, and documentation that developers use to build applications for specific platforms or services.
 
-#### Security in Skill Execution
+SDKs simplify integration with external services. Technical PMs evaluate SDKs when assessing third-party tools and planning platform strategy.
 
-Safeguards ensuring skills only access authorized files and don't perform unintended or harmful operations.
+**Example:** The Stripe SDK providing pre-built functions for payment processing, so developers can add checkout with a few lines of code instead of building payment handling from scratch.
 
-**Example:** Skills should validate input file existence before processing to prevent unintended file creation.
+#### Security Testing
 
-#### Seeded Randomness
+Testing that identifies vulnerabilities, weaknesses, and potential threats in a software system to ensure protection against unauthorized access and attacks.
 
-Using a fixed starting value for random number generation to produce reproducible results across simulation runs.
+Security testing protects users and the business. Technical PMs should ensure security testing is part of the definition of done, especially for features handling sensitive data.
 
-**Example:** `randomSeed(42)` in p5.js ensures the same "random" pattern appears each time for consistent demonstrations.
+**Example:** Running penetration tests that attempt SQL injection, cross-site scripting, and authentication bypass to verify the application resists common attack vectors.
 
-#### Self-Dependency Checking
+#### Serverless Computing
 
-Validation that no concept lists itself as its own prerequisite in a learning graph.
+A cloud execution model where the cloud provider dynamically manages server allocation, allowing developers to run code without provisioning or managing servers.
 
-**Example:** The analyze-graph.py script reports an error if concept 25 includes 25 in its Dependencies field.
+Serverless reduces operational overhead and can lower costs for variable workloads. Technical PMs should understand serverless trade-offs for build-versus-buy decisions.
 
-#### Shell Scripts
+**Example:** Using AWS Lambda to run a function that resizes uploaded images, paying only for the compute time each image resize consumes rather than maintaining a dedicated server.
 
-Text files containing sequences of command-line instructions that can be executed as automated programs.
+#### Service-Oriented Architecture
 
-**Example:** `install-claude-skills.sh` is a shell script that creates multiple symlinks with one command.
+A software design approach that structures applications as a collection of loosely coupled services communicating through standardized protocols.
 
-#### Skill Definition File Structure
+SOA preceded microservices and shares many principles. Technical PMs may encounter SOA in enterprise contexts and should understand its relationship to modern architectures.
 
-The required format for SKILL.md files including YAML frontmatter followed by markdown workflow instructions.
+**Example:** An enterprise system with separate services for customer management, billing, and inventory, communicating through a centralized message bus.
 
-**Example:** Frontmatter specifies name, description, and license; content describes step-by-step execution workflow.
+#### Software as a Service
 
-#### Skill Directory Structure
+A cloud computing model where software applications are delivered over the internet as a subscription service, eliminating the need for local installation and maintenance.
 
-The standardized organization of a skill folder containing SKILL.md, supporting scripts, templates, and reference files.
+SaaS is the dominant delivery model for modern software products. Many technical PMs work on SaaS products and must understand the implications for pricing, updates, and operations.
 
-**Example:** `learning-graph-generator/` contains SKILL.md plus four Python scripts for graph processing.
+**Example:** Slack, Salesforce, and Google Workspace are SaaS products accessed through web browsers, with the provider handling all infrastructure and updates.
 
-#### Skill Distribution Methods
+#### Software Bug
 
-Approaches for sharing Claude skills including global installation, project-specific placement, or package repositories.
+A defect in software code that causes incorrect, unexpected, or unintended behavior different from the specified requirements.
 
-**Example:** Distribution methods include symlinks to global directory, copying to project folders, or Git repositories.
+Understanding bugs and their severity levels helps technical PMs prioritize fixes, communicate with stakeholders about quality, and make informed release decisions.
 
-#### Skill Execution Context
+**Example:** A bug where the checkout total displays $0.00 when a discount code exactly matches the cart value, caused by a floating-point rounding error.
 
-The environment information available when a skill runs, including working directory, available files, and user permissions.
+#### Software Components
 
-**Example:** Skills execute from the project root directory with access to files the user can read or write.
+Modular, reusable building blocks of a software system that encapsulate specific functionality and interact through defined interfaces.
 
-#### Skill License Information
+Understanding software components helps technical PMs decompose complex systems into understandable parts and discuss architecture with engineers.
 
-The legal terms specifying how a skill can be used, modified, and distributed by others.
+**Example:** A web application composed of an authentication component, a notification component, a payment component, and a reporting component.
 
-**Example:** Most skills use Apache-2.0 license allowing free use with attribution.
+#### Software Dev Lifecycle
 
-#### Skill Name and Description
+The structured process of planning, creating, testing, deploying, and maintaining software, encompassing all phases from concept through retirement.
 
-The identifying label and brief summary in YAML frontmatter explaining what a skill does.
+SDLC knowledge is essential for technical PMs to understand where they fit in the development process and how their decisions affect each phase.
 
-**Example:** `name: glossary-generator` and `description: Generate ISO 11179-compliant glossaries from concept lists`.
+**Example:** A product moving through requirements gathering, design, development, testing, deployment, and maintenance phases over a 6-month cycle.
 
-#### Skill Packaging Best Practices
+#### Software Development
 
-Guidelines for organizing, documenting, and distributing skills to ensure usability and maintainability.
+The process of conceiving, designing, programming, testing, and maintaining software applications and systems.
 
-**Example:** Include README files, example inputs/outputs, clear dependencies, and comprehensive skill documentation.
+Technical PMs must understand software development well enough to set realistic expectations, assess technical feasibility, and collaborate effectively with engineering teams.
 
-#### Skill Testing and Debugging
+**Example:** A team of engineers designing a database schema, writing application code, creating unit tests, and deploying the feature to production over a two-week sprint.
 
-The process of validating skill functionality, identifying errors, and iteratively improving skill reliability.
+#### Software Product
 
-**Example:** Test skills with missing input files, malformed data, and edge cases to ensure robust error handling.
+A software application or system delivered to users that provides value by solving specific problems or enabling particular capabilities.
 
-#### Skill Workflow Instructions
+Technical PMs are responsible for the success of software products, requiring them to understand both the technical implementation and the user value it delivers.
 
-Detailed step-by-step procedures in SKILL.md that guide Claude through executing the skill's tasks.
+**Example:** A project management tool like Jira that helps teams plan, track, and manage software development work.
 
-**Example:** Workflow instructions specify "Step 1: Read concept list. Step 2: Validate quality. Step 3: Generate definitions."
+#### Source Code
 
-#### Supporting Assets in Skills
+The human-readable text written in a programming language that defines the instructions and logic a computer executes.
 
-Additional files in skill directories that assist execution, including scripts, templates, examples, and schemas.
+Technical PMs benefit from being able to read and navigate source code, even if they don't write it, to understand implementations and have informed technical discussions.
 
-**Example:** Supporting assets might include Python scripts, sample CSVs, JSON schemas, or reference documentation.
+**Example:** A Python file containing function definitions, variable assignments, and logic that processes user input and generates API responses.
 
-#### Symlink Creation
+#### Sprint Planning
 
-Making symbolic links that reference files in other locations, allowing access from multiple paths without duplication.
+A Scrum ceremony where the team selects items from the product backlog, breaks them into tasks, and commits to completing them within the upcoming sprint.
 
-**Example:** `ln -s ~/claude-skills/skills ~/.claude/skills` creates a symlink for global skill access.
+Sprint planning is where technical PMs directly influence what gets built. Effective planning requires balancing business priorities with technical feasibility and team capacity.
+
+**Example:** A 2-hour meeting where the team selects 8 user stories totaling 34 story points for a two-week sprint, after the PM explains priorities and the team discusses implementation approaches.
+
+#### Sprint Retrospective
+
+A Scrum ceremony held at the end of each sprint where the team reflects on their process and identifies improvements for future sprints.
+
+Retrospectives drive continuous improvement. Technical PMs participate to understand process bottlenecks and help the team work more effectively.
+
+**Example:** The team identifying that code reviews are taking too long and agreeing to implement a 24-hour review SLA for the next sprint.
+
+#### Sprint Review
+
+A Scrum ceremony where the team demonstrates completed work to stakeholders, gathers feedback, and updates the product backlog based on new insights.
+
+Sprint reviews keep stakeholders informed and engaged. Technical PMs facilitate reviews, ensuring demonstrations clearly connect features to user value.
+
+**Example:** The team demonstrating a new notification system to stakeholders, who provide feedback that leads to adding notification preferences to the next sprint's backlog.
+
+#### SQL Basics
+
+Foundational concepts of Structured Query Language, the standard language for creating, reading, updating, and deleting data in relational databases.
+
+SQL is one of the most practical technical skills a PM can learn. Basic SQL enables direct access to product data for analysis and decision-making.
+
+**Example:** Writing `SELECT * FROM users WHERE signup_date > '2025-01-01'` to retrieve all users who signed up in the current year.
+
+#### SQL Joins
+
+Operations that combine data from two or more database tables based on related columns, enabling queries across connected datasets.
+
+SQL joins unlock the power of relational databases by connecting related data. Technical PMs who can write joins can answer complex product questions independently.
+
+**Example:** Using `SELECT u.name, COUNT(o.id) FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.name` to find how many orders each user has placed.
+
+#### SQL Queries
+
+Statements written in SQL that retrieve, filter, sort, and aggregate data from database tables to answer specific questions.
+
+Writing SQL queries is a high-value skill that gives technical PMs direct access to product data without depending on analysts or engineers.
+
+**Example:** `SELECT product_name, SUM(quantity) as total_sold FROM orders GROUP BY product_name ORDER BY total_sold DESC LIMIT 10` to find the top 10 best-selling products.
+
+#### Stakeholder Management
+
+The practice of identifying, understanding, and engaging individuals or groups who have influence over or interest in a product's direction and outcomes.
+
+Technical PMs manage stakeholders across both business and engineering functions, requiring the ability to translate between technical and non-technical perspectives.
+
+**Example:** Providing weekly updates to the VP of Engineering with technical metrics, while presenting the same progress to the CMO in terms of business impact and customer value.
+
+#### Statistical Significance
+
+The likelihood that a result from an experiment is not due to random chance, typically measured by a p-value below a predetermined threshold.
+
+Understanding statistical significance prevents technical PMs from making decisions based on inconclusive data or stopping experiments prematurely.
+
+**Example:** An A/B test showing a 5% improvement in conversion rate is only actionable if the p-value is below 0.05, indicating less than a 5% chance the result is random.
+
+#### Story Points
+
+A unit of measure used in Agile development to estimate the relative complexity and effort required to complete a user story.
+
+Story points help teams forecast capacity without committing to calendar time. Technical PMs use velocity (story points per sprint) for release planning.
+
+**Example:** Rating a simple UI text change as 1 story point and a complex API integration as 13 story points, reflecting the relative difference in effort and uncertainty.
+
+#### System Architecture
+
+The fundamental structural design of a software system, including its components, their relationships, data flows, and the principles governing its organization and evolution.
+
+System architecture knowledge is what distinguishes technical PMs from traditional PMs. Understanding architecture enables informed trade-off discussions with engineers.
+
+**Example:** A three-tier architecture with a React frontend, Node.js API layer, and PostgreSQL database, connected by REST APIs and deployed on AWS.
+
+#### System Latency
+
+The time delay between a user action or system request and the corresponding response, measured in milliseconds.
+
+Latency directly affects user experience and conversion rates. Technical PMs set latency targets and prioritize performance optimization accordingly.
+
+**Example:** A search query that takes 50ms to process on the server but 800ms total including network round-trip time, indicating network optimization opportunities.
+
+#### System Migration
+
+The process of moving a software system from one environment, platform, or architecture to another while maintaining functionality and data integrity.
+
+System migrations are complex, high-risk projects that require careful planning, testing, and coordination across teams. Technical PMs often lead these initiatives.
+
+**Example:** Migrating a monolithic application to a microservices architecture over 18 months, with parallel running and gradual traffic shifting.
+
+#### System Reliability
+
+The probability that a system will perform its intended function without failure over a specified period under stated conditions.
+
+Reliability expectations drive engineering investments. Technical PMs define reliability targets (SLAs/SLOs) that balance user needs with engineering costs.
+
+**Example:** Setting a reliability target of 99.95% uptime, measuring actual performance with automated monitoring, and prioritizing reliability work when targets are missed.
+
+#### System Throughput
+
+The amount of work a system can process per unit of time, such as requests per second, transactions per minute, or data processed per hour.
+
+Throughput metrics help technical PMs plan for growth and understand system capacity limits before they become user-facing problems.
+
+**Example:** A payment processing system handling 1,000 transactions per second during normal operations but needing to scale to 5,000 during peak shopping periods.
 
 ## T
 
-#### Target Audience Definition
+#### Technical Communication
 
-A clear specification of who the course is designed for, including their background and learning goals.
+The practice of conveying technical information clearly and accurately to both technical and non-technical audiences.
 
-**Example:** "Professional development for educators with basic programming skills who want to create AI-assisted textbooks."
+Technical communication is the core skill that enables PMs to bridge engineering and business teams. Clarity and precision prevent costly misunderstandings.
 
-#### Taxonomy
+**Example:** Explaining to executives that "migrating to microservices will increase deployment frequency from monthly to daily" instead of using technical jargon about containerization.
 
-A hierarchical classification system organizing concepts into categories based on shared characteristics or difficulty levels.
+#### Technical Debt
 
-**Example:** Concepts are categorized as FOUND (foundational), BASIC, INTER (intermediate), ADVAN (advanced), or INTEG (integration).
+The accumulated cost of shortcuts, quick fixes, and deferred maintenance in a codebase that must eventually be addressed to maintain development velocity.
 
-#### Taxonomy Categories
+Technical debt is invisible to non-technical stakeholders but erodes team productivity over time. Technical PMs advocate for debt reduction alongside feature work.
 
-Distinct groupings within a taxonomy system used to organize concepts by type, difficulty, or subject area.
+**Example:** A quick fix that hardcodes a configuration value instead of making it configurable creates technical debt that slows future changes to that component.
 
-**Example:** Common categories include foundational, basic, intermediate, advanced, and integration concepts.
+#### Technical Debt Tracking
 
-#### taxonomy-distribution.py Script
+The practice of documenting, categorizing, and prioritizing known technical debt items to systematically plan their resolution alongside feature development.
 
-A Python program that analyzes and reports the distribution of concepts across taxonomy categories.
+Tracking technical debt makes it visible and manageable. Technical PMs maintain debt inventories to make informed prioritization decisions.
 
-**Example:** Running this script produces a report showing 15% foundational, 40% basic, 30% intermediate, 15% advanced concepts.
+**Example:** A technical debt register listing 45 items categorized by severity and estimated remediation effort, reviewed monthly to prioritize the highest-impact items.
 
-#### TaxonomyID Abbreviations
+#### Technical Decision Making
 
-Short alphanumeric codes representing concept categories in learning graphs, typically 3-5 characters.
+The process of evaluating technical options, considering trade-offs, and selecting approaches that best serve product and business goals.
 
-**Example:** FOUND for foundational, BASIC for basic concepts, ADVAN for advanced concepts.
+Technical decision-making is where technical PM skills create the most value, combining engineering understanding with product judgment.
 
-#### TaxonomyID Field in CSV
+**Example:** Choosing between building a real-time notification system with WebSockets versus polling, considering latency requirements, infrastructure cost, and mobile battery impact.
 
-A column in learning graph CSV files containing category abbreviations for each concept.
+#### Technical Documentation
 
-**Example:** The TaxonomyID field might contain "FOUND" for concept 1 and "ADVAN" for concept 200.
+Written materials that describe system architecture, APIs, processes, and technical decisions for engineering teams and technical stakeholders.
 
-#### Template Files in Skills
+Technical PMs both consume and produce technical documentation, using it to understand systems and communicate requirements.
 
-Reusable file structures that skills populate with generated content to ensure consistent formatting.
+**Example:** An architecture decision record documenting why the team chose PostgreSQL over MongoDB, including the evaluation criteria and trade-offs considered.
 
-**Example:** A chapter template defines standard sections: Introduction, Concepts, Examples, Exercises, Summary.
+#### Technical Interview Prep
 
-#### Terminal Commands
+Systematic preparation for interviews that assess technical knowledge, problem-solving ability, and the capacity to work effectively with engineering teams.
 
-Text-based instructions entered in a command-line interface to execute programs, manage files, or configure systems.
+Preparing for technical PM interviews requires demonstrating both product management expertise and sufficient technical depth to earn engineering team trust.
 
-**Example:** Terminal commands include `cd`, `ls`, `mkdir`, `python`, and `git` for various operations.
+**Example:** Practicing system design questions like "Design a URL shortener" and product questions like "How would you improve the checkout conversion rate?"
 
-#### Terminal in VS Code
+#### Technical Jargon
 
-An integrated command-line interface within Visual Studio Code for running commands without leaving the editor.
+Specialized vocabulary and terminology used by engineers and technical professionals that may be unfamiliar to non-technical audiences.
 
-**Example:** Open the VS Code terminal with Ctrl+` to run `mkdocs serve` while editing content.
+Learning technical jargon builds credibility with engineering teams. Technical PMs must understand jargon to participate in technical discussions effectively.
 
-#### The Role of FAQs in Intelligent Textbooks
+**Example:** Understanding that "we need to shard the database" means splitting data across multiple servers to handle increased scale.
 
-The function of Frequently Asked Questions as supplementary resources providing quick answers to common learner queries and clarifying potentially confusing concepts.
+#### Technical Literacy
 
-**Example:** FAQs bridge gaps between formal content and student questions, offering conversational explanations that complement technical definitions in the glossary.
+The foundational understanding of technical concepts, tools, and processes that enables effective collaboration with engineering teams.
 
-#### Title Case Convention
+Technical literacy is the minimum bar for technical PM roles. It means understanding enough to ask good questions and evaluate technical proposals, not writing code.
 
-Capitalization style where the first letter of each major word is uppercase, used for concept labels.
+**Example:** Understanding that a REST API returns JSON data and knowing how to read API documentation to evaluate integration complexity.
 
-**Example:** "Learning Graph Generator" follows Title Case, while "learning graph generator" does not.
+#### Technical PM Job Market
 
-#### Title Metadata Field
+The landscape of job opportunities, role requirements, compensation, and career paths for technical product managers across industries and company types.
 
-Dublin Core element providing the formal name or title of a resource.
+Understanding the job market helps PMs plan their transition strategically, focusing skill development on the most valued competencies.
 
-**Example:** The title field might contain "Learning Graph for Claude Skills Course."
+**Example:** Analyzing 50 technical PM job postings to identify that SQL, API knowledge, and system design are the three most frequently required technical skills.
 
-#### Token Management Strategies
+#### Technical Product Manager
 
-Techniques for working within Claude's token limits including content chunking, selective context, and multi-turn workflows.
+A product manager who combines traditional product management skills with deep technical knowledge, enabling direct engagement with engineering teams on architecture, system design, and implementation decisions.
 
-**Example:** Generate one chapter at a time rather than requesting all chapters in a single prompt.
+The technical PM role bridges business and engineering, requiring competence in both domains to drive technical products effectively.
 
-#### Topics Excluded from Course
+**Example:** A PM who can participate in system design discussions, review pull requests for alignment with requirements, and write SQL queries to analyze product data independently.
 
-Subjects explicitly identified as out of scope to clarify course boundaries and manage learner expectations.
+#### Technical Requirements
 
-**Example:** This course excludes advanced machine learning theory and general web development beyond MkDocs.
+Specific technical constraints, capabilities, and standards that a system must meet, derived from business requirements and user needs.
+
+Technical requirements translate business goals into engineering specifications. Technical PMs write or review them to ensure completeness and feasibility.
+
+**Example:** "The system must support 10,000 concurrent WebSocket connections with less than 100ms message delivery latency."
+
+#### Technical Roadmapping
+
+The practice of creating product roadmaps that incorporate technical dependencies, infrastructure investments, and architecture evolution alongside feature delivery.
+
+Technical roadmapping is a distinguishing skill of technical PMs, ensuring roadmaps are both strategically sound and technically feasible.
+
+**Example:** A roadmap that sequences a database migration before the features that depend on the new schema, with explicit time allocated for both.
+
+#### Technical Specifications
+
+Detailed documents that describe the exact technical implementation of a feature or system, including data models, algorithms, interfaces, and constraints.
+
+Technical specifications provide the blueprint for engineering implementation. Technical PMs review specs to ensure they faithfully implement product requirements.
+
+**Example:** A specification detailing the search API endpoint, request/response formats, ranking algorithm, pagination approach, and performance requirements.
+
+#### Testing Fundamentals
+
+Core concepts and practices of software testing, including test levels, types, strategies, and the role of testing in delivering quality software.
+
+Understanding testing fundamentals helps technical PMs assess release readiness and make informed risk decisions about shipping features.
+
+**Example:** Knowing that a feature needs unit tests for individual functions, integration tests for service interactions, and end-to-end tests for complete user workflows.
+
+#### Third-Party Integrations
+
+Connections between a product and external services, platforms, or tools that extend functionality through standardized interfaces like APIs.
+
+Third-party integrations are often the fastest path to adding capabilities. Technical PMs evaluate integration complexity, reliability, and vendor lock-in risks.
+
+**Example:** Integrating Stripe for payment processing, SendGrid for email delivery, and Twilio for SMS notifications rather than building each capability from scratch.
 
 ## U
 
-#### Understand (Cognitive Level 2)
+#### Unit Testing
 
-The second level of Bloom's Taxonomy where learners construct meaning from instructional messages and explanations.
+Testing individual functions, methods, or components in isolation to verify they produce correct outputs for given inputs.
 
-**Example:** Students understand how learning graphs guide concept sequencing by explaining prerequisite relationships.
+Unit tests provide the foundation of a testing strategy. Technical PMs should understand that high unit test coverage catches bugs early and enables confident refactoring.
+
+**Example:** A unit test that verifies the `calculateDiscount()` function returns $10 when given a $100 order with a 10% discount code.
+
+#### User Behavior Tracking
+
+The systematic collection and analysis of data about how users interact with a product, including clicks, page views, feature usage, and navigation patterns.
+
+User behavior data reveals what users actually do versus what they say they do, providing the most reliable input for product decisions.
+
+**Example:** Tracking that users spend an average of 45 seconds on the search results page and 73% click on one of the first three results.
+
+#### User Needs
+
+The problems, goals, desires, and pain points that users experience, which products aim to address through features and capabilities.
+
+User needs are the foundation of product management. Technical PMs ensure that technical decisions serve user needs rather than technology for its own sake.
+
+**Example:** Users need to find relevant products quickly, which translates into requirements for search speed, result relevance, and filter functionality.
+
+#### User Stories
+
+Short descriptions of desired functionality written from the end user's perspective, following the format "As a [user], I want [goal], so that [benefit]."
+
+User stories bridge the gap between user needs and engineering tasks. Technical PMs write stories with enough technical context to enable accurate estimation.
+
+**Example:** "As a returning customer, I want to see my recent orders on the homepage, so that I can quickly reorder items I buy frequently."
 
 ## V
 
-#### Version Control Basics
+#### Value Proposition
 
-Fundamental concepts of tracking changes to files over time, including commits, branches, and repositories.
+A clear statement of the unique benefits and value a product delivers to its target customers that differentiates it from competitors.
 
-**Example:** Version control lets you see who changed what, when, and why, plus revert to earlier versions if needed.
+The value proposition guides all product decisions. Technical PMs ensure that technical investments align with and strengthen the value proposition.
 
-#### Version Metadata Field
+**Example:** "Our platform reduces data analysis time by 80% through AI-powered insights, enabling non-technical teams to make data-driven decisions without SQL expertise."
 
-Dublin Core element recording the iteration or release number of a resource.
+#### Velocity Tracking
 
-**Example:** The version field tracks "1.0" for initial release or "2.3" after multiple revisions.
+The practice of measuring how many story points a Scrum team completes per sprint to forecast future capacity and delivery timelines.
 
-#### vis-network JSON Format
+Velocity data helps technical PMs create realistic release plans and set stakeholder expectations about delivery timelines.
 
-A specific JSON structure used by the vis-network visualization library containing nodes, edges, groups, and metadata.
+**Example:** A team averaging 34 story points per sprint over the last 6 sprints, used to forecast that the remaining 100 story points of work will take approximately 3 sprints.
 
-**Example:** The format requires separate arrays for nodes (with id, label, group) and edges (with from, to).
+#### Version Control
 
-#### Visual Studio Code
+A system for recording and managing changes to files over time, enabling multiple developers to collaborate on the same codebase while maintaining history.
 
-A popular open-source code editor with integrated terminal, Git support, and extensions for various development tasks.
+Version control is the foundation of modern software development. Technical PMs interact with version control systems to track changes and understand development activity.
 
-**Example:** VS Code provides markdown preview, making it ideal for writing and editing textbook content.
+**Example:** Using Git to track all changes to application code, with each commit recording who changed what, when, and why.
 
-#### VS Code for Content Development
+#### Vertical Scaling
 
-Using Visual Studio Code's features specifically for creating and managing educational textbook content.
+Increasing system capacity by adding more resources (CPU, memory, storage) to a single machine rather than adding more machines.
 
-**Example:** VS Code extensions for markdown linting, spell-checking, and MkDocs preview enhance content development.
+Vertical scaling is simpler than horizontal scaling but has physical limits. Technical PMs should understand both approaches for capacity planning discussions.
+
+**Example:** Upgrading a database server from 16GB to 64GB of RAM to handle increased query volume, knowing this approach has an upper limit.
 
 ## W
 
-#### Worked Examples in Content
+#### Waterfall Methodology
 
-Step-by-step demonstrations showing how to solve problems or apply concepts with detailed explanations.
+A sequential software development approach where each phase (requirements, design, implementation, testing, deployment) must complete before the next begins.
 
-**Example:** A worked example shows creating a 10-concept learning graph from scratch, explaining each dependency decision.
+Waterfall is the traditional alternative to Agile. Technical PMs should understand it because some organizations or projects still use waterfall or hybrid approaches.
 
-## Y
+**Example:** A 12-month project where months 1-2 are requirements, months 3-4 are design, months 5-8 are development, months 9-10 are testing, and months 11-12 are deployment.
 
-#### YAML Frontmatter in Skills
+#### Web Analytics
 
-Metadata section at the beginning of SKILL.md files enclosed in `---` delimiters containing key-value pairs.
+The collection, measurement, and analysis of website usage data including traffic sources, page views, user paths, and conversion events.
 
-**Example:** Frontmatter includes `name: glossary-generator`, `description: Generate glossaries`, and `license: Apache-2.0`.
+Web analytics provides essential product insights. Technical PMs use analytics platforms to monitor feature adoption and identify optimization opportunities.
+
+**Example:** Using Google Analytics to discover that 40% of users drop off on the pricing page, triggering an investigation into pricing page design and messaging.
+
+#### Webhooks
+
+Automated HTTP callbacks that notify external systems when specific events occur, enabling real-time integration without continuous polling.
+
+Webhooks enable event-driven integrations that are more efficient than polling. Technical PMs encounter them when designing real-time notification and integration features.
+
+**Example:** A payment service sending a webhook to the application server when a payment succeeds, triggering order confirmation and inventory updates.
+
+## X
+
+#### XML Format
+
+Extensible Markup Language, a text-based format that uses nested tags to structure and describe data, commonly used in legacy systems and enterprise integrations.
+
+XML is less common than JSON in modern APIs but still prevalent in enterprise and government systems. Technical PMs encounter it in certain integration contexts.
+
+**Example:** `<user><name>Jane Smith</name><role>Technical PM</role></user>` represents user data in XML format, more verbose than the equivalent JSON.
