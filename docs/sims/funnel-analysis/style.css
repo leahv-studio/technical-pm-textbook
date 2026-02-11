@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #f5f7fa;
+    color: #1e4b69;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e4b69;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    color: #5a7a8a;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.funnel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 28px;
+}
+
+.funnel-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+}
+
+.funnel-label {
+    width: 160px;
+    text-align: right;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #1e4b69;
+    flex-shrink: 0;
+}
+
+.funnel-bar-wrapper {
+    flex: 1;
+    position: relative;
+    height: 38px;
+}
+
+.funnel-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+}
+
+.funnel-bar:hover {
+    filter: brightness(1.1);
+    transform: scaleY(1.08);
+}
+
+.funnel-bar-text {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.funnel-rate {
+    width: 80px;
+    text-align: left;
+    flex-shrink: 0;
+}
+
+.rate-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.rate-green {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.rate-yellow {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.rate-red {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.whatif-panel {
+    background: #fff;
+    border: 1px solid #d1dde5;
+    border-radius: 10px;
+    padding: 18px 22px;
+    box-shadow: 0 2px 8px rgba(30,75,105,0.06);
+}
+
+.whatif-panel h3 {
+    font-size: 1rem;
+    color: #1e4b69;
+    margin-bottom: 12px;
+}
+
+.whatif-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.whatif-controls label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3a6a82;
+}
+
+.whatif-controls select {
+    padding: 5px 10px;
+    border: 1px solid #c0d0da;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #1e4b69;
+    background: #f5f7fa;
+}
+
+.whatif-controls input[type="range"] {
+    flex: 1;
+    min-width: 140px;
+    accent-color: #1e4b69;
+}
+
+#rateValue {
+    font-weight: 700;
+    color: #1e4b69;
+}
+
+.whatif-result {
+    font-size: 0.85rem;
+    color: #3a6a82;
+    line-height: 1.6;
+}
+
+.whatif-result strong {
+    color: #1e4b69;
+}
+
+.whatif-delta-positive {
+    color: #166534;
+    font-weight: 700;
+}
+
+.whatif-delta-negative {
+    color: #991b1b;
+    font-weight: 700;
+}
+
+.tooltip {
+    position: fixed;
+    background: #1e4b69;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    max-width: 280px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.tooltip.visible {
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
+    .funnel-label {
+        width: 100px;
+        font-size: 0.72rem;
+    }
+
+    .funnel-bar-text {
+        font-size: 0.68rem;
+    }
+
+    .whatif-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

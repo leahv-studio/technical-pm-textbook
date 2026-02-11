@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funnel Analysis - SaaS Signup Flow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SaaS Signup Funnel Analysis</h1>
+        <p class="subtitle">Track conversion rates across the user acquisition pipeline</p>
+
+        <div class="funnel-container" id="funnelContainer"></div>
+
+        <div class="whatif-panel">
+            <h3>What-If Analysis</h3>
+            <div class="whatif-controls">
+                <label for="stageSelect">Adjust stage:</label>
+                <select id="stageSelect"></select>
+                <label for="rateSlider">Conversion rate: <span id="rateValue">42%</span></label>
+                <input type="range" id="rateSlider" min="1" max="100" value="42">
+            </div>
+            <div class="whatif-result" id="whatifResult"></div>
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
