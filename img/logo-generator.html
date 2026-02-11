@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Technical PM Logo</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    background: transparent;
+  }
+  .logo {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+<div class="logo">
+  <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background circle -->
+    <circle cx="100" cy="100" r="92" fill="#1a1a2e"/>
+    <circle cx="100" cy="100" r="92" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+
+    <!-- Left circle: Business (orange) -->
+    <circle cx="78" cy="95" r="48" stroke="#da7857" stroke-width="3" fill="rgba(218,120,87,0.08)"/>
+
+    <!-- Right circle: Engineering (teal) -->
+    <circle cx="122" cy="95" r="48" stroke="#00bcd4" stroke-width="3" fill="rgba(0,188,212,0.08)"/>
+
+    <!-- Overlap zone highlight -->
+    <clipPath id="leftClip">
+      <circle cx="78" cy="95" r="48"/>
+    </clipPath>
+    <clipPath id="rightClip">
+      <circle cx="122" cy="95" r="48"/>
+    </clipPath>
+    <circle cx="122" cy="95" r="48" clip-path="url(#leftClip)" fill="rgba(255,215,0,0.15)"/>
+
+    <!-- Left label: small chart icon -->
+    <g transform="translate(56, 82)">
+      <polyline points="0,18 7,10 14,14 22,2" stroke="#da7857" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="22" cy="2" r="2.5" fill="#da7857"/>
+    </g>
+
+    <!-- Right label: code brackets -->
+    <g transform="translate(118, 82)">
+      <polyline points="6,0 0,9 6,18" stroke="#00bcd4" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="16,0 22,9 16,18" stroke="#00bcd4" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Center: bridge/connection symbol -->
+    <g transform="translate(88, 88)">
+      <path d="M0 14 Q12 0 24 14" stroke="#ffd700" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="12" cy="5" r="3" fill="rgba(255,215,0,0.7)"/>
+    </g>
+
+    <!-- "TPM" text below -->
+    <text x="100" y="162" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" letter-spacing="4">TPM</text>
+  </svg>
+</div>
+</body>
+</html>
