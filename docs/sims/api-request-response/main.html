@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request-Response Lifecycle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>API Request-Response Lifecycle</h2>
+        <div class="example-bar">
+            <span class="req-example">→ GET /api/v1/products/42</span>
+            <span class="res-example">← 200 OK {"id":42,"name":"Widget"}</span>
+        </div>
+        <div class="flow">
+            <div class="component" data-tip="Client Application: Constructs the HTTP request with method (GET/POST), endpoint URL, headers (Content-Type, Authorization), and optional request body.">
+                <div class="comp-header" style="background:#3b82f6">Client App</div>
+                <div class="comp-body">Builds request<br>Method + URL + Headers + Body</div>
+            </div>
+            <div class="arrow-col">
+                <div class="arrow-right" data-tip="HTTP Request: Method, endpoint, headers, authentication token, and request body are sent over HTTPS.">→</div>
+                <div class="arrow-left" data-tip="HTTP Response: Status code, response headers, and JSON body are returned to the client.">←</div>
+            </div>
+            <div class="component" data-tip="API Gateway: First point of contact. Validates API key, checks rate limits (429 if exceeded), routes request to the correct backend service, and logs the request.">
+                <div class="comp-header" style="background:#eab308">API Gateway</div>
+                <div class="comp-body">Auth check<br>Rate limiting<br>Route request</div>
+            </div>
+            <div class="arrow-col">
+                <div class="arrow-right">→</div>
+                <div class="arrow-left">←</div>
+            </div>
+            <div class="component" data-tip="Middleware Pipeline: Request passes through logging (records timestamp and path), authentication verification (validates JWT token), and input validation (checks required fields and types).">
+                <div class="comp-header" style="background:#64748b">Middleware</div>
+                <div class="comp-body">Logging<br>Auth verify<br>Input validation</div>
+            </div>
+            <div class="arrow-col">
+                <div class="arrow-right">→</div>
+                <div class="arrow-left">←</div>
+            </div>
+            <div class="component" data-tip="Application Logic: Executes business logic, queries the database (SELECT * FROM products WHERE id=42), applies business rules, and constructs the response object.">
+                <div class="comp-header" style="background:#22c55e">App Logic</div>
+                <div class="comp-body">Business logic<br>Database query<br>Build response</div>
+            </div>
+        </div>
+        <div class="response-bar">
+            <span class="status-code s2xx">2xx Success</span>
+            <span class="status-code s4xx">4xx Client Error</span>
+            <span class="status-code s5xx">5xx Server Error</span>
+        </div>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integration Ecosystem Map</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Integration Ecosystem Map</h2>
+        <p class="subtitle">Click a ring to highlight that tier. Hover integrations for details.</p>
+        <div class="map">
+            <div class="ring ecosystem" data-ring="ecosystem" onclick="selectRing('ecosystem')">
+                <div class="int-dot" data-tip="Social Media APIs: Post updates, track mentions, social login (Facebook, Twitter, LinkedIn)">Social</div>
+                <div class="int-dot" data-tip="Advertising Platforms: Campaign data, conversion tracking (Google Ads, Meta Ads)">Ads</div>
+                <div class="int-dot" data-tip="HR Tools: Employee data sync, org charts (BambooHR, Workday)">HR</div>
+                <div class="int-dot" data-tip="Accounting: Financial data sync, invoicing (QuickBooks, Xero)">Accounting</div>
+                <div class="int-dot" data-tip="Custom Webhooks: User-configured event notifications to any endpoint">Webhooks</div>
+                <div class="ring growth" data-ring="growth" onclick="selectRing('growth'); event.stopPropagation();">
+                    <div class="int-dot" data-tip="CRM (Salesforce): Sync customer data, track deals, automate workflows">CRM</div>
+                    <div class="int-dot" data-tip="Support (Zendesk): Ticket creation, customer context, satisfaction tracking">Support</div>
+                    <div class="int-dot" data-tip="Communication (Slack): Notifications, alerts, workflow triggers">Slack</div>
+                    <div class="int-dot" data-tip="Project Management (Jira): Issue tracking, sprint sync, status updates">Jira</div>
+                    <div class="ring core" data-ring="core" onclick="selectRing('core'); event.stopPropagation();">
+                        <div class="int-dot" data-tip="Payment (Stripe): Process charges, subscriptions, invoices, refunds">Payment</div>
+                        <div class="int-dot" data-tip="Auth (Okta): Single sign-on, multi-factor authentication, user provisioning">Auth</div>
+                        <div class="int-dot" data-tip="Email (SendGrid): Transactional emails, notifications, marketing campaigns">Email</div>
+                        <div class="int-dot" data-tip="Analytics (Mixpanel): Event tracking, funnel analysis, user segmentation">Analytics</div>
+                        <div class="center-dot">Your<br>Product</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ring-labels">
+            <span class="rl core-l">Core: Must have, business critical</span>
+            <span class="rl growth-l">Growth: Competitive advantage</span>
+            <span class="rl eco-l">Ecosystem: Community-driven</span>
+        </div>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

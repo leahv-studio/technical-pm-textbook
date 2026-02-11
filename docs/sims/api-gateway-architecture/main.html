@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Gateway Architecture</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>API Gateway &amp; Middleware Architecture</h2>
+        <p class="subtitle">Click components for details</p>
+        <div class="flow">
+            <div class="column clients">
+                <h3>Clients</h3>
+                <div class="node client" data-tip="Mobile App: Native iOS/Android app sending API requests over cellular or WiFi networks.">📱 Mobile App</div>
+                <div class="node client" data-tip="Web App: Browser-based SPA (React/Vue) making AJAX/fetch calls to the API.">🌐 Web App</div>
+                <div class="node client" data-tip="Partner System: External company's servers calling your API via server-to-server integration.">🤝 Partner</div>
+                <div class="node client" data-tip="Third-Party Developer: External developers using your public API with API keys.">👩‍💻 Developer</div>
+            </div>
+            <div class="arrows">→<br>→<br>→<br>→</div>
+            <div class="column gateway">
+                <h3>API Gateway</h3>
+                <div class="gw-box">
+                    <div class="gw-func" data-tip="Authentication: Validates API keys, JWT tokens, or OAuth credentials before allowing access.">🔑 Authentication</div>
+                    <div class="gw-func" data-tip="Rate Limiting: Enforces request quotas (e.g., 1000 req/min) to prevent abuse and ensure fair usage.">⏱️ Rate Limiting</div>
+                    <div class="gw-func" data-tip="Request Routing: Directs incoming requests to the correct backend service based on URL path and method.">🔀 Routing</div>
+                    <div class="gw-func" data-tip="Logging: Records every request with timestamp, path, status code, and latency for debugging and analytics.">📝 Logging</div>
+                    <div class="gw-func" data-tip="Load Balancing: Distributes requests across multiple instances of each service for reliability.">⚖️ Load Balancing</div>
+                </div>
+            </div>
+            <div class="arrows">→<br>→</div>
+            <div class="column middleware">
+                <h3>Middleware</h3>
+                <div class="node mw" data-tip="Validation: Checks request body has required fields in correct formats before processing.">✓ Validation</div>
+                <div class="node mw" data-tip="Transformation: Converts data formats (e.g., XML to JSON) and maps field names between systems.">🔄 Transform</div>
+                <div class="node mw" data-tip="Caching: Stores responses for repeated requests, reducing backend load and improving latency.">💾 Caching</div>
+            </div>
+            <div class="arrows">→<br>→<br>→<br>→</div>
+            <div class="column services">
+                <h3>Services</h3>
+                <div class="node svc" data-tip="User Service: Manages accounts, profiles, authentication, and permissions.">👤 User Service</div>
+                <div class="node svc" data-tip="Order Service: Handles order creation, status tracking, fulfillment, and history.">📦 Order Service</div>
+                <div class="node svc" data-tip="Payment Service: Processes charges, refunds, subscriptions via Stripe/payment provider.">💳 Payment Service</div>
+                <div class="node svc" data-tip="Analytics Service: Collects events, computes metrics, and serves dashboard data.">📊 Analytics Service</div>
+            </div>
+        </div>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

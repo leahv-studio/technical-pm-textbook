@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Error Handling Decision Tree</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>API Error Handling Decision Tree</h2>
+        <p class="subtitle">Click status codes for details and recommended actions</p>
+        <div class="tree">
+            <div class="level">
+                <div class="tnode root">API Request Sent</div>
+            </div>
+            <div class="branch-line"></div>
+            <div class="level two-col">
+                <div class="branch">
+                    <div class="tnode success" onclick="toggle('s2xx')">2xx Success ✓</div>
+                    <div class="detail" id="s2xx">
+                        <div class="code-item"><strong>200 OK</strong> — Request succeeded, data returned</div>
+                        <div class="code-item"><strong>201 Created</strong> — New resource created successfully</div>
+                        <div class="code-item"><strong>204 No Content</strong> — Success, no body returned (e.g., DELETE)</div>
+                        <div class="action">Action: Process the response data normally</div>
+                    </div>
+                </div>
+                <div class="branch">
+                    <div class="tnode redirect" onclick="toggle('s3xx')">3xx Redirect ↪</div>
+                    <div class="detail" id="s3xx">
+                        <div class="code-item"><strong>301 Moved</strong> — Resource permanently moved</div>
+                        <div class="code-item"><strong>304 Not Modified</strong> — Cached version still valid</div>
+                        <div class="action">Action: Follow the Location header automatically</div>
+                    </div>
+                </div>
+            </div>
+            <div class="level two-col">
+                <div class="branch">
+                    <div class="tnode client-err" onclick="toggle('s4xx')">4xx Client Error ⚠️</div>
+                    <div class="detail" id="s4xx">
+                        <div class="code-item"><strong>400 Bad Request</strong> — Invalid parameters or body → Fix request data</div>
+                        <div class="code-item"><strong>401 Unauthorized</strong> — Missing or invalid credentials → Re-authenticate</div>
+                        <div class="code-item"><strong>403 Forbidden</strong> — Valid auth but insufficient permissions → Check roles</div>
+                        <div class="code-item"><strong>404 Not Found</strong> — Resource doesn't exist → Verify URL/ID</div>
+                        <div class="code-item"><strong>429 Too Many Requests</strong> — Rate limit exceeded → Back off and retry</div>
+                        <div class="action">Action: Fix the request (it's your problem, not the server's)</div>
+                    </div>
+                </div>
+                <div class="branch">
+                    <div class="tnode server-err" onclick="toggle('s5xx')">5xx Server Error 🔥</div>
+                    <div class="detail" id="s5xx">
+                        <div class="code-item"><strong>500 Internal Error</strong> — Server bug → Retry, then report</div>
+                        <div class="code-item"><strong>502 Bad Gateway</strong> — Upstream service failed → Check status page</div>
+                        <div class="code-item"><strong>503 Unavailable</strong> — Server overloaded → Retry with backoff</div>
+                        <div class="action">Action: Retry with exponential backoff; alert monitoring if persistent</div>
+                    </div>
+                </div>
+            </div>
+            <div class="level">
+                <div class="branch">
+                    <div class="tnode network-err" onclick="toggle('snet')">Network Error 🌐</div>
+                    <div class="detail" id="snet">
+                        <div class="code-item"><strong>Timeout</strong> — Server didn't respond in time</div>
+                        <div class="code-item"><strong>DNS failure</strong> — Cannot resolve hostname</div>
+                        <div class="code-item"><strong>Connection refused</strong> — Server is down</div>
+                        <div class="action">Action: Check connectivity, retry with backoff, show user-friendly error</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

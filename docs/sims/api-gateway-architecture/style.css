@@ -1,0 +1,20 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f7fa; color: #1e4b69; }
+.container { max-width: 880px; margin: 0 auto; padding: 16px; }
+h2 { text-align: center; font-size: 1.3rem; margin-bottom: 4px; }
+.subtitle { text-align: center; font-size: 0.8rem; color: #94a3b8; margin-bottom: 16px; }
+.flow { display: flex; align-items: flex-start; gap: 6px; overflow-x: auto; }
+.column { flex: 1; min-width: 120px; }
+.column h3 { font-size: 0.82rem; text-align: center; color: #64748b; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.arrows { display: flex; flex-direction: column; gap: 16px; color: #94a3b8; font-size: 1.1rem; padding-top: 30px; flex-shrink: 0; }
+.node { padding: 8px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; margin-bottom: 6px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.node:hover { transform: translateX(3px); box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+.client { background: #dbeafe; color: #1e40af; }
+.mw { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+.svc { background: #dcfce7; color: #166534; }
+.gw-box { background: #fef9c3; border: 2px solid #eab308; border-radius: 10px; padding: 8px; }
+.gw-func { padding: 6px 10px; font-size: 0.75rem; font-weight: 600; color: #92400e; cursor: pointer; border-radius: 6px; transition: background 0.2s; }
+.gw-func:hover { background: rgba(234,179,8,0.2); }
+.tooltip { position: fixed; padding: 10px 14px; background: #1e293b; color: #f1f5f9; border-radius: 8px; font-size: 0.78rem; max-width: 280px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 100; line-height: 1.4; }
+.tooltip.visible { opacity: 1; }
+@media (max-width: 600px) { .flow { flex-direction: column; align-items: stretch; } .arrows { flex-direction: row; justify-content: center; padding: 0; } }
