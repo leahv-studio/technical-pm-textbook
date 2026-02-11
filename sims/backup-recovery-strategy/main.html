@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backup &amp; Recovery Strategy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Backup &amp; Recovery Strategy</h1>
+        <p class="subtitle">Hover for explanations. Click product tiers for detailed requirements.</p>
+        <div class="panels">
+            <div class="panel" id="backup-panel">
+                <h2 class="panel-title">Backup Strategies</h2>
+                <div class="strategies" id="strategies"></div>
+            </div>
+            <div class="panel" id="rpo-panel">
+                <h2 class="panel-title">RPO / RTO Targets by Tier</h2>
+                <div class="tiers" id="tiers"></div>
+            </div>
+        </div>
+        <div class="detail-panel" id="detail-panel">
+            <p class="detail-placeholder" id="detail-placeholder">Click a product tier to see detailed requirements</p>
+            <div id="detail-content" class="detail-content"></div>
+        </div>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

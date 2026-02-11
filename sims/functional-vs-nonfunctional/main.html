@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional vs Non-Functional Requirements</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Functional vs Non-Functional Requirements</h1>
+        <p class="subtitle">How a single feature splits into two types of requirements</p>
+
+        <div class="diagram">
+            <div class="column functional-column">
+                <div class="column-header functional-header">
+                    <h2>Functional Requirements</h2>
+                    <p class="column-desc">What the system does</p>
+                </div>
+                <div class="requirements-list" id="functional-list"></div>
+            </div>
+
+            <div class="center-feature">
+                <div class="feature-box" id="center-box">
+                    <div class="feature-icon">&#128269;</div>
+                    <h3>User Search Feature</h3>
+                    <p>A single product feature generates both functional and non-functional requirements</p>
+                </div>
+                <div class="connector-left"></div>
+                <div class="connector-right"></div>
+            </div>
+
+            <div class="column nonfunctional-column">
+                <div class="column-header nonfunctional-header">
+                    <h2>Non-Functional Requirements</h2>
+                    <p class="column-desc">How well it performs</p>
+                </div>
+                <div class="requirements-list" id="nonfunctional-list"></div>
+            </div>
+        </div>
+
+        <div class="detail-panel" id="detail-panel">
+            <div class="detail-content" id="detail-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

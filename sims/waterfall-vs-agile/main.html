@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waterfall vs Agile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Waterfall vs Agile</h1>
+        <p class="subtitle">Click a comparison dimension below to explore the differences</p>
+
+        <div class="toggle-bar">
+            <button class="toggle-btn active" data-view="both">Side by Side</button>
+            <button class="toggle-btn" data-view="waterfall">Waterfall Only</button>
+            <button class="toggle-btn" data-view="agile">Agile Only</button>
+        </div>
+
+        <div class="methodologies">
+            <div class="methodology waterfall-panel" id="waterfallPanel">
+                <h2>Waterfall</h2>
+                <div class="cascade">
+                    <div class="cascade-step" style="--step: 0;">
+                        <div class="step-box waterfall-color">Requirements</div>
+                    </div>
+                    <div class="cascade-arrow">&darr;</div>
+                    <div class="cascade-step" style="--step: 1;">
+                        <div class="step-box waterfall-color">Design</div>
+                    </div>
+                    <div class="cascade-arrow">&darr;</div>
+                    <div class="cascade-step" style="--step: 2;">
+                        <div class="step-box waterfall-color">Implementation</div>
+                    </div>
+                    <div class="cascade-arrow">&darr;</div>
+                    <div class="cascade-step" style="--step: 3;">
+                        <div class="step-box waterfall-color">Testing</div>
+                    </div>
+                    <div class="cascade-arrow">&darr;</div>
+                    <div class="cascade-step" style="--step: 4;">
+                        <div class="step-box waterfall-color">Deployment</div>
+                    </div>
+                </div>
+                <div class="method-label">Sequential Phases</div>
+            </div>
+
+            <div class="methodology agile-panel" id="agilePanel">
+                <h2>Agile</h2>
+                <div class="sprint-cycles">
+                    <div class="sprint-ring">
+                        <div class="ring-center">Sprint<br>Cycle</div>
+                        <div class="ring-item" style="--angle: 0deg;">Plan</div>
+                        <div class="ring-item" style="--angle: 72deg;">Build</div>
+                        <div class="ring-item" style="--angle: 144deg;">Test</div>
+                        <div class="ring-item" style="--angle: 216deg;">Review</div>
+                        <div class="ring-item" style="--angle: 288deg;">Deliver</div>
+                        <svg class="ring-arrows" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="70" fill="none" stroke="#27ae60" stroke-width="2" stroke-dasharray="6 4" opacity="0.4"/>
+                            <path d="M 170 100 L 165 92 L 165 108 Z" fill="#27ae60" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <div class="iteration-labels">
+                        <span class="iter-badge">Sprint 1</span>
+                        <span class="iter-arrow">&rarr;</span>
+                        <span class="iter-badge">Sprint 2</span>
+                        <span class="iter-arrow">&rarr;</span>
+                        <span class="iter-badge">Sprint 3</span>
+                        <span class="iter-arrow">&rarr;</span>
+                        <span class="iter-badge iter-dots">...</span>
+                    </div>
+                </div>
+                <div class="method-label">Iterative Cycles</div>
+            </div>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-header">Comparison Dimensions</div>
+            <div class="dimension" data-dim="planning">
+                <div class="dim-label">Planning</div>
+                <div class="dim-values">
+                    <div class="dim-waterfall">Comprehensive upfront</div>
+                    <div class="dim-agile">Adaptive, just-in-time</div>
+                </div>
+            </div>
+            <div class="dimension" data-dim="requirements">
+                <div class="dim-label">Requirements</div>
+                <div class="dim-values">
+                    <div class="dim-waterfall">Fixed at start</div>
+                    <div class="dim-agile">Evolving backlog</div>
+                </div>
+            </div>
+            <div class="dimension" data-dim="testing">
+                <div class="dim-label">Testing</div>
+                <div class="dim-values">
+                    <div class="dim-waterfall">After implementation</div>
+                    <div class="dim-agile">Continuous, each sprint</div>
+                </div>
+            </div>
+            <div class="dimension" data-dim="delivery">
+                <div class="dim-label">Delivery</div>
+                <div class="dim-values">
+                    <div class="dim-waterfall">Single release at end</div>
+                    <div class="dim-agile">Incremental every sprint</div>
+                </div>
+            </div>
+            <div class="dimension" data-dim="change">
+                <div class="dim-label">Change Response</div>
+                <div class="dim-values">
+                    <div class="dim-waterfall">Costly, formal process</div>
+                    <div class="dim-agile">Welcomed, re-prioritized</div>
+                </div>
+            </div>
+            <div class="dimension" data-dim="risk">
+                <div class="dim-label">Risk</div>
+                <div class="dim-values">
+                    <div class="dim-waterfall">Discovered late</div>
+                    <div class="dim-agile">Identified early</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-panel" id="detailPanel">
+            <h3 id="detailDimTitle"></h3>
+            <div class="detail-columns">
+                <div class="detail-col waterfall-detail">
+                    <h4>Waterfall Approach</h4>
+                    <p id="detailWaterfall"></p>
+                </div>
+                <div class="detail-col agile-detail">
+                    <h4>Agile Approach</h4>
+                    <p id="detailAgile"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

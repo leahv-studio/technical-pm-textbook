@@ -1,0 +1,25 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f7fa; color: #1e4b69; }
+.container { max-width: 800px; margin: 0 auto; padding: 16px; }
+h2 { text-align: center; font-size: 1.3rem; margin-bottom: 4px; }
+.subtitle { text-align: center; font-size: 0.8rem; color: #94a3b8; margin-bottom: 20px; }
+.hub { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; position: relative; max-width: 600px; margin: 0 auto; }
+.center-node { grid-column: 2; grid-row: 1; background: #1e4b69; color: #fff; border-radius: 50%; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; text-align: center; justify-self: center; align-self: center; box-shadow: 0 4px 12px rgba(30,75,105,0.3); }
+.doc-node { background: #fff; border-radius: 10px; padding: 14px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border-left: 4px solid var(--color); text-align: center; }
+.doc-node:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+.doc-node.selected { box-shadow: 0 0 0 3px var(--color), 0 6px 16px rgba(0,0,0,0.12); transform: translateY(-3px); }
+.doc-node.dimmed { opacity: 0.3; }
+.doc-icon { font-size: 1.5rem; margin-bottom: 6px; }
+.doc-title { font-size: 0.82rem; font-weight: 700; color: #1e4b69; }
+.doc-owner { font-size: 0.7rem; color: #64748b; margin-top: 2px; }
+.detail-panel { margin-top: 16px; background: #fff; border-radius: 10px; overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.3s, opacity 0.3s; border: 2px solid #e2e8f0; }
+.detail-panel.visible { max-height: 300px; opacity: 1; }
+.detail-header { padding: 10px 16px; color: #fff; font-weight: 700; font-size: 0.9rem; }
+.detail-body { padding: 12px 16px; font-size: 0.83rem; color: #475569; line-height: 1.5; }
+.detail-body strong { color: #1e4b69; }
+.tooltip { position: fixed; padding: 8px 12px; background: #1e293b; color: #f1f5f9; border-radius: 6px; font-size: 0.78rem; max-width: 240px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 100; }
+.tooltip.visible { opacity: 1; }
+@media (max-width: 500px) {
+    .hub { grid-template-columns: repeat(2, 1fr); }
+    .center-node { grid-column: 1 / -1; width: 80px; height: 80px; font-size: 0.75rem; }
+}

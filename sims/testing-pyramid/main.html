@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Pyramid</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>The Testing Pyramid</h1>
+        <p class="subtitle">Hover over each layer to explore. Click for example tests.</p>
+
+        <div class="pyramid-wrapper">
+            <div class="annotations left-annotations">
+                <div class="annotation" data-level="top">
+                    <span class="annotation-arrow">&larr;</span>
+                    <span class="annotation-text">Slow</span>
+                </div>
+                <div class="annotation" data-level="middle">
+                    <span class="annotation-arrow">&larr;</span>
+                    <span class="annotation-text">Medium</span>
+                </div>
+                <div class="annotation" data-level="bottom">
+                    <span class="annotation-arrow">&larr;</span>
+                    <span class="annotation-text">Fast</span>
+                </div>
+                <div class="annotation-label">Speed</div>
+            </div>
+
+            <div class="pyramid">
+                <div class="pyramid-layer layer-e2e" data-layer="e2e">
+                    <div class="layer-content">
+                        <div class="layer-name">E2E Tests</div>
+                        <div class="layer-brief">Full user flow testing</div>
+                    </div>
+                </div>
+                <div class="pyramid-layer layer-integration" data-layer="integration">
+                    <div class="layer-content">
+                        <div class="layer-name">Integration Tests</div>
+                        <div class="layer-brief">Component interaction testing</div>
+                    </div>
+                </div>
+                <div class="pyramid-layer layer-unit" data-layer="unit">
+                    <div class="layer-content">
+                        <div class="layer-name">Unit Tests</div>
+                        <div class="layer-brief">Individual function testing</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="annotations right-annotations">
+                <div class="annotation" data-level="top">
+                    <span class="annotation-text">$$$</span>
+                    <span class="annotation-arrow">&rarr;</span>
+                </div>
+                <div class="annotation" data-level="middle">
+                    <span class="annotation-text">$$</span>
+                    <span class="annotation-arrow">&rarr;</span>
+                </div>
+                <div class="annotation" data-level="bottom">
+                    <span class="annotation-text">$</span>
+                    <span class="annotation-arrow">&rarr;</span>
+                </div>
+                <div class="annotation-label">Cost</div>
+            </div>
+        </div>
+
+        <div class="quantity-bar">
+            <div class="qty-label">Quantity:</div>
+            <div class="qty-scale">
+                <span>Few</span>
+                <div class="qty-gradient"></div>
+                <span>Many</span>
+            </div>
+        </div>
+
+        <div class="detail-card" id="detailCard">
+            <h2 id="cardTitle"></h2>
+            <p id="cardDescription"></p>
+            <div class="card-stats" id="cardStats"></div>
+            <div class="card-examples">
+                <h3>Example Tests</h3>
+                <ul id="cardExamples"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

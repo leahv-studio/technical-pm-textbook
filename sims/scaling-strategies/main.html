@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaling Strategies Comparison</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Scaling Strategies Comparison</h2>
+        <div class="controls">
+            <label>User Load: <input type="range" id="loadSlider" min="1" max="10" value="2"> <span id="loadLabel">1,000</span> users</label>
+        </div>
+        <div class="comparison">
+            <div class="side vertical">
+                <h3 style="color:#f59e0b">Vertical Scaling</h3>
+                <p class="desc">Make one server bigger</p>
+                <div class="server-area">
+                    <div class="v-server" id="vServer">
+                        <div class="v-label">Server</div>
+                        <div class="v-specs" id="vSpecs">4 CPU / 16 GB RAM</div>
+                    </div>
+                    <div class="ceiling-line" id="ceiling"><span>Hardware Ceiling</span></div>
+                    <div class="v-warning" id="vWarning">⚠️ Capacity exceeded!</div>
+                </div>
+                <div class="metrics">
+                    <div class="metric"><span class="m-label">Response Time</span><span class="m-val" id="vLatency">45ms</span></div>
+                    <div class="metric"><span class="m-label">Cost/month</span><span class="m-val" id="vCost">$200</span></div>
+                    <div class="metric"><span class="m-label">Failure Risk</span><span class="m-val" id="vRisk">Single point</span></div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="side horizontal">
+                <h3 style="color:#3b82f6">Horizontal Scaling</h3>
+                <p class="desc">Add more servers</p>
+                <div class="server-area">
+                    <div class="h-lb">Load Balancer</div>
+                    <div class="h-servers" id="hServers"></div>
+                </div>
+                <div class="metrics">
+                    <div class="metric"><span class="m-label">Response Time</span><span class="m-val" id="hLatency">40ms</span></div>
+                    <div class="metric"><span class="m-label">Cost/month</span><span class="m-val" id="hCost">$400</span></div>
+                    <div class="metric"><span class="m-label">Failure Risk</span><span class="m-val" id="hRisk">Distributed</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

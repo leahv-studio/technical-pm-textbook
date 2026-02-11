@@ -1,0 +1,25 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f7fa; color: #1e4b69; }
+.container { max-width: 960px; margin: 0 auto; padding: 16px; }
+h1 { text-align: center; font-size: 1.3rem; color: #1e4b69; margin-bottom: 4px; }
+.subtitle { text-align: center; font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px; }
+.diagram-wrapper { background: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow-x: auto; }
+#git-diagram { width: 100%; height: auto; display: block; }
+.branch-label { font-size: 11px; font-weight: 600; }
+.main-label { fill: #1e3a5f; }
+.feature-a-label { fill: #22c55e; }
+.feature-b-label { fill: #f59e0b; }
+.hotfix-label { fill: #ef4444; }
+.tooltip { position: fixed; padding: 8px 12px; background: #1e293b; color: #f1f5f9; border-radius: 6px; font-size: 0.78rem; max-width: 240px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 100; line-height: 1.4; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.tooltip.visible { opacity: 1; }
+.legend { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #475569; }
+.legend-line { width: 20px; height: 3px; border-radius: 2px; display: inline-block; }
+.release-panel { display: none; background: #fff; border: 2px solid #7c3aed; border-radius: 10px; margin-top: 12px; overflow: hidden; }
+.release-panel.visible { display: block; }
+.release-panel-header { background: #7c3aed; color: #fff; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
+.release-panel-header h3 { font-size: 0.95rem; }
+.release-close { background: none; border: none; color: #fff; font-size: 1.3rem; cursor: pointer; }
+#release-body { padding: 12px 16px; font-size: 0.85rem; color: #475569; }
+#release-body ul { padding-left: 18px; margin-top: 6px; }
+#release-body li { margin-bottom: 4px; }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary &amp; Foreign Keys</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Primary &amp; Foreign Keys</h1>
+        <p class="subtitle">Click columns to highlight relationships between tables</p>
+        <div class="diagram-area">
+            <svg id="connector-svg" class="connector-svg"></svg>
+            <div class="tables-wrapper">
+                <div class="db-table" id="users-table">
+                    <div class="table-header">Users</div>
+                    <div class="table-columns" id="users-columns"></div>
+                </div>
+                <div class="db-table" id="orders-table">
+                    <div class="table-header">Orders</div>
+                    <div class="table-columns" id="orders-columns"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tooltip" id="tooltip"></div>
+        <div class="legend">
+            <div class="legend-item"><span class="legend-color pk-color"></span> Primary Key (PK)</div>
+            <div class="legend-item"><span class="legend-color fk-color"></span> Foreign Key (FK)</div>
+            <div class="legend-item"><span class="legend-color regular-color"></span> Regular Column</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

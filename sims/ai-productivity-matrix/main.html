@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Productivity Matrix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Productivity Matrix for PMs</h1>
+        <p class="subtitle">Hover over tasks for time-saving estimates. Click quadrants for full task lists.</p>
+
+        <div class="matrix-wrapper">
+            <div class="y-axis-label">Human Judgment Required</div>
+            <div class="y-axis-markers">
+                <span>High</span>
+                <span>Low</span>
+            </div>
+
+            <div class="matrix-grid">
+                <div class="quadrant q-top-left" data-quadrant="human-essential" onclick="toggleQuadrant('human-essential')">
+                    <div class="quadrant-label">Human Essential</div>
+                    <div class="quadrant-dots" id="dots-human-essential"></div>
+                </div>
+                <div class="quadrant q-top-right" data-quadrant="ai-augmented" onclick="toggleQuadrant('ai-augmented')">
+                    <div class="quadrant-label">AI-Augmented</div>
+                    <div class="quadrant-dots" id="dots-ai-augmented"></div>
+                </div>
+                <div class="quadrant q-bottom-left" data-quadrant="automate" onclick="toggleQuadrant('automate')">
+                    <div class="quadrant-label">Automate / Eliminate</div>
+                    <div class="quadrant-dots" id="dots-automate"></div>
+                </div>
+                <div class="quadrant q-bottom-right" data-quadrant="ai-led" onclick="toggleQuadrant('ai-led')">
+                    <div class="quadrant-label">AI-Led</div>
+                    <div class="quadrant-dots" id="dots-ai-led"></div>
+                </div>
+            </div>
+
+            <div class="x-axis-markers">
+                <span>Low</span>
+                <span>High</span>
+            </div>
+            <div class="x-axis-label">AI Impact</div>
+        </div>
+
+        <div class="task-panel" id="task-panel">
+            <button class="close-btn" onclick="closePanel()">&times;</button>
+            <h3 id="panel-title"></h3>
+            <ul id="panel-tasks"></ul>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+    <script src="script.js"></script>
+</body>
+</html>

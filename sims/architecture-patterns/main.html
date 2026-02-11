@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture Patterns Comparison</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Architecture Patterns Comparison</h2>
+        <p class="subtitle">Click each pattern for a case study</p>
+        <div class="columns">
+            <div class="col" data-pattern="monolith" onclick="selectPattern(this)">
+                <div class="col-header" style="background:#3b82f6">Monolithic</div>
+                <div class="visual mono-visual">
+                    <div class="mono-box">
+                        <span>UI Layer</span>
+                        <span>Business Logic</span>
+                        <span>Data Access</span>
+                    </div>
+                    <div class="db-icon">🗄️ Single DB</div>
+                </div>
+                <div class="traits">
+                    <h4>Characteristics</h4>
+                    <ul><li>Single deployment unit</li><li>Shared codebase</li><li>Simple to debug</li></ul>
+                    <h4>Best For</h4>
+                    <ul><li>Early-stage products</li><li>Small teams (2-8 devs)</li><li>Simple domains</li></ul>
+                    <h4>Trade-offs</h4>
+                    <div class="pro">✓ Simple, fast development, easy testing</div>
+                    <div class="con">✗ Scaling limitations, tech lock-in, risky deploys</div>
+                </div>
+                <div class="case-study" id="cs-monolith">
+                    <strong>Case Study: Basecamp</strong><br>Basecamp has famously run as a monolithic Ruby on Rails application for 20+ years, serving millions of users. Their team argues that monoliths are ideal when a small team owns the entire product and values development speed over independent scaling.
+                </div>
+            </div>
+            <div class="col" data-pattern="soa" onclick="selectPattern(this)">
+                <div class="col-header" style="background:#14b8a6">SOA</div>
+                <div class="visual soa-visual">
+                    <div class="soa-services">
+                        <div class="svc">User Svc</div>
+                        <div class="svc">Order Svc</div>
+                        <div class="svc">Payment Svc</div>
+                    </div>
+                    <div class="esb">Enterprise Service Bus</div>
+                    <div class="db-icon">🗄️ Shared DB</div>
+                </div>
+                <div class="traits">
+                    <h4>Characteristics</h4>
+                    <ul><li>Service-based decomposition</li><li>ESB communication</li><li>Shared databases possible</li></ul>
+                    <h4>Best For</h4>
+                    <ul><li>Enterprise systems</li><li>Legacy modernization</li><li>Large organizations</li></ul>
+                    <h4>Trade-offs</h4>
+                    <div class="pro">✓ Modular, reusable services</div>
+                    <div class="con">✗ ESB complexity, shared DB coupling</div>
+                </div>
+                <div class="case-study" id="cs-soa">
+                    <strong>Case Study: Enterprise Banking</strong><br>Many large banks adopted SOA in the 2000s to modernize COBOL mainframes. Services for accounts, transactions, and compliance communicate via an ESB, allowing gradual migration while maintaining shared data consistency.
+                </div>
+            </div>
+            <div class="col" data-pattern="micro" onclick="selectPattern(this)">
+                <div class="col-header" style="background:#22c55e">Microservices</div>
+                <div class="visual micro-visual">
+                    <div class="micro-grid">
+                        <div class="msvc">Auth<div class="mdb">DB</div></div>
+                        <div class="msvc">Search<div class="mdb">DB</div></div>
+                        <div class="msvc">Cart<div class="mdb">DB</div></div>
+                        <div class="msvc">Pay<div class="mdb">DB</div></div>
+                    </div>
+                    <div class="api-lines">← API →</div>
+                </div>
+                <div class="traits">
+                    <h4>Characteristics</h4>
+                    <ul><li>Independent deployment</li><li>Own databases per service</li><li>Direct API communication</li></ul>
+                    <h4>Best For</h4>
+                    <ul><li>Large teams, complex domains</li><li>High-scale products</li><li>Frequent independent releases</li></ul>
+                    <h4>Trade-offs</h4>
+                    <div class="pro">✓ Independent scaling, tech flexibility, team autonomy</div>
+                    <div class="con">✗ Operational complexity, distributed debugging</div>
+                </div>
+                <div class="case-study" id="cs-micro">
+                    <strong>Case Study: Netflix</strong><br>Netflix migrated from a monolith to 700+ microservices to handle 200M+ subscribers globally. Each service (recommendations, streaming, billing) scales independently, enabling teams to deploy thousands of times per day.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

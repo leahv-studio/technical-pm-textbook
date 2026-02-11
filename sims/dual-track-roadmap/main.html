@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual-Track Roadmap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dual-Track Roadmap</h1>
+        <p class="subtitle">Click items for effort and details. Hover arrows for dependency explanations.</p>
+
+        <div class="legend">
+            <span class="legend-item"><span class="legend-dot feature-dot"></span> Feature Track</span>
+            <span class="legend-item"><span class="legend-dot tech-dot"></span> Technical Track</span>
+            <span class="legend-item"><span class="legend-line"></span> Dependency</span>
+        </div>
+
+        <div class="roadmap-wrapper">
+            <div class="quarter-headers">
+                <div class="quarter-header">Q1</div>
+                <div class="quarter-header">Q2</div>
+                <div class="quarter-header">Q3</div>
+                <div class="quarter-header">Q4</div>
+            </div>
+
+            <div class="track-label feature-label">Features</div>
+            <div class="track feature-track" id="feature-track">
+                <!-- Feature items rendered by JS -->
+            </div>
+
+            <div class="dependency-canvas-wrapper">
+                <svg id="dependency-svg" class="dependency-svg"></svg>
+            </div>
+
+            <div class="track-label tech-label">Technical</div>
+            <div class="track tech-track" id="tech-track">
+                <!-- Tech items rendered by JS -->
+            </div>
+        </div>
+
+        <div class="detail-panel" id="detail-panel">
+            <button class="close-btn" onclick="closeDetail()">&times;</button>
+            <h3 id="detail-title"></h3>
+            <div id="detail-content"></div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+    <script src="script.js"></script>
+</body>
+</html>

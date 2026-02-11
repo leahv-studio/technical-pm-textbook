@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Governance Framework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Data Governance Framework</h1>
+        <p class="subtitle">Lifecycle stages, governance layers, and cross-cutting concerns</p>
+
+        <div class="corner-callouts top-callouts">
+            <div class="callout" data-callout="privacy">
+                <div class="callout-icon">&#128274;</div>
+                <div class="callout-label">Privacy</div>
+            </div>
+            <div class="callout" data-callout="security">
+                <div class="callout-icon">&#128737;</div>
+                <div class="callout-label">Security</div>
+            </div>
+        </div>
+
+        <div class="lifecycle-row" id="lifecycleRow"></div>
+
+        <div class="layers-container" id="layersContainer"></div>
+
+        <div class="corner-callouts bottom-callouts">
+            <div class="callout" data-callout="quality">
+                <div class="callout-icon">&#9989;</div>
+                <div class="callout-label">Quality</div>
+            </div>
+            <div class="callout" data-callout="ethics">
+                <div class="callout-icon">&#9878;</div>
+                <div class="callout-label">Ethics</div>
+            </div>
+        </div>
+
+        <div class="detail-panel" id="detailPanel">
+            <div class="detail-title" id="detailTitle">Click a lifecycle stage or governance layer</div>
+            <div class="detail-body" id="detailBody">Explore how governance requirements change at each stage of the data lifecycle, and how policies, roles, and standards provide the framework for responsible data management.</div>
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

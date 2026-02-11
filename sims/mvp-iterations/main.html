@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP Iterations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>MVP to Mature Product</h1>
+        <p class="subtitle">Click an iteration to explore what was built, measured, and learned</p>
+
+        <div class="timeline">
+            <div class="timeline-track"></div>
+            <div class="feedback-loop">
+                <svg viewBox="0 0 100 30" preserveAspectRatio="none">
+                    <path d="M5 25 Q50 0 95 25" fill="none" stroke="#1e4b69" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.3"/>
+                    <polygon points="93,22 98,26 92,28" fill="#1e4b69" opacity="0.3"/>
+                </svg>
+                <span class="feedback-label">Feedback loops</span>
+            </div>
+
+            <div class="iterations">
+                <div class="iteration" data-iter="0">
+                    <div class="iter-marker">
+                        <div class="iter-dot"></div>
+                        <div class="iter-version">MVP</div>
+                    </div>
+                    <div class="iter-card">
+                        <div class="iter-title">MVP</div>
+                        <div class="iter-users">100 users</div>
+                    </div>
+                </div>
+
+                <div class="iteration" data-iter="1">
+                    <div class="iter-marker">
+                        <div class="iter-dot"></div>
+                        <div class="iter-version">v1.0</div>
+                    </div>
+                    <div class="iter-card">
+                        <div class="iter-title">Version 1.0</div>
+                        <div class="iter-users">500 users</div>
+                    </div>
+                </div>
+
+                <div class="iteration" data-iter="2">
+                    <div class="iter-marker">
+                        <div class="iter-dot"></div>
+                        <div class="iter-version">v1.5</div>
+                    </div>
+                    <div class="iter-card">
+                        <div class="iter-title">Version 1.5</div>
+                        <div class="iter-users">2,000 users</div>
+                    </div>
+                </div>
+
+                <div class="iteration" data-iter="3">
+                    <div class="iter-marker">
+                        <div class="iter-dot"></div>
+                        <div class="iter-version">v2.0</div>
+                    </div>
+                    <div class="iter-card">
+                        <div class="iter-title">Version 2.0</div>
+                        <div class="iter-users">8,000 users</div>
+                    </div>
+                </div>
+
+                <div class="iteration" data-iter="4">
+                    <div class="iter-marker">
+                        <div class="iter-dot"></div>
+                        <div class="iter-version">Mature</div>
+                    </div>
+                    <div class="iter-card">
+                        <div class="iter-title">Mature Product</div>
+                        <div class="iter-users">25,000 users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-panel" id="detailPanel">
+            <div class="detail-header" id="detailHeader">
+                <h2 id="detailTitle"></h2>
+                <span class="detail-badge" id="detailBadge"></span>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-section">
+                    <h3>Key Features</h3>
+                    <ul id="detailFeatures"></ul>
+                </div>
+                <div class="detail-section">
+                    <h3>Metrics</h3>
+                    <div id="detailMetrics"></div>
+                </div>
+                <div class="detail-section lesson-section">
+                    <h3>Key Lesson</h3>
+                    <p id="detailLesson"></p>
+                </div>
+                <div class="detail-section">
+                    <h3>PM Focus Areas</h3>
+                    <ul id="detailFocus"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

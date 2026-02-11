@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Service Models</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Cloud Service Models</h2>
+        <p class="subtitle">Hover layers for details. Click a column for examples.</p>
+        <div class="legend"><span class="leg-item"><span class="leg-box you"></span> You Manage</span><span class="leg-item"><span class="leg-box provider"></span> Provider Manages</span></div>
+        <div class="stacks">
+            <div class="stack" data-model="iaas" onclick="selectModel(this)">
+                <div class="stack-header">IaaS</div>
+                <div class="stack-sub">e.g., AWS EC2</div>
+                <div class="layer you" data-tip="Application: Your product code and business logic">Application</div>
+                <div class="layer you" data-tip="Data: Your databases, user data, files">Data</div>
+                <div class="layer you" data-tip="Runtime: Language runtime (Node.js, Python, Java)">Runtime</div>
+                <div class="layer you" data-tip="Middleware: Web server, message queues, caching">Middleware</div>
+                <div class="layer you" data-tip="OS: Operating system patches and configuration">OS</div>
+                <div class="layer prov" data-tip="Virtualization: Virtual machines managed by provider">Virtualization</div>
+                <div class="layer prov" data-tip="Servers: Physical hardware in data centers">Servers</div>
+                <div class="layer prov" data-tip="Storage: Physical disk drives and SSDs">Storage</div>
+                <div class="layer prov" data-tip="Networking: Switches, routers, load balancers">Networking</div>
+                <div class="examples">AWS EC2, Azure VMs, Google Compute Engine, DigitalOcean Droplets</div>
+            </div>
+            <div class="stack" data-model="paas" onclick="selectModel(this)">
+                <div class="stack-header">PaaS</div>
+                <div class="stack-sub">e.g., Heroku</div>
+                <div class="layer you" data-tip="Application: Your product code — that's all you manage">Application</div>
+                <div class="layer you" data-tip="Data: Your databases and data stores">Data</div>
+                <div class="layer prov" data-tip="Runtime: Provider manages language runtimes">Runtime</div>
+                <div class="layer prov" data-tip="Middleware: Provider handles web servers, caching">Middleware</div>
+                <div class="layer prov" data-tip="OS: Provider patches and maintains the OS">OS</div>
+                <div class="layer prov" data-tip="Virtualization: Fully managed by provider">Virtualization</div>
+                <div class="layer prov" data-tip="Servers: Fully managed by provider">Servers</div>
+                <div class="layer prov" data-tip="Storage: Fully managed by provider">Storage</div>
+                <div class="layer prov" data-tip="Networking: Fully managed by provider">Networking</div>
+                <div class="examples">Heroku, Google App Engine, AWS Elastic Beanstalk, Render</div>
+            </div>
+            <div class="stack" data-model="saas" onclick="selectModel(this)">
+                <div class="stack-header">SaaS</div>
+                <div class="stack-sub">e.g., Salesforce</div>
+                <div class="layer prov" data-tip="Application: Fully built and maintained by provider">Application</div>
+                <div class="layer prov" data-tip="Data: Provider stores and manages all data">Data</div>
+                <div class="layer prov" data-tip="Runtime: Fully managed by provider">Runtime</div>
+                <div class="layer prov" data-tip="Middleware: Fully managed by provider">Middleware</div>
+                <div class="layer prov" data-tip="OS: Fully managed by provider">OS</div>
+                <div class="layer prov" data-tip="Virtualization: Fully managed by provider">Virtualization</div>
+                <div class="layer prov" data-tip="Servers: Fully managed by provider">Servers</div>
+                <div class="layer prov" data-tip="Storage: Fully managed by provider">Storage</div>
+                <div class="layer prov" data-tip="Networking: Fully managed by provider">Networking</div>
+                <div class="examples">Salesforce, Slack, Google Workspace, Datadog, Zoom</div>
+            </div>
+        </div>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

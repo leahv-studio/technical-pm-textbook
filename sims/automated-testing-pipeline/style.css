@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 860px;
+    width: 100%;
+}
+
+h1 {
+    color: #1e4b69;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+}
+
+.pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: 16px 0 24px;
+    margin-bottom: 20px;
+}
+
+.stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.stage-box {
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: #fff;
+    position: relative;
+}
+
+.stage:hover .stage-box {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.stage.active .stage-box {
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #1e4b69;
+}
+
+.stage-icon {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.stage-name {
+    font-size: 0.65rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.stage-category {
+    font-size: 0.55rem;
+    opacity: 0.8;
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stage-connector {
+    width: 24px;
+    height: 3px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.stage-connector::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #ccc;
+}
+
+.stage-connector::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -2px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid #ccc;
+}
+
+.gate-indicator {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.color-dev { background: linear-gradient(135deg, #2471a3, #2e86c1); }
+.color-build { background: linear-gradient(135deg, #5d6d7e, #7f8c8d); }
+.color-test { background: linear-gradient(135deg, #1e8449, #27ae60); }
+.color-deploy { background: linear-gradient(135deg, #d35400, #e67e22); }
+
+.info-panel {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.info-panel.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.info-icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.info-panel h2 {
+    color: #1e4b69;
+    font-size: 1.3rem;
+}
+
+.info-panel p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.info-section {
+    margin-bottom: 16px;
+}
+
+.info-section h3 {
+    color: #1e4b69;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.info-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-section li {
+    padding: 4px 0 4px 20px;
+    position: relative;
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.info-section li::before {
+    content: '\25B8';
+    position: absolute;
+    left: 4px;
+    color: #1e4b69;
+}
+
+.failure-section {
+    background: #fef5f5;
+    border-left: 3px solid #e74c3c;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+.failure-section h3 {
+    color: #c0392b;
+}
+
+.failure-section p {
+    color: #721c24;
+    margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+    .pipeline {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .stage-connector {
+        display: none;
+    }
+
+    .stage-box {
+        width: 80px;
+        height: 80px;
+    }
+
+    h1 { font-size: 1.3rem; }
+}

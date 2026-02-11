@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Ecosystem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Documentation Ecosystem</h2>
+        <p class="subtitle">Click a document type to see how it connects to others</p>
+        <div class="hub">
+            <div class="center-node">Product<br>Feature</div>
+            <div class="doc-node" data-id="business-req" style="--color:#3b82f6" onclick="selectDoc(this)">
+                <div class="doc-icon">📋</div>
+                <div class="doc-title">Business Requirements</div>
+                <div class="doc-owner">Owned by PM</div>
+            </div>
+            <div class="doc-node" data-id="eng-spec" style="--color:#22c55e" onclick="selectDoc(this)">
+                <div class="doc-icon">⚙️</div>
+                <div class="doc-title">Engineering Spec</div>
+                <div class="doc-owner">Owned by Engineering</div>
+            </div>
+            <div class="doc-node" data-id="tech-spec" style="--color:#14b8a6" onclick="selectDoc(this)">
+                <div class="doc-icon">📐</div>
+                <div class="doc-title">Technical Spec</div>
+                <div class="doc-owner">PM + Engineering</div>
+            </div>
+            <div class="doc-node" data-id="api-doc" style="--color:#f59e0b" onclick="selectDoc(this)">
+                <div class="doc-icon">🔌</div>
+                <div class="doc-title">API Documentation</div>
+                <div class="doc-owner">Developer reference</div>
+            </div>
+            <div class="doc-node" data-id="test-plan" style="--color:#7c3aed" onclick="selectDoc(this)">
+                <div class="doc-icon">✅</div>
+                <div class="doc-title">Test Plan</div>
+                <div class="doc-owner">Owned by QA</div>
+            </div>
+            <div class="doc-node" data-id="runbook" style="--color:#ef4444" onclick="selectDoc(this)">
+                <div class="doc-icon">🚨</div>
+                <div class="doc-title">Runbook</div>
+                <div class="doc-owner">Operations guide</div>
+            </div>
+        </div>
+        <div class="detail-panel" id="detailPanel">
+            <div class="detail-header" id="detailHeader"></div>
+            <div class="detail-body" id="detailBody"></div>
+        </div>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity-Relationship Model</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Entity-Relationship Model</h1>
+        <p class="subtitle">SaaS product data model. Click entities for attribute details. Hover relationships for descriptions.</p>
+        <div class="er-area" id="er-area">
+            <svg id="er-svg" class="er-svg"></svg>
+            <div class="entities-grid" id="entities-grid"></div>
+        </div>
+        <div class="detail-panel" id="detail-panel">
+            <p class="detail-placeholder" id="detail-placeholder">Click an entity to view its attributes</p>
+            <div id="detail-content" class="detail-content"></div>
+        </div>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

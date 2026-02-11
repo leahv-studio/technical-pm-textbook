@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Branching Workflow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Git Branching Workflow</h1>
+        <p class="subtitle">Hover commits for messages. Hover branches for descriptions. Click release tags for details.</p>
+
+        <div class="diagram-wrapper">
+            <svg id="git-diagram" viewBox="0 0 960 420" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <!-- Arrow markers -->
+                    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#22c55e"/>
+                    </marker>
+                    <marker id="arrow-orange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#f59e0b"/>
+                    </marker>
+                    <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#ef4444"/>
+                    </marker>
+                    <marker id="arrow-main" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#1e3a5f"/>
+                    </marker>
+                </defs>
+
+                <!-- Branch labels on left -->
+                <text x="15" y="68" class="branch-label main-label">main</text>
+                <text x="15" y="168" class="branch-label feature-a-label">feature/user-auth</text>
+                <text x="15" y="268" class="branch-label feature-b-label">feature/search-api</text>
+                <text x="15" y="358" class="branch-label hotfix-label">hotfix/login-bug</text>
+            </svg>
+        </div>
+
+        <!-- Tooltip -->
+        <div class="tooltip" id="tooltip"></div>
+
+        <!-- Release info panel -->
+        <div class="release-panel" id="release-panel">
+            <div class="release-panel-header">
+                <h3 id="release-title"></h3>
+                <button class="release-close" id="release-close">&times;</button>
+            </div>
+            <div id="release-body"></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <span class="legend-line" style="background: #1e3a5f;"></span>
+                <span>main</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-line" style="background: #22c55e;"></span>
+                <span>feature/user-auth</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-line" style="background: #f59e0b;"></span>
+                <span>feature/search-api</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-line" style="background: #ef4444;"></span>
+                <span>hotfix/login-bug</span>
+            </div>
+            <div class="legend-item">
+                <svg width="16" height="16" viewBox="0 0 16 16">
+                    <polygon points="8,1 15,8 8,15 1,8" fill="#7c3aed" stroke="#5b21b6" stroke-width="1"/>
+                </svg>
+                <span>Release tag</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
