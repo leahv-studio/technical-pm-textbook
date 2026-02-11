@@ -1,0 +1,222 @@
+:root {
+    --primary: #1e4b69;
+    --accent: rgb(70, 180, 200);
+    --bg: #f5f7fa;
+    --entity-org: #8e44ad;
+    --entity-user: #2980b9;
+    --entity-project: #27ae60;
+    --entity-task: #e67e22;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: #333;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 960px;
+    width: 100%;
+}
+
+h1 {
+    color: var(--primary);
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+.er-area {
+    background: white;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    margin-bottom: 20px;
+    min-height: 200px;
+}
+
+.er-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.entities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.entity-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #e0e0e0;
+    background: white;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.entity-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.entity-card.active {
+    box-shadow: 0 4px 16px rgba(70, 180, 200, 0.3);
+    border-color: var(--accent);
+}
+
+.entity-header {
+    padding: 12px 14px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.entity-header.org { background: var(--entity-org); }
+.entity-header.user { background: var(--entity-user); }
+.entity-header.project { background: var(--entity-project); }
+.entity-header.task { background: var(--entity-task); }
+
+.entity-attrs {
+    padding: 8px 12px;
+}
+
+.entity-attr {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.attr-key {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.attr-key.pk { background: #2980b9; }
+.attr-key.fk { background: #27ae60; }
+
+.relationship-line {
+    cursor: pointer;
+    pointer-events: stroke;
+}
+
+.relationship-label {
+    font-size: 12px;
+    fill: #777;
+    font-weight: 600;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.detail-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    min-height: 80px;
+}
+
+.detail-placeholder {
+    color: #aaa;
+    text-align: center;
+    font-style: italic;
+}
+
+.detail-content {
+    display: none;
+}
+
+.detail-content.visible {
+    display: block;
+}
+
+.detail-title {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.detail-table th {
+    background: var(--primary);
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.detail-table td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-table tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.tooltip {
+    position: fixed;
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    max-width: 280px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    line-height: 1.4;
+}
+
+.tooltip.visible {
+    opacity: 1;
+}
+
+@media (max-width: 700px) {
+    .entities-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .er-svg {
+        display: none;
+    }
+}

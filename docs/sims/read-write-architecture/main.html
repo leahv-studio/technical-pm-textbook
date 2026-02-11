@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read/Write Architecture</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Read/Write Architecture</h1>
+        <p class="subtitle">Toggle between operations to see the data path through the system</p>
+        <div class="toggle-bar">
+            <button class="toggle-btn active" id="btn-write" data-mode="write">Write Operation</button>
+            <button class="toggle-btn" id="btn-read" data-mode="read">Read Operation</button>
+        </div>
+        <div class="architecture-area" id="arch-area"></div>
+        <div class="metrics-bar" id="metrics-bar"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
