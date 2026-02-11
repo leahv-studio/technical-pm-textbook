@@ -1,6 +1,6 @@
 # Glossary of Terms
 
-This glossary contains definitions of key concepts used throughout the course "From Product Manager to Technical Product Manager: A Practitioner's Guide." Each definition follows ISO 11179 metadata registry standards: precise, concise, distinct, non-circular, and free of business rules.
+This glossary defines the key concepts covered in "From Product Manager to Technical Product Manager: A Practitioner's Guide." Each term includes a concise definition, practical context for technical PMs, and where applicable, a concrete example.
 
 ## A
 
