@@ -1,41 +1,28 @@
 # Chapters
 
-This textbook is organized into 13 chapters covering 200 concepts that guide you through the complete workflow of creating intelligent, interactive textbooks using Claude Skills.
+This textbook is organized into 14 chapters covering 200 concepts for transitioning from product manager to technical product manager.
 
 ## Chapter Overview
 
-1. [Introduction to AI and Intelligent Textbooks](01-intro-ai-intelligent-textbooks/index.md) - This chapter introduces artificial intelligence fundamentals, Claude AI, and the concept of intelligent textbooks with their five levels of intelligence.
-
-2. [Getting Started with Claude and Skills](02-getting-started-claude-skills/index.md) - This chapter covers Claude Pro accounts, the Claude Code interface, and introduces the Claude Skills system including skill definition, installation, and basic usage.
-
-3. [Course Design and Educational Theory](03-course-design-educational-theory/index.md) - This chapter explores course descriptions, target audiences, prerequisites, learning outcomes, and Bloom's Taxonomy (2001 revision) with its six cognitive levels.
-
-4. [Introduction to Learning Graphs](04-intro-learning-graphs/index.md) - This chapter introduces learning graph fundamentals, concept nodes and edges, dependencies, prerequisite relationships, DAG structure, and learning pathways.
-
-5. [Concept Enumeration and Dependencies](05-concept-enumeration-dependencies/index.md) - This chapter covers the concept enumeration process, generating 200 concepts, concept labels, granularity, atomic concepts, dependency mapping, and foundational vs. advanced concepts.
-
-6. [Learning Graph Quality and Validation](06-learning-graph-quality-validation/index.md) - This chapter focuses on graph quality metrics, DAG validation, circular dependency detection, orphaned nodes, disconnected subgraphs, indegree/outdegree analysis, and quality scoring.
-
-7. [Taxonomy and Data Formats](07-taxonomy-data-formats/index.md) - This chapter covers taxonomy categorization, CSV file formats, pipe-delimited dependencies, JSON schema for learning graphs, metadata (Dublin Core), and color coding for visualizations.
-
-8. [MkDocs Platform and Documentation](08-mkdocs-platform-documentation/index.md) - This chapter introduces MkDocs, Material theme, configuration files, navigation structure, markdown formatting basics, admonitions, and GitHub Pages deployment preparation.
-
-9. [Claude Skills Architecture and Development](09-claude-skills-architecture-development/index.md) - This chapter deep dives into skill directory structure, supporting assets, Python scripts, templates, reference documentation, skill workflow instructions, commands vs. skills, and skill execution context.
-
-10. [Content Creation Workflows](10-content-creation-workflows/index.md) - This chapter covers chapter structure, section organization, content generation processes, chapter index files, concept lists, reading level appropriateness, worked examples, and practice exercises.
-
-11. [Educational Resources and Assessment](11-educational-resources-assessment/index.md) - This chapter explores glossary generation with ISO 11179 standards, FAQ creation from course content, quiz generation, Bloom's alignment in quizzes, and assessing student understanding.
-
-12. [Interactive Elements and MicroSims](12-interactive-elements-microsims/index.md) - This chapter introduces MicroSims, p5.js library, interactive simulations, directory structure, iframe embedding, seeded randomness, and interactive controls.
-
-13. [Development Tools, Version Control, and Deployment](13-dev-tools-version-control-deployment/index.md) - This chapter covers Git basics, version control, GitHub integration, Visual Studio Code, terminal operations, Bash and shell scripts, Python scripting, pip management, skill testing/debugging, security, permissions, and concludes with the capstone project.
+1. [Product Management Foundations](01-pm-foundations/index.md) - Establishes core PM vocabulary and frameworks including product lifecycle, strategy, stakeholders, metrics, and user needs.
+2. [Software Development Essentials](02-software-development-essentials/index.md) - Introduces how software is built, from source code and programming languages through version control and code review workflows.
+3. [Technical Documentation and Requirements](03-technical-documentation/index.md) - Covers reading and writing technical docs, engineering specs, requirements, bugs, and the jargon PMs need to communicate.
+4. [System Architecture Fundamentals](04-system-architecture/index.md) - Explores system design patterns, distributed systems, reliability, scalability, and performance concepts.
+5. [Cloud Computing, Scaling, and Infrastructure](05-cloud-computing-infrastructure/index.md) - Covers cloud service models, serverless computing, containerization, and scaling strategies.
+6. [APIs and Integrations](06-apis-and-integrations/index.md) - Deep dive into API fundamentals including REST, GraphQL, authentication, data serialization, and testing tools.
+7. [Databases and SQL](07-databases-and-sql/index.md) - Covers relational databases, SQL querying, data tables, keys, schema design, and NoSQL databases.
+8. [Advanced Data Management](08-advanced-data-management/index.md) - Explores data warehouses, transactions, ACID properties, performance optimization, and data migration.
+9. [Quality Assurance and Technical Debt](09-quality-assurance-technical-debt/index.md) - Addresses code quality, technical debt, testing levels, automated testing, and system migration.
+10. [SDLC and Agile Methodologies](10-sdlc-and-agile/index.md) - Covers software development lifecycle, Scrum ceremonies, backlogs, CI/CD, release management, and MVP.
+11. [Analytics and Data-Driven Decisions](11-analytics-data-driven-decisions/index.md) - Covers product analytics, user behavior tracking, funnel and cohort analysis, dashboards, and data governance.
+12. [Advanced Analytics and Experimentation](12-advanced-analytics-experimentation/index.md) - Explores A/B testing, experiment design, data pipelines, predictive analytics, and customer segmentation.
+13. [AI Tools and Strategy for Technical PMs](13-ai-tools-and-strategy/index.md) - Introduces generative AI, LLMs, prompt engineering, AI tools for PMs, and AI strategy and governance.
+14. [Career Transition and Technical Leadership](14-career-transition-leadership/index.md) - Covers the technical PM job market, interview prep, technical communication, decision frameworks, and roadmapping.
 
 ## How to Use This Textbook
 
-This textbook follows the natural workflow of creating an intelligent textbook from start to finish. Concepts are carefully sequenced so that each chapter builds on knowledge from previous chapters. All concept dependencies have been validated to ensure a smooth learning progression.
-
-We recommend working through the chapters in order, especially for your first read-through. Later, you can return to specific chapters as reference material when working on particular aspects of your textbook project.
+Chapters are organized to respect concept dependencies - each chapter builds on knowledge from previous chapters. Start with Chapter 1 and progress sequentially for the best learning experience. Product managers with stronger technical backgrounds may skim early chapters and focus on areas where they want to deepen their skills.
 
 ---
 
-**Note:** Each chapter includes a detailed list of concepts covered. Make sure to complete prerequisites before moving to advanced chapters, as the content assumes familiarity with earlier material.
+**Note:** Each chapter includes a list of concepts covered. Make sure to complete prerequisites before moving to advanced chapters.

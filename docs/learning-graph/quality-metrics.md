@@ -3,9 +3,9 @@
 ## Overview
 
 - **Total Concepts**: 200
-- **Foundational Concepts** (no dependencies): 8
-- **Concepts with Dependencies**: 192
-- **Average Dependencies per Concept**: 1.18
+- **Foundational Concepts** (no dependencies): 1
+- **Concepts with Dependencies**: 199
+- **Average Dependencies per Concept**: 1.35
 
 ## Graph Structure Validation
 
@@ -17,14 +17,7 @@
 
 These concepts have no prerequisites:
 
-- **1**: Artificial Intelligence
-- **26**: Intelligent Textbook
-- **37**: Markdown Formatting Basics
-- **91**: Taxonomy
-- **153**: Git
-- **162**: Visual Studio Code
-- **168**: Python
-- **191**: Command-Line Interface Basics
+- **1**: Product Management
 
 ## Dependency Chain Analysis
 
@@ -32,46 +25,46 @@ These concepts have no prerequisites:
 
 ### Longest Learning Path:
 
-1. **Intelligent Textbook** (ID: 26)
-2. **Learning Graph** (ID: 39)
-3. **Concept Nodes in Learning Graphs** (ID: 40)
-4. **Concept Dependencies** (ID: 44)
-5. **Dependency Mapping Process** (ID: 70)
-6. **CSV File Format for Graphs** (ID: 71)
-7. **vis-network JSON Format** (ID: 99)
-8. **JSON Schema for Learning Graphs** (ID: 100)
-9. **Metadata Section in JSON** (ID: 101)
-10. **Dublin Core Metadata** (ID: 105)
-11. **Title Metadata Field** (ID: 106)
+1. **Product Management** (ID: 1)
+2. **Software Product** (ID: 4)
+3. **Software Development** (ID: 21)
+4. **Source Code** (ID: 22)
+5. **Version Control** (ID: 27)
+6. **Continuous Integration** (ID: 125)
+7. **Continuous Delivery** (ID: 126)
+8. **Release Management** (ID: 127)
+9. **Feature Flags** (ID: 128)
+10. **A/B Testing** (ID: 152)
+11. **Statistical Significance** (ID: 153)
 
 ## Orphaned Nodes Analysis
 
-- **Total Orphaned Nodes**: 104
+- **Total Orphaned Nodes**: 75
 
 Concepts that are not prerequisites for any other concept:
 
-- **3**: Large Language Models Overview
-- **9**: Skill Name and Description
-- **10**: Skill License Information
-- **12**: Skill Workflow Instructions
-- **14**: Listing Available Skills
-- **16**: Skill Execution Context
-- **18**: Command Definition Files
-- **19**: Installing Claude Commands
-- **20**: Difference Between Skills & Commands
-- **23**: Python Scripts in Skills
-- **24**: Template Files in Skills
-- **25**: Reference Documentation in Skills
-- **32**: Level 5: AI Personalization
-- **36**: Navigation Structure in MkDocs
-- **38**: Admonitions in MkDocs
-- **43**: Prerequisite Relationships
-- **45**: Learning Pathways
-- **47**: Target Audience Definition
-- **48**: Course Prerequisites
-- **49**: Main Topics Covered
+- **26**: Full Stack Overview
+- **31**: Pull Request
+- **46**: Service-Oriented Architecture
+- **49**: Infrastructure as a Service
+- **50**: Platform as a Service
+- **52**: Serverless Computing
+- **55**: Kubernetes Overview
+- **57**: Horizontal Scaling
+- **58**: Vertical Scaling
+- **60**: Content Delivery Network
+- **62**: High Availability
+- **63**: Fault Tolerance
+- **65**: System Throughput
+- **68**: GraphQL Overview
+- **72**: API Rate Limiting
+- **73**: API Versioning
+- **74**: API Documentation
+- **75**: Webhooks
+- **76**: Third-Party Integrations
+- **77**: API Gateway
 
-*...and 84 more*
+*...and 55 more*
 
 ## Connected Components
 
@@ -85,30 +78,29 @@ Top 10 concepts that are prerequisites for the most other concepts:
 
 | Rank | Concept ID | Concept Label | Indegree |
 |------|-----------|---------------|----------|
-| 1 | 26 | Intelligent Textbook | 13 |
-| 2 | 71 | CSV File Format for Graphs | 10 |
-| 3 | 82 | Quality Metrics for Graphs | 8 |
-| 4 | 53 | Bloom's 2001 Revision | 7 |
-| 5 | 105 | Dublin Core Metadata | 7 |
-| 6 | 6 | Claude Skill | 6 |
-| 7 | 13 | Installing a Claude Skill | 6 |
-| 8 | 39 | Learning Graph | 6 |
-| 9 | 46 | Course Description | 6 |
-| 10 | 116 | ISO 11179 Standards | 6 |
+| 1 | 66 | API Fundamentals | 14 |
+| 2 | 1 | Product Management | 11 |
+| 3 | 21 | Software Development | 9 |
+| 4 | 41 | System Architecture | 9 |
+| 5 | 146 | Data-Driven Decisions | 9 |
+| 6 | 147 | Product Analytics | 9 |
+| 7 | 86 | Database Fundamentals | 7 |
+| 8 | 136 | Testing Fundamentals | 7 |
+| 9 | 87 | Relational Databases | 6 |
+| 10 | 2 | Technical Product Manager | 5 |
 
 ## Outdegree Distribution
 
 | Dependencies | Number of Concepts |
 |--------------|--------------------|
-| 0 | 8 |
-| 1 | 166 |
-| 2 | 22 |
-| 3 | 3 |
-| 8 | 1 |
+| 0 | 1 |
+| 1 | 139 |
+| 2 | 50 |
+| 3 | 10 |
 
 ## Recommendations
 
-- ⚠️ **Many orphaned nodes** (104): Consider if these should be prerequisites for advanced concepts
+- ⚠️ **Many orphaned nodes** (75): Consider if these should be prerequisites for advanced concepts
 - ℹ️ **Consider adding cross-dependencies**: More connections could create richer learning pathways
 
 ---

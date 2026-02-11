@@ -1,209 +1,214 @@
 # Concept Taxonomy
 
-**Course:** Using Claude Skills to Create Intelligent Textbooks
-**Total Categories:** 12
-**Generated:** 2025-11-08
+**Course:** From Product Manager to Technical Product Manager: A Practitioner's Guide
+**Total Categories:** 11
+**Generated:** 2026-02-10
 
 ## Taxonomy Categories
 
-### 1. AI Foundations
-**TaxonomyID:** AIFND
+### 1. Product Management Foundations
+**TaxonomyID:** PMFND
 
-**Description:** Core concepts related to artificial intelligence, large language models, Claude AI, and prompt engineering fundamentals.
+**Description:** Core product management concepts that form the foundation for the entire course, including PM roles, strategy, stakeholder management, and product metrics.
 
 **Includes:**
-- AI basics and terminology
-- Claude AI and Claude Pro
-- Large language models
-- Prompt engineering principles
-- Token management
-- Usage optimization
+
+- Product management fundamentals and roles
+- Product strategy, vision, and roadmap
+- Stakeholder management and cross-functional teams
+- User needs, market research, and competitive analysis
+- Product metrics, KPIs, and OKRs
 
 ---
 
-### 2. Claude Skills System
-**TaxonomyID:** SKILL
+### 2. Software Development
+**TaxonomyID:** SWDEV
 
-**Description:** Concepts related to creating, installing, managing, and executing Claude Skills and Commands.
+**Description:** Foundational software development concepts that technical PMs need to understand, including programming basics, version control, and code collaboration workflows.
 
 **Includes:**
-- Skill definition and structure
-- YAML frontmatter
-- Skill installation and invocation
-- Claude Commands
-- Skill packaging and distribution
-- Testing and debugging
-- Security and permissions
+
+- Software development basics and source code
+- Programming languages overview
+- Frontend, backend, and full stack concepts
+- Version control, Git, and code repositories
+- Code review and pull request workflows
 
 ---
 
-### 3. Intelligent Textbooks
-**TaxonomyID:** IBOOK
+### 3. Technical Documentation
+**TaxonomyID:** TCDOC
 
-**Description:** Core concepts about intelligent textbooks, their levels of intelligence, and the overall creation workflow.
+**Description:** Concepts related to writing and interpreting technical documents, specifications, requirements, and communicating technical information.
 
 **Includes:**
-- What intelligent textbooks are
-- Five levels of intelligence
-- Textbook workflows
-- Chapter and section structure
-- Content organization
-- Reading level appropriateness
+
+- Technical documentation practices
+- Engineering and technical specifications
+- Functional and non-functional requirements
+- Software bugs and debugging fundamentals
+- Technical jargon and vocabulary
 
 ---
 
-### 4. MkDocs Platform
-**TaxonomyID:** MKDOC
+### 4. System Architecture
+**TaxonomyID:** SARCH
 
-**Description:** Concepts related to MkDocs documentation generator, Material theme, and Markdown formatting.
+**Description:** System design concepts including architecture patterns, cloud computing, scaling strategies, and system reliability principles.
 
 **Includes:**
-- MkDocs basics
-- Material for MkDocs theme
-- Configuration files
-- Navigation structure
-- Markdown formatting
-- Admonitions
-- GitHub Pages deployment
+
+- System architecture fundamentals and design patterns
+- Monolithic vs. microservices architecture
+- Cloud computing (IaaS, PaaS, SaaS, serverless)
+- Containerization (Docker, Kubernetes)
+- Scaling, load balancing, caching, and CDN
+- System reliability, availability, and fault tolerance
 
 ---
 
-### 5. Learning Graphs
-**TaxonomyID:** GRAPH
+### 5. APIs and Integrations
+**TaxonomyID:** APINT
 
-**Description:** Concepts related to learning graphs, concept dependencies, DAG structures, and graph quality metrics.
+**Description:** API concepts including REST, GraphQL, authentication, documentation, and tools for working with APIs.
 
 **Includes:**
-- Learning graph fundamentals
-- Concept nodes and edges
-- Dependencies and prerequisites
-- DAG (Directed Acyclic Graph)
-- Graph validation
-- Quality metrics
-- Visualization formats
+
+- API fundamentals and design patterns
+- REST API and GraphQL
+- HTTP methods, endpoints, and authentication
+- Data serialization (JSON, XML)
+- API testing, documentation, and tools (Postman, SDKs)
+- Webhooks and third-party integrations
 
 ---
 
-### 6. Educational Theory
-**TaxonomyID:** EDTHY
+### 6. Databases and Data
+**TaxonomyID:** DBASE
 
-**Description:** Educational frameworks, learning theories, and pedagogical principles including Bloom's Taxonomy and course design.
+**Description:** Database concepts including relational and NoSQL databases, SQL querying, data modeling, and data management practices.
 
 **Includes:**
-- Bloom's Taxonomy (2001 revision)
-- Six cognitive levels
-- Learning outcomes design
-- Course descriptions
-- Action verbs
-- Prerequisites and audience
+
+- Database fundamentals (relational and NoSQL)
+- SQL basics, queries, and joins
+- Database schema, normalization, and indexing
+- Data modeling and entity relationships
+- Data warehouses and data lakes
+- Database transactions, ACID properties, and performance
 
 ---
 
-### 7. Content Creation
-**TaxonomyID:** CONTE
+### 7. SDLC and Agile
+**TaxonomyID:** AGILE
 
-**Description:** Concepts related to generating and organizing educational content, chapters, and instructional materials.
+**Description:** Software development lifecycle methodologies, Agile practices, Scrum ceremonies, and release management processes.
 
 **Includes:**
-- Content generation processes
-- Chapter structure
-- Section organization
-- Worked examples
-- Practice exercises
-- Chapter index files
+
+- SDLC and Waterfall methodology
+- Agile development and Scrum framework
+- Sprint ceremonies (planning, standups, reviews, retrospectives)
+- Product backlog, user stories, and story points
+- Kanban method and velocity tracking
+- CI/CD, release management, and feature flags
+- MVP and iterative development
 
 ---
 
-### 8. Educational Resources
-**TaxonomyID:** RSRCE
+### 8. Quality and Testing
+**TaxonomyID:** QATST
 
-**Description:** Supplementary educational materials including glossaries, FAQs, quizzes, and reference lists.
+**Description:** Code quality, technical debt management, testing methodologies, and quality assurance practices.
 
 **Includes:**
-- Glossary generation
-- ISO 11179 standards for definitions
-- FAQ creation
-- Quiz generation
-- Multiple-choice questions
-- Assessment design
+
+- Technical debt and code quality
+- Code refactoring and legacy systems
+- Testing fundamentals (unit, integration, end-to-end)
+- Performance and security testing
+- Quality assurance and code coverage
+- Automated testing and system migration
 
 ---
 
-### 9. Interactive Elements
-**TaxonomyID:** INTER
+### 9. Analytics and Data Science
+**TaxonomyID:** ANLYT
 
-**Description:** Interactive simulations, MicroSims, and dynamic educational content using p5.js and other libraries.
+**Description:** Data-driven decision making, product analytics, experimentation, data visualization, and data governance.
 
 **Includes:**
-- MicroSims concept and structure
-- p5.js library
-- Interactive simulations
-- Interactive controls (sliders, buttons)
-- Seeded randomness
-- Iframe embedding
+
+- Data-driven decisions and product analytics
+- Web analytics and user behavior tracking
+- Funnel analysis, cohort analysis, and customer segmentation
+- A/B testing, experiment design, and statistical significance
+- Data visualization and dashboard design
+- Python for data analysis and ETL processes
+- Data privacy, GDPR, and data governance
 
 ---
 
-### 10. Version Control
-**TaxonomyID:** VERCT
+### 10. AI Tools and Strategy
+**TaxonomyID:** AITOL
 
-**Description:** Git version control, repository management, and deployment workflows for educational content.
+**Description:** Generative AI concepts, AI tools for product managers, prompt engineering, and AI strategy and governance.
 
 **Includes:**
-- Git basics
-- Version control concepts
-- Git commands (status, add, commit, push)
-- GitHub integration
-- Repository structure
-- GitHub Pages deployment
+
+- Generative AI and large language models
+- AI tools for PMs (ChatGPT, Claude, GitHub Copilot)
+- AI prompt engineering and code understanding
+- AI for documentation, data analysis, and debugging
+- AI limitations, ethics, and governance
+- AI in product strategy and integration planning
 
 ---
 
-### 11. Development Tools
-**TaxonomyID:** TOOLS
+### 11. Career and Leadership
+**TaxonomyID:** CARER
 
-**Description:** Development environments, command-line interfaces, terminals, and shell scripting tools.
+**Description:** Career transition skills, technical communication, decision-making frameworks, and professional development for technical PM roles.
 
 **Includes:**
-- Visual Studio Code
-- Command-line interface basics
-- Terminal operations
-- Bash shell
-- Shell scripts
-- Directory navigation
-- File operations
+
+- Technical PM job market and interview preparation
+- Technical communication and engineering team dynamics
+- Build vs. buy analysis and technical decision making
+- Escalation frameworks and technical roadmapping
+- Personal learning plans and continuous technical learning
 
 ---
 
-### 12. Data & Scripting
-**TaxonomyID:** DATAS
+## Category Distribution
 
-**Description:** Data formats, scripting languages, file processing, and metadata standards used in the textbook workflow.
+| Category | TaxonomyID | Count | Percentage |
+|----------|-----------|-------|------------|
+| System Architecture | SARCH | 25 | 12.5% |
+| Databases and Data | DBASE | 25 | 12.5% |
+| Analytics and Data Science | ANLYT | 25 | 12.5% |
+| Product Management Foundations | PMFND | 20 | 10.0% |
+| APIs and Integrations | APINT | 20 | 10.0% |
+| SDLC and Agile | AGILE | 20 | 10.0% |
+| AI Tools and Strategy | AITOL | 20 | 10.0% |
+| Quality and Testing | QATST | 15 | 7.5% |
+| Software Development | SWDEV | 11 | 5.5% |
+| Career and Leadership | CARER | 10 | 5.0% |
+| Technical Documentation | TCDOC | 9 | 4.5% |
 
-**Includes:**
-- Python programming
-- Python scripts for data processing
-- CSV file format
-- JSON format and schema
-- Dublin Core metadata
-- pip package management
-- Taxonomy categorization
-- Data validation scripts
+## Distribution Guidelines
 
----
-
-## Category Distribution Guidelines
-
-- Target: ~16-17 concepts per category (200 concepts ÷ 12 categories)
+- Target: ~18 concepts per category (200 concepts / 11 categories)
 - Maximum: 30% of total concepts (~60 concepts)
-- Minimum: 5% of total concepts (~10 concepts)
-- Use **MISC** for concepts that don't fit clearly into defined categories
+- Minimum: No category below 3% (~6 concepts)
+- Spread: 8.0% (excellent balance)
 
 ## Notes
 
-This taxonomy provides a balanced organization of course concepts across technical, pedagogical, and practical domains. Categories are designed to:
-1. Avoid excessive overlap
-2. Maintain clear boundaries
-3. Support logical learning progressions
-4. Enable effective visualization with distinct colors
-5. Align with the course structure and learning outcomes
+This taxonomy provides a balanced organization across technical, analytical, and professional domains. Categories are designed to:
+
+1. Avoid excessive overlap between categories
+2. Maintain clear boundaries aligned with course topics
+3. Support logical learning progressions from PM foundations to technical depth
+4. Enable effective color-coded visualization in the learning graph
+5. Align with the course structure and Bloom's Taxonomy learning outcomes

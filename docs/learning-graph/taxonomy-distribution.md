@@ -3,41 +3,39 @@
 ## Overview
 
 - **Total Concepts**: 200
-- **Number of Taxonomies**: 12
-- **Average Concepts per Taxonomy**: 16.7
+- **Number of Taxonomies**: 11
+- **Average Concepts per Taxonomy**: 18.2
 
 ## Distribution Summary
 
 | Category | TaxonomyID | Count | Percentage | Status |
 |----------|-----------|-------|------------|--------|
-| DATAS | DATAS | 37 | 18.5% | ✅ |
-| SKILL | SKILL | 30 | 15.0% | ✅ |
-| GRAPH | GRAPH | 30 | 15.0% | ✅ |
-| RSRCE | RSRCE | 18 | 9.0% | ✅ |
-| EDTHY | EDTHY | 17 | 8.5% | ✅ |
-| AIFND | AIFND | 14 | 7.0% | ✅ |
-| Intermediate Topics | INTER | 12 | 6.0% | ✅ |
-| TOOLS | TOOLS | 11 | 5.5% | ✅ |
-| VERCT | VERCT | 9 | 4.5% | ✅ |
-| IBOOK | IBOOK | 8 | 4.0% | ✅ |
-| CONTE | CONTE | 8 | 4.0% | ✅ |
-| MKDOC | MKDOC | 6 | 3.0% | ✅ |
+| System Architecture | SARCH | 25 | 12.5% | ✅ |
+| Databases and Data | DBASE | 25 | 12.5% | ✅ |
+| Analytics and Data Science | ANLYT | 25 | 12.5% | ✅ |
+| Product Management Foundations | PMFND | 20 | 10.0% | ✅ |
+| APIs and Integrations | APINT | 20 | 10.0% | ✅ |
+| SDLC and Agile | AGILE | 20 | 10.0% | ✅ |
+| AI Tools and Strategy | AITOL | 20 | 10.0% | ✅ |
+| Quality and Testing | QATST | 15 | 7.5% | ✅ |
+| Software Development | SWDEV | 11 | 5.5% | ✅ |
+| Career and Leadership | CARER | 10 | 5.0% | ✅ |
+| Technical Documentation | TCDOC | 9 | 4.5% | ✅ |
 
 ## Visual Distribution
 
 ```
-DATAS  █████████  37 ( 18.5%)
-SKILL  ███████  30 ( 15.0%)
-GRAPH  ███████  30 ( 15.0%)
-RSRCE  ████  18 (  9.0%)
-EDTHY  ████  17 (  8.5%)
-AIFND  ███  14 (  7.0%)
-INTER  ███  12 (  6.0%)
-TOOLS  ██  11 (  5.5%)
-VERCT  ██   9 (  4.5%)
-IBOOK  ██   8 (  4.0%)
-CONTE  ██   8 (  4.0%)
-MKDOC  █   6 (  3.0%)
+SARCH  ██████  25 ( 12.5%)
+DBASE  ██████  25 ( 12.5%)
+ANLYT  ██████  25 ( 12.5%)
+PMFND  █████  20 ( 10.0%)
+APINT  █████  20 ( 10.0%)
+AGILE  █████  20 ( 10.0%)
+AITOL  █████  20 ( 10.0%)
+QATST  ███  15 (  7.5%)
+SWDEV  ██  11 (  5.5%)
+CARER  ██  10 (  5.0%)
+TCDOC  ██   9 (  4.5%)
 ```
 
 ## Balance Analysis
@@ -48,241 +46,243 @@ All categories are under the 30% threshold. Good balance!
 
 ## Category Details
 
-### DATAS (DATAS)
+### System Architecture (SARCH)
 
-**Count**: 37 concepts (18.5%)
-
-**Concepts**:
-
-- 71. CSV File Format for Graphs
-- 72. Pipe-Delimited Dependencies
-- 73. ConceptID Field
-- 74. ConceptLabel Field
-- 75. Dependencies Field
-- 91. Taxonomy
-- 92. Concept Categorization
-- 93. Taxonomy Categories
-- 94. TaxonomyID Abbreviations
-- 95. Category Distribution
-- 96. Avoiding Over-Representation
-- 97. TaxonomyID Field in CSV
-- 98. Adding Taxonomy to Graph
-- 99. vis-network JSON Format
-- 100. JSON Schema for Learning Graphs
-- *...and 22 more*
-
-### SKILL (SKILL)
-
-**Count**: 30 concepts (15.0%)
+**Count**: 25 concepts (12.5%)
 
 **Concepts**:
 
-- 6. Claude Skill
-- 7. Skill Definition File Structure
-- 8. YAML Frontmatter in Skills
-- 9. Skill Name and Description
-- 10. Skill License Information
-- 11. Allowed Tools in Skills
-- 12. Skill Workflow Instructions
-- 13. Installing a Claude Skill
-- 14. Listing Available Skills
-- 15. Invoking Skills with Slash Commands
-- 16. Skill Execution Context
-- 17. Claude Command
-- 18. Command Definition Files
-- 19. Installing Claude Commands
-- 20. Difference Between Skills & Commands
-- *...and 15 more*
+- 41. System Architecture
+- 42. Software Components
+- 43. Client-Server Model
+- 44. Monolithic Architecture
+- 45. Microservices
+- 46. Service-Oriented Architecture
+- 47. Distributed Systems
+- 48. Cloud Computing
+- 49. Infrastructure as a Service
+- 50. Platform as a Service
+- 51. Software as a Service
+- 52. Serverless Computing
+- 53. Containerization
+- 54. Docker Overview
+- 55. Kubernetes Overview
+- *...and 10 more*
 
-### GRAPH (GRAPH)
+### Databases and Data (DBASE)
 
-**Count**: 30 concepts (15.0%)
-
-**Concepts**:
-
-- 39. Learning Graph
-- 40. Concept Nodes in Learning Graphs
-- 41. Dependency Edges in Learning Graphs
-- 42. Directed Acyclic Graph (DAG)
-- 43. Prerequisite Relationships
-- 44. Concept Dependencies
-- 45. Learning Pathways
-- 63. Concept Enumeration Process
-- 64. Generating 200 Concepts
-- 65. Concept Label Requirements
-- 66. Title Case Convention
-- 67. Maximum Character Length
-- 68. Concept Granularity
-- 69. Atomic Concepts
-- 70. Dependency Mapping Process
-- *...and 15 more*
-
-### RSRCE (RSRCE)
-
-**Count**: 18 concepts (9.0%)
+**Count**: 25 concepts (12.5%)
 
 **Concepts**:
 
-- 115. Glossary
-- 116. ISO 11179 Standards
-- 117. Precise Definitions
-- 118. Concise Definitions
-- 119. Distinct Definitions
-- 120. Non-Circular Definitions
-- 121. Definitions Without Business Rules
-- 122. Glossary Generation Process
-- 123. FAQ
-- 124. FAQ Generation Process
-- 125. Common Student Questions
-- 126. FAQ from Course Content
-- 139. Quiz
-- 140. Multiple-Choice Questions
-- 141. Quiz Alignment with Concepts
-- *...and 3 more*
+- 86. Database Fundamentals
+- 87. Relational Databases
+- 88. SQL Basics
+- 89. SQL Queries
+- 90. SQL Joins
+- 91. Data Tables
+- 92. Primary Keys
+- 93. Foreign Keys
+- 94. Database Schema
+- 95. Data Normalization
+- 96. NoSQL Databases
+- 97. Document Databases
+- 98. Key-Value Stores
+- 99. Data Warehouse
+- 100. Data Lake
+- *...and 10 more*
 
-### EDTHY (EDTHY)
+### Analytics and Data Science (ANLYT)
 
-**Count**: 17 concepts (8.5%)
-
-**Concepts**:
-
-- 46. Course Description
-- 47. Target Audience Definition
-- 48. Course Prerequisites
-- 49. Main Topics Covered
-- 50. Topics Excluded from Course
-- 51. Learning Outcomes
-- 52. Bloom's Taxonomy
-- 53. Bloom's 2001 Revision
-- 54. Remember (Cognitive Level 1)
-- 55. Understand (Cognitive Level 2)
-- 56. Apply (Cognitive Level 3)
-- 57. Analyze (Cognitive Level 4)
-- 58. Evaluate (Cognitive Level 5)
-- 59. Create (Cognitive Level 6)
-- 60. Action Verbs for Learning Outcomes
-- *...and 2 more*
-
-### AIFND (AIFND)
-
-**Count**: 14 concepts (7.0%)
+**Count**: 25 concepts (12.5%)
 
 **Concepts**:
 
-- 1. Artificial Intelligence
-- 2. Claude AI
-- 3. Large Language Models Overview
-- 4. Anthropic Claude Pro Account
-- 5. Claude Code Interface
-- 176. Prompt Engineering
-- 177. Prompt Design Principles
-- 178. Educational Content Prompts
-- 179. Iterative Prompt Refinement
-- 180. Claude Token Limits
-- 181. Token Management Strategies
-- 182. 4-Hour Usage Windows
-- 183. Claude Pro Limitations
-- 184. Optimizing Claude Usage
+- 146. Data-Driven Decisions
+- 147. Product Analytics
+- 148. Web Analytics
+- 149. User Behavior Tracking
+- 150. Funnel Analysis
+- 151. Cohort Analysis
+- 152. A/B Testing
+- 153. Statistical Significance
+- 154. Conversion Rate
+- 155. Retention Metrics
+- 156. Churn Rate
+- 157. Dashboard Design
+- 158. Data Visualization
+- 159. Python for Data Analysis
+- 160. Data Pipelines
+- *...and 10 more*
 
-### Intermediate Topics (INTER)
+### Product Management Foundations (PMFND)
 
-**Count**: 12 concepts (6.0%)
+**Count**: 20 concepts (10.0%)
 
 **Concepts**:
 
-- 127. MicroSim
-- 128. p5.js JavaScript Library
-- 129. Interactive Simulations
-- 130. MicroSim Directory Structure
-- 131. main.html in MicroSims
-- 132. index.md for MicroSim Docs
-- 133. Iframe Embedding
-- 134. Seeded Randomness
-- 135. Interactive Controls (Sliders)
-- 136. Interactive Controls (Buttons)
-- 137. MicroSim Metadata
-- 138. Educational Simulation Design
+- 1. Product Management
+- 2. Technical Product Manager
+- 3. Product Lifecycle
+- 4. Software Product
+- 5. Technical Literacy
+- 6. Engineering Mindset
+- 7. Product Strategy
+- 8. Business Requirements
+- 9. User Needs
+- 10. Stakeholder Management
+- 11. Cross-Functional Teams
+- 12. Product Vision
+- 13. Product Roadmap
+- 14. Value Proposition
+- 15. Market Research
+- *...and 5 more*
 
-### TOOLS (TOOLS)
+### APIs and Integrations (APINT)
+
+**Count**: 20 concepts (10.0%)
+
+**Concepts**:
+
+- 66. API Fundamentals
+- 67. REST API
+- 68. GraphQL Overview
+- 69. API Endpoints
+- 70. HTTP Methods
+- 71. API Authentication
+- 72. API Rate Limiting
+- 73. API Versioning
+- 74. API Documentation
+- 75. Webhooks
+- 76. Third-Party Integrations
+- 77. API Gateway
+- 78. Middleware
+- 79. Data Serialization
+- 80. JSON Format
+- *...and 5 more*
+
+### SDLC and Agile (AGILE)
+
+**Count**: 20 concepts (10.0%)
+
+**Concepts**:
+
+- 111. Software Dev Lifecycle
+- 112. Waterfall Methodology
+- 113. Agile Development
+- 114. Scrum Framework
+- 115. Sprint Planning
+- 116. Daily Standups
+- 117. Sprint Review
+- 118. Sprint Retrospective
+- 119. Product Backlog
+- 120. User Stories
+- 121. Acceptance Criteria
+- 122. Story Points
+- 123. Velocity Tracking
+- 124. Kanban Method
+- 125. Continuous Integration
+- *...and 5 more*
+
+### AI Tools and Strategy (AITOL)
+
+**Count**: 20 concepts (10.0%)
+
+**Concepts**:
+
+- 171. Generative AI Overview
+- 172. Large Language Models
+- 173. ChatGPT for PMs
+- 174. Claude for PMs
+- 175. GitHub Copilot
+- 176. AI Prompt Engineering
+- 177. AI Code Understanding
+- 178. AI for Documentation
+- 179. AI for Data Analysis
+- 180. AI Limitations
+- 181. AI Ethics
+- 182. AI in Product Strategy
+- 183. AI-Augmented Learning
+- 184. AI for Debugging
+- 185. AI for Prototyping
+- *...and 5 more*
+
+### Quality and Testing (QATST)
+
+**Count**: 15 concepts (7.5%)
+
+**Concepts**:
+
+- 131. Technical Debt
+- 132. Code Quality
+- 133. Code Refactoring
+- 134. Legacy Systems
+- 135. System Migration
+- 136. Testing Fundamentals
+- 137. Unit Testing
+- 138. Integration Testing
+- 139. End-to-End Testing
+- 140. Quality Assurance
+- 141. Performance Testing
+- 142. Security Testing
+- 143. Code Coverage
+- 144. Automated Testing
+- 145. Technical Debt Tracking
+
+### Software Development (SWDEV)
 
 **Count**: 11 concepts (5.5%)
 
 **Concepts**:
 
-- 162. Visual Studio Code
-- 163. VS Code for Content Development
-- 164. Terminal in VS Code
-- 165. Bash
-- 166. Shell Scripts
-- 167. Script Execution Permissions
-- 191. Command-Line Interface Basics
-- 192. Terminal Commands
-- 193. Directory Navigation
-- 194. File Creation and Editing
-- 195. Symlink Creation
+- 21. Software Development
+- 22. Source Code
+- 23. Programming Languages
+- 24. Frontend Development
+- 25. Backend Development
+- 26. Full Stack Overview
+- 27. Version Control
+- 28. Git Basics
+- 29. Code Repository
+- 30. Code Review
+- 31. Pull Request
 
-### VERCT (VERCT)
+### Career and Leadership (CARER)
+
+**Count**: 10 concepts (5.0%)
+
+**Concepts**:
+
+- 191. Technical PM Job Market
+- 192. Technical Interview Prep
+- 193. Technical Communication
+- 194. Engineering Team Dynamics
+- 195. Build vs Buy Analysis
+- 196. Technical Decision Making
+- 197. Escalation Frameworks
+- 198. Technical Roadmapping
+- 199. Personal Learning Plan
+- 200. Continuous Tech Learning
+
+### Technical Documentation (TCDOC)
 
 **Count**: 9 concepts (4.5%)
 
 **Concepts**:
 
-- 153. Git
-- 154. Version Control Basics
-- 155. Git Repository Structure
-- 156. Git Status Command
-- 157. Git Add Command
-- 158. Git Commit Command
-- 159. Git Push Command
-- 160. GitHub Integration
-- 161. GitHub Pages Deployment
-
-### IBOOK (IBOOK)
-
-**Count**: 8 concepts (4.0%)
-
-**Concepts**:
-
-- 26. Intelligent Textbook
-- 27. Five Levels of Textbook Intelligence
-- 28. Level 1: Static Content
-- 29. Level 2: Hyperlinked Navigation
-- 30. Level 3: Interactive Elements
-- 31. Level 4: Adaptive Content
-- 32. Level 5: AI Personalization
-- 200. Capstone: Complete Textbook Project
-
-### CONTE (CONTE)
-
-**Count**: 8 concepts (4.0%)
-
-**Concepts**:
-
-- 145. Chapter Structure
-- 146. Section Organization
-- 147. Content Generation Process
-- 148. Chapter Index Files
-- 149. Chapter Concept Lists
-- 150. Reading Level Appropriateness
-- 151. Worked Examples in Content
-- 152. Practice Exercises
-
-### MKDOC (MKDOC)
-
-**Count**: 6 concepts (3.0%)
-
-**Concepts**:
-
-- 33. MkDocs
-- 34. MkDocs Material Theme
-- 35. MkDocs Configuration File
-- 36. Navigation Structure in MkDocs
-- 37. Markdown Formatting Basics
-- 38. Admonitions in MkDocs
+- 32. Technical Documentation
+- 33. Engineering Specifications
+- 34. Technical Requirements
+- 35. Functional Requirements
+- 36. Non-Functional Requirements
+- 37. Technical Specifications
+- 38. Software Bug
+- 39. Debugging Basics
+- 40. Technical Jargon
 
 ## Recommendations
 
-- ✅ **Good balance**: Categories are reasonably distributed (spread: 15.5%)
+- ✅ **Excellent balance**: Categories are evenly distributed (spread: 8.0%)
 - ✅ **MISC category minimal**: Good categorization specificity
 
 ### Educational Use Recommendations

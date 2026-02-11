@@ -1,134 +1,111 @@
 ---
-title: Course Description for Using Claude Skills to Create Intelligent Textbooks
-description: A detailed course description 
-quality_score: 95
+title: Course Description for From Product Manager to Technical Product Manager
+description: A detailed course description for From Product Manager to Technical Product Manager including overview, topics covered and learning objectives in the format of the 2001 Bloom Taxonomy
+quality_score: 100
 ---
-# Using Claude Skills to Create Intelligent Textbooks
 
-**Title:** Using Claude Skills to Create Intelligent Textbooks
-**Target Audience:** Professional development
-**Reading Level:** undergrad college student
+# Course Title
+From Product Manager to Technical Product Manager: A Practitioner's Guide
 
-## Prerequisites:
-
-- Basic understanding of programming
-- Basics of prompt engineering
-- Anthropic Claude access
-- Curiosity about using AI to build textbooks
+## Target Audience
+Product managers with 3-8 years of experience who want to transition into technical product management roles. Assumes familiarity with basic product management concepts but no prior programming or technical background required.
 
 ## Course Overview
+Not all technical product managers start as engineers. This course is designed for experienced product managers who want to transition into technical PM roles but didn't follow the traditional engineer-to-PM path.
 
-This course provides comprehensive training on leveraging Claude Skills to create intelligent, interactive textbooks that enhance learning through AI-assisted content generation. Participants will learn the complete workflow from course conception through deployment, including creating learning graphs, generating glossaries, building interactive simulations, and publishing professional educational materials.
+Drawing from real-world experience managing software products, this course bridges the gap between business-focused product management and the technical depth required for technical PM roles. You'll learn to speak the language of engineers, understand system architecture, make data-driven decisions, and confidently navigate technical trade-offs - all while leveraging the product instincts you've already developed.
 
-The course emphasizes practical, hands-on skills for educators, instructional designers, and content creators who want to harness the power of AI to produce high-quality educational materials efficiently. By mastering Claude Skills and the intelligent textbook creation workflow, participants will be able to transform their subject matter expertise into engaging, pedagogically sound learning resources that adapt to modern educational needs.
+**The AI Advantage:** Generative AI tools are democratizing technical knowledge, making this transition more achievable than ever. This course teaches you how to leverage AI assistants for learning technical concepts, debugging code, analyzing data, and understanding system designs - skills that would have traditionally required years of engineering experience. As AI reshapes the product management landscape, technical PMs who can effectively collaborate with both AI tools and engineering teams will be uniquely positioned to drive innovation.
 
-Through this professional development opportunity, learners will gain expertise in both the technical aspects of working with Claude Skills and the educational design principles that make intelligent textbooks effective learning tools.
+Whether your background is in art history, business, or any non-engineering field, this course proves that technical product management is accessible through deliberate learning, AI-augmented skill building, and practical application. You'll build the technical foundation that complements your existing PM skills, preparing you to compete for technical PM roles in an AI-integrated industry.
 
-We place an emphasis on being frugal with using tokens in textbook generation.  We realize that
-most teachers can't afford to pay for the Claude Code Max ($100/month) and want to built their
-textbooks using the lower-cost Claude Pro ($20/month) account.  So we show how each
-skill can be monitored for time and token usage and we present ideas to lower the cost of generating
-textbooks and MicroSims.
+## Prerequisites
+- 3+ years product management experience
+- Basic understanding of software development lifecycle
+- Willingness to learn technical concepts
 
 ## Main Topics Covered
+This course addresses the following key topics:
 
-- Prompt engineering for educational content
-- Claude Skills architecture and components
-- Skill packaging and distribution
-- Monitoring Skill resource utilization
-- Intelligent textbook workflows
-- Learning graphs and concept mapping
-- Graph databases and algorithms
-- Educational book structure and organization
-- Git and revision control for content management
-- Visual Studio Code for content development
-- Integrating Claude Code into your IDE
-- Installing, generating, and publishing skills
-- Testing and debugging skills
-- Security and permission management
-- Terminal commands and command-line interfaces
-- Claude usage optimization and token limits
-- Understanding 4-hour windows and Claude Pro
-- Course descriptions and learning outcomes
-- 2001 Bloom's Taxonomy application
-- Shell scripts and Python programs
-- pip package management
-- MkDocs and MkDocs Material theme
+- Technical vocabulary and terminology for product managers
+- System architecture fundamentals and design patterns
+- APIs and integrations in product development
+- Databases and SQL for product insights
+- Software development lifecycle and Agile methodologies
+- Technical debt and code quality considerations
+- Data-driven decision making and analytics
+- AI tools for technical PMs (Claude, ChatGPT, GitHub Copilot)
+- Technical roadmapping and prioritization
+- Build vs. buy analysis and technical tradeoffs
+- Technical communication with engineering teams
+- Career transition strategies for technical PM roles
 
 ## Topics Not Covered
+This course explicitly excludes the following topics to maintain focus:
 
-While this course provides comprehensive coverage of Claude Skills for intelligent textbook creation, the following topics are explicitly out of scope:
+- Full-stack software engineering and production code development
+- Advanced algorithms and data structures
+- DevOps, CI/CD pipelines, and infrastructure management
+- Machine learning model development and training
+- UX/UI design principles and user research methodologies
+- Financial modeling, budgeting, and P&L management
 
-- Advanced machine learning theory or model training
-- General web development beyond MkDocs and some simple CSS
-- Database administration beyond graph database basics
-- Advanced Git workflows for large development teams
-- General Python programming (only specific scripts used in the workflow)
-- Graphic design and image editing
-- Video production and multimedia creation
-- Learning management system (LMS) integration
-- Accessibility compliance in depth (though best practices are mentioned)
-- Copyright and intellectual property law
+## Learning Objectives
+By the end of this course, students will be able to:
 
-## Learning Outcomes
+### Remember:
+- Define key technical terms used in software development (APIs, databases, microservices, technical debt)
+- Identify the components of common system architectures
+- List the technical skills most valued in technical PM job descriptions
 
-After completing this course, students will be able to:
+### Understand:
+- Explain how different technical decisions impact product scalability and performance
+- Describe the software development lifecycle from a technical perspective
+- Interpret technical documentation and engineering specifications
 
-### Remember
-*Retrieving, recognizing, and recalling relevant knowledge from long-term memory.*
+### Apply:
+- Use SQL to query databases for product insights
+- Leverage AI tools (ChatGPT, Claude, GitHub Copilot) to understand technical concepts
+- Communicate technical requirements to engineering teams effectively
+- Write basic Python scripts for data analysis
 
-- Remember the steps in creating an intelligent textbook
-- Remember what a learning graph is
-- Remember what a Claude skill is
-- Remember that skill resource utilization can be monitored
-- Remember the steps to install a Claude skill
-- Remember the steps to install a Claude command
-- Remember how to list Claude skills
+### Analyze:
+- Evaluate trade-offs between technical solutions (build vs. buy, monolith vs. microservices)
+- Assess technical feasibility of product features
+- Compare technical PM role requirements across different companies and industries
 
-### Understand
-*Constructing meaning from instructional messages, including oral, written, and graphic communication.*
+### Evaluate:
+- Critique system architecture proposals for product scalability
+- Justify technical decisions to stakeholders using data
+- Assess when to escalate technical decisions vs. when to decide independently
 
-- Understand how skills are used
-- Understand how skills are created
-- Understand how hooks can be used to monitor skill elapsed time and token usage
-- Understand what skills intelligent textbooks need
-- Understand how a learning graph is used as a roadmap for guiding students on their learning journey
-- Understand the order skills should be run
+### Create:
+- Design data-driven product experiments using analytics tools
+- Develop technical roadmaps that balance user needs with engineering constraints
+- Build a personal technical learning plan for continued growth
 
-### Apply
-*Carrying out or using a procedure in a given situation.*
+## Key Concepts and Definitions
 
-- Apply prompt engineering to create a skill using the skill-creator skill
-- Apply the skill creator skill to create a new skill
-- Apply the command creation steps to create new commands
-- Apply skill usage log files to analyze time and token consumption for each skill
+**Technical Product Manager (Technical PM):** A product manager who possesses deep technical knowledge and can engage directly with engineering teams on architecture, system design, and implementation decisions while maintaining focus on user needs and business outcomes.
 
-### Analyze
-*Breaking material into constituent parts and determining how the parts relate to one another and to an overall structure or purpose.*
+**API (Application Programming Interface):** A set of protocols and tools that allows different software applications to communicate with each other, enabling product integrations and data exchange.
 
-- Analyze the result of a skill execution
-- Analyze the quality of content generated by a skill
-- Analyze the completeness of a document such as a course description
-- Analyze if a skill needs to be improved
-- Analyze why skills do not install correctly
-- Analyze if quality reports are working
-- Analyze skill usage log files and dashboard reports
+**System Architecture:** The fundamental structures of a software system, including its components, relationships, and design principles that guide implementation decisions.
 
-### Evaluate
-*Making judgments based on criteria and standards through checking and critiquing.*
+**Technical Debt:** The implied cost of future reworking required when choosing an easy or quick solution now instead of a better approach that would take longer, impacting long-term product velocity.
 
-- Evaluate the quality of a course description
-- Evaluate the quality of a skill
-- Evaluate if quality tests are a good use of tokens
-- Evaluate the quality of a book
-- Evaluate the quality of a book announcement
-- Evaluate the quality of preview images for social media posts
+**Data-Driven Decision Making:** The practice of basing product decisions on data analysis and interpretation rather than intuition alone, using metrics, analytics, and user behavior patterns.
 
-### Create
-*Putting elements together to form a coherent or functional whole; reorganizing elements into a new pattern or structure.*
+**Agile Development:** An iterative software development methodology emphasizing collaboration, flexibility, and continuous delivery of working software in short cycles (sprints).
 
-- Create new skills from scratch
-- Create new intelligent textbooks for various subjects
-- Create new commands for Claude workflows
-- Create new dashboards for monitoring skill resource utilization
-- Design and implement a complete intelligent textbook project (capstone)
+**Generative AI:** Artificial intelligence systems that can create new content (text, code, images) based on patterns learned from training data, used as tools for learning, coding assistance, and problem-solving.
+
+## Course Outcomes
+Upon completion of this course, students will be positioned to:
+
+- **Compete confidently for technical PM roles** alongside candidates with traditional engineering backgrounds
+- **Communicate effectively with engineering teams** using appropriate technical terminology and concepts
+- **Make informed technical decisions** that balance user needs, business goals, and engineering constraints
+- **Leverage AI tools strategically** to accelerate technical learning and enhance productivity
+- **Deliver high-impact outcomes for technical products and teams** by bridging business strategy with technical execution
+- **Continue learning independently** using AI assistants and technical resources to deepen expertise over time

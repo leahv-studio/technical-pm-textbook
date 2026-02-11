@@ -13,46 +13,21 @@ nav:
   - Getting Started: getting-started.md
 
   - Chapters:
-    - Overview: chapters/index.md
-    - Chapter 1 - Introduction to AI and Intelligent Textbooks:
-      - Content: chapters/01-intro-ai-intelligent-textbooks/index.md
-      - Quiz: chapters/01-intro-ai-intelligent-textbooks/quiz.md
-    - Chapter 2 - Getting Started with Claude and Skills:
-      - Content: chapters/02-getting-started-claude-skills/index.md
-      - Quiz: chapters/02-getting-started-claude-skills/quiz.md
-    - Chapter 3 - Course Design and Educational Theory:
-      - Content: chapters/03-course-design-educational-theory/index.md
-      - Quiz: chapters/03-course-design-educational-theory/quiz.md
-    - Chapter 4 - Introduction to Learning Graphs:
-      - Content: chapters/04-intro-learning-graphs/index.md
-      - Quiz: chapters/04-intro-learning-graphs/quiz.md
-    - Chapter 5 - Concept Enumeration and Dependencies:
-      - Content: chapters/05-concept-enumeration-dependencies/index.md
-      - Quiz: chapters/05-concept-enumeration-dependencies/quiz.md
-    - Chapter 6 - Learning Graph Quality and Validation:
-      - Content: chapters/06-learning-graph-quality-validation/index.md
-      - Quiz: chapters/06-learning-graph-quality-validation/quiz.md
-    - Chapter 7 - Taxonomy and Data Formats:
-      - Content: chapters/07-taxonomy-data-formats/index.md
-      - Quiz: chapters/07-taxonomy-data-formats/quiz.md
-    - Chapter 8 - MkDocs Platform and Documentation:
-      - Content: chapters/08-mkdocs-platform-documentation/index.md
-      - Quiz: chapters/08-mkdocs-platform-documentation/quiz.md
-    - Chapter 9 - Claude Skills Architecture and Development:
-      - Content: chapters/09-claude-skills-architecture-development/index.md
-      - Quiz: chapters/09-claude-skills-architecture-development/quiz.md
-    - Chapter 10 - Content Creation Workflows:
-      - Content: chapters/10-content-creation-workflows/index.md
-      - Quiz: chapters/10-content-creation-workflows/quiz.md
-    - Chapter 11 - Educational Resources and Assessment:
-      - Content: chapters/11-educational-resources-assessment/index.md
-      - Quiz: chapters/11-educational-resources-assessment/quiz.md
-    - Chapter 12 - Interactive Elements and MicroSims:
-      - Content: chapters/12-interactive-elements-microsims/index.md
-      - Quiz: chapters/12-interactive-elements-microsims/quiz.md
-    - Chapter 13 - Development Tools, Version Control, and Deployment:
-      - Content: chapters/13-dev-tools-version-control-deployment/index.md
-      - Quiz: chapters/13-dev-tools-version-control-deployment/quiz.md
+    - List of Chapters: chapters/index.md
+    - 1. Product Management Foundations: chapters/01-pm-foundations/index.md
+    - 2. Software Development Essentials: chapters/02-software-development-essentials/index.md
+    - 3. Technical Documentation and Requirements: chapters/03-technical-documentation/index.md
+    - 4. System Architecture Fundamentals: chapters/04-system-architecture/index.md
+    - 5. Cloud Computing, Scaling, and Infrastructure: chapters/05-cloud-computing-infrastructure/index.md
+    - 6. APIs and Integrations: chapters/06-apis-and-integrations/index.md
+    - 7. Databases and SQL: chapters/07-databases-and-sql/index.md
+    - 8. Advanced Data Management: chapters/08-advanced-data-management/index.md
+    - 9. Quality Assurance and Technical Debt: chapters/09-quality-assurance-technical-debt/index.md
+    - 10. SDLC and Agile Methodologies: chapters/10-sdlc-and-agile/index.md
+    - 11. Analytics and Data-Driven Decisions: chapters/11-analytics-data-driven-decisions/index.md
+    - 12. Advanced Analytics and Experimentation: chapters/12-advanced-analytics-experimentation/index.md
+    - 13. AI Tools and Strategy for Technical PMs: chapters/13-ai-tools-and-strategy/index.md
+    - 14. Career Transition and Technical Leadership: chapters/14-career-transition-leadership/index.md
 
   - Skill Descriptions:
     - Overview of Skills: skill-descriptions/index.md
