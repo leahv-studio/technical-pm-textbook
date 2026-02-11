@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Architecture Diagram</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Full-Stack Architecture</h1>
+        <p class="subtitle">Click a layer to see PM discussion points. Hover for details.</p>
+
+        <div class="diagram">
+            <!-- Layer 1: User/Browser -->
+            <div class="layer" id="layer-user" data-layer="user" tabindex="0">
+                <div class="layer-header">
+                    <div class="layer-icon">&#x1F310;</div>
+                    <div class="layer-title">
+                        <h2>User / Browser Layer</h2>
+                        <span class="layer-tagline">What the user sees</span>
+                    </div>
+                </div>
+                <div class="layer-body">
+                    <div class="layer-details">
+                        <div class="detail-col">
+                            <h3>Components</h3>
+                            <ul>
+                                <li>Browser window</li>
+                                <li>Mobile app</li>
+                                <li>User interface</li>
+                            </ul>
+                        </div>
+                        <div class="detail-col">
+                            <h3>Technologies</h3>
+                            <ul>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>JavaScript</li>
+                            </ul>
+                        </div>
+                        <div class="detail-col example-col">
+                            <h3>Example</h3>
+                            <p class="example-text">User clicks "Add to Cart"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pm-points" id="pm-user">
+                    <h3>PM Discussion Points</h3>
+                    <ul>
+                        <li>What devices and browsers must we support?</li>
+                        <li>What are the accessibility (a11y) requirements?</li>
+                        <li>What is the acceptable page load time?</li>
+                        <li>How do we measure user engagement and conversion?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Arrow between User and Frontend -->
+            <div class="arrow-container">
+                <div class="arrow-down">
+                    <svg width="40" height="50" viewBox="0 0 40 50">
+                        <line x1="12" y1="0" x2="12" y2="45" stroke="#3b82f6" stroke-width="2"/>
+                        <polygon points="5,38 12,50 19,38" fill="#3b82f6"/>
+                    </svg>
+                    <span class="arrow-label arrow-label-down">HTTP Request</span>
+                </div>
+                <div class="arrow-up">
+                    <svg width="40" height="50" viewBox="0 0 40 50">
+                        <line x1="28" y1="5" x2="28" y2="50" stroke="#60a5fa" stroke-width="2"/>
+                        <polygon points="21,12 28,0 35,12" fill="#60a5fa"/>
+                    </svg>
+                    <span class="arrow-label arrow-label-up">Rendered HTML/JS</span>
+                </div>
+            </div>
+
+            <!-- Layer 2: Frontend -->
+            <div class="layer" id="layer-frontend" data-layer="frontend" tabindex="0">
+                <div class="layer-header">
+                    <div class="layer-icon">&#x2699;</div>
+                    <div class="layer-title">
+                        <h2>Frontend Layer</h2>
+                        <span class="layer-tagline">Client-side application</span>
+                    </div>
+                </div>
+                <div class="layer-body">
+                    <div class="layer-details">
+                        <div class="detail-col">
+                            <h3>Components</h3>
+                            <ul>
+                                <li>React / Vue / Angular</li>
+                                <li>State management</li>
+                                <li>Client-side routing</li>
+                            </ul>
+                        </div>
+                        <div class="detail-col">
+                            <h3>Technologies</h3>
+                            <ul>
+                                <li>TypeScript</li>
+                                <li>React</li>
+                                <li>Webpack / Vite</li>
+                            </ul>
+                        </div>
+                        <div class="detail-col example-col">
+                            <h3>Example</h3>
+                            <p class="example-text">Frontend validates input, updates UI, sends API request</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pm-points" id="pm-frontend">
+                    <h3>PM Discussion Points</h3>
+                    <ul>
+                        <li>Which framework best fits our team's skills and timeline?</li>
+                        <li>What is our state management strategy?</li>
+                        <li>How do we handle offline capabilities?</li>
+                        <li>What is our testing strategy (unit, integration, E2E)?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Arrow between Frontend and Backend -->
+            <div class="arrow-container">
+                <div class="arrow-down">
+                    <svg width="40" height="50" viewBox="0 0 40 50">
+                        <line x1="12" y1="0" x2="12" y2="45" stroke="#22c55e" stroke-width="2"/>
+                        <polygon points="5,38 12,50 19,38" fill="#22c55e"/>
+                    </svg>
+                    <span class="arrow-label arrow-label-down">API Request (JSON)</span>
+                </div>
+                <div class="arrow-up">
+                    <svg width="40" height="50" viewBox="0 0 40 50">
+                        <line x1="28" y1="5" x2="28" y2="50" stroke="#4ade80" stroke-width="2"/>
+                        <polygon points="21,12 28,0 35,12" fill="#4ade80"/>
+                    </svg>
+                    <span class="arrow-label arrow-label-up">API Response (JSON)</span>
+                </div>
+            </div>
+
+            <!-- Layer 3: Backend -->
+            <div class="layer" id="layer-backend" data-layer="backend" tabindex="0">
+                <div class="layer-header">
+                    <div class="layer-icon">&#x1F5A5;</div>
+                    <div class="layer-title">
+                        <h2>Backend Layer</h2>
+                        <span class="layer-tagline">Server-side processing</span>
+                    </div>
+                </div>
+                <div class="layer-body">
+                    <div class="layer-details">
+                        <div class="detail-col">
+                            <h3>Components</h3>
+                            <ul>
+                                <li>API server</li>
+                                <li>Business logic</li>
+                                <li>Authentication</li>
+                            </ul>
+                        </div>
+                        <div class="detail-col">
+                            <h3>Technologies</h3>
+                            <ul>
+                                <li>Python / Node.js</li>
+                                <li>REST API</li>
+                                <li>JWT / OAuth</li>
+                            </ul>
+                        </div>
+                        <div class="detail-col example-col">
+                            <h3>Example</h3>
+                            <p class="example-text">Backend validates, checks inventory, processes payment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pm-points" id="pm-backend">
+                    <h3>PM Discussion Points</h3>
+                    <ul>
+                        <li>What are our API rate limits and SLA targets?</li>
+                        <li>How do we handle authentication and authorization?</li>
+                        <li>What is our scaling strategy (horizontal vs. vertical)?</li>
+                        <li>How do we version our APIs?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Arrow between Backend and Database -->
+            <div class="arrow-container">
+                <div class="arrow-down">
+                    <svg width="40" height="50" viewBox="0 0 40 50">
+                        <line x1="12" y1="0" x2="12" y2="45" stroke="#f59e0b" stroke-width="2"/>
+                        <polygon points="5,38 12,50 19,38" fill="#f59e0b"/>
+                    </svg>
+                    <span class="arrow-label arrow-label-down">SQL Query / Write</span>
+                </div>
+                <div class="arrow-up">
+                    <svg width="40" height="50" viewBox="0 0 40 50">
+                        <line x1="28" y1="5" x2="28" y2="50" stroke="#fbbf24" stroke-width="2"/>
+                        <polygon points="21,12 28,0 35,12" fill="#fbbf24"/>
+                    </svg>
+                    <span class="arrow-label arrow-label-up">Query Result Set</span>
+                </div>
+            </div>
+
+            <!-- Layer 4: Database -->
+            <div class="layer" id="layer-database" data-layer="database" tabindex="0">
+                <div class="layer-header">
+                    <div class="layer-icon">&#x1F4BE;</div>
+                    <div class="layer-title">
+                        <h2>Database Layer</h2>
+                        <span class="layer-tagline">Data persistence</span>
+                    </div>
+                </div>
+                <div class="layer-body">
+                    <div class="layer-details">
+                        <div class="detail-col">
+                            <h3>Components</h3>
+                            <ul>
+                                <li>Relational DB</li>
+                                <li>Cache layer</li>
+                                <li>File storage</li>
+                            </ul>
+                        </div>
+                        <div class="detail-col">
+                            <h3>Technologies</h3>
+                            <ul>
+                                <li>PostgreSQL</li>
+                                <li>Redis</li>
+                                <li>Amazon S3</li>
+                            </ul>
+                        </div>
+                        <div class="detail-col example-col">
+                            <h3>Example</h3>
+                            <p class="example-text">Database records order, updates inventory count</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pm-points" id="pm-database">
+                    <h3>PM Discussion Points</h3>
+                    <ul>
+                        <li>What are our data retention and backup policies?</li>
+                        <li>How do we handle data migration and schema changes?</li>
+                        <li>What is our caching strategy for performance?</li>
+                        <li>How do we ensure data privacy and compliance (GDPR)?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

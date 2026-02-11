@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pull Request Lifecycle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Pull Request Lifecycle</h2>
+        <p class="subtitle">Hover each step for details</p>
+        <div class="workflow">
+            <div class="step start" data-tip="Developer creates a feature branch from main and begins coding.">
+                <div class="step-circle start-circle">Start</div>
+                <span class="step-label">Create branch</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step process blue" data-tip="Developer implements the feature, writes unit tests, and verifies locally.">
+                <div class="step-box blue-box" id="write-code">Write code &amp; tests</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step process blue" data-tip="Developer pushes branch and creates a PR with title, description, and reviewer assignments.">
+                <div class="step-box blue-box">Open Pull Request</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step process gray" data-tip="CI runs linting, tests, build verification, and security scans automatically.">
+                <div class="step-box gray-box">CI checks run</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step decision" data-tip="All automated checks must pass before human review begins.">
+                <div class="diamond">CI passes?</div>
+                <div class="feedback-loop loop-ci">
+                    <svg viewBox="0 0 120 50" class="loop-svg"><path d="M60 0 Q120 0 120 25 Q120 50 60 50" fill="none" stroke="#eab308" stroke-width="2" marker-end="url(#arrowY)"/><defs><marker id="arrowY" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#eab308"/></marker></defs></svg>
+                    <span class="loop-label">Fix failing checks</span>
+                </div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step process green" data-tip="Assigned reviewers examine code changes, leave comments, and request modifications if needed.">
+                <div class="step-box green-box">Peer review</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step decision" data-tip="Reviewer either approves the PR, requests changes, or leaves comments for discussion.">
+                <div class="diamond">Approved?</div>
+                <div class="feedback-loop loop-review">
+                    <svg viewBox="0 0 120 50" class="loop-svg"><path d="M60 0 Q120 0 120 25 Q120 50 60 50" fill="none" stroke="#eab308" stroke-width="2" marker-end="url(#arrowY2)"/><defs><marker id="arrowY2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#eab308"/></marker></defs></svg>
+                    <span class="loop-label">Address feedback</span>
+                </div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step process green" data-tip="PR is merged into main, feature branch is deleted, changes become part of the main codebase.">
+                <div class="step-box green-box">Merge to main</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step end" data-tip="Merged code is deployed through the CI/CD pipeline to production environments.">
+                <div class="step-circle end-circle">Deploy</div>
+                <span class="step-label">Production</span>
+            </div>
+        </div>
+        <div class="legend">
+            <span class="legend-item"><span class="dot" style="background:#3b82f6"></span> Development</span>
+            <span class="legend-item"><span class="dot" style="background:#94a3b8"></span> Automation</span>
+            <span class="legend-item"><span class="dot" style="background:#eab308"></span> Decision</span>
+            <span class="legend-item"><span class="dot" style="background:#22c55e"></span> Approval</span>
+        </div>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
