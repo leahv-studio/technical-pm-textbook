@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f5f7fa;
+    color: #1e293b;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: #1e4b69;
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+}
+
+.diagram {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    padding: 32px 24px;
+    position: relative;
+    min-height: 400px;
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 0 12px;
+}
+
+.column-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    padding: 4px 16px;
+    border-radius: 20px;
+}
+
+.clients-column .column-title {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.network-column .column-title {
+    color: #94a3b8;
+    background: rgba(148, 163, 184, 0.08);
+}
+
+.servers-column .column-title {
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.08);
+}
+
+.component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    width: 160px;
+    position: relative;
+}
+
+.component:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.client {
+    background: rgba(59, 130, 246, 0.06);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+}
+
+.client:hover {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.server {
+    background: rgba(34, 197, 94, 0.06);
+    border: 2px solid rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.server:hover {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.component .label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.role-hint {
+    font-size: 0.72rem;
+    color: #64748b;
+    font-style: italic;
+}
+
+.network-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.network-cloud {
+    margin-top: 24px;
+}
+
+.cloud-label {
+    font-size: 16px;
+    font-weight: 600;
+    fill: #64748b;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.cloud-sublabel {
+    font-size: 11px;
+    fill: #94a3b8;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.connections-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.connections-svg .conn-line {
+    pointer-events: stroke;
+    cursor: pointer;
+}
+
+.connections-svg .conn-line:hover {
+    stroke-width: 3;
+    filter: drop-shadow(0 0 4px rgba(70, 180, 200, 0.5));
+}
+
+.connections-svg .conn-arrow {
+    pointer-events: none;
+}
+
+/* Tooltip */
+.tooltip {
+    position: fixed;
+    background: #1e293b;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    max-width: 280px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip.visible {
+    opacity: 1;
+}
+
+.tooltip-title {
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: rgb(70, 180, 200);
+}
+
+.tooltip-body {
+    line-height: 1.5;
+}
+
+.tooltip-body .tech-label {
+    display: block;
+    margin-top: 6px;
+    color: #94a3b8;
+    font-size: 0.78rem;
+}
+
+/* Connection detail panel */
+.connection-panel {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    background: white;
+    border: 2px solid rgb(70, 180, 200);
+    border-radius: 12px;
+    padding: 20px 24px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    z-index: 50;
+    display: none;
+}
+
+.connection-panel.visible {
+    display: block;
+}
+
+.connection-panel h3 {
+    color: #1e4b69;
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #1e293b;
+}
+
+.request-response {
+    display: flex;
+    gap: 16px;
+}
+
+.request-block,
+.response-block {
+    flex: 1;
+}
+
+.block-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.request-block .block-label {
+    color: #3b82f6;
+}
+
+.response-block .block-label {
+    color: #22c55e;
+}
+
+pre {
+    background: #f1f5f9;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Animated dots along connection lines */
+@keyframes flowDot {
+    0% { offset-distance: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { offset-distance: 100%; opacity: 0; }
+}
+
+.flow-dot {
+    width: 6px;
+    height: 6px;
+    background: rgb(70, 180, 200);
+    border-radius: 50%;
+    position: absolute;
+    offset-rotate: 0deg;
+    animation: flowDot 2s linear infinite;
+    pointer-events: none;
+    z-index: 2;
+}
+
+@media (max-width: 700px) {
+    .diagram {
+        flex-direction: column;
+        gap: 24px;
+        padding: 20px 16px;
+    }
+
+    .component {
+        width: 140px;
+    }
+
+    .request-response {
+        flex-direction: column;
+    }
+
+    .connections-svg {
+        display: none;
+    }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Balancing in Action</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Load Balancing in Action</h2>
+        <div class="controls">
+            <label>Strategy: <select id="strategy"><option value="round-robin">Round Robin</option><option value="least-conn">Least Connections</option><option value="weighted">Weighted</option></select></label>
+            <label>Traffic: <input type="range" id="traffic" min="1" max="10" value="3"> <span id="trafficLabel">Medium</span></label>
+            <button id="toggleBtn" onclick="toggleSim()">Pause</button>
+        </div>
+        <div class="sim-area">
+            <div class="requests-zone">
+                <div class="zone-label">Incoming Requests</div>
+                <div id="requestPool" class="request-pool"></div>
+            </div>
+            <div class="lb-zone">
+                <div class="lb-box">Load Balancer</div>
+            </div>
+            <div class="servers-zone">
+                <div class="zone-label">Server Pool</div>
+                <div class="server" id="srv0"><div class="srv-name">Server 1</div><div class="bar-bg"><div class="bar-fill" id="bar0"></div></div><div class="srv-count" id="cnt0">0 conn</div></div>
+                <div class="server" id="srv1"><div class="srv-name">Server 2</div><div class="bar-bg"><div class="bar-fill" id="bar1"></div></div><div class="srv-count" id="cnt1">0 conn</div></div>
+                <div class="server" id="srv2"><div class="srv-name">Server 3</div><div class="bar-bg"><div class="bar-fill" id="bar2"></div></div><div class="srv-count" id="cnt2">0 conn</div></div>
+                <div class="server" id="srv3"><div class="srv-name">Server 4</div><div class="bar-bg"><div class="bar-fill" id="bar3"></div></div><div class="srv-count" id="cnt3">0 conn</div></div>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat"><span class="stat-label">Total Requests</span><span class="stat-val" id="totalReqs">0</span></div>
+            <div class="stat"><span class="stat-label">Avg Load</span><span class="stat-val" id="avgLoad">0%</span></div>
+            <div class="stat"><span class="stat-label">Max Load</span><span class="stat-val" id="maxLoad">0%</span></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f7fa; color: #1e4b69; }
+.container { max-width: 920px; margin: 0 auto; padding: 16px; }
+h2 { text-align: center; font-size: 1.3rem; margin-bottom: 4px; }
+.subtitle { text-align: center; font-size: 0.8rem; color: #94a3b8; margin-bottom: 16px; }
+.columns { display: flex; gap: 12px; }
+.col { flex: 1; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.col:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+.col.selected { box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+.col-header { color: #fff; font-weight: 700; font-size: 0.95rem; padding: 10px 14px; text-align: center; }
+.visual { padding: 12px; min-height: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; background: #f8fafc; }
+.mono-box { background: #3b82f6; color: #fff; border-radius: 8px; padding: 8px 16px; display: flex; flex-direction: column; gap: 2px; font-size: 0.72rem; font-weight: 600; text-align: center; width: 80%; }
+.db-icon { font-size: 0.72rem; color: #64748b; }
+.soa-services { display: flex; gap: 6px; }
+.svc { background: #14b8a6; color: #fff; border-radius: 6px; padding: 6px 8px; font-size: 0.65rem; font-weight: 600; }
+.esb { background: #f0fdfa; border: 2px solid #14b8a6; border-radius: 6px; padding: 4px 12px; font-size: 0.65rem; font-weight: 600; color: #14b8a6; }
+.micro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.msvc { background: #22c55e; color: #fff; border-radius: 6px; padding: 6px 8px; font-size: 0.65rem; font-weight: 600; text-align: center; }
+.mdb { background: rgba(255,255,255,0.3); border-radius: 3px; padding: 1px 4px; font-size: 0.6rem; margin-top: 3px; }
+.api-lines { font-size: 0.65rem; color: #64748b; }
+.traits { padding: 12px 14px; }
+.traits h4 { font-size: 0.75rem; color: #1e4b69; margin-top: 8px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.traits h4:first-child { margin-top: 0; }
+.traits ul { list-style: none; font-size: 0.78rem; color: #475569; }
+.traits li { padding: 1px 0; }
+.traits li::before { content: '• '; color: #94a3b8; }
+.pro { font-size: 0.75rem; color: #16a34a; margin-top: 4px; }
+.con { font-size: 0.75rem; color: #dc2626; }
+.case-study { display: none; padding: 12px 14px; background: #f0f9ff; border-top: 1px solid #e2e8f0; font-size: 0.78rem; color: #475569; line-height: 1.5; }
+.col.selected .case-study { display: block; }
+@media (max-width: 700px) {
+    .columns { flex-direction: column; }
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client-Server Architecture</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Client-Server Architecture</h1>
+        <p class="subtitle">How clients communicate with servers through a network layer</p>
+
+        <div class="diagram">
+            <!-- Clients Column -->
+            <div class="column clients-column">
+                <h2 class="column-title">Clients</h2>
+                <div class="component client" data-id="browser" data-role="Web Browser" data-tech="Chrome, Firefox, Safari, Edge" data-desc="Renders HTML/CSS/JS and sends HTTP requests to web servers.">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <span class="label">Web Browser</span>
+                </div>
+                <div class="component client" data-id="mobile" data-role="Mobile App" data-tech="iOS (Swift), Android (Kotlin), React Native, Flutter" data-desc="Native or hybrid apps that consume APIs for mobile experiences.">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <span class="label">Mobile App</span>
+                </div>
+                <div class="component client" data-id="desktop" data-role="Desktop App" data-tech="Electron, .NET WPF, JavaFX, Qt" data-desc="Desktop applications that communicate with backend services via APIs.">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <span class="label">Desktop App</span>
+                </div>
+            </div>
+
+            <!-- Network Column -->
+            <div class="column network-column">
+                <h2 class="column-title">Network</h2>
+                <div class="network-cloud">
+                    <svg viewBox="0 0 200 120" width="200" height="120">
+                        <path class="cloud-path" d="M40,80 Q10,80 10,60 Q10,40 30,35 Q35,15 60,15 Q80,5 100,15 Q120,5 140,15 Q165,15 170,35 Q190,40 190,60 Q190,80 160,80 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,3"/>
+                        <text x="100" y="50" text-anchor="middle" class="cloud-label">Internet</text>
+                        <text x="100" y="72" text-anchor="middle" class="cloud-sublabel">HTTPS / API Calls</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Servers Column -->
+            <div class="column servers-column">
+                <h2 class="column-title">Servers</h2>
+                <div class="component server" data-id="webserver" data-role="Web Server" data-tech="Nginx, Apache, Caddy, IIS" data-desc="Serves static assets (HTML, CSS, JS) and routes requests to backend services.">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                            <line x1="6" y1="6" x2="6.01" y2="6"/>
+                            <line x1="6" y1="18" x2="6.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <span class="label">Web Server</span>
+                    <span class="role-hint">Serves HTML/CSS/JS</span>
+                </div>
+                <div class="component server" data-id="apiserver" data-role="API Server" data-tech="Node.js/Express, Django, Spring Boot, FastAPI" data-desc="Processes business logic, handles authentication, and orchestrates data operations.">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                            <line x1="4" y1="22" x2="4" y2="15"/>
+                        </svg>
+                    </div>
+                    <span class="label">API Server</span>
+                    <span class="role-hint">Business Logic</span>
+                </div>
+                <div class="component server" data-id="dbserver" data-role="Database Server" data-tech="PostgreSQL, MySQL, MongoDB, Redis" data-desc="Stores and retrieves structured or unstructured data for the application.">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                        </svg>
+                    </div>
+                    <span class="label">Database Server</span>
+                    <span class="role-hint">Stores/Retrieves Data</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SVG overlay for connection arrows -->
+        <svg class="connections-svg" id="connectionsSvg"></svg>
+
+        <!-- Tooltip -->
+        <div class="tooltip" id="tooltip">
+            <div class="tooltip-title" id="tooltipTitle"></div>
+            <div class="tooltip-body" id="tooltipBody"></div>
+        </div>
+
+        <!-- Connection detail panel -->
+        <div class="connection-panel" id="connectionPanel">
+            <button class="close-btn" id="closePanel">&times;</button>
+            <h3 id="panelTitle"></h3>
+            <div class="request-response">
+                <div class="request-block">
+                    <div class="block-label">Request</div>
+                    <pre id="panelRequest"></pre>
+                </div>
+                <div class="response-block">
+                    <div class="block-label">Response</div>
+                    <pre id="panelResponse"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
