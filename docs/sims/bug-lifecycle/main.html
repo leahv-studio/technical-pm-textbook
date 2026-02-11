@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Lifecycle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bug Lifecycle</h1>
+        <p class="subtitle">Click a stage to highlight it. Hover to see the PM's role at each step.</p>
+
+        <div class="lifecycle-wrapper">
+            <!-- Top row: stages 1-4, left to right -->
+            <div class="row top-row">
+                <div class="stage" data-stage="discovered" style="--stage-color: #ef4444;">
+                    <div class="stage-number">1</div>
+                    <div class="stage-icon">&#128270;</div>
+                    <div class="stage-label">Discovered</div>
+                    <div class="tooltip">
+                        <strong>Discovered</strong>
+                        <p>Bug found by user, QA, or monitoring.</p>
+                        <p class="pm-role"><span class="pm-badge">PM Role</span> Receives report, gathers repro steps.</p>
+                    </div>
+                </div>
+
+                <div class="arrow right-arrow">&#10132;</div>
+
+                <div class="stage" data-stage="triaged" style="--stage-color: #f97316;">
+                    <div class="stage-number">2</div>
+                    <div class="stage-icon">&#9878;</div>
+                    <div class="stage-label">Triaged</div>
+                    <div class="tooltip">
+                        <strong>Triaged</strong>
+                        <p>PM/lead assesses severity (P0&ndash;P3) and priority.</p>
+                        <p class="pm-role"><span class="pm-badge">PM Role</span> Assigns severity, sets timeline expectations.</p>
+                    </div>
+                    <!-- Won't Fix branch -->
+                    <div class="wontfix-branch">
+                        <div class="wontfix-arrow">&#8623;</div>
+                        <div class="wontfix-badge">Won't Fix</div>
+                    </div>
+                </div>
+
+                <div class="arrow right-arrow">&#10132;</div>
+
+                <div class="stage" data-stage="assigned" style="--stage-color: #eab308;">
+                    <div class="stage-number">3</div>
+                    <div class="stage-icon">&#128100;</div>
+                    <div class="stage-label">Assigned</div>
+                    <div class="tooltip">
+                        <strong>Assigned</strong>
+                        <p>Routed to appropriate engineer.</p>
+                        <p class="pm-role"><span class="pm-badge">PM Role</span> Ensures right person has context.</p>
+                    </div>
+                </div>
+
+                <div class="arrow right-arrow">&#10132;</div>
+
+                <div class="stage" data-stage="in-progress" style="--stage-color: #22c55e;">
+                    <div class="stage-number">4</div>
+                    <div class="stage-icon">&#128736;</div>
+                    <div class="stage-label">In Progress</div>
+                    <div class="tooltip">
+                        <strong>In Progress</strong>
+                        <p>Engineer reproducing and fixing.</p>
+                        <p class="pm-role"><span class="pm-badge">PM Role</span> Monitors progress, removes blockers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connecting arrow from top-right down to bottom-right -->
+            <div class="vertical-connector right-connector">
+                <div class="arrow down-arrow">&#10515;</div>
+            </div>
+
+            <!-- Bottom row: stages 8-5, left to right (reversed flow) -->
+            <div class="row bottom-row">
+                <div class="stage" data-stage="closed" style="--stage-color: #64748b;">
+                    <div class="stage-number">8</div>
+                    <div class="stage-icon">&#9989;</div>
+                    <div class="stage-label">Closed</div>
+                    <div class="tooltip">
+                        <strong>Closed</strong>
+                        <p>Verified in production, ticket closed.</p>
+                        <p class="pm-role"><span class="pm-badge">PM Role</span> Updates release notes.</p>
+                    </div>
+                </div>
+
+                <div class="arrow left-arrow">&#10132;</div>
+
+                <div class="stage" data-stage="deployed" style="--stage-color: #6366f1;">
+                    <div class="stage-number">7</div>
+                    <div class="stage-icon">&#128640;</div>
+                    <div class="stage-label">Deployed</div>
+                    <div class="tooltip">
+                        <strong>Deployed</strong>
+                        <p>Fix shipped to production.</p>
+                        <p class="pm-role"><span class="pm-badge">PM Role</span> Communicates to stakeholders.</p>
+                    </div>
+                    <!-- Reopened branch -->
+                    <div class="reopened-branch">
+                        <div class="reopened-label">Reopened</div>
+                        <svg class="reopened-arrow-svg" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                                    <polygon points="0 0, 8 3, 0 6" fill="#ef4444" />
+                                </marker>
+                            </defs>
+                            <path d="M 10 10 C 10 60, 190 60, 190 10"
+                                  stroke="#ef4444" stroke-width="2" stroke-dasharray="6 3"
+                                  fill="none" marker-end="url(#arrowhead)" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="arrow left-arrow">&#10132;</div>
+
+                <div class="stage" data-stage="testing" style="--stage-color: #3b82f6;">
+                    <div class="stage-number">6</div>
+                    <div class="stage-icon">&#128300;</div>
+                    <div class="stage-label">Testing</div>
+                    <div class="tooltip">
+                        <strong>Testing</strong>
+                        <p>QA verifies fix, checks for regressions.</p>
+                        <p class="pm-role"><span class="pm-badge">PM Role</span> Validates fix matches requirements.</p>
+                    </div>
+                </div>
+
+                <div class="arrow left-arrow">&#10132;</div>
+
+                <div class="stage" data-stage="in-review" style="--stage-color: #14b8a6;">
+                    <div class="stage-number">5</div>
+                    <div class="stage-icon">&#128269;</div>
+                    <div class="stage-label">In Review</div>
+                    <div class="tooltip">
+                        <strong>In Review</strong>
+                        <p>Code review of the fix.</p>
+                        <p class="pm-role"><span class="pm-badge">PM Role</span> Stays informed on approach.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connecting arrow from bottom-left up to top-left -->
+            <div class="vertical-connector left-connector">
+                <div class="arrow up-arrow">&#10514;</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

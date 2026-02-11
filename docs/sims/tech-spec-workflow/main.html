@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Specification Workflow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Technical Specification Workflow</h2>
+        <p class="subtitle">Five stages of technical specification creation with feedback loops</p>
+
+        <div class="workflow">
+            <div class="stage-card" data-stage="1"
+                 data-who="PM, stakeholders"
+                 data-artifacts="Problem statement, success criteria"
+                 data-description="The PM defines the user problem, business context, and success metrics. This stage ensures alignment on what we are solving and why before any technical work begins.">
+                <div class="card-header" style="background-color: #3b82f6;"></div>
+                <div class="card-body">
+                    <span class="stage-number">1</span>
+                    <h3>Problem Definition</h3>
+                    <p>PM defines user problem, business context, success metrics.</p>
+                </div>
+            </div>
+
+            <div class="arrow">&rarr;</div>
+
+            <div class="stage-card" data-stage="2"
+                 data-who="Engineers, architects"
+                 data-artifacts="Feasibility assessment, effort estimate"
+                 data-description="Engineering explores feasibility, identifies technical constraints, and produces rough effort estimates. This surfaces risks and blockers early before committing to a spec.">
+                <div class="card-header" style="background-color: #14b8a6;"></div>
+                <div class="card-body">
+                    <span class="stage-number">2</span>
+                    <h3>Technical Discovery</h3>
+                    <p>Engineering explores feasibility, identifies constraints, estimates.</p>
+                </div>
+            </div>
+
+            <div class="arrow">&rarr;</div>
+
+            <div class="stage-card" data-stage="3" id="stage-3"
+                 data-who="PM + Engineering"
+                 data-artifacts="Draft tech spec"
+                 data-description="Collaborative writing of functional requirements, non-functional requirements, data model, and API contracts. PM and engineering work together to capture the full specification.">
+                <div class="card-header" style="background-color: #22c55e;"></div>
+                <div class="card-body">
+                    <span class="stage-number">3</span>
+                    <h3>Spec Drafting</h3>
+                    <p>Collaborative writing of functional reqs, NFRs, data model, API contracts.</p>
+                </div>
+            </div>
+
+            <div class="arrow">&rarr;</div>
+
+            <div class="stage-card" data-stage="4" id="stage-4"
+                 data-who="All stakeholders"
+                 data-artifacts="Review comments, revised spec"
+                 data-description="Cross-functional review gathers feedback from all stakeholders. Scope is negotiated, trade-offs are discussed, and the spec is refined through structured review cycles.">
+                <div class="card-header" style="background-color: #f59e0b;"></div>
+                <div class="card-body">
+                    <span class="stage-number">4</span>
+                    <h3>Review &amp; Refinement</h3>
+                    <p>Cross-functional review, feedback, scope negotiation.</p>
+                </div>
+            </div>
+
+            <div class="arrow">&rarr;</div>
+
+            <div class="stage-card" data-stage="5"
+                 data-who="PM, Eng Lead"
+                 data-artifacts="Approved spec, JIRA tickets"
+                 data-description="Final sign-off from PM and Engineering Lead. The approved specification is handed off and engineering begins implementation with JIRA tickets created from the spec.">
+                <div class="card-header" style="background-color: #7c3aed;"></div>
+                <div class="card-body">
+                    <span class="stage-number">5</span>
+                    <h3>Approval &amp; Handoff</h3>
+                    <p>Final sign-off, engineering begins.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="feedback-loop">
+            <svg class="feedback-arrow" viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#f59e0b" />
+                    </marker>
+                </defs>
+                <path d="M 350 5 C 350 45, 50 45, 50 5"
+                      stroke="#f59e0b" stroke-width="2" stroke-dasharray="8 4"
+                      fill="none" marker-end="url(#arrowhead)" />
+                <text x="200" y="52" text-anchor="middle" fill="#f59e0b" font-size="13" font-style="italic">
+                    Revise and iterate
+                </text>
+            </svg>
+        </div>
+
+        <div class="details-panel" id="details-panel">
+            <div class="details-content" id="details-content"></div>
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
