@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN Request Flow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>CDN Request Flow</h2>
+        <div class="controls">
+            <button class="mode-btn active" id="hitBtn" onclick="setMode('hit')">Cache Hit</button>
+            <button class="mode-btn" id="missBtn" onclick="setMode('miss')">Cache Miss</button>
+        </div>
+        <div class="map-area">
+            <svg id="mapSvg" viewBox="0 0 700 360" preserveAspectRatio="xMidYMid meet">
+                <!-- Simplified continents -->
+                <ellipse cx="180" cy="140" rx="90" ry="50" fill="#e2e8f0" stroke="#cbd5e1"/>
+                <text x="180" y="145" text-anchor="middle" class="continent">Americas</text>
+                <ellipse cx="370" cy="120" rx="70" ry="45" fill="#e2e8f0" stroke="#cbd5e1"/>
+                <text x="370" y="125" text-anchor="middle" class="continent">Europe</text>
+                <ellipse cx="370" cy="220" rx="60" ry="40" fill="#e2e8f0" stroke="#cbd5e1"/>
+                <text x="370" y="225" text-anchor="middle" class="continent">Africa</text>
+                <ellipse cx="540" cy="140" rx="80" ry="55" fill="#e2e8f0" stroke="#cbd5e1"/>
+                <text x="540" y="145" text-anchor="middle" class="continent">Asia-Pacific</text>
+                <ellipse cx="180" cy="260" rx="50" ry="30" fill="#e2e8f0" stroke="#cbd5e1"/>
+                <text x="180" y="265" text-anchor="middle" class="continent">S. America</text>
+
+                <!-- Origin server -->
+                <circle cx="200" cy="120" r="12" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+                <text x="200" y="103" text-anchor="middle" class="label origin-label">Origin (Virginia)</text>
+
+                <!-- Edge servers -->
+                <circle cx="120" cy="150" r="8" fill="#22c55e" stroke="#16a34a" stroke-width="2" class="edge"/>
+                <text x="120" y="170" text-anchor="middle" class="label edge-label">US West</text>
+                <circle cx="360" cy="105" r="8" fill="#22c55e" stroke="#16a34a" stroke-width="2" class="edge"/>
+                <text x="360" y="92" text-anchor="middle" class="label edge-label">Europe</text>
+                <circle cx="560" cy="120" r="8" fill="#22c55e" stroke="#16a34a" stroke-width="2" class="edge"/>
+                <text x="560" y="107" text-anchor="middle" class="label edge-label">Asia</text>
+                <circle cx="200" cy="250" r="8" fill="#22c55e" stroke="#16a34a" stroke-width="2" class="edge"/>
+                <text x="200" y="270" text-anchor="middle" class="label edge-label">S. America</text>
+                <circle cx="580" cy="200" r="8" fill="#22c55e" stroke="#16a34a" stroke-width="2" class="edge"/>
+                <text x="580" y="220" text-anchor="middle" class="label edge-label">Australia</text>
+
+                <!-- Users (clickable) -->
+                <g class="user-group" data-user="tokyo" onclick="selectUser('tokyo')" style="cursor:pointer">
+                    <circle cx="580" cy="140" r="10" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+                    <text x="580" y="157" text-anchor="middle" class="label user-label">Tokyo</text>
+                </g>
+                <g class="user-group" data-user="london" onclick="selectUser('london')" style="cursor:pointer">
+                    <circle cx="340" cy="115" r="10" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+                    <text x="340" y="132" text-anchor="middle" class="label user-label">London</text>
+                </g>
+                <g class="user-group" data-user="saopaulo" onclick="selectUser('saopaulo')" style="cursor:pointer">
+                    <circle cx="210" cy="260" r="10" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+                    <text x="210" y="285" text-anchor="middle" class="label user-label">São Paulo</text>
+                </g>
+
+                <!-- Request path lines (drawn by JS) -->
+                <g id="pathGroup"></g>
+            </svg>
+        </div>
+        <div class="latency-bar">
+            <div class="lat-item"><span class="lat-label">Cache Hit Latency</span><div class="lat-bar-bg"><div class="lat-bar-fill hit-fill" id="hitBar"></div></div><span class="lat-val" id="hitVal">~15ms</span></div>
+            <div class="lat-item"><span class="lat-label">Cache Miss Latency</span><div class="lat-bar-bg"><div class="lat-bar-fill miss-fill" id="missBar"></div></div><span class="lat-val" id="missVal">~250ms</span></div>
+        </div>
+        <div class="legend"><span class="leg">🔵 Origin</span><span class="leg">🟢 CDN Edge</span><span class="leg">🟠 User</span></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

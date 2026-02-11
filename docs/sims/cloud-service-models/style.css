@@ -1,0 +1,25 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f7fa; color: #1e4b69; }
+.container { max-width: 750px; margin: 0 auto; padding: 16px; }
+h2 { text-align: center; font-size: 1.3rem; margin-bottom: 4px; }
+.subtitle { text-align: center; font-size: 0.8rem; color: #94a3b8; margin-bottom: 8px; }
+.legend { display: flex; gap: 16px; justify-content: center; margin-bottom: 16px; }
+.leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #475569; }
+.leg-box { width: 16px; height: 16px; border-radius: 3px; }
+.leg-box.you { background: #3b82f6; }
+.leg-box.provider { background: #22c55e; }
+.stacks { display: flex; gap: 16px; justify-content: center; }
+.stack { flex: 1; max-width: 220px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.stack:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+.stack.selected { box-shadow: 0 0 0 3px #1e4b69, 0 6px 16px rgba(0,0,0,0.1); }
+.stack-header { text-align: center; font-weight: 700; font-size: 1rem; padding: 10px 0 2px; color: #1e4b69; }
+.stack-sub { text-align: center; font-size: 0.7rem; color: #94a3b8; margin-bottom: 8px; }
+.layer { padding: 5px 10px; font-size: 0.72rem; font-weight: 600; text-align: center; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.2); transition: filter 0.2s; cursor: pointer; }
+.layer:hover { filter: brightness(1.15); }
+.layer.you { background: #3b82f6; }
+.layer.prov { background: #22c55e; }
+.examples { display: none; padding: 10px; font-size: 0.75rem; color: #475569; background: #f0f9ff; text-align: center; line-height: 1.4; }
+.stack.selected .examples { display: block; }
+.tooltip { position: fixed; padding: 8px 12px; background: #1e293b; color: #f1f5f9; border-radius: 6px; font-size: 0.78rem; max-width: 260px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 100; }
+.tooltip.visible { opacity: 1; }
+@media (max-width: 500px) { .stacks { flex-direction: column; align-items: center; } .stack { max-width: 100%; } }

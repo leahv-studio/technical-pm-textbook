@@ -1,0 +1,28 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f5f7fa; color: #1e4b69; }
+.container { max-width: 800px; margin: 0 auto; padding: 16px; }
+h2 { text-align: center; font-size: 1.3rem; margin-bottom: 12px; }
+.controls { text-align: center; margin-bottom: 16px; }
+.controls label { font-size: 0.85rem; display: flex; align-items: center; gap: 8px; justify-content: center; }
+.comparison { display: flex; gap: 0; }
+.side { flex: 1; padding: 16px; }
+.divider { width: 2px; background: #e2e8f0; margin: 0 8px; }
+.side h3 { font-size: 1rem; margin-bottom: 4px; text-align: center; }
+.desc { font-size: 0.78rem; color: #64748b; text-align: center; margin-bottom: 12px; }
+.server-area { min-height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+.v-server { background: #f59e0b; color: #fff; border-radius: 10px; padding: 16px 24px; text-align: center; transition: all 0.4s; }
+.v-label { font-weight: 700; font-size: 0.9rem; }
+.v-specs { font-size: 0.72rem; margin-top: 4px; opacity: 0.9; }
+.ceiling-line { position: absolute; top: 10px; width: 90%; border-top: 2px dashed #ef4444; text-align: center; display: none; }
+.ceiling-line span { background: #f5f7fa; padding: 0 8px; font-size: 0.68rem; color: #ef4444; position: relative; top: -9px; }
+.ceiling-line.show { display: block; }
+.v-warning { color: #ef4444; font-size: 0.78rem; font-weight: 700; margin-top: 8px; display: none; }
+.v-warning.show { display: block; }
+.h-lb { background: #3b82f6; color: #fff; padding: 6px 16px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; margin-bottom: 8px; }
+.h-servers { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.h-srv { background: #dbeafe; border: 2px solid #3b82f6; border-radius: 6px; padding: 8px 10px; font-size: 0.68rem; font-weight: 600; color: #1e4b69; transition: all 0.3s; }
+.metrics { margin-top: 12px; display: flex; flex-direction: column; gap: 4px; }
+.metric { display: flex; justify-content: space-between; font-size: 0.78rem; padding: 4px 8px; background: #fff; border-radius: 6px; }
+.m-label { color: #64748b; }
+.m-val { font-weight: 700; }
+@media (max-width: 600px) { .comparison { flex-direction: column; } .divider { height: 2px; width: 100%; margin: 8px 0; } }
