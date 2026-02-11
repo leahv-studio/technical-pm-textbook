@@ -156,6 +156,26 @@ Color scheme: Blue for monolith, teal for SOA, green for microservices
 Implementation: HTML/CSS/JavaScript with responsive card layout
 </details>
 
+#### Diagram: Monolith vs. Microservices Explorer
+
+<iframe src="../../sims/monolith-vs-microservices/main.html" width="100%" height="750px" scrolling="no"></iframe>
+
+<details markdown="1">
+<summary>Monolith vs. Microservices Explorer</summary>
+Type: diagram
+
+Bloom Level: Evaluate (L5)
+Bloom Verb: assess, judge
+Learning Objective: Students will be able to assess which architecture pattern (monolith, modular monolith, or microservices) best fits a given set of project constraints by adjusting team size, system complexity, and expected user scale.
+
+Layout: p5.js canvas showing a morphing architecture diagram that transitions from a single monolith block to modular monolith to independent microservices. Three sliders below control the inputs. A recommendation panel provides contextual guidance.
+
+Interactive elements: Three sliders (team size, system complexity, expected users) drive real-time visual morphing of the architecture diagram and dynamic recommendation text.
+
+Color scheme: Blue (#3b82f6) for monolith, teal (#14b8a6) for modular monolith, green (#22c55e) for microservices
+Implementation: p5.js with HTML slider controls
+</details>
+
 ## Distributed Systems
 
 A **distributed system** is a collection of independent computers that appears to its users as a single coherent system. When your application runs across multiple servers, data centers, or cloud regions, it is a distributed system. Most modern web applications are distributed systems by necessity - no single server can handle the traffic, data, and computational requirements of a product with millions of users.

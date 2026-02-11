@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monolith vs. Microservices Explorer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Monolith vs. Microservices Explorer</h2>
+        <p class="subtitle">Adjust constraints to see which architecture fits your scenario</p>
+
+        <div id="canvas-container"></div>
+
+        <div class="slider-panel">
+            <div class="slider-group">
+                <label>
+                    <span class="slider-label">Team Size</span>
+                    <span class="slider-value" id="team-value">8 developers</span>
+                </label>
+                <input type="range" id="team-slider" min="2" max="50" value="8" step="1">
+                <div class="slider-range"><span>2</span><span>50</span></div>
+            </div>
+            <div class="slider-group">
+                <label>
+                    <span class="slider-label">System Complexity</span>
+                    <span class="slider-value" id="complexity-value">Low</span>
+                </label>
+                <input type="range" id="complexity-slider" min="1" max="3" value="1" step="1">
+                <div class="slider-range"><span>Low</span><span>High</span></div>
+            </div>
+            <div class="slider-group">
+                <label>
+                    <span class="slider-label">Expected Users</span>
+                    <span class="slider-value" id="users-value">1K</span>
+                </label>
+                <input type="range" id="users-slider" min="3" max="7" value="3" step="0.1">
+                <div class="slider-range"><span>1K</span><span>10M</span></div>
+            </div>
+        </div>
+
+        <div class="score-bar-container">
+            <div class="score-bar-labels">
+                <span class="label-monolith">Monolith</span>
+                <span class="label-modular">Modular Monolith</span>
+                <span class="label-micro">Microservices</span>
+            </div>
+            <div class="score-bar">
+                <div class="score-bar-fill"></div>
+                <div class="score-marker" id="score-marker"></div>
+            </div>
+        </div>
+
+        <div class="badge-row">
+            <div class="arch-badge" id="arch-badge">Monolith</div>
+            <div class="score-text" id="score-text">Score: 0.00</div>
+        </div>
+
+        <div class="tradeoff-cards">
+            <div class="tradeoff-card">
+                <div class="tradeoff-icon">&#9881;</div>
+                <h4>Deployment</h4>
+                <p id="tradeoff-deploy">Simple single deploy to one server</p>
+            </div>
+            <div class="tradeoff-card">
+                <div class="tradeoff-icon">&#128101;</div>
+                <h4>Team Structure</h4>
+                <p id="tradeoff-team">Single team with shared codebase</p>
+            </div>
+            <div class="tradeoff-card">
+                <div class="tradeoff-icon">&#8693;</div>
+                <h4>Scaling</h4>
+                <p id="tradeoff-scale">Vertical scaling of the whole application</p>
+            </div>
+        </div>
+
+        <div class="recommendation-panel" id="recommendation-panel">
+            <h4>Recommendation</h4>
+            <p id="recommendation-text"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
