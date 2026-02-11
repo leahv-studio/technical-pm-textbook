@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/B Test Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>A/B Test Calculator</h2>
+        <p class="subtitle">Set your experiment parameters, then run to see why sample size matters and early stopping misleads.</p>
+
+        <div class="controls">
+            <div class="slider-group">
+                <label>Baseline Conversion Rate: <strong id="baseline-val">5%</strong></label>
+                <input type="range" id="baseline" min="1" max="20" value="5" step="0.5">
+            </div>
+            <div class="slider-group">
+                <label>Minimum Detectable Effect: <strong id="mde-val">1 pp</strong></label>
+                <input type="range" id="mde" min="0.5" max="5" value="1" step="0.25">
+            </div>
+            <div class="slider-group">
+                <label>Daily Traffic (both groups): <strong id="traffic-val">2,000</strong></label>
+                <input type="range" id="traffic" min="100" max="10000" value="2000" step="100">
+            </div>
+        </div>
+
+        <div class="estimate-box" id="estimate-box">
+            You'll need approximately <strong id="est-n">3,624</strong> visitors per group
+            (~<strong id="est-days">4</strong> days) to detect this effect with 95% confidence.
+        </div>
+
+        <div class="button-group">
+            <button id="run-btn" class="btn run-btn">Run Experiment</button>
+            <button id="stop-btn" class="btn stop-btn" disabled>Stop Early</button>
+            <button id="reset-btn" class="btn reset-btn">Reset</button>
+        </div>
+
+        <div id="canvas-container"></div>
+
+        <div class="stats-panel" id="stats-panel" style="display: none;">
+            <div class="stat">
+                <span class="stat-label">Days Elapsed</span>
+                <span class="stat-value" id="stat-days">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Sample per Group</span>
+                <span class="stat-value" id="stat-sample">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Control Rate</span>
+                <span class="stat-value" id="stat-control">—</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Variant Rate</span>
+                <span class="stat-value" id="stat-variant">—</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Observed Lift</span>
+                <span class="stat-value" id="stat-lift">—</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Confidence</span>
+                <span class="stat-value" id="stat-confidence">0%</span>
+            </div>
+            <div class="stat-interpretation" id="stat-interpretation">
+                Waiting for data...
+            </div>
+        </div>
+
+        <div class="warning-panel" id="warning-panel" style="display: none;">
+            <h4>Experiment Stopped Early</h4>
+            <p id="warning-text"></p>
+        </div>
+
+        <div class="complete-panel" id="complete-panel" style="display: none;">
+            <h4 id="complete-title"></h4>
+            <p id="complete-text"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
