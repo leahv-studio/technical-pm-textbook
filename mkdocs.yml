@@ -31,6 +31,7 @@ nav:
 
   - MicroSims:
     - Interactive MicroSims: sims/index.md
+    - A/B Test Calculator: sims/ab-test-calculator/index.md
     - API Request Builder: sims/api-request-builder/index.md
 
   - Learning Graph:

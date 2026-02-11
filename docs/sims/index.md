@@ -11,6 +11,10 @@ Interactive simulations to help product managers build technical fluency through
 
 <div class="grid cards" markdown>
 
+-   **[A/B Test Calculator](./ab-test-calculator/index.md)**
+
+    Simulate a full A/B test experiment to see why sample size matters, how confidence builds over time, and what happens when you stop early.
+
 -   **[API Request Builder](./api-request-builder/index.md)**
 
     Interactive p5.js simulation demonstrating the REST API request and response cycle. Explore HTTP methods, endpoints, status codes, and request/response bodies.
