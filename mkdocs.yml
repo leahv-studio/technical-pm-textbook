@@ -32,6 +32,7 @@ nav:
   - MicroSims:
     - List of MicroSims: sims/index.md
     - Adding Taxonomy Workflow: sims/adding-taxonomy-workflow/index.md
+    - API Request Builder: sims/api-request-builder/index.md
     - Average Dependencies Distribution: sims/average-dependencies-distribution/index.md
     - Book Build Workflow: sims/book-build-workflow/index.md
     - Book Levels: sims/book-levels/index.md

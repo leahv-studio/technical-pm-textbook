@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request Builder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>API Request Builder</h2>
+        <p class="subtitle">Select an HTTP method and endpoint, then send the request to see how APIs work.</p>
+
+        <div class="controls">
+            <div class="method-buttons">
+                <button class="method-btn get active" data-method="GET">GET</button>
+                <button class="method-btn post" data-method="POST">POST</button>
+                <button class="method-btn put" data-method="PUT">PUT</button>
+                <button class="method-btn delete" data-method="DELETE">DELETE</button>
+            </div>
+            <div class="endpoint-select">
+                <label for="endpoint">Endpoint:</label>
+                <select id="endpoint">
+                    <option value="/users">/users</option>
+                    <option value="/orders">/orders</option>
+                    <option value="/products">/products</option>
+                </select>
+            </div>
+            <button id="send-btn" class="send-btn">Send Request</button>
+        </div>
+
+        <div class="panel request-panel">
+            <h3>Request</h3>
+            <div class="request-line">
+                <span class="method-badge get">GET</span>
+                <span class="url">https://api.example.com/users</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Headers:</span>
+                <pre class="code-block">Content-Type: application/json
+Authorization: Bearer tk_a8f3••••••</pre>
+            </div>
+            <div class="body-section" style="display: none;">
+                <span class="label">Body:</span>
+                <pre class="code-block request-body"></pre>
+            </div>
+        </div>
+
+        <div id="canvas-container"></div>
+
+        <div class="panel response-panel" style="display: none;">
+            <h3>Response</h3>
+            <div class="response-header">
+                <span class="status-badge">200 OK</span>
+                <span class="response-time">87ms</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Body:</span>
+                <pre class="code-block response-json"></pre>
+            </div>
+            <div class="status-explanation"></div>
+        </div>
+
+        <div class="status-reference">
+            <h3>Common HTTP Status Codes</h3>
+            <div class="status-grid">
+                <div class="status-item success">
+                    <span class="code">200</span>
+                    <span class="desc"><strong>OK</strong> &mdash; The request succeeded and the server returned the requested data.</span>
+                </div>
+                <div class="status-item success">
+                    <span class="code">201</span>
+                    <span class="desc"><strong>Created</strong> &mdash; A new resource was successfully created on the server.</span>
+                </div>
+                <div class="status-item client-error">
+                    <span class="code">400</span>
+                    <span class="desc"><strong>Bad Request</strong> &mdash; The server couldn't understand the request due to invalid input.</span>
+                </div>
+                <div class="status-item client-error">
+                    <span class="code">401</span>
+                    <span class="desc"><strong>Unauthorized</strong> &mdash; Authentication is required or the credentials are invalid.</span>
+                </div>
+                <div class="status-item client-error">
+                    <span class="code">404</span>
+                    <span class="desc"><strong>Not Found</strong> &mdash; The requested resource doesn't exist at this endpoint.</span>
+                </div>
+                <div class="status-item server-error">
+                    <span class="code">500</span>
+                    <span class="desc"><strong>Server Error</strong> &mdash; Something went wrong on the server side, not your fault.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
