@@ -6,34 +6,34 @@
         <meta name="description" content="A practitioner's guide for experienced product managers transitioning into technical PM roles.">
       
       
-        <meta name="author" content="Dan McCreary">
+        <meta name="author" content="Leah Vogel">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/claude-skills/chapters/">
+        <link rel="canonical" href="https://leahv-studio.github.io/technical-pm-textbook/sims/api-request-builder/">
       
       
-        <link rel="prev" href="../getting-started/">
+        <link rel="prev" href="../adding-taxonomy-workflow/">
       
       
-        <link rel="next" href="01-pm-foundations/">
+        <link rel="next" href="../average-dependencies-distribution/">
       
       
         
       
       
-      <link rel="icon" href="../img/favicon.ico">
+      <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>List of Chapters - From Product Manager to Technical Product Manager</title>
+        <title>API Request Builder - From Product Manager to Technical Product Manager</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -52,9 +52,9 @@
       
     
     
-      <link rel="stylesheet" href="../css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -70,7 +70,7 @@
 
     
     
-  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapters" class="md-skip">
+        <a href="#api-request-builder" class="md-skip">
           Skip to content
         </a>
       
@@ -113,9 +113,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="From Product Manager to Technical Product Manager" class="md-header__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
+    <a href="../.." title="From Product Manager to Technical Product Manager" class="md-header__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
       
-  <img src="../img/logo.png" alt="logo">
+  <img src="../../img/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              List of Chapters
+              API Request Builder
             
           </span>
         </div>
@@ -186,7 +186,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/leahv-studio/technical-pm-textbook" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
@@ -222,16 +222,16 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="From Product Manager to Technical Product Manager" class="md-nav__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
+    <a href="../.." title="From Product Manager to Technical Product Manager" class="md-nav__button md-logo" aria-label="From Product Manager to Technical Product Manager" data-md-component="logo">
       
-  <img src="../img/logo.png" alt="logo">
+  <img src="../../img/logo.png" alt="logo">
 
     </a>
     From Product Manager to Technical Product Manager
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/dmccreary/claude-skills" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/leahv-studio/technical-pm-textbook" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
@@ -251,7 +251,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -278,7 +278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   
@@ -305,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../course-description/" class="md-nav__link">
+      <a href="../../course-description/" class="md-nav__link">
         
   
   
@@ -332,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
+      <a href="../../getting-started/" class="md-nav__link">
         
   
   
@@ -356,6 +356,88 @@
       
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -365,6 +447,52 @@
       
         
           
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
         
       
         
@@ -405,18 +533,18 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../" class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
     
   
-    Chapters
+    MicroSims
   
 
     
@@ -427,18 +555,18 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Chapters
+    MicroSims
   
 
           </label>
@@ -453,14 +581,161 @@
   
   
     <li class="md-nav__item">
-      <a href="01-pm-foundations/" class="md-nav__link">
+      <a href="../adding-taxonomy-workflow/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1. Product Management Foundations
+    Adding Taxonomy Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Request Builder
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Request Builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Content
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../average-dependencies-distribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Average Dependencies Distribution
   
 
     
@@ -481,14 +756,14 @@
   
   
     <li class="md-nav__item">
-      <a href="02-software-development-essentials/" class="md-nav__link">
+      <a href="../book-build-workflow/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Software Development Essentials
+    Book Build Workflow
   
 
     
@@ -509,14 +784,14 @@
   
   
     <li class="md-nav__item">
-      <a href="03-technical-documentation/" class="md-nav__link">
+      <a href="../book-levels/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. Technical Documentation and Requirements
+    Book Levels
   
 
     
@@ -537,14 +812,14 @@
   
   
     <li class="md-nav__item">
-      <a href="04-system-architecture/" class="md-nav__link">
+      <a href="../certificate-generator/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. System Architecture Fundamentals
+    Certificate Generator
   
 
     
@@ -565,14 +840,14 @@
   
   
     <li class="md-nav__item">
-      <a href="05-cloud-computing-infrastructure/" class="md-nav__link">
+      <a href="../chapter-content-generation-timeline/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Cloud Computing, Scaling, and Infrastructure
+    Chapter Content Generation Timeline
   
 
     
@@ -593,14 +868,14 @@
   
   
     <li class="md-nav__item">
-      <a href="06-apis-and-integrations/" class="md-nav__link">
+      <a href="../chapter-index-structure/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. APIs and Integrations
+    Chapter Index Structure
   
 
     
@@ -621,14 +896,14 @@
   
   
     <li class="md-nav__item">
-      <a href="07-databases-and-sql/" class="md-nav__link">
+      <a href="../chapter-organization-workflow/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Databases and SQL
+    Chapter Organization Workflow
   
 
     
@@ -649,14 +924,14 @@
   
   
     <li class="md-nav__item">
-      <a href="08-advanced-data-management/" class="md-nav__link">
+      <a href="../claude-code-memory-layers/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Advanced Data Management
+    Claude Code Memory Layers
   
 
     
@@ -677,14 +952,14 @@
   
   
     <li class="md-nav__item">
-      <a href="09-quality-assurance-technical-debt/" class="md-nav__link">
+      <a href="../claude-code-timeline/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Quality Assurance and Technical Debt
+    Claude Code Timeline
   
 
     
@@ -705,14 +980,14 @@
   
   
     <li class="md-nav__item">
-      <a href="10-sdlc-and-agile/" class="md-nav__link">
+      <a href="../claude-code-tshirt-design/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    10. SDLC and Agile Methodologies
+    Claude Code T-Shirt Design
   
 
     
@@ -733,14 +1008,14 @@
   
   
     <li class="md-nav__item">
-      <a href="11-analytics-data-driven-decisions/" class="md-nav__link">
+      <a href="../color-wheel-with-named-colors/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    11. Analytics and Data-Driven Decisions
+    Color Wheel with Named Colors
   
 
     
@@ -761,14 +1036,14 @@
   
   
     <li class="md-nav__item">
-      <a href="12-advanced-analytics-experimentation/" class="md-nav__link">
+      <a href="../concept-length-histogram/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    12. Advanced Analytics and Experimentation
+    Concept Length Histogram
   
 
     
@@ -789,14 +1064,14 @@
   
   
     <li class="md-nav__item">
-      <a href="13-ai-tools-and-strategy/" class="md-nav__link">
+      <a href="../course-description-quality-workflow/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    13. AI Tools and Strategy for Technical PMs
+    Course Description Quality Workflow
   
 
     
@@ -817,14 +1092,602 @@
   
   
     <li class="md-nav__item">
-      <a href="14-career-transition-leadership/" class="md-nav__link">
+      <a href="../faq-pattern-analysis/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    14. Career Transition and Technical Leadership
+    FAQ Pattern Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-workflow-skill-development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Workflow Skill Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-color-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Color Test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install-book-env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Book Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learning-graph-json-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph JSON Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-viewer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph Viewer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linear-chain-vs-network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linear Chain vs Network
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-world-cities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Major World Cities Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microsim-file-relationship-diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSim File Relationship Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocs-build-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs Build Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocs-github-pages-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs GitHub Pages Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orphaned-nodes-identification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orphaned Nodes Identification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p5js-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    p5.js Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security-zones-diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Zones Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sine-function-plot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sine Function Plot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-context-window/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Context Window
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-impact-chart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Development Priority Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-directory-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Directory Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-installation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Installation Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../taxonomy-distribution-pie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taxonomy Distribution Pie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terminal-workflow-textbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terminal Workflow Textbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../three-color-dfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Three Color DFS
   
 
     
@@ -864,106 +1727,6 @@
       
         
       
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../skill-descriptions/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Skill Descriptions
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
         
       
         
@@ -1005,93 +1768,7 @@
   
   
   
-    <a href="../sims/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    MicroSims
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../learning-graph/" class="md-nav__link">
+    <a href="../../learning-graph/" class="md-nav__link">
       
   
   
@@ -1123,225 +1800,8 @@
   
   
   
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../prompts/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Prompts
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../workshops/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Workshops
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../consolidation-plan/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Consolidation Plan
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../glossary/" class="md-nav__link">
+      <a href="../../glossary/" class="md-nav__link">
         
   
   
@@ -1368,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         
   
   
@@ -1395,7 +1855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../references/" class="md-nav__link">
+      <a href="../../references/" class="md-nav__link">
         
   
   
@@ -1422,7 +1882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../license/" class="md-nav__link">
+      <a href="../../license/" class="md-nav__link">
         
   
   
@@ -1449,7 +1909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contact/" class="md-nav__link">
+      <a href="../../contact/" class="md-nav__link">
         
   
   
@@ -1496,10 +1956,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chapter-overview" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chapter Overview
+        Overview
       
     </span>
   </a>
@@ -1507,10 +1967,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-this-textbook" class="md-nav__link">
+  <a href="#how-to-use" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to Use This Textbook
+        How to Use
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Content
       
     </span>
   </a>
@@ -1542,7 +2024,7 @@
   
   
     <li class="md-path__item">
-      <a href=".." class="md-path__link">
+      <a href="../.." class="md-path__link">
         
   <span class="md-ellipsis">
     Home
@@ -1560,10 +2042,10 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
-    Chapters
+    MicroSims
   </span>
 
         </a>
@@ -1582,7 +2064,7 @@
 
 
   
-    <a href="https://github.com/dmccreary/claude-skills/blob/master/docs/chapters/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/leahv-studio/technical-pm-textbook/blob/master/docs/sims/api-request-builder/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -1590,29 +2072,39 @@
   
 
 
-<h1 id="chapters">Chapters</h1>
-<p>This textbook is organized into 14 chapters covering 200 concepts for transitioning from product manager to technical product manager.</p>
-<h2 id="chapter-overview">Chapter Overview</h2>
+<h1 id="api-request-builder">API Request Builder</h1>
+<p>An interactive simulation that demonstrates the REST API request and response cycle. Select an HTTP method, choose an endpoint, and send a request to see how clients and servers communicate.</p>
+<iframe src="./main.html" width="100%" height="850px" scrolling="no" style="border: none; border-radius: 8px;"></iframe>
+
+<p><a class="md-button md-button--primary" href="main.html">View Fullscreen</a></p>
+<h2 id="overview">Overview</h2>
+<p>This MicroSim helps you understand the core components of an API call:</p>
+<ul>
+<li><strong>HTTP Methods</strong> - GET (read), POST (create), PUT (update), DELETE (remove)</li>
+<li><strong>Endpoints</strong> - The URL path that identifies the resource you want to interact with</li>
+<li><strong>Request Headers</strong> - Metadata sent with the request, like authentication tokens</li>
+<li><strong>Request Body</strong> - Data sent with POST and PUT requests (not used with GET and DELETE)</li>
+<li><strong>Status Codes</strong> - The server's response indicating success or failure</li>
+<li><strong>Response Body</strong> - The data returned by the server, typically in JSON format</li>
+</ul>
+<h2 id="how-to-use">How to Use</h2>
 <ol>
-<li><a href="01-pm-foundations/">Product Management Foundations</a> - Establishes core PM vocabulary and frameworks including product lifecycle, strategy, stakeholders, metrics, and user needs.</li>
-<li><a href="02-software-development-essentials/">Software Development Essentials</a> - Introduces how software is built, from source code and programming languages through version control and code review workflows.</li>
-<li><a href="03-technical-documentation/">Technical Documentation and Requirements</a> - Covers reading and writing technical docs, engineering specs, requirements, bugs, and the jargon PMs need to communicate.</li>
-<li><a href="04-system-architecture/">System Architecture Fundamentals</a> - Explores system design patterns, distributed systems, reliability, scalability, and performance concepts.</li>
-<li><a href="05-cloud-computing-infrastructure/">Cloud Computing, Scaling, and Infrastructure</a> - Covers cloud service models, serverless computing, containerization, and scaling strategies.</li>
-<li><a href="06-apis-and-integrations/">APIs and Integrations</a> - Deep dive into API fundamentals including REST, GraphQL, authentication, data serialization, and testing tools.</li>
-<li><a href="07-databases-and-sql/">Databases and SQL</a> - Covers relational databases, SQL querying, data tables, keys, schema design, and NoSQL databases.</li>
-<li><a href="08-advanced-data-management/">Advanced Data Management</a> - Explores data warehouses, transactions, ACID properties, performance optimization, and data migration.</li>
-<li><a href="09-quality-assurance-technical-debt/">Quality Assurance and Technical Debt</a> - Addresses code quality, technical debt, testing levels, automated testing, and system migration.</li>
-<li><a href="10-sdlc-and-agile/">SDLC and Agile Methodologies</a> - Covers software development lifecycle, Scrum ceremonies, backlogs, CI/CD, release management, and MVP.</li>
-<li><a href="11-analytics-data-driven-decisions/">Analytics and Data-Driven Decisions</a> - Covers product analytics, user behavior tracking, funnel and cohort analysis, dashboards, and data governance.</li>
-<li><a href="12-advanced-analytics-experimentation/">Advanced Analytics and Experimentation</a> - Explores A/B testing, experiment design, data pipelines, predictive analytics, and customer segmentation.</li>
-<li><a href="13-ai-tools-and-strategy/">AI Tools and Strategy for Technical PMs</a> - Introduces generative AI, LLMs, prompt engineering, AI tools for PMs, and AI strategy and governance.</li>
-<li><a href="14-career-transition-leadership/">Career Transition and Technical Leadership</a> - Covers the technical PM job market, interview prep, technical communication, decision frameworks, and roadmapping.</li>
+<li><strong>Select a method</strong> by clicking one of the colored buttons (GET, POST, PUT, DELETE)</li>
+<li><strong>Choose an endpoint</strong> from the dropdown (/users, /orders, /products)</li>
+<li><strong>Click Send Request</strong> to watch the animated request/response cycle</li>
+<li><strong>Read the response</strong> including the status code, response body, and explanation</li>
 </ol>
-<h2 id="how-to-use-this-textbook">How to Use This Textbook</h2>
-<p>Chapters are organized to respect concept dependencies - each chapter builds on knowledge from previous chapters. Start with Chapter 1 and progress sequentially for the best learning experience. Product managers with stronger technical backgrounds may skim early chapters and focus on areas where they want to deepen their skills.</p>
-<hr>
-<p><strong>Note:</strong> Each chapter includes a list of concepts covered. Make sure to complete prerequisites before moving to advanced chapters.</p>
+<p>Try different combinations to discover various status codes. Not every request succeeds - some return errors like 400 Bad Request, 401 Unauthorized, 404 Not Found, or 500 Server Error.</p>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After exploring this simulation, you should be able to:</p>
+<ul>
+<li>Identify the four main HTTP methods and when each is used</li>
+<li>Read and interpret common HTTP status codes</li>
+<li>Understand why POST and PUT requests include a body but GET and DELETE typically do not</li>
+<li>Explain the difference between client errors (4xx) and server errors (5xx)</li>
+</ul>
+<h2 id="related-content">Related Content</h2>
+<p>This simulation supports <a href="../../chapters/06-apis-and-integrations/">Chapter 6: APIs and Integrations</a>, which covers REST APIs, authentication, webhooks, and integration patterns for technical product managers.</p>
 
 
 
@@ -1650,7 +2142,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../getting-started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started">
+          <a href="../adding-taxonomy-workflow/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Adding Taxonomy Workflow">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -1660,20 +2152,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Getting Started
+                Adding Taxonomy Workflow
               </div>
             </div>
           </a>
         
         
           
-          <a href="01-pm-foundations/" class="md-footer__link md-footer__link--next" aria-label="Next: 1. Product Management Foundations">
+          <a href="../average-dependencies-distribution/" class="md-footer__link md-footer__link--next" aria-label="Next: Average Dependencies Distribution">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                1. Product Management Foundations
+                Average Dependencies Distribution
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1690,7 +2182,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2025, 2026 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025, 2026 Leah Vogel. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -1709,12 +2201,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../js/extra.js"></script>
+        <script src="../../js/extra.js"></script>
       
     
   
