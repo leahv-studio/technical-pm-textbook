@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKR Alignment Cascade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>OKR Alignment Cascade</h2>
+        <p class="subtitle">Click any node to highlight its alignment chain</p>
+        <div class="tree">
+            <div class="tier tier-1">
+                <div class="okr-node company" data-id="company" onclick="toggleNode(this)">
+                    <div class="node-badge">Company</div>
+                    <h3>Become the #1 platform for mid-market analytics</h3>
+                    <div class="krs">
+                        <span class="kr">KR1: Grow ARR $10M → $25M</span>
+                        <span class="kr">KR2: Achieve 50 NPS</span>
+                        <span class="kr">KR3: Reach 500 customers</span>
+                    </div>
+                </div>
+            </div>
+            <div class="connectors tier-1-2">
+                <svg viewBox="0 0 800 40" preserveAspectRatio="xMidYMid meet"><line x1="400" y1="0" x2="250" y2="40" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,3"/><line x1="400" y1="0" x2="550" y2="40" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,3"/></svg>
+            </div>
+            <div class="tier tier-2">
+                <div class="okr-node product" data-id="onboarding" data-parent="company" onclick="toggleNode(this)">
+                    <div class="node-badge">Product Team A</div>
+                    <h3>Deliver self-serve onboarding</h3>
+                    <div class="krs">
+                        <span class="kr">KR1: Time-to-value 3d → 2h</span>
+                        <span class="kr">KR2: Trial-to-paid 8% → 18%</span>
+                        <span class="kr">KR3: 90% onboarding completion</span>
+                    </div>
+                </div>
+                <div class="okr-node product" data-id="integrations" data-parent="company" onclick="toggleNode(this)">
+                    <div class="node-badge">Product Team B</div>
+                    <h3>Build the most connected platform</h3>
+                    <div class="krs">
+                        <span class="kr">KR1: Launch 20 new integrations</span>
+                        <span class="kr">KR2: Setup time &lt; 5 min</span>
+                        <span class="kr">KR3: Grow API calls 300%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="connectors tier-2-3">
+                <svg viewBox="0 0 800 40" preserveAspectRatio="xMidYMid meet"><line x1="200" y1="0" x2="130" y2="40" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3"/><line x1="200" y1="0" x2="310" y2="40" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3"/><line x1="600" y1="0" x2="510" y2="40" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3"/><line x1="600" y1="0" x2="690" y2="40" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4,3"/></svg>
+            </div>
+            <div class="tier tier-3">
+                <div class="okr-node team" data-id="eng-onboard" data-parent="onboarding">
+                    <div class="node-badge">Engineering</div>
+                    <h3>Build onboarding wizard</h3>
+                    <div class="krs"><span class="kr">KR: Wizard completion &lt; 10 min</span></div>
+                </div>
+                <div class="okr-node team" data-id="design-onboard" data-parent="onboarding">
+                    <div class="node-badge">Design</div>
+                    <h3>Redesign first-run experience</h3>
+                    <div class="krs"><span class="kr">KR: Reduce onboarding drop-off 50%</span></div>
+                </div>
+                <div class="okr-node team" data-id="eng-integ" data-parent="integrations">
+                    <div class="node-badge">Engineering</div>
+                    <h3>Build integration framework</h3>
+                    <div class="krs"><span class="kr">KR: New integration in &lt; 2 days</span></div>
+                </div>
+                <div class="okr-node team" data-id="devrel-integ" data-parent="integrations">
+                    <div class="node-badge">DevRel</div>
+                    <h3>Launch integration marketplace</h3>
+                    <div class="krs"><span class="kr">KR: 10 partner-built integrations</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

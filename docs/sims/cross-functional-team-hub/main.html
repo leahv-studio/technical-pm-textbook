@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Functional Team Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cross-Functional Team Hub</h1>
+        <p class="subtitle">How a Technical PM connects with every discipline</p>
+
+        <div class="hub-wrapper">
+            <svg class="connections-svg" id="connectionsSvg"></svg>
+
+            <div class="hub-layout" id="hubLayout">
+                <!-- Center: Technical PM -->
+                <div class="hub-center" id="centerNode" data-node="pm">
+                    <div class="center-icon">&#9733;</div>
+                    <div class="center-label">Technical PM</div>
+                </div>
+
+                <!-- Spoke nodes -->
+                <div class="spoke-node" data-node="engineering" data-index="0">
+                    <div class="spoke-icon" style="background: #3b82f6;">&#9881;</div>
+                    <div class="spoke-label">Engineering</div>
+                </div>
+
+                <div class="spoke-node" data-node="design" data-index="1">
+                    <div class="spoke-icon" style="background: #7c3aed;">&#9868;</div>
+                    <div class="spoke-label">Design</div>
+                </div>
+
+                <div class="spoke-node" data-node="datascience" data-index="2">
+                    <div class="spoke-icon" style="background: #22c55e;">&#9636;</div>
+                    <div class="spoke-label">Data Science</div>
+                </div>
+
+                <div class="spoke-node" data-node="marketing" data-index="3">
+                    <div class="spoke-icon" style="background: #f59e0b;">&#9742;</div>
+                    <div class="spoke-label">Marketing</div>
+                </div>
+
+                <div class="spoke-node" data-node="sales" data-index="4">
+                    <div class="spoke-icon" style="background: #ef4444;">&#9996;</div>
+                    <div class="spoke-label">Sales</div>
+                </div>
+
+                <div class="spoke-node" data-node="leadership" data-index="5">
+                    <div class="spoke-icon" style="background: #64748b;">&#9813;</div>
+                    <div class="spoke-label">Leadership</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div class="detail-panel" id="detailPanel">
+            <div class="detail-header" id="detailHeader"></div>
+            <div class="detail-body" id="detailBody"></div>
+        </div>
+
+        <!-- Tooltip -->
+        <div class="tooltip" id="tooltip"></div>
+
+        <p class="instructions">Click a node to highlight its information flows. Hover for quick details.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

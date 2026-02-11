@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Lifecycle Phases</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Product Lifecycle Phases</h2>
+        <div class="curve-container">
+            <svg id="revenue-curve" viewBox="0 0 800 120" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <linearGradient id="curveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#3b82f6"/>
+                        <stop offset="30%" style="stop-color:#22c55e"/>
+                        <stop offset="65%" style="stop-color:#f59e0b"/>
+                        <stop offset="100%" style="stop-color:#9ca3af"/>
+                    </linearGradient>
+                </defs>
+                <path d="M 20 110 Q 100 108 200 90 Q 300 50 420 25 Q 520 15 580 20 Q 650 30 720 55 Q 770 75 780 95" stroke="url(#curveGrad)" stroke-width="3" fill="none"/>
+                <text x="400" y="12" text-anchor="middle" class="curve-label">Revenue / Usage Over Time</text>
+            </svg>
+        </div>
+        <div class="phases">
+            <div class="phase-card" data-phase="introduction" onclick="selectPhase(this)">
+                <div class="phase-header introduction">
+                    <span class="phase-number">1</span>
+                    <h3>Introduction</h3>
+                </div>
+                <div class="phase-body">
+                    <p class="focus">"Does anyone want this?"</p>
+                    <div class="phase-details">
+                        <div class="detail-section">
+                            <strong>Key Activities</strong>
+                            <ul>
+                                <li>MVP launch</li>
+                                <li>User research</li>
+                                <li>Rapid iteration</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <strong>Metrics</strong>
+                            <ul>
+                                <li>Activation rate</li>
+                                <li>Qualitative feedback</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <strong>Tech Priority</strong>
+                            <p>Speed of iteration</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tooltip">Examples: Early-stage startups validating product-market fit, beta launches with limited user groups, A/B testing core value propositions.</div>
+            </div>
+            <div class="phase-arrow">&#9654;</div>
+            <div class="phase-card" data-phase="growth" onclick="selectPhase(this)">
+                <div class="phase-header growth">
+                    <span class="phase-number">2</span>
+                    <h3>Growth</h3>
+                </div>
+                <div class="phase-body">
+                    <p class="focus">"How do we serve more users?"</p>
+                    <div class="phase-details">
+                        <div class="detail-section">
+                            <strong>Key Activities</strong>
+                            <ul>
+                                <li>Scaling infrastructure</li>
+                                <li>Feature expansion</li>
+                                <li>Team growth</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <strong>Metrics</strong>
+                            <ul>
+                                <li>User growth rate</li>
+                                <li>Retention</li>
+                                <li>Revenue</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <strong>Tech Priority</strong>
+                            <p>Scalability and reliability</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tooltip">Examples: Slack's explosive 2015-2017 growth, Zoom scaling during 2020, Netflix expanding from DVD to streaming.</div>
+            </div>
+            <div class="phase-arrow">&#9654;</div>
+            <div class="phase-card" data-phase="maturity" onclick="selectPhase(this)">
+                <div class="phase-header maturity">
+                    <span class="phase-number">3</span>
+                    <h3>Maturity</h3>
+                </div>
+                <div class="phase-body">
+                    <p class="focus">"How do we maximize value?"</p>
+                    <div class="phase-details">
+                        <div class="detail-section">
+                            <strong>Key Activities</strong>
+                            <ul>
+                                <li>Optimization</li>
+                                <li>Cost efficiency</li>
+                                <li>Market defense</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <strong>Metrics</strong>
+                            <ul>
+                                <li>Profitability</li>
+                                <li>Market share</li>
+                                <li>NPS</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <strong>Tech Priority</strong>
+                            <p>Performance optimization, tech debt reduction</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tooltip">Examples: Microsoft Office suite, Salesforce CRM platform, AWS core services like S3 and EC2.</div>
+            </div>
+            <div class="phase-arrow">&#9654;</div>
+            <div class="phase-card" data-phase="decline" onclick="selectPhase(this)">
+                <div class="phase-header decline">
+                    <span class="phase-number">4</span>
+                    <h3>Decline</h3>
+                </div>
+                <div class="phase-body">
+                    <p class="focus">"What comes next?"</p>
+                    <div class="phase-details">
+                        <div class="detail-section">
+                            <strong>Key Activities</strong>
+                            <ul>
+                                <li>Sunsetting</li>
+                                <li>Migration</li>
+                                <li>Cost reduction</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <strong>Metrics</strong>
+                            <ul>
+                                <li>Churn rate</li>
+                                <li>Migration completion</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <strong>Tech Priority</strong>
+                            <p>Data migration, API deprecation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tooltip">Examples: Internet Explorer being replaced by Edge, Google Reader shutdown, legacy on-premise software moving to cloud.</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
