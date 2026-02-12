@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Normalization Visualizer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Database Normalization Visualizer</h2>
+        <p class="subtitle">Watch a denormalized table transform through 1NF, 2NF, and 3NF step by step</p>
+
+        <div class="step-nav">
+            <button class="step-btn active" id="btn-unnorm" onclick="setStep(0)">Unnormalized</button>
+            <span class="step-arrow">&rarr;</span>
+            <button class="step-btn" id="btn-1nf" onclick="setStep(1)">1NF</button>
+            <span class="step-arrow">&rarr;</span>
+            <button class="step-btn" id="btn-2nf" onclick="setStep(2)">2NF</button>
+            <span class="step-arrow">&rarr;</span>
+            <button class="step-btn" id="btn-3nf" onclick="setStep(3)">3NF</button>
+        </div>
+
+        <div id="canvas-container"></div>
+
+        <div class="info-row">
+            <div class="nf-badge" id="nf-badge">Unnormalized</div>
+            <div class="problem-badge" id="problem-badge"></div>
+        </div>
+
+        <div class="explanation-panel" id="explanation-panel">
+            <h4 id="explanation-title">Unnormalized Table</h4>
+            <p id="explanation-text"></p>
+        </div>
+
+        <div class="anomaly-cards" id="anomaly-cards">
+            <div class="anomaly-card" id="anomaly-update">
+                <div class="anomaly-icon">&#9888;</div>
+                <h5>Update Anomaly</h5>
+                <p id="anomaly-update-text"></p>
+            </div>
+            <div class="anomaly-card" id="anomaly-insert">
+                <div class="anomaly-icon">&#10060;</div>
+                <h5>Insert Anomaly</h5>
+                <p id="anomaly-insert-text"></p>
+            </div>
+            <div class="anomaly-card" id="anomaly-delete">
+                <div class="anomaly-icon">&#128465;</div>
+                <h5>Delete Anomaly</h5>
+                <p id="anomaly-delete-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

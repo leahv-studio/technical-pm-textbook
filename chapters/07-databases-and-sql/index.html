@@ -879,6 +879,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Data Normalization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-database-normalization-visualizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Database Normalization Visualizer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1692,6 +1709,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Data Normalization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-database-normalization-visualizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Database Normalization Visualizer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2294,6 +2328,20 @@ subscriptions
 <p class="admonition-title">Normalization vs. Performance</p>
 <p>Normalization reduces redundancy but can require more joins to reassemble data, which affects query performance. In practice, most applications normalize to Third Normal Form (3NF) and selectively denormalize specific tables for performance-critical queries. This trade-off between data integrity and read performance is a common engineering discussion that PMs should understand.</p>
 </div>
+<h4 id="diagram-database-normalization-visualizer">Diagram: Database Normalization Visualizer</h4>
+<iframe src="../../sims/normalization-visualizer/main.html" width="100%" height="850px" scrolling="no"></iframe>
+
+<details>
+<summary>Database Normalization Visualizer</summary>
+<p>Type: microsim</p>
+<p>Bloom Level: Analyze (L4)
+Bloom Verb: differentiate, organize
+Learning Objective: Students will be able to differentiate between unnormalized, 1NF, 2NF, and 3NF table structures and identify the redundancy and anomalies each normal form eliminates.</p>
+<p>Layout: p5.js canvas rendering database tables with color-coded primary keys (gold) and foreign keys (blue). Red highlights mark duplicated data. Step buttons navigate through Unnormalized, 1NF, 2NF, and 3NF. Explanation panel and anomaly cards update at each step.</p>
+<p>Interactive elements: Four step buttons to navigate normalization stages, color-coded table rendering, anomaly status cards showing update/insert/delete anomaly resolution.</p>
+<p>Color scheme: Gold for primary keys, blue for foreign keys, red for redundant data, green for resolved state
+Implementation: p5.js with HTML step navigation</p>
+</details>
 <h2 id="beyond-relational-nosql-databases">Beyond Relational: NoSQL Databases</h2>
 <h3 id="nosql-databases">NoSQL Databases</h3>
 <p><strong>NoSQL databases</strong> (often interpreted as "Not Only SQL") are a category of database systems that store data in formats other than the traditional relational table structure. NoSQL databases emerged to address limitations of relational databases when handling massive scale, flexible data structures, or high-velocity data that does not fit neatly into rows and columns.</p>
