@@ -64,6 +64,10 @@ nav:
     - Interactive MicroSims: sims/index.md
     - A/B Test Calculator: sims/ab-test-calculator/index.md
     - API Request Builder: sims/api-request-builder/index.md
+    - Availability Calculator: sims/availability-calculator/index.md
+    - Monolith vs Microservices: sims/monolith-vs-microservices/index.md
+    - Normalization Visualizer: sims/normalization-visualizer/index.md
+    - Scaling Load Simulator: sims/scaling-load-simulator/index.md
     - SQL Query Builder: sims/sql-query-builder/index.md
     - Technical Debt Simulator: sims/technical-debt-simulator/index.md
 
