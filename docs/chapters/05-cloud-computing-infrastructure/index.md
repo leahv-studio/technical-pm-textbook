@@ -228,6 +228,26 @@ Color scheme: Orange for vertical scaling, blue for horizontal scaling
 Implementation: HTML/CSS/JavaScript with animated scaling visualization
 </details>
 
+#### Diagram: Scaling Under Load Simulator
+
+<iframe src="../../sims/scaling-load-simulator/main.html" width="100%" height="750px" scrolling="no"></iframe>
+
+<details markdown="1">
+<summary>Scaling Under Load Simulator</summary>
+Type: microsim
+
+Bloom Level: Evaluate (L5)
+Bloom Verb: assess, compare
+Learning Objective: Students will be able to explain the difference between scaling up and scaling out, and assess when each strategy is appropriate by observing how each handles increasing traffic load.
+
+Layout: p5.js canvas showing animated request dots flowing from left toward server(s) on the right. A traffic slider controls the request rate. A strategy toggle switches between vertical scaling (single server grows larger, eventually overloads) and horizontal scaling (new server instances spawn behind a load balancer). Metrics below show response time, cost, failure risk, and capacity.
+
+Interactive elements: Traffic load slider (100 to 50K req/s), vertical/horizontal strategy toggle, animated request dots with server load visualization, real-time metrics and contextual insight text.
+
+Color scheme: Orange/amber for vertical scaling, blue for horizontal scaling, red for overloaded state
+Implementation: p5.js with HTML controls
+</details>
+
 ## Caching Strategies
 
 **Caching strategies** are techniques for storing copies of frequently accessed data in a fast-access storage layer (the cache) to reduce the load on slower backend systems and improve response times. Caching is one of the most effective and cost-efficient performance optimization techniques in software engineering.

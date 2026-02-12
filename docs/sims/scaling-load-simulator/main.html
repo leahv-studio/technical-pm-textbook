@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaling Under Load Simulator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Scaling Under Load Simulator</h2>
+        <p class="subtitle">Send traffic at a server and compare vertical vs. horizontal scaling strategies</p>
+
+        <div class="controls-row">
+            <div class="slider-group">
+                <label>
+                    <span class="slider-label">Traffic Load</span>
+                    <span class="slider-value" id="traffic-value">100 req/s</span>
+                </label>
+                <input type="range" id="traffic-slider" min="1" max="10" value="1" step="1">
+                <div class="slider-range"><span>100</span><span>50K req/s</span></div>
+            </div>
+            <div class="strategy-toggle">
+                <span class="toggle-label">Scaling Strategy</span>
+                <div class="toggle-buttons">
+                    <button class="toggle-btn active" id="btn-vertical" onclick="setStrategy('vertical')">Vertical</button>
+                    <button class="toggle-btn" id="btn-horizontal" onclick="setStrategy('horizontal')">Horizontal</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="canvas-container"></div>
+
+        <div class="metrics-row">
+            <div class="metric-card">
+                <div class="metric-icon">&#9201;</div>
+                <div class="metric-label">Response Time</div>
+                <div class="metric-value" id="metric-latency">30 ms</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">&#128176;</div>
+                <div class="metric-label">Monthly Cost</div>
+                <div class="metric-value" id="metric-cost">$100</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">&#9888;</div>
+                <div class="metric-label">Failure Risk</div>
+                <div class="metric-value" id="metric-risk">Single point</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">&#128200;</div>
+                <div class="metric-label">Capacity Used</div>
+                <div class="metric-value" id="metric-capacity">10%</div>
+            </div>
+        </div>
+
+        <div class="insight-panel" id="insight-panel">
+            <h4>Insight</h4>
+            <p id="insight-text"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
