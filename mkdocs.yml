@@ -62,6 +62,7 @@ nav:
 
   - MicroSims:
     - Interactive MicroSims: sims/index.md
+    - Learning Graph Viewer: sims/graph-viewer/index.md
     - A/B Test Calculator: sims/ab-test-calculator/index.md
     - API Request Builder: sims/api-request-builder/index.md
     - Availability Calculator: sims/availability-calculator/index.md

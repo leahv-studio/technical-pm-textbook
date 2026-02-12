@@ -2,6 +2,8 @@
 
 This section contains the learning graph for *From Product Manager to Technical Product Manager: A Practitioner's Guide*. The learning graph maps all 200 concepts in this textbook and their prerequisite relationships, creating a directed acyclic graph (DAG) that shows how ideas build on each other.
 
+[View Interactive Learning Graph](../sims/graph-viewer/main.html){ .md-button .md-button--primary }
+
 ## What Is a Learning Graph?
 
 A learning graph is a network of concepts connected by directed edges that indicate prerequisites. Each concept is a node, and each edge means "you should understand this concept before moving to the next one."
