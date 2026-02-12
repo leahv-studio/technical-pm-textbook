@@ -15,7 +15,7 @@ hide:
 
 Welcome to *From Product Manager to Technical Product Manager: A Practitioner's Guide*.
 
-Not all technical product managers start as engineers. This textbook is designed for experienced product managers with 3-8 years of experience who want to transition into technical PM roles but didn't follow the traditional engineer-to-PM path. Whether your background is in art history, business, or any non-engineering field, this course proves that technical product management is accessible through deliberate learning, AI-augmented skill building, and practical application.
+Not all technical product managers start as engineers. This textbook is designed for product managers with 3-8 years of experience who want to transition into technical PM roles but didn't follow the traditional engineer-to-PM path. Whether your background is in art history, business, or any non-engineering field, this course proves that technical product management is accessible through deliberate learning, AI-augmented skill building, and practical application.
 
 You'll learn to speak the language of engineers, understand system architecture, make data-driven decisions, and confidently navigate technical trade-offs — all while leveraging the product instincts you've already developed.
 
