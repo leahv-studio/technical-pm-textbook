@@ -466,3 +466,5 @@ The PMs who thrive in the AI era will not be those who fear or ignore these tool
 - **AI cost-benefit analysis** must account for scaling costs that can grow non-linearly with usage
 - **AI governance** establishes organizational frameworks for responsible AI use, with PMs playing a central role in defining requirements
 - **AI productivity gains** are strongest for first drafts, research synthesis, code-adjacent tasks, and repetitive work, while strategic judgment remains a distinctly human contribution
+
+[See Annotated References](./references.md)

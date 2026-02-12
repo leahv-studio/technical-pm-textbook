@@ -473,3 +473,5 @@ In practice, the answer is often "both." A typical modern product might use Post
 - **Document databases** (like MongoDB) store semi-structured JSON-like documents with flexible schemas, ideal for variable data structures
 - **Key-value stores** (like Redis) provide extremely fast lookups by key, perfect for caching, session management, and real-time counters
 - Most modern products use multiple database types together (polyglot persistence), choosing the right tool for each data storage need
+
+[See Annotated References](./references.md)

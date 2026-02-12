@@ -396,3 +396,5 @@ The key insight for product managers is that quality is not the absence of bugs 
 - **Code coverage** measures what percentage of code is exercised by tests - useful as a guide but dangerous as a rigid target
 - **Automated testing** transforms quality from a bottleneck into an accelerator by running tests on every code change
 - **Technical debt tracking** makes invisible costs visible, enabling informed prioritization decisions between feature work and debt reduction
+
+[See Annotated References](./references.md)

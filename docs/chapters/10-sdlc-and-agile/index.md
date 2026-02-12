@@ -446,3 +446,5 @@ The most effective technical PMs are fluent in these methodologies but not dogma
 - **Release management** coordinates what ships and when, while **feature flags** decouple deployment from release, giving PMs granular control over feature exposure
 - The **minimum viable product** is the smallest version of a product that tests a hypothesis with real users - it must be viable, not just minimal
 - **Iterative development** leverages feedback loops from each cycle to make increasingly informed decisions, transforming assumptions into validated knowledge
+
+[See Annotated References](./references.md)

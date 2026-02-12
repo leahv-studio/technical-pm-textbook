@@ -443,3 +443,5 @@ The investment you make in analytics fluency pays compound returns. Every produc
 - **Data privacy** creates a fundamental tension between analytics capability and user rights that must be navigated thoughtfully
 - **GDPR compliance** is mandatory for any product with EU users and affects everything from cookie consent to data deletion capabilities
 - **Data governance** provides the organizational framework that ensures analytics data is accurate, secure, and used responsibly
+
+[See Annotated References](./references.md)

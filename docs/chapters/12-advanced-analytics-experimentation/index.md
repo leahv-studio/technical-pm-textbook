@@ -475,3 +475,5 @@ As a technical PM, your role is not to build this infrastructure yourself. Your 
 - **Attribution modeling** assigns credit across marketing touchpoints to guide investment decisions, with model choice significantly affecting conclusions
 - **Customer segmentation** divides users into meaningful groups for targeted product experiences, experimentation, and strategic prioritization
 - **Predictive analytics** uses historical data and machine learning to forecast future outcomes, enabling proactive product decisions rather than reactive ones
+
+[See Annotated References](./references.md)

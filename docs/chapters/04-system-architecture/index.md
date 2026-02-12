@@ -333,3 +333,5 @@ As a technical PM, your role in architecture discussions is to represent the pro
 - **Load balancing** distributes traffic across multiple servers to improve throughput and provide redundancy
 - **System reliability** means the system works correctly; **high availability** means it is accessible when needed; **fault tolerance** means it handles component failures gracefully
 - Architecture decisions are product decisions - always evaluate them through the lens of user expectations, scale requirements, iteration speed, and budget
+
+[See Annotated References](./references.md)

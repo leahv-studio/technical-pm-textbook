@@ -491,3 +491,5 @@ API literacy gives you practical superpowers in your daily work. Here are the mo
 - **Third-party integrations** extend product value, while **API gateways** and **middleware** manage cross-cutting concerns like security, routing, and validation
 - **SDKs** reduce integration effort by wrapping APIs in language-specific packages, and **API testing** tools like **Postman** enable PMs to explore and verify API behavior directly
 - **API error handling** using standard HTTP status codes (2xx success, 4xx client error, 5xx server error) with clear messages is critical for developer experience
+
+[See Annotated References](./references.md)

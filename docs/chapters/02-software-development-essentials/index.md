@@ -379,3 +379,5 @@ Here are concrete ways technical PMs apply these concepts daily:
 - **Code repositories** on platforms like GitHub serve as the central hub for source code, documentation, issues, and collaboration
 - **Code review** is a quality practice that catches bugs, shares knowledge, and enforces standards - it directly affects development timelines
 - **Pull requests** are the formal mechanism for proposing, reviewing, and merging code changes - understanding the PR lifecycle helps PMs track feature progress accurately
+
+[See Annotated References](./references.md)

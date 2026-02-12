@@ -330,3 +330,5 @@ As a technical PM, your role in infrastructure decisions includes:
 - **Caching strategies** store frequently accessed data in fast-access layers to reduce backend load and improve response times - cache invalidation is the primary challenge
 - **Content delivery networks** serve content from edge locations geographically close to users, dramatically reducing latency and improving global performance
 - Infrastructure decisions are product decisions - they affect cost structure, performance, growth capacity, and development velocity
+
+[See Annotated References](./references.md)

@@ -14,20 +14,48 @@ nav:
 
   - Chapters:
     - List of Chapters: chapters/index.md
-    - 1. Product Management Foundations: chapters/01-pm-foundations/index.md
-    - 2. Software Development Essentials: chapters/02-software-development-essentials/index.md
-    - 3. Technical Documentation and Requirements: chapters/03-technical-documentation/index.md
-    - 4. System Architecture Fundamentals: chapters/04-system-architecture/index.md
-    - 5. Cloud Computing, Scaling, and Infrastructure: chapters/05-cloud-computing-infrastructure/index.md
-    - 6. APIs and Integrations: chapters/06-apis-and-integrations/index.md
-    - 7. Databases and SQL: chapters/07-databases-and-sql/index.md
-    - 8. Advanced Data Management: chapters/08-advanced-data-management/index.md
-    - 9. Quality Assurance and Technical Debt: chapters/09-quality-assurance-technical-debt/index.md
-    - 10. SDLC and Agile Methodologies: chapters/10-sdlc-and-agile/index.md
-    - 11. Analytics and Data-Driven Decisions: chapters/11-analytics-data-driven-decisions/index.md
-    - 12. Advanced Analytics and Experimentation: chapters/12-advanced-analytics-experimentation/index.md
-    - 13. AI Tools and Strategy for Technical PMs: chapters/13-ai-tools-and-strategy/index.md
-    - 14. Career Transition and Technical Leadership: chapters/14-career-transition-leadership/index.md
+    - 1. Product Management Foundations:
+      - Content: chapters/01-pm-foundations/index.md
+      - Annotated References: chapters/01-pm-foundations/references.md
+    - 2. Software Development Essentials:
+      - Content: chapters/02-software-development-essentials/index.md
+      - Annotated References: chapters/02-software-development-essentials/references.md
+    - 3. Technical Documentation and Requirements:
+      - Content: chapters/03-technical-documentation/index.md
+      - Annotated References: chapters/03-technical-documentation/references.md
+    - 4. System Architecture Fundamentals:
+      - Content: chapters/04-system-architecture/index.md
+      - Annotated References: chapters/04-system-architecture/references.md
+    - 5. Cloud Computing, Scaling, and Infrastructure:
+      - Content: chapters/05-cloud-computing-infrastructure/index.md
+      - Annotated References: chapters/05-cloud-computing-infrastructure/references.md
+    - 6. APIs and Integrations:
+      - Content: chapters/06-apis-and-integrations/index.md
+      - Annotated References: chapters/06-apis-and-integrations/references.md
+    - 7. Databases and SQL:
+      - Content: chapters/07-databases-and-sql/index.md
+      - Annotated References: chapters/07-databases-and-sql/references.md
+    - 8. Advanced Data Management:
+      - Content: chapters/08-advanced-data-management/index.md
+      - Annotated References: chapters/08-advanced-data-management/references.md
+    - 9. Quality Assurance and Technical Debt:
+      - Content: chapters/09-quality-assurance-technical-debt/index.md
+      - Annotated References: chapters/09-quality-assurance-technical-debt/references.md
+    - 10. SDLC and Agile Methodologies:
+      - Content: chapters/10-sdlc-and-agile/index.md
+      - Annotated References: chapters/10-sdlc-and-agile/references.md
+    - 11. Analytics and Data-Driven Decisions:
+      - Content: chapters/11-analytics-data-driven-decisions/index.md
+      - Annotated References: chapters/11-analytics-data-driven-decisions/references.md
+    - 12. Advanced Analytics and Experimentation:
+      - Content: chapters/12-advanced-analytics-experimentation/index.md
+      - Annotated References: chapters/12-advanced-analytics-experimentation/references.md
+    - 13. AI Tools and Strategy for Technical PMs:
+      - Content: chapters/13-ai-tools-and-strategy/index.md
+      - Annotated References: chapters/13-ai-tools-and-strategy/references.md
+    - 14. Career Transition and Technical Leadership:
+      - Content: chapters/14-career-transition-leadership/index.md
+      - Annotated References: chapters/14-career-transition-leadership/references.md
 
   - MicroSims:
     - Interactive MicroSims: sims/index.md

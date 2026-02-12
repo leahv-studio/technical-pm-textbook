@@ -390,3 +390,5 @@ Understanding these advanced data management concepts transforms you from a PM w
 - **Data modeling** translates business requirements into database structure, and **entity relationships** (one-to-one, one-to-many, many-to-many) define how data entities connect
 - **Data migration** is one of the riskiest engineering operations - PMs should ensure adequate testing, rollback plans, and realistic timelines
 - **Data backup and recovery** strategies are defined by RPO (how much data can you afford to lose) and RTO (how long can you be down) - these metrics should align with business commitments and compliance requirements
+
+[See Annotated References](./references.md)

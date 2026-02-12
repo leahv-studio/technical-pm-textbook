@@ -394,3 +394,5 @@ Start your personal learning plan this week. Not next month, not when things cal
 - **Technical roadmapping** balances feature development with infrastructure investments, architecture evolution, technical debt retirement, and security improvements using a dual-track approach
 - A **personal learning plan** transforms vague aspirations into concrete, time-bound goals with specific learning methods, scheduled time, and regular progress reviews
 - **Continuous tech learning** is built through daily habits (reading), weekly practice (hands-on), monthly deep dives, quarterly projects, and annual assessment - consistency matters more than intensity
+
+[See Annotated References](./references.md)

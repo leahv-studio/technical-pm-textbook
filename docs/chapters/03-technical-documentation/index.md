@@ -312,3 +312,5 @@ The key takeaway is that you don't need to author all of these documents yoursel
 - A **software bug** is an error causing incorrect or unexpected system behavior; effective triage based on severity ensures the right bugs get fixed at the right time
 - **Debugging** is a systematic process of reproducing, isolating, diagnosing, fixing, and verifying - understanding it helps PMs set realistic resolution timelines
 - **Technical jargon** is best learned organically in context rather than through memorization; building a personal glossary accelerates the process
+
+[See Annotated References](./references.md)

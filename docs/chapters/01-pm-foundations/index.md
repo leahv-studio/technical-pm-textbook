@@ -366,3 +366,5 @@ The transition from product manager to technical product manager is not about ab
 - A **value proposition**, **product strategy**, **product vision**, and **product roadmap** create a coherent hierarchy from aspiration to execution
 - **Stakeholder management** and **cross-functional team** leadership require understanding each discipline's unique needs and constraints
 - **Product metrics**, **KPIs**, and **OKRs** provide the accountability framework that translates strategy into measurable outcomes
+
+[See Annotated References](./references.md)
