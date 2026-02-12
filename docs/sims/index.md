@@ -23,6 +23,14 @@ Interactive simulations to help product managers build technical fluency through
 
     Build SQL queries visually against a sample database with Customers, Orders, and Products tables. Learn SELECT, WHERE, ORDER BY, and JOIN by constructing queries and seeing the results.
 
+-   **[Monolith vs. Microservices Explorer](./monolith-vs-microservices/index.md)**
+
+    Adjust team size, system complexity, and expected users to see the architecture visually morph between monolith, modular monolith, and microservices with contextual recommendations.
+
+-   **[Scaling Under Load Simulator](./scaling-load-simulator/index.md)**
+
+    Send animated traffic at servers and toggle between vertical and horizontal scaling strategies. Watch vertical scaling hit the hardware ceiling while horizontal scaling keeps adding instances.
+
 -   **[Technical Debt Simulator](./technical-debt-simulator/index.md)**
 
     Play through 12 sprints choosing to ship fast or refactor. Watch how technical debt compounds into delivery slowdowns and compare your strategy against a balanced team.
