@@ -15,6 +15,10 @@ Interactive simulations to help product managers build technical fluency through
 
     Simulate a full A/B test experiment to see why sample size matters, how confidence builds over time, and what happens when you stop early.
 
+-   **[Availability & Downtime Calculator](./availability-calculator/index.md)**
+
+    Explore how uptime percentages translate to real downtime and revenue impact. Compare "nines" of availability from 90% to 99.9999% and understand the engineering cost at each tier.
+
 -   **[API Request Builder](./api-request-builder/index.md)**
 
     Interactive p5.js simulation demonstrating the REST API request and response cycle. Explore HTTP methods, endpoints, status codes, and request/response bodies.
@@ -22,6 +26,10 @@ Interactive simulations to help product managers build technical fluency through
 -   **[SQL Query Builder](./sql-query-builder/index.md)**
 
     Build SQL queries visually against a sample database with Customers, Orders, and Products tables. Learn SELECT, WHERE, ORDER BY, and JOIN by constructing queries and seeing the results.
+
+-   **[Database Normalization Visualizer](./normalization-visualizer/index.md)**
+
+    Watch a denormalized table transform through 1NF, 2NF, and 3NF step by step. See redundant data highlighted and anomalies resolved at each stage.
 
 -   **[Monolith vs. Microservices Explorer](./monolith-vs-microservices/index.md)**
 

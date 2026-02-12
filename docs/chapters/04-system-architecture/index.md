@@ -283,6 +283,26 @@ Fault tolerance strategies include:
 !!! tip "Reliability vs. Availability vs. Fault Tolerance"
     These three concepts are related but distinct. **Reliability** means the system works correctly. **Availability** means the system is accessible when users need it. **Fault tolerance** means the system handles component failures gracefully. A system can be highly available but unreliable (it is always up but sometimes returns wrong data). A system can be reliable but not fault-tolerant (it works perfectly until a component fails, then crashes entirely).
 
+#### Diagram: Availability & Downtime Calculator
+
+<iframe src="../../sims/availability-calculator/main.html" width="100%" height="750px" scrolling="no"></iframe>
+
+<details markdown="1">
+<summary>Availability & Downtime Calculator</summary>
+Type: microsim
+
+Bloom Level: Apply (L3)
+Bloom Verb: calculate, compare
+Learning Objective: Students will be able to calculate the downtime allowed at various availability percentages and compare the engineering cost and revenue impact across tiers.
+
+Layout: p5.js canvas with uptime/downtime bar and log-scale tier comparison chart. Two sliders control availability target (90% to 99.9999%) and revenue per hour ($1K to $1M). Downtime cards show per-year, per-month, revenue loss, and engineering cost. SLA analysis panel provides contextual guidance.
+
+Interactive elements: Availability target slider (7 tiers), revenue per hour slider, animated bar chart, real-time metrics and SLA analysis text.
+
+Color scheme: Red for low availability, amber/teal/green gradient for higher tiers
+Implementation: p5.js with HTML slider controls
+</details>
+
 ## Bringing Architecture Decisions to Product Strategy
 
 Architecture decisions are product decisions. The choice between a monolith and microservices affects team velocity, deployment frequency, and the types of features you can build. The choice of availability targets determines infrastructure costs and on-call requirements. The choice of latency targets shapes the user experience.

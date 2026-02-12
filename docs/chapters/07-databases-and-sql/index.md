@@ -275,6 +275,26 @@ Normalization follows progressive levels called "normal forms":
 !!! note "Normalization vs. Performance"
     Normalization reduces redundancy but can require more joins to reassemble data, which affects query performance. In practice, most applications normalize to Third Normal Form (3NF) and selectively denormalize specific tables for performance-critical queries. This trade-off between data integrity and read performance is a common engineering discussion that PMs should understand.
 
+#### Diagram: Database Normalization Visualizer
+
+<iframe src="../../sims/normalization-visualizer/main.html" width="100%" height="850px" scrolling="no"></iframe>
+
+<details markdown="1">
+<summary>Database Normalization Visualizer</summary>
+Type: microsim
+
+Bloom Level: Analyze (L4)
+Bloom Verb: differentiate, organize
+Learning Objective: Students will be able to differentiate between unnormalized, 1NF, 2NF, and 3NF table structures and identify the redundancy and anomalies each normal form eliminates.
+
+Layout: p5.js canvas rendering database tables with color-coded primary keys (gold) and foreign keys (blue). Red highlights mark duplicated data. Step buttons navigate through Unnormalized, 1NF, 2NF, and 3NF. Explanation panel and anomaly cards update at each step.
+
+Interactive elements: Four step buttons to navigate normalization stages, color-coded table rendering, anomaly status cards showing update/insert/delete anomaly resolution.
+
+Color scheme: Gold for primary keys, blue for foreign keys, red for redundant data, green for resolved state
+Implementation: p5.js with HTML step navigation
+</details>
+
 ## Beyond Relational: NoSQL Databases
 
 ### NoSQL Databases
