@@ -842,6 +842,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#diagram-scaling-under-load-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Scaling Under Load Simulator
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1694,6 +1705,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#diagram-scaling-under-load-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Scaling Under Load Simulator
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2102,6 +2124,20 @@ Learning Objective: Students will be able to demonstrate the difference between 
 <p>Interactive elements: Slider to increase simulated user load; toggle between scaling strategies; observe real-time metrics for response time, cost, and capacity utilization.</p>
 <p>Color scheme: Orange for vertical scaling, blue for horizontal scaling
 Implementation: HTML/CSS/JavaScript with animated scaling visualization</p>
+</details>
+<h4 id="diagram-scaling-under-load-simulator">Diagram: Scaling Under Load Simulator</h4>
+<iframe src="../../sims/scaling-load-simulator/main.html" width="100%" height="750px" scrolling="no"></iframe>
+
+<details>
+<summary>Scaling Under Load Simulator</summary>
+<p>Type: microsim</p>
+<p>Bloom Level: Evaluate (L5)
+Bloom Verb: assess, compare
+Learning Objective: Students will be able to explain the difference between scaling up and scaling out, and assess when each strategy is appropriate by observing how each handles increasing traffic load.</p>
+<p>Layout: p5.js canvas showing animated request dots flowing from left toward server(s) on the right. A traffic slider controls the request rate. A strategy toggle switches between vertical scaling (single server grows larger, eventually overloads) and horizontal scaling (new server instances spawn behind a load balancer). Metrics below show response time, cost, failure risk, and capacity.</p>
+<p>Interactive elements: Traffic load slider (100 to 50K req/s), vertical/horizontal strategy toggle, animated request dots with server load visualization, real-time metrics and contextual insight text.</p>
+<p>Color scheme: Orange/amber for vertical scaling, blue for horizontal scaling, red for overloaded state
+Implementation: p5.js with HTML controls</p>
 </details>
 <h2 id="caching-strategies">Caching Strategies</h2>
 <p><strong>Caching strategies</strong> are techniques for storing copies of frequently accessed data in a fast-access storage layer (the cache) to reduce the load on slower backend systems and improve response times. Caching is one of the most effective and cost-efficient performance optimization techniques in software engineering.</p>
