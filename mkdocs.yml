@@ -25,15 +25,18 @@ nav:
       - Annotated References: chapters/03-technical-documentation/references.md
     - 4. System Architecture Fundamentals:
       - Content: chapters/04-system-architecture/index.md
+      - Quiz: chapters/04-system-architecture/quiz.md
       - Annotated References: chapters/04-system-architecture/references.md
     - 5. Cloud Computing, Scaling, and Infrastructure:
       - Content: chapters/05-cloud-computing-infrastructure/index.md
+      - Quiz: chapters/05-cloud-computing-infrastructure/quiz.md
       - Annotated References: chapters/05-cloud-computing-infrastructure/references.md
     - 6. APIs and Integrations:
       - Content: chapters/06-apis-and-integrations/index.md
       - Annotated References: chapters/06-apis-and-integrations/references.md
     - 7. Databases and SQL:
       - Content: chapters/07-databases-and-sql/index.md
+      - Quiz: chapters/07-databases-and-sql/quiz.md
       - Annotated References: chapters/07-databases-and-sql/references.md
     - 8. Advanced Data Management:
       - Content: chapters/08-advanced-data-management/index.md
