@@ -5,6 +5,7 @@
 .md-header__button.md-logo img, .md-header__button.md-logo svg {
     height: 50px;
     width: 50px;
+    border-radius: 50%;
 }
 
 /* Teal-blue color matching the Technical PM textbook cover image
