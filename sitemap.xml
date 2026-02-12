@@ -69,6 +69,10 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/01-pm-foundations/references/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/02-getting-started-claude-skills/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -78,6 +82,10 @@
     </url>
     <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/02-software-development-essentials/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/02-software-development-essentials/references/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -93,6 +101,10 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/03-technical-documentation/references/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/04-intro-learning-graphs/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -105,7 +117,15 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/04-system-architecture/references/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/05-cloud-computing-infrastructure/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/05-cloud-computing-infrastructure/references/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -121,6 +141,10 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/06-apis-and-integrations/references/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/06-learning-graph-quality-validation/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -133,6 +157,10 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/07-databases-and-sql/references/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/07-taxonomy-data-formats/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -142,6 +170,10 @@
     </url>
     <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/08-advanced-data-management/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/08-advanced-data-management/references/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -165,6 +197,10 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/09-quality-assurance-technical-debt/references/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/10-content-creation-workflows/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -177,7 +213,15 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/10-sdlc-and-agile/references/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/11-analytics-data-driven-decisions/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/11-analytics-data-driven-decisions/references/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -193,6 +237,10 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/12-advanced-analytics-experimentation/references/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/12-interactive-elements-microsims/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -205,6 +253,10 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/13-ai-tools-and-strategy/references/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/13-dev-tools-version-control-deployment/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -214,6 +266,10 @@
     </url>
     <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/14-career-transition-leadership/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/14-career-transition-leadership/references/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
