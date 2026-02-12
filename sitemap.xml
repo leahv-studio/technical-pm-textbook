@@ -61,10 +61,6 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/01-intro-ai-intelligent-textbooks/quiz/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/01-pm-foundations/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -74,10 +70,6 @@
     </url>
     <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/02-getting-started-claude-skills/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/02-getting-started-claude-skills/quiz/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -93,10 +85,6 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/03-course-design-educational-theory/quiz/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/03-technical-documentation/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -109,11 +97,11 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/04-intro-learning-graphs/quiz/</loc>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/04-system-architecture/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/04-system-architecture/</loc>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/04-system-architecture/quiz/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -125,15 +113,15 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/05-cloud-computing-infrastructure/quiz/</loc>
+         <lastmod>2026-02-12</lastmod>
+    </url>
+    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/05-cloud-computing-infrastructure/references/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/05-concept-enumeration-dependencies/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/05-concept-enumeration-dependencies/quiz/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -149,11 +137,11 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/06-learning-graph-quality-validation/quiz/</loc>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/07-databases-and-sql/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/07-databases-and-sql/</loc>
+         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/07-databases-and-sql/quiz/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -162,10 +150,6 @@
     </url>
     <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/07-taxonomy-data-formats/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/07-taxonomy-data-formats/quiz/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -181,15 +165,7 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/08-mkdocs-platform-documentation/quiz/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/09-claude-skills-architecture-development/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/09-claude-skills-architecture-development/quiz/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -202,10 +178,6 @@
     </url>
     <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/10-content-creation-workflows/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/10-content-creation-workflows/quiz/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
@@ -229,10 +201,6 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/11-educational-resources-assessment/quiz/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/12-advanced-analytics-experimentation/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -245,10 +213,6 @@
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/12-interactive-elements-microsims/quiz/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/13-ai-tools-and-strategy/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
@@ -258,10 +222,6 @@
     </url>
     <url>
          <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/13-dev-tools-version-control-deployment/</loc>
-         <lastmod>2026-02-12</lastmod>
-    </url>
-    <url>
-         <loc>https://leahv-studio.github.io/technical-pm-textbook/chapters/13-dev-tools-version-control-deployment/quiz/</loc>
          <lastmod>2026-02-12</lastmod>
     </url>
     <url>
